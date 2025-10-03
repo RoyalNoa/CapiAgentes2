@@ -24,6 +24,8 @@
   -webkit-backdrop-filter: blur(8px);
   pointer-events: auto;
   font-family: 'Orbitron', 'Courier New', monospace;
+  position: relative; /* para pseudo-elemento animado */
+  overflow: hidden;   /* recorta el brillo dentro del borde */
 }
 
 .navigatorItem {
@@ -71,6 +73,30 @@
   box-shadow:
     0 0 16px rgba(14, 165, 233, 0.35),
     inset 0 0 16px rgba(14, 165, 233, 0.22);
+}
+
+/* Keyframes para el efecto de escaneo en naranja */
+@keyframes nav-scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Barra de luz en el borde superior del contenedor del navegador */
+.navigatorList::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,165,0,0.95), transparent);
+  animation: nav-scan 3s linear infinite;
+  pointer-events: none;
+}
+
+/* Accessibility: respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .navigatorList::before { animation: none; }
 }
 
 .navigatorIcon {

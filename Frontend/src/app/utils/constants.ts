@@ -7,6 +7,11 @@ export const ROUTES = [
     icon: '/home.png'
   },
   {
+    name: 'Home2',
+    to: `${MAIN_ROUTE}home2`,
+    icon: '/home.png'
+  },
+  {
     name: 'Map',
     to: `${MAIN_ROUTE}map`,
     icon: '/map.png'
@@ -14,6 +19,11 @@ export const ROUTES = [
   {
     name: 'Dashboard',
     to: '/dashboard',
+    icon: '/chat.png'
+  },
+  {
+    name: 'Dashboard2',
+    to: '/dashboard2',
     icon: '/chat.png'
   },
   {

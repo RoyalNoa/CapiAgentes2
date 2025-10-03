@@ -1,0 +1,115 @@
+{
+  "branch_id": "S001",
+  "branch_name": "Sucursal Central",
+  "severity": "alert",
+  "difference_ars": -2385000.0,
+  "deviation_pct": -0.959758551307847,
+  "hypothesis": "Desvio detectado en Sucursal Central",
+  "impact": "Diferencia de 2,385,000 ARS (-96.0%)",
+  "summary": "Sucursal Central: déficit de 2,385,000 ARS (96.0%). Severidad: alert",
+  "suggested_actions": [
+    "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica",
+    "ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada",
+    "ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada",
+    "Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada",
+    "Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo",
+    "Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada",
+    "Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada",
+    "Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo",
+    "Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada",
+    "Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo"
+  ],
+  "recommendations": [
+    {
+      "channel": "Saldo Total",
+      "action": "deposit",
+      "amount": 2260750.0,
+      "reason": "Deficit vs caja teorica",
+      "urgency": "proximo turno",
+      "estimated_cost": 158590.85,
+      "weight_kg": 2.261
+    },
+    {
+      "channel": "ATM",
+      "action": "deposit",
+      "amount": 26830800.0,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "inmediato",
+      "estimated_cost": 213907.8,
+      "weight_kg": 26.831
+    },
+    {
+      "channel": "ATS",
+      "action": "deposit",
+      "amount": 6782250.0,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "proximo turno",
+      "estimated_cost": 131703.2,
+      "weight_kg": 6.782
+    },
+    {
+      "channel": "Tesoro",
+      "action": "deposit",
+      "amount": 13117200.0,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "proximo turno",
+      "estimated_cost": 126728.16,
+      "weight_kg": 13.117
+    },
+    {
+      "channel": "Tesoro",
+      "action": "deposit",
+      "amount": 150000.0,
+      "reason": "Monto por debajo del colchon minimo",
+      "urgency": "proximo turno",
+      "estimated_cost": 90420.0,
+      "weight_kg": 0.15
+    },
+    {
+      "channel": "Ventanilla",
+      "action": "deposit",
+      "amount": 4571200.0,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "proximo turno",
+      "estimated_cost": 96885.12,
+      "weight_kg": 4.571
+    },
+    {
+      "channel": "Caja Chica",
+      "action": "deposit",
+      "amount": 346567.5,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "proximo turno",
+      "estimated_cost": 70762.45,
+      "weight_kg": 0.347
+    },
+    {
+      "channel": "Caja Chica",
+      "action": "deposit",
+      "amount": 15000.0,
+      "reason": "Monto por debajo del colchon minimo",
+      "urgency": "proximo turno",
+      "estimated_cost": 70033.0,
+      "weight_kg": 0.015
+    },
+    {
+      "channel": "Otros",
+      "action": "deposit",
+      "amount": 457120.0,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "proximo turno",
+      "estimated_cost": 101417.07,
+      "weight_kg": 0.457
+    },
+    {
+      "channel": "Otros",
+      "action": "deposit",
+      "amount": 30000.0,
+      "reason": "Monto por debajo del colchon minimo",
+      "urgency": "proximo turno",
+      "estimated_cost": 100093.0,
+      "weight_kg": 0.03
+    }
+  ],
+  "generated_at": "2025-10-03T18:10:38.703153+00:00"
+}
