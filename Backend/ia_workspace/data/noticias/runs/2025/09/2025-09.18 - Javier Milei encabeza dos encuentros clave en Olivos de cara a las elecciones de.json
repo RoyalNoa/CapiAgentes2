@@ -1,0 +1,149 @@
+{
+  "fingerprint": "18d3de3ba0a15b665a3c3ddbb0060fed6be8423fda97ba13e21d2fe7fe6153aa",
+  "headline": "Javier Milei encabeza dos encuentros clave en Olivos de cara a las elecciones de octubre",
+  "url": "https://www.ambito.com/politica/javier-milei-encabeza-dos-encuentros-clave-olivos-cara-las-elecciones-octubre-n6192086",
+  "published_at": "2025-09-18T17:16:00",
+  "impact_level": "low",
+  "score": 0.0,
+  "priority_score": 0.4,
+  "urgency_level": "normal",
+  "tags": [],
+  "relevance_signals": [],
+  "branch_targets": [
+    "Sucursal Cordoba Centro",
+    "Sucursal Mendoza",
+    "Sucursal Rosario"
+  ],
+  "suggested_actions": [],
+  "raw_keywords": [
+    "Javier Milei",
+    "Elecciones 2025",
+    "La Libertad Avanza"
+  ],
+  "summary": "El Presidente reúne a candidatos y jefes de campaña. Este viernes comienza una gira por el interior del país que incluye Córdoba, Santa Fe y Mendoza.",
+  "snippet": "En el marco de las derrotas legislativas que afronta el Gobierno, La Libertad Avanza definió blindar al presidente de las definiciones del Congreso, Javier Milei, y ponerlo al frente de la campaña electoral. En ese marco, el primer mandatario encabeza este jueves en la residencia de Olivos  una jornada clave de cara a ",
+  "source": "https://www.ambito.com/politica",
+  "run": {
+    "generated_at": "2025-09-18T18:34:32.568924",
+    "trigger": "manual",
+    "requested_by": null,
+    "metrics": {
+      "total_articles": 15,
+      "high_impact": 2,
+      "medium_impact": 1,
+      "low_impact": 12,
+      "tags": {
+        "regulation": 6,
+        "liquidity": 4,
+        "risk_alerts": 2,
+        "branch_activity": 1
+      },
+      "signals": {
+        "policy_change": 6,
+        "liquidity_risk": 4,
+        "systemic_risk": 4,
+        "branch_operations": 1
+      },
+      "priority_high": 2,
+      "priority_medium": 3,
+      "priority_low": 10,
+      "average_priority": 3.19,
+      "max_priority": 13.28,
+      "estimated_tokens": 1817,
+      "estimated_cost_usd": 0.002726
+    },
+    "alerts": [
+      {
+        "headline": "Dólar: al límite, Donald Trump hace cambios inéditos en el FMI y genera un \"cisne blanco\" que podría descomprimir el plan de Javier Milei",
+        "url": "https://www.ambito.com/economia/dolar-al-limite-donald-trump-hace-cambios-ineditos-el-fmi-y-genera-un-cisne-blanco-que-podria-descomprimir-el-plan-javier-milei-n6192055",
+        "impact_level": "high",
+        "score": 9.2,
+        "priority_score": 13.28,
+        "tags": [
+          "liquidity",
+          "regulation",
+          "risk_alerts"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "normal",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T13:28:00-03:00"
+      },
+      {
+        "headline": "Crece la tensión financiera: los bonos se hunden hasta 11% y el riesgo país supera los 1.400 puntos básicos",
+        "url": "https://www.ambito.com/finanzas/los-bonos-dolares-caen-3-y-profundizan-las-caidas-el-premarket-n6191886",
+        "impact_level": "high",
+        "score": 6.2,
+        "priority_score": 9.58,
+        "tags": [
+          "liquidity",
+          "regulation",
+          "risk_alerts"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "medium",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T14:49:00-03:00"
+      },
+      {
+        "headline": "Senado debate el rechazo a los vetos de Milei a la distribución de los ATN",
+        "url": "https://www.ambito.com/politica/el-senado-abre-un-nuevo-round-contra-los-vetos-javier-milei-buscan-recuperar-la-distribucion-los-atn-n6191803",
+        "impact_level": "medium",
+        "score": 3.2,
+        "priority_score": 5.34,
+        "tags": [
+          "liquidity",
+          "regulation"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "high",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T11:19:00-03:00"
+      }
+    ],
+    "decision_summary": {
+      "high_priority": 2,
+      "medium_priority": 3,
+      "recommended_actions": [
+        "Escala a risk management y prepara comunicacion con clientes clave.",
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Revisa proyecciones de liquidez y prepara escenarios de stress."
+      ],
+      "branches_to_monitor": [],
+      "top_headline": "Crece la tensión financiera: los bonos se hunden hasta 11% y el riesgo país supera los 1.400 puntos básicos",
+      "top_priority_score": 9.58
+    }
+  },
+  "files": {
+    "markdown": "2025\\09\\2025-09.18 - Javier Milei encabeza dos encuentros clave en Olivos de cara a las elecciones de.md",
+    "json": "2025\\09\\2025-09.18 - Javier Milei encabeza dos encuentros clave en Olivos de cara a las elecciones de.json"
+  },
+  "stored_at": "2025-09-18T18:34:32.602110"
+}

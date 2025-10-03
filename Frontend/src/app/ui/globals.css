@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --hud-primary: #00e5ff;
+  --hud-primary-alt: #7df9ff;
+  --hud-success: #00ff88;
+  --hud-warning: #f7ab2f;
+  --hud-error: #ff5a6b;
+  --hud-text: #e6f1ff;
+  --hud-muted: rgba(138, 160, 197, 0.8);
+  --hud-muted-soft: rgba(138, 160, 197, 0.55);
+  --hud-border: rgba(0, 255, 255, 0.25);
+  --hud-border-strong: rgba(0, 255, 255, 0.45);
+  --hud-panel: rgba(10, 22, 36, 0.92);
+  --hud-panel-alt: rgba(0, 28, 58, 0.88);
+  --hud-glass: rgba(0, 40, 72, 0.35);
+  --hud-font-heading: 'Orbitron', 'Courier New', monospace;
+  --hud-font-ui: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --hud-transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --chat-primary: var(--hud-primary);
+  --chat-primary-alt: var(--hud-primary-alt);
+  --chat-success: var(--hud-success);
+  --chat-warning: var(--hud-warning);
+  --chat-error: var(--hud-error);
+  --chat-text: var(--hud-text);
+  --chat-muted: var(--hud-muted);
+  --chat-muted-soft: var(--hud-muted-soft);
+  --chat-border: var(--hud-border);
+  --chat-border-strong: var(--hud-border-strong);
+  --chat-border-soft: rgba(0, 255, 255, 0.18);
+  --chat-panel: var(--hud-panel);
+  --chat-panel-alt: var(--hud-panel-alt);
+  --chat-panel-glass: var(--hud-glass);
+  --chat-heading-font: var(--hud-font-heading);
+  --chat-ui-font: var(--hud-font-ui);
+  --chat-transition: var(--hud-transition);
+}
+
+/* Clean universal base - NO CONFLICTS */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Essential animations for chat button */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Immersive HUD Mode for Agents Page - COMPLETE OVERRIDE */
+body.immersive-hud {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  height: 100vh !important;
+  width: 100vw !important;
+  display: block !important;
+  flex-direction: initial !important;
+  position: relative !important;
+}
+
+/* Ensure no default margins/padding interfere */
+body.immersive-hud * {
+  box-sizing: border-box;
+}
+
+/* Override problematic classes in HUD mode */
+body.immersive-hud .Content {
+  display: block !important;
+  flex-direction: initial !important;
+  height: 100vh !important;
+  width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+body.immersive-hud .hud-root {
+  position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  height: 100vh !important;
+  width: 100vw !important;
+}
+
+.contenedor-flexbox {
+  display: flex; /*Convertimos al menú en flexbox*/
+  justify-content: space-between; /*Con esto le indicamos que margine todos los items que se encuentra adentro hacia la derecha e izquierda*/
+  align-items: center; /*con esto alineamos de manera vertical*/
+  height: 100%;
+  width: 100%;  
+  margin-top: 10px;
+}
+
+.height80 {
+  height: 100%;
+  margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.margin24 {
+  margin: 24px;
+}
+
+.border-radius16 {
+  border-radius: 16px;
+}
+
+.width25 {
+  width: 25% !important;
+}
+
+.width75 {
+  width: 75% !important;
+}
+
+.backgroud-white {
+  background-color: #2916b4;
+  box-shadow: 0 0 10px 2px rgba(0, 188, 255, 0.4); /* sombra celeste */
+}
+
+.height-all {
+  height: 100%;
+}
+.height-chat{
+  height: 90%
+}
+.margin0{
+  margin: 0 !important
+}
+
+body {
+  /* El fondo global lo maneja hud.css (.hud-root) para evitar superposiciones */
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* Header */
+
+header {
+  background-color:hsl(212, 53%, 13%);
+  width: 100%;
+  height: 75px;
+}
+
+
+.leaflet-default-icon-path {
+    background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
+}
+
+/* Cargando */
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Or adjust as needed */
+  background-color: rgba(0, 0, 0, 0.5); /* Optional overlay */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999; /* Ensure it's on top */
+}
+
+.loader-gif {
+  width: 300px;
+  height: 300px;
+  object-fit: cover; /* Recorta la imagen para llenar el contenedor */
+  border-radius: 110px; /* Opcional: bordes redondeados */
+}
+
+.center-all {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.backgroud-home {
+  background-color: #1a1a2e; /* Color de fondo de respaldo */
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: calc(100vh - 75px);
+}
+.margin-top{
+  margin-top: 150px;
+}
+.Content{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Override for HUD immersive mode */
+body.immersive-hud .Content {
+    display: block !important;
+    flex-direction: initial !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.background-style-full{
+  background-color: rgba(0, 188, 255, 0.2);
+  width: 40%;
+  height: 80px;
+  border-bottom-left-radius:  20px ;
+  border-bottom-right-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+  filter: invert(100%) hue-rotate(180deg) brightness(100%) contrast(100%);
+}

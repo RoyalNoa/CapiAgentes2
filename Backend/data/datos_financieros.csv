@@ -1,0 +1,10 @@
+Fecha,Numero de sucursal,Ubicacion,Sucursal,Ingresos,Egresos,Transacciones,Clientes
+2024-01-01,1,Centro,Sucursal Centro,50000.00,30000.00,150,45
+2024-01-01,2,Norte,Sucursal Norte,45000.00,28000.00,130,40
+2024-01-01,3,Sur,Sucursal Sur,42000.00,25000.00,120,38
+2024-01-02,1,Centro,Sucursal Centro,52000.00,31000.00,155,47
+2024-01-02,2,Norte,Sucursal Norte,46000.00,29000.00,135,42
+2024-01-02,3,Sur,Sucursal Sur,43000.00,26000.00,125,39
+2024-01-03,1,Centro,Sucursal Centro,48000.00,29000.00,145,44
+2024-01-03,2,Norte,Sucursal Norte,44000.00,27000.00,128,41
+2024-01-03,3,Sur,Sucursal Sur,41000.00,24000.00,118,37

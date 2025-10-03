@@ -1,0 +1,85 @@
+{
+  "branch_id": "SUC-396",
+  "branch_name": "Microcentro",
+  "severity": "alert",
+  "difference_ars": 63000.0,
+  "deviation_pct": 0.63,
+  "hypothesis": "Desvio detectado en Microcentro",
+  "impact": "Diferencia de 63,000 ARS (63.0%)",
+  "summary": "Microcentro: exceso de 63,000 ARS (63.0%). Severidad: alert",
+  "suggested_actions": [
+    "Saldo Total: withdraw 55,000 ARS - Exceso vs caja teorica",
+    "ATM: withdraw 22,090 ARS - Exceso canal vs distribucion esperada",
+    "ATS: withdraw 9,072 ARS - Exceso canal vs distribucion esperada",
+    "Tesoro: withdraw 6,449 ARS - Exceso canal vs distribucion esperada",
+    "Ventanilla: withdraw 4,353 ARS - Exceso canal vs distribucion esperada",
+    "Caja Chica: withdraw 1,122 ARS - Exceso canal vs distribucion esperada",
+    "Otros: withdraw 5,566 ARS - Exceso canal vs distribucion esperada"
+  ],
+  "recommendations": [
+    {
+      "channel": "Saldo Total",
+      "action": "withdraw",
+      "amount": 55000.0,
+      "reason": "Exceso vs caja teorica",
+      "urgency": "programar",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.055
+    },
+    {
+      "channel": "ATM",
+      "action": "withdraw",
+      "amount": 22089.57,
+      "reason": "Exceso canal vs distribucion esperada",
+      "urgency": "inmediato",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.022
+    },
+    {
+      "channel": "ATS",
+      "action": "withdraw",
+      "amount": 9071.78,
+      "reason": "Exceso canal vs distribucion esperada",
+      "urgency": "programar",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.009
+    },
+    {
+      "channel": "Tesoro",
+      "action": "withdraw",
+      "amount": 6449.08,
+      "reason": "Exceso canal vs distribucion esperada",
+      "urgency": "programar",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.006
+    },
+    {
+      "channel": "Ventanilla",
+      "action": "withdraw",
+      "amount": 4352.76,
+      "reason": "Exceso canal vs distribucion esperada",
+      "urgency": "programar",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.004
+    },
+    {
+      "channel": "Caja Chica",
+      "action": "withdraw",
+      "amount": 1122.09,
+      "reason": "Exceso canal vs distribucion esperada",
+      "urgency": "programar",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.001
+    },
+    {
+      "channel": "Otros",
+      "action": "withdraw",
+      "amount": 5565.64,
+      "reason": "Exceso canal vs distribucion esperada",
+      "urgency": "programar",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.006
+    }
+  ],
+  "generated_at": "2025-09-26T14:06:19.417340+00:00"
+}

@@ -1,0 +1,85 @@
+{
+  "capi_datab": {
+    "agent_name": "capi_datab",
+    "display_name": "Capi DataB",
+    "version": "1.0.0",
+    "description": "Agente especialista en operaciones ABMC sobre PostgreSQL con exportes automáticos al workspace.",
+    "category": "database_operations",
+    "supported_intents": [
+      "db_operation"
+    ],
+    "capabilities": {
+      "select": true,
+      "insert": true,
+      "update": true,
+      "delete": true,
+      "export_formats": [
+        "json",
+        "csv",
+        "txt"
+      ],
+      "requires_human_for_update": true
+    },
+    "metadata": {
+      "agent_class_path": "agentes.capi_datab.handler.CapiDataBAgent",
+      "node_class_path": "src.infrastructure.langgraph.nodes.capi_datab_node.CapiDataBNode",
+      "priority": "high",
+      "production_ready": false,
+      "enabled": true
+    },
+    "author": "System",
+    "created_at": "2025-09-21T21:42:28.650119"
+  },
+  "capi_desktop": {
+    "agent_name": "capi_desktop",
+    "display_name": "Capi Desktop",
+    "version": "1.0.0",
+    "description": "Agente especializado en operaciones de archivos y documentos, incluyendo lectura, escritura, transformación y gestión de archivos en el escritorio del usuario.",
+    "category": "file_operations",
+    "supported_intents": [
+      "file_operation"
+    ],
+    "capabilities": {
+      "file_read": true,
+      "file_write": true,
+      "file_transform": true,
+      "desktop_files": true,
+      "csv_support": true,
+      "excel_support": true,
+      "text_support": true
+    },
+    "metadata": {
+      "agent_class_path": "agentes.capi_desktop.handler.CapiDesktop",
+      "node_class_path": "src.infrastructure.langgraph.nodes.capi_desktop_node.CapiDesktopNode",
+      "priority": "high",
+      "production_ready": true
+    },
+    "author": "System",
+    "created_at": "2025-01-14T19:35:00"
+  },
+  "capi_noticias": {
+    "agent_name": "capi_noticias",
+    "display_name": "Capi Noticias",
+    "version": "1.0.0",
+    "description": "Agente de monitoreo de noticias financieras orientado a riesgos de liquidez en sucursales.",
+    "category": "market_intelligence",
+    "supported_intents": [
+      "news_monitoring"
+    ],
+    "capabilities": {
+      "financial_news": true,
+      "liquidity_risk": true,
+      "auto_schedule": true,
+      "manual_refresh": true,
+      "configurable_sources": true
+    },
+    "metadata": {
+      "agent_class_path": "agentes.capi_noticias.handler.CapiNoticiasAgent",
+      "node_class_path": "src.infrastructure.langgraph.nodes.capi_noticias_node.CapiNoticiasNode",
+      "priority": "high",
+      "production_ready": true
+    },
+    "author": "Codex Autogen",
+    "created_at": "2025-09-18T01:40:00"
+  }
+}

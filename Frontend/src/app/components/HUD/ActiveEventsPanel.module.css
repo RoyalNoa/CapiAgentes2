@@ -1,0 +1,425 @@
+/* ==========================================
+   ACTIVE EVENTS PANEL - HUD STYLE
+   ========================================== */
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+.header {
+  padding: 25px 30px;
+  background: rgba(0, 40, 80, 0.8);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  box-shadow: 0 0 10px #00ffff;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #00ffff;
+  text-shadow:
+    0 0 15px rgba(0, 255, 255, 0.8),
+    0 0 30px rgba(0, 255, 255, 0.4);
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.connectionBadge {
+  padding: 6px 12px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 8px 100%);
+  transition: all 0.3s ease;
+}
+
+.connectionBadge[data-connected="true"] {
+  background: rgba(0, 255, 136, 0.2);
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+}
+
+.connectionBadge[data-connected="false"] {
+  background: rgba(255, 51, 51, 0.2);
+  border: 1px solid #ff3333;
+  color: #ff3333;
+  box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
+}
+
+.eventCount {
+  font-size: 11px;
+  color: #8aa0c5;
+  background: rgba(0, 40, 80, 0.8);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  font-family: 'Courier New', monospace;
+}
+
+/* ==========================================
+   CONTENT
+   ========================================== */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #0099cc transparent;
+  position: relative;
+}
+
+.content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #0099cc;
+  border-radius: 2px;
+}
+
+/* ==========================================
+   EVENTS LIST
+   ========================================== */
+.eventsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+}
+
+.eventItem {
+  background: rgba(0, 20, 40, 0.6);
+  border-left: 3px solid transparent;
+  padding: 15px;
+  position: relative;
+  backdrop-filter: blur(5px);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% 100%,
+    8px 100%,
+    0 calc(100% - 8px)
+  );
+  transition: all 0.3s ease;
+  animation: eventSlideIn 0.3s ease-out;
+}
+
+@keyframes eventSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.eventItem:hover {
+  background: rgba(0, 40, 80, 0.6);
+  border-left-color: #00ffff;
+  transform: translateX(5px);
+}
+
+.eventHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.eventType {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eventIcon {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.eventTypeText {
+  font-size: 11px;
+  font-weight: 600;
+  color: #e6f1ff;
+  letter-spacing: 0.5px;
+}
+
+.eventTime {
+  font-size: 9px;
+  color: #8aa0c5;
+  font-family: 'Courier New', monospace;
+  background: rgba(0, 20, 40, 0.8);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.eventAgent {
+  margin-bottom: 6px;
+  font-size: 10px;
+  color: #8aa0c5;
+}
+
+.agentName {
+  color: #00ffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.eventData {
+  margin-top: 8px;
+  padding: 8px;
+  background: rgba(0, 10, 20, 0.8);
+  border-radius: 3px;
+  font-size: 10px;
+}
+
+.dataItem {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.dataItem:last-child {
+  margin-bottom: 0;
+}
+
+.dataKey {
+  color: #0099cc;
+  font-weight: 600;
+  min-width: 40px;
+}
+
+.dataValue {
+  color: #e6f1ff;
+  word-break: break-word;
+  flex: 1;
+}
+
+.eventIndicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  border-radius: 0 2px 2px 0;
+  animation: indicatorPulse 2s ease-in-out infinite;
+}
+
+@keyframes indicatorPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* ==========================================
+   NO EVENTS STATE
+   ========================================== */
+.noEvents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  gap: 15px;
+  color: #8aa0c5;
+  text-align: center;
+}
+
+.noEventsIcon {
+  font-size: 48px;
+  color: rgba(0, 255, 255, 0.4);
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.connectionStatus {
+  font-size: 11px;
+  color: #556686;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.footer {
+  padding: 15px 20px;
+  background: rgba(0, 20, 40, 0.8);
+  border-top: 1px solid rgba(0, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+}
+
+.statusIndicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #8aa0c5;
+  letter-spacing: 1px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 1200px) {
+  .header {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .eventsList {
+    padding: 15px;
+    gap: 6px;
+  }
+
+  .eventItem {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 60px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .controls {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .eventsList {
+    padding: 12px;
+    gap: 5px;
+  }
+
+  .eventItem {
+    padding: 10px;
+  }
+
+  .eventHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .eventType {
+    gap: 6px;
+  }
+
+  .eventData {
+    margin-top: 6px;
+    padding: 6px;
+  }
+
+  .footer {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 12px 15px;
+  }
+
+  .content {
+    height: calc(100% - 120px);
+  }
+
+  .eventsList {
+    padding: 8px;
+  }
+
+  .eventItem {
+    padding: 8px;
+    margin-bottom: 4px;
+  }
+
+  .eventTypeText {
+    font-size: 10px;
+  }
+
+  .eventTime {
+    font-size: 8px;
+  }
+
+  .noEvents {
+    height: 200px;
+    gap: 10px;
+  }
+
+  .noEventsIcon {
+    font-size: 36px;
+  }
+}

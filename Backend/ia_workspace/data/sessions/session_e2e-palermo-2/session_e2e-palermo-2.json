@@ -1,0 +1,323 @@
+{
+  "session_id": "e2e-palermo-2",
+  "sanitized_session_id": "e2e-palermo-2",
+  "datab_exports": [
+    {
+      "filename": "DataB_2025_09_25_577612.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_577612.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-palermo-2/capi_DataB/DataB_2025_09_25_577612.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T07:51:07.586901"
+    },
+    {
+      "filename": "DataB_2025_09_25_291907.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_291907.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-palermo-2/capi_DataB/DataB_2025_09_25_291907.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T07:51:11.305505"
+    }
+  ],
+  "updated_at": "2025-09-25T07:51:11.332096",
+  "created_at": "2025-09-25T07:51:11.332096",
+  "status": "completed",
+  "active_agent": "summary",
+  "completed_nodes": [
+    "start",
+    "intent",
+    "react",
+    "reasoning",
+    "supervisor",
+    "router",
+    "capi_datab",
+    "human_gate",
+    "assemble",
+    "finalize"
+  ],
+  "intent": "db_operation",
+  "intent_confidence": 0.5,
+  "last_query": "Necesito el saldo total de la sucursal Palermo",
+  "last_response": {
+    "message": "Resultados para la sucursal 'Palermo': sucursal id=SUC-404, sucursal numero=52, sucursal nombre=Palermo, saldo total sucursal=$88.000,00, caja teorica sucursal=100000.00, total atm=$36.700,00, total ats=$13.300,00, total tesoro=$11.800,00, total cajas ventanilla=$9.200,00, total buzon depositos=$3.200,00, total recaudacion=$3.800,00, total caja chica=$1.100,00, total otros=$8.900,00, medido en=2025-09-23 01:57:17.707471+00:00. Resultado exportado a DataB_2025_09_25_291907.json.",
+    "data": {
+      "react_observations": [
+        {
+          "summary": "Sin historial relevante.",
+          "recent_turns": []
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      ],
+      "reasoning_plan": {
+        "plan_id": "53adc08c-7da1-4729-89f4-b98327e4385e",
+        "version": 1,
+        "intent": "db_operation",
+        "goal": "Clarificar y asistir consulta ambigua: Necesito el saldo total de la sucursal Palermo",
+        "confidence": 0.95,
+        "recommended_agent": "capi_datab",
+        "fallback_agent": "capi_datab",
+        "rationale": "La consulta requiere operaciones sobre bases de datos; se utiliza el agente especialista con controles de validación y exportes auditables.",
+        "steps": [
+          {
+            "id": "D1",
+            "title": "Analizar requerimiento y sanitizar sentencia",
+            "description": "Interpretar la instrucción (JSON, SQL o lenguaje natural), validar tablas y evitar comandos restringidos (DROP/TRUNCATE).",
+            "agent": "capi_datab",
+            "inputs": [
+              "instruccion_usuario"
+            ],
+            "expected_output": "Sentencia SQL validada con parámetros normalizados",
+            "depends_on": []
+          },
+          {
+            "id": "D2",
+            "title": "Ejecutar operación transaccional en PostgreSQL",
+            "description": "Abrir conexión controlada, ejecutar la sentencia y capturar filas afectadas o resultados.",
+            "agent": "capi_datab",
+            "inputs": [],
+            "expected_output": "Resultado de la operación (filas, datos o confirmación)",
+            "depends_on": [
+              "D1"
+            ]
+          },
+          {
+            "id": "D3",
+            "title": "Exportar evidencia al workspace",
+            "description": "Serializar los resultados en el formato solicitado y guardar el archivo en ia_workspace/data/capi_DataB/.",
+            "agent": "capi_datab",
+            "inputs": [],
+            "expected_output": "Archivo DataB_YYYY_MM_DD_*.ext disponible para el usuario",
+            "depends_on": [
+              "D2"
+            ]
+          }
+        ],
+        "cooperative_agents": [],
+        "supporting_evidence": {
+          "progress_percent": 98.0,
+          "remaining_steps": 3,
+          "estimated_effort_seconds": 45,
+          "complexity": "low",
+          "entities": {
+            "sucursal": "Palermo"
+          },
+          "context_used": false,
+          "semantic_confidence": 0.9,
+          "available_agents": [
+            "anomaly",
+            "branch",
+            "capi_datab",
+            "capi_desktop",
+            "summary"
+          ],
+          "user_id": "e2e-palermo-2",
+          "session_id": "e2e-palermo-2"
+        },
+        "generated_at": "2025-09-25T07:51:10.163925",
+        "intent_alignment": true,
+        "requires_replan": false,
+        "history": [],
+        "progress_percent": 98.0,
+        "remaining_steps": 3,
+        "complexity": "low",
+        "estimated_effort_seconds": 45
+      },
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+      "parameters": [
+        "%Palermo%"
+      ],
+      "output_format": "json",
+      "file_path": "/app/ia_workspace/data/sessions/session_e2e-palermo-2/capi_DataB/DataB_2025_09_25_291907.json",
+      "rowcount": 1,
+      "rows": [
+        {
+          "sucursal_id": "SUC-404",
+          "sucursal_numero": 52,
+          "sucursal_nombre": "Palermo",
+          "saldo_total_sucursal": "88000.00",
+          "caja_teorica_sucursal": "100000.00",
+          "total_atm": "36700.00",
+          "total_ats": "13300.00",
+          "total_tesoro": "11800.00",
+          "total_cajas_ventanilla": "9200.00",
+          "total_buzon_depositos": "3200.00",
+          "total_recaudacion": "3800.00",
+          "total_caja_chica": "1100.00",
+          "total_otros": "8900.00",
+          "medido_en": "2025-09-23 01:57:17.707471+00:00"
+        }
+      ],
+      "requires_approval": false,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "Palermo",
+          "branch_number": null,
+          "branch_name": "Palermo",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Palermo%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identifica claramente la sucursal Palermo para consultar el saldo total.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "metadata": {
+        "branch": {
+          "raw_text": "Palermo",
+          "branch_number": null,
+          "branch_name": "Palermo",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Palermo%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identifica claramente la sucursal Palermo para consultar el saldo total.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal",
+        "branch_descriptor": "Palermo"
+      },
+      "summary_message": "Resultados para la sucursal 'Palermo': sucursal id=SUC-404, sucursal numero=52, sucursal nombre=Palermo, saldo total sucursal=$88.000,00, caja teorica sucursal=100000.00, total atm=$36.700,00, total ats=$13.300,00, total tesoro=$11.800,00, total cajas ventanilla=$9.200,00, total buzon depositos=$3.200,00, total recaudacion=$3.800,00, total caja chica=$1.100,00, total otros=$8.900,00, medido en=2025-09-23 01:57:17.707471+00:00. Resultado exportado a DataB_2025_09_25_291907.json."
+    }
+  },
+  "conversation_history": [],
+  "memory_window": [],
+  "reasoning_summary": {
+    "goal": "Clarificar y asistir consulta ambigua: Necesito el saldo total de la sucursal Palermo",
+    "recommended_agent": "capi_datab",
+    "confidence": 0.95,
+    "version": 1,
+    "cooperative_agents": [],
+    "progress_percent": 98.0,
+    "remaining_steps": 3,
+    "complexity": "low",
+    "estimated_effort_seconds": 45,
+    "remaining_percent": 2.0
+  },
+  "processing_metrics": {
+    "react_steps": 5.0,
+    "react_latency_ms": 0.0,
+    "reasoning_time_ms": 1265.0,
+    "reasoning_steps": 3.0,
+    "reasoning_version": 1.0,
+    "reasoning_progress_percent": 98.0,
+    "reasoning_eta_seconds": 45.0,
+    "reasoning_remaining_steps": 3.0,
+    "supervisor_latency_ms": 0.0,
+    "supervisor_queue_length": 5.0,
+    "capi_datab_latency_ms": 1115.0,
+    "planner_confidence": 0.8,
+    "capi_datab_rows": 1.0
+  },
+  "shared_artifacts": {
+    "capi_datab": {
+      "mode": "db_operation",
+      "operation": {
+        "operation": "select",
+        "table": "public.saldos_sucursal",
+        "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+        "parameters": [
+          "%Palermo%"
+        ],
+        "output_format": "json",
+        "requires_approval": false,
+        "metadata": {
+          "branch": {
+            "raw_text": "Palermo",
+            "branch_number": null,
+            "branch_name": "Palermo",
+            "branch_id": null
+          },
+          "filters": [
+            {
+              "column": "sucursal_nombre",
+              "operator": "ILIKE",
+              "value": "%Palermo%"
+            }
+          ],
+          "planner_source": "llm_branch_identifier",
+          "planner_confidence": 0.8,
+          "planner_reason": "Se identifica claramente la sucursal Palermo para consultar el saldo total.",
+          "planner_model": "gpt-3.5-turbo",
+          "suggested_table": "public.saldos_sucursal"
+        }
+      },
+      "export_file": "/app/ia_workspace/data/sessions/session_e2e-palermo-2/capi_DataB/DataB_2025_09_25_291907.json",
+      "rows": [
+        {
+          "sucursal_id": "SUC-404",
+          "sucursal_numero": 52,
+          "sucursal_nombre": "Palermo",
+          "saldo_total_sucursal": "88000.00",
+          "caja_teorica_sucursal": "100000.00",
+          "total_atm": "36700.00",
+          "total_ats": "13300.00",
+          "total_tesoro": "11800.00",
+          "total_cajas_ventanilla": "9200.00",
+          "total_buzon_depositos": "3200.00",
+          "total_recaudacion": "3800.00",
+          "total_caja_chica": "1100.00",
+          "total_otros": "8900.00",
+          "medido_en": "2025-09-23 01:57:17.707471+00:00"
+        }
+      ],
+      "rowcount": 1,
+      "success": true,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "Palermo",
+          "branch_number": null,
+          "branch_name": "Palermo",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Palermo%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identifica claramente la sucursal Palermo para consultar el saldo total.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "summary_message": "Resultados para la sucursal 'Palermo': sucursal id=SUC-404, sucursal numero=52, sucursal nombre=Palermo, saldo total sucursal=$88.000,00, caja teorica sucursal=100000.00, total atm=$36.700,00, total ats=$13.300,00, total tesoro=$11.800,00, total cajas ventanilla=$9.200,00, total buzon depositos=$3.200,00, total recaudacion=$3.800,00, total caja chica=$1.100,00, total otros=$8.900,00, medido en=2025-09-23 01:57:17.707471+00:00. Resultado exportado a DataB_2025_09_25_291907.json."
+    }
+  },
+  "errors": []
+}

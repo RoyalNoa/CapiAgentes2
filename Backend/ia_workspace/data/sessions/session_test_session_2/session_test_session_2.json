@@ -1,0 +1,365 @@
+{
+  "created_at": "2025-10-02T12:52:36.722705",
+  "session_id": "test_session_2",
+  "sanitized_session_id": "test_session_2",
+  "updated_at": "2025-10-02T17:21:47.219068",
+  "datab_exports": [],
+  "status": "processing",
+  "trace_id": "trace-1759436507.053055",
+  "user_id": "test_user",
+  "workflow_mode": "chat",
+  "active_agent": "summary",
+  "completed_nodes": [
+    "start",
+    "intent",
+    "react",
+    "reasoning",
+    "supervisor",
+    "router",
+    "summary",
+    "human_gate",
+    "assemble"
+  ],
+  "intent": "summary_request",
+  "intent_confidence": 0.4,
+  "last_query": "Dame un resumen de los datos financieros",
+  "last_response": {
+    "message": "📊 *Resumen financiero*:\n\n⚠️ No se encontraron datos financieros para analizar.\n\nPor favor, carga algunos archivos CSV o Excel en el sistema.",
+    "data": {
+      "react_observations": [
+        {
+          "summary": "Sin historial relevante.",
+          "recent_turns": []
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      ],
+      "reasoning_plan": {
+        "plan_id": "0fa13c4f-5496-4d77-98e0-cb7b3aec9f8e",
+        "version": 1,
+        "intent": "summary_request",
+        "goal": "Entregar resumen financiero estratégico",
+        "confidence": 0.95,
+        "recommended_agent": "summary",
+        "fallback_agent": "assemble",
+        "rationale": "La intención es generar un resumen financiero. Se planifica cargar datos, calcular métricas críticas, validar anomalías y narrar resultados.",
+        "steps": [
+          {
+            "id": "S1",
+            "title": "Cargar datos financieros vigentes",
+            "description": "Garantizar que la base de datos esté sincronizada antes de calcular métricas.",
+            "agent": "capi_desktop",
+            "inputs": [],
+            "expected_output": "Dataset consolidado para análisis",
+            "depends_on": []
+          },
+          {
+            "id": "S2",
+            "title": "Calcular métricas clave",
+            "description": "Obtener totales, variaciones y ratios relevantes para la gerencia.",
+            "agent": "summary",
+            "inputs": [],
+            "expected_output": "Paquete de métricas financieras",
+            "depends_on": [
+              "S1"
+            ]
+          },
+          {
+            "id": "S3",
+            "title": "Escanear anomalías críticas",
+            "description": "Complementar el resumen con detección de anomalías para alertas tempranas.",
+            "agent": "anomaly",
+            "inputs": [],
+            "expected_output": "Listado de anomalías priorizadas",
+            "depends_on": [
+              "S2"
+            ]
+          },
+          {
+            "id": "S4",
+            "title": "Construir narrativa ejecutiva",
+            "description": "Traducir métricas y anomalías en un relato ejecutivo con próximos pasos.",
+            "agent": "summary",
+            "inputs": [],
+            "expected_output": "Resumen narrado listo para el usuario",
+            "depends_on": [
+              "S2",
+              "S3"
+            ]
+          }
+        ],
+        "cooperative_agents": [
+          "anomaly",
+          "capi_desktop"
+        ],
+        "supporting_evidence": {
+          "progress_percent": 98.0,
+          "remaining_steps": 4,
+          "estimated_effort_seconds": 64,
+          "complexity": "medium",
+          "entities": {},
+          "context_used": false,
+          "semantic_confidence": 0.4,
+          "available_agents": [
+            "agente_g",
+            "anomaly",
+            "branch",
+            "capi_datab",
+            "capi_desktop",
+            "summary"
+          ],
+          "user_id": "test_user",
+          "session_id": "test_session_2"
+        },
+        "generated_at": "2025-10-02T20:21:47.210239",
+        "intent_alignment": true,
+        "requires_replan": false,
+        "history": [],
+        "progress_percent": 98.0,
+        "remaining_steps": 4,
+        "complexity": "medium",
+        "estimated_effort_seconds": 64
+      },
+      "total_records": 0,
+      "total_amount": 0.0,
+      "anomalies_detected": 0,
+      "date_range": "Sin datos",
+      "branches": [],
+      "categories": []
+    }
+  },
+  "response_metadata": {
+    "intent_reasoning": "Legacy pattern match preferred: Legacy: Matched 2 pattern(s) with score 0.43 | semantic suggested summary_request (0.400)",
+    "intent_matched_patterns": [
+      "\\b(resumen|summary|sumario|sintesis)\\b",
+      "\\b(mostrar|show|dame|give me).*\\b(resumen|summary)\\b"
+    ],
+    "react_trace": [
+      {
+        "thought": "Reviso el contexto reciente para entender la conversacion.",
+        "action": "summarize_context",
+        "observation": {
+          "summary": "Sin historial relevante.",
+          "recent_turns": []
+        }
+      },
+      {
+        "thought": "Verifico metricas previas para identificar senales relevantes.",
+        "action": "collect_metrics",
+        "params": {},
+        "iteration": 0,
+        "observation": {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      },
+      {
+        "thought": "Necesito datos para un resumen financiero.",
+        "action": "collect_metrics",
+        "params": {},
+        "iteration": 1,
+        "observation": {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      },
+      {
+        "thought": "Necesito datos para un resumen financiero.",
+        "action": "collect_metrics",
+        "params": {},
+        "iteration": 2,
+        "observation": {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      },
+      {
+        "thought": "Finalizo el ciclo ReAct con una recomendacion.",
+        "action": "finish",
+        "observation": {
+          "message": "Derivare la consulta 'Dame un resumen de los datos financieros' al agente 'summary' con la evidencia recopilada.",
+          "recommended_agent": "summary"
+        }
+      }
+    ],
+    "react_recommended_agent": "summary",
+    "react_finished_at": "2025-10-02T17:21:47.205509",
+    "active_agent": "summary",
+    "loop_fallback": "summary",
+    "react_follow_up": false,
+    "needs_retry": null,
+    "reasoning_plan": {
+      "plan_id": "0fa13c4f-5496-4d77-98e0-cb7b3aec9f8e",
+      "version": 1,
+      "intent": "summary_request",
+      "goal": "Entregar resumen financiero estratégico",
+      "confidence": 0.95,
+      "recommended_agent": "summary",
+      "fallback_agent": "assemble",
+      "rationale": "La intención es generar un resumen financiero. Se planifica cargar datos, calcular métricas críticas, validar anomalías y narrar resultados.",
+      "steps": [
+        {
+          "id": "S1",
+          "title": "Cargar datos financieros vigentes",
+          "description": "Garantizar que la base de datos esté sincronizada antes de calcular métricas.",
+          "agent": "capi_desktop",
+          "inputs": [],
+          "expected_output": "Dataset consolidado para análisis",
+          "depends_on": []
+        },
+        {
+          "id": "S2",
+          "title": "Calcular métricas clave",
+          "description": "Obtener totales, variaciones y ratios relevantes para la gerencia.",
+          "agent": "summary",
+          "inputs": [],
+          "expected_output": "Paquete de métricas financieras",
+          "depends_on": [
+            "S1"
+          ]
+        },
+        {
+          "id": "S3",
+          "title": "Escanear anomalías críticas",
+          "description": "Complementar el resumen con detección de anomalías para alertas tempranas.",
+          "agent": "anomaly",
+          "inputs": [],
+          "expected_output": "Listado de anomalías priorizadas",
+          "depends_on": [
+            "S2"
+          ]
+        },
+        {
+          "id": "S4",
+          "title": "Construir narrativa ejecutiva",
+          "description": "Traducir métricas y anomalías en un relato ejecutivo con próximos pasos.",
+          "agent": "summary",
+          "inputs": [],
+          "expected_output": "Resumen narrado listo para el usuario",
+          "depends_on": [
+            "S2",
+            "S3"
+          ]
+        }
+      ],
+      "cooperative_agents": [
+        "anomaly",
+        "capi_desktop"
+      ],
+      "supporting_evidence": {
+        "progress_percent": 98.0,
+        "remaining_steps": 4,
+        "estimated_effort_seconds": 64,
+        "complexity": "medium",
+        "entities": {},
+        "context_used": false,
+        "semantic_confidence": 0.4,
+        "available_agents": [
+          "agente_g",
+          "anomaly",
+          "branch",
+          "capi_datab",
+          "capi_desktop",
+          "summary"
+        ],
+        "user_id": "test_user",
+        "session_id": "test_session_2"
+      },
+      "generated_at": "2025-10-02T20:21:47.210239",
+      "intent_alignment": true,
+      "requires_replan": false,
+      "history": [],
+      "progress_percent": 98.0,
+      "remaining_steps": 4,
+      "complexity": "medium",
+      "estimated_effort_seconds": 64
+    },
+    "reasoning_confidence": 0.95,
+    "recommended_agent": "summary",
+    "reasoning_progress_percent": 98.0,
+    "reasoning_eta_seconds": 64,
+    "reasoning_remaining_steps": 4,
+    "reasoning_complexity": "medium",
+    "reasoning_needs_react": true,
+    "supervisor_queue": [
+      "summary",
+      "anomaly",
+      "capi_desktop",
+      "smalltalk"
+    ],
+    "supervisor_selected": "summary",
+    "supervisor_ran_at": "2025-10-02T17:21:47.211424",
+    "semantic_result": {
+      "intent": "summary_request",
+      "confidence": 0.4,
+      "target_agent": "summary",
+      "routing_agent": "summary",
+      "entities": {},
+      "reasoning": "Fallback classification executed (feature_flag_disabled)",
+      "requires_clarification": false,
+      "provider": "fallback",
+      "model": ""
+    },
+    "agent_type": "summary",
+    "summary_hash": "111ac8b4d4ae8fdc",
+    "is_repeated": false,
+    "deduplication_applied": true,
+    "assembled_at": "assemble",
+    "workflow_completed": true,
+    "total_nodes": 9
+  },
+  "routing_decision": "summary",
+  "conversation_history": [],
+  "memory_window": [],
+  "reasoning_summary": {
+    "goal": "Entregar resumen financiero estratégico",
+    "recommended_agent": "summary",
+    "confidence": 0.95,
+    "version": 1,
+    "cooperative_agents": [
+      "anomaly",
+      "capi_desktop"
+    ],
+    "progress_percent": 98.0,
+    "remaining_steps": 4,
+    "complexity": "medium",
+    "estimated_effort_seconds": 64,
+    "remaining_percent": 2.0
+  },
+  "processing_metrics": {
+    "react_steps": 5.0,
+    "react_latency_ms": 0.0,
+    "reasoning_time_ms": 4.0,
+    "reasoning_steps": 4.0,
+    "reasoning_version": 1.0,
+    "reasoning_progress_percent": 98.0,
+    "reasoning_eta_seconds": 64.0,
+    "reasoning_remaining_steps": 4.0,
+    "supervisor_latency_ms": 0.0,
+    "supervisor_queue_length": 4.0
+  },
+  "shared_artifacts": {},
+  "errors": []
+}

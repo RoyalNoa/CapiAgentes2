@@ -1,0 +1,25 @@
+{
+  "operation": "insert",
+  "table": "public.alertas",
+  "rowcount": 1,
+  "generated_at": "2025-09-26T05:20:33.908883",
+  "session_id": "codex-e2e",
+  "sql": "INSERT INTO public.alertas (prioridad, estado, problema, hipotesis, impacto, datos_clave, acciones, sucursal_id, dedupe_clave, creada_en) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id",
+  "parameters": [
+    "critica",
+    "abierta",
+    "Belgrano: exceso de 68,000 ARS (68.0%)",
+    "Desvio detectado en Belgrano",
+    "Diferencia de 68,000 ARS (68.0%)",
+    "[\"Diferencia total: 68,000 ARS\", \"Desvio porcentual: 68.0%\", \"Sucursal: Belgrano (SUC-365)\", \"Saldo Total: withdraw 60,000 ARS - Exceso vs caja teorica [programar]\", \"Medicion: 2025-09-26T05:20:33.796992+00:00\"]",
+    "Saldo Total: withdraw 60,000 ARS - Exceso vs caja teorica [programar]; ATM: withdraw 27,933 ARS - Exceso canal vs distribucion esperada [inmediato]; ATS: withdraw 8,838 ARS - Exceso canal vs distribucion esperada [programar]; Tesoro: withdraw 6,562 ARS - Exceso canal vs distribucion esperada [programar]; Ventanilla: withdraw 3,643 ARS - Exceso canal vs distribucion esperada [programar]; Caja Chica: withdraw 1,143 ARS - Exceso canal vs distribucion esperada [programar]; Otros: withdraw 6,100 ARS - Exceso canal vs distribucion esperada [programar]",
+    "SUC-365",
+    "bd704482797f68b3b68e7f1466c2539f561373e6612a4df47c187e4374fb1a3e",
+    "2025-09-26 05:20:33.796992+00:00"
+  ],
+  "result": [
+    {
+      "id": 25
+    }
+  ]
+}

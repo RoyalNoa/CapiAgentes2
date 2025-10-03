@@ -1,0 +1,65 @@
+{
+  "branch_id": "SUC-369",
+  "branch_name": "Boedo",
+  "severity": "alert",
+  "difference_ars": -20000.0,
+  "deviation_pct": -0.2,
+  "hypothesis": "Desvio detectado en Boedo",
+  "impact": "Diferencia de 20,000 ARS (-20.0%)",
+  "summary": "Boedo: déficit de 20,000 ARS (20.0%). Severidad: alert",
+  "suggested_actions": [
+    "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica",
+    "Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada",
+    "Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada",
+    "Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada",
+    "Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada"
+  ],
+  "recommendations": [
+    {
+      "channel": "Saldo Total",
+      "action": "deposit",
+      "amount": 15000.0,
+      "reason": "Deficit vs caja teorica",
+      "urgency": "proximo turno",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.015
+    },
+    {
+      "channel": "Tesoro",
+      "action": "deposit",
+      "amount": 1680.0,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "proximo turno",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.002
+    },
+    {
+      "channel": "Ventanilla",
+      "action": "deposit",
+      "amount": 840.0,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "proximo turno",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.001
+    },
+    {
+      "channel": "Caja Chica",
+      "action": "deposit",
+      "amount": 255.0,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "proximo turno",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.0
+    },
+    {
+      "channel": "Otros",
+      "action": "deposit",
+      "amount": 1580.0,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "proximo turno",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.002
+    }
+  ],
+  "generated_at": "2025-09-26T05:21:19.666543+00:00"
+}

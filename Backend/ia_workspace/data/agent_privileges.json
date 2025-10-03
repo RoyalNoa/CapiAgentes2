@@ -1,0 +1,164 @@
+{
+  "privilege_levels": {
+    "restricted": {
+      "level": 1,
+      "description": "Acceso solo a datos del workspace",
+      "permissions": [
+        "read_workspace_data",
+        "basic_calculations"
+      ]
+    },
+    "standard": {
+      "level": 2,
+      "description": "Acceso estándar a archivos del sistema",
+      "permissions": [
+        "read_workspace_data",
+        "basic_calculations",
+        "write_workspace_data",
+        "create_reports"
+      ]
+    },
+    "elevated": {
+      "level": 3,
+      "description": "Acceso elevado con capacidades de transformación",
+      "permissions": [
+        "read_workspace_data",
+        "basic_calculations",
+        "write_workspace_data",
+        "create_reports",
+        "transform_files",
+        "backup_operations"
+      ]
+    },
+    "privileged": {
+      "level": 4,
+      "description": "Acceso privilegiado al sistema de archivos",
+      "permissions": [
+        "read_workspace_data",
+        "basic_calculations",
+        "write_workspace_data",
+        "create_reports",
+        "transform_files",
+        "backup_operations",
+        "read_system_files",
+        "write_system_files",
+        "execute_system_commands"
+      ]
+    },
+    "admin": {
+      "level": 5,
+      "description": "Acceso completo de administrador",
+      "permissions": [
+        "*"
+      ]
+    }
+  },
+  "agent_assignments": {
+    "summary": {
+      "privilege_level": "standard",
+      "custom_permissions": [],
+      "restrictions": [
+        "no_file_write"
+      ],
+      "reason": "Agente de solo lectura para resúmenes financieros"
+    },
+    "branch": {
+      "privilege_level": "standard",
+      "custom_permissions": [],
+      "restrictions": [
+        "no_file_write"
+      ],
+      "reason": "Agente de análisis de sucursales, solo lectura"
+    },
+    "anomaly": {
+      "privilege_level": "elevated",
+      "custom_permissions": [
+        "create_alerts",
+        "modify_monitoring_config"
+      ],
+      "restrictions": [],
+      "reason": "Agente de detección de anomalías requiere acceso elevado"
+    },
+    "capi_desktop": {
+      "privilege_level": "privileged",
+      "custom_permissions": [
+        "read_user_desktop",
+        "write_user_desktop",
+        "access_external_paths",
+        "file_system_operations"
+      ],
+      "restrictions": [
+        "no_system_critical_files"
+      ],
+      "reason": "Desktop digital requiere acceso completo a archivos del usuario"
+    },
+    "smalltalk": {
+      "privilege_level": "restricted",
+      "custom_permissions": [],
+      "restrictions": [
+        "no_file_access",
+        "no_system_access"
+      ],
+      "reason": "Agente conversacional sin necesidad de acceso a archivos"
+    },
+    "capi_noticias": {
+      "privilege_level": "standard",
+      "custom_permissions": [
+        "network_requests",
+        "schedule_tasks"
+      ],
+      "restrictions": [
+        "no_file_write"
+      ],
+      "reason": "Monitor de noticias externas con acceso de solo lectura a datos internos"
+    },
+    "capi_datab": {
+      "privilege_level": "elevated",
+      "custom_permissions": [
+        "database_read",
+        "database_write",
+        "export_workspace_files"
+      ],
+      "restrictions": [
+        "no_drop_commands",
+        "requires_update_approval"
+      ],
+      "reason": "Agente especializado en operaciones ABMC sobre PostgreSQL"
+    }
+  },
+  "security_policies": {
+    "require_authorization": true,
+    "log_privilege_usage": true,
+    "enforce_restrictions": true,
+    "privilege_escalation_allowed": false,
+    "audit_trail": true
+  },
+  "restricted_paths": [
+    "/etc/",
+    "/root/",
+    "/sys/",
+    "/proc/",
+    "C:\\Windows\\System32\\",
+    "C:\\Program Files\\",
+    "*.exe",
+    "*.dll",
+    "*.sys"
+  ],
+  "allowed_extensions": {
+    "capi_desktop": [
+      ".txt",
+      ".csv",
+      ".xlsx",
+      ".xls",
+      ".docx",
+      ".doc",
+      ".pdf",
+      ".json"
+    ],
+    "default": [
+      ".csv",
+      ".json",
+      ".txt"
+    ]
+  }
+}

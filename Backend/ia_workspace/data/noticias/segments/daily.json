@@ -1,0 +1,142 @@
+{
+  "timeframe": "daily",
+  "items": [
+    {
+      "fingerprint": "d2a0e884c668390d0f7c9d0f5360bfad121ac823e49fceb86447068f94656839",
+      "headline": "Dólar: al límite, Donald Trump hace cambios inéditos en el FMI y genera un \"cisne blanco\" que podría descomprimir el plan de Javier Milei",
+      "priority_score": 13.28,
+      "urgency_level": "normal",
+      "impact_level": "high",
+      "relevance_signals": [
+        "liquidity_risk",
+        "policy_change",
+        "systemic_risk"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Escala a risk management y prepara comunicacion con clientes clave."
+      ],
+      "summary": "Con u$s10.000 millones en vencimientos inmediatos, reservas netas al límite y un riesgo país en máximos, el Gobierno enfrenta creciente desconfianza del mercado. La intervención del BCRA y las señales de Luis Caputo no alcanzan para frenar la volatilidad, mientras Milei apuesta a un nuevo acuerdo con el FMI",
+      "url": "https://www.ambito.com/economia/dolar-al-limite-donald-trump-hace-cambios-ineditos-el-fmi-y-genera-un-cisne-blanco-que-podria-descomprimir-el-plan-javier-milei-n6192055",
+      "published_at": "2025-09-18T13:28:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Dolar al limite, Donald Trump hace cambios ineditos en el FMI y genera un cisne .md",
+      "json_path": "2025\\09\\2025-09.18 - Dolar al limite, Donald Trump hace cambios ineditos en el FMI y genera un cisne .json",
+      "stored_at": "2025-09-18T18:34:32.613468"
+    },
+    {
+      "fingerprint": "f1997d576ef27e2ed10bfb448a2b13ed8608083c30eedfd86ff9f1ac8b448d3b",
+      "headline": "Crece la tensión financiera: los bonos se hunden hasta 11% y el riesgo país supera los 1.400 puntos básicos",
+      "priority_score": 9.58,
+      "urgency_level": "medium",
+      "impact_level": "high",
+      "relevance_signals": [
+        "liquidity_risk",
+        "policy_change",
+        "systemic_risk"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Escala a risk management y prepara comunicacion con clientes clave."
+      ],
+      "summary": "La intervención del BCRA con venta de reservas pusieron en alerta a los inversores. Temor por los futuros vencimientos de deuda. Las acciones profundizan su caída tras los reveses del Gobierno en el Congreso.",
+      "url": "https://www.ambito.com/finanzas/los-bonos-dolares-caen-3-y-profundizan-las-caidas-el-premarket-n6191886",
+      "published_at": "2025-09-18T14:49:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Crece la tension financiera los bonos se hunden hasta 11% y el riesgo pais super.md",
+      "json_path": "2025\\09\\2025-09.18 - Crece la tension financiera los bonos se hunden hasta 11% y el riesgo pais super.json",
+      "stored_at": "2025-09-18T18:34:32.613380"
+    },
+    {
+      "fingerprint": "78affe291fef0182c19f9cd4822ac9158113b7bb294818feef1ff610e0cbf9e5",
+      "headline": "Senado debate el rechazo a los vetos de Milei a la distribución de los ATN",
+      "priority_score": 5.34,
+      "urgency_level": "high",
+      "impact_level": "medium",
+      "relevance_signals": [
+        "liquidity_risk",
+        "policy_change",
+        "systemic_risk"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Escala a risk management y prepara comunicacion con clientes clave."
+      ],
+      "summary": "Con Victoria Villarruel al frente del debate, la oposición busca insistir con el proyecto impulsado por los gobernadores, que pide la distribución de fondos con el criterio de coparticipación, evitando la discrecionalidad.",
+      "url": "https://www.ambito.com/politica/el-senado-abre-un-nuevo-round-contra-los-vetos-javier-milei-buscan-recuperar-la-distribucion-los-atn-n6191803",
+      "published_at": "2025-09-18T11:19:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Senado debate el rechazo a los vetos de Milei a la distribucion de los ATN.md",
+      "json_path": "2025\\09\\2025-09.18 - Senado debate el rechazo a los vetos de Milei a la distribucion de los ATN.json",
+      "stored_at": "2025-09-18T18:34:32.613549"
+    },
+    {
+      "fingerprint": "ee126638e301781ab03357730991626a9d8e40abbfaff59fe6b0382537061647",
+      "headline": "Qué son los ATN y cuál es su importancia: el Senado sesiona contra el veto de Javier Milei",
+      "priority_score": 4.86,
+      "urgency_level": "high",
+      "impact_level": "low",
+      "relevance_signals": [
+        "policy_change",
+        "systemic_risk"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Escala a risk management y prepara comunicacion con clientes clave."
+      ],
+      "summary": "El presidente Javier Milei vetó la ley que establecía el reparto de los Aportes del Tesoro Nacional. Luego de esta decisión, el Congreso debate si rechaza o aprueba la medida.",
+      "url": "https://www.ambito.com/politica/que-son-los-atn-y-cual-es-su-importancia-el-senado-sesiona-contra-el-veto-javier-milei-n6192073",
+      "published_at": "2025-09-18T13:44:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Que son los ATN y cual es su importancia el Senado sesiona contra el veto de Jav.md",
+      "json_path": "2025\\09\\2025-09.18 - Que son los ATN y cual es su importancia el Senado sesiona contra el veto de Jav.json",
+      "stored_at": "2025-09-18T18:34:32.613537"
+    },
+    {
+      "fingerprint": "c06608584c9c18f8d68f9ed83d087680c572c232ee6f46eb3a0d68872965db98",
+      "headline": "Discapacidad: denuncia penal contra Javier Milei y sus funcionarios por la demora en la promulgación de la ley de emergencia",
+      "priority_score": 4.86,
+      "urgency_level": "high",
+      "impact_level": "low",
+      "relevance_signals": [
+        "policy_change",
+        "systemic_risk"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Escala a risk management y prepara comunicacion con clientes clave."
+      ],
+      "summary": "La denuncia fue presentada este jueves por el diputado Esteban Paulón y la diputada Mónica Fein en Comodoro Py.",
+      "url": "https://www.ambito.com/politica/discapacidad-denuncia-penal-contra-javier-milei-y-sus-funcionarios-la-demora-la-promulgacion-la-ley-emergencia-n6192142",
+      "published_at": "2025-09-18T15:51:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Discapacidad denuncia penal contra Javier Milei y sus funcionarios por la demora.md",
+      "json_path": "2025\\09\\2025-09.18 - Discapacidad denuncia penal contra Javier Milei y sus funcionarios por la demora.json",
+      "stored_at": "2025-09-18T19:22:22.708752"
+    },
+    {
+      "fingerprint": "5491adef8e8da508e72b8705e8816b921bfcc12810f4cec549d186e567aa6cf8",
+      "headline": "Dólar hoy: a cuánto cotiza este jueves 18 de septiembre",
+      "priority_score": 4.46,
+      "urgency_level": "normal",
+      "impact_level": "low",
+      "relevance_signals": [
+        "policy_change"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos."
+      ],
+      "summary": "Conocé a cuánto cotiza el dólar oficial, blue, el dólar MEP y el CCL.",
+      "url": "https://www.ambito.com/finanzas/dolar-hoy-cuanto-cotiza-este-jueves-18-septiembre-n6191770",
+      "published_at": "2025-09-18T14:49:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Dolar hoy a cuanto cotiza este jueves 18 de septiembre.md",
+      "json_path": "2025\\09\\2025-09.18 - Dolar hoy a cuanto cotiza este jueves 18 de septiembre.json",
+      "stored_at": "2025-09-18T18:34:32.613355"
+    }
+  ],
+  "updated_at": "2025-09-18T19:41:08.456725"
+}

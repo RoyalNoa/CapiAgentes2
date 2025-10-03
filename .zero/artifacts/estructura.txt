@@ -1,0 +1,539 @@
+# Árbol de CapiAgentes (excluye dependencias y builds)
+# Nota: Usa esta salida para obtener un mapa rápido del repositorio antes de profundizar en módulos específicos.
+CAPI/
+|-- .claude/
+|   |-- settings.local.json
+|-- .zero/
+|   |-- context/
+|   |   |-- ARCHITECTURE.md
+|   |   |-- business.md
+|   |   |-- glossary.md
+|   |   |-- mis preferencias.md
+|   |   |-- project.md
+|   |   |-- Zero.md
+|   |   |-- Zero2.md
+|   |-- playbooks/
+|   |   |-- development/
+|   |   |   |-- add-component.md
+|   |   |-- operations/
+|   |   |   |-- release-process.md
+|   |-- policies/
+|   |   |-- ai-behavior.md
+|   |-- prompts/
+|   |   |-- Detector de errores.md
+|   |   |-- Guía Operativa - .Zero.md
+|   |   |-- Nuevo Cambio.md
+|   |   |-- ZeroGraph-Update.md
+|   |-- scripts/
+|   |   |-- clean-experimental-scripts.ps1
+|   |   |-- conflictos-final.ps1
+|   |   |-- estructura.ps1
+|   |   |-- pipeline.ps1
+|   |   |-- safe-move-to-papelera.ps1
+|   |   |-- zero-circuit-validate.ps1
+|   |   |-- zerograh-validation.ps1
+|   |-- README.md
+|-- Backend/
+|   |-- data/
+|   |   |-- .gitkeep
+|   |   |-- datos_financieros_muestra.csv
+|   |   |-- datos_financieros.csv
+|   |   |-- processed.csv
+|   |   |-- test_data.csv
+|   |-- database/
+|   |   |-- schema.sql
+|   |   |-- seed_data.sql
+|   |-- ia_workspace/
+|   |   |-- agentes/
+|   |   |   |-- anomaly/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- handler.py
+|   |   |   |   |-- spec.py
+|   |   |   |-- branch/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- handler.py
+|   |   |   |   |-- spec.py
+|   |   |   |-- capi_desktop/
+|   |   |   |   |-- prompts/
+|   |   |   |   |   |-- system_prompt.md
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- handler.py
+|   |   |   |   |-- spec.py
+|   |   |   |-- capi_noticias/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- handler.py
+|   |   |   |   |-- spec.py
+|   |   |   |-- smalltalk_fallback/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- handler.py
+|   |   |   |   |-- spec.py
+|   |   |   |-- summary/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- handler.py
+|   |   |   |   |-- spec.py
+|   |   |   |-- __init__.py
+|   |   |   |-- BASE_AGENT_PROTOCOL.md
+|   |   |-- data/
+|   |   |   |-- agent-output/
+|   |   |   |   |-- capi_desktop/
+|   |   |   |   |   |-- 2025/
+|   |   |   |   |   |   |-- 09/
+|   |   |   |   |   |   |   |-- 20250919_085518_hola_mundo_resumen.txt
+|   |   |   |   |   |   |   |-- 20250919_085808_hola_mundo_resumen_20250919_085808.txt
+|   |   |   |   |   |   |   |-- 20250919_085808_hola_mundo_resumen.txt
+|   |   |   |-- backups/
+|   |   |   |-- Base de datos/
+|   |   |   |-- noticias/
+|   |   |   |   |-- runs/
+|   |   |   |   |   |-- 2025/
+|   |   |   |   |   |   |-- 09/
+|   |   |   |   |   |   |   |-- 2025-09-18.index.jsonl
+|   |   |   |   |   |   |   |-- 2025-09.18 - ARCA comenzo a devolver percepciones por consumos en dolares cuando impactan en .json
+|   |   |   |   |   |   |   |-- 2025-09.18 - ARCA comenzo a devolver percepciones por consumos en dolares cuando impactan en .md
+|   |   |   |   |   |   |   |-- 2025-09.18 - Atencion Cuenta DNI! Este fin de semana regresa el descuento mas esperado a la b.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - Atencion Cuenta DNI! Este fin de semana regresa el descuento mas esperado a la b.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - Crece la tension financiera los bonos se hunden hasta 11% y el riesgo pais super.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - Crece la tension financiera los bonos se hunden hasta 11% y el riesgo pais super.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - Discapacidad denuncia penal contra Javier Milei y sus funcionarios por la demora.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - Discapacidad denuncia penal contra Javier Milei y sus funcionarios por la demora.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - Dolar al limite, Donald Trump hace cambios ineditos en el FMI y genera un cisne .json
+|   |   |   |   |   |   |   |-- 2025-09.18 - Dolar al limite, Donald Trump hace cambios ineditos en el FMI y genera un cisne .md
+|   |   |   |   |   |   |   |-- 2025-09.18 - Dolar blue hoy a cuanto opera este jueves 18 de septiembre.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - Dolar blue hoy a cuanto opera este jueves 18 de septiembre.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - Dolar hoy a cuanto cotiza este jueves 18 de septiembre.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - Dolar hoy a cuanto cotiza este jueves 18 de septiembre.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - Dolar hoy y dolar blue hoy minuto a minuto a cuanto opera este jueves 18 de sept.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - Dolar hoy y dolar blue hoy minuto a minuto a cuanto opera este jueves 18 de sept.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - El Gobierno cuestiono el rechazo a los vetos y lanzo Se alinearon todos los enem.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - El Gobierno cuestiono el rechazo a los vetos y lanzo Se alinearon todos los enem.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - El impulso alcista en Wall Street se renueva gracias a los recortes de la Fed y .json
+|   |   |   |   |   |   |   |-- 2025-09.18 - El impulso alcista en Wall Street se renueva gracias a los recortes de la Fed y .md
+|   |   |   |   |   |   |   |-- 2025-09.18 - El superavit comercial supero los u$s1.400 millones en agosto, impulsado por una.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - El superavit comercial supero los u$s1.400 millones en agosto, impulsado por una.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - En agosto hubo un superavit fiscal primario de $1.556.864 millones y volvio a se.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - En agosto hubo un superavit fiscal primario de $1.556.864 millones y volvio a se.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - Javier Milei encabeza dos encuentros clave en Olivos de cara a las elecciones de.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - Javier Milei encabeza dos encuentros clave en Olivos de cara a las elecciones de.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - La desempleo se mantuvo en el 7,6% de la poblacion en el segundo trimestre.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - La desempleo se mantuvo en el 7,6% de la poblacion en el segundo trimestre.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - Que son los ATN y cual es su importancia el Senado sesiona contra el veto de Jav.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - Que son los ATN y cual es su importancia el Senado sesiona contra el veto de Jav.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - Sandra Pettovello El Presidente nunca me pidio que participe en la mesa politica.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - Sandra Pettovello El Presidente nunca me pidio que participe en la mesa politica.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - Senado debate el rechazo a los vetos de Milei a la distribucion de los ATN.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - Senado debate el rechazo a los vetos de Milei a la distribucion de los ATN.md
+|   |   |   |   |   |   |   |-- 2025-09.18 - Sin gastar un solo dolar los museos gratuitos de Nueva York para aprovechar en t.json
+|   |   |   |   |   |   |   |-- 2025-09.18 - Sin gastar un solo dolar los museos gratuitos de Nueva York para aprovechar en t.md
+|   |   |   |   |   |-- index.json
+|   |   |   |   |-- segments/
+|   |   |   |   |   |-- daily.json
+|   |   |   |   |   |-- monthly.json
+|   |   |   |   |   |-- weekly.json
+|   |   |   |   |-- index.json
+|   |   |   |   |-- news_history.json
+|   |   |   |   |-- README.md
+|   |   |   |   |-- status.json
+|   |   |   |-- agent_privileges.json
+|   |   |   |-- agents_config.json
+|   |   |   |-- agents_registry.json
+|   |   |   |-- alerts_historical.json
+|   |   |   |-- datos_financieros_muestra.csv
+|   |   |   |-- datos_financieros.csv
+|   |   |   |-- hola mundo.xlsx
+|   |   |   |-- processed.csv
+|   |   |   |-- README.md
+|   |   |   |-- test_data.csv
+|   |   |   |-- token_tracking.json
+|   |   |   |-- token_tracking.json.backup_from_root
+|   |   |-- README.md
+|   |-- infrastructure/
+|   |   |-- monitoring/
+|   |   |   |-- prometheus.yml
+|   |   |-- nginx/
+|   |   |   |-- nginx.conf
+|   |-- scripts/
+|   |   |-- dev.py
+|   |-- src/
+|   |   |-- api/
+|   |   |   |-- agents/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- workspace_agent.py
+|   |   |   |-- agents_endpoints.py
+|   |   |   |-- alerts_endpoints.py
+|   |   |   |-- main.py
+|   |   |   |-- middleware.py
+|   |   |   |-- workspace_endpoints.py
+|   |   |-- application/
+|   |   |   |-- alerts/
+|   |   |   |   |-- alert_engine.py
+|   |   |   |   |-- smart_recommender.py
+|   |   |   |-- analysis/
+|   |   |   |   |-- financial_analyzer.py
+|   |   |   |   |-- observable_analyzer.py
+|   |   |   |-- conversation/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- state_manager.py
+|   |   |   |   |-- state_models.py
+|   |   |   |-- document_generation/
+|   |   |   |   |-- doc_generator.py
+|   |   |   |   |-- llm_doc_enhancer.py
+|   |   |   |-- nlp/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- intent_classifier.py
+|   |   |   |-- reasoning/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- advanced_reasoner.py
+|   |   |   |-- services/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- agent_authorization_service.py
+|   |   |   |   |-- agent_config_service.py
+|   |   |   |   |-- agent_registry_service.py
+|   |   |   |   |-- capi_noticias_service.py
+|   |   |   |   |-- token_usage_service.py
+|   |   |   |-- use_cases/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- financial_analysis_use_cases.py
+|   |   |   |-- __init__.py
+|   |   |-- core/
+|   |   |   |-- monitoring/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- semantic_metrics.py
+|   |   |   |-- semantics/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- context_manager.py
+|   |   |   |   |-- entity_extractor.py
+|   |   |   |   |-- intent_service.py
+|   |   |   |   |-- semantic_similarity.py
+|   |   |   |-- __init__.py
+|   |   |   |-- config.py
+|   |   |   |-- exceptions.py
+|   |   |   |-- feature_flags.py
+|   |   |   |-- file_config.py
+|   |   |   |-- logging.py
+|   |   |-- domain/
+|   |   |   |-- agents/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- agent_models.py
+|   |   |   |   |-- agent_protocol.py
+|   |   |   |-- contracts/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- actions.py
+|   |   |   |   |-- agent_io.py
+|   |   |   |   |-- intent.py
+|   |   |   |-- entities/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- financial_record.py
+|   |   |   |-- repositories/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- financial_repository.py
+|   |   |   |-- services/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- financial_service.py
+|   |   |   |-- __init__.py
+|   |   |-- infrastructure/
+|   |   |   |-- adapters/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- llm_adapter.py
+|   |   |   |-- database/
+|   |   |   |   |-- postgres_client.py
+|   |   |   |-- external/
+|   |   |   |   |-- __init__.py
+|   |   |   |-- langgraph/
+|   |   |   |   |-- adapters/
+|   |   |   |   |   |-- orchestrator_adapter.py
+|   |   |   |   |-- algorithms/
+|   |   |   |   |   |-- enhanced_runtime.py
+|   |   |   |   |   |-- optimized_graph.py
+|   |   |   |   |   |-- professional_error_recovery.py
+|   |   |   |   |   |-- query_optimizer.py
+|   |   |   |   |-- nodes/
+|   |   |   |   |   |-- __init__.py
+|   |   |   |   |   |-- anomaly_node.py
+|   |   |   |   |   |-- assemble_node.py
+|   |   |   |   |   |-- base.py
+|   |   |   |   |   |-- branch_node.py
+|   |   |   |   |   |-- capi_desktop_node.py
+|   |   |   |   |   |-- capi_noticias_node.py
+|   |   |   |   |   |-- human_gate_node.py
+|   |   |   |   |   |-- intent_node.py
+|   |   |   |   |   |-- reasoning_node.py
+|   |   |   |   |   |-- router_node.py
+|   |   |   |   |   |-- smalltalk_node.py
+|   |   |   |   |   |-- summary_node.py
+|   |   |   |   |-- persistence/
+|   |   |   |   |   |-- __init__.py
+|   |   |   |   |   |-- checkpoint_store.py
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- config.py
+|   |   |   |   |-- dynamic_graph_builder.py
+|   |   |   |   |-- graph_builder.py
+|   |   |   |   |-- graph_runtime.py
+|   |   |   |   |-- state_schema.py
+|   |   |   |-- repositories/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- async_helpers.py
+|   |   |   |   |-- file_financial_repository.py
+|   |   |   |   |-- repository_provider.py
+|   |   |   |-- websocket/
+|   |   |   |   |-- __init__.py
+|   |   |   |   |-- event_broadcaster.py
+|   |   |   |-- __init__.py
+|   |   |-- observability/
+|   |   |   |-- __init__.py
+|   |   |   |-- agent_metrics.py
+|   |   |-- presentation/
+|   |   |   |-- api/
+|   |   |   |   |-- metrics_routes.py
+|   |   |   |-- __init__.py
+|   |   |   |-- demo_interface.py
+|   |   |   |-- orchestrator_factory.py
+|   |   |   |-- websocket_langgraph.py
+|   |   |-- shared/
+|   |   |   |-- __init__.py
+|   |   |   |-- agent_config_repository.py
+|   |   |   |-- file_manager.py
+|   |   |   |-- knowledge_base.py
+|   |   |   |-- memory_manager.py
+|   |   |   |-- task_scheduler.py
+|   |   |-- workspace/
+|   |   |   |-- __init__.py
+|   |   |   |-- task_scheduler.py
+|   |   |-- __init__.py
+|   |-- tests/
+|   |   |-- fixtures/
+|   |   |   |-- intent_samples.json
+|   |   |-- conftest.py
+|   |   |-- demo_llm_simulation.py
+|   |   |-- test_agent_privileges.py
+|   |   |-- test_architecture_regression.py
+|   |   |-- test_capi_desktop_agent.py
+|   |   |-- test_config.py
+|   |   |-- test_conversation_state.py
+|   |   |-- test_dynamic_graph_builder.py
+|   |   |-- test_health.py
+|   |   |-- test_intent_classifier.py
+|   |   |-- test_langgraph_integration.py
+|   |   |-- test_production_integration.py
+|   |   |-- test_reasoning_system.py
+|   |   |-- test_semantic_nlp_system.py
+|   |   |-- test_summary_dedup.py
+|   |-- workspace/
+|   |-- __init__.py
+|   |-- .env.example
+|   |-- debug_intent.py
+|   |-- Dockerfile
+|   |-- pytest.ini
+|   |-- requirements.txt
+|-- docs/
+|   |-- Nuevas Funcionalidades/
+|   |   |-- ChatPorVoz.md
+|   |   |-- LoggingJSON.md
+|   |   |-- NuevoChat_Historiales.md
+|   |-- agent_metrics_pipeline.md
+|   |-- CatalogoAgentes.md
+|   |-- CREATE.md
+|   |-- Errores.md
+|   |-- FuturasMejorasIA.md
+|   |-- instalacion_windows.md
+|   |-- logging_implementation.md
+|   |-- MVP pendiente.md
+|   |-- observabilidad.md
+|   |-- orchestrator_roadmap.md
+|   |-- README.md
+|   |-- reorganizacion_repo.md
+|-- Frontend/
+|   |-- public/
+|   |-- scripts/
+|   |   |-- check_graph_layout.js
+|   |   |-- dev.js
+|   |-- src/
+|   |   |-- app/
+|   |   |   |-- api/
+|   |   |   |   |-- backend/
+|   |   |   |   |   |-- kill/
+|   |   |   |   |   |   |-- route.ts
+|   |   |   |   |   |-- launch/
+|   |   |   |   |   |   |-- route.ts
+|   |   |   |   |   |-- start/
+|   |   |   |   |   |   |-- route.ts
+|   |   |   |   |   |-- status/
+|   |   |   |   |   |   |-- route.ts
+|   |   |   |   |   |-- stop/
+|   |   |   |   |   |   |-- route.ts
+|   |   |   |-- components/
+|   |   |   |   |-- alerts/
+|   |   |   |   |   |-- HistoricalAlertsDashboard.module.css
+|   |   |   |   |   |-- HistoricalAlertsDashboard.tsx
+|   |   |   |   |   |-- HistoricalAlertsSystem.tsx
+|   |   |   |   |-- chat/
+|   |   |   |   |   |-- AlertToggleButton.tsx
+|   |   |   |   |   |-- ChatToggleButton.tsx
+|   |   |   |   |   |-- GlobalAlertOverlay.tsx
+|   |   |   |   |   |-- GlobalAlertSystem.tsx
+|   |   |   |   |   |-- GlobalChatOverlay.module.css
+|   |   |   |   |   |-- GlobalChatOverlay.tsx
+|   |   |   |   |   |-- SimpleChatBox.tsx
+|   |   |   |   |-- dashboard/
+|   |   |   |   |   |-- AnimatedCounter.tsx
+|   |   |   |   |   |-- AnomalyAlerts.tsx
+|   |   |   |   |   |-- BranchPerformanceTable.tsx
+|   |   |   |   |   |-- CashFlowChart.tsx
+|   |   |   |   |   |-- DenominationDistribution.tsx
+|   |   |   |   |   |-- GlassCard.tsx
+|   |   |   |   |   |-- MetricCard.tsx
+|   |   |   |   |-- footer/
+|   |   |   |   |   |-- Footer.tsx
+|   |   |   |   |   |-- styles.css
+|   |   |   |   |-- Graph/
+|   |   |   |   |   |-- AnimatedEdge.tsx
+|   |   |   |   |   |-- GraphNode.tsx
+|   |   |   |   |   |-- GridBackground.tsx
+|   |   |   |   |   |-- Tooltip.tsx
+|   |   |   |   |-- HUD/
+|   |   |   |   |   |-- ActiveEventsPanel.module.css
+|   |   |   |   |   |-- ActiveEventsPanel.tsx
+|   |   |   |   |   |-- AgentNetworkMermaid.tsx
+|   |   |   |   |   |-- AgentRegistrationModal.module.css
+|   |   |   |   |   |-- AgentRegistrationModal.tsx
+|   |   |   |   |   |-- CapiNoticiasSegmentCard.tsx
+|   |   |   |   |   |-- GraphPanel.module.css
+|   |   |   |   |   |-- GraphPanel.tsx
+|   |   |   |   |   |-- HUDBadge.tsx
+|   |   |   |   |   |-- HUDButton.tsx
+|   |   |   |   |   |-- HUDLayout.module.css
+|   |   |   |   |   |-- HUDLayout.tsx
+|   |   |   |   |   |-- HUDNavigator.module.css
+|   |   |   |   |   |-- HUDNavigator.tsx
+|   |   |   |   |   |-- HUDPanel.tsx
+|   |   |   |   |   |-- HUDSwitch.tsx
+|   |   |   |   |   |-- ProgressIndicator.tsx
+|   |   |   |   |   |-- TokenTrackingPanel.module.css
+|   |   |   |   |   |-- TokenTrackingPanel.tsx
+|   |   |   |   |   |-- ViewportIndicator.module.css
+|   |   |   |   |   |-- ViewportIndicator.tsx
+|   |   |   |   |-- loader/
+|   |   |   |   |   |-- Loader.tsx
+|   |   |   |   |   |-- styles.css
+|   |   |   |   |-- workspace/
+|   |   |   |   |   |-- KnowledgeSearch.tsx
+|   |   |   |   |   |-- WorkspacePanel.tsx
+|   |   |   |   |   |-- WorkspaceTab.tsx
+|   |   |   |   |-- SuggestedQuestions.tsx
+|   |   |   |-- contexts/
+|   |   |   |   |-- GlobalAlertContext.tsx
+|   |   |   |   |-- GlobalChatContext.tsx
+|   |   |   |   |-- HistoricalAlertsContext.tsx
+|   |   |   |-- dashboard/
+|   |   |   |   |-- dashboard-theme.css
+|   |   |   |   |-- dashboard.css
+|   |   |   |   |-- layout.tsx
+|   |   |   |   |-- page.tsx
+|   |   |   |-- health/
+|   |   |   |   |-- route.ts
+|   |   |   |-- hooks/
+|   |   |   |   |-- react-query/
+|   |   |   |   |   |-- index.tsx
+|   |   |   |   |-- useAdvancedGraphPhysics.ts
+|   |   |   |   |-- useAgentWebSocket.ts
+|   |   |   |   |-- useAnimatedValue.ts
+|   |   |   |   |-- useGlobalChatIntegration.ts
+|   |   |   |   |-- useViewportOptimization.ts
+|   |   |   |-- mocks/
+|   |   |   |   |-- banks.ts
+|   |   |   |-- pages/
+|   |   |   |   |-- agentes/
+|   |   |   |   |   |-- AgentesPage.module.css
+|   |   |   |   |   |-- page.tsx
+|   |   |   |   |-- home/
+|   |   |   |   |   |-- page.tsx
+|   |   |   |   |   |-- styles.css
+|   |   |   |   |-- map/
+|   |   |   |   |   |-- components/
+|   |   |   |   |   |   |-- Map/
+|   |   |   |   |   |   |   |-- FullScreenPopup.tsx
+|   |   |   |   |   |   |   |-- page.tsx
+|   |   |   |   |   |   |   |-- styles.css
+|   |   |   |   |   |-- page.tsx
+|   |   |   |   |   |-- styles.css
+|   |   |   |-- resources/
+|   |   |   |   |-- gif/
+|   |   |   |   |-- images/
+|   |   |   |-- services/
+|   |   |   |   |-- dashboardService.ts
+|   |   |   |-- types/
+|   |   |   |   |-- chat.ts
+|   |   |   |-- ui/
+|   |   |   |   |-- globals.css
+|   |   |   |   |-- hud-enhancements.css
+|   |   |   |   |-- hud.css
+|   |   |   |-- utils/
+|   |   |   |   |-- orchestrator/
+|   |   |   |   |   |-- client.ts
+|   |   |   |   |   |-- useOrchestratorChat.ts
+|   |   |   |   |   |-- ws.ts
+|   |   |   |   |-- capiNoticiasSegments.ts
+|   |   |   |   |-- ChatBoxLogger.ts
+|   |   |   |   |-- constants.ts
+|   |   |   |   |-- logger.ts
+|   |   |   |-- workspace/
+|   |   |   |   |-- page.tsx
+|   |   |   |-- error.tsx
+|   |   |   |-- layout.tsx
+|   |   |-- components/
+|   |   |   |-- ui/
+|   |   |-- lib/
+|   |   |   |-- serverLogger.ts
+|   |   |-- papelera/
+|   |   |   |-- HUD/
+|   |   |   |   |-- AgentsPanel.module.css
+|   |   |   |   |-- AgentsPanel.tsx
+|   |   |   |   |-- ViewportOptimizer.module.css
+|   |   |   |   |-- ViewportOptimizer.tsx
+|   |   |-- services/
+|   |   |-- utils/
+|   |   |-- instrumentation.ts
+|   |-- .env.local
+|   |-- .eslintignore
+|   |-- .eslintrc.json
+|   |-- Dockerfile
+|   |-- next-env.d.ts
+|   |-- next.config.ts
+|   |-- package-lock.json
+|   |-- package.json
+|   |-- postcss.config.js
+|   |-- tailwind.config.js
+|   |-- tsconfig.json
+|-- launcher/
+|   |-- assets/
+|   |-- docs/
+|   |   |-- README.md
+|   |-- pyinstaller/
+|   |   |-- CapiAgentes_Docker_Manager.spec
+|   |-- scripts/
+|   |   |-- Build Launcher.bat
+|   |   |-- create_icon.py
+|   |   |-- create_shortcut.py
+|   |-- src/
+|   |   |-- launcher_app/
+|   |   |   |-- __init__.py
+|   |   |   |-- app.py
+|   |-- requirements.txt
+|-- logstash/
+|   |-- logstash.conf/
+|-- observability/
+|   |-- logstash/
+|   |   |-- logstash.conf
+|   |-- docker-compose.elastic.yml
+|-- scripts/
+|   |-- backup/
+|   |-- README.md
+|-- .env.example
+|-- .gitignore
+|-- AGENTS.md
+|-- CLAUDE.md
+|-- docker-commands.ps1
+|-- docker-commands.sh
+|-- docker-compose.yml
+|-- docker.ps1
+|-- README.md
+

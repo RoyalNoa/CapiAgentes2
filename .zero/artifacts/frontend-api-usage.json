@@ -1,0 +1,1044 @@
+{
+  "usage": [
+    {
+      "file": "Frontend\\src\\app\\api\\backend\\start\\route.ts",
+      "line": 16,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/start"
+      ],
+      "ws_targets": [],
+      "snippet": "const r = await fetch(`${base}/api/start`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'start' }) });"
+    },
+    {
+      "file": "Frontend\\src\\app\\api\\backend\\status\\route.ts",
+      "line": 15,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/status"
+      ],
+      "ws_targets": [],
+      "snippet": "const r = await fetch(`${base}/api/status`, { cache: 'no-store' });"
+    },
+    {
+      "file": "Frontend\\src\\app\\api\\backend\\stop\\route.ts",
+      "line": 16,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/stop"
+      ],
+      "ws_targets": [],
+      "snippet": "const r = await fetch(`${base}/api/stop`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'stop' }) });"
+    },
+    {
+      "file": "Frontend\\src\\app\\api\\maps\\sucursales\\route.ts",
+      "line": 19,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/maps/sucursales"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${base}/api/maps/sucursales`, { cache: 'no-store' });"
+    },
+    {
+      "file": "Frontend\\src\\app\\components\\chat\\SessionFilesViewer.tsx",
+      "line": 357,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/session-files/tree"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${API_BASE}/api/session-files/tree${query}`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\components\\chat\\SessionFilesViewer.tsx",
+      "line": 427,
+      "kind": "other",
+      "api_paths": [
+        "/api/session-files/file?path="
+      ],
+      "ws_targets": [],
+      "snippet": "`${API_BASE}/api/session-files/file?path=${encodeURIComponent(entry.path)}`,"
+    },
+    {
+      "file": "Frontend\\src\\app\\components\\chat\\SessionFilesViewer.tsx",
+      "line": 454,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/session-files/file"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${API_BASE}/api/session-files/file`, {"
+    },
+    {
+      "file": "Frontend\\src\\app\\components\\graphcanva\\useGraphCanvaPush.ts",
+      "line": 14,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "const buildWebSocketUrl = (workflowId: string) => {"
+    },
+    {
+      "file": "Frontend\\src\\app\\components\\graphcanva\\useGraphCanvaPush.ts",
+      "line": 36,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "let socket: WebSocket | null = null;"
+    },
+    {
+      "file": "Frontend\\src\\app\\components\\graphcanva\\useGraphCanvaPush.ts",
+      "line": 46,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "const url = buildWebSocketUrl(workflowId);"
+    },
+    {
+      "file": "Frontend\\src\\app\\components\\graphcanva\\useGraphCanvaPush.ts",
+      "line": 47,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "socket = new WebSocket(url);"
+    },
+    {
+      "file": "Frontend\\src\\app\\components\\workspace\\KnowledgeSearch.tsx",
+      "line": 58,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/workspace/knowledge/search?"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${API_BASE}/api/workspace/knowledge/search?${params}`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\components\\workspace\\WorkspacePanel.tsx",
+      "line": 97,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/workspace/summary"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${API_BASE}/api/workspace/summary`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\components\\workspace\\WorkspacePanel.tsx",
+      "line": 112,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/workspace/files?limit=100"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${API_BASE}/api/workspace/files?limit=100`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\components\\workspace\\WorkspacePanel.tsx",
+      "line": 127,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/workspace/tasks/scheduler/stats"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${API_BASE}/api/workspace/tasks/scheduler/stats`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\components\\workspace\\WorkspacePanel.tsx",
+      "line": 145,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/workspace/files/"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${API_BASE}/api/workspace/files/${encodeURIComponent(filePath)}`, {"
+    },
+    {
+      "file": "Frontend\\src\\app\\contexts\\GlobalAlertContext.tsx",
+      "line": 310,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "// Listen for real agent alerts (you can connect this to your WebSocket or API)"
+    },
+    {
+      "file": "Frontend\\src\\app\\contexts\\GlobalChatContext.tsx",
+      "line": 71,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "// Use the existing orchestrator hook - ALWAYS use WebSocket"
+    },
+    {
+      "file": "Frontend\\src\\app\\contexts\\GlobalChatContext.tsx",
+      "line": 100,
+      "kind": "other",
+      "api_paths": [
+        "/api/session-files/file?path="
+      ],
+      "ws_targets": [],
+      "snippet": "`${API_BASE}/api/session-files/file?path=${encodeURIComponent(manifestPath)}`,"
+    },
+    {
+      "file": "Frontend\\src\\app\\contexts\\GlobalChatContext.tsx",
+      "line": 203,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/session-files/tree"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${API_BASE}/api/session-files/tree`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 2,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "CAPI - Agent WebSocket Custom Hook"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 4,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "Ruta: /Frontend/src/app/hooks/useAgentWebSocket.ts"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 5,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "Descripción: Hook React personalizado para gestión de conexiones WebSocket con"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 8,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "Dependencias: React hooks, WebSocket API"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 38,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "interface UseAgentWebSocketReturn {"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 56,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [
+        "ws://localhost:8000/ws/agents'):"
+      ],
+      "snippet": "export function useAgentWebSocket(url: string = 'ws://localhost:8000/ws/agents'): UseAgentWebSocketReturn {"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 66,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "const wsRef = useRef<WebSocket | null>(null);"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 143,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "console.debug('WebSocket pong received');"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 157,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "console.error('Error parsing WebSocket message:', error);"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 163,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "if (wsRef.current?.readyState === WebSocket.OPEN || wsRef.current?.readyState === WebSocket.CONNECTING) {"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 171,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "wsRef.current = new WebSocket(url);"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 174,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "console.log('Agent WebSocket connected');"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 189,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "console.error('Agent WebSocket error:', error);"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 194,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "console.log('Agent WebSocket disconnected');"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 205,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "console.error('Failed to create WebSocket connection:', error);"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useAgentWebSocket.ts",
+      "line": 252,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "if (wsRef.current?.readyState === WebSocket.OPEN) {"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useVoiceStream.ts",
+      "line": 83,
+      "kind": "other",
+      "api_paths": [
+        "/api/voice/stream"
+      ],
+      "ws_targets": [],
+      "snippet": "return `${wsBase}/api/voice/stream`;"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useVoiceStream.ts",
+      "line": 143,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "const wsRef = useRef<WebSocket | null>(null);"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useVoiceStream.ts",
+      "line": 163,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "if (ws && ws.readyState === WebSocket.OPEN) {"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useVoiceStream.ts",
+      "line": 191,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "if (ws && ws.readyState === WebSocket.OPEN) {"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useVoiceStream.ts",
+      "line": 278,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "const ws = new WebSocket(resolveWsUrl());"
+    },
+    {
+      "file": "Frontend\\src\\app\\hooks\\useVoiceStream.ts",
+      "line": 312,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "if (!socket || socket.readyState !== WebSocket.OPEN) {"
+    },
+    {
+      "file": "Frontend\\src\\app\\pages\\agentes\\page.tsx",
+      "line": 18,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "import { useAgentWebSocket } from '@/app/hooks/useAgentWebSocket';"
+    },
+    {
+      "file": "Frontend\\src\\app\\pages\\agentes\\page.tsx",
+      "line": 133,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "} = useAgentWebSocket();"
+    },
+    {
+      "file": "Frontend\\src\\app\\pages\\home\\page.tsx",
+      "line": 31,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/health"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(\"/api/health\");"
+    },
+    {
+      "file": "Frontend\\src\\app\\pages\\map\\google\\GoogleMapView.tsx",
+      "line": 231,
+      "kind": "other",
+      "api_paths": [
+        "/api/js?key="
+      ],
+      "ws_targets": [],
+      "snippet": "script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}`;"
+    },
+    {
+      "file": "Frontend\\src\\app\\pages\\map\\google\\GoogleMapView.tsx",
+      "line": 537,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/maps/sucursales"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch('/api/maps/sucursales');"
+    },
+    {
+      "file": "Frontend\\src\\app\\services\\cashPoliciesService.ts",
+      "line": 68,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/cash-policies"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(buildUrl('/api/cash-policies'), { cache: 'no-store' });"
+    },
+    {
+      "file": "Frontend\\src\\app\\services\\cashPoliciesService.ts",
+      "line": 76,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/cash-policies/"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(buildUrl(`/api/cash-policies/${encodeURIComponent(channel)}`), {"
+    },
+    {
+      "file": "Frontend\\src\\app\\services\\dashboardService.ts",
+      "line": 114,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/command"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(this.buildUrl('/api/command'), {"
+    },
+    {
+      "file": "Frontend\\src\\app\\services\\saldosService.ts",
+      "line": 97,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/saldos/sucursales"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(buildUrl('/api/saldos/sucursales'), { cache: 'no-store' });"
+    },
+    {
+      "file": "Frontend\\src\\app\\services\\saldosService.ts",
+      "line": 102,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/saldos/sucursales"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(buildUrl('/api/saldos/sucursales'), {"
+    },
+    {
+      "file": "Frontend\\src\\app\\services\\saldosService.ts",
+      "line": 114,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/saldos/sucursales/"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(buildUrl(`/api/saldos/sucursales/${encodeURIComponent(sucursalId)}`), {"
+    },
+    {
+      "file": "Frontend\\src\\app\\services\\saldosService.ts",
+      "line": 123,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/saldos/sucursales/"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(buildUrl(`/api/saldos/sucursales/${encodeURIComponent(sucursalId)}`), {"
+    },
+    {
+      "file": "Frontend\\src\\app\\services\\saldosService.ts",
+      "line": 130,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/saldos/dispositivos"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(buildUrl('/api/saldos/dispositivos'), { cache: 'no-store' });"
+    },
+    {
+      "file": "Frontend\\src\\app\\services\\saldosService.ts",
+      "line": 137,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/saldos/dispositivos"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(buildUrl('/api/saldos/dispositivos'), {"
+    },
+    {
+      "file": "Frontend\\src\\app\\services\\saldosService.ts",
+      "line": 149,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/saldos/dispositivos/"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(buildUrl(`/api/saldos/dispositivos/${recordId}`), {"
+    },
+    {
+      "file": "Frontend\\src\\app\\services\\saldosService.ts",
+      "line": 158,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/saldos/dispositivos/"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(buildUrl(`/api/saldos/dispositivos/${recordId}`), {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\logger.ts",
+      "line": 10,
+      "kind": "other",
+      "api_paths": [
+        "/api/logs/client"
+      ],
+      "ws_targets": [],
+      "snippet": "const CLIENT_ENDPOINT = '/api/logs/client';"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 286,
+      "kind": "other",
+      "api_paths": [
+        "/api/command"
+      ],
+      "ws_targets": [],
+      "snippet": "const result = await request('/api/command', { instruction: text, client_id: clientId });"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 304,
+      "kind": "other",
+      "api_paths": [
+        "/api/health"
+      ],
+      "ws_targets": [],
+      "snippet": "logger.info('Health Check Started', { endpoint: `${API_BASE}/api/health` });"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 307,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/health"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/health`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 339,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 358,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/toggle"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/toggle`, {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 378,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/refresh"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/refresh`, {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 413,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/metrics"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/metrics`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 442,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/system-status"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/system-status`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 558,
+      "kind": "other",
+      "api_paths": [
+        "/api/alerts"
+      ],
+      "ws_targets": [],
+      "snippet": "const url = `${API_BASE}/api/alerts${queryString ? `?${queryString}` : ''}`;"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 574,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/alerts/"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/alerts/${encodeURIComponent(alertId)}`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 610,
+      "kind": "other",
+      "api_paths": [
+        "/api/alerts/"
+      ],
+      "ws_targets": [],
+      "snippet": "`${API_BASE}/api/alerts/${encodeURIComponent(alertId)}/status`,"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 672,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/alerts/"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/alerts/${encodeURIComponent(alertId)}/ai-context`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 738,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/token-tracking"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/token-tracking`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 765,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/token-usage"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/token-usage`, {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 916,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/capi_noticias/status"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/capi_noticias/status`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 931,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/capi_noticias/config"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/capi_noticias/config`, {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 951,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/capi_noticias/start"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/capi_noticias/start`, { method: 'POST' });"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 966,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/capi_noticias/stop"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/capi_noticias/stop`, { method: 'POST' });"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 981,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/capi_noticias/run"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/capi_noticias/run`, {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 1010,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/register"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/register`, {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 1039,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/${encodeURIComponent(agentName)}/unregister`, {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 1066,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/registry"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/registry`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 1086,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/graph/mermaid_svg"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/graph/mermaid_svg`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 1105,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/graph/mermaid_png"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/graph/mermaid_png`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 1124,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/graph/mermaid_conceptual"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/graph/mermaid_conceptual`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 1143,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/graph/status"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/graph/status`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 1165,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/agents/graph/refresh"
+      ],
+      "ws_targets": [],
+      "snippet": "const res = await fetchWithTimeout(`${API_BASE}/api/agents/graph/refresh`, {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\client.ts",
+      "line": 1194,
+      "kind": "other",
+      "api_paths": [
+        "/api/orchestrator/human/decision"
+      ],
+      "ws_targets": [],
+      "snippet": "return request('/api/orchestrator/human/decision', payload);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 1,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "// Hook React para interactuar con el Orchestrator vía WebSocket únicamente."
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 2,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "// Enhanced with comprehensive logging for debugging WebSocket connections."
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 422,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "const sendViaWebSocket = (socketWrapper: OrchestratorSocket | null): boolean => {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 426,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "const wsInstance = (socketWrapper as any)['ws'] as WebSocket | undefined;"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 429,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "if (wsInstance.readyState === WebSocket.OPEN) {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 432,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "hookLogger.info(`WebSocket Send Result [${commandId}]`, { sent });"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 434,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "hookLogger.info(`WebSocket Command Sent Successfully [${commandId}] - awaiting response`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 438,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "hookLogger.error(`WebSocket Send Error [${commandId}]`, {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 446,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "if (wsInstance.readyState === WebSocket.CONNECTING) {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 447,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "hookLogger.info(`WebSocket still connecting [${commandId}] - queuing send`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 450,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "const sentAfterOpen = sendViaWebSocket(socketWrapper);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 452,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "hookLogger.warn(`Queued WebSocket send failed after open [${commandId}]`);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 463,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "hookLogger.info(`Attempting WebSocket Send [${commandId}]`, {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 467,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "wsReadyStateOpen: WebSocket.OPEN"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 470,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "const wsSentOrQueued = sendViaWebSocket(sock);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\useOrchestratorChat.ts",
+      "line": 475,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "hookLogger.warn(`WebSocket unavailable, using HTTP fallback [${commandId}]`, {"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\ws.ts",
+      "line": 1,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "// Lightweight WebSocket wrapper with reconnect (exponential backoff) for Orchestrator."
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\ws.ts",
+      "line": 14,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "private ws: WebSocket | null = null;"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\ws.ts",
+      "line": 21,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "// Convert http/https base to ws/wss for proper WebSocket handshake"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\ws.ts",
+      "line": 47,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "if (this.ws && (this.ws.readyState === WebSocket.OPEN || this.ws.readyState === WebSocket.CONNECTING)) return;"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\ws.ts",
+      "line": 48,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "this.ws = new WebSocket(this.url);"
+    },
+    {
+      "file": "Frontend\\src\\app\\utils\\orchestrator\\ws.ts",
+      "line": 83,
+      "kind": "websocket",
+      "api_paths": [],
+      "ws_targets": [],
+      "snippet": "if (!this.ws || this.ws.readyState !== WebSocket.OPEN) return false;"
+    },
+    {
+      "file": "Frontend\\src\\services\\graphCanva.ts",
+      "line": 26,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/graph-canva/workflows/"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${API_BASE}/api/graph-canva/workflows/${workflowId}`);"
+    },
+    {
+      "file": "Frontend\\src\\services\\graphCanva.ts",
+      "line": 31,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/graph-canva/catalog"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${API_BASE}/api/graph-canva/catalog`);"
+    },
+    {
+      "file": "Frontend\\src\\services\\graphCanva.ts",
+      "line": 39,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/graph-canva/workflows/"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${API_BASE}/api/graph-canva/workflows/${workflowId}`, {"
+    },
+    {
+      "file": "Frontend\\src\\services\\graphCanva.ts",
+      "line": 51,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/graph-canva/workflows/"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${API_BASE}/api/graph-canva/workflows/${workflowId}/run`, {"
+    },
+    {
+      "file": "Frontend\\src\\services\\graphCanva.ts",
+      "line": 62,
+      "kind": "fetch",
+      "api_paths": [
+        "/api/graph-canva/workflows/"
+      ],
+      "ws_targets": [],
+      "snippet": "const response = await fetch(`${API_BASE}/api/graph-canva/workflows/${workflowId}/executions`);"
+    }
+  ]
+}

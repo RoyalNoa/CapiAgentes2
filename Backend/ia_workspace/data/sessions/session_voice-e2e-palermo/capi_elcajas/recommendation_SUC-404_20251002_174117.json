@@ -1,0 +1,65 @@
+{
+  "branch_id": "SUC-404",
+  "branch_name": "Palermo",
+  "severity": "alert",
+  "difference_ars": -12000.0,
+  "deviation_pct": -0.12000000000000002,
+  "hypothesis": "Desvio detectado en Palermo",
+  "impact": "Diferencia de 12,000 ARS (-12.0%)",
+  "summary": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+  "suggested_actions": [
+    "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica",
+    "Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada",
+    "Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada",
+    "Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada",
+    "Otros: deposit 809 ARS - Deficit canal vs distribucion esperada"
+  ],
+  "recommendations": [
+    {
+      "channel": "Saldo Total",
+      "action": "deposit",
+      "amount": 7000.0,
+      "reason": "Deficit vs caja teorica",
+      "urgency": "proximo turno",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.007
+    },
+    {
+      "channel": "Tesoro",
+      "action": "deposit",
+      "amount": 536.36,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "proximo turno",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.001
+    },
+    {
+      "channel": "Ventanilla",
+      "action": "deposit",
+      "amount": 836.36,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "proximo turno",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.001
+    },
+    {
+      "channel": "Caja Chica",
+      "action": "deposit",
+      "amount": 112.5,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "proximo turno",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.0
+    },
+    {
+      "channel": "Otros",
+      "action": "deposit",
+      "amount": 809.09,
+      "reason": "Deficit canal vs distribucion esperada",
+      "urgency": "proximo turno",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.001
+    }
+  ],
+  "generated_at": "2025-10-02T17:41:17.179600+00:00"
+}

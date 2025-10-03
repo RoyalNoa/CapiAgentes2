@@ -1,0 +1,481 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 22px;
+  border-radius: 18px;
+  min-height: 0;
+  height: 100%;
+  flex: 1 1 auto;
+  background:
+    radial-gradient(circle at 20% -10%, rgba(0, 255, 255, 0.14), transparent 60%),
+    radial-gradient(circle at 90% 120%, rgba(0, 255, 136, 0.1), transparent 55%),
+    linear-gradient(135deg, rgba(2, 22, 44, 0.94), rgba(1, 12, 28, 0.92) 45%, rgba(0, 6, 18, 0.92));
+  background-image:
+    linear-gradient(rgba(0, 180, 240, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 180, 240, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 20% -10%, rgba(0, 255, 255, 0.14), transparent 60%),
+    radial-gradient(circle at 90% 120%, rgba(0, 255, 136, 0.1), transparent 55%),
+    linear-gradient(135deg, rgba(2, 22, 44, 0.94), rgba(1, 12, 28, 0.92) 45%, rgba(0, 6, 18, 0.92));
+  background-size: 42px 42px, 42px 42px, 100% 100%, 100% 100%, 100% 100%;
+  background-blend-mode: overlay, overlay, normal, normal, normal;
+  border: 1px solid rgba(0, 255, 255, 0.18);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.65),
+    inset 0 0 0 1px rgba(0, 140, 200, 0.14),
+    inset 0 0 45px rgba(0, 120, 200, 0.08);
+  color: #e6f1ff;
+  backdrop-filter: blur(6px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background:
+    linear-gradient(120deg, rgba(0, 45, 90, 0.85), rgba(0, 25, 60, 0.88)),
+    radial-gradient(circle at 30% 20%, rgba(0, 255, 255, 0.14), transparent 60%);
+  border: 1px solid rgba(0, 255, 255, 0.22);
+  box-shadow:
+    inset 0 0 18px rgba(0, 140, 200, 0.15),
+    0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #7df9ff;
+}
+
+.connectionBadge {
+  align-self: flex-start;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 255, 255, 0.22);
+  background: rgba(0, 34, 68, 0.65);
+  color: rgba(214, 236, 255, 0.78);
+}
+
+.connectionOnline {
+  color: #00ffbf;
+  border-color: rgba(0, 255, 191, 0.35);
+  background: rgba(0, 60, 54, 0.65);
+}
+
+.connectionOffline {
+  color: #fca5a5;
+  border-color: rgba(252, 165, 165, 0.3);
+  background: rgba(60, 20, 28, 0.65);
+}
+
+.toggleGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 255, 255, 0.22);
+  background: rgba(0, 30, 60, 0.7);
+  box-shadow: inset 0 0 12px rgba(0, 150, 200, 0.12);
+}
+
+.toggleButton {
+  border: none;
+  background: transparent;
+  color: rgba(214, 236, 255, 0.7);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.toggleButton:hover {
+  color: #7df9ff;
+}
+
+.toggleButtonActive {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.25), rgba(0, 140, 255, 0.25));
+  color: #012840;
+  box-shadow:
+    0 0 14px rgba(0, 255, 255, 0.4),
+    inset 0 0 10px rgba(0, 255, 255, 0.35);
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  position: relative;
+}
+
+.overviewSurface {
+  flex: 1;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 255, 255, 0.16);
+  background-color: #03090f;
+  background-image:
+    radial-gradient(rgba(120, 220, 255, 0.16) 1px, transparent 1px),
+    radial-gradient(rgba(0, 160, 200, 0.14) 1px, transparent 1px);
+  background-size: 36px 36px, 24px 24px;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 140, 200, 0.08),
+    inset 0 0 32px rgba(0, 140, 200, 0.1);
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.mermaidSurface {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+  position: relative;
+}
+
+.mermaidViewportShell {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.mermaidViewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 255, 255, 0.18);
+  background-color: #050607;
+  background-image:
+    radial-gradient(rgba(130, 255, 255, 0.18) 1px, transparent 1px),
+    radial-gradient(rgba(130, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px, 28px 28px;
+  background-position: 0 0, 14px 14px;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 140, 200, 0.14),
+    inset 0 0 30px rgba(0, 170, 255, 0.08),
+    0 16px 40px rgba(0, 0, 0, 0.55);
+  padding: clamp(18px, 1.8vw, 24px);
+  box-sizing: border-box;
+  overflow: auto;
+  cursor: default;
+  touch-action: auto;
+  user-select: text;
+}
+
+.mermaidSvgHost {
+  display: inline-block;
+  min-width: 100%;
+}
+
+.mermaidSvgHost svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+.mermaidViewport svg * {
+  transition: filter 0.2s ease;
+}
+
+.mermaidPngImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow:
+    0 16px 32px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(0, 255, 255, 0.15);
+}
+
+.mermaidPlaceholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(230, 241, 255, 0.7);
+  font-size: 15px;
+  letter-spacing: 0.4px;
+}
+
+.mermaidStatus {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  display: flex;
+  z-index: 3;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: rgba(4, 18, 36, 0.9);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  color: #e6f1ff;
+  font-size: 14px;
+}
+
+.mermaidRetry {
+  appearance: none;
+  border: 1px solid rgba(61, 213, 255, 0.6);
+  border-radius: 10px;
+  background: rgba(29, 113, 183, 0.35);
+  color: #e6f1ff;
+  padding: 4px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.mermaidRetry:hover {
+  background: rgba(61, 213, 255, 0.45);
+  border-color: rgba(61, 213, 255, 0.8);
+}
+
+
+.graphVariantSwitch {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 5;
+  display: flex;
+  gap: 8px;
+}
+
+.graphVariantButton {
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 255, 255, 0.28);
+  background: rgba(0, 28, 54, 0.78);
+  color: rgba(214, 236, 255, 0.82);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.graphVariantButton:hover:not(:disabled) {
+  background: rgba(0, 60, 94, 0.88);
+  border-color: rgba(0, 255, 255, 0.4);
+  color: #7df9ff;
+}
+
+.graphVariantButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.graphVariantButtonActive {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.35), rgba(0, 140, 255, 0.35));
+  color: #012840;
+  box-shadow:
+    0 0 14px rgba(0, 255, 255, 0.4),
+    inset 0 0 14px rgba(0, 255, 255, 0.35);
+}/* --- CapiNoticias segment card styles retained --- */
+.segmentCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px;
+  background: rgba(0, 18, 36, 0.88);
+  border: 1px solid rgba(0, 255, 255, 0.14);
+  border-radius: 16px;
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.55),
+    inset 0 0 22px rgba(0, 140, 200, 0.12);
+}
+
+.segmentCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.segmentCardTitle {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7df9ff;
+}
+
+.segmentCardSubtitle {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgba(214, 236, 255, 0.65);
+}
+
+.segmentCardCounts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.segmentCardBadge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 255, 255, 0.12);
+  border: 1px solid rgba(0, 255, 255, 0.24);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(214, 236, 255, 0.8);
+}
+
+.segmentCardDescription {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(214, 236, 255, 0.7);
+}
+
+.segmentCardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.segmentCardField {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  background: rgba(0, 26, 52, 0.75);
+  border: 1px solid rgba(0, 255, 255, 0.12);
+  border-radius: 14px;
+}
+
+.segmentCardFieldLabel {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(214, 236, 255, 0.78);
+}
+
+.segmentCardInput {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(0, 12, 26, 0.9);
+  border: 1px solid rgba(0, 255, 255, 0.18);
+  color: #e6f1ff;
+  font-size: 14px;
+}
+
+.segmentCardInput:focus {
+  outline: none;
+  border-color: rgba(0, 255, 255, 0.35);
+  box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.18);
+}
+
+.segmentCardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+  color: rgba(214, 236, 255, 0.55);
+}
+
+.segmentCardHint {
+  font-size: 11px;
+  color: rgba(125, 249, 255, 0.7);
+}
+
+.segmentCardActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.segmentCardPrimaryButton {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, rgba(0, 255, 200, 0.28), rgba(0, 200, 255, 0.28));
+  color: #021422;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+}
+
+.segmentCardGhostButton {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 255, 255, 0.22);
+  background: transparent;
+  color: rgba(214, 236, 255, 0.78);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+}
+
+.segmentCardGhostButton:disabled,
+.segmentCardPrimaryButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.segmentCardMessage {
+  font-size: 11px;
+  color: rgba(125, 249, 255, 0.82);
+}
+
+.segmentCardError {
+  font-size: 11px;
+  color: #fca5a5;
+}
+
+.segmentCardLoading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: rgba(214, 236, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+  .panel {
+    padding: 18px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .toggleGroup {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .body {
+    min-height: 320px;
+  }
+}
+

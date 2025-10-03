@@ -1,0 +1,84 @@
+{
+  "test_samples": [
+    {
+      "query": "Dame un resumen de los datos financieros",
+      "expected_intent": "summary"
+    },
+    {
+      "query": "Muéstrame las métricas totales",
+      "expected_intent": "summary"
+    },
+    {
+      "query": "¿Cuál es el estado general?",
+      "expected_intent": "summary"
+    },
+    {
+      "query": "Detecta anomalías en las transacciones",
+      "expected_intent": "anomaly"
+    },
+    {
+      "query": "¿Hay algo irregular en los datos?",
+      "expected_intent": "anomaly"
+    },
+    {
+      "query": "Busca patrones extraños",
+      "expected_intent": "anomaly"
+    },
+    {
+      "query": "Analiza el rendimiento de las sucursales",
+      "expected_intent": "branch"
+    },
+    {
+      "query": "¿Cómo está la oficina central?",
+      "expected_intent": "branch"
+    },
+    {
+      "query": "Compara las agencias",
+      "expected_intent": "branch"
+    },
+    {
+      "query": "Hola, buenos días",
+      "expected_intent": "greeting"
+    },
+    {
+      "query": "Hello!",
+      "expected_intent": "greeting"
+    },
+    {
+      "query": "¿Cómo estás?",
+      "expected_intent": "small_talk"
+    },
+    {
+      "query": "Gracias por tu ayuda",
+      "expected_intent": "small_talk"
+    },
+    {
+      "query": "¿Qué puedes hacer?",
+      "expected_intent": "query"
+    },
+    {
+      "query": "¿Cuántas transacciones hay?",
+      "expected_intent": "query"
+    },
+    {
+      "query": "Show me financial summary",
+      "expected_intent": "summary"
+    },
+    {
+      "query": "Detect any anomalies",
+      "expected_intent": "anomaly"
+    },
+    {
+      "query": "Branch performance analysis",
+      "expected_intent": "branch"
+    },
+    {
+      "query": "asdfghjkl",
+      "expected_intent": "unknown"
+    },
+    {
+      "query": "123456789",
+      "expected_intent": "unknown"
+    }
+  ]
+}

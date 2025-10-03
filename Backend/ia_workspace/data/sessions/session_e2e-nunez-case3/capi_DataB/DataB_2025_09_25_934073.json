@@ -1,0 +1,12 @@
+{
+  "operation": "select",
+  "table": "public.saldos_sucursal",
+  "rowcount": 0,
+  "generated_at": "2025-09-25T16:58:19.934108",
+  "session_id": "e2e-nunez-case3",
+  "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+  "parameters": [
+    "%Núñez%"
+  ],
+  "result": []
+}

@@ -1,0 +1,748 @@
+{
+  "summary": "Amplía ZeroGraph con los nodos y relaciones de agentes Capi DataB/ElCajas, workspace, voz y GraphCanva, alineando endpoints backend y HUD/frontend.",
+  "add_nodes": [
+    {
+      "id": "domain:utils",
+      "type": "DomainLayer",
+      "properties": {
+        "module_path": "Backend/src/domain/utils",
+        "purpose": "Utilidades de dominio para validar sucursales y etiquetas financieras"
+      }
+    },
+    {
+      "id": "infrastructure:workspace",
+      "type": "InfrastructureLayer",
+      "properties": {
+        "module_path": "Backend/src/infrastructure/workspace",
+        "framework": "file-system",
+        "exposes": "Persistencia de sesiones y almacenamiento seguro de artefactos de agentes"
+      }
+    },
+    {
+      "id": "infrastructure:voice",
+      "type": "InfrastructureLayer",
+      "properties": {
+        "module_path": "Backend/src/voice",
+        "framework": "google-cloud-speech",
+        "exposes": "Streaming de voz a texto y síntesis para interacción conversacional"
+      }
+    },
+    {
+      "id": "infrastructure:graph_canva",
+      "type": "InfrastructureLayer",
+      "properties": {
+        "module_path": "Backend/src/graph_canva",
+        "framework": "fastapi-service",
+        "exposes": "APIs y gateway push para flujos GraphCanva"
+      }
+    },
+    {
+      "id": "shared:observability",
+      "type": "SharedCore",
+      "properties": {
+        "module_path": "Backend/src/observability",
+        "utilities": "Métricas, trazas y monitoreo del orquestador y agentes"
+      }
+    },
+    {
+      "id": "agent:capi_datab",
+      "type": "Agent",
+      "properties": {
+        "name": "capi_datab",
+        "handler_path": "Backend/ia_workspace/agentes/capi_datab/handler.py",
+        "privilege_level": "elevated",
+        "capabilities": [
+          "database_operations",
+          "nl_sql_planning",
+          "workspace_exports"
+        ],
+        "supported_intents": [
+          "db_operation",
+          "query"
+        ]
+      }
+    },
+    {
+      "id": "agent:capi_elcajas",
+      "type": "Agent",
+      "properties": {
+        "name": "capi_elcajas",
+        "handler_path": "Backend/ia_workspace/agentes/capi_elcajas/handler.py",
+        "privilege_level": "privileged",
+        "capabilities": [
+          "cash_diagnostics",
+          "policy_recommendations",
+          "workspace_exports"
+        ],
+        "supported_intents": [
+          "branch",
+          "branch_query",
+          "db_operation",
+          "query"
+        ]
+      }
+    },
+    {
+      "id": "frontend:workspace_portal",
+      "type": "FrontendFeature",
+      "properties": {
+        "route": "/workspace",
+        "description": "Workspace Portal para archivos, tareas programadas y analíticas operativas",
+        "consumes_api": [
+          "presentation:api#DELETE /api/workspace/files/{path}",
+          "presentation:api#GET /api/workspace/files",
+          "presentation:api#GET /api/workspace/summary",
+          "presentation:api#GET /api/workspace/tasks/scheduler/stats"
+        ],
+        "consumes_ws": []
+      }
+    },
+    {
+      "id": "frontend:branch_map",
+      "type": "FrontendFeature",
+      "properties": {
+        "route": "/pages/map",
+        "description": "Mapa geoespacial de sucursales con integración al chat global",
+        "consumes_api": [
+          "presentation:api#GET /api/maps/sucursales"
+        ],
+        "consumes_ws": [
+          "presentation:websocket#WS /ws"
+        ]
+      }
+    },
+    {
+      "id": "frontend:agent_control_center",
+      "type": "FrontendFeature",
+      "properties": {
+        "route": "/pages/agentes",
+        "description": "HUD de agentes con métricas, toggles y panel GraphCanva",
+        "consumes_api": [
+          "presentation:api#GET /api/agents/graph/mermaid_svg",
+          "presentation:api#GET /api/agents/metrics",
+          "presentation:api#GET /api/graph-canva/catalog",
+          "presentation:api#GET /api/graph-canva/workflows",
+          "presentation:api#GET /api/graph-canva/workflows/{workflow_id}",
+          "presentation:api#GET /api/graph-canva/workflows/{workflow_id}/executions",
+          "presentation:api#PATCH /api/graph-canva/workflows/{workflow_id}",
+          "presentation:api#POST /api/agents/refresh",
+          "presentation:api#POST /api/agents/toggle",
+          "presentation:api#POST /api/graph-canva/workflows/{workflow_id}/run"
+        ],
+        "consumes_ws": [
+          "presentation:websocket#WS /ws/agents"
+        ]
+      }
+    },
+    {
+      "id": "dataset:agent_privileges",
+      "type": "Dataset",
+      "properties": {
+        "data_type": "json",
+        "path": "Backend/ia_workspace/data/agent_privileges.json",
+        "purpose": "Configura niveles de privilegio, permisos y restricciones por agente"
+      }
+    },
+    {
+      "id": "dataset:agents_config",
+      "type": "Dataset",
+      "properties": {
+        "data_type": "json",
+        "path": "Backend/ia_workspace/data/agents_config.json",
+        "purpose": "Bandera de habilitación para agentes dinámicos del orquestador"
+      }
+    },
+    {
+      "id": "dataset:workspace_sessions",
+      "type": "Dataset",
+      "properties": {
+        "data_type": "json",
+        "path": "Backend/ia_workspace/data/sessions",
+        "purpose": "Manifiestos y artefactos exportados por agentes durante las sesiones"
+      }
+    },
+    {
+      "id": "script:zero_pipeline",
+      "type": "Script",
+      "properties": {
+        "path": ".zero/scripts/pipeline.ps1",
+        "scope": "pipeline",
+        "effects": "Regenera artefactos de estructura, salud y prompts para .zero"
+      }
+    },
+    {
+      "id": "script:estructura_scan",
+      "type": "Script",
+      "properties": {
+        "path": ".zero/scripts/estructura.ps1",
+        "scope": "analysis",
+        "effects": "Produce el árbol de carpetas canónico para sincronizar ZeroGraph"
+      }
+    },
+    {
+      "id": "script:ws_e2e_smoke",
+      "type": "Script",
+      "properties": {
+        "path": "run_e2e_ws.py",
+        "scope": "testing",
+        "effects": "Prueba end-to-end del orquestador vía WebSocket"
+      }
+    }
+  ],
+  "update_nodes": [
+    {
+      "id": "frontend:global_chat_overlay",
+      "properties": {
+        "consumes_ws": [
+          "presentation:websocket#WS /api/voice/stream",
+          "presentation:websocket#WS /ws",
+          "presentation:websocket#WS /ws/agents"
+        ]
+      }
+    }
+  ],
+  "add_relationships": [
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "domain:utils",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "infrastructure:workspace",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "infrastructure:voice",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "infrastructure:graph_canva",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "shared:observability",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "agent:capi_datab",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "agent:capi_elcajas",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "frontend:workspace_portal",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "frontend:branch_map",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "frontend:agent_control_center",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "dataset:agent_privileges",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "dataset:agents_config",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "dataset:workspace_sessions",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "script:zero_pipeline",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "script:estructura_scan",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "script:ws_e2e_smoke",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:workspace",
+      "target": "shared:core",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:workspace",
+      "target": "orchestrator:state_schema",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:voice",
+      "target": "shared:core",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:voice",
+      "target": "shared:observability",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:voice",
+      "target": "domain:agents",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "agent:capi_datab",
+      "target": "domain:agents",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "agent:capi_datab",
+      "target": "domain:contracts",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "agent:capi_datab",
+      "target": "domain:utils",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "agent:capi_datab",
+      "target": "application:reasoning",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "agent:capi_datab",
+      "target": "infrastructure:workspace",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "agent:capi_datab",
+      "target": "infrastructure:langgraph",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "agent:capi_datab",
+      "target": "shared:core",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "agent:capi_elcajas",
+      "target": "domain:agents",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "agent:capi_elcajas",
+      "target": "application:services",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "agent:capi_elcajas",
+      "target": "infrastructure:workspace",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "agent:capi_elcajas",
+      "target": "shared:core",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "privilege_controls",
+      "source": "presentation:api",
+      "target": "agent:capi_datab",
+      "properties": {
+        "policy": "agent_privileges_json"
+      }
+    },
+    {
+      "type": "privilege_controls",
+      "source": "presentation:api",
+      "target": "agent:capi_elcajas",
+      "properties": {
+        "policy": "agent_privileges_json"
+      }
+    },
+    {
+      "type": "invokes",
+      "source": "orchestrator:graph_runtime",
+      "target": "agent:capi_datab",
+      "properties": {
+        "trigger": "intent",
+        "path": "LangGraphRuntime.process_query.capi_datab"
+      }
+    },
+    {
+      "type": "invokes",
+      "source": "orchestrator:graph_runtime",
+      "target": "agent:capi_elcajas",
+      "properties": {
+        "trigger": "intent",
+        "path": "LangGraphRuntime.process_query.capi_elcajas"
+      }
+    },
+    {
+      "type": "persists_to",
+      "source": "application:services",
+      "target": "dataset:agent_privileges",
+      "properties": {
+        "operation": "read",
+        "guard": "privilege_check"
+      }
+    },
+    {
+      "type": "persists_to",
+      "source": "shared:shared",
+      "target": "dataset:agents_config",
+      "properties": {
+        "operation": "read",
+        "guard": "schema_validation"
+      }
+    },
+    {
+      "type": "persists_to",
+      "source": "agent:capi_datab",
+      "target": "dataset:workspace_sessions",
+      "properties": {
+        "operation": "write",
+        "guard": "privilege_check + human_gate"
+      }
+    },
+    {
+      "type": "persists_to",
+      "source": "agent:capi_elcajas",
+      "target": "dataset:workspace_sessions",
+      "properties": {
+        "operation": "write",
+        "guard": "privilege_check"
+      }
+    },
+    {
+      "type": "renders",
+      "source": "frontend:workspace_portal",
+      "target": "presentation:api",
+      "properties": {
+        "channel": "REST",
+        "cadence": "poll"
+      }
+    },
+    {
+      "type": "renders",
+      "source": "frontend:agent_control_center",
+      "target": "presentation:api",
+      "properties": {
+        "channel": "REST",
+        "cadence": "live"
+      }
+    },
+    {
+      "type": "renders",
+      "source": "frontend:agent_control_center",
+      "target": "presentation:websocket",
+      "properties": {
+        "channel": "WebSocket",
+        "cadence": "live"
+      }
+    },
+    {
+      "type": "renders",
+      "source": "frontend:branch_map",
+      "target": "presentation:api",
+      "properties": {
+        "channel": "REST",
+        "cadence": "on_demand"
+      }
+    },
+    {
+      "type": "renders",
+      "source": "frontend:branch_map",
+      "target": "presentation:websocket",
+      "properties": {
+        "channel": "WebSocket",
+        "cadence": "live"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "application:services",
+      "properties": {
+        "interface": "REST:/api/agents/metrics",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "application:services",
+      "properties": {
+        "interface": "REST:/api/agents/toggle",
+        "method": "POST"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "application:services",
+      "properties": {
+        "interface": "REST:/api/agents/system-status",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "orchestrator:dynamic_manager",
+      "properties": {
+        "interface": "REST:/api/agents/refresh",
+        "method": "POST"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "infrastructure:workspace",
+      "properties": {
+        "interface": "REST:/api/workspace/summary",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "infrastructure:workspace",
+      "properties": {
+        "interface": "REST:/api/workspace/files",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "infrastructure:workspace",
+      "properties": {
+        "interface": "REST:/api/workspace/files/{path}",
+        "method": "DELETE"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "infrastructure:workspace",
+      "properties": {
+        "interface": "REST:/api/workspace/tasks/scheduler/stats",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "infrastructure:graph_canva",
+      "properties": {
+        "interface": "REST:/api/graph-canva/catalog",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "infrastructure:graph_canva",
+      "properties": {
+        "interface": "REST:/api/graph-canva/workflows",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "infrastructure:graph_canva",
+      "properties": {
+        "interface": "REST:/api/graph-canva/workflows/{workflow_id}",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "infrastructure:graph_canva",
+      "properties": {
+        "interface": "REST:/api/graph-canva/workflows/{workflow_id}",
+        "method": "PATCH"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "infrastructure:graph_canva",
+      "properties": {
+        "interface": "REST:/api/graph-canva/workflows/{workflow_id}/run",
+        "method": "POST"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "infrastructure:graph_canva",
+      "properties": {
+        "interface": "REST:/api/graph-canva/workflows/{workflow_id}/executions",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "infrastructure:graph_canva",
+      "properties": {
+        "interface": "REST:/api/graph-canva/executions/{execution_id}",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "infrastructure:voice",
+      "properties": {
+        "interface": "REST:/api/voice/config",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "infrastructure:database",
+      "properties": {
+        "interface": "REST:/api/maps/sucursales",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:websocket",
+      "target": "infrastructure:graph_canva",
+      "properties": {
+        "interface": "WebSocket:/ws/graph-canva/{workflow_id}",
+        "method": "STREAM"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:websocket",
+      "target": "infrastructure:voice",
+      "properties": {
+        "interface": "WebSocket:/api/voice/stream",
+        "method": "STREAM"
+      }
+    }
+  ]
+}

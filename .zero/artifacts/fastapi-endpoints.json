@@ -1,0 +1,780 @@
+{
+  "endpoints": [
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents",
+      "tags": [],
+      "handler": "list_agents"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/agents/capi_noticias/config",
+      "tags": [],
+      "handler": "update_capi_noticias_config"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/agents/capi_noticias/run",
+      "tags": [],
+      "handler": "run_capi_noticias"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/agents/capi_noticias/start",
+      "tags": [],
+      "handler": "start_capi_noticias"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents/capi_noticias/status",
+      "tags": [],
+      "handler": "get_capi_noticias_status"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/agents/capi_noticias/stop",
+      "tags": [],
+      "handler": "stop_capi_noticias"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents/graph/mermaid_conceptual",
+      "tags": [],
+      "handler": "get_agents_graph_mermaid_conceptual"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents/graph/mermaid_png",
+      "tags": [],
+      "handler": "get_agents_graph_mermaid_png"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents/graph/mermaid_svg",
+      "tags": [],
+      "handler": "get_agents_graph_mermaid_svg"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/agents/graph/refresh",
+      "tags": [],
+      "handler": "refresh_dynamic_graph"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents/graph/status",
+      "tags": [],
+      "handler": "get_dynamic_graph_status"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents/metrics",
+      "tags": [],
+      "handler": "get_agents_metrics"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents/ping",
+      "tags": [],
+      "handler": "agents_ping"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents/privileges",
+      "tags": [],
+      "handler": "list_agent_privileges"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/agents/refresh",
+      "tags": [],
+      "handler": "refresh_agents"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/agents/register",
+      "tags": [],
+      "handler": "register_new_agent"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents/registry",
+      "tags": [],
+      "handler": "list_registered_agents"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/agents/registry/refresh",
+      "tags": [],
+      "handler": "refresh_agent_registry"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents/registry/stats",
+      "tags": [],
+      "handler": "get_registry_stats"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents/system-status",
+      "tags": [],
+      "handler": "get_system_status"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/agents/toggle",
+      "tags": [],
+      "handler": "toggle_agent"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents/token-tracking",
+      "tags": [],
+      "handler": "get_token_tracking"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/agents/token-usage",
+      "tags": [],
+      "handler": "record_token_usage"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/agents/{agent_name}/manifest",
+      "tags": [],
+      "handler": "get_agent_manifest"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "DELETE",
+      "path": "/api/agents/{agent_name}/unregister",
+      "tags": [],
+      "handler": "unregister_agent"
+    },
+    {
+      "file": "Backend\\src\\api\\agents_endpoints.py",
+      "router": "router",
+      "method": "PATCH",
+      "path": "/api/agents/{nombre}/privilege",
+      "tags": [],
+      "handler": "update_agent_privilege"
+    },
+    {
+      "file": "Backend\\src\\api\\alerts_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/alerts/",
+      "tags": [],
+      "handler": "get_historical_alerts"
+    },
+    {
+      "file": "Backend\\src\\api\\alerts_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/alerts/health",
+      "tags": [],
+      "handler": "database_health_check"
+    },
+    {
+      "file": "Backend\\src\\api\\alerts_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/alerts/search",
+      "tags": [],
+      "handler": "search_alerts"
+    },
+    {
+      "file": "Backend\\src\\api\\alerts_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/alerts/summary/critical",
+      "tags": [],
+      "handler": "get_critical_alerts_summary"
+    },
+    {
+      "file": "Backend\\src\\api\\alerts_endpoints.py",
+      "router": "router",
+      "method": "PUT",
+      "path": "/api/alerts/tasks/{task_id}/progress",
+      "tags": [],
+      "handler": "update_task_progress"
+    },
+    {
+      "file": "Backend\\src\\api\\alerts_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/alerts/teams/workload",
+      "tags": [],
+      "handler": "get_team_workload"
+    },
+    {
+      "file": "Backend\\src\\api\\alerts_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/alerts/{alert_id}",
+      "tags": [],
+      "handler": "get_alert_details"
+    },
+    {
+      "file": "Backend\\src\\api\\alerts_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/alerts/{alert_id}/ai-context",
+      "tags": [],
+      "handler": "get_alert_ai_context"
+    },
+    {
+      "file": "Backend\\src\\api\\alerts_endpoints.py",
+      "router": "router",
+      "method": "PATCH",
+      "path": "/api/alerts/{alert_id}/status",
+      "tags": [],
+      "handler": "update_alert_status_endpoint"
+    },
+    {
+      "file": "Backend\\src\\api\\cash_policies_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/cash-policies",
+      "tags": [],
+      "handler": "list_cash_policies"
+    },
+    {
+      "file": "Backend\\src\\api\\cash_policies_endpoints.py",
+      "router": "router",
+      "method": "PUT",
+      "path": "/api/cash-policies/{channel}",
+      "tags": [],
+      "handler": "upsert_cash_policy"
+    },
+    {
+      "file": "Backend\\src\\presentation\\demo_interface.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/demo/ping",
+      "tags": [],
+      "handler": "demo_ping"
+    },
+    {
+      "file": "Backend\\src\\graph_canva\\router.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/graph-canva/catalog",
+      "tags": [],
+      "handler": "get_catalog"
+    },
+    {
+      "file": "Backend\\src\\graph_canva\\router.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/graph-canva/executions/{execution_id}",
+      "tags": [],
+      "handler": "get_execution"
+    },
+    {
+      "file": "Backend\\src\\graph_canva\\router.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/graph-canva/workflows",
+      "tags": [],
+      "handler": "list_workflows"
+    },
+    {
+      "file": "Backend\\src\\graph_canva\\router.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/graph-canva/workflows/{workflow_id}",
+      "tags": [],
+      "handler": "get_workflow"
+    },
+    {
+      "file": "Backend\\src\\graph_canva\\router.py",
+      "router": "router",
+      "method": "PATCH",
+      "path": "/api/graph-canva/workflows/{workflow_id}",
+      "tags": [],
+      "handler": "patch_workflow"
+    },
+    {
+      "file": "Backend\\src\\graph_canva\\router.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/graph-canva/workflows/{workflow_id}/executions",
+      "tags": [],
+      "handler": "list_executions"
+    },
+    {
+      "file": "Backend\\src\\graph_canva\\router.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/graph-canva/workflows/{workflow_id}/run",
+      "tags": [],
+      "handler": "run_workflow"
+    },
+    {
+      "file": "Backend\\src\\api\\maps_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/maps/sucursales",
+      "tags": [],
+      "handler": "list_sucursales"
+    },
+    {
+      "file": "Backend\\src\\presentation\\api\\metrics_routes.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/metrics/ab-testing",
+      "tags": [],
+      "handler": "get_ab_testing_metrics"
+    },
+    {
+      "file": "Backend\\src\\presentation\\api\\metrics_routes.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/metrics/accuracy",
+      "tags": [],
+      "handler": "get_accuracy_metrics"
+    },
+    {
+      "file": "Backend\\src\\presentation\\api\\metrics_routes.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/metrics/alerts",
+      "tags": [],
+      "handler": "get_current_alerts"
+    },
+    {
+      "file": "Backend\\src\\presentation\\api\\metrics_routes.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/metrics/dashboard",
+      "tags": [],
+      "handler": "get_dashboard_data"
+    },
+    {
+      "file": "Backend\\src\\presentation\\api\\metrics_routes.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/metrics/export",
+      "tags": [],
+      "handler": "export_all_metrics"
+    },
+    {
+      "file": "Backend\\src\\presentation\\api\\metrics_routes.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/metrics/feature-flags",
+      "tags": [],
+      "handler": "get_feature_flags"
+    },
+    {
+      "file": "Backend\\src\\presentation\\api\\metrics_routes.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/metrics/feature-flags/{flag_name}/emergency-disable",
+      "tags": [],
+      "handler": "emergency_disable_flag"
+    },
+    {
+      "file": "Backend\\src\\presentation\\api\\metrics_routes.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/metrics/feature-flags/{flag_name}/update",
+      "tags": [],
+      "handler": "update_feature_flag"
+    },
+    {
+      "file": "Backend\\src\\presentation\\api\\metrics_routes.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/metrics/health",
+      "tags": [],
+      "handler": "get_system_health"
+    },
+    {
+      "file": "Backend\\src\\api\\saldos_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/saldos/dispositivos",
+      "tags": [],
+      "handler": "list_dispositivos"
+    },
+    {
+      "file": "Backend\\src\\api\\saldos_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/saldos/dispositivos",
+      "tags": [],
+      "handler": "create_dispositivo"
+    },
+    {
+      "file": "Backend\\src\\api\\saldos_endpoints.py",
+      "router": "router",
+      "method": "DELETE",
+      "path": "/api/saldos/dispositivos/{record_id}",
+      "tags": [],
+      "handler": "delete_dispositivo"
+    },
+    {
+      "file": "Backend\\src\\api\\saldos_endpoints.py",
+      "router": "router",
+      "method": "PUT",
+      "path": "/api/saldos/dispositivos/{record_id}",
+      "tags": [],
+      "handler": "update_dispositivo"
+    },
+    {
+      "file": "Backend\\src\\api\\saldos_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/saldos/sucursales",
+      "tags": [],
+      "handler": "list_sucursales"
+    },
+    {
+      "file": "Backend\\src\\api\\saldos_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/saldos/sucursales",
+      "tags": [],
+      "handler": "create_sucursal"
+    },
+    {
+      "file": "Backend\\src\\api\\saldos_endpoints.py",
+      "router": "router",
+      "method": "DELETE",
+      "path": "/api/saldos/sucursales/{sucursal_id}",
+      "tags": [],
+      "handler": "delete_sucursal"
+    },
+    {
+      "file": "Backend\\src\\api\\saldos_endpoints.py",
+      "router": "router",
+      "method": "PUT",
+      "path": "/api/saldos/sucursales/{sucursal_id}",
+      "tags": [],
+      "handler": "update_sucursal"
+    },
+    {
+      "file": "Backend\\src\\api\\session_files_endpoints.py",
+      "router": "router",
+      "method": "DELETE",
+      "path": "/api/session-files/file",
+      "tags": [],
+      "handler": "delete_session_file"
+    },
+    {
+      "file": "Backend\\src\\api\\session_files_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/session-files/file",
+      "tags": [],
+      "handler": "read_session_file"
+    },
+    {
+      "file": "Backend\\src\\api\\session_files_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/session-files/tree",
+      "tags": [],
+      "handler": "get_session_files_tree"
+    },
+    {
+      "file": "Backend\\src\\api\\voice_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/voice/config",
+      "tags": [],
+      "handler": "voice_config"
+    },
+    {
+      "file": "Backend\\src\\api\\voice_endpoints.py",
+      "router": "router",
+      "method": "WEBSOCKET",
+      "path": "/api/voice/stream",
+      "tags": [],
+      "handler": "voice_stream"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/files",
+      "tags": [],
+      "handler": "list_files"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/workspace/files/analysis",
+      "tags": [],
+      "handler": "create_analysis_file"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/files/stats",
+      "tags": [],
+      "handler": "get_workspace_stats"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "DELETE",
+      "path": "/api/workspace/files/{file_path:path}",
+      "tags": [],
+      "handler": "delete_file"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/health",
+      "tags": [],
+      "handler": "workspace_health_check"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/knowledge/documents",
+      "tags": [],
+      "handler": "list_documents"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/workspace/knowledge/documents",
+      "tags": [],
+      "handler": "add_document"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "DELETE",
+      "path": "/api/workspace/knowledge/documents/{doc_id}",
+      "tags": [],
+      "handler": "delete_document"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/knowledge/documents/{doc_id}",
+      "tags": [],
+      "handler": "get_document"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/workspace/knowledge/reindex",
+      "tags": [],
+      "handler": "reindex_knowledge_base"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/knowledge/search",
+      "tags": [],
+      "handler": "search_documents"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/knowledge/stats",
+      "tags": [],
+      "handler": "get_knowledge_stats"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/memory/context",
+      "tags": [],
+      "handler": "get_context"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/memory/conversations",
+      "tags": [],
+      "handler": "list_conversations"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/workspace/memory/conversations",
+      "tags": [],
+      "handler": "store_conversation"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/memory/conversations/{session_id}",
+      "tags": [],
+      "handler": "get_conversation"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/memory/conversations/{session_id}/summary",
+      "tags": [],
+      "handler": "get_conversation_summary"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/memory/stats",
+      "tags": [],
+      "handler": "get_memory_stats"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/workspace/organize",
+      "tags": [],
+      "handler": "organize_workspace"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "ON_EVENT",
+      "path": "/api/workspace/shutdown",
+      "tags": [],
+      "handler": "shutdown_workspace"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "ON_EVENT",
+      "path": "/api/workspace/startup",
+      "tags": [],
+      "handler": "startup_workspace"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/summary",
+      "tags": [],
+      "handler": "get_workspace_summary"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/tasks",
+      "tags": [],
+      "handler": "list_tasks"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/tasks/scheduler/stats",
+      "tags": [],
+      "handler": "get_scheduler_stats"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "DELETE",
+      "path": "/api/workspace/tasks/{task_id}",
+      "tags": [],
+      "handler": "cancel_task"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/tasks/{task_id}",
+      "tags": [],
+      "handler": "get_task_status"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "POST",
+      "path": "/api/workspace/templates",
+      "tags": [],
+      "handler": "create_template"
+    },
+    {
+      "file": "Backend\\src\\api\\workspace_endpoints.py",
+      "router": "router",
+      "method": "GET",
+      "path": "/api/workspace/work/previous",
+      "tags": [],
+      "handler": "read_previous_work"
+    },
+    {
+      "file": "Backend\\src\\presentation\\websocket_graphcanva.py",
+      "router": "router",
+      "method": "WEBSOCKET",
+      "path": "/ws/graph-canva/{workflow_id}",
+      "tags": [],
+      "handler": "websocket_graph_canva"
+    }
+  ]
+}

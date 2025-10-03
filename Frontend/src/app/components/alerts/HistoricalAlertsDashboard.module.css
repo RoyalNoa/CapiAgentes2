@@ -1,0 +1,596 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 80% 40%, rgba(0, 255, 136, 0.06) 0%, transparent 50%),
+    rgba(0, 17, 34, 0.35);
+  pointer-events: none;
+  z-index: 1040;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.backdrop.visible {
+  opacity: 1;
+}
+
+.overlay {
+  position: fixed;
+  z-index: 1055;
+  pointer-events: auto;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlayFloating {
+  filter: drop-shadow(0 0 26px rgba(0, 255, 255, 0.22));
+}
+
+.resizeHandle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  cursor: ew-resize;
+  background: rgba(0, 255, 255, 0.18);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.resizeHandle:hover {
+  opacity: 1;
+}
+
+.shell {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(135deg, rgba(0, 12, 28, 0.94), rgba(0, 32, 60, 0.9));
+  border: 1px solid rgba(0, 255, 255, 0.32);
+  border-radius: 14px;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px 14px;
+  background:
+    linear-gradient(135deg, rgba(0, 36, 70, 0.92), rgba(0, 48, 92, 0.86));
+  border-bottom: 1px solid rgba(0, 255, 255, 0.24);
+  cursor: grab;
+  user-select: none;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.headerTitle {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: #00e5ff;
+  font-family: "Orbitron", "Inter", system-ui;
+}
+
+.headerSubtitle {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: rgba(124, 170, 210, 0.85);
+  font-family: "Inter", system-ui;
+}
+
+.headerActions {
+  display: flex;
+  gap: 10px;
+}
+
+.headerButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 255, 255, 0.32);
+  background: rgba(0, 30, 60, 0.6);
+  color: #7df9ff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, border 0.2s ease, color 0.2s ease;
+}
+
+.headerButton:hover {
+  background: rgba(0, 50, 90, 0.8);
+  border-color: rgba(0, 255, 255, 0.5);
+  color: #00ffff;
+}
+
+.list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 18px 20px;
+  overscroll-behavior: contain;
+}
+
+.list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0, 255, 255, 0.24), rgba(0, 180, 255, 0.2));
+  border-radius: 3px;
+}
+
+.stateMessage {
+  padding: 26px 20px;
+  text-align: center;
+  font-family: "Orbitron", "Inter", system-ui;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: rgba(124, 170, 210, 0.9);
+  border: 1px dashed rgba(0, 255, 255, 0.26);
+  border-radius: 12px;
+  background: rgba(0, 20, 40, 0.45);
+}
+
+.errorMessage {
+  padding: 24px 18px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  border-radius: 12px;
+  background: rgba(60, 0, 20, 0.45);
+}
+
+.card {
+  background: rgba(0, 16, 32, 0.85);
+  border: 1px solid rgba(0, 255, 255, 0.14);
+  border-radius: 12px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardActive {
+  border-color: rgba(0, 255, 255, 0.4);
+  box-shadow:
+    0 0 30px rgba(0, 255, 255, 0.16),
+    inset 0 0 12px rgba(0, 255, 255, 0.12);
+}
+
+.cardButton {
+  width: 100%;
+  display: flex;
+  gap: 14px;
+  border: none;
+  background: none;
+  color: inherit;
+  text-align: left;
+  padding: 16px 18px 14px;
+  cursor: pointer;
+}
+
+.priorityStripe {
+  width: 6px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.25);
+}
+
+.cardMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cardTitle {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e6f1ff;
+}
+
+.statusBadge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+
+.statusPending {
+  border-color: rgba(0, 255, 255, 0.32);
+  color: #7df9ff;
+  background: rgba(0, 60, 110, 0.35);
+}
+
+.statusAccepted {
+  border-color: rgba(18, 212, 138, 0.4);
+  color: #12d48a;
+  background: rgba(18, 212, 138, 0.18);
+}
+
+.statusRejected {
+  border-color: rgba(255, 107, 107, 0.4);
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.16);
+}
+
+.cardMeta {
+  display: flex;
+  gap: 16px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(132, 168, 206, 0.75);
+}
+
+.cardSummary {
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(230, 241, 255, 0.82);
+  margin: 0;
+}
+
+.cardExpanded {
+  border-top: 1px solid rgba(0, 255, 255, 0.16);
+  background: rgba(0, 12, 24, 0.72);
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cardControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.cardNote {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(132, 168, 206, 0.72);
+}
+
+.cardNote span {
+  display: inline-block;
+}
+
+.gateBanner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #00e5ff;
+  border: 1px solid rgba(0, 255, 255, 0.32);
+  border-radius: 999px;
+  padding: 6px 12px;
+  background: rgba(0, 40, 80, 0.6);
+}
+
+.detailSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sectionLabel {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #00e5ff;
+}
+
+.detailText {
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(230, 241, 255, 0.9);
+  margin: 0;
+}
+
+.detailList {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: rgba(210, 228, 255, 0.85);
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.secondaryButton,
+.actionButton {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, border 0.2s ease, color 0.2s ease;
+  border: 1px solid rgba(0, 255, 255, 0.24);
+  background: rgba(0, 24, 48, 0.6);
+  color: #7df9ff;
+}
+
+.secondaryButton:hover {
+  background: rgba(0, 40, 80, 0.75);
+  border-color: rgba(0, 255, 255, 0.4);
+}
+
+.actionButton:disabled,
+.secondaryButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.acceptButton {
+  border-color: rgba(18, 212, 138, 0.45);
+  color: #12d48a;
+  background: rgba(18, 212, 138, 0.14);
+}
+
+.acceptButton:hover:not(:disabled) {
+  background: rgba(18, 212, 138, 0.22);
+}
+
+.rejectButton {
+  border-color: rgba(255, 107, 107, 0.45);
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.14);
+}
+
+.rejectButton:hover:not(:disabled) {
+  background: rgba(255, 107, 107, 0.2);
+}
+
+.statusNote {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(132, 168, 206, 0.75);
+}
+
+@media (max-width: 768px) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.detailFloatingWindow {
+  position: fixed;
+  width: 420px;
+  max-width: 90vw;
+  height: 540px;
+  max-height: calc(100vh - 48px);
+  z-index: 1065;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(140deg, rgba(6, 20, 36, 0.92), rgba(4, 32, 50, 0.92));
+  border: 1px solid rgba(0, 255, 255, 0.24);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 28px rgba(0, 255, 255, 0.18), 0 14px 30px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.detailFloatingHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, rgba(0, 36, 70, 0.92), rgba(0, 56, 88, 0.86));
+  border-bottom: 1px solid rgba(0, 255, 255, 0.24);
+  cursor: grab;
+  user-select: none;
+}
+
+.detailFloatingHeaderDragging {
+  cursor: grabbing;
+}
+
+.detailFloatingTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detailFloatingOverline {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #00e5ff;
+}
+
+.detailFloatingName {
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  color: #e6f1ff;
+  font-weight: 600;
+}
+
+.detailFloatingClose {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 255, 255, 0.32);
+  background: rgba(0, 24, 48, 0.7);
+  color: #7df9ff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition: background 0.2s ease, border 0.2s ease, color 0.2s ease;
+}
+
+.detailFloatingClose:hover {
+  background: rgba(0, 48, 90, 0.85);
+  border-color: rgba(0, 255, 255, 0.5);
+  color: #00ffff;
+}
+
+.detailFloatingBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 18px 20px 22px;
+  overflow-y: auto;
+}
+
+.detailFloatingBody::-webkit-scrollbar {
+  width: 6px;
+}
+
+.detailFloatingBody::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 255, 0.2);
+  border-radius: 999px;
+}
+
+.detailFloatingMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.detailFloatingChip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 255, 255, 0.24);
+  background: rgba(0, 32, 64, 0.6);
+  color: #7df9ff;
+}
+
+.detailFloatingSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(0, 255, 255, 0.12);
+}
+
+.detailFloatingSection:first-of-type {
+  border-top: none;
+}
+
+.detailFloatingMetrics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px 0;
+}
+
+.detailMetricRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(224, 238, 255, 0.9);
+}
+
+.detailMetricLabel {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(117, 164, 206, 0.78);
+}
+
+.detailMetricValue {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #e6f1ff;
+}
+
+@media (max-width: 768px) {
+  .detailFloatingWindow {
+    width: calc(100vw - 32px);
+    left: 16px !important;
+    right: 16px;
+  }
+}
+
+.detailDeviceTable {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detailDeviceHeader {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(124, 170, 210, 0.78);
+}
+
+.detailDeviceRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  font-size: 12px;
+  color: rgba(230, 241, 255, 0.9);
+}
+
+.detailDeviceFootnote {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(132, 168, 206, 0.7);
+  padding-left: 4px;
+  display: block;
+}
+

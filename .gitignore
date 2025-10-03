@@ -1,0 +1,96 @@
+### Root gitignore reforzado para monorepo (Frontend + Backend + launcher)
+
+# NPM/Node dependencies and artifacts
+**/node_modules/
+**/.pnp
+**/.pnp.js
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/package-lock.json
+**/yarn.lock
+
+# Next.js build artifacts and runtime files
+Frontend/.next/
+Frontend/out/
+Frontend/.next/cache/
+Frontend/logs/
+# Exclude ALL Next.js build artifacts
+**/build-manifest.json
+**/app-build-manifest.json
+**/fallback-build-manifest.json
+**/pages-manifest.json
+**/middleware-build-manifest.js
+**/next-font-manifest.js
+**/next-font-manifest.json
+**/_buildManifest.js
+
+# Build artifacts (installable dependencies)
+**/dist/
+**/build/
+build_cache/
+**/.turbo/
+
+# Python runtime artifacts
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+**/*.egg-info/
+
+# Virtual environments (installable)
+**/.venv/
+**/venv/
+**/env/
+
+# Application logs (runtime generated)
+logs/
+**/logs/
+!logs/.gitkeep
+
+# Environment files - TRACK main .env for team collaboration
+# Only exclude local development overrides
+Frontend/.env.local
+Backend/.env.local
+# Track main .env and examples for team setup
+!.env
+!.env.example
+!**/.env.example
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+
+# Generated executables (PyInstaller output)
+*.exe
+*.dll
+*.bin
+executable_output/
+
+# Docker runtime data
+**/.docker/**
+**/.compose/**
+
+# Test coverage reports
+**/coverage/
+**/.coverage
+**/.nyc_output
+
+# Database files (runtime generated)
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+
+# Temporary files
+**/tmp/
+**/temp/
+**/.tmp/
+
+############################################################
+# Important: .npmrc, package.json, requirements.txt,
+# docker-compose.yml, and configuration files ARE tracked
+############################################################

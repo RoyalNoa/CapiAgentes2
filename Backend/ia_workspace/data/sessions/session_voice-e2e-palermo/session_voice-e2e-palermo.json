@@ -1,0 +1,2121 @@
+{
+  "session_id": "voice-e2e-palermo",
+  "sanitized_session_id": "voice-e2e-palermo",
+  "datab_exports": [
+    {
+      "filename": "DataB_2025_10_02_438841.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_438841.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_438841.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:27:04.470719"
+    },
+    {
+      "filename": "DataB_2025_10_02_573391.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_573391.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_573391.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-02T17:27:04.590471"
+    },
+    {
+      "filename": "DataB_2025_10_02_806016.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_806016.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_806016.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:27:04.825130"
+    },
+    {
+      "filename": "DataB_2025_10_02_040509.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_040509.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_040509.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:27:14.069687"
+    },
+    {
+      "filename": "DataB_2025_10_02_204953.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_204953.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_204953.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-02T17:27:14.233633"
+    },
+    {
+      "filename": "DataB_2025_10_02_431863.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_431863.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_431863.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:27:14.451466"
+    },
+    {
+      "filename": "DataB_2025_10_02_285962.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_285962.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_285962.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:32:08.300650"
+    },
+    {
+      "filename": "DataB_2025_10_02_354604.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_354604.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_354604.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-02T17:32:08.370543"
+    },
+    {
+      "filename": "DataB_2025_10_02_495814.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_495814.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_495814.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:32:08.505801"
+    },
+    {
+      "filename": "DataB_2025_10_02_090064.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_090064.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_090064.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:32:13.105896"
+    },
+    {
+      "filename": "DataB_2025_10_02_160882.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_160882.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_160882.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-02T17:32:13.176450"
+    },
+    {
+      "filename": "DataB_2025_10_02_302785.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_302785.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_302785.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:32:13.318518"
+    },
+    {
+      "filename": "DataB_2025_10_02_144519.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_144519.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_144519.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:41:11.161774"
+    },
+    {
+      "filename": "DataB_2025_10_02_231029.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_231029.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_231029.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-02T17:41:11.253023"
+    },
+    {
+      "filename": "DataB_2025_10_02_411446.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_411446.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_411446.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:41:11.441253"
+    },
+    {
+      "filename": "DataB_2025_10_02_011590.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_011590.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_011590.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:41:17.031327"
+    },
+    {
+      "filename": "DataB_2025_10_02_112746.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_112746.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_112746.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-02T17:41:17.138826"
+    },
+    {
+      "filename": "DataB_2025_10_02_296573.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_296573.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_296573.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:41:17.325215"
+    },
+    {
+      "filename": "DataB_2025_10_02_721396.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_721396.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_721396.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:50:15.742830"
+    },
+    {
+      "filename": "DataB_2025_10_02_866843.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_866843.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_866843.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-02T17:50:15.889612"
+    },
+    {
+      "filename": "DataB_2025_10_02_120631.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_120631.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_120631.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:50:16.145790"
+    },
+    {
+      "filename": "DataB_2025_10_02_811558.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_811558.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_811558.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:50:20.821257"
+    },
+    {
+      "filename": "DataB_2025_10_02_870739.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_870739.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_870739.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-02T17:50:20.887775"
+    },
+    {
+      "filename": "DataB_2025_10_02_973528.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_973528.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_973528.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:50:20.984606"
+    },
+    {
+      "filename": "DataB_2025_10_02_995839.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_995839.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_995839.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:51:29.005061"
+    },
+    {
+      "filename": "DataB_2025_10_02_053495.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_053495.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_053495.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-02T17:51:29.063182"
+    },
+    {
+      "filename": "DataB_2025_10_02_192725.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_192725.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_192725.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:51:29.201564"
+    },
+    {
+      "filename": "DataB_2025_10_02_161519.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_161519.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_161519.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:51:33.172290"
+    },
+    {
+      "filename": "DataB_2025_10_02_221451.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_221451.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_221451.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-02T17:51:33.231716"
+    },
+    {
+      "filename": "DataB_2025_10_02_316099.json",
+      "relative_path": "capi_DataB/DataB_2025_10_02_316099.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_02_316099.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-02T17:51:33.324710"
+    },
+    {
+      "filename": "DataB_2025_10_03_905170.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_905170.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_905170.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:49:49.922072"
+    },
+    {
+      "filename": "DataB_2025_10_03_989626.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_989626.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_989626.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:49:50.005737"
+    },
+    {
+      "filename": "DataB_2025_10_03_757715.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_757715.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_757715.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:49:55.771525"
+    },
+    {
+      "filename": "DataB_2025_10_03_831641.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_831641.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_831641.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:49:55.848491"
+    },
+    {
+      "filename": "DataB_2025_10_03_067125.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_067125.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_067125.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:52:38.079751"
+    },
+    {
+      "filename": "DataB_2025_10_03_147805.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_147805.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_147805.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:52:38.163896"
+    },
+    {
+      "filename": "DataB_2025_10_03_377479.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_377479.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_377479.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:52:42.413540"
+    },
+    {
+      "filename": "DataB_2025_10_03_466118.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_466118.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_466118.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:52:42.481028"
+    },
+    {
+      "filename": "DataB_2025_10_03_880162.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_880162.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_880162.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:54:34.895287"
+    },
+    {
+      "filename": "DataB_2025_10_03_948343.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_948343.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_948343.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:54:34.961862"
+    },
+    {
+      "filename": "DataB_2025_10_03_485330.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_485330.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_485330.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:54:40.505745"
+    },
+    {
+      "filename": "DataB_2025_10_03_562218.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_562218.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_562218.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:54:40.572276"
+    },
+    {
+      "filename": "DataB_2025_10_03_819689.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_819689.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_819689.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:57:08.833093"
+    },
+    {
+      "filename": "DataB_2025_10_03_886751.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_886751.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_886751.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:57:08.898913"
+    },
+    {
+      "filename": "DataB_2025_10_03_394628.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_394628.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_394628.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:57:12.410179"
+    },
+    {
+      "filename": "DataB_2025_10_03_473457.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_473457.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_473457.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:57:12.490164"
+    },
+    {
+      "filename": "DataB_2025_10_03_759072.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_759072.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_759072.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:57:41.774739"
+    },
+    {
+      "filename": "DataB_2025_10_03_828016.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_828016.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_828016.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:57:41.843094"
+    },
+    {
+      "filename": "DataB_2025_10_03_676895.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_676895.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_676895.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:57:45.687434"
+    },
+    {
+      "filename": "DataB_2025_10_03_739499.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_739499.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_739499.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:57:45.776016"
+    },
+    {
+      "filename": "DataB_2025_10_03_888359.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_888359.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_888359.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:58:19.905072"
+    },
+    {
+      "filename": "DataB_2025_10_03_955843.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_955843.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_955843.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:58:19.970009"
+    },
+    {
+      "filename": "DataB_2025_10_03_776587.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_776587.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_776587.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:58:23.792241"
+    },
+    {
+      "filename": "DataB_2025_10_03_854702.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_854702.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_854702.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:58:23.869156"
+    },
+    {
+      "filename": "DataB_2025_10_03_471591.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_471591.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_471591.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:58:41.488283"
+    },
+    {
+      "filename": "DataB_2025_10_03_541309.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_541309.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_541309.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:58:41.553343"
+    },
+    {
+      "filename": "DataB_2025_10_03_253649.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_253649.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_253649.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T02:58:45.266325"
+    },
+    {
+      "filename": "DataB_2025_10_03_325302.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_325302.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_325302.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T02:58:45.341891"
+    },
+    {
+      "filename": "DataB_2025_10_03_135630.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_135630.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_135630.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T03:01:14.148115"
+    },
+    {
+      "filename": "DataB_2025_10_03_203882.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_203882.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_203882.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T03:01:14.216923"
+    },
+    {
+      "filename": "DataB_2025_10_03_347764.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_347764.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_347764.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T03:01:14.361109"
+    },
+    {
+      "filename": "DataB_2025_10_03_789105.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_789105.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_789105.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T03:01:17.803899"
+    },
+    {
+      "filename": "DataB_2025_10_03_856838.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_856838.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_856838.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T03:01:17.871705"
+    },
+    {
+      "filename": "DataB_2025_10_03_986701.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_986701.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_986701.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T03:01:18.002356"
+    }
+  ],
+  "updated_at": "2025-10-03T03:01:18.026277",
+  "created_at": "2025-10-02T17:27:14.478010",
+  "status": "processing",
+  "trace_id": "trace-1759460470.684721",
+  "user_id": "voice-e2e-tester",
+  "workflow_mode": "chat",
+  "active_agent": "summary",
+  "completed_nodes": [
+    "start",
+    "intent",
+    "react",
+    "reasoning",
+    "supervisor",
+    "router",
+    "capi_datab",
+    "capi_elcajas"
+  ],
+  "intent": "db_operation",
+  "intent_confidence": 0.5,
+  "last_query": "Hola, necesito el saldo total de la sucursal de Palermo para hoy.",
+  "last_response": {
+    "message": "Resultados para la sucursal 'Palermo': sucursal id=SUC-404, sucursal numero=52, sucursal nombre=Palermo, saldo total sucursal=$88.000,00, caja teorica sucursal=100000.00, total atm=$36.700,00, total ats=$13.300,00, total tesoro=$11.800,00, total cajas ventanilla=$9.200,00, total buzon depositos=$3.200,00, total recaudacion=$3.800,00, total caja chica=$1.100,00, total otros=$8.900,00, medido en=2025-10-03 02:38:29.086113+00:00. Resultado exportado a DataB_2025_10_03_789105.json.\n\nEl Cajas: Palermo: deficit de 12,000 ARS (-12.0%)\n\nGenere una alerta automatica (ID: 30) con las desviaciones detectadas.",
+    "data": {
+      "react_observations": [
+        {
+          "summary": "Sin historial relevante.",
+          "recent_turns": []
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      ],
+      "reasoning_plan": {
+        "plan_id": "87232a8e-ab63-49b7-a5b2-09b0013e46f4",
+        "version": 1,
+        "intent": "db_operation",
+        "goal": "Clarificar y asistir consulta ambigua: Hola, necesito el saldo total de la sucursal de Palermo para",
+        "confidence": 0.95,
+        "recommended_agent": "capi_datab",
+        "fallback_agent": "capi_datab",
+        "rationale": "La consulta requiere operaciones sobre bases de datos; se utiliza el agente especialista con controles de validación y exportes auditables.",
+        "steps": [
+          {
+            "id": "D1",
+            "title": "Analizar requerimiento y sanitizar sentencia",
+            "description": "Interpretar la instrucción (JSON, SQL o lenguaje natural), validar tablas y evitar comandos restringidos (DROP/TRUNCATE).",
+            "agent": "capi_datab",
+            "inputs": [
+              "instruccion_usuario"
+            ],
+            "expected_output": "Sentencia SQL validada con parámetros normalizados",
+            "depends_on": []
+          },
+          {
+            "id": "D2",
+            "title": "Ejecutar operación transaccional en PostgreSQL",
+            "description": "Abrir conexión controlada, ejecutar la sentencia y capturar filas afectadas o resultados.",
+            "agent": "capi_datab",
+            "inputs": [],
+            "expected_output": "Resultado de la operación (filas, datos o confirmación)",
+            "depends_on": [
+              "D1"
+            ]
+          },
+          {
+            "id": "D3",
+            "title": "Exportar evidencia al workspace",
+            "description": "Serializar los resultados en el formato solicitado y guardar el archivo en ia_workspace/data/capi_DataB/.",
+            "agent": "capi_datab",
+            "inputs": [],
+            "expected_output": "Archivo DataB_YYYY_MM_DD_*.ext disponible para el usuario",
+            "depends_on": [
+              "D2"
+            ]
+          }
+        ],
+        "cooperative_agents": [],
+        "supporting_evidence": {
+          "progress_percent": 98.0,
+          "remaining_steps": 3,
+          "estimated_effort_seconds": 45,
+          "complexity": "low",
+          "entities": {
+            "sucursal": "Palermo"
+          },
+          "context_used": false,
+          "semantic_confidence": 1.0,
+          "available_agents": [
+            "anomaly",
+            "branch",
+            "capi_datab",
+            "capi_desktop",
+            "summary"
+          ],
+          "user_id": "voice-e2e-tester",
+          "session_id": "voice-e2e-palermo"
+        },
+        "generated_at": "2025-10-03T03:01:16.600219",
+        "intent_alignment": true,
+        "requires_replan": false,
+        "history": [],
+        "progress_percent": 98.0,
+        "remaining_steps": 3,
+        "complexity": "low",
+        "estimated_effort_seconds": 45
+      },
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+      "parameters": [
+        "%Palermo%"
+      ],
+      "output_format": "json",
+      "file_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_789105.json",
+      "rowcount": 1,
+      "rows": [
+        {
+          "sucursal_id": "SUC-404",
+          "sucursal_numero": 52,
+          "sucursal_nombre": "Palermo",
+          "saldo_total_sucursal": "88000.00",
+          "caja_teorica_sucursal": "100000.00",
+          "total_atm": "36700.00",
+          "total_ats": "13300.00",
+          "total_tesoro": "11800.00",
+          "total_cajas_ventanilla": "9200.00",
+          "total_buzon_depositos": "3200.00",
+          "total_recaudacion": "3800.00",
+          "total_caja_chica": "1100.00",
+          "total_otros": "8900.00",
+          "medido_en": "2025-10-03 02:38:29.086113+00:00"
+        }
+      ],
+      "requires_approval": false,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "Palermo",
+          "branch_number": null,
+          "branch_name": "Palermo",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Palermo%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.85,
+        "planner_reason": "Se identifica claramente la sucursal 'Palermo' en la solicitud del saldo total.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "metadata": {
+        "branch": {
+          "raw_text": "Palermo",
+          "branch_number": null,
+          "branch_name": "Palermo",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Palermo%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.85,
+        "planner_reason": "Se identifica claramente la sucursal 'Palermo' en la solicitud del saldo total.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal",
+        "branch_descriptor": "Palermo"
+      },
+      "summary_message": "Resultados para la sucursal 'Palermo': sucursal id=SUC-404, sucursal numero=52, sucursal nombre=Palermo, saldo total sucursal=$88.000,00, caja teorica sucursal=100000.00, total atm=$36.700,00, total ats=$13.300,00, total tesoro=$11.800,00, total cajas ventanilla=$9.200,00, total buzon depositos=$3.200,00, total recaudacion=$3.800,00, total caja chica=$1.100,00, total otros=$8.900,00, medido en=2025-10-03 02:38:29.086113+00:00. Resultado exportado a DataB_2025_10_03_789105.json.",
+      "el_cajas": {
+        "analysis": [
+          {
+            "branch_id": "SUC-404",
+            "branch_name": "Palermo",
+            "status": "alert",
+            "headline": "Palermo: deficit de 12,000 ARS (-12.0%)",
+            "measured_total": 88000.0,
+            "theoretical_total": 100000.0,
+            "difference": -12000.0,
+            "deviation_pct": -0.12000000000000002,
+            "recommendations": [
+              {
+                "channel": "Saldo Total",
+                "action": "deposit",
+                "amount": 7000.0,
+                "reason": "Deficit vs caja teorica",
+                "urgency": "proximo turno",
+                "estimated_cost": 150026.6,
+                "weight_kg": 0.007
+              },
+              {
+                "channel": "ATM",
+                "action": "deposit",
+                "amount": 2502.27,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "inmediato",
+                "estimated_cost": 120008.76,
+                "weight_kg": 0.003
+              },
+              {
+                "channel": "ATM",
+                "action": "deposit",
+                "amount": 463300.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "inmediato",
+                "estimated_cost": 121621.55,
+                "weight_kg": 0.463
+              },
+              {
+                "channel": "ATS",
+                "action": "deposit",
+                "amount": 1057.95,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 110003.39,
+                "weight_kg": 0.001
+              },
+              {
+                "channel": "ATS",
+                "action": "deposit",
+                "amount": 286700.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "proximo turno",
+                "estimated_cost": 110917.44,
+                "weight_kg": 0.287
+              },
+              {
+                "channel": "Tesoro",
+                "action": "deposit",
+                "amount": 536.36,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 90001.5,
+                "weight_kg": 0.001
+              },
+              {
+                "channel": "Tesoro",
+                "action": "deposit",
+                "amount": 738200.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "proximo turno",
+                "estimated_cost": 92066.96,
+                "weight_kg": 0.738
+              },
+              {
+                "channel": "Ventanilla",
+                "action": "deposit",
+                "amount": 836.36,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 85002.17,
+                "weight_kg": 0.001
+              },
+              {
+                "channel": "Ventanilla",
+                "action": "deposit",
+                "amount": 140800.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "proximo turno",
+                "estimated_cost": 85366.08,
+                "weight_kg": 0.141
+              },
+              {
+                "channel": "Caja Chica",
+                "action": "deposit",
+                "amount": 112.5,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 70000.25,
+                "weight_kg": 0.0
+              },
+              {
+                "channel": "Caja Chica",
+                "action": "deposit",
+                "amount": 28900.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "proximo turno",
+                "estimated_cost": 70063.58,
+                "weight_kg": 0.029
+              },
+              {
+                "channel": "Otros",
+                "action": "deposit",
+                "amount": 809.09,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 100002.51,
+                "weight_kg": 0.001
+              },
+              {
+                "channel": "Otros",
+                "action": "deposit",
+                "amount": 41100.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "proximo turno",
+                "estimated_cost": 100127.41,
+                "weight_kg": 0.041
+              }
+            ],
+            "channels": [
+              {
+                "channel": "ATM",
+                "amount": 36700.0,
+                "estimated_teorica": 41704.545454545456,
+                "share": 0.41704545454545455,
+                "deviation_pct": -0.12000000000000002
+              },
+              {
+                "channel": "ATS",
+                "amount": 13300.0,
+                "estimated_teorica": 15113.636363636362,
+                "share": 0.15113636363636362,
+                "deviation_pct": -0.11999999999999991
+              },
+              {
+                "channel": "Tesoro",
+                "amount": 11800.0,
+                "estimated_teorica": 13409.09090909091,
+                "share": 0.1340909090909091,
+                "deviation_pct": -0.12000000000000005
+              },
+              {
+                "channel": "Ventanilla",
+                "amount": 9200.0,
+                "estimated_teorica": 10454.545454545454,
+                "share": 0.10454545454545454,
+                "deviation_pct": -0.11999999999999995
+              },
+              {
+                "channel": "Buzon",
+                "amount": 3200.0,
+                "estimated_teorica": 3636.363636363636,
+                "share": 0.03636363636363636
+              },
+              {
+                "channel": "Recaudacion",
+                "amount": 3800.0,
+                "estimated_teorica": 4318.181818181818,
+                "share": 0.04318181818181818
+              },
+              {
+                "channel": "Caja Chica",
+                "amount": 1100.0,
+                "estimated_teorica": 1250.0,
+                "share": 0.0125,
+                "deviation_pct": -0.12
+              },
+              {
+                "channel": "Otros",
+                "amount": 8900.0,
+                "estimated_teorica": 10113.636363636364,
+                "share": 0.10113636363636364,
+                "deviation_pct": -0.12000000000000002
+              }
+            ],
+            "alerts_created": 1,
+            "alerts_to_persist": [
+              {
+                "priority": "critical",
+                "prioridad": "critica",
+                "status": "active",
+                "estado": "abierta",
+                "problema": "Palermo: deficit de 12,000 ARS (-12.0%)",
+                "hipotesis": "Desvio detectado en Palermo",
+                "impacto": "Diferencia de 12,000 ARS (-12.0%)",
+                "datos_clave": [
+                  "Diferencia total: -12,000 ARS",
+                  "Desvio porcentual: -12.0%",
+                  "Sucursal: Palermo (SUC-404)",
+                  "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]",
+                  "Medicion: 2025-10-03T03:01:17.893465+00:00"
+                ],
+                "acciones": "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada [inmediato]; ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada [proximo turno]; ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 809 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo [proximo turno]",
+                "sucursal_id": "SUC-404",
+                "branch_name": "Palermo",
+                "summary": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+                "dedupe_clave": "a1c154ad4d6f5663a6249b6c450cd990eb63b7c603df4dd76ce6e434d3a8b8f1",
+                "creada_en": "2025-10-03T03:01:17.893465+00:00",
+                "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+                "agent_source": "capi_elcajas"
+              }
+            ],
+            "alert_priority": "critical",
+            "alert_escalated": true,
+            "alert_operation": {
+              "table": "public.alertas",
+              "values": {
+                "prioridad": "critica",
+                "estado": "abierta",
+                "problema": "Palermo: deficit de 12,000 ARS (-12.0%)",
+                "hipotesis": "Desvio detectado en Palermo",
+                "impacto": "Diferencia de 12,000 ARS (-12.0%)",
+                "datos_clave": [
+                  "Diferencia total: -12,000 ARS",
+                  "Desvio porcentual: -12.0%",
+                  "Sucursal: Palermo (SUC-404)",
+                  "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]",
+                  "Medicion: 2025-10-03T03:01:17.893465+00:00"
+                ],
+                "acciones": "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada [inmediato]; ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada [proximo turno]; ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 809 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo [proximo turno]",
+                "sucursal_id": "SUC-404",
+                "dedupe_clave": "a1c154ad4d6f5663a6249b6c450cd990eb63b7c603df4dd76ce6e434d3a8b8f1",
+                "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+                "creada_en": "2025-10-03 03:01:17.893465+00:00"
+              },
+              "description": "Insert alerta El Cajas - Palermo",
+              "branch_id": "SUC-404",
+              "branch_name": "Palermo",
+              "source": "capi_elcajas",
+              "payload": {
+                "priority": "critical",
+                "prioridad": "critica",
+                "status": "active",
+                "estado": "abierta",
+                "problema": "Palermo: deficit de 12,000 ARS (-12.0%)",
+                "hipotesis": "Desvio detectado en Palermo",
+                "impacto": "Diferencia de 12,000 ARS (-12.0%)",
+                "datos_clave": [
+                  "Diferencia total: -12,000 ARS",
+                  "Desvio porcentual: -12.0%",
+                  "Sucursal: Palermo (SUC-404)",
+                  "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]",
+                  "Medicion: 2025-10-03T03:01:17.893465+00:00"
+                ],
+                "acciones": "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada [inmediato]; ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada [proximo turno]; ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 809 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo [proximo turno]",
+                "sucursal_id": "SUC-404",
+                "branch_name": "Palermo",
+                "summary": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+                "dedupe_clave": "a1c154ad4d6f5663a6249b6c450cd990eb63b7c603df4dd76ce6e434d3a8b8f1",
+                "creada_en": "2025-10-03T03:01:17.893465+00:00",
+                "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+                "agent_source": "capi_elcajas"
+              }
+            },
+            "recommendation_artifact": {
+              "path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_elcajas/recommendation_SUC-404_20251003_030117.json",
+              "filename": "recommendation_SUC-404_20251003_030117.json",
+              "relative_path": "capi_elcajas/recommendation_SUC-404_20251003_030117.json",
+              "created_at": "2025-10-03T03:01:17.893465+00:00",
+              "summary": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+              "hypothesis": "Desvio detectado en Palermo",
+              "impact": "Diferencia de 12,000 ARS (-12.0%)",
+              "suggested_actions": [
+                "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica",
+                "ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada",
+                "ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo",
+                "ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada",
+                "ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo",
+                "Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada",
+                "Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo",
+                "Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada",
+                "Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo",
+                "Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada",
+                "Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo",
+                "Otros: deposit 809 ARS - Deficit canal vs distribucion esperada",
+                "Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo"
+              ]
+            }
+          }
+        ],
+        "calendar": {
+          "status": "cerrado",
+          "business_day": "si",
+          "holiday": "no"
+        },
+        "policies_loaded": 9,
+        "alerts_created": 1,
+        "alert_operations": [
+          {
+            "table": "public.alertas",
+            "values": {
+              "prioridad": "critica",
+              "estado": "abierta",
+              "problema": "Palermo: deficit de 12,000 ARS (-12.0%)",
+              "hipotesis": "Desvio detectado en Palermo",
+              "impacto": "Diferencia de 12,000 ARS (-12.0%)",
+              "datos_clave": [
+                "Diferencia total: -12,000 ARS",
+                "Desvio porcentual: -12.0%",
+                "Sucursal: Palermo (SUC-404)",
+                "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-10-03T03:01:17.893465+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada [inmediato]; ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada [proximo turno]; ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 809 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "SUC-404",
+              "dedupe_clave": "a1c154ad4d6f5663a6249b6c450cd990eb63b7c603df4dd76ce6e434d3a8b8f1",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "creada_en": "2025-10-03 03:01:17.893465+00:00"
+            },
+            "description": "Insert alerta El Cajas - Palermo",
+            "branch_id": "SUC-404",
+            "branch_name": "Palermo",
+            "source": "capi_elcajas",
+            "payload": {
+              "priority": "critical",
+              "prioridad": "critica",
+              "status": "active",
+              "estado": "abierta",
+              "problema": "Palermo: deficit de 12,000 ARS (-12.0%)",
+              "hipotesis": "Desvio detectado en Palermo",
+              "impacto": "Diferencia de 12,000 ARS (-12.0%)",
+              "datos_clave": [
+                "Diferencia total: -12,000 ARS",
+                "Desvio porcentual: -12.0%",
+                "Sucursal: Palermo (SUC-404)",
+                "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-10-03T03:01:17.893465+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada [inmediato]; ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada [proximo turno]; ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 809 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "SUC-404",
+              "branch_name": "Palermo",
+              "summary": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+              "dedupe_clave": "a1c154ad4d6f5663a6249b6c450cd990eb63b7c603df4dd76ce6e434d3a8b8f1",
+              "creada_en": "2025-10-03T03:01:17.893465+00:00",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "agent_source": "capi_elcajas"
+            }
+          }
+        ],
+        "recommendation_files": [
+          {
+            "path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_elcajas/recommendation_SUC-404_20251003_030117.json",
+            "filename": "recommendation_SUC-404_20251003_030117.json",
+            "relative_path": "capi_elcajas/recommendation_SUC-404_20251003_030117.json",
+            "created_at": "2025-10-03T03:01:17.893465+00:00",
+            "summary": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+            "hypothesis": "Desvio detectado en Palermo",
+            "impact": "Diferencia de 12,000 ARS (-12.0%)",
+            "suggested_actions": [
+              "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica",
+              "ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada",
+              "ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo",
+              "ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada",
+              "ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo",
+              "Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada",
+              "Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo",
+              "Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada",
+              "Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo",
+              "Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada",
+              "Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo",
+              "Otros: deposit 809 ARS - Deficit canal vs distribucion esperada",
+              "Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "response_metadata": {
+    "intent_reasoning": "Semantic pattern match: La consulta solicita el saldo total de una sucursal, por lo que se debe utilizar el agente capi_datab para operaciones en la base de datos. (confidence=1.000, entities=1)",
+    "intent_matched_patterns": [
+      "semantic_pattern:db_operation"
+    ],
+    "react_trace": [
+      {
+        "thought": "Reviso el contexto reciente para entender la conversacion.",
+        "action": "summarize_context",
+        "observation": {
+          "summary": "Sin historial relevante.",
+          "recent_turns": []
+        }
+      },
+      {
+        "thought": "Verifico metricas previas para identificar senales relevantes.",
+        "action": "collect_metrics",
+        "params": {},
+        "iteration": 0,
+        "observation": {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      },
+      {
+        "thought": "Necesito datos para un resumen financiero.",
+        "action": "collect_metrics",
+        "params": {},
+        "iteration": 1,
+        "observation": {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      },
+      {
+        "thought": "Necesito datos para un resumen financiero.",
+        "action": "collect_metrics",
+        "params": {},
+        "iteration": 2,
+        "observation": {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      },
+      {
+        "thought": "Finalizo el ciclo ReAct con una recomendacion.",
+        "action": "finish",
+        "observation": {
+          "message": "Derivare la consulta 'Hola, necesito el saldo total de la sucursal de Palermo para hoy.' al agente 'summary' con la evidencia recopilada.",
+          "recommended_agent": "summary"
+        }
+      }
+    ],
+    "react_recommended_agent": "summary",
+    "react_finished_at": "2025-10-03T03:01:15.577477",
+    "active_agent": "summary",
+    "loop_fallback": "capi_datab",
+    "react_follow_up": false,
+    "needs_retry": null,
+    "reasoning_plan": {
+      "plan_id": "87232a8e-ab63-49b7-a5b2-09b0013e46f4",
+      "version": 1,
+      "intent": "db_operation",
+      "goal": "Clarificar y asistir consulta ambigua: Hola, necesito el saldo total de la sucursal de Palermo para",
+      "confidence": 0.95,
+      "recommended_agent": "capi_datab",
+      "fallback_agent": "capi_datab",
+      "rationale": "La consulta requiere operaciones sobre bases de datos; se utiliza el agente especialista con controles de validación y exportes auditables.",
+      "steps": [
+        {
+          "id": "D1",
+          "title": "Analizar requerimiento y sanitizar sentencia",
+          "description": "Interpretar la instrucción (JSON, SQL o lenguaje natural), validar tablas y evitar comandos restringidos (DROP/TRUNCATE).",
+          "agent": "capi_datab",
+          "inputs": [
+            "instruccion_usuario"
+          ],
+          "expected_output": "Sentencia SQL validada con parámetros normalizados",
+          "depends_on": []
+        },
+        {
+          "id": "D2",
+          "title": "Ejecutar operación transaccional en PostgreSQL",
+          "description": "Abrir conexión controlada, ejecutar la sentencia y capturar filas afectadas o resultados.",
+          "agent": "capi_datab",
+          "inputs": [],
+          "expected_output": "Resultado de la operación (filas, datos o confirmación)",
+          "depends_on": [
+            "D1"
+          ]
+        },
+        {
+          "id": "D3",
+          "title": "Exportar evidencia al workspace",
+          "description": "Serializar los resultados en el formato solicitado y guardar el archivo en ia_workspace/data/capi_DataB/.",
+          "agent": "capi_datab",
+          "inputs": [],
+          "expected_output": "Archivo DataB_YYYY_MM_DD_*.ext disponible para el usuario",
+          "depends_on": [
+            "D2"
+          ]
+        }
+      ],
+      "cooperative_agents": [],
+      "supporting_evidence": {
+        "progress_percent": 98.0,
+        "remaining_steps": 3,
+        "estimated_effort_seconds": 45,
+        "complexity": "low",
+        "entities": {
+          "sucursal": "Palermo"
+        },
+        "context_used": false,
+        "semantic_confidence": 1.0,
+        "available_agents": [
+          "anomaly",
+          "branch",
+          "capi_datab",
+          "capi_desktop",
+          "summary"
+        ],
+        "user_id": "voice-e2e-tester",
+        "session_id": "voice-e2e-palermo"
+      },
+      "generated_at": "2025-10-03T03:01:16.600219",
+      "intent_alignment": true,
+      "requires_replan": false,
+      "history": [],
+      "progress_percent": 98.0,
+      "remaining_steps": 3,
+      "complexity": "low",
+      "estimated_effort_seconds": 45
+    },
+    "reasoning_confidence": 0.95,
+    "recommended_agent": "capi_datab",
+    "reasoning_progress_percent": 98.0,
+    "reasoning_eta_seconds": 45,
+    "reasoning_remaining_steps": 3,
+    "reasoning_complexity": "low",
+    "reasoning_needs_react": true,
+    "supervisor_queue": [
+      "summary",
+      "capi_datab",
+      "anomaly",
+      "capi_desktop",
+      "smalltalk"
+    ],
+    "supervisor_selected": "summary",
+    "supervisor_ran_at": "2025-10-03T03:01:16.607451",
+    "semantic_result": {
+      "intent": "db_operation",
+      "confidence": 0.5,
+      "target_agent": "capi_datab",
+      "routing_agent": "capi_datab",
+      "entities": {
+        "branch_hint": "Hola, necesito el saldo total de la sucursal de Palermo para hoy."
+      },
+      "reasoning": "Fallback classification executed (feature_flag_disabled)",
+      "requires_clarification": false,
+      "provider": "fallback",
+      "model": ""
+    },
+    "agent": "capi_datab",
+    "db_operation": {
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+      "parameters": [
+        "%Palermo%"
+      ],
+      "output_format": "json",
+      "requires_approval": false,
+      "metadata": {
+        "branch": {
+          "raw_text": "Palermo",
+          "branch_number": null,
+          "branch_name": "Palermo",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Palermo%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.85,
+        "planner_reason": "Se identifica claramente la sucursal 'Palermo' en la solicitud del saldo total.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      }
+    },
+    "db_operation_status": "completed",
+    "planner_metadata": {
+      "branch": {
+        "raw_text": "Palermo",
+        "branch_number": null,
+        "branch_name": "Palermo",
+        "branch_id": null
+      },
+      "filters": [
+        {
+          "column": "sucursal_nombre",
+          "operator": "ILIKE",
+          "value": "%Palermo%"
+        }
+      ],
+      "planner_source": "llm_branch_identifier",
+      "planner_confidence": 0.85,
+      "planner_reason": "Se identifica claramente la sucursal 'Palermo' en la solicitud del saldo total.",
+      "planner_model": "gpt-3.5-turbo",
+      "suggested_table": "public.saldos_sucursal"
+    },
+    "agent_raw_message": "Resultados para la sucursal 'Palermo': sucursal id=SUC-404, sucursal numero=52, sucursal nombre=Palermo, saldo total sucursal=$88.000,00, caja teorica sucursal=100000.00, total atm=$36.700,00, total ats=$13.300,00, total tesoro=$11.800,00, total cajas ventanilla=$9.200,00, total buzon depositos=$3.200,00, total recaudacion=$3.800,00, total caja chica=$1.100,00, total otros=$8.900,00, medido en=2025-10-03 02:38:29.086113+00:00. Resultado exportado a DataB_2025_10_03_789105.json.",
+    "result_summary": "Resultados para la sucursal 'Palermo': sucursal id=SUC-404, sucursal numero=52, sucursal nombre=Palermo, saldo total sucursal=$88.000,00, caja teorica sucursal=100000.00, total atm=$36.700,00, total ats=$13.300,00, total tesoro=$11.800,00, total cajas ventanilla=$9.200,00, total buzon depositos=$3.200,00, total recaudacion=$3.800,00, total caja chica=$1.100,00, total otros=$8.900,00, medido en=2025-10-03 02:38:29.086113+00:00. Resultado exportado a DataB_2025_10_03_789105.json.\n\nEl Cajas: Palermo: deficit de 12,000 ARS (-12.0%)",
+    "desktop_instruction": {
+      "intent": "escribir_archivo_txt",
+      "parameters": {
+        "filename": "DataB_2025_10_03_789105_desktop.txt",
+        "content": "{\n  \"operation\": \"select\",\n  \"table\": \"public.saldos_sucursal\",\n  \"rowcount\": 1,\n  \"generated_at\": \"2025-10-03T03:01:17.789149\",\n  \"session_id\": \"voice-e2e-palermo\",\n  \"sql\": \"SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1\",\n  \"parameters\": [\n    \"%Palermo%\"\n  ],\n  \"result\": [\n    {\n      \"sucursal_id\": \"SUC-404\",\n      \"sucursal_numero\": 52,\n      \"sucursal_nombre\": \"Palermo\",\n      \"saldo_total_sucursal\": \"88000.00\",\n      \"caja_teorica_sucursal\": \"100000.00\",\n      \"total_atm\": \"36700.00\",\n      \"total_ats\": \"13300.00\",\n      \"total_tesoro\": \"11800.00\",\n      \"total_cajas_ventanilla\": \"9200.00\",\n      \"total_buzon_depositos\": \"3200.00\",\n      \"total_recaudacion\": \"3800.00\",\n      \"total_caja_chica\": \"1100.00\",\n      \"total_otros\": \"8900.00\",\n      \"medido_en\": \"2025-10-03 02:38:29.086113+00:00\"\n    }\n  ]\n}"
+      },
+      "action": "write_file"
+    },
+    "semantic_action": "EXPORT_FILE",
+    "requires_human_approval": true,
+    "datab_desktop_ready": true,
+    "el_cajas_status": "alert",
+    "el_cajas_alerts": 1,
+    "el_cajas_pending": true,
+    "actions": [
+      {
+        "id": "save_recommendation",
+        "label": "Guardar recomendacion en escritorio",
+        "payload": {
+          "artifact_path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_elcajas/recommendation_SUC-404_20251003_030117.json",
+          "artifact_filename": "recommendation_SUC-404_20251003_030117.json",
+          "summary": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+          "hypothesis": "Desvio detectado en Palermo",
+          "impact": "Diferencia de 12,000 ARS (-12.0%)",
+          "suggested_actions": [
+            "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica",
+            "ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada",
+            "ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo",
+            "ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada",
+            "ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo",
+            "Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada",
+            "Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo",
+            "Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada",
+            "Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo",
+            "Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada",
+            "Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo",
+            "Otros: deposit 809 ARS - Deficit canal vs distribucion esperada",
+            "Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo"
+          ],
+          "branch_name": null,
+          "session_id": "voice-e2e-palermo"
+        }
+      }
+    ],
+    "desktop_recommendation": {
+      "path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_elcajas/recommendation_SUC-404_20251003_030117.json",
+      "filename": "recommendation_SUC-404_20251003_030117.json",
+      "relative_path": "capi_elcajas/recommendation_SUC-404_20251003_030117.json",
+      "created_at": "2025-10-03T03:01:17.893465+00:00",
+      "summary": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+      "hypothesis": "Desvio detectado en Palermo",
+      "impact": "Diferencia de 12,000 ARS (-12.0%)",
+      "suggested_actions": [
+        "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica",
+        "ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada",
+        "ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo",
+        "ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada",
+        "ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo",
+        "Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada",
+        "Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo",
+        "Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada",
+        "Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo",
+        "Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada",
+        "Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo",
+        "Otros: deposit 809 ARS - Deficit canal vs distribucion esperada",
+        "Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo"
+      ]
+    },
+    "pending_desktop_instruction": {
+      "intent": "escribir_archivo_excel",
+      "action": "write_file",
+      "parameters": {
+        "filename": "recommendation_SUC-404_20251003_030117_20251003_030118.xlsx",
+        "sheet_name": "Recomendacion",
+        "data": [
+          {
+            "Detalle": "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica"
+          },
+          {
+            "Detalle": "ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada"
+          },
+          {
+            "Detalle": "ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo"
+          },
+          {
+            "Detalle": "ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada"
+          },
+          {
+            "Detalle": "ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo"
+          },
+          {
+            "Detalle": "Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada"
+          },
+          {
+            "Detalle": "Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo"
+          },
+          {
+            "Detalle": "Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada"
+          },
+          {
+            "Detalle": "Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo"
+          },
+          {
+            "Detalle": "Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada"
+          },
+          {
+            "Detalle": "Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo"
+          },
+          {
+            "Detalle": "Otros: deposit 809 ARS - Deficit canal vs distribucion esperada"
+          },
+          {
+            "Detalle": "Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo"
+          },
+          {
+            "Resumen": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+            "Hipotesis": "Desvio detectado en Palermo",
+            "Impacto": "Diferencia de 12,000 ARS (-12.0%)"
+          }
+        ]
+      }
+    },
+    "approval_reason": "Deseas que guardemos la recomendacion en el escritorio?",
+    "el_cajas_alert_ids": [
+      "30"
+    ],
+    "el_cajas_alert_persisted": true
+  },
+  "routing_decision": "human_gate",
+  "conversation_history": [],
+  "memory_window": [],
+  "reasoning_summary": {
+    "goal": "Clarificar y asistir consulta ambigua: Hola, necesito el saldo total de la sucursal de Palermo para",
+    "recommended_agent": "capi_datab",
+    "confidence": 0.95,
+    "version": 1,
+    "cooperative_agents": [],
+    "progress_percent": 98.0,
+    "remaining_steps": 3,
+    "complexity": "low",
+    "estimated_effort_seconds": 45,
+    "remaining_percent": 2.0
+  },
+  "processing_metrics": {
+    "react_steps": 5.0,
+    "react_latency_ms": 0.0,
+    "reasoning_time_ms": 1024.0,
+    "reasoning_steps": 3.0,
+    "reasoning_version": 1.0,
+    "reasoning_progress_percent": 98.0,
+    "reasoning_eta_seconds": 45.0,
+    "reasoning_remaining_steps": 3.0,
+    "supervisor_latency_ms": 0.0,
+    "supervisor_queue_length": 5.0,
+    "capi_datab_latency_ms": 1171.0,
+    "planner_confidence": 0.85,
+    "capi_datab_rows": 1.0,
+    "el_cajas_latency_ms": 31.0,
+    "el_cajas_alerts": 1.0
+  },
+  "shared_artifacts": {
+    "capi_datab": {
+      "mode": "db_operation",
+      "operation": {
+        "operation": "select",
+        "table": "public.saldos_sucursal",
+        "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+        "parameters": [
+          "%Palermo%"
+        ],
+        "output_format": "json",
+        "requires_approval": false,
+        "metadata": {
+          "branch": {
+            "raw_text": "Palermo",
+            "branch_number": null,
+            "branch_name": "Palermo",
+            "branch_id": null
+          },
+          "filters": [
+            {
+              "column": "sucursal_nombre",
+              "operator": "ILIKE",
+              "value": "%Palermo%"
+            }
+          ],
+          "planner_source": "llm_branch_identifier",
+          "planner_confidence": 0.85,
+          "planner_reason": "Se identifica claramente la sucursal 'Palermo' en la solicitud del saldo total.",
+          "planner_model": "gpt-3.5-turbo",
+          "suggested_table": "public.saldos_sucursal"
+        }
+      },
+      "export_file": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_DataB/DataB_2025_10_03_789105.json",
+      "rows": [
+        {
+          "sucursal_id": "SUC-404",
+          "sucursal_numero": 52,
+          "sucursal_nombre": "Palermo",
+          "saldo_total_sucursal": "88000.00",
+          "caja_teorica_sucursal": "100000.00",
+          "total_atm": "36700.00",
+          "total_ats": "13300.00",
+          "total_tesoro": "11800.00",
+          "total_cajas_ventanilla": "9200.00",
+          "total_buzon_depositos": "3200.00",
+          "total_recaudacion": "3800.00",
+          "total_caja_chica": "1100.00",
+          "total_otros": "8900.00",
+          "medido_en": "2025-10-03 02:38:29.086113+00:00"
+        }
+      ],
+      "rowcount": 1,
+      "success": true,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "Palermo",
+          "branch_number": null,
+          "branch_name": "Palermo",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Palermo%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.85,
+        "planner_reason": "Se identifica claramente la sucursal 'Palermo' en la solicitud del saldo total.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "summary_message": "Resultados para la sucursal 'Palermo': sucursal id=SUC-404, sucursal numero=52, sucursal nombre=Palermo, saldo total sucursal=$88.000,00, caja teorica sucursal=100000.00, total atm=$36.700,00, total ats=$13.300,00, total tesoro=$11.800,00, total cajas ventanilla=$9.200,00, total buzon depositos=$3.200,00, total recaudacion=$3.800,00, total caja chica=$1.100,00, total otros=$8.900,00, medido en=2025-10-03 02:38:29.086113+00:00. Resultado exportado a DataB_2025_10_03_789105.json.\n\nEl Cajas: Palermo: deficit de 12,000 ARS (-12.0%)",
+      "policies": [
+        {
+          "channel": "ATM",
+          "max_surplus_pct": "0.120",
+          "max_deficit_pct": "0.060",
+          "min_buffer_amount": "500000.00",
+          "daily_withdrawal_limit": "1500000.00",
+          "daily_deposit_limit": "1200000.00",
+          "reload_lead_hours": 6,
+          "sla_hours": 12,
+          "truck_fixed_cost": "120000.00",
+          "truck_variable_cost_per_kg": "3500.00",
+          "notes": "Prioridad alta: buffer robusto para ATM",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "ATS",
+          "max_surplus_pct": "0.100",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "300000.00",
+          "daily_withdrawal_limit": "900000.00",
+          "daily_deposit_limit": "600000.00",
+          "reload_lead_hours": 8,
+          "sla_hours": 16,
+          "truck_fixed_cost": "110000.00",
+          "truck_variable_cost_per_kg": "3200.00",
+          "notes": "ATS balance moderado",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Buzón",
+          "max_surplus_pct": "0.050",
+          "max_deficit_pct": "0.030",
+          "min_buffer_amount": "50000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": "250000.00",
+          "reload_lead_hours": 12,
+          "sla_hours": 24,
+          "truck_fixed_cost": "95000.00",
+          "truck_variable_cost_per_kg": "3000.00",
+          "notes": "Depósitos no inmediatos",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Caja Chica",
+          "max_surplus_pct": "0.040",
+          "max_deficit_pct": "0.030",
+          "min_buffer_amount": "30000.00",
+          "daily_withdrawal_limit": "100000.00",
+          "daily_deposit_limit": "80000.00",
+          "reload_lead_hours": 24,
+          "sla_hours": 48,
+          "truck_fixed_cost": "70000.00",
+          "truck_variable_cost_per_kg": "2200.00",
+          "notes": "Gastos operativos menores",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Otros",
+          "max_surplus_pct": "0.070",
+          "max_deficit_pct": "0.040",
+          "min_buffer_amount": "50000.00",
+          "daily_withdrawal_limit": "200000.00",
+          "daily_deposit_limit": "180000.00",
+          "reload_lead_hours": 12,
+          "sla_hours": 36,
+          "truck_fixed_cost": "100000.00",
+          "truck_variable_cost_per_kg": "3100.00",
+          "notes": "Reservas varias",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Recaudación",
+          "max_surplus_pct": "0.090",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "200000.00",
+          "daily_withdrawal_limit": "600000.00",
+          "daily_deposit_limit": "650000.00",
+          "reload_lead_hours": 10,
+          "sla_hours": 20,
+          "truck_fixed_cost": "130000.00",
+          "truck_variable_cost_per_kg": "3600.00",
+          "notes": "Grandes volúmenes corporativos",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Saldo Total",
+          "max_surplus_pct": "0.080",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "600000.00",
+          "daily_withdrawal_limit": "2500000.00",
+          "daily_deposit_limit": "2500000.00",
+          "reload_lead_hours": 6,
+          "sla_hours": 12,
+          "truck_fixed_cost": "150000.00",
+          "truck_variable_cost_per_kg": "3800.00",
+          "notes": "Tolerancia global de sucursal",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Tesoro",
+          "max_surplus_pct": "0.150",
+          "max_deficit_pct": "0.080",
+          "min_buffer_amount": "750000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 12,
+          "sla_hours": 24,
+          "truck_fixed_cost": "90000.00",
+          "truck_variable_cost_per_kg": "2800.00",
+          "notes": "Tesoro actúa como pulmón de la sucursal",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Ventanilla",
+          "max_surplus_pct": "0.080",
+          "max_deficit_pct": "0.040",
+          "min_buffer_amount": "150000.00",
+          "daily_withdrawal_limit": "400000.00",
+          "daily_deposit_limit": "350000.00",
+          "reload_lead_hours": 4,
+          "sla_hours": 8,
+          "truck_fixed_cost": "85000.00",
+          "truck_variable_cost_per_kg": "2600.00",
+          "notes": "Caja operativa al cliente",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        }
+      ]
+    },
+    "capi_elcajas": {
+      "analysis": [
+        {
+          "branch_id": "SUC-404",
+          "branch_name": "Palermo",
+          "status": "alert",
+          "headline": "Palermo: deficit de 12,000 ARS (-12.0%)",
+          "measured_total": 88000.0,
+          "theoretical_total": 100000.0,
+          "difference": -12000.0,
+          "deviation_pct": -0.12000000000000002,
+          "recommendations": [
+            {
+              "channel": "Saldo Total",
+              "action": "deposit",
+              "amount": 7000.0,
+              "reason": "Deficit vs caja teorica",
+              "urgency": "proximo turno",
+              "estimated_cost": 150026.6,
+              "weight_kg": 0.007
+            },
+            {
+              "channel": "ATM",
+              "action": "deposit",
+              "amount": 2502.27,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "inmediato",
+              "estimated_cost": 120008.76,
+              "weight_kg": 0.003
+            },
+            {
+              "channel": "ATM",
+              "action": "deposit",
+              "amount": 463300.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "inmediato",
+              "estimated_cost": 121621.55,
+              "weight_kg": 0.463
+            },
+            {
+              "channel": "ATS",
+              "action": "deposit",
+              "amount": 1057.95,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 110003.39,
+              "weight_kg": 0.001
+            },
+            {
+              "channel": "ATS",
+              "action": "deposit",
+              "amount": 286700.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "proximo turno",
+              "estimated_cost": 110917.44,
+              "weight_kg": 0.287
+            },
+            {
+              "channel": "Tesoro",
+              "action": "deposit",
+              "amount": 536.36,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 90001.5,
+              "weight_kg": 0.001
+            },
+            {
+              "channel": "Tesoro",
+              "action": "deposit",
+              "amount": 738200.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "proximo turno",
+              "estimated_cost": 92066.96,
+              "weight_kg": 0.738
+            },
+            {
+              "channel": "Ventanilla",
+              "action": "deposit",
+              "amount": 836.36,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 85002.17,
+              "weight_kg": 0.001
+            },
+            {
+              "channel": "Ventanilla",
+              "action": "deposit",
+              "amount": 140800.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "proximo turno",
+              "estimated_cost": 85366.08,
+              "weight_kg": 0.141
+            },
+            {
+              "channel": "Caja Chica",
+              "action": "deposit",
+              "amount": 112.5,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 70000.25,
+              "weight_kg": 0.0
+            },
+            {
+              "channel": "Caja Chica",
+              "action": "deposit",
+              "amount": 28900.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "proximo turno",
+              "estimated_cost": 70063.58,
+              "weight_kg": 0.029
+            },
+            {
+              "channel": "Otros",
+              "action": "deposit",
+              "amount": 809.09,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 100002.51,
+              "weight_kg": 0.001
+            },
+            {
+              "channel": "Otros",
+              "action": "deposit",
+              "amount": 41100.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "proximo turno",
+              "estimated_cost": 100127.41,
+              "weight_kg": 0.041
+            }
+          ],
+          "channels": [
+            {
+              "channel": "ATM",
+              "amount": 36700.0,
+              "estimated_teorica": 41704.545454545456,
+              "share": 0.41704545454545455,
+              "deviation_pct": -0.12000000000000002
+            },
+            {
+              "channel": "ATS",
+              "amount": 13300.0,
+              "estimated_teorica": 15113.636363636362,
+              "share": 0.15113636363636362,
+              "deviation_pct": -0.11999999999999991
+            },
+            {
+              "channel": "Tesoro",
+              "amount": 11800.0,
+              "estimated_teorica": 13409.09090909091,
+              "share": 0.1340909090909091,
+              "deviation_pct": -0.12000000000000005
+            },
+            {
+              "channel": "Ventanilla",
+              "amount": 9200.0,
+              "estimated_teorica": 10454.545454545454,
+              "share": 0.10454545454545454,
+              "deviation_pct": -0.11999999999999995
+            },
+            {
+              "channel": "Buzon",
+              "amount": 3200.0,
+              "estimated_teorica": 3636.363636363636,
+              "share": 0.03636363636363636
+            },
+            {
+              "channel": "Recaudacion",
+              "amount": 3800.0,
+              "estimated_teorica": 4318.181818181818,
+              "share": 0.04318181818181818
+            },
+            {
+              "channel": "Caja Chica",
+              "amount": 1100.0,
+              "estimated_teorica": 1250.0,
+              "share": 0.0125,
+              "deviation_pct": -0.12
+            },
+            {
+              "channel": "Otros",
+              "amount": 8900.0,
+              "estimated_teorica": 10113.636363636364,
+              "share": 0.10113636363636364,
+              "deviation_pct": -0.12000000000000002
+            }
+          ],
+          "alerts_created": 1,
+          "alerts_to_persist": [
+            {
+              "priority": "critical",
+              "prioridad": "critica",
+              "status": "active",
+              "estado": "abierta",
+              "problema": "Palermo: deficit de 12,000 ARS (-12.0%)",
+              "hipotesis": "Desvio detectado en Palermo",
+              "impacto": "Diferencia de 12,000 ARS (-12.0%)",
+              "datos_clave": [
+                "Diferencia total: -12,000 ARS",
+                "Desvio porcentual: -12.0%",
+                "Sucursal: Palermo (SUC-404)",
+                "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-10-03T03:01:17.893465+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada [inmediato]; ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada [proximo turno]; ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 809 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "SUC-404",
+              "branch_name": "Palermo",
+              "summary": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+              "dedupe_clave": "a1c154ad4d6f5663a6249b6c450cd990eb63b7c603df4dd76ce6e434d3a8b8f1",
+              "creada_en": "2025-10-03T03:01:17.893465+00:00",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "agent_source": "capi_elcajas"
+            }
+          ],
+          "alert_priority": "critical",
+          "alert_escalated": true,
+          "alert_operation": {
+            "table": "public.alertas",
+            "values": {
+              "prioridad": "critica",
+              "estado": "abierta",
+              "problema": "Palermo: deficit de 12,000 ARS (-12.0%)",
+              "hipotesis": "Desvio detectado en Palermo",
+              "impacto": "Diferencia de 12,000 ARS (-12.0%)",
+              "datos_clave": [
+                "Diferencia total: -12,000 ARS",
+                "Desvio porcentual: -12.0%",
+                "Sucursal: Palermo (SUC-404)",
+                "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-10-03T03:01:17.893465+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada [inmediato]; ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada [proximo turno]; ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 809 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "SUC-404",
+              "dedupe_clave": "a1c154ad4d6f5663a6249b6c450cd990eb63b7c603df4dd76ce6e434d3a8b8f1",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "creada_en": "2025-10-03 03:01:17.893465+00:00"
+            },
+            "description": "Insert alerta El Cajas - Palermo",
+            "branch_id": "SUC-404",
+            "branch_name": "Palermo",
+            "source": "capi_elcajas",
+            "payload": {
+              "priority": "critical",
+              "prioridad": "critica",
+              "status": "active",
+              "estado": "abierta",
+              "problema": "Palermo: deficit de 12,000 ARS (-12.0%)",
+              "hipotesis": "Desvio detectado en Palermo",
+              "impacto": "Diferencia de 12,000 ARS (-12.0%)",
+              "datos_clave": [
+                "Diferencia total: -12,000 ARS",
+                "Desvio porcentual: -12.0%",
+                "Sucursal: Palermo (SUC-404)",
+                "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-10-03T03:01:17.893465+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada [inmediato]; ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada [proximo turno]; ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 809 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "SUC-404",
+              "branch_name": "Palermo",
+              "summary": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+              "dedupe_clave": "a1c154ad4d6f5663a6249b6c450cd990eb63b7c603df4dd76ce6e434d3a8b8f1",
+              "creada_en": "2025-10-03T03:01:17.893465+00:00",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "agent_source": "capi_elcajas"
+            }
+          },
+          "recommendation_artifact": {
+            "path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_elcajas/recommendation_SUC-404_20251003_030117.json",
+            "filename": "recommendation_SUC-404_20251003_030117.json",
+            "relative_path": "capi_elcajas/recommendation_SUC-404_20251003_030117.json",
+            "created_at": "2025-10-03T03:01:17.893465+00:00",
+            "summary": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+            "hypothesis": "Desvio detectado en Palermo",
+            "impact": "Diferencia de 12,000 ARS (-12.0%)",
+            "suggested_actions": [
+              "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica",
+              "ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada",
+              "ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo",
+              "ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada",
+              "ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo",
+              "Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada",
+              "Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo",
+              "Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada",
+              "Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo",
+              "Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada",
+              "Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo",
+              "Otros: deposit 809 ARS - Deficit canal vs distribucion esperada",
+              "Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo"
+            ]
+          }
+        }
+      ],
+      "calendar": {
+        "status": "cerrado",
+        "business_day": "si",
+        "holiday": "no"
+      },
+      "policies_loaded": 9,
+      "alerts_created": 1,
+      "alert_operations": [
+        {
+          "table": "public.alertas",
+          "values": {
+            "prioridad": "critica",
+            "estado": "abierta",
+            "problema": "Palermo: deficit de 12,000 ARS (-12.0%)",
+            "hipotesis": "Desvio detectado en Palermo",
+            "impacto": "Diferencia de 12,000 ARS (-12.0%)",
+            "datos_clave": [
+              "Diferencia total: -12,000 ARS",
+              "Desvio porcentual: -12.0%",
+              "Sucursal: Palermo (SUC-404)",
+              "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]",
+              "Medicion: 2025-10-03T03:01:17.893465+00:00"
+            ],
+            "acciones": "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada [inmediato]; ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada [proximo turno]; ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 809 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo [proximo turno]",
+            "sucursal_id": "SUC-404",
+            "dedupe_clave": "a1c154ad4d6f5663a6249b6c450cd990eb63b7c603df4dd76ce6e434d3a8b8f1",
+            "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+            "creada_en": "2025-10-03 03:01:17.893465+00:00"
+          },
+          "description": "Insert alerta El Cajas - Palermo",
+          "branch_id": "SUC-404",
+          "branch_name": "Palermo",
+          "source": "capi_elcajas",
+          "payload": {
+            "priority": "critical",
+            "prioridad": "critica",
+            "status": "active",
+            "estado": "abierta",
+            "problema": "Palermo: deficit de 12,000 ARS (-12.0%)",
+            "hipotesis": "Desvio detectado en Palermo",
+            "impacto": "Diferencia de 12,000 ARS (-12.0%)",
+            "datos_clave": [
+              "Diferencia total: -12,000 ARS",
+              "Desvio porcentual: -12.0%",
+              "Sucursal: Palermo (SUC-404)",
+              "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]",
+              "Medicion: 2025-10-03T03:01:17.893465+00:00"
+            ],
+            "acciones": "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada [inmediato]; ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada [proximo turno]; ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 809 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo [proximo turno]",
+            "sucursal_id": "SUC-404",
+            "branch_name": "Palermo",
+            "summary": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+            "dedupe_clave": "a1c154ad4d6f5663a6249b6c450cd990eb63b7c603df4dd76ce6e434d3a8b8f1",
+            "creada_en": "2025-10-03T03:01:17.893465+00:00",
+            "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+            "agent_source": "capi_elcajas",
+            "persisted": true,
+            "database_id": 30
+          },
+          "persisted": true,
+          "database_id": 30
+        }
+      ],
+      "recommendation_files": [
+        {
+          "path": "/app/ia_workspace/data/sessions/session_voice-e2e-palermo/capi_elcajas/recommendation_SUC-404_20251003_030117.json",
+          "filename": "recommendation_SUC-404_20251003_030117.json",
+          "relative_path": "capi_elcajas/recommendation_SUC-404_20251003_030117.json",
+          "created_at": "2025-10-03T03:01:17.893465+00:00",
+          "summary": "Palermo: déficit de 12,000 ARS (12.0%). Severidad: alert",
+          "hypothesis": "Desvio detectado en Palermo",
+          "impact": "Diferencia de 12,000 ARS (-12.0%)",
+          "suggested_actions": [
+            "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica",
+            "ATM: deposit 2,502 ARS - Deficit canal vs distribucion esperada",
+            "ATM: deposit 463,300 ARS - Monto por debajo del colchon minimo",
+            "ATS: deposit 1,058 ARS - Deficit canal vs distribucion esperada",
+            "ATS: deposit 286,700 ARS - Monto por debajo del colchon minimo",
+            "Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada",
+            "Tesoro: deposit 738,200 ARS - Monto por debajo del colchon minimo",
+            "Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada",
+            "Ventanilla: deposit 140,800 ARS - Monto por debajo del colchon minimo",
+            "Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada",
+            "Caja Chica: deposit 28,900 ARS - Monto por debajo del colchon minimo",
+            "Otros: deposit 809 ARS - Deficit canal vs distribucion esperada",
+            "Otros: deposit 41,100 ARS - Monto por debajo del colchon minimo"
+          ]
+        }
+      ]
+    }
+  },
+  "errors": []
+}

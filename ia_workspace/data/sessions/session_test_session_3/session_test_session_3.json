@@ -1,0 +1,156 @@
+{
+  "created_at": "2025-09-25T03:57:30.488018",
+  "session_id": "test_session_3",
+  "sanitized_session_id": "test_session_3",
+  "updated_at": "2025-09-26T01:25:45.657959",
+  "datab_exports": [],
+  "status": "completed",
+  "active_agent": "summary",
+  "completed_nodes": [
+    "start",
+    "intent",
+    "react",
+    "reasoning",
+    "supervisor",
+    "router",
+    "summary",
+    "human_gate",
+    "assemble",
+    "finalize"
+  ],
+  "intent": "unknown",
+  "intent_confidence": 0.2,
+  "last_query": "Ã‚Â¿CÃƒÂ³mo cocinar pasta?",
+  "last_response": {
+    "message": "📊 *Resumen financiero*:\n\n⚠️ No se encontraron datos financieros para analizar.\n\nPor favor, carga algunos archivos CSV o Excel en el sistema.",
+    "data": {
+      "react_observations": [
+        {
+          "summary": "Sin historial relevante.",
+          "recent_turns": []
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      ],
+      "reasoning_plan": {
+        "plan_id": "c930cb1f-d4a9-48dd-954a-9f526b0c5bad",
+        "version": 1,
+        "intent": "unknown",
+        "goal": "Clarificar y asistir consulta ambigua: Ã‚Â¿CÃƒÂ³mo cocinar pasta?",
+        "confidence": 0.95,
+        "recommended_agent": "summary",
+        "fallback_agent": "assemble",
+        "rationale": "Consulta ambigua: se elabora estrategia de clarificación y recopilación de señales antes de seleccionar agente definitivo.",
+        "steps": [
+          {
+            "id": "E1",
+            "title": "Solicitar clarificación",
+            "description": "Pedir más detalles al usuario para reducir ambigüedad.",
+            "agent": "summary",
+            "inputs": [],
+            "expected_output": "Detalle adicional de la consulta",
+            "depends_on": []
+          },
+          {
+            "id": "E2",
+            "title": "Identificar señales financieras",
+            "description": "Buscar palabras clave que alineen la consulta con agentes especializados.",
+            "agent": "intent",
+            "inputs": [],
+            "expected_output": "Intentos candidatos",
+            "depends_on": [
+              "E1"
+            ]
+          },
+          {
+            "id": "E3",
+            "title": "Preparar respuesta inicial",
+            "description": "Ofrecer orientación y sugerir capacidades relevantes mientras se espera aclaración.",
+            "agent": "summary",
+            "inputs": [],
+            "expected_output": "Guía introductoria",
+            "depends_on": [
+              "E1",
+              "E2"
+            ]
+          }
+        ],
+        "cooperative_agents": [
+          "intent"
+        ],
+        "supporting_evidence": {
+          "progress_percent": 97.5,
+          "remaining_steps": 3,
+          "estimated_effort_seconds": 50,
+          "complexity": "medium",
+          "entities": {},
+          "context_used": false,
+          "semantic_confidence": 0.8,
+          "available_agents": [
+            "anomaly",
+            "branch",
+            "capi_datab",
+            "capi_desktop",
+            "summary"
+          ],
+          "user_id": "test_user",
+          "session_id": "test_session_3"
+        },
+        "generated_at": "2025-09-26T04:25:45.610023",
+        "intent_alignment": false,
+        "requires_replan": false,
+        "history": [],
+        "progress_percent": 97.5,
+        "remaining_steps": 3,
+        "complexity": "medium",
+        "estimated_effort_seconds": 50
+      },
+      "total_records": 0,
+      "total_amount": 0.0,
+      "anomalies_detected": 0,
+      "date_range": "Sin datos",
+      "branches": [],
+      "categories": []
+    }
+  },
+  "conversation_history": [],
+  "memory_window": [],
+  "reasoning_summary": {
+    "goal": "Clarificar y asistir consulta ambigua: Ã‚Â¿CÃƒÂ³mo cocinar pasta?",
+    "recommended_agent": "summary",
+    "confidence": 0.95,
+    "version": 1,
+    "cooperative_agents": [
+      "intent"
+    ],
+    "progress_percent": 97.5,
+    "remaining_steps": 3,
+    "complexity": "medium",
+    "estimated_effort_seconds": 50,
+    "remaining_percent": 2.5
+  },
+  "processing_metrics": {
+    "react_steps": 5.0,
+    "react_latency_ms": 1.0,
+    "reasoning_time_ms": 1361.0,
+    "reasoning_steps": 3.0,
+    "reasoning_version": 1.0,
+    "reasoning_progress_percent": 97.5,
+    "reasoning_eta_seconds": 50.0,
+    "reasoning_remaining_steps": 3.0,
+    "supervisor_latency_ms": 0.0,
+    "supervisor_queue_length": 5.0
+  },
+  "shared_artifacts": {},
+  "errors": []
+}

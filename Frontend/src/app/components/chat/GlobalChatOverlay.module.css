@@ -1,0 +1,793 @@
+/* Global Chat Overlay - Enhanced HUD Futuristic Theme */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(0, 255, 136, 0.02) 0%, transparent 50%),
+    rgba(0, 17, 34, 0.3);
+  backdrop-filter: blur(3px);
+  z-index: 1050;
+  animation: fadeIn 0.4s ease-out;
+  pointer-events: none; /* CRUCIAL: Permitir clicks en elementos debajo */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+
+  /* Minimal background - Más transparente para no interferir */
+  background:
+    radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(0, 255, 136, 0.03) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(0, 17, 34, 0.85) 0%, rgba(0, 34, 68, 0.85) 50%, rgba(0, 51, 102, 0.85) 100%);
+
+  /* Minimal glass effect - no blur interference */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
+  z-index: 1055; /* Reducir z-index para mejor armonía */
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto; /* Permitir interacción solo en el chat */
+
+  /* HUD grid pattern background */
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 0;
+
+  /* HUD font family */
+  font-family: 'Orbitron', 'Courier New', monospace;
+  color: #e6f1ff;
+}
+
+.overlayLeft {
+  left: 0;
+  /* Futuristic borders and effects */
+  border-right: 2px solid rgba(0, 255, 255, 0.4);
+  border-top: 1px solid rgba(0, 255, 255, 0.2);
+
+  /* HUD-style clip-path for left position */
+  clip-path: polygon(
+    0 0,
+    calc(100% - 30px) 0,
+    100% 30px,
+    100% 100%,
+    0 100%
+  );
+
+  /* Advanced shadows and glow effects */
+  box-shadow:
+    30px 0 80px rgba(0, 0, 0, 0.6),
+    inset -2px 0 0 rgba(0, 255, 255, 0.15),
+    0 0 60px rgba(0, 255, 255, 0.2),
+    inset 0 0 40px rgba(0, 255, 255, 0.05);
+
+  animation: slideInLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.overlayRight {
+  right: 0;
+  /* Futuristic borders and effects */
+  border-left: 2px solid rgba(0, 255, 255, 0.4);
+  border-top: 1px solid rgba(0, 255, 255, 0.2);
+
+  /* HUD-style clip-path for right position */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 30px),
+    calc(100% - 30px) 100%,
+    0 100%
+  );
+
+  /* Advanced shadows and glow effects */
+  box-shadow:
+    -30px 0 80px rgba(0, 0, 0, 0.6),
+    inset 2px 0 0 rgba(0, 255, 255, 0.15),
+    0 0 60px rgba(0, 255, 255, 0.2),
+    inset 0 0 40px rgba(0, 255, 255, 0.05);
+
+  animation: slideInRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 25px 15px;
+  user-select: none;
+
+  /* HUD-style header background */
+  background:
+    linear-gradient(135deg, rgba(0, 40, 80, 0.95), rgba(0, 20, 60, 0.90)),
+    radial-gradient(circle at center, rgba(0, 255, 255, 0.08), transparent 70%);
+
+  /* HUD borders and effects */
+  border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+  border-top: 1px solid rgba(0, 255, 255, 0.2);
+
+  /* HUD-style clip-path */
+  clip-path: polygon(
+    0 0,
+    calc(100% - 25px) 0,
+    100% 40%,
+    100% 100%,
+    25px 100%,
+    0 60%
+  );
+
+  /* Enhanced effects */
+  box-shadow:
+    0 0 30px rgba(0, 255, 255, 0.2),
+    inset 0 0 25px rgba(0, 255, 255, 0.05),
+    0 8px 40px rgba(0, 0, 0, 0.4);
+
+  backdrop-filter: blur(1px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* HUD header glow line effect */
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  box-shadow: 0 0 12px #00ffff;
+}
+
+.title {
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  font-size: 20px;
+  font-weight: 800;
+  color: #00ffff;
+  text-shadow:
+    0 0 15px rgba(0, 255, 255, 0.8),
+    0 0 30px rgba(0, 255, 255, 0.4),
+    0 0 45px rgba(0, 255, 255, 0.2);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+
+.closeButton {
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  color: #00ffff;
+  width: 36px;
+  height: 36px;
+
+  /* HUD-style hexagonal shape */
+  clip-path: polygon(
+    10px 0,
+    calc(100% - 10px) 0,
+    100% 30%,
+    100% 70%,
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 70%,
+    0 30%
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', monospace;
+  position: relative;
+  z-index: 2;
+
+  box-shadow:
+    inset 0 0 15px rgba(0, 255, 255, 0.1),
+    0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.closeButton:hover {
+  background: rgba(0, 255, 255, 0.2);
+  border-color: rgba(0, 255, 255, 0.7);
+  transform: scale(1.1);
+  box-shadow:
+    inset 0 0 20px rgba(0, 255, 255, 0.2),
+    0 0 25px rgba(0, 255, 255, 0.5);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+.content {
+  flex: 1;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Override ChatBox styles for HUD-themed global overlay */
+.content :global(.chatbox-container) {
+  height: 100%;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Orbitron', 'Courier New', monospace !important;
+  color: #e6f1ff !important;
+}
+
+.content :global(.chatbox-header) {
+  background:
+    linear-gradient(135deg, rgba(0, 40, 80, 0.8), rgba(0, 20, 60, 0.7)),
+    radial-gradient(circle at center, rgba(0, 255, 255, 0.06), transparent 70%) !important;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-top: 1px solid rgba(0, 255, 255, 0.2) !important;
+  padding: 20px 30px !important;
+  backdrop-filter: blur(1px) !important;
+}
+
+.content :global(.chatbox-messages) {
+  flex: 1 !important;
+  background: transparent !important;
+  padding: 20px 30px !important;
+  max-height: none !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(0, 255, 255, 0.3) transparent !important;
+}
+
+/* Custom scrollbar for WebKit browsers */
+.content :global(.chatbox-messages::-webkit-scrollbar) {
+  width: 6px !important;
+}
+
+.content :global(.chatbox-messages::-webkit-scrollbar-track) {
+  background: rgba(0, 40, 80, 0.3) !important;
+}
+
+.content :global(.chatbox-messages::-webkit-scrollbar-thumb) {
+  background: rgba(0, 255, 255, 0.4) !important;
+  border-radius: 3px !important;
+}
+
+.content :global(.chatbox-input-container) {
+  background:
+    linear-gradient(135deg, rgba(0, 40, 80, 0.9), rgba(0, 20, 60, 0.8)),
+    radial-gradient(circle at center, rgba(0, 255, 136, 0.06), transparent 70%) !important;
+  border-top: 2px solid rgba(0, 255, 136, 0.3) !important;
+  padding: 25px 30px !important;
+  margin: 0 !important;
+  backdrop-filter: blur(1px) !important;
+}
+
+.content :global(.chatbox-input) {
+  background: rgba(0, 40, 80, 0.6) !important;
+  border: 1px solid rgba(0, 255, 255, 0.4) !important;
+  color: #e6f1ff !important;
+  font-family: 'Orbitron', monospace !important;
+  font-size: 14px !important;
+  padding: 12px 16px !important;
+  border-radius: 0 !important;
+
+  /* HUD-style clip-path for input */
+  clip-path: polygon(
+    8px 0,
+    calc(100% - 8px) 0,
+    100% 25%,
+    100% 75%,
+    calc(100% - 8px) 100%,
+    8px 100%,
+    0 75%,
+    0 25%
+  ) !important;
+
+  box-shadow:
+    inset 0 0 15px rgba(0, 255, 255, 0.1),
+    0 0 10px rgba(0, 255, 255, 0.2) !important;
+}
+
+.content :global(.chatbox-input:focus) {
+  border-color: rgba(0, 255, 255, 0.7) !important;
+  box-shadow:
+    inset 0 0 20px rgba(0, 255, 255, 0.15),
+    0 0 20px rgba(0, 255, 255, 0.4) !important;
+  outline: none !important;
+}
+
+.content :global(.chatbox-input::placeholder) {
+  color: rgba(230, 241, 255, 0.5) !important;
+  font-family: 'Orbitron', monospace !important;
+}
+
+.content :global(.chatbox-send) {
+  background: rgba(0, 255, 255, 0.15) !important;
+  border: 1px solid rgba(0, 255, 255, 0.5) !important;
+  color: #00ffff !important;
+  font-family: 'Orbitron', monospace !important;
+  border-radius: 0 !important;
+
+  /* HUD-style hexagonal send button */
+  clip-path: polygon(
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 30%,
+    100% 70%,
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 70%,
+    0 30%
+  ) !important;
+
+  box-shadow:
+    inset 0 0 15px rgba(0, 255, 255, 0.1),
+    0 0 15px rgba(0, 255, 255, 0.3) !important;
+
+  transition: all 0.3s ease !important;
+}
+
+.content :global(.chatbox-send:hover) {
+  background: rgba(0, 255, 255, 0.25) !important;
+  border-color: rgba(0, 255, 255, 0.7) !important;
+  box-shadow:
+    inset 0 0 20px rgba(0, 255, 255, 0.2),
+    0 0 25px rgba(0, 255, 255, 0.5) !important;
+  transform: scale(1.05) !important;
+}
+
+.content :global(.chatbox-send:disabled) {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* HUD-styled messages */
+.content :global(.chatbox-message) {
+  background:
+    linear-gradient(135deg, rgba(0, 40, 80, 0.6), rgba(0, 20, 60, 0.4)) !important;
+  border: 1px solid rgba(0, 255, 255, 0.25) !important;
+  color: #e6f1ff !important;
+  font-family: 'Orbitron', monospace !important;
+  margin: 8px 0 !important;
+  padding: 12px 16px !important;
+  border-radius: 0 !important;
+
+  /* HUD message shape */
+  clip-path: polygon(
+    6px 0,
+    calc(100% - 6px) 0,
+    100% 20%,
+    100% 80%,
+    calc(100% - 6px) 100%,
+    6px 100%,
+    0 80%,
+    0 20%
+  ) !important;
+
+  box-shadow:
+    inset 0 0 15px rgba(0, 255, 255, 0.05),
+    0 0 8px rgba(0, 255, 255, 0.15) !important;
+
+  backdrop-filter: blur(1px) !important;
+}
+
+.content :global(.chatbox-message-user) {
+  background:
+    linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(0, 153, 204, 0.15)) !important;
+  border-color: rgba(0, 255, 255, 0.4) !important;
+  box-shadow:
+    inset 0 0 20px rgba(0, 255, 255, 0.1),
+    0 0 12px rgba(0, 255, 255, 0.25) !important;
+}
+
+.content :global(.chatbox-message-title) {
+  color: #00ffff !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5) !important;
+}
+
+
+/* HUD-style scanline effect */
+.overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.8), transparent);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+  animation: scanline 4s linear infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Corner decorative elements */
+.overlay::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  border-left: none;
+  border-bottom: none;
+  clip-path: polygon(0 0, 100% 0, 60% 40%, 40% 60%, 0 100%);
+  box-shadow:
+    inset 0 0 20px rgba(0, 255, 255, 0.1),
+    0 0 15px rgba(0, 255, 255, 0.2);
+  animation: cornerPulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes cornerPulse {
+  0%, 100% {
+    opacity: 0.6;
+    box-shadow:
+      inset 0 0 20px rgba(0, 255, 255, 0.1),
+      0 0 15px rgba(0, 255, 255, 0.2);
+  }
+  50% {
+    opacity: 1;
+    box-shadow:
+      inset 0 0 30px rgba(0, 255, 255, 0.2),
+      0 0 25px rgba(0, 255, 255, 0.4);
+  }
+}
+
+/* Energy field background effect */
+.content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(0, 255, 255, 0.03), transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(0, 255, 136, 0.02), transparent 60%);
+  animation: energyPulse 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes energyPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+/* Improved animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(12px);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%) scale(0.95);
+    opacity: 0;
+    filter: blur(5px);
+  }
+  50% {
+    opacity: 0.8;
+    filter: blur(2px);
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .overlay {
+    width: 100vw;
+    right: 0;
+  }
+}
+
+/* New Layout Styles */
+
+/* Main content container */
+.mainContent {
+  display: flex;
+  height: 100%;
+  position: relative;
+}
+
+/* Resize handle */
+.resizeHandle {
+  position: absolute;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: rgba(0, 255, 255, 0.3);
+  cursor: ew-resize;
+  z-index: 1000;
+  transition: background-color 0.2s ease;
+}
+
+.resizeHandle:hover {
+  background: rgba(0, 255, 255, 0.6);
+}
+
+.resizeHandleLeft {
+  left: 0;
+}
+
+.resizeHandleRight {
+  right: 0;
+}
+
+/* Sidebar styles - Más compacto */
+.sidebar {
+  width: 240px;
+  background:
+    linear-gradient(135deg, rgba(0, 30, 60, 0.95), rgba(0, 15, 45, 0.90)),
+    radial-gradient(circle at center, rgba(0, 255, 136, 0.06), transparent 70%);
+  border-right: 1px solid rgba(0, 255, 136, 0.3);
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(1px);
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+  background: rgba(0, 255, 136, 0.08);
+}
+
+.sidebarTitle {
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: #00ff88;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sidebarToggle {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.4);
+  color: #00ff88;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sidebarToggle:hover {
+  background: rgba(0, 255, 136, 0.2);
+  transform: scale(1.1);
+}
+
+.sidebarContent {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Control groups */
+.controlGroup {
+  margin-bottom: 25px;
+}
+
+.controlLabel {
+  display: block;
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: #00ff88;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.controlButton {
+  flex: 1;
+  padding: 8px 12px;
+  background: rgba(0, 30, 60, 0.6);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  color: #e6f1ff;
+  font-family: 'Orbitron', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+
+.controlButton:hover {
+  background: rgba(0, 255, 136, 0.15);
+  border-color: rgba(0, 255, 136, 0.5);
+}
+
+.controlButton.active {
+  background: rgba(0, 255, 136, 0.25);
+  border-color: rgba(0, 255, 136, 0.6);
+  color: #00ff88;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+}
+
+/* Range slider */
+.slider {
+  width: 100%;
+  height: 6px;
+  background: rgba(0, 30, 60, 0.8);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #00ff88, #00cc66);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #00ff88, #00cc66);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+}
+
+/* Status indicators */
+.statusGroup {
+  padding: 15px;
+  background: rgba(0, 30, 60, 0.4);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+}
+
+.statusItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.statusLabel {
+  font-family: 'Orbitron', monospace;
+  font-size: 11px;
+  color: rgba(230, 241, 255, 0.7);
+  text-transform: uppercase;
+}
+
+.statusValue {
+  font-family: 'Orbitron', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: #00ff88;
+}
+
+/* Chat panel */
+.chatPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header controls */
+.headerControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dragIndicator {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  cursor: grab;
+}
+
+.dragIndicator:active {
+  cursor: grabbing;
+}
+
+.dragDots {
+  color: rgba(0, 255, 255, 0.6);
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Additional animations */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%) scale(0.95);
+    opacity: 0;
+    filter: blur(5px);
+  }
+  50% {
+    opacity: 0.8;
+    filter: blur(2px);
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .sidebarContent {
+    padding: 15px;
+  }
+
+  .controlButton {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+}
+
+/* Ensure overlay is above HUD but not blocking everything */
+.backdrop {
+  z-index: 1050;
+}
+
+.overlay {
+  z-index: 1055;
+}

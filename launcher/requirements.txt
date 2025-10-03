@@ -1,0 +1,11 @@
+# Dependencias para CapiAgentes Docker Manager GUI
+# Instalación: pip install -r requirements_gui.txt
+
+# GUI Framework (incluido en Python estándar)
+# tkinter - Ya incluido en instalaciones estándar de Python
+
+# Para generar ejecutable
+pyinstaller>=5.0.0
+
+# Utilidades adicionales (opcionales)
+psutil>=5.9.0     # Para monitoreo de procesos adicional

@@ -1,0 +1,143 @@
+{
+  "fingerprint": "d59bf9e2401d119be44c1dd146e6319c5c03f8710a2c146152e8a38e97be3502",
+  "headline": "Sin gastar un solo dólar: los museos gratuitos de Nueva York para aprovechar en tu próximo viaje",
+  "url": "https://www.ambito.com/economia/sin-gastar-un-solo-dolar-los-museos-gratuitos-nueva-york-aprovechar-tu-proximo-viaje-n6191125",
+  "published_at": "2025-09-18T17:00:00",
+  "impact_level": "low",
+  "score": 0.0,
+  "priority_score": 0.4,
+  "urgency_level": "normal",
+  "tags": [],
+  "relevance_signals": [],
+  "branch_targets": [],
+  "suggested_actions": [],
+  "raw_keywords": [
+    "Dólar"
+  ],
+  "summary": "Muchos espacios ofrecen horarios especiales para entrar sin costo, por lo que resulta fundamental armar un itinerario para ahorrar plata.",
+  "snippet": "El arte y la cultura en Nueva York no siempre requieren de grandes presupuestos. Con solo un dólar podés comprar un café, pero para recorrer algunos de los museos más importantes de la ciudad no necesitás gastar nada. La Gran Manzana ofrece experiencias únicas que enriquecen cualquier viaje sin afectar el bolsillo. Lo ",
+  "source": "https://www.ambito.com/economia",
+  "run": {
+    "generated_at": "2025-09-18T18:34:32.568924",
+    "trigger": "manual",
+    "requested_by": null,
+    "metrics": {
+      "total_articles": 15,
+      "high_impact": 2,
+      "medium_impact": 1,
+      "low_impact": 12,
+      "tags": {
+        "regulation": 6,
+        "liquidity": 4,
+        "risk_alerts": 2,
+        "branch_activity": 1
+      },
+      "signals": {
+        "policy_change": 6,
+        "liquidity_risk": 4,
+        "systemic_risk": 4,
+        "branch_operations": 1
+      },
+      "priority_high": 2,
+      "priority_medium": 3,
+      "priority_low": 10,
+      "average_priority": 3.19,
+      "max_priority": 13.28,
+      "estimated_tokens": 1817,
+      "estimated_cost_usd": 0.002726
+    },
+    "alerts": [
+      {
+        "headline": "Dólar: al límite, Donald Trump hace cambios inéditos en el FMI y genera un \"cisne blanco\" que podría descomprimir el plan de Javier Milei",
+        "url": "https://www.ambito.com/economia/dolar-al-limite-donald-trump-hace-cambios-ineditos-el-fmi-y-genera-un-cisne-blanco-que-podria-descomprimir-el-plan-javier-milei-n6192055",
+        "impact_level": "high",
+        "score": 9.2,
+        "priority_score": 13.28,
+        "tags": [
+          "liquidity",
+          "regulation",
+          "risk_alerts"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "normal",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T13:28:00-03:00"
+      },
+      {
+        "headline": "Crece la tensión financiera: los bonos se hunden hasta 11% y el riesgo país supera los 1.400 puntos básicos",
+        "url": "https://www.ambito.com/finanzas/los-bonos-dolares-caen-3-y-profundizan-las-caidas-el-premarket-n6191886",
+        "impact_level": "high",
+        "score": 6.2,
+        "priority_score": 9.58,
+        "tags": [
+          "liquidity",
+          "regulation",
+          "risk_alerts"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "medium",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T14:49:00-03:00"
+      },
+      {
+        "headline": "Senado debate el rechazo a los vetos de Milei a la distribución de los ATN",
+        "url": "https://www.ambito.com/politica/el-senado-abre-un-nuevo-round-contra-los-vetos-javier-milei-buscan-recuperar-la-distribucion-los-atn-n6191803",
+        "impact_level": "medium",
+        "score": 3.2,
+        "priority_score": 5.34,
+        "tags": [
+          "liquidity",
+          "regulation"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "high",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T11:19:00-03:00"
+      }
+    ],
+    "decision_summary": {
+      "high_priority": 2,
+      "medium_priority": 3,
+      "recommended_actions": [
+        "Escala a risk management y prepara comunicacion con clientes clave.",
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Revisa proyecciones de liquidez y prepara escenarios de stress."
+      ],
+      "branches_to_monitor": [],
+      "top_headline": "Crece la tensión financiera: los bonos se hunden hasta 11% y el riesgo país supera los 1.400 puntos básicos",
+      "top_priority_score": 9.58
+    }
+  },
+  "files": {
+    "markdown": "2025\\09\\2025-09.18 - Sin gastar un solo dolar los museos gratuitos de Nueva York para aprovechar en t.md",
+    "json": "2025\\09\\2025-09.18 - Sin gastar un solo dolar los museos gratuitos de Nueva York para aprovechar en t.json"
+  },
+  "stored_at": "2025-09-18T18:34:32.588928"
+}

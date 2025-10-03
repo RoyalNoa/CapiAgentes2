@@ -1,0 +1,151 @@
+{
+  "fingerprint": "5491adef8e8da508e72b8705e8816b921bfcc12810f4cec549d186e567aa6cf8",
+  "headline": "Dólar hoy: a cuánto cotiza este jueves 18 de septiembre",
+  "url": "https://www.ambito.com/finanzas/dolar-hoy-cuanto-cotiza-este-jueves-18-septiembre-n6191770",
+  "published_at": "2025-09-18T17:49:00",
+  "impact_level": "low",
+  "score": 2.9,
+  "priority_score": 4.46,
+  "urgency_level": "normal",
+  "tags": [
+    "regulation"
+  ],
+  "relevance_signals": [
+    "policy_change"
+  ],
+  "branch_targets": [],
+  "suggested_actions": [
+    "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos."
+  ],
+  "raw_keywords": [
+    "Dólar",
+    "reservas del BCRA",
+    "BCRA"
+  ],
+  "summary": "Conocé a cuánto cotiza el dólar oficial, blue, el dólar MEP y el CCL.",
+  "snippet": "El dólar oficial opera a $1.445,79 para la compra y a $1.496,84 para la venta en el promedio de las entidades financieras que publica el Banco Central (BCRA). En tanto, en el Banco Nación (BNA), el billete se vende a $1.440 para la compra y $1.490 para la venta. El dólar blue cotiza a $1.515, según un relevamiento de Á",
+  "source": "https://www.ambito.com/finanzas",
+  "run": {
+    "generated_at": "2025-09-18T18:34:32.568924",
+    "trigger": "manual",
+    "requested_by": null,
+    "metrics": {
+      "total_articles": 15,
+      "high_impact": 2,
+      "medium_impact": 1,
+      "low_impact": 12,
+      "tags": {
+        "regulation": 6,
+        "liquidity": 4,
+        "risk_alerts": 2,
+        "branch_activity": 1
+      },
+      "signals": {
+        "policy_change": 6,
+        "liquidity_risk": 4,
+        "systemic_risk": 4,
+        "branch_operations": 1
+      },
+      "priority_high": 2,
+      "priority_medium": 3,
+      "priority_low": 10,
+      "average_priority": 3.19,
+      "max_priority": 13.28,
+      "estimated_tokens": 1817,
+      "estimated_cost_usd": 0.002726
+    },
+    "alerts": [
+      {
+        "headline": "Dólar: al límite, Donald Trump hace cambios inéditos en el FMI y genera un \"cisne blanco\" que podría descomprimir el plan de Javier Milei",
+        "url": "https://www.ambito.com/economia/dolar-al-limite-donald-trump-hace-cambios-ineditos-el-fmi-y-genera-un-cisne-blanco-que-podria-descomprimir-el-plan-javier-milei-n6192055",
+        "impact_level": "high",
+        "score": 9.2,
+        "priority_score": 13.28,
+        "tags": [
+          "liquidity",
+          "regulation",
+          "risk_alerts"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "normal",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T13:28:00-03:00"
+      },
+      {
+        "headline": "Crece la tensión financiera: los bonos se hunden hasta 11% y el riesgo país supera los 1.400 puntos básicos",
+        "url": "https://www.ambito.com/finanzas/los-bonos-dolares-caen-3-y-profundizan-las-caidas-el-premarket-n6191886",
+        "impact_level": "high",
+        "score": 6.2,
+        "priority_score": 9.58,
+        "tags": [
+          "liquidity",
+          "regulation",
+          "risk_alerts"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "medium",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T14:49:00-03:00"
+      },
+      {
+        "headline": "Senado debate el rechazo a los vetos de Milei a la distribución de los ATN",
+        "url": "https://www.ambito.com/politica/el-senado-abre-un-nuevo-round-contra-los-vetos-javier-milei-buscan-recuperar-la-distribucion-los-atn-n6191803",
+        "impact_level": "medium",
+        "score": 3.2,
+        "priority_score": 5.34,
+        "tags": [
+          "liquidity",
+          "regulation"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "high",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T11:19:00-03:00"
+      }
+    ],
+    "decision_summary": {
+      "high_priority": 2,
+      "medium_priority": 3,
+      "recommended_actions": [
+        "Escala a risk management y prepara comunicacion con clientes clave.",
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Revisa proyecciones de liquidez y prepara escenarios de stress."
+      ],
+      "branches_to_monitor": [],
+      "top_headline": "Crece la tensión financiera: los bonos se hunden hasta 11% y el riesgo país supera los 1.400 puntos básicos",
+      "top_priority_score": 9.58
+    }
+  },
+  "files": {
+    "markdown": "2025\\09\\2025-09.18 - Dolar hoy a cuanto cotiza este jueves 18 de septiembre.md",
+    "json": "2025\\09\\2025-09.18 - Dolar hoy a cuanto cotiza este jueves 18 de septiembre.json"
+  },
+  "stored_at": "2025-09-18T18:34:32.577382"
+}

@@ -1,0 +1,75 @@
+{
+  "branch_id": "SUC-364",
+  "branch_name": "Belgrano",
+  "severity": "alert",
+  "difference_ars": 12000.0,
+  "deviation_pct": 0.12,
+  "hypothesis": "Desvio detectado en Belgrano",
+  "impact": "Diferencia de 12,000 ARS (12.0%)",
+  "summary": "Belgrano: exceso de 12,000 ARS (12.0%). Severidad: alert",
+  "suggested_actions": [
+    "Saldo Total: withdraw 4,000 ARS - Exceso vs caja teorica",
+    "ATM: withdraw 0 ARS - Exceso canal vs distribucion esperada",
+    "ATS: withdraw 216 ARS - Exceso canal vs distribucion esperada",
+    "Ventanilla: withdraw 189 ARS - Exceso canal vs distribucion esperada",
+    "Caja Chica: withdraw 114 ARS - Exceso canal vs distribucion esperada",
+    "Otros: withdraw 500 ARS - Exceso canal vs distribucion esperada"
+  ],
+  "recommendations": [
+    {
+      "channel": "Saldo Total",
+      "action": "withdraw",
+      "amount": 4000.0,
+      "reason": "Exceso vs caja teorica",
+      "urgency": "programar",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.004
+    },
+    {
+      "channel": "ATM",
+      "action": "withdraw",
+      "amount": 0.0,
+      "reason": "Exceso canal vs distribucion esperada",
+      "urgency": "inmediato",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.0
+    },
+    {
+      "channel": "ATS",
+      "action": "withdraw",
+      "amount": 216.07,
+      "reason": "Exceso canal vs distribucion esperada",
+      "urgency": "programar",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.0
+    },
+    {
+      "channel": "Ventanilla",
+      "action": "withdraw",
+      "amount": 189.29,
+      "reason": "Exceso canal vs distribucion esperada",
+      "urgency": "programar",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.0
+    },
+    {
+      "channel": "Caja Chica",
+      "action": "withdraw",
+      "amount": 114.29,
+      "reason": "Exceso canal vs distribucion esperada",
+      "urgency": "programar",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.0
+    },
+    {
+      "channel": "Otros",
+      "action": "withdraw",
+      "amount": 500.0,
+      "reason": "Exceso canal vs distribucion esperada",
+      "urgency": "programar",
+      "estimated_cost": 0.0,
+      "weight_kg": 0.0
+    }
+  ],
+  "generated_at": "2025-09-26T14:05:23.943662+00:00"
+}

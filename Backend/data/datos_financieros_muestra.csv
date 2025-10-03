@@ -1,0 +1,11 @@
+fecha,monto,descripcion,categoria,sucursal,tipo_transaccion
+2025-01-01,50000,Depósito inicial,Ingreso,Sucursal Centro,deposito
+2025-01-02,25000,Retiro ATM,Egreso,Sucursal Norte,retiro
+2025-01-03,75000,Transferencia recibida,Ingreso,Sucursal Sur,transferencia
+2025-01-04,15000,Pago de servicio,Egreso,Sucursal Centro,pago
+2025-01-05,100000,Depósito empresarial,Ingreso,Sucursal Este,deposito
+2025-01-06,30000,Retiro ventanilla,Egreso,Sucursal Norte,retiro
+2025-01-07,200000,Préstamo desembolsado,Egreso,Sucursal Centro,prestamo
+2025-01-08,45000,Pago de préstamo,Ingreso,Sucursal Sur,pago_prestamo
+2025-01-09,80000,Depósito nómina,Ingreso,Sucursal Este,deposito
+2025-01-10,12000,Comisión bancaria,Egreso,Sucursal Norte,comision

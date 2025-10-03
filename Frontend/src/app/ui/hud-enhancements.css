@@ -1,0 +1,102 @@
+/**
+ * Enhanced HUD styles for Graph components
+ * Professional visual improvements for nodes and edges
+ */
+
+/* Secondary node colors for gradients */
+:root {
+  --node-idle-secondary: #2a3448;
+  --node-running-secondary: #0099cc;
+  --node-success-secondary: #0f9d73;
+  --node-error-secondary: #e84554;
+  --node-disabled-secondary: #3e4c66;
+
+  /* Edge intensity colors */
+  --edge-low: rgba(125, 249, 255, 0.4);
+  --edge-medium: rgba(125, 249, 255, 0.6);
+  --edge-high: rgba(125, 249, 255, 0.8);
+  --edge-active: rgba(0, 229, 255, 0.9);
+  --edge-flow: rgba(0, 229, 255, 0.95);
+  --edge-particle: rgba(125, 249, 255, 0.7);
+  --edge-bidirectional: rgba(255, 204, 0, 0.7);
+}
+
+/* Graph performance optimizations */
+.graph-edge {
+  shape-rendering: geometricPrecision;
+  vector-effect: non-scaling-stroke;
+}
+
+.graph-node {
+  shape-rendering: geometricPrecision;
+  transform-origin: center;
+}
+
+/* Graph container enhancements */
+.graph-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.graph-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0, 229, 255, 0.03), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(125, 249, 255, 0.02), transparent 40%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Sophisticated status indicators */
+.status-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hud-muted);
+  transition: all 0.3s ease;
+}
+
+.status-dot.active {
+  background: var(--hud-accent);
+  box-shadow:
+    0 0 8px rgba(0, 229, 255, 0.4),
+    inset 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.status-dot.processing {
+  background: var(--hud-warn);
+  animation: processing-pulse 1.5s ease-in-out infinite;
+}
+
+.status-dot.error {
+  background: var(--hud-error);
+  box-shadow: 0 0 6px rgba(255, 90, 107, 0.4);
+}
+
+@keyframes processing-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+/* Node hover enhancements */
+.node-hover-ring {
+  animation: node-hover-pulse 2s ease-in-out infinite;
+}
+
+@keyframes node-hover-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}

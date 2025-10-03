@@ -1,0 +1,300 @@
+{
+  "timeframe": "weekly",
+  "items": [
+    {
+      "fingerprint": "d2a0e884c668390d0f7c9d0f5360bfad121ac823e49fceb86447068f94656839",
+      "headline": "Dólar: al límite, Donald Trump hace cambios inéditos en el FMI y genera un \"cisne blanco\" que podría descomprimir el plan de Javier Milei",
+      "priority_score": 13.28,
+      "urgency_level": "normal",
+      "impact_level": "high",
+      "relevance_signals": [
+        "liquidity_risk",
+        "policy_change",
+        "systemic_risk"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Escala a risk management y prepara comunicacion con clientes clave."
+      ],
+      "summary": "Con u$s10.000 millones en vencimientos inmediatos, reservas netas al límite y un riesgo país en máximos, el Gobierno enfrenta creciente desconfianza del mercado. La intervención del BCRA y las señales de Luis Caputo no alcanzan para frenar la volatilidad, mientras Milei apuesta a un nuevo acuerdo con el FMI",
+      "url": "https://www.ambito.com/economia/dolar-al-limite-donald-trump-hace-cambios-ineditos-el-fmi-y-genera-un-cisne-blanco-que-podria-descomprimir-el-plan-javier-milei-n6192055",
+      "published_at": "2025-09-18T13:28:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Dolar al limite, Donald Trump hace cambios ineditos en el FMI y genera un cisne .md",
+      "json_path": "2025\\09\\2025-09.18 - Dolar al limite, Donald Trump hace cambios ineditos en el FMI y genera un cisne .json",
+      "stored_at": "2025-09-18T18:34:32.614412"
+    },
+    {
+      "fingerprint": "f1997d576ef27e2ed10bfb448a2b13ed8608083c30eedfd86ff9f1ac8b448d3b",
+      "headline": "Crece la tensión financiera: los bonos se hunden hasta 11% y el riesgo país supera los 1.400 puntos básicos",
+      "priority_score": 9.58,
+      "urgency_level": "medium",
+      "impact_level": "high",
+      "relevance_signals": [
+        "liquidity_risk",
+        "policy_change",
+        "systemic_risk"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Escala a risk management y prepara comunicacion con clientes clave."
+      ],
+      "summary": "La intervención del BCRA con venta de reservas pusieron en alerta a los inversores. Temor por los futuros vencimientos de deuda. Las acciones profundizan su caída tras los reveses del Gobierno en el Congreso.",
+      "url": "https://www.ambito.com/finanzas/los-bonos-dolares-caen-3-y-profundizan-las-caidas-el-premarket-n6191886",
+      "published_at": "2025-09-18T14:49:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Crece la tension financiera los bonos se hunden hasta 11% y el riesgo pais super.md",
+      "json_path": "2025\\09\\2025-09.18 - Crece la tension financiera los bonos se hunden hasta 11% y el riesgo pais super.json",
+      "stored_at": "2025-09-18T18:34:32.614381"
+    },
+    {
+      "fingerprint": "78affe291fef0182c19f9cd4822ac9158113b7bb294818feef1ff610e0cbf9e5",
+      "headline": "Senado debate el rechazo a los vetos de Milei a la distribución de los ATN",
+      "priority_score": 5.34,
+      "urgency_level": "high",
+      "impact_level": "medium",
+      "relevance_signals": [
+        "liquidity_risk",
+        "policy_change",
+        "systemic_risk"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Escala a risk management y prepara comunicacion con clientes clave."
+      ],
+      "summary": "Con Victoria Villarruel al frente del debate, la oposición busca insistir con el proyecto impulsado por los gobernadores, que pide la distribución de fondos con el criterio de coparticipación, evitando la discrecionalidad.",
+      "url": "https://www.ambito.com/politica/el-senado-abre-un-nuevo-round-contra-los-vetos-javier-milei-buscan-recuperar-la-distribucion-los-atn-n6191803",
+      "published_at": "2025-09-18T11:19:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Senado debate el rechazo a los vetos de Milei a la distribucion de los ATN.md",
+      "json_path": "2025\\09\\2025-09.18 - Senado debate el rechazo a los vetos de Milei a la distribucion de los ATN.json",
+      "stored_at": "2025-09-18T18:34:32.614702"
+    },
+    {
+      "fingerprint": "ee126638e301781ab03357730991626a9d8e40abbfaff59fe6b0382537061647",
+      "headline": "Qué son los ATN y cuál es su importancia: el Senado sesiona contra el veto de Javier Milei",
+      "priority_score": 4.86,
+      "urgency_level": "high",
+      "impact_level": "low",
+      "relevance_signals": [
+        "policy_change",
+        "systemic_risk"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Escala a risk management y prepara comunicacion con clientes clave."
+      ],
+      "summary": "El presidente Javier Milei vetó la ley que establecía el reparto de los Aportes del Tesoro Nacional. Luego de esta decisión, el Congreso debate si rechaza o aprueba la medida.",
+      "url": "https://www.ambito.com/politica/que-son-los-atn-y-cual-es-su-importancia-el-senado-sesiona-contra-el-veto-javier-milei-n6192073",
+      "published_at": "2025-09-18T13:44:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Que son los ATN y cual es su importancia el Senado sesiona contra el veto de Jav.md",
+      "json_path": "2025\\09\\2025-09.18 - Que son los ATN y cual es su importancia el Senado sesiona contra el veto de Jav.json",
+      "stored_at": "2025-09-18T18:34:32.614692"
+    },
+    {
+      "fingerprint": "c06608584c9c18f8d68f9ed83d087680c572c232ee6f46eb3a0d68872965db98",
+      "headline": "Discapacidad: denuncia penal contra Javier Milei y sus funcionarios por la demora en la promulgación de la ley de emergencia",
+      "priority_score": 4.86,
+      "urgency_level": "high",
+      "impact_level": "low",
+      "relevance_signals": [
+        "policy_change",
+        "systemic_risk"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Escala a risk management y prepara comunicacion con clientes clave."
+      ],
+      "summary": "La denuncia fue presentada este jueves por el diputado Esteban Paulón y la diputada Mónica Fein en Comodoro Py.",
+      "url": "https://www.ambito.com/politica/discapacidad-denuncia-penal-contra-javier-milei-y-sus-funcionarios-la-demora-la-promulgacion-la-ley-emergencia-n6192142",
+      "published_at": "2025-09-18T15:51:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Discapacidad denuncia penal contra Javier Milei y sus funcionarios por la demora.md",
+      "json_path": "2025\\09\\2025-09.18 - Discapacidad denuncia penal contra Javier Milei y sus funcionarios por la demora.json",
+      "stored_at": "2025-09-18T19:22:22.709877"
+    },
+    {
+      "fingerprint": "5491adef8e8da508e72b8705e8816b921bfcc12810f4cec549d186e567aa6cf8",
+      "headline": "Dólar hoy: a cuánto cotiza este jueves 18 de septiembre",
+      "priority_score": 4.46,
+      "urgency_level": "normal",
+      "impact_level": "low",
+      "relevance_signals": [
+        "policy_change"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos."
+      ],
+      "summary": "Conocé a cuánto cotiza el dólar oficial, blue, el dólar MEP y el CCL.",
+      "url": "https://www.ambito.com/finanzas/dolar-hoy-cuanto-cotiza-este-jueves-18-septiembre-n6191770",
+      "published_at": "2025-09-18T14:49:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Dolar hoy a cuanto cotiza este jueves 18 de septiembre.md",
+      "json_path": "2025\\09\\2025-09.18 - Dolar hoy a cuanto cotiza este jueves 18 de septiembre.json",
+      "stored_at": "2025-09-18T18:34:32.614576"
+    },
+    {
+      "fingerprint": "c856968060820b68868b9cd35508434e7329777d71cc24b2a17d02e3feb82525",
+      "headline": "Sandra Pettovello: \"El Presidente nunca me pidió que participe en la mesa política porque sabe que a mí no me interesa\"",
+      "priority_score": 3.2,
+      "urgency_level": "normal",
+      "impact_level": "low",
+      "relevance_signals": [
+        "liquidity_risk"
+      ],
+      "branch_targets": [
+        "Sucursal CABA - Casa Central"
+      ],
+      "suggested_actions": [
+        "Revisa proyecciones de liquidez y prepara escenarios de stress."
+      ],
+      "summary": "La ministra de Capital Humano, Sandra Pettovello, dialogó con Ámbito y aclaró que está abocada a la gestión, lejos de la política partidaria. Cuestionó a las autoridades de la UBA por no permitir auditorías de la SIGEN. Los proyectos de la cartera que comanda.",
+      "url": "https://www.ambito.com/politica/sandra-pettovello-el-presidente-nunca-me-pidio-que-participe-la-mesa-porque-sabe-que-mi-no-me-interesa-n6192096",
+      "published_at": "2025-09-18T14:27:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Sandra Pettovello El Presidente nunca me pidio que participe en la mesa politica.md",
+      "json_path": "2025\\09\\2025-09.18 - Sandra Pettovello El Presidente nunca me pidio que participe en la mesa politica.json",
+      "stored_at": "2025-09-18T18:34:32.614672"
+    },
+    {
+      "fingerprint": "afe6ec1ed7a22e2c4dd7b5d98eec87178205ec3254740ee8a935205b119c09d5",
+      "headline": "ARCA comenzó a devolver percepciones por consumos en dólares: cuándo impactan en tu cuenta",
+      "priority_score": 2.2,
+      "urgency_level": "normal",
+      "impact_level": "low",
+      "relevance_signals": [
+        "branch_operations"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Coordina soporte operativo y horarios extendidos si crece la demanda."
+      ],
+      "summary": "ARCA inició el envío de notificaciones aprobando u objetando las solicitudes de los contribuyentes para la devolución de sus percepciones por consumos en dólares.",
+      "url": "https://www.ambito.com/economia/arca-comenzo-devolver-percepciones-consumos-dolares-cuando-impactan-tu-cuenta-n6191924",
+      "published_at": "2025-09-18T10:59:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - ARCA comenzo a devolver percepciones por consumos en dolares cuando impactan en .md",
+      "json_path": "2025\\09\\2025-09.18 - ARCA comenzo a devolver percepciones por consumos en dolares cuando impactan en .json",
+      "stored_at": "2025-09-18T18:34:32.614662"
+    },
+    {
+      "fingerprint": "5cd9bae541c397b9aed830a845bd4502ba257ebc30dd77d2e89ed38d493324fe",
+      "headline": "Dólar hoy y dólar blue hoy minuto a minuto: a cuánto opera este jueves 18 de septiembre",
+      "priority_score": 2.08,
+      "urgency_level": "normal",
+      "impact_level": "low",
+      "relevance_signals": [
+        "policy_change"
+      ],
+      "branch_targets": [],
+      "suggested_actions": [
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos."
+      ],
+      "summary": "Conocé las cotizaciones dólar blue, el oficial, el MEP y el CCL.",
+      "url": "https://www.ambito.com/finanzas/dolar-hoy-y-dolar-blue-hoy-minuto-minuto-cuanto-opera-este-jueves-18-septiembre-n6191841",
+      "published_at": "2025-09-18T14:50:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Dolar hoy y dolar blue hoy minuto a minuto a cuanto opera este jueves 18 de sept.md",
+      "json_path": "2025\\09\\2025-09.18 - Dolar hoy y dolar blue hoy minuto a minuto a cuanto opera este jueves 18 de sept.json",
+      "stored_at": "2025-09-18T18:34:32.614530"
+    },
+    {
+      "fingerprint": "d40ee67f282ec6935a897a0003b02bdcc07d215a84d4216b2d6069e054984de4",
+      "headline": "El impulso alcista en Wall Street se renueva gracias a los recortes de la Fed y los anuncios de Nvidia",
+      "priority_score": 0.4,
+      "urgency_level": "normal",
+      "impact_level": "low",
+      "relevance_signals": [],
+      "branch_targets": [],
+      "suggested_actions": [],
+      "summary": "En el sector corporativo, la principal novedad vino por el lado de Nvidia, que anunció una inversión de u$s5.000 millones en Intel, y disparó sus acciones.",
+      "url": "https://www.ambito.com/finanzas/los-bolsas-europeas-suben-y-los-futuros-wall-street-anticipan-una-jornada-al-alza-n6191870",
+      "published_at": "2025-09-18T15:01:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - El impulso alcista en Wall Street se renueva gracias a los recortes de la Fed y .md",
+      "json_path": "2025\\09\\2025-09.18 - El impulso alcista en Wall Street se renueva gracias a los recortes de la Fed y .json",
+      "stored_at": "2025-09-18T18:34:32.614507"
+    },
+    {
+      "fingerprint": "a594857c30c5f0bc12d45550e269e6cc99e77c1ed163a7fa8e35cdbff8495e65",
+      "headline": "Dólar blue hoy: a cuánto opera este jueves 18 de septiembre",
+      "priority_score": 0.4,
+      "urgency_level": "normal",
+      "impact_level": "low",
+      "relevance_signals": [],
+      "branch_targets": [],
+      "suggested_actions": [],
+      "summary": "Conocé las cotizaciones dólar blue, el oficial, el MEP y el CCL.",
+      "url": "https://www.ambito.com/finanzas/dolar-blue-hoy-cuanto-opera-este-jueves-18-septiembre-n6191769",
+      "published_at": "2025-09-18T14:49:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Dolar blue hoy a cuanto opera este jueves 18 de septiembre.md",
+      "json_path": "2025\\09\\2025-09.18 - Dolar blue hoy a cuanto opera este jueves 18 de septiembre.json",
+      "stored_at": "2025-09-18T18:34:32.614598"
+    },
+    {
+      "fingerprint": "b0c52811f450c44ab788d13df9e5cc79dec4edd4da8c14ee94a1a4ebdab6873d",
+      "headline": "En agosto hubo un superávit fiscal primario de $1.556.864 millones y volvió a ser positivo el resultado financiero",
+      "priority_score": 0.4,
+      "urgency_level": "normal",
+      "impact_level": "low",
+      "relevance_signals": [],
+      "branch_targets": [],
+      "suggested_actions": [],
+      "summary": "De este modo, en los primeros ocho meses del año el superávit primario alcanzó aproximadamente el 1,3% del PBI y el saldo financiero representó el 0,4% del producto.",
+      "url": "https://www.ambito.com/en-agosto-hubo-un-superavit-primario-1556864-millones-y-volvio-ser-positivo-el-resultado-financiero-n6192107",
+      "published_at": "2025-09-18T14:50:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - En agosto hubo un superavit fiscal primario de $1.556.864 millones y volvio a se.md",
+      "json_path": "2025\\09\\2025-09.18 - En agosto hubo un superavit fiscal primario de $1.556.864 millones y volvio a se.json",
+      "stored_at": "2025-09-18T18:34:32.614609"
+    },
+    {
+      "fingerprint": "d59bf9e2401d119be44c1dd146e6319c5c03f8710a2c146152e8a38e97be3502",
+      "headline": "Sin gastar un solo dólar: los museos gratuitos de Nueva York para aprovechar en tu próximo viaje",
+      "priority_score": 0.4,
+      "urgency_level": "normal",
+      "impact_level": "low",
+      "relevance_signals": [],
+      "branch_targets": [],
+      "suggested_actions": [],
+      "summary": "Muchos espacios ofrecen horarios especiales para entrar sin costo, por lo que resulta fundamental armar un itinerario para ahorrar plata.",
+      "url": "https://www.ambito.com/economia/sin-gastar-un-solo-dolar-los-museos-gratuitos-nueva-york-aprovechar-tu-proximo-viaje-n6191125",
+      "published_at": "2025-09-18T14:00:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - Sin gastar un solo dolar los museos gratuitos de Nueva York para aprovechar en t.md",
+      "json_path": "2025\\09\\2025-09.18 - Sin gastar un solo dolar los museos gratuitos de Nueva York para aprovechar en t.json",
+      "stored_at": "2025-09-18T18:34:32.614632"
+    },
+    {
+      "fingerprint": "c7723175b4cc721ed37b5c5f4c79477f8ce22eae03eec08aedb2c7b279267993",
+      "headline": "La desempleo se mantuvo en el 7,6% de la población en el segundo trimestre",
+      "priority_score": 0.4,
+      "urgency_level": "normal",
+      "impact_level": "low",
+      "relevance_signals": [],
+      "branch_targets": [],
+      "suggested_actions": [],
+      "summary": "",
+      "url": "https://www.ambito.com/economia/la-desempleo-se-mantuvo-el-76-la-poblacion-el-segundo-trimestre-n6192158",
+      "published_at": "2025-09-18T16:11:44-03:00",
+      "md_path": "2025\\09\\2025-09.18 - La desempleo se mantuvo en el 7,6% de la poblacion en el segundo trimestre.md",
+      "json_path": "2025\\09\\2025-09.18 - La desempleo se mantuvo en el 7,6% de la poblacion en el segundo trimestre.json",
+      "stored_at": "2025-09-18T19:22:22.709819"
+    },
+    {
+      "fingerprint": "89e3a5222b22807c4b56412e3a014dcc6fa173f6de933050ff0d0ff6b67abb79",
+      "headline": "El superávit comercial superó los u$s1.400 millones en agosto, impulsado por una nueva mejora de las exportaciones",
+      "priority_score": 0.4,
+      "urgency_level": "normal",
+      "impact_level": "low",
+      "relevance_signals": [],
+      "branch_targets": [],
+      "suggested_actions": [],
+      "summary": "",
+      "url": "https://www.ambito.com/economia/el-superavit-comercial-supero-los-us1400-millones-agosto-impulsado-una-nueva-mejora-las-exportaciones-n6192145",
+      "published_at": "2025-09-18T16:09:00-03:00",
+      "md_path": "2025\\09\\2025-09.18 - El superavit comercial supero los u$s1.400 millones en agosto, impulsado por una.md",
+      "json_path": "2025\\09\\2025-09.18 - El superavit comercial supero los u$s1.400 millones en agosto, impulsado por una.json",
+      "stored_at": "2025-09-18T19:22:22.709831"
+    }
+  ],
+  "updated_at": "2025-09-18T19:41:08.458142"
+}

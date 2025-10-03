@@ -1,0 +1,1942 @@
+{
+  "session_id": "codex-e2e",
+  "sanitized_session_id": "codex-e2e",
+  "datab_exports": [
+    {
+      "filename": "DataB_2025_09_26_676088.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_676088.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_676088.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:20:13.745825"
+    },
+    {
+      "filename": "DataB_2025_09_26_195177.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_195177.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_195177.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:20:14.341311"
+    },
+    {
+      "filename": "DataB_2025_09_26_244265.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_244265.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_244265.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:20:20.276828"
+    },
+    {
+      "filename": "DataB_2025_09_26_404727.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_404727.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_404727.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:20:20.556595"
+    },
+    {
+      "filename": "DataB_2025_09_26_063990.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_063990.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_063990.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:20:28.113683"
+    },
+    {
+      "filename": "DataB_2025_09_26_245427.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_245427.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_245427.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:20:28.269798"
+    },
+    {
+      "filename": "DataB_2025_09_26_470913.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_470913.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_470913.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:20:28.498153"
+    },
+    {
+      "filename": "DataB_2025_09_26_646343.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_646343.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_646343.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:20:33.668247"
+    },
+    {
+      "filename": "DataB_2025_09_26_744729.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_744729.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_744729.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:20:33.769926"
+    },
+    {
+      "filename": "DataB_2025_09_26_908842.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_908842.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_908842.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:20:33.927175"
+    },
+    {
+      "filename": "DataB_2025_09_26_333881.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_333881.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_333881.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:20:41.346923"
+    },
+    {
+      "filename": "DataB_2025_09_26_404310.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_404310.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_404310.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:20:41.421528"
+    },
+    {
+      "filename": "DataB_2025_09_26_536369.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_536369.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_536369.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:20:41.552690"
+    },
+    {
+      "filename": "DataB_2025_09_26_645846.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_645846.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_645846.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:20:45.663946"
+    },
+    {
+      "filename": "DataB_2025_09_26_759730.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_759730.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_759730.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:20:45.785819"
+    },
+    {
+      "filename": "DataB_2025_09_26_958690.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_958690.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_958690.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:20:45.978394"
+    },
+    {
+      "filename": "DataB_2025_09_26_448557.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_448557.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_448557.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:20:59.462906"
+    },
+    {
+      "filename": "DataB_2025_09_26_516900.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_516900.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_516900.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:20:59.580087"
+    },
+    {
+      "filename": "DataB_2025_09_26_679500.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_679500.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_679500.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:20:59.692677"
+    },
+    {
+      "filename": "DataB_2025_09_26_296570.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_296570.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_296570.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:21:03.330579"
+    },
+    {
+      "filename": "DataB_2025_09_26_423671.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_423671.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_423671.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:21:03.446268"
+    },
+    {
+      "filename": "DataB_2025_09_26_679959.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_679959.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_679959.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:21:03.727310"
+    },
+    {
+      "filename": "DataB_2025_09_26_873051.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_873051.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_873051.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:21:14.912218"
+    },
+    {
+      "filename": "DataB_2025_09_26_104830.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_104830.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_104830.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:21:15.153347"
+    },
+    {
+      "filename": "DataB_2025_09_26_466629.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_466629.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_466629.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:21:15.521261"
+    },
+    {
+      "filename": "DataB_2025_09_26_534486.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_534486.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_534486.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:21:19.550814"
+    },
+    {
+      "filename": "DataB_2025_09_26_617699.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_617699.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_617699.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:21:19.632979"
+    },
+    {
+      "filename": "DataB_2025_09_26_781443.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_781443.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_781443.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:21:19.796710"
+    },
+    {
+      "filename": "DataB_2025_09_26_951194.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_951194.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_951194.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:21:32.968253"
+    },
+    {
+      "filename": "DataB_2025_09_26_045373.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_045373.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_045373.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:21:33.065999"
+    },
+    {
+      "filename": "DataB_2025_09_26_200198.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_200198.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_200198.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:21:33.215419"
+    },
+    {
+      "filename": "DataB_2025_09_26_209727.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_209727.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_209727.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:21:38.259343"
+    },
+    {
+      "filename": "DataB_2025_09_26_624313.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_624313.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_624313.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:21:38.697186"
+    },
+    {
+      "filename": "DataB_2025_09_26_014260.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_014260.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_014260.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:21:39.060947"
+    },
+    {
+      "filename": "DataB_2025_09_26_931681.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_931681.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_931681.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:22:27.960026"
+    },
+    {
+      "filename": "DataB_2025_09_26_142859.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_142859.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_142859.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:22:28.199203"
+    },
+    {
+      "filename": "DataB_2025_09_26_423909.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_423909.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_423909.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:22:28.444522"
+    },
+    {
+      "filename": "DataB_2025_09_26_603486.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_603486.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_603486.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:22:33.626171"
+    },
+    {
+      "filename": "DataB_2025_09_26_812406.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_812406.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_812406.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:22:33.872729"
+    },
+    {
+      "filename": "DataB_2025_09_26_068615.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_068615.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_068615.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:22:34.085905"
+    },
+    {
+      "filename": "DataB_2025_09_26_917016.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_917016.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_917016.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:23:18.933488"
+    },
+    {
+      "filename": "DataB_2025_09_26_994214.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_994214.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_994214.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:23:19.016334"
+    },
+    {
+      "filename": "DataB_2025_09_26_164029.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_164029.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_164029.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:23:19.178498"
+    },
+    {
+      "filename": "DataB_2025_09_26_010850.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_010850.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_010850.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:23:24.062091"
+    },
+    {
+      "filename": "DataB_2025_09_26_181209.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_181209.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_181209.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:23:24.199432"
+    },
+    {
+      "filename": "DataB_2025_09_26_405913.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_405913.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_405913.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:23:24.428991"
+    },
+    {
+      "filename": "DataB_2025_09_26_119928.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_119928.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_119928.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:25:02.131844"
+    },
+    {
+      "filename": "DataB_2025_09_26_213392.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_213392.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_213392.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:25:02.262372"
+    },
+    {
+      "filename": "DataB_2025_09_26_415116.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_415116.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_415116.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:25:02.434350"
+    },
+    {
+      "filename": "DataB_2025_09_26_348755.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_348755.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_348755.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:25:07.471498"
+    },
+    {
+      "filename": "DataB_2025_09_26_634755.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_634755.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_634755.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:25:07.714731"
+    },
+    {
+      "filename": "DataB_2025_09_26_968991.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_968991.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_968991.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:25:08.016480"
+    },
+    {
+      "filename": "DataB_2025_09_26_950079.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_950079.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_950079.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:25:17.970242"
+    },
+    {
+      "filename": "DataB_2025_09_26_028590.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_028590.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_028590.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:25:18.046272"
+    },
+    {
+      "filename": "DataB_2025_09_26_155017.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_155017.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_155017.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:25:18.171295"
+    },
+    {
+      "filename": "DataB_2025_09_26_877779.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_877779.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_877779.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:25:22.896673"
+    },
+    {
+      "filename": "DataB_2025_09_26_989050.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_989050.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_989050.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:25:23.138459"
+    },
+    {
+      "filename": "DataB_2025_09_26_340411.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_340411.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_340411.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:25:23.358733"
+    },
+    {
+      "filename": "DataB_2025_09_26_034602.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_034602.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_034602.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:26:04.051091"
+    },
+    {
+      "filename": "DataB_2025_09_26_126929.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_126929.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_126929.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:26:04.145363"
+    },
+    {
+      "filename": "DataB_2025_09_26_318965.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_318965.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_318965.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:26:04.335136"
+    },
+    {
+      "filename": "DataB_2025_09_26_471431.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_471431.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_471431.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:26:09.503230"
+    },
+    {
+      "filename": "DataB_2025_09_26_603884.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_603884.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_603884.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T05:26:09.627053"
+    },
+    {
+      "filename": "DataB_2025_09_26_807117.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_807117.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_807117.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T05:26:09.824597"
+    },
+    {
+      "filename": "DataB_2025_09_26_499505.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_499505.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_499505.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:49:01.514902"
+    },
+    {
+      "filename": "DataB_2025_09_26_566598.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_566598.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_566598.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T06:49:01.578970"
+    },
+    {
+      "filename": "DataB_2025_09_26_704747.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_704747.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_704747.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:49:01.722240"
+    },
+    {
+      "filename": "DataB_2025_09_26_864874.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_864874.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_864874.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:49:05.880704"
+    },
+    {
+      "filename": "DataB_2025_09_26_936031.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_936031.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_936031.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T06:49:05.952379"
+    },
+    {
+      "filename": "DataB_2025_09_26_065082.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_065082.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_065082.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:49:06.079596"
+    },
+    {
+      "filename": "DataB_2025_09_26_849333.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_849333.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_849333.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:52:03.867908"
+    },
+    {
+      "filename": "DataB_2025_09_26_924186.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_924186.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_924186.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T06:52:03.937757"
+    },
+    {
+      "filename": "DataB_2025_09_26_054924.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_054924.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_054924.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:52:04.068871"
+    },
+    {
+      "filename": "DataB_2025_09_26_673655.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_673655.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_673655.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:53:12.686561"
+    },
+    {
+      "filename": "DataB_2025_09_26_742271.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_742271.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_742271.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T06:53:12.757261"
+    },
+    {
+      "filename": "DataB_2025_09_26_859566.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_859566.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_859566.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:53:12.872351"
+    },
+    {
+      "filename": "DataB_2025_09_26_436352.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_436352.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_436352.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:53:47.453949"
+    },
+    {
+      "filename": "DataB_2025_09_26_515147.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_515147.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_515147.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T06:53:47.572007"
+    },
+    {
+      "filename": "DataB_2025_09_26_670960.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_670960.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_670960.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:53:47.682800"
+    },
+    {
+      "filename": "DataB_2025_09_26_527357.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_527357.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_527357.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:53:55.537907"
+    },
+    {
+      "filename": "DataB_2025_09_26_594978.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_594978.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_594978.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T06:53:55.608362"
+    },
+    {
+      "filename": "DataB_2025_09_26_697016.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_697016.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_697016.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:53:55.708516"
+    },
+    {
+      "filename": "DataB_2025_09_26_205852.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_205852.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_205852.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:54:00.218112"
+    },
+    {
+      "filename": "DataB_2025_09_26_273009.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_273009.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_273009.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T06:54:00.287913"
+    },
+    {
+      "filename": "DataB_2025_09_26_381711.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_381711.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_381711.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:54:00.393364"
+    },
+    {
+      "filename": "DataB_2025_09_26_601883.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_601883.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_601883.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:56:34.614539"
+    },
+    {
+      "filename": "DataB_2025_09_26_670067.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_670067.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_670067.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T06:56:34.686090"
+    },
+    {
+      "filename": "DataB_2025_09_26_787612.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_787612.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_787612.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:56:34.805665"
+    },
+    {
+      "filename": "DataB_2025_09_26_938194.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_938194.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_938194.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:56:38.962961"
+    },
+    {
+      "filename": "DataB_2025_09_26_042510.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_042510.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_042510.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T06:56:39.058023"
+    },
+    {
+      "filename": "DataB_2025_09_26_185911.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_185911.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_185911.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:56:39.200666"
+    },
+    {
+      "filename": "DataB_2025_09_26_255627.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_255627.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_255627.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:58:08.271822"
+    },
+    {
+      "filename": "DataB_2025_09_26_358767.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_358767.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_358767.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T06:58:08.380232"
+    },
+    {
+      "filename": "DataB_2025_09_26_516898.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_516898.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_516898.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:58:08.535309"
+    },
+    {
+      "filename": "DataB_2025_09_26_651352.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_651352.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_651352.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:58:12.663973"
+    },
+    {
+      "filename": "DataB_2025_09_26_712411.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_712411.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_712411.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T06:58:12.724874"
+    },
+    {
+      "filename": "DataB_2025_09_26_849106.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_849106.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_849106.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T06:58:12.861558"
+    },
+    {
+      "filename": "DataB_2025_09_26_736731.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_736731.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_736731.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T07:00:00.749572"
+    },
+    {
+      "filename": "DataB_2025_09_26_800255.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_800255.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_800255.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T07:00:00.816917"
+    },
+    {
+      "filename": "DataB_2025_09_26_914377.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_914377.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_914377.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T07:00:00.926851"
+    },
+    {
+      "filename": "DataB_2025_09_26_703659.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_703659.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_703659.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T07:00:06.716150"
+    },
+    {
+      "filename": "DataB_2025_09_26_768010.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_768010.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_768010.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-26T07:00:06.782489"
+    },
+    {
+      "filename": "DataB_2025_09_26_910241.json",
+      "relative_path": "capi_DataB/DataB_2025_09_26_910241.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_910241.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-09-26T07:00:06.924892"
+    }
+  ],
+  "updated_at": "2025-09-26T07:00:06.949170",
+  "created_at": "2025-09-26T05:20:20.636738",
+  "status": "processing",
+  "active_agent": "summary",
+  "completed_nodes": [
+    "start",
+    "intent",
+    "react",
+    "reasoning",
+    "supervisor",
+    "router",
+    "capi_datab",
+    "capi_elcajas"
+  ],
+  "intent": "db_operation",
+  "intent_confidence": 0.5,
+  "last_query": "cual es el saldo total de la sucursal de boedo",
+  "last_response": {
+    "message": "Resultados para la sucursal 'Boedo': sucursal id=SUC-369, sucursal numero=4, sucursal nombre=Boedo, saldo total sucursal=$80.000,00, caja teorica sucursal=100000.00, total atm=$38.500,00, total ats=$12.600,00, total tesoro=$11.200,00, total cajas ventanilla=$4.200,00, total buzon depositos=$1.600,00, total recaudacion=$2.800,00, total caja chica=$1.200,00, total otros=$7.900,00, medido en=2025-09-23 01:57:17.707471+00:00. Resultado exportado a DataB_2025_09_26_703659.json.\n\nEl Cajas: Boedo: deficit de 20,000 ARS (-20.0%)\n\nGenere una alerta automatica (ID: 80) con las desviaciones detectadas.",
+    "data": {
+      "react_observations": [
+        {
+          "summary": "Sin historial relevante.",
+          "recent_turns": []
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      ],
+      "reasoning_plan": {
+        "plan_id": "134b4b51-3041-4b73-8eab-11c50fd5fac8",
+        "version": 1,
+        "intent": "db_operation",
+        "goal": "Clarificar y asistir consulta ambigua: cual es el saldo total de la sucursal de boedo",
+        "confidence": 0.95,
+        "recommended_agent": "capi_datab",
+        "fallback_agent": "capi_datab",
+        "rationale": "La consulta requiere operaciones sobre bases de datos; se utiliza el agente especialista con controles de validación y exportes auditables.",
+        "steps": [
+          {
+            "id": "D1",
+            "title": "Analizar requerimiento y sanitizar sentencia",
+            "description": "Interpretar la instrucción (JSON, SQL o lenguaje natural), validar tablas y evitar comandos restringidos (DROP/TRUNCATE).",
+            "agent": "capi_datab",
+            "inputs": [
+              "instruccion_usuario"
+            ],
+            "expected_output": "Sentencia SQL validada con parámetros normalizados",
+            "depends_on": []
+          },
+          {
+            "id": "D2",
+            "title": "Ejecutar operación transaccional en PostgreSQL",
+            "description": "Abrir conexión controlada, ejecutar la sentencia y capturar filas afectadas o resultados.",
+            "agent": "capi_datab",
+            "inputs": [],
+            "expected_output": "Resultado de la operación (filas, datos o confirmación)",
+            "depends_on": [
+              "D1"
+            ]
+          },
+          {
+            "id": "D3",
+            "title": "Exportar evidencia al workspace",
+            "description": "Serializar los resultados en el formato solicitado y guardar el archivo en ia_workspace/data/capi_DataB/.",
+            "agent": "capi_datab",
+            "inputs": [],
+            "expected_output": "Archivo DataB_YYYY_MM_DD_*.ext disponible para el usuario",
+            "depends_on": [
+              "D2"
+            ]
+          }
+        ],
+        "cooperative_agents": [],
+        "supporting_evidence": {
+          "progress_percent": 98.0,
+          "remaining_steps": 3,
+          "estimated_effort_seconds": 45,
+          "complexity": "low",
+          "entities": {
+            "sucursal": "Boedo"
+          },
+          "context_used": false,
+          "semantic_confidence": 0.9,
+          "available_agents": [
+            "anomaly",
+            "branch",
+            "capi_datab",
+            "capi_desktop",
+            "summary"
+          ],
+          "user_id": "codex-e2e",
+          "session_id": "codex-e2e"
+        },
+        "generated_at": "2025-09-26T07:00:05.560803",
+        "intent_alignment": true,
+        "requires_replan": false,
+        "history": [],
+        "progress_percent": 98.0,
+        "remaining_steps": 3,
+        "complexity": "low",
+        "estimated_effort_seconds": 45
+      },
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+      "parameters": [
+        "%Boedo%"
+      ],
+      "output_format": "json",
+      "file_path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_703659.json",
+      "rowcount": 1,
+      "rows": [
+        {
+          "sucursal_id": "SUC-369",
+          "sucursal_numero": 4,
+          "sucursal_nombre": "Boedo",
+          "saldo_total_sucursal": "80000.00",
+          "caja_teorica_sucursal": "100000.00",
+          "total_atm": "38500.00",
+          "total_ats": "12600.00",
+          "total_tesoro": "11200.00",
+          "total_cajas_ventanilla": "4200.00",
+          "total_buzon_depositos": "1600.00",
+          "total_recaudacion": "2800.00",
+          "total_caja_chica": "1200.00",
+          "total_otros": "7900.00",
+          "medido_en": "2025-09-23 01:57:17.707471+00:00"
+        }
+      ],
+      "requires_approval": false,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "boedo",
+          "branch_number": null,
+          "branch_name": "Boedo",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Boedo%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identificó la sucursal por el nombre 'Boedo'",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "metadata": {
+        "branch": {
+          "raw_text": "boedo",
+          "branch_number": null,
+          "branch_name": "Boedo",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Boedo%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identificó la sucursal por el nombre 'Boedo'",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal",
+        "branch_descriptor": "Boedo"
+      },
+      "summary_message": "Resultados para la sucursal 'Boedo': sucursal id=SUC-369, sucursal numero=4, sucursal nombre=Boedo, saldo total sucursal=$80.000,00, caja teorica sucursal=100000.00, total atm=$38.500,00, total ats=$12.600,00, total tesoro=$11.200,00, total cajas ventanilla=$4.200,00, total buzon depositos=$1.600,00, total recaudacion=$2.800,00, total caja chica=$1.200,00, total otros=$7.900,00, medido en=2025-09-23 01:57:17.707471+00:00. Resultado exportado a DataB_2025_09_26_703659.json.",
+      "el_cajas": {
+        "analysis": [
+          {
+            "branch_id": "SUC-369",
+            "branch_name": "Boedo",
+            "status": "alert",
+            "headline": "Boedo: deficit de 20,000 ARS (-20.0%)",
+            "measured_total": 80000.0,
+            "theoretical_total": 100000.0,
+            "difference": -20000.0,
+            "deviation_pct": -0.2,
+            "recommendations": [
+              {
+                "channel": "Saldo Total",
+                "action": "deposit",
+                "amount": 15000.0,
+                "reason": "Deficit vs caja teorica",
+                "urgency": "proximo turno",
+                "estimated_cost": 0.0,
+                "weight_kg": 0.015
+              },
+              {
+                "channel": "Tesoro",
+                "action": "deposit",
+                "amount": 1680.0,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 0.0,
+                "weight_kg": 0.002
+              },
+              {
+                "channel": "Ventanilla",
+                "action": "deposit",
+                "amount": 840.0,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 0.0,
+                "weight_kg": 0.001
+              },
+              {
+                "channel": "Caja Chica",
+                "action": "deposit",
+                "amount": 255.0,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 0.0,
+                "weight_kg": 0.0
+              },
+              {
+                "channel": "Otros",
+                "action": "deposit",
+                "amount": 1580.0,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 0.0,
+                "weight_kg": 0.002
+              }
+            ],
+            "channels": [
+              {
+                "channel": "ATM",
+                "amount": 38500.0,
+                "estimated_teorica": 48125.0,
+                "share": 0.48125,
+                "deviation_pct": -0.2
+              },
+              {
+                "channel": "ATS",
+                "amount": 12600.0,
+                "estimated_teorica": 15750.0,
+                "share": 0.1575,
+                "deviation_pct": -0.2
+              },
+              {
+                "channel": "Tesoro",
+                "amount": 11200.0,
+                "estimated_teorica": 14000.000000000002,
+                "share": 0.14,
+                "deviation_pct": -0.2000000000000001
+              },
+              {
+                "channel": "Ventanilla",
+                "amount": 4200.0,
+                "estimated_teorica": 5250.0,
+                "share": 0.0525,
+                "deviation_pct": -0.2
+              },
+              {
+                "channel": "Buzon",
+                "amount": 1600.0,
+                "estimated_teorica": 2000.0,
+                "share": 0.02
+              },
+              {
+                "channel": "Recaudacion",
+                "amount": 2800.0,
+                "estimated_teorica": 3500.0000000000005,
+                "share": 0.035
+              },
+              {
+                "channel": "Caja Chica",
+                "amount": 1200.0,
+                "estimated_teorica": 1500.0,
+                "share": 0.015,
+                "deviation_pct": -0.2
+              },
+              {
+                "channel": "Otros",
+                "amount": 7900.0,
+                "estimated_teorica": 9875.0,
+                "share": 0.09875,
+                "deviation_pct": -0.2
+              }
+            ],
+            "alerts_created": 1,
+            "alerts_to_persist": [
+              {
+                "priority": "critical",
+                "prioridad": "critica",
+                "status": "active",
+                "estado": "abierta",
+                "problema": "Boedo: deficit de 20,000 ARS (-20.0%)",
+                "hipotesis": "Desvio detectado en Boedo",
+                "impacto": "Diferencia de 20,000 ARS (-20.0%)",
+                "datos_clave": [
+                  "Diferencia total: -20,000 ARS",
+                  "Desvio porcentual: -20.0%",
+                  "Sucursal: Boedo (SUC-369)",
+                  "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]",
+                  "Medicion: 2025-09-26T07:00:06.803575+00:00"
+                ],
+                "acciones": "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]; Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada [proximo turno]",
+                "sucursal_id": "SUC-369",
+                "branch_name": "Boedo",
+                "summary": "Boedo: déficit de 20,000 ARS (20.0%). Severidad: alert",
+                "dedupe_clave": "7df0ef29ced1ea587149ae964893bb0b56d8a9d911cf184052ac6ef9cc082017",
+                "creada_en": "2025-09-26T07:00:06.803575+00:00",
+                "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+                "agent_source": "capi_elcajas"
+              }
+            ],
+            "alert_priority": "critical",
+            "alert_escalated": true,
+            "alert_operation": {
+              "table": "public.alertas",
+              "values": {
+                "prioridad": "critica",
+                "estado": "abierta",
+                "problema": "Boedo: deficit de 20,000 ARS (-20.0%)",
+                "hipotesis": "Desvio detectado en Boedo",
+                "impacto": "Diferencia de 20,000 ARS (-20.0%)",
+                "datos_clave": [
+                  "Diferencia total: -20,000 ARS",
+                  "Desvio porcentual: -20.0%",
+                  "Sucursal: Boedo (SUC-369)",
+                  "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]",
+                  "Medicion: 2025-09-26T07:00:06.803575+00:00"
+                ],
+                "acciones": "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]; Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada [proximo turno]",
+                "sucursal_id": "SUC-369",
+                "dedupe_clave": "7df0ef29ced1ea587149ae964893bb0b56d8a9d911cf184052ac6ef9cc082017",
+                "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+                "creada_en": "2025-09-26 07:00:06.803575+00:00"
+              },
+              "description": "Insert alerta El Cajas - Boedo",
+              "branch_id": "SUC-369",
+              "branch_name": "Boedo",
+              "source": "capi_elcajas",
+              "payload": {
+                "priority": "critical",
+                "prioridad": "critica",
+                "status": "active",
+                "estado": "abierta",
+                "problema": "Boedo: deficit de 20,000 ARS (-20.0%)",
+                "hipotesis": "Desvio detectado en Boedo",
+                "impacto": "Diferencia de 20,000 ARS (-20.0%)",
+                "datos_clave": [
+                  "Diferencia total: -20,000 ARS",
+                  "Desvio porcentual: -20.0%",
+                  "Sucursal: Boedo (SUC-369)",
+                  "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]",
+                  "Medicion: 2025-09-26T07:00:06.803575+00:00"
+                ],
+                "acciones": "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]; Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada [proximo turno]",
+                "sucursal_id": "SUC-369",
+                "branch_name": "Boedo",
+                "summary": "Boedo: déficit de 20,000 ARS (20.0%). Severidad: alert",
+                "dedupe_clave": "7df0ef29ced1ea587149ae964893bb0b56d8a9d911cf184052ac6ef9cc082017",
+                "creada_en": "2025-09-26T07:00:06.803575+00:00",
+                "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+                "agent_source": "capi_elcajas"
+              }
+            },
+            "recommendation_artifact": {
+              "path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_elcajas/recommendation_SUC-369_20250926_070006.json",
+              "filename": "recommendation_SUC-369_20250926_070006.json",
+              "relative_path": "capi_elcajas/recommendation_SUC-369_20250926_070006.json",
+              "created_at": "2025-09-26T07:00:06.803575+00:00",
+              "summary": "Boedo: déficit de 20,000 ARS (20.0%). Severidad: alert",
+              "hypothesis": "Desvio detectado en Boedo",
+              "impact": "Diferencia de 20,000 ARS (-20.0%)",
+              "suggested_actions": [
+                "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica",
+                "Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada",
+                "Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada",
+                "Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada",
+                "Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada"
+              ]
+            }
+          }
+        ],
+        "calendar": {
+          "status": "cerrado",
+          "business_day": "si",
+          "holiday": "no"
+        },
+        "policies_loaded": 9,
+        "alerts_created": 1,
+        "alert_operations": [
+          {
+            "table": "public.alertas",
+            "values": {
+              "prioridad": "critica",
+              "estado": "abierta",
+              "problema": "Boedo: deficit de 20,000 ARS (-20.0%)",
+              "hipotesis": "Desvio detectado en Boedo",
+              "impacto": "Diferencia de 20,000 ARS (-20.0%)",
+              "datos_clave": [
+                "Diferencia total: -20,000 ARS",
+                "Desvio porcentual: -20.0%",
+                "Sucursal: Boedo (SUC-369)",
+                "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-09-26T07:00:06.803575+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]; Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada [proximo turno]",
+              "sucursal_id": "SUC-369",
+              "dedupe_clave": "7df0ef29ced1ea587149ae964893bb0b56d8a9d911cf184052ac6ef9cc082017",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "creada_en": "2025-09-26 07:00:06.803575+00:00"
+            },
+            "description": "Insert alerta El Cajas - Boedo",
+            "branch_id": "SUC-369",
+            "branch_name": "Boedo",
+            "source": "capi_elcajas",
+            "payload": {
+              "priority": "critical",
+              "prioridad": "critica",
+              "status": "active",
+              "estado": "abierta",
+              "problema": "Boedo: deficit de 20,000 ARS (-20.0%)",
+              "hipotesis": "Desvio detectado en Boedo",
+              "impacto": "Diferencia de 20,000 ARS (-20.0%)",
+              "datos_clave": [
+                "Diferencia total: -20,000 ARS",
+                "Desvio porcentual: -20.0%",
+                "Sucursal: Boedo (SUC-369)",
+                "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-09-26T07:00:06.803575+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]; Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada [proximo turno]",
+              "sucursal_id": "SUC-369",
+              "branch_name": "Boedo",
+              "summary": "Boedo: déficit de 20,000 ARS (20.0%). Severidad: alert",
+              "dedupe_clave": "7df0ef29ced1ea587149ae964893bb0b56d8a9d911cf184052ac6ef9cc082017",
+              "creada_en": "2025-09-26T07:00:06.803575+00:00",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "agent_source": "capi_elcajas"
+            }
+          }
+        ],
+        "recommendation_files": [
+          {
+            "path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_elcajas/recommendation_SUC-369_20250926_070006.json",
+            "filename": "recommendation_SUC-369_20250926_070006.json",
+            "relative_path": "capi_elcajas/recommendation_SUC-369_20250926_070006.json",
+            "created_at": "2025-09-26T07:00:06.803575+00:00",
+            "summary": "Boedo: déficit de 20,000 ARS (20.0%). Severidad: alert",
+            "hypothesis": "Desvio detectado en Boedo",
+            "impact": "Diferencia de 20,000 ARS (-20.0%)",
+            "suggested_actions": [
+              "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica",
+              "Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada",
+              "Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada",
+              "Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada",
+              "Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "conversation_history": [],
+  "memory_window": [],
+  "reasoning_summary": {
+    "goal": "Clarificar y asistir consulta ambigua: cual es el saldo total de la sucursal de boedo",
+    "recommended_agent": "capi_datab",
+    "confidence": 0.95,
+    "version": 1,
+    "cooperative_agents": [],
+    "progress_percent": 98.0,
+    "remaining_steps": 3,
+    "complexity": "low",
+    "estimated_effort_seconds": 45,
+    "remaining_percent": 2.0
+  },
+  "processing_metrics": {
+    "react_steps": 5.0,
+    "react_latency_ms": 0.0,
+    "reasoning_time_ms": 1209.0,
+    "reasoning_steps": 3.0,
+    "reasoning_version": 1.0,
+    "reasoning_progress_percent": 98.0,
+    "reasoning_eta_seconds": 45.0,
+    "reasoning_remaining_steps": 3.0,
+    "supervisor_latency_ms": 0.0,
+    "supervisor_queue_length": 5.0,
+    "capi_datab_latency_ms": 1126.0,
+    "planner_confidence": 0.8,
+    "capi_datab_rows": 1.0,
+    "el_cajas_latency_ms": 15.0,
+    "el_cajas_alerts": 1.0
+  },
+  "shared_artifacts": {
+    "capi_datab": {
+      "mode": "db_operation",
+      "operation": {
+        "operation": "select",
+        "table": "public.saldos_sucursal",
+        "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+        "parameters": [
+          "%Boedo%"
+        ],
+        "output_format": "json",
+        "requires_approval": false,
+        "metadata": {
+          "branch": {
+            "raw_text": "boedo",
+            "branch_number": null,
+            "branch_name": "Boedo",
+            "branch_id": null
+          },
+          "filters": [
+            {
+              "column": "sucursal_nombre",
+              "operator": "ILIKE",
+              "value": "%Boedo%"
+            }
+          ],
+          "planner_source": "llm_branch_identifier",
+          "planner_confidence": 0.8,
+          "planner_reason": "Se identificó la sucursal por el nombre 'Boedo'",
+          "planner_model": "gpt-3.5-turbo",
+          "suggested_table": "public.saldos_sucursal"
+        }
+      },
+      "export_file": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_DataB/DataB_2025_09_26_703659.json",
+      "rows": [
+        {
+          "sucursal_id": "SUC-369",
+          "sucursal_numero": 4,
+          "sucursal_nombre": "Boedo",
+          "saldo_total_sucursal": "80000.00",
+          "caja_teorica_sucursal": "100000.00",
+          "total_atm": "38500.00",
+          "total_ats": "12600.00",
+          "total_tesoro": "11200.00",
+          "total_cajas_ventanilla": "4200.00",
+          "total_buzon_depositos": "1600.00",
+          "total_recaudacion": "2800.00",
+          "total_caja_chica": "1200.00",
+          "total_otros": "7900.00",
+          "medido_en": "2025-09-23 01:57:17.707471+00:00"
+        }
+      ],
+      "rowcount": 1,
+      "success": true,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "boedo",
+          "branch_number": null,
+          "branch_name": "Boedo",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Boedo%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identificó la sucursal por el nombre 'Boedo'",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "summary_message": "Resultados para la sucursal 'Boedo': sucursal id=SUC-369, sucursal numero=4, sucursal nombre=Boedo, saldo total sucursal=$80.000,00, caja teorica sucursal=100000.00, total atm=$38.500,00, total ats=$12.600,00, total tesoro=$11.200,00, total cajas ventanilla=$4.200,00, total buzon depositos=$1.600,00, total recaudacion=$2.800,00, total caja chica=$1.200,00, total otros=$7.900,00, medido en=2025-09-23 01:57:17.707471+00:00. Resultado exportado a DataB_2025_09_26_703659.json.\n\nEl Cajas: Boedo: deficit de 20,000 ARS (-20.0%)",
+      "policies": [
+        {
+          "channel": "ATM",
+          "max_surplus_pct": "0.120",
+          "max_deficit_pct": "0.750",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 6,
+          "sla_hours": 12,
+          "truck_fixed_cost": "0.00",
+          "truck_variable_cost_per_kg": "0.00",
+          "notes": "Prioridad alta: buffer robusto para ATM",
+          "updated_at": "2025-09-26 01:15:55.541108+00:00"
+        },
+        {
+          "channel": "ATS",
+          "max_surplus_pct": "0.100",
+          "max_deficit_pct": "0.750",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 8,
+          "sla_hours": 16,
+          "truck_fixed_cost": "0.00",
+          "truck_variable_cost_per_kg": "0.00",
+          "notes": "ATS balance moderado",
+          "updated_at": "2025-09-26 01:15:55.893342+00:00"
+        },
+        {
+          "channel": "Buzón",
+          "max_surplus_pct": "0.050",
+          "max_deficit_pct": "0.030",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 12,
+          "sla_hours": 24,
+          "truck_fixed_cost": "0.00",
+          "truck_variable_cost_per_kg": "0.00",
+          "notes": "Depósitos no inmediatos",
+          "updated_at": "2025-09-26 01:15:56.334764+00:00"
+        },
+        {
+          "channel": "Caja Chica",
+          "max_surplus_pct": "0.040",
+          "max_deficit_pct": "0.030",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 24,
+          "sla_hours": 48,
+          "truck_fixed_cost": "0.00",
+          "truck_variable_cost_per_kg": "0.00",
+          "notes": "Gastos operativos menores",
+          "updated_at": "2025-09-26 01:15:58.343090+00:00"
+        },
+        {
+          "channel": "Otros",
+          "max_surplus_pct": "0.070",
+          "max_deficit_pct": "0.040",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 12,
+          "sla_hours": 36,
+          "truck_fixed_cost": "0.00",
+          "truck_variable_cost_per_kg": "0.00",
+          "notes": "Reservas varias",
+          "updated_at": "2025-09-26 01:15:58.009344+00:00"
+        },
+        {
+          "channel": "Recaudación",
+          "max_surplus_pct": "0.090",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "1001.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 10,
+          "sla_hours": 20,
+          "truck_fixed_cost": "130000.00",
+          "truck_variable_cost_per_kg": "3500.00",
+          "notes": "Grandes volúmenes corporativos",
+          "updated_at": "2025-09-26 01:15:58.699714+00:00"
+        },
+        {
+          "channel": "Saldo Total",
+          "max_surplus_pct": "0.080",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 6,
+          "sla_hours": 12,
+          "truck_fixed_cost": "0.00",
+          "truck_variable_cost_per_kg": "0.00",
+          "notes": "Tolerancia global de sucursal",
+          "updated_at": "2025-09-26 01:16:00.101198+00:00"
+        },
+        {
+          "channel": "Tesoro",
+          "max_surplus_pct": "0.150",
+          "max_deficit_pct": "0.080",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 12,
+          "sla_hours": 24,
+          "truck_fixed_cost": "0.00",
+          "truck_variable_cost_per_kg": "0.00",
+          "notes": "Tesoro actúa como pulmón de la sucursal",
+          "updated_at": "2025-09-26 01:16:00.497003+00:00"
+        },
+        {
+          "channel": "Ventanilla",
+          "max_surplus_pct": "0.080",
+          "max_deficit_pct": "0.040",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 4,
+          "sla_hours": 8,
+          "truck_fixed_cost": "0.00",
+          "truck_variable_cost_per_kg": "0.00",
+          "notes": "Caja operativa al cliente",
+          "updated_at": "2025-09-26 01:16:00.875526+00:00"
+        }
+      ]
+    },
+    "capi_elcajas": {
+      "analysis": [
+        {
+          "branch_id": "SUC-369",
+          "branch_name": "Boedo",
+          "status": "alert",
+          "headline": "Boedo: deficit de 20,000 ARS (-20.0%)",
+          "measured_total": 80000.0,
+          "theoretical_total": 100000.0,
+          "difference": -20000.0,
+          "deviation_pct": -0.2,
+          "recommendations": [
+            {
+              "channel": "Saldo Total",
+              "action": "deposit",
+              "amount": 15000.0,
+              "reason": "Deficit vs caja teorica",
+              "urgency": "proximo turno",
+              "estimated_cost": 0.0,
+              "weight_kg": 0.015
+            },
+            {
+              "channel": "Tesoro",
+              "action": "deposit",
+              "amount": 1680.0,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 0.0,
+              "weight_kg": 0.002
+            },
+            {
+              "channel": "Ventanilla",
+              "action": "deposit",
+              "amount": 840.0,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 0.0,
+              "weight_kg": 0.001
+            },
+            {
+              "channel": "Caja Chica",
+              "action": "deposit",
+              "amount": 255.0,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 0.0,
+              "weight_kg": 0.0
+            },
+            {
+              "channel": "Otros",
+              "action": "deposit",
+              "amount": 1580.0,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 0.0,
+              "weight_kg": 0.002
+            }
+          ],
+          "channels": [
+            {
+              "channel": "ATM",
+              "amount": 38500.0,
+              "estimated_teorica": 48125.0,
+              "share": 0.48125,
+              "deviation_pct": -0.2
+            },
+            {
+              "channel": "ATS",
+              "amount": 12600.0,
+              "estimated_teorica": 15750.0,
+              "share": 0.1575,
+              "deviation_pct": -0.2
+            },
+            {
+              "channel": "Tesoro",
+              "amount": 11200.0,
+              "estimated_teorica": 14000.000000000002,
+              "share": 0.14,
+              "deviation_pct": -0.2000000000000001
+            },
+            {
+              "channel": "Ventanilla",
+              "amount": 4200.0,
+              "estimated_teorica": 5250.0,
+              "share": 0.0525,
+              "deviation_pct": -0.2
+            },
+            {
+              "channel": "Buzon",
+              "amount": 1600.0,
+              "estimated_teorica": 2000.0,
+              "share": 0.02
+            },
+            {
+              "channel": "Recaudacion",
+              "amount": 2800.0,
+              "estimated_teorica": 3500.0000000000005,
+              "share": 0.035
+            },
+            {
+              "channel": "Caja Chica",
+              "amount": 1200.0,
+              "estimated_teorica": 1500.0,
+              "share": 0.015,
+              "deviation_pct": -0.2
+            },
+            {
+              "channel": "Otros",
+              "amount": 7900.0,
+              "estimated_teorica": 9875.0,
+              "share": 0.09875,
+              "deviation_pct": -0.2
+            }
+          ],
+          "alerts_created": 1,
+          "alerts_to_persist": [
+            {
+              "priority": "critical",
+              "prioridad": "critica",
+              "status": "active",
+              "estado": "abierta",
+              "problema": "Boedo: deficit de 20,000 ARS (-20.0%)",
+              "hipotesis": "Desvio detectado en Boedo",
+              "impacto": "Diferencia de 20,000 ARS (-20.0%)",
+              "datos_clave": [
+                "Diferencia total: -20,000 ARS",
+                "Desvio porcentual: -20.0%",
+                "Sucursal: Boedo (SUC-369)",
+                "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-09-26T07:00:06.803575+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]; Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada [proximo turno]",
+              "sucursal_id": "SUC-369",
+              "branch_name": "Boedo",
+              "summary": "Boedo: déficit de 20,000 ARS (20.0%). Severidad: alert",
+              "dedupe_clave": "7df0ef29ced1ea587149ae964893bb0b56d8a9d911cf184052ac6ef9cc082017",
+              "creada_en": "2025-09-26T07:00:06.803575+00:00",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "agent_source": "capi_elcajas"
+            }
+          ],
+          "alert_priority": "critical",
+          "alert_escalated": true,
+          "alert_operation": {
+            "table": "public.alertas",
+            "values": {
+              "prioridad": "critica",
+              "estado": "abierta",
+              "problema": "Boedo: deficit de 20,000 ARS (-20.0%)",
+              "hipotesis": "Desvio detectado en Boedo",
+              "impacto": "Diferencia de 20,000 ARS (-20.0%)",
+              "datos_clave": [
+                "Diferencia total: -20,000 ARS",
+                "Desvio porcentual: -20.0%",
+                "Sucursal: Boedo (SUC-369)",
+                "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-09-26T07:00:06.803575+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]; Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada [proximo turno]",
+              "sucursal_id": "SUC-369",
+              "dedupe_clave": "7df0ef29ced1ea587149ae964893bb0b56d8a9d911cf184052ac6ef9cc082017",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "creada_en": "2025-09-26 07:00:06.803575+00:00"
+            },
+            "description": "Insert alerta El Cajas - Boedo",
+            "branch_id": "SUC-369",
+            "branch_name": "Boedo",
+            "source": "capi_elcajas",
+            "payload": {
+              "priority": "critical",
+              "prioridad": "critica",
+              "status": "active",
+              "estado": "abierta",
+              "problema": "Boedo: deficit de 20,000 ARS (-20.0%)",
+              "hipotesis": "Desvio detectado en Boedo",
+              "impacto": "Diferencia de 20,000 ARS (-20.0%)",
+              "datos_clave": [
+                "Diferencia total: -20,000 ARS",
+                "Desvio porcentual: -20.0%",
+                "Sucursal: Boedo (SUC-369)",
+                "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-09-26T07:00:06.803575+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]; Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada [proximo turno]",
+              "sucursal_id": "SUC-369",
+              "branch_name": "Boedo",
+              "summary": "Boedo: déficit de 20,000 ARS (20.0%). Severidad: alert",
+              "dedupe_clave": "7df0ef29ced1ea587149ae964893bb0b56d8a9d911cf184052ac6ef9cc082017",
+              "creada_en": "2025-09-26T07:00:06.803575+00:00",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "agent_source": "capi_elcajas"
+            }
+          },
+          "recommendation_artifact": {
+            "path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_elcajas/recommendation_SUC-369_20250926_070006.json",
+            "filename": "recommendation_SUC-369_20250926_070006.json",
+            "relative_path": "capi_elcajas/recommendation_SUC-369_20250926_070006.json",
+            "created_at": "2025-09-26T07:00:06.803575+00:00",
+            "summary": "Boedo: déficit de 20,000 ARS (20.0%). Severidad: alert",
+            "hypothesis": "Desvio detectado en Boedo",
+            "impact": "Diferencia de 20,000 ARS (-20.0%)",
+            "suggested_actions": [
+              "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica",
+              "Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada",
+              "Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada",
+              "Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada",
+              "Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada"
+            ]
+          }
+        }
+      ],
+      "calendar": {
+        "status": "cerrado",
+        "business_day": "si",
+        "holiday": "no"
+      },
+      "policies_loaded": 9,
+      "alerts_created": 1,
+      "alert_operations": [
+        {
+          "table": "public.alertas",
+          "values": {
+            "prioridad": "critica",
+            "estado": "abierta",
+            "problema": "Boedo: deficit de 20,000 ARS (-20.0%)",
+            "hipotesis": "Desvio detectado en Boedo",
+            "impacto": "Diferencia de 20,000 ARS (-20.0%)",
+            "datos_clave": [
+              "Diferencia total: -20,000 ARS",
+              "Desvio porcentual: -20.0%",
+              "Sucursal: Boedo (SUC-369)",
+              "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]",
+              "Medicion: 2025-09-26T07:00:06.803575+00:00"
+            ],
+            "acciones": "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]; Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada [proximo turno]",
+            "sucursal_id": "SUC-369",
+            "dedupe_clave": "7df0ef29ced1ea587149ae964893bb0b56d8a9d911cf184052ac6ef9cc082017",
+            "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+            "creada_en": "2025-09-26 07:00:06.803575+00:00"
+          },
+          "description": "Insert alerta El Cajas - Boedo",
+          "branch_id": "SUC-369",
+          "branch_name": "Boedo",
+          "source": "capi_elcajas",
+          "payload": {
+            "priority": "critical",
+            "prioridad": "critica",
+            "status": "active",
+            "estado": "abierta",
+            "problema": "Boedo: deficit de 20,000 ARS (-20.0%)",
+            "hipotesis": "Desvio detectado en Boedo",
+            "impacto": "Diferencia de 20,000 ARS (-20.0%)",
+            "datos_clave": [
+              "Diferencia total: -20,000 ARS",
+              "Desvio porcentual: -20.0%",
+              "Sucursal: Boedo (SUC-369)",
+              "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]",
+              "Medicion: 2025-09-26T07:00:06.803575+00:00"
+            ],
+            "acciones": "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]; Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada [proximo turno]",
+            "sucursal_id": "SUC-369",
+            "branch_name": "Boedo",
+            "summary": "Boedo: déficit de 20,000 ARS (20.0%). Severidad: alert",
+            "dedupe_clave": "7df0ef29ced1ea587149ae964893bb0b56d8a9d911cf184052ac6ef9cc082017",
+            "creada_en": "2025-09-26T07:00:06.803575+00:00",
+            "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+            "agent_source": "capi_elcajas",
+            "persisted": true,
+            "database_id": 80
+          },
+          "persisted": true,
+          "database_id": 80
+        }
+      ],
+      "recommendation_files": [
+        {
+          "path": "/app/ia_workspace/data/sessions/session_codex-e2e/capi_elcajas/recommendation_SUC-369_20250926_070006.json",
+          "filename": "recommendation_SUC-369_20250926_070006.json",
+          "relative_path": "capi_elcajas/recommendation_SUC-369_20250926_070006.json",
+          "created_at": "2025-09-26T07:00:06.803575+00:00",
+          "summary": "Boedo: déficit de 20,000 ARS (20.0%). Severidad: alert",
+          "hypothesis": "Desvio detectado en Boedo",
+          "impact": "Diferencia de 20,000 ARS (-20.0%)",
+          "suggested_actions": [
+            "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica",
+            "Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada",
+            "Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada",
+            "Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada",
+            "Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada"
+          ]
+        }
+      ]
+    }
+  },
+  "errors": []
+}

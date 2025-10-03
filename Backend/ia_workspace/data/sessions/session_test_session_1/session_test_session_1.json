@@ -1,0 +1,159 @@
+{
+  "created_at": "2025-09-25T04:36:42.740771",
+  "session_id": "test_session_1",
+  "sanitized_session_id": "test_session_1",
+  "updated_at": "2025-09-25T05:04:40.999661",
+  "datab_exports": [],
+  "status": "completed",
+  "active_agent": "smalltalk",
+  "completed_nodes": [
+    "start",
+    "intent",
+    "react",
+    "reasoning",
+    "supervisor",
+    "router",
+    "summary",
+    "human_gate",
+    "assemble",
+    "finalize"
+  ],
+  "intent": "unknown",
+  "intent_confidence": 0.2,
+  "last_query": "Hola, Ã‚Â¿cÃƒÂ³mo estÃƒÂ¡s?",
+  "last_response": {
+    "message": "📊 *Resumen financiero*:\n\n⚠️ No se encontraron datos financieros para analizar.\n\nPor favor, carga algunos archivos CSV o Excel en el sistema.",
+    "data": {
+      "react_observations": [
+        {
+          "summary": "Sin historial relevante.",
+          "recent_turns": []
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "Responder cordialmente.",
+          "memory_window": [],
+          "recommended_agent": "smalltalk"
+        },
+        {
+          "observation": "Responder cordialmente.",
+          "memory_window": [],
+          "recommended_agent": "smalltalk"
+        }
+      ],
+      "reasoning_plan": {
+        "plan_id": "c6151552-a006-4ed2-af4e-8885bb81d3b7",
+        "version": 1,
+        "intent": "greeting",
+        "goal": "Mantener interacción cordial y guiar a capacidades",
+        "confidence": 0.9,
+        "recommended_agent": "summary",
+        "fallback_agent": "assemble",
+        "rationale": "Se identificó interacción social; se prepara una respuesta cordial con monitor de intención latente para escalar si aparecen necesidades de negocio.",
+        "steps": [
+          {
+            "id": "T1",
+            "title": "Responder cordialmente",
+            "description": "Ofrecer una respuesta amable y mantener tono profesional.",
+            "agent": "summary",
+            "inputs": [],
+            "expected_output": "Respuesta en lenguaje natural",
+            "depends_on": []
+          },
+          {
+            "id": "T2",
+            "title": "Detectar intención latente",
+            "description": "Evaluar si el usuario esconde una necesidad de negocio tras el saludo.",
+            "agent": "intent",
+            "inputs": [],
+            "expected_output": "Posible intención secundaria",
+            "depends_on": [
+              "T1"
+            ]
+          },
+          {
+            "id": "T3",
+            "title": "Redirigir a capacidades clave",
+            "description": "Sugerir análisis o acciones disponibles según el contexto.",
+            "agent": "summary",
+            "inputs": [],
+            "expected_output": "Sugerencias contextualizadas",
+            "depends_on": [
+              "T2"
+            ]
+          }
+        ],
+        "cooperative_agents": [
+          "intent"
+        ],
+        "supporting_evidence": {
+          "progress_percent": 92.5,
+          "remaining_steps": 3,
+          "estimated_effort_seconds": 50,
+          "complexity": "medium",
+          "entities": {},
+          "context_used": false,
+          "semantic_confidence": 0.2,
+          "available_agents": [
+            "anomaly",
+            "branch",
+            "capi_datab",
+            "capi_desktop",
+            "summary"
+          ],
+          "user_id": "test_user",
+          "session_id": "test_session_1"
+        },
+        "generated_at": "2025-09-25T08:04:40.988487",
+        "intent_alignment": false,
+        "requires_replan": false,
+        "history": [],
+        "progress_percent": 92.5,
+        "remaining_steps": 3,
+        "complexity": "medium",
+        "estimated_effort_seconds": 50
+      },
+      "total_records": 0,
+      "total_amount": 0.0,
+      "anomalies_detected": 0,
+      "date_range": "Sin datos",
+      "branches": [],
+      "categories": []
+    }
+  },
+  "conversation_history": [],
+  "memory_window": [],
+  "reasoning_summary": {
+    "goal": "Mantener interacción cordial y guiar a capacidades",
+    "recommended_agent": "summary",
+    "confidence": 0.9,
+    "version": 1,
+    "cooperative_agents": [
+      "intent"
+    ],
+    "progress_percent": 92.5,
+    "remaining_steps": 3,
+    "complexity": "medium",
+    "estimated_effort_seconds": 50,
+    "remaining_percent": 7.5
+  },
+  "processing_metrics": {
+    "react_steps": 5.0,
+    "react_latency_ms": 0.0,
+    "reasoning_time_ms": 4.0,
+    "reasoning_steps": 3.0,
+    "reasoning_version": 1.0,
+    "reasoning_progress_percent": 92.5,
+    "reasoning_eta_seconds": 50.0,
+    "reasoning_remaining_steps": 3.0,
+    "supervisor_latency_ms": 0.0,
+    "supervisor_queue_length": 5.0
+  },
+  "shared_artifacts": {},
+  "errors": []
+}

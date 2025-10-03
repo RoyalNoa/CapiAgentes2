@@ -1,0 +1,30 @@
+{
+  "agents": {
+    "summary": {
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "history": []
+    },
+    "branch": {
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "history": []
+    },
+    "anomaly": {
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "history": []
+    },
+    "smalltalk": {
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "history": []
+    },
+    "capi_desktop": {
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "history": []
+    }
+  },
+  "last_updated": "2025-09-14T23:18:38.335774"
+}

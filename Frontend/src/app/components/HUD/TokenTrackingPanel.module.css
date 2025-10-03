@@ -1,0 +1,831 @@
+/* ==========================================
+   TOKEN TRACKING PANEL - DIVIDED LAYOUT
+   ========================================== */
+
+.container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(0, auto);
+  grid-auto-flow: row;
+  align-content: flex-start;
+  justify-items: stretch;
+  align-items: stretch;
+  position: relative;
+  gap: clamp(14px, 2vw, 24px);
+  padding: clamp(18px, 2.2vw, 26px);
+  width: 100%;
+  border-radius: 24px;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  background: rgba(1, 20, 40, 0.9);
+  box-shadow:
+    0 16px 35px rgba(0, 0, 0, 0.45),
+    inset 0 0 12px rgba(0, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-family: 'Orbitron', 'Inter', system-ui;
+  color: #e2e8f0;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+
+/* ==========================================
+   INDEPENDENT BOXES - SIMPLIFIED
+   ========================================== */
+.metricsBox,
+.timelineBox {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.4vw, 18px);
+  padding: clamp(18px, 2.1vw, 24px);
+  border-radius: 20px;
+  border: 1px solid rgba(96, 202, 255, 0.35);
+  background: rgba(0, 32, 64, 0.65);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.35),
+    inset 0 0 18px rgba(14, 165, 233, 0.18);
+  min-height: 0;
+  width: 100%;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.metricsBox {
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.timelineBox {
+  width: 100%;
+  flex: 0 0 auto;
+  border-color: rgba(56, 189, 248, 0.28);
+  background: rgba(0, 24, 48, 0.65);
+  overflow: hidden;
+}
+.metricsBox:hover,
+.timelineBox:hover {
+  border-color: rgba(96, 202, 255, 0.55);
+  box-shadow:
+    0 18px 40px rgba(14, 165, 233, 0.25),
+    inset 0 0 24px rgba(14, 165, 233, 0.25);
+}
+
+
+.timeSelector {
+  background: rgba(0, 40, 80, 0.8);
+  border: 1px solid rgba(0, 153, 204, 0.5);
+  color: #0099cc;
+  padding: 6px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  font-family: inherit;
+}
+
+.timeSelector:hover {
+  background: rgba(0, 153, 204, 0.2);
+  border-color: #00ffff;
+  color: #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+/* ==========================================
+   SHARED HEADERS AND CONTROLS
+   ========================================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(8px, 1.2vw, 14px);
+  padding-bottom: clamp(10px, 1.4vw, 14px);
+  border-bottom: 1px solid rgba(96, 202, 255, 0.28);
+  background: transparent;
+  flex-shrink: 0;
+}
+
+
+
+.title {
+  margin: 0;
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-weight: 700;
+  color: #7df9ff;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  text-shadow: 0 0 12px rgba(96, 202, 255, 0.5);
+}
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.6vw, 20px);
+  min-height: 0;
+}
+
+
+.badge {
+  padding: 6px 12px;
+  background: rgba(11, 61, 145, 0.2);
+  border: 1px solid #0b3d91;
+  color: #0b3d91;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 8px 100%);
+  box-shadow:
+    inset 0 0 15px rgba(11, 61, 145, 0.3),
+    0 0 10px rgba(11, 61, 145, 0.4);
+}
+
+.boxContent {
+  flex: 1;
+  padding: 15px;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #0099cc transparent;
+}
+
+.boxContent::-webkit-scrollbar {
+  width: 3px;
+}
+
+.boxContent::-webkit-scrollbar-thumb {
+  background: #0099cc;
+  border-radius: 2px;
+}
+
+/* ==========================================
+   METRICS CONTENT - SIMPLIFIED
+   ========================================== */
+.summaryMetrics {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.2vw, 14px);
+  align-items: stretch;
+  width: 100%;
+}
+
+
+.metricCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(4px, 0.9vw, 10px);
+  padding: clamp(6px, 0.9vw, 9px) clamp(11px, 1.5vw, 16px);
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  background: rgba(1, 20, 40, 0.9);
+  box-shadow:
+    0 16px 35px rgba(0, 0, 0, 0.45),
+    inset 0 0 12px rgba(0, 255, 255, 0.08);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  width: 100%;
+}
+
+.metricCardPrimary {
+  flex: 0 0 auto;
+}
+
+.metricCardSecondary {
+  flex: 0 0 auto;
+}
+
+
+.metricCard:hover {
+  border-color: rgba(96, 202, 255, 0.75);
+  box-shadow:
+    0 14px 28px rgba(14, 165, 233, 0.32),
+    inset 0 0 18px rgba(14, 165, 233, 0.26);
+  transform: translateY(-1px);
+}
+
+
+.metricLabel {
+  font-size: 10px;
+  color: rgba(226, 232, 240, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  text-align: left;
+  font-weight: 600;
+}
+
+
+.metricValue {
+  font-size: clamp(24px, 2.8vw, 34px);
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 16px rgba(125, 249, 255, 0.35);
+}
+
+
+/* ==========================================
+   SUB-BOXES WITHIN TOKEN METRICS
+   ========================================== */
+.consumptionBox, .agentsBox {
+  background: linear-gradient(135deg, rgba(0, 40, 80, 0.4), rgba(0, 20, 40, 0.6));
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  backdrop-filter: blur(3px);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% 100%,
+    8px 100%,
+    0 calc(100% - 8px)
+  );
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.consumptionBox {
+  flex: 0 0 auto;
+  min-height: 100px;
+}
+
+.agentsBox {
+  flex: 1;
+  min-height: 0;
+}
+
+.consumptionBox:hover, .agentsBox:hover {
+  background: linear-gradient(135deg, rgba(0, 60, 120, 0.5), rgba(0, 40, 80, 0.7));
+  border-color: rgba(0, 255, 255, 0.3);
+  transform: translateX(3px);
+}
+
+.subBoxHeader {
+  padding: 10px 12px;
+  background: rgba(0, 20, 40, 0.8);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.subBoxTitle {
+  font-size: 10px;
+  font-weight: 700;
+  color: #00ffff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.subBoxContent {
+  flex: 1;
+  padding: 12px;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #0099cc transparent;
+}
+
+.subBoxContent::-webkit-scrollbar {
+  width: 2px;
+}
+
+.subBoxContent::-webkit-scrollbar-thumb {
+  background: #0099cc;
+  border-radius: 1px;
+}
+
+/* ==========================================
+   CONSUMPTION METRICS
+   ========================================== */
+.totalMetrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(0, 20, 40, 0.6);
+  border-radius: 6px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.metricLabel {
+  font-size: 9px;
+  color: #8aa0c5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.metricValue {
+  font-size: 14px;
+  font-weight: 800;
+  color: #00ffff;
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.8);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* ==========================================
+   AGENTS LIST
+   ========================================== */
+.agentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 153, 204, 0.8) transparent;
+}
+
+.agentsList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.agentsList::-webkit-scrollbar-thumb {
+  background: rgba(0, 153, 204, 0.7);
+  border-radius: 2px;
+}
+
+.agentItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background: rgba(0, 20, 40, 0.6);
+  border-left: 3px solid;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.agentItem:hover {
+  background: rgba(0, 40, 80, 0.6);
+  transform: translateX(3px);
+}
+
+.agentItem.active {
+  border-left-color: #0b3d91;
+  color: #0b3d91;
+}
+
+.agentItem.inactive {
+  border-left-color: #8aa0c5;
+  color: #8aa0c5;
+  opacity: 0.7;
+}
+
+.agentInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.agentDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: agentPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 15px currentColor;
+}
+
+@keyframes agentPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+.agentName {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.agentMetrics {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.tokenBreakdown {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.04em;
+}
+
+.tokenCount {
+  font-size: 14px;
+  font-weight: 800;
+  color: inherit;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.costValue {
+  font-size: 10px;
+  color: inherit;
+  opacity: 0.8;
+  font-family: 'Courier New', monospace;
+}
+
+
+/* ==========================================
+   COST TIMELINE SPECIFIC CONTROLS
+   ========================================== */
+.currency {
+  font-size: 10px;
+  color: #0b3d91;
+  background: rgba(11, 61, 145, 0.2);
+  padding: 4px 8px;
+  border-radius: 3px;
+  border: 1px solid rgba(11, 61, 145, 0.3);
+  font-weight: 700;
+  letter-spacing: 1px;
+  clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 100%, 4px 100%);
+}
+
+.updateTime {
+  font-size: 9px;
+  color: #8aa0c5;
+  font-family: 'Courier New', monospace;
+  background: rgba(0, 40, 80, 0.6);
+  padding: 3px 6px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.simulationBadge {
+  font-size: 9px;
+  color: #0b3d91;
+  background: rgba(11, 61, 145, 0.2);
+  padding: 3px 8px;
+  border-radius: 3px;
+  border: 1px solid rgba(11, 61, 145, 0.3);
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: simulationPulse 2s ease-in-out infinite;
+}
+
+@keyframes simulationPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 5px rgba(11, 61, 145, 0.3);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 15px rgba(11, 61, 145, 0.6);
+  }
+}
+
+.timelineContent {
+  flex: 1;
+  padding: 15px 20px;
+  overflow: hidden;
+  position: relative;
+  min-height: 120px;
+}
+
+.chartContainer {
+  width: 100%;
+  height: 100%;
+  min-height: 100px;
+  position: relative;
+}
+
+.costChart {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background:
+    radial-gradient(circle at center, rgba(11, 61, 145, 0.05), transparent 70%);
+}
+
+.agentLabel {
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* ==========================================
+   LOADING & ERROR STATES
+   ========================================== */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  gap: 15px;
+  color: #8aa0c5;
+  text-align: center;
+}
+
+.loadingSpinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(0, 255, 255, 0.3);
+  border-top: 3px solid #00ffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  gap: 15px;
+  color: #ff3333;
+  text-align: center;
+}
+
+.errorIcon {
+  font-size: 30px;
+  color: #ff3333;
+}
+
+.retryBtn {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #ff3333;
+  color: #ff3333;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.retryBtn:hover {
+  background: rgba(255, 51, 51, 0.2);
+  box-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
+}
+
+.noDataContainer, .noActivityIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  gap: 10px;
+  color: #8aa0c5;
+  text-align: center;
+  font-size: 12px;
+}
+
+.noDataIcon {
+  font-size: 30px;
+  color: rgba(0, 255, 255, 0.4);
+}
+
+/* ==========================================
+   STATUS INDICATOR
+   ========================================== */
+.statusIndicator {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(0, 40, 80, 0.9);
+  border: 1px solid rgba(11, 61, 145, 0.3);
+  color: #0b3d91;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 100%, 6px 100%);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(11, 61, 145, 0.2);
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0b3d91;
+  animation: statusPulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 8px #0b3d91;
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.4);
+  }
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 1400px) {
+  .container {
+    padding: clamp(16px, 2vw, 22px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .metricsBox,
+  .timelineBox {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .summaryMetrics {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: clamp(14px, 3vw, 18px);
+  }
+
+  .metricCard {
+    padding: clamp(16px, 3vw, 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    gap: 12px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .summaryMetrics {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .metricCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .metricCardPrimary,
+  .metricCardSecondary {
+    flex: 1 1 auto;
+  }
+
+  .agentItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .agentMetrics {
+    align-items: flex-start;
+  }
+
+  .statusIndicator {
+    position: static;
+    justify-content: center;
+    margin: 8px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+  }
+
+  .metricsBox,
+  .timelineBox {
+    padding: 14px;
+  }
+
+  .title {
+    font-size: 11px;
+  }
+
+  .chartContainer {
+    min-height: 60px;
+  }
+
+  .summaryMetrics {
+    gap: 10px;
+  }
+
+  .metricValue {
+    font-size: 24px;
+  }
+
+  .agentItem {
+    padding: 8px;
+  }
+}
+.timelineGrid {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 120px;
+  overflow-x: auto;
+  padding: 10px 4px;
+}
+
+.timelineBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.timelineBarStack {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  width: 100%;
+  height: 90px;
+  background: rgba(0, 40, 80, 0.35);
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.timelineSegment {
+  width: 100%;
+  transition: opacity 0.2s ease;
+}
+
+.timelineSegment:hover {
+  opacity: 0.85;
+}
+
+.timelineLabel {
+  font-size: 10px;
+  color: rgba(0, 255, 255, 0.6);
+  letter-spacing: 0.05em;
+}
+
+.costBars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 60px;
+}
+
+.emptyState,
+.costChartPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 255, 255, 0.7);
+  background: rgba(0, 40, 80, 0.35);
+  border: 1px dashed rgba(0, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.costChartPlaceholder {
+  height: 60px;
+}

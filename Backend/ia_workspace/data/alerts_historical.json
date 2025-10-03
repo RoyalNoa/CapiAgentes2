@@ -1,0 +1,305 @@
+{
+  "historical_alerts": [
+    {
+      "id": "alert_2025_001",
+      "timestamp": 1757945600000,
+      "type": "critical_anomaly",
+      "priority": "critical",
+      "agent": "anomaly",
+      "title": "Massive Transaction Pattern Deviation",
+      "description": "Detected 45 high-value transactions exceeding 400% of normal patterns across multiple branches",
+      "affected_entities": [
+        "Branch Norte",
+        "Branch Centro",
+        "Branch Sur"
+      ],
+      "financial_impact": {
+        "estimated_risk": 850000,
+        "currency": "USD",
+        "confidence": 0.92
+      },
+      "ai_analysis": {
+        "root_cause": "Coordinated transaction pattern suggests either sophisticated fraud scheme or system malfunction in payment processing",
+        "probability_fraud": 0.78,
+        "probability_system_error": 0.22,
+        "similar_incidents": 2,
+        "trend_analysis": "Escalating pattern over 72 hours",
+        "recommended_actions": [
+          {
+            "priority": 1,
+            "action": "immediate_terminal_lockdown",
+            "description": "Lock all affected terminals immediately",
+            "estimated_time": "5 minutes",
+            "responsible": "security_team"
+          },
+          {
+            "priority": 2,
+            "action": "customer_verification",
+            "description": "Contact customers associated with flagged transactions",
+            "estimated_time": "2 hours",
+            "responsible": "customer_service"
+          },
+          {
+            "priority": 3,
+            "action": "forensic_analysis",
+            "description": "Deep forensic analysis of transaction logs",
+            "estimated_time": "4 hours",
+            "responsible": "it_security"
+          }
+        ]
+      },
+      "human_tasks": [
+        {
+          "id": "task_001_001",
+          "title": "Emergency Terminal Shutdown",
+          "description": "Immediately disable terminals T-001, T-003, T-007, T-012 across affected branches",
+          "status": "completed",
+          "assigned_to": "security_officer_1",
+          "completed_at": 1757945800000,
+          "execution_time": 240
+        },
+        {
+          "id": "task_001_002",
+          "title": "Customer Notification Protocol",
+          "description": "Contact 12 customers with suspicious transactions for verification",
+          "status": "in_progress",
+          "assigned_to": "customer_service_manager",
+          "started_at": 1757946000000,
+          "progress": 0.4
+        },
+        {
+          "id": "task_001_003",
+          "title": "Regulatory Compliance Report",
+          "description": "Prepare incident report for financial regulatory authority",
+          "status": "pending",
+          "assigned_to": "compliance_officer",
+          "due_date": 1757959200000
+        }
+      ],
+      "resolution": {
+        "status": "investigating",
+        "resolution_time": null,
+        "final_classification": null,
+        "lessons_learned": [],
+        "prevention_measures": []
+      },
+      "context_for_ai": {
+        "business_context": "High-traffic financial institution with 50+ branches, processing 100K+ daily transactions",
+        "operational_context": "Alert occurred during peak business hours (14:30), potentially affecting customer confidence",
+        "historical_context": "This is the 3rd anomaly pattern in Q4, suggesting possible organized threat",
+        "stakeholder_impact": "C-suite visibility required due to regulatory implications and potential media exposure"
+      }
+    },
+    {
+      "id": "alert_2025_002",
+      "timestamp": 1757932200000,
+      "type": "performance_degradation",
+      "priority": "high",
+      "agent": "system",
+      "title": "Core Banking System Performance Drop",
+      "description": "Database response times increased by 340% affecting customer transactions",
+      "affected_entities": [
+        "Core Banking Database",
+        "Payment Processing System",
+        "ATM Network"
+      ],
+      "financial_impact": {
+        "estimated_loss": 125000,
+        "currency": "USD",
+        "confidence": 0.85
+      },
+      "ai_analysis": {
+        "root_cause": "Database connection pool exhaustion combined with high-volume transaction load",
+        "probability_hardware": 0.15,
+        "probability_software": 0.70,
+        "probability_capacity": 0.15,
+        "trend_analysis": "Performance degradation pattern matches Q3 incident",
+        "recommended_actions": [
+          {
+            "priority": 1,
+            "action": "database_optimization",
+            "description": "Implement connection pool scaling and query optimization",
+            "estimated_time": "30 minutes",
+            "responsible": "database_team"
+          },
+          {
+            "priority": 2,
+            "action": "capacity_planning",
+            "description": "Review and upgrade infrastructure capacity",
+            "estimated_time": "2 days",
+            "responsible": "infrastructure_team"
+          }
+        ]
+      },
+      "human_tasks": [
+        {
+          "id": "task_002_001",
+          "title": "Emergency Database Scaling",
+          "description": "Increase database connection pool from 100 to 200 connections",
+          "status": "completed",
+          "assigned_to": "dba_senior",
+          "completed_at": 1757933400000,
+          "execution_time": 900
+        },
+        {
+          "id": "task_002_002",
+          "title": "Customer Communication",
+          "description": "Notify customers of temporary service delays via app notifications",
+          "status": "completed",
+          "assigned_to": "communications_team",
+          "completed_at": 1757933100000,
+          "execution_time": 300
+        }
+      ],
+      "resolution": {
+        "status": "resolved",
+        "resolution_time": 1757934600000,
+        "final_classification": "capacity_issue",
+        "lessons_learned": [
+          "Need proactive capacity monitoring",
+          "Customer communication critical during outages"
+        ],
+        "prevention_measures": [
+          "Implemented auto-scaling for database connections",
+          "Enhanced monitoring with predictive alerts"
+        ]
+      },
+      "context_for_ai": {
+        "business_context": "Performance issues directly impact customer satisfaction and revenue",
+        "operational_context": "Incident resolved within SLA but customer complaints increased 200%",
+        "historical_context": "Similar performance degradation in Q3 suggests recurring pattern",
+        "stakeholder_impact": "Operations team efficiency, customer retention metrics affected"
+      }
+    },
+    {
+      "id": "alert_2025_003",
+      "timestamp": 1757918800000,
+      "type": "regulatory_compliance",
+      "priority": "high",
+      "agent": "compliance",
+      "title": "AML Transaction Reporting Threshold Exceeded",
+      "description": "15 transactions detected above $10,000 threshold requiring mandatory reporting",
+      "affected_entities": [
+        "AML Compliance System",
+        "Branch Norte",
+        "Corporate Banking Division"
+      ],
+      "financial_impact": {
+        "regulatory_risk": 500000,
+        "currency": "USD",
+        "confidence": 0.95
+      },
+      "ai_analysis": {
+        "root_cause": "Legitimate corporate transactions during month-end processing, but reporting compliance required",
+        "probability_legitimate": 0.85,
+        "probability_suspicious": 0.15,
+        "trend_analysis": "Monthly pattern consistent with business cycle",
+        "recommended_actions": [
+          {
+            "priority": 1,
+            "action": "immediate_reporting",
+            "description": "File CTR reports within 15-day regulatory window",
+            "estimated_time": "4 hours",
+            "responsible": "aml_officer"
+          },
+          {
+            "priority": 2,
+            "action": "enhanced_monitoring",
+            "description": "Monitor related transactions for next 30 days",
+            "estimated_time": "ongoing",
+            "responsible": "compliance_team"
+          }
+        ]
+      },
+      "human_tasks": [
+        {
+          "id": "task_003_001",
+          "title": "CTR Filing - Batch 001",
+          "description": "File Currency Transaction Reports for 15 flagged transactions",
+          "status": "completed",
+          "assigned_to": "aml_specialist_1",
+          "completed_at": 1757932800000,
+          "execution_time": 14400
+        },
+        {
+          "id": "task_003_002",
+          "title": "Client Risk Assessment Update",
+          "description": "Update risk profiles for 5 corporate clients involved in transactions",
+          "status": "completed",
+          "assigned_to": "risk_analyst",
+          "completed_at": 1757926200000,
+          "execution_time": 7200
+        }
+      ],
+      "resolution": {
+        "status": "resolved",
+        "resolution_time": 1757932800000,
+        "final_classification": "regulatory_compliance_success",
+        "lessons_learned": [
+          "Month-end processing creates predictable compliance events",
+          "Automated reporting could reduce manual workload"
+        ],
+        "prevention_measures": [
+          "Implemented predictive compliance alerts",
+          "Created automated CTR preparation workflows"
+        ]
+      },
+      "context_for_ai": {
+        "business_context": "Financial institution under strict regulatory oversight with zero-tolerance for non-compliance",
+        "operational_context": "Month-end transaction volumes create predictable compliance workload spikes",
+        "historical_context": "Strong compliance track record, but manual processes create operational risk",
+        "stakeholder_impact": "Regulatory standing, operational efficiency, risk management effectiveness"
+      }
+    }
+  ],
+  "ai_insights": {
+    "pattern_analysis": {
+      "most_frequent_alert_types": [
+        "system_performance",
+        "transaction_anomaly",
+        "compliance_threshold"
+      ],
+      "critical_time_windows": [
+        "14:00-16:00 (peak transaction hours)",
+        "month-end processing periods",
+        "system maintenance windows"
+      ],
+      "resolution_efficiency": {
+        "average_resolution_time": 7200000,
+        "fastest_resolution": 300000,
+        "slowest_resolution": 86400000,
+        "success_rate": 0.94
+      }
+    },
+    "predictive_indicators": [
+      {
+        "indicator": "transaction_volume_spike",
+        "correlation": 0.78,
+        "description": "Transaction volumes >150% of daily average predict anomaly alerts within 2 hours"
+      },
+      {
+        "indicator": "database_connection_utilization",
+        "correlation": 0.85,
+        "description": "Connection pool utilization >80% predicts performance degradation within 30 minutes"
+      },
+      {
+        "indicator": "month_end_proximity",
+        "correlation": 0.92,
+        "description": "Days 25-31 of month show 300% increase in compliance alerts"
+      }
+    ],
+    "operational_recommendations": [
+      "Implement predictive scaling for database connections",
+      "Create automated compliance report generation",
+      "Enhance real-time monitoring during peak hours",
+      "Develop customer communication automation for incidents"
+    ]
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": 1757945600000,
+    "total_alerts": 3,
+    "data_retention_days": 2555,
+    "classification_confidence": 0.89
+  }
+}

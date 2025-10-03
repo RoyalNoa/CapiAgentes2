@@ -1,0 +1,26 @@
+{
+  "operation": "insert",
+  "table": "public.alertas",
+  "rowcount": 1,
+  "generated_at": "2025-10-02T20:29:50.489316",
+  "session_id": "global",
+  "sql": "INSERT INTO public.alertas (prioridad, estado, problema, hipotesis, impacto, datos_clave, acciones, sucursal_id, dedupe_clave, agente_id, creada_en) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id",
+  "parameters": [
+    "alta",
+    "abierta",
+    "Palermo: deficit de 12,000 ARS (-12.0%)",
+    "Desvio detectado en Palermo",
+    "Diferencia de 12,000 ARS (-12.0%)",
+    "[\"Diferencia total: -12,000 ARS\", \"Desvio porcentual: -12.0%\", \"Sucursal: Palermo (SUC-404)\", \"Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]\", \"Medicion: 2025-10-02T20:29:50.227829+00:00\"]",
+    "Saldo Total: deposit 7,000 ARS - Deficit vs caja teorica [proximo turno]; Tesoro: deposit 536 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 836 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 112 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 809 ARS - Deficit canal vs distribucion esperada [proximo turno]",
+    "SUC-404",
+    "8e65df6822146004681e847d65d84a28d48b9e77d088f611b35c38baeea39637",
+    "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+    "2025-10-02 20:29:50.227829+00:00"
+  ],
+  "result": [
+    {
+      "id": 139
+    }
+  ]
+}

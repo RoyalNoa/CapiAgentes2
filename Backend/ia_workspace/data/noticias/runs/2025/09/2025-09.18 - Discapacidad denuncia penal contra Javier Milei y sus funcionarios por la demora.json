@@ -1,0 +1,127 @@
+{
+  "fingerprint": "c06608584c9c18f8d68f9ed83d087680c572c232ee6f46eb3a0d68872965db98",
+  "headline": "Discapacidad: denuncia penal contra Javier Milei y sus funcionarios por la demora en la promulgación de la ley de emergencia",
+  "url": "https://www.ambito.com/politica/discapacidad-denuncia-penal-contra-javier-milei-y-sus-funcionarios-la-demora-la-promulgacion-la-ley-emergencia-n6192142",
+  "published_at": "2025-09-18T18:51:00",
+  "impact_level": "low",
+  "score": 2.4,
+  "priority_score": 4.86,
+  "urgency_level": "high",
+  "tags": [
+    "regulation"
+  ],
+  "relevance_signals": [
+    "policy_change",
+    "systemic_risk"
+  ],
+  "branch_targets": [],
+  "suggested_actions": [
+    "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+    "Escala a risk management y prepara comunicacion con clientes clave."
+  ],
+  "raw_keywords": [
+    "Javier Milei",
+    "Guillermo Francos",
+    "Discapacidad"
+  ],
+  "summary": "La denuncia fue presentada este jueves por el diputado Esteban Paulón y la diputada Mónica Fein en Comodoro Py.",
+  "snippet": "El presidente Javier Milei y el jefe de gabinete Guillermo Francos fueron denunciados en Comodoro Py por la demora en la promulgación y reglamentación de la ley de emergencia en discapacidad (27.739). La demanda es por abuso de autoridad incumplimiento de los deberes de funcionario público. También fueron demandados Ma",
+  "source": "https://www.ambito.com/politica",
+  "run": {
+    "generated_at": "2025-09-18T19:22:22.672797",
+    "trigger": "manual",
+    "requested_by": null,
+    "metrics": {
+      "total_articles": 15,
+      "high_impact": 2,
+      "medium_impact": 0,
+      "low_impact": 13,
+      "tags": {
+        "regulation": 7,
+        "liquidity": 3,
+        "risk_alerts": 2
+      },
+      "signals": {
+        "policy_change": 7,
+        "systemic_risk": 4,
+        "liquidity_risk": 3
+      },
+      "priority_high": 2,
+      "priority_medium": 3,
+      "priority_low": 10,
+      "average_priority": 3.23,
+      "max_priority": 13.28,
+      "estimated_tokens": 1728,
+      "estimated_cost_usd": 0.002592
+    },
+    "alerts": [
+      {
+        "headline": "Dólar: al límite, Donald Trump hace cambios inéditos en el FMI y genera un \"cisne blanco\" que podría descomprimir el plan de Javier Milei",
+        "url": "https://www.ambito.com/economia/dolar-al-limite-donald-trump-hace-cambios-ineditos-el-fmi-y-genera-un-cisne-blanco-que-podria-descomprimir-el-plan-javier-milei-n6192055",
+        "impact_level": "high",
+        "score": 9.2,
+        "priority_score": 13.28,
+        "tags": [
+          "liquidity",
+          "regulation",
+          "risk_alerts"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "normal",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T13:28:00-03:00"
+      },
+      {
+        "headline": "Crece la tensión financiera: los bonos se hunden hasta 14% y el riesgo país supera los 1.400 puntos básicos",
+        "url": "https://www.ambito.com/finanzas/los-bonos-dolares-caen-3-y-profundizan-las-caidas-el-premarket-n6191886",
+        "impact_level": "high",
+        "score": 6.2,
+        "priority_score": 9.58,
+        "tags": [
+          "liquidity",
+          "regulation",
+          "risk_alerts"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "medium",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T14:49:00-03:00"
+      }
+    ],
+    "decision_summary": {
+      "high_priority": 2,
+      "medium_priority": 3,
+      "recommended_actions": [
+        "Escala a risk management y prepara comunicacion con clientes clave.",
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Revisa proyecciones de liquidez y prepara escenarios de stress."
+      ],
+      "branches_to_monitor": [],
+      "top_headline": "Crece la tensión financiera: los bonos se hunden hasta 14% y el riesgo país supera los 1.400 puntos básicos",
+      "top_priority_score": 9.58
+    }
+  },
+  "files": {
+    "markdown": "2025\\09\\2025-09.18 - Discapacidad denuncia penal contra Javier Milei y sus funcionarios por la demora.md",
+    "json": "2025\\09\\2025-09.18 - Discapacidad denuncia penal contra Javier Milei y sus funcionarios por la demora.json"
+  },
+  "stored_at": "2025-09-18T19:22:22.706549"
+}

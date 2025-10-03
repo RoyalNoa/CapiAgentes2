@@ -1,0 +1,98 @@
+# Funcionalidades de CapiAgentes
+
+## Arquitectura general
+- Plataforma multiagente orientada a operaciones financieras con backend FastAPI y orquestador LangGraph consolidado (`Backend/src/api/main.py`, `Backend/src/presentation/orchestrator_factory.py`).
+- Canal conversacional hibrido HTTP + WebSocket para chat operativo, difusion de eventos de agentes y visualizacion del grafo en vivo (`/api/command`, `/ws`, `/ws/agents`, `/ws/graph`).
+- Carga automatica de datasets desde `Backend/data` al iniciar el servidor y fallback directo al agente `CapiDataB` para operaciones SQL cuando la clasificacion semantica lo permite (`Backend/src/api/main.py`).
+- Telemetria unificada con logger central (`Backend/src/core/logging.py`), archivo JSONL de metricas por turno (`Backend/src/observability/agent_metrics.py`) y redireccion de `print` al log principal (`README.md`).
+- Configuracion mediante `.env` documentado en `.env.example` y utilitarios multiplataforma para orquestar la pila Docker (`docker-commands.ps1`, `docker-commands.sh`, `docker-compose.yml`).
+
+## Backend FastAPI
+
+### Orquestador y experiencia conversacional
+- LangGraphOrchestrator expuesto via factory con configuracion de ventanas de memoria, TTL y limites de pasos (`Backend/src/presentation/orchestrator_factory.py`).
+- Endpoint `/api/command` procesa instrucciones, aplica `SemanticIntentService` y enruta al agente adecuado o al orquestador segun la intencion detectada (`Backend/src/api/main.py`).
+- WebSocket `/ws` permite chat en tiempo real con difusion de transiciones de nodos y manejo de fallback; `/ws/agents` emite eventos de ciclo de vida para la Pantalla de Agentes y `/ws/graph` publica actualizaciones del grafo LangGraph (`Backend/src/api/main.py`).
+- Endpoints de estado operacional: `/api/ready`, `/api/start`, `/api/stop`, `/api/status`, `/api/health`, `/health` y `/api/metrics`, ademas del versionado oculto `/__version` y metricas para dashboards (`Backend/src/api/main.py`).
+- API de conversaciones para auditoria: listar historiales, recuperar por cliente, limpiar sesiones y exponer sugerencias personalizadas (`/api/conversation/{client_id}`, `/api/conversations`, `/api/suggestions/{client_id}`).
+- Canal de feedback y aprendizaje continuo (`/api/feedback`, `/api/learning/insights`) con integracion a `record_feedback_event` para analizar calidad de respuestas (`Backend/src/observability/agent_metrics.py`).
+- Exposicion de archivos disponibles (`/api/files`), descripcion de arquitectura activa (`/api/architecture`) y recarga dinamica del orquestador o decisiones humanas (`/api/orchestrator/*`).
+
+### Gestion de agentes y runtime
+- Catalogo de agentes con activacion y desactivacion dinamica desde la UI (`GET/POST /api/agents`, `POST /api/agents/toggle`, `POST /api/agents/refresh` en `Backend/src/api/agents_endpoints.py`).
+- Token tracking centralizado con resumen historico, registro manual de consumo y sincronizacion con agentes activos (`/api/agents/token-tracking`, `/api/agents/token-usage`).
+- Monitoreo de sistema host (CPU, memoria, agentes activos) y ping de salud dedicado (`/api/agents/system-status`, `/api/agents/ping`).
+- Registro dinamico de nuevos agentes con manifiesto, baja de agentes, listado completo, estadisticas y recarga del registro (`/api/agents/register`, `/api/agents/{agent}/unregister`, `/api/agents/registry*`).
+- Exposicion del grafo LangGraph a la UI con render a PNG Mermaid, fallback local y remoto, y manejo de errores tipados (`Backend/src/api/agents_endpoints.py`).
+- Gestion de privilegios y roles de agentes contra la base PostgreSQL (`/api/agents/privileges`, `PATCH /api/agents/{nombre}/privilege`).
+- Servicios de dominio para autorizacion granular (`Backend/src/application/services/agent_authorization_service.py`), configuracion persistida (`agent_config_service.py`) y registro (`agent_registry_service.py`).
+- Scheduler dedicado para el agente de noticias financieras con controles de inicio/parada y trazabilidad de ejecuciones (`Backend/src/application/services/capi_noticias_service.py`).
+
+### Servicios de datos y procesos operativos
+- API de alertas historicas con filtros avanzados, detalle enriquecido, busqueda full text, resumenes criticos, carga de trabajo por equipos y actualizacion de tareas humanas (`Backend/src/api/alerts_endpoints.py`).
+- Exposicion de contexto optimizado para IA y health check de la base de alertas (`/api/alerts/{alert_id}/ai-context`, `/api/alerts/health`).
+- Gestion de politicas de efectivo multicanal con upsert por canal (`Backend/src/api/cash_policies_endpoints.py`, `Backend/src/application/services/cash_policy_service.py`).
+- CRUD completo de saldos para sucursales y dispositivos, alineado con los campos financieros usados por los tableros (`Backend/src/api/saldos_endpoints.py`).
+- Feed georreferenciado de sucursales para mapas operativos (`Backend/src/api/maps_endpoints.py`).
+- Cliente PostgreSQL asincronico con pool de conexiones, conversion de tipos y helpers para alertas, sucursales y tareas (`Backend/src/infrastructure/database/postgres_client.py`).
+- Utilitarios de calendario bancario y ventanas operativas (`Backend/src/application/services/calendar_service.py`).
+
+### Workspace IA y archivos
+- Explorador de archivos de sesion con arbol jerarquico, lectura segura y eliminacion controlada en `ia_workspace/data` (`Backend/src/api/session_files_endpoints.py`).
+- Workspace agent para generar archivos de analisis, listar recursos, calcular estadisticas, eliminar y organizar contenido (`/api/workspace/files*`).
+- Base de conocimiento con CRUD, busquedas filtradas, reindexacion y estadisticas (`/api/workspace/knowledge/*`).
+- Memoria conversacional con almacenamiento por sesion, listados, resumenes, recuperacion de contexto y estadisticas globales (`/api/workspace/memory/*`).
+- Task scheduler para flujos asincronicos: listar, inspeccionar, cancelar y obtener metricas del planificador (`/api/workspace/tasks*`).
+- Operaciones de mantenimiento: resumen integral del workspace, reorganizacion asistida, creacion de templates reutilizables y recuperacion de trabajos anteriores (`/api/workspace/summary`, `/api/workspace/organize`, `/api/workspace/templates`, `/api/workspace/work/previous`).
+- Health check especifico del workspace validando file manager, memory manager, knowledge base y scheduler (`/api/workspace/health`).
+
+## Frontend Next.js
+
+### HUD y navegacion principal
+- Layout unificado con estilo HUD, barra lateral modular y contextos compartidos para chat global y estado de agentes (`Frontend/src/app/layout.tsx`, `Frontend/src/app/contexts`).
+- Pagina Home estilo head-up display con reloj en vivo, metricas sinteticas y accesos rapidos a modulos clave (`Frontend/src/app/pages/home/page.tsx`).
+- Logger de consola que normaliza los niveles y reenvia eventos al backend (`Frontend/src/app/utils/logger.ts`).
+
+### Dashboard ejecutivo
+- Vista `dashboard/page.tsx` con charts responsivos de flujo de caja (`CashFlowChart.tsx`) y distribucion de denominaciones (`DenominationDistribution.tsx`).
+- Tablas editables para sucursales y dispositivos con ordenamiento, validacion, edicion inline y sync contra APIs de saldos (`Frontend/src/app/dashboard/page.tsx`).
+- Gestion de politicas de efectivo con edicion in place, manejo de errores por campo y toasts transitorios para feedback al usuario.
+- Paneles de estado que consumen `dashboardService` y servicios REST para recargar datos, control de errores y mensajes de exito (`Frontend/src/app/services/dashboardService.ts`, `saldosService.ts`, `cashPoliciesService.ts`).
+
+### Centro de control de agentes
+- Pagina `pages/agentes/page.tsx` con HUDLayout, integración al WebSocket `/ws/agents` (`useAgentWebSocket`) y sincronia de estado en vivo.
+- Tarjetas con toggles para habilitar agentes, resumen de privilegios y estado operativo, mas refresco dinamico contra `/api/agents`.
+- Panel de grafos LangGraph (`components/HUD/GraphPanel`) con render dinamico de PNG/Mermaid y control de sesiones.
+- Seguimiento de consumo de tokens y costos via `TokenTrackingPanel` enlazado a `/api/agents/token-tracking`.
+- Modal de registro de nuevos agentes (`AgentRegistrationModal`) que publica manifiestos al backend y confirma la reconstruccion del grafo.
+- Integracion directa del dashboard de alertas historicas dentro del HUD (`components/alerts/HistoricalAlertsDashboard.tsx`).
+
+### Mapa operativo y seleccion de sucursales
+- Pagina `pages/map/page.tsx` con modos Leaflet y Google Maps, simulador visual y loader inicial cinematografico.
+- Integracion con `useGlobalChatIntegration` para abrir el chat contextualizado a la sucursal seleccionada, compartir datos y disparar mensajes al orquestador.
+- Soporte para sucursales legacy y modelo moderno, con toggles de simulacion y sincronizacion con el panel Google.
+
+### Experiencias conversacionales y alertas
+- Overlay de chat global flotante y acoplable (`components/chat/GlobalChatOverlay.tsx`) con multiples sesiones, cambio de posicion, resizing y acceso al explorador de archivos de sesion (`SessionFilesViewer.tsx`).
+- Componente `SimpleChatBox.tsx` maneja prompts, historicos, respuestas parciales, quick actions y visual de pipeline; se alimenta del cliente de orquestador (`Frontend/src/app/utils/orchestrator`).
+- `GlobalAlertSystem` y `GlobalAlertOverlay` muestran alertas moderadas y criticidades en tiempo real con controles de ack.
+- Cliente de orquestador (`utils/orchestrator/client.ts`, `useOrchestratorChat.ts`, `ws.ts`) administra REST, SSE/WebSocket, timeouts y reconexiones.
+- Contexto `GlobalChatContext` coordina estados compartidos, sesiones y toggles en toda la app (`Frontend/src/app/contexts`).
+
+### Componentes adicionales
+- `SuggestedQuestions.tsx` muestra recomendaciones del backend (`/api/suggestions/{client_id}`) para acelerar el onboarding.
+- `Graph` y `graphcanva` renderizan el grafo y editor de nodos cuando el backend entrega Mermaid (`Frontend/src/app/components/Graph`).
+- Loader HUD reutilizable (`components/loader/Loader`) para experiencias cinematicas.
+
+## Aplicaciones auxiliares y tooling
+- Launcher de escritorio en Tkinter (`launcher/src/launcher_app/app.py`) para iniciar, detener y monitorear servicios Docker, supervisar logs, abrir puertos y lanzar herramientas del stack.
+- El launcher detecta entornos PyInstaller, migra logs antiguos, tail de archivos, ejecuta comandos en paralelo y ofrece accesos rapidos a documentacion y endpoints.
+- Scripts de build para regenerar el ejecutable (`launcher/scripts/Build Launcher.bat`) y especificacion PyInstaller (`build/CapiAgentes_Docker_Manager.spec`).
+- Script `run_e2e_ws.py` para probar flujos websocket end-to-end desde linea de comandos.
+
+## Documentacion y materiales de soporte
+- Catlogo oficial de agentes con capacidades, entradas, salidas y niveles de privilegio (`docs/CatalogoAgentes.md`).
+- Guia de pipeline de metricas de agente y observabilidad (`docs/agent_metrics_pipeline.md`, `docs/observabilidad.md`).
+- Documentacion de logging JSON, reorganizacion del repo y roadmap de orquestador (`docs/Nuevas Funcionalidades/LoggingJSON.md`, `docs/reorganizacion_repo.md`, `docs/orchestrator_roadmap.md`).
+- Materiales para despliegue y soporte: instalacion Windows, errores frecuentes y mejoras futuras (`docs/instalacion_windows.md`, `docs/Errores.md`, `docs/FuturasMejorasIA.md`).
+- Referencias adicionales para tablero, base de datos y estrategia funcional (`docs/tablero`, `docs/Base de datos`).

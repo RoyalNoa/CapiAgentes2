@@ -1,0 +1,37 @@
+
+.contenedor-flexbox {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 90vh;
+  justify-content: flex-start;
+  align-items: stretch;
+  background: linear-gradient(90deg, #f5f5f5 60%, #e0e0e0 100%);
+}
+
+.margin24 {
+  margin: 24px;
+}
+
+.border-radius16 {
+  border-radius: 16px;
+}
+
+.width25 {
+  width: 25vw;
+  min-width: 320px;
+  max-width: 400px;
+}
+
+
+.height-chat {
+  height: 90vh;
+  min-height: 400px;
+  background: #fff;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.07);
+}
+
+
+.backgroud-white {
+  background: #f9f9f9;
+}

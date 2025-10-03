@@ -1,0 +1,88 @@
+{
+  "session_id": "e2e-palermo-4",
+  "sanitized_session_id": "e2e-palermo-4",
+  "datab_exports": [
+    {
+      "filename": "DataB_2025_09_25_381641.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_381641.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-palermo-4/capi_DataB/DataB_2025_09_25_381641.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T08:00:25.391287"
+    },
+    {
+      "filename": "DataB_2025_09_25_492811.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_492811.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-palermo-4/capi_DataB/DataB_2025_09_25_492811.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T08:00:28.543445"
+    },
+    {
+      "filename": "DataB_2025_09_25_124336.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_124336.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-palermo-4/capi_DataB/DataB_2025_09_25_124336.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T08:00:33.139193"
+    },
+    {
+      "filename": "DataB_2025_09_25_980369.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_980369.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-palermo-4/capi_DataB/DataB_2025_09_25_980369.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T08:00:35.992132"
+    },
+    {
+      "filename": "DataB_2025_09_25_568798.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_568798.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-palermo-4/capi_DataB/DataB_2025_09_25_568798.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T08:00:38.582023"
+    },
+    {
+      "filename": "DataB_2025_09_25_378451.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_378451.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-palermo-4/capi_DataB/DataB_2025_09_25_378451.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T08:00:41.391059"
+    },
+    {
+      "filename": "DataB_2025_09_25_013463.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_013463.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-palermo-4/capi_DataB/DataB_2025_09_25_013463.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T08:00:44.025280"
+    },
+    {
+      "filename": "DataB_2025_09_25_660983.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_660983.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-palermo-4/capi_DataB/DataB_2025_09_25_660983.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T08:00:46.671336"
+    },
+    {
+      "filename": "DataB_2025_09_25_443107.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_443107.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-palermo-4/capi_DataB/DataB_2025_09_25_443107.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T08:00:49.456227"
+    }
+  ],
+  "updated_at": "2025-09-25T08:00:49.456238"
+}

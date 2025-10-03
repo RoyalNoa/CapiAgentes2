@@ -1,0 +1,12 @@
+{
+  "operation": "select",
+  "table": "public.saldos_sucursal",
+  "rowcount": 0,
+  "generated_at": "2025-09-25T16:56:52.059768",
+  "session_id": "e2e-palermo-case3b",
+  "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_numero = $1 ORDER BY medido_en DESC LIMIT 1",
+  "parameters": [
+    407
+  ],
+  "result": []
+}

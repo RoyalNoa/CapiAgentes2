@@ -1,0 +1,144 @@
+{
+  "fingerprint": "d69656f1a34edc5984d7949851623392fdc0ee6d004ac07cf38390ca70a6a69c",
+  "headline": "¡Atención Cuenta DNI! Este fin de semana regresa el descuento más esperado a la billetera virtual",
+  "url": "https://www.ambito.com/economia/atencion-cuenta-dni-este-fin-semana-regresa-el-descuento-mas-esperado-la-billetera-virtual-n6191020",
+  "published_at": "2025-09-18T16:00:00",
+  "impact_level": "low",
+  "score": 0.0,
+  "priority_score": 0.4,
+  "urgency_level": "normal",
+  "tags": [],
+  "relevance_signals": [],
+  "branch_targets": [],
+  "suggested_actions": [],
+  "raw_keywords": [
+    "Cuenta DNI",
+    "Banco Provincia"
+  ],
+  "summary": "La app del Banco Provincia regresa con una nueva jornada de ahorro y los usuarios podrán obtener hasta 35% de reintegro en carnicerías, pescaderías y granjas.",
+  "snippet": "Los fines de semana de septiembre vuelven a ser la oportunidad ideal para aprovechar descuentos imperdibles a través de las distintas billeteras virtuales, herramientas ágiles, prácticas y seguras para realizar compras cotidianas, pagar servicios y hacer transferencias entre conocidos. Entre ellas, Cuenta DNI, la app d",
+  "source": "https://www.ambito.com/economia",
+  "run": {
+    "generated_at": "2025-09-18T18:34:32.568924",
+    "trigger": "manual",
+    "requested_by": null,
+    "metrics": {
+      "total_articles": 15,
+      "high_impact": 2,
+      "medium_impact": 1,
+      "low_impact": 12,
+      "tags": {
+        "regulation": 6,
+        "liquidity": 4,
+        "risk_alerts": 2,
+        "branch_activity": 1
+      },
+      "signals": {
+        "policy_change": 6,
+        "liquidity_risk": 4,
+        "systemic_risk": 4,
+        "branch_operations": 1
+      },
+      "priority_high": 2,
+      "priority_medium": 3,
+      "priority_low": 10,
+      "average_priority": 3.19,
+      "max_priority": 13.28,
+      "estimated_tokens": 1817,
+      "estimated_cost_usd": 0.002726
+    },
+    "alerts": [
+      {
+        "headline": "Dólar: al límite, Donald Trump hace cambios inéditos en el FMI y genera un \"cisne blanco\" que podría descomprimir el plan de Javier Milei",
+        "url": "https://www.ambito.com/economia/dolar-al-limite-donald-trump-hace-cambios-ineditos-el-fmi-y-genera-un-cisne-blanco-que-podria-descomprimir-el-plan-javier-milei-n6192055",
+        "impact_level": "high",
+        "score": 9.2,
+        "priority_score": 13.28,
+        "tags": [
+          "liquidity",
+          "regulation",
+          "risk_alerts"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "normal",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T13:28:00-03:00"
+      },
+      {
+        "headline": "Crece la tensión financiera: los bonos se hunden hasta 11% y el riesgo país supera los 1.400 puntos básicos",
+        "url": "https://www.ambito.com/finanzas/los-bonos-dolares-caen-3-y-profundizan-las-caidas-el-premarket-n6191886",
+        "impact_level": "high",
+        "score": 6.2,
+        "priority_score": 9.58,
+        "tags": [
+          "liquidity",
+          "regulation",
+          "risk_alerts"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "medium",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T14:49:00-03:00"
+      },
+      {
+        "headline": "Senado debate el rechazo a los vetos de Milei a la distribución de los ATN",
+        "url": "https://www.ambito.com/politica/el-senado-abre-un-nuevo-round-contra-los-vetos-javier-milei-buscan-recuperar-la-distribucion-los-atn-n6191803",
+        "impact_level": "medium",
+        "score": 3.2,
+        "priority_score": 5.34,
+        "tags": [
+          "liquidity",
+          "regulation"
+        ],
+        "relevance_signals": [
+          "liquidity_risk",
+          "policy_change",
+          "systemic_risk"
+        ],
+        "branch_targets": [],
+        "urgency_level": "high",
+        "suggested_actions": [
+          "Revisa proyecciones de liquidez y prepara escenarios de stress.",
+          "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+          "Escala a risk management y prepara comunicacion con clientes clave."
+        ],
+        "published_at": "2025-09-18T11:19:00-03:00"
+      }
+    ],
+    "decision_summary": {
+      "high_priority": 2,
+      "medium_priority": 3,
+      "recommended_actions": [
+        "Escala a risk management y prepara comunicacion con clientes clave.",
+        "Evalua impacto regulatorio con cumplimiento y ajusta comunicados internos.",
+        "Revisa proyecciones de liquidez y prepara escenarios de stress."
+      ],
+      "branches_to_monitor": [],
+      "top_headline": "Crece la tensión financiera: los bonos se hunden hasta 11% y el riesgo país supera los 1.400 puntos básicos",
+      "top_priority_score": 9.58
+    }
+  },
+  "files": {
+    "markdown": "2025\\09\\2025-09.18 - Atencion Cuenta DNI! Este fin de semana regresa el descuento mas esperado a la b.md",
+    "json": "2025\\09\\2025-09.18 - Atencion Cuenta DNI! Este fin de semana regresa el descuento mas esperado a la b.json"
+  },
+  "stored_at": "2025-09-18T18:34:32.593302"
+}

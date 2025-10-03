@@ -1,0 +1,111 @@
+# CapiAgentes - Production Docker Compose
+# SINGLE CLEAR CONFIGURATION - NO CONFUSION
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: capi-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: capi_alerts
+      POSTGRES_USER: capi_user
+      POSTGRES_PASSWORD: capi_secure_2024
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/pgdata
+      - ./Backend/database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./Backend/database/seed_data.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    networks:
+      - capi-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U capi_user -d capi_alerts"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Backend API Server
+  backend:
+    build:
+      context: Backend
+      dockerfile: Dockerfile
+      target: base
+    container_name: capi-backend
+    restart: unless-stopped
+    command: ["python", "src/api/main.py"]
+    ports:
+      - "8000:8000"
+    environment:
+      PYTHONPATH: /app
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      DATABASE_URL: ${DATABASE_URL:-postgresql://capi_user:capi_secure_2024@postgres:5432/capi_alerts}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      SECRET_KEY: ${SECRET_KEY:-change_me_please_32_chars}
+      API_KEY_BACKEND: ${API_KEY_BACKEND:-capi_backend_key_16_chars}
+      CAPI_DATA_DIR: /app/ia_workspace/data
+      LOG_FORMAT: ${LOG_FORMAT:-json}
+      GOOGLE_APPLICATION_CREDENTIALS: ${GOOGLE_APPLICATION_CREDENTIALS:-/run/secrets/voice-streaming-sa.json}
+      VOICE_STREAM_STORAGE_DIR: ${VOICE_STREAM_STORAGE_DIR:-/app/voice_cache}
+    volumes:
+      - ./Backend/logs:/app/logs
+      - ./Backend/ia_workspace:/app/ia_workspace
+      - ./secrets/voice-streaming-sa.json:/run/secrets/voice-streaming-sa.json:ro
+      # Montar el escritorio del usuario para acceso del CAPI Desktop
+      - "${HOST_DESKTOP_PATH:-C:/Users/lucas/OneDrive/Desktop}:/app/user_desktop:rw"
+      - ./voice_cache:/app/voice_cache
+    networks:
+      - capi-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Frontend Next.js Application
+  frontend:
+    build:
+      context: Frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_BASE: ${NEXT_PUBLIC_API_BASE:-http://backend:8000}
+        NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+        NEXT_PUBLIC_GOOGLE_MAP_ID: ${NEXT_PUBLIC_GOOGLE_MAP_ID}
+    container_name: capi-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_BASE: ${NEXT_PUBLIC_API_BASE:-http://localhost:8000}
+      NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+      NEXT_PUBLIC_GOOGLE_MAP_ID: ${NEXT_PUBLIC_GOOGLE_MAP_ID}
+      NEXT_TELEMETRY_DISABLED: 1
+    networks:
+      - capi-network
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+# Network Configuration
+networks:
+  capi-network:
+    driver: bridge
+
+# Volume Configuration
+volumes:
+  postgres_data:
+    driver: local
+

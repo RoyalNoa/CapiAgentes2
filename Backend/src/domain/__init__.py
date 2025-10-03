@@ -1,0 +1,1 @@
+"""Domain layer - Business entities, repositories interfaces and domain services."""

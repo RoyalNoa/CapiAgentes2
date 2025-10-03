@@ -1,0 +1,25 @@
+{
+  "operation": "insert",
+  "table": "public.alertas",
+  "rowcount": 1,
+  "generated_at": "2025-09-26T05:16:30.252376",
+  "session_id": "codex-verif",
+  "sql": "INSERT INTO public.alertas (prioridad, estado, problema, hipotesis, impacto, datos_clave, acciones, sucursal_id, dedupe_clave, creada_en) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id",
+  "parameters": [
+    "critica",
+    "abierta",
+    "Boedo: deficit de 20,000 ARS (-20.0%)",
+    "Desvio detectado en Boedo",
+    "Diferencia de 20,000 ARS (-20.0%)",
+    "[\"Diferencia total: -20,000 ARS\", \"Desvio porcentual: -20.0%\", \"Sucursal: Boedo (SUC-369)\", \"Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]\", \"Medicion: 2025-09-26T05:16:29.950303+00:00\"]",
+    "Saldo Total: deposit 15,000 ARS - Deficit vs caja teorica [proximo turno]; Tesoro: deposit 1,680 ARS - Deficit canal vs distribucion esperada [proximo turno]; Ventanilla: deposit 840 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 255 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 1,580 ARS - Deficit canal vs distribucion esperada [proximo turno]",
+    "SUC-369",
+    "60e8c227904bccc3bf0fb0834b6637c5cf67098f1136124c80fbf98ccbc60cdf",
+    "2025-09-26 05:16:29.950303+00:00"
+  ],
+  "result": [
+    {
+      "id": 14
+    }
+  ]
+}

@@ -1,0 +1,748 @@
+{
+  "session_id": "e2e-belgrano16-case2-new",
+  "sanitized_session_id": "e2e-belgrano16-case2-new",
+  "datab_exports": [
+    {
+      "filename": "DataB_2025_09_25_742231.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_742231.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-belgrano16-case2-new/capi_DataB/DataB_2025_09_25_742231.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T17:11:20.750696"
+    },
+    {
+      "filename": "DataB_2025_09_25_820258.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_820258.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-belgrano16-case2-new/capi_DataB/DataB_2025_09_25_820258.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-25T17:11:20.839212"
+    },
+    {
+      "filename": "DataB_2025_09_25_922759.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_922759.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-belgrano16-case2-new/capi_DataB/DataB_2025_09_25_922759.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T17:11:26.935719"
+    },
+    {
+      "filename": "DataB_2025_09_25_989414.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_989414.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-belgrano16-case2-new/capi_DataB/DataB_2025_09_25_989414.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-25T17:11:27.003554"
+    }
+  ],
+  "updated_at": "2025-09-25T17:11:27.045241",
+  "created_at": "2025-09-25T17:11:27.045241",
+  "status": "completed",
+  "active_agent": "summary",
+  "completed_nodes": [
+    "start",
+    "intent",
+    "react",
+    "reasoning",
+    "supervisor",
+    "router",
+    "capi_datab",
+    "capi_elcajas",
+    "human_gate",
+    "assemble",
+    "finalize"
+  ],
+  "intent": "db_operation",
+  "intent_confidence": 0.9,
+  "last_query": "necesito el saldo total de la sucursal belgrano numero 16",
+  "last_response": {
+    "message": "Resultados: sucursal id=SUC-364, sucursal numero=16, sucursal nombre=Belgrano, saldo total sucursal=$112.000,00, caja teorica sucursal=100000.00, total atm=$57.700,00, total ats=$12.100,00, total tesoro=$13.000,00, total cajas ventanilla=$5.300,00, total buzon depositos=$6.700,00, total recaudacion=$4.400,00, total caja chica=$1.600,00, total otros=$11.200,00, medido en=2025-09-23 01:57:17.707471+00:00. Resultado exportado a DataB_2025_09_25_922759.json.\n\nEl Cajas: Belgrano: exceso de 12,000 ARS (12.0%)",
+    "data": {
+      "react_observations": [
+        {
+          "summary": "Sin historial relevante.",
+          "recent_turns": []
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      ],
+      "reasoning_plan": {
+        "plan_id": "e3462dd5-ed1b-4f84-b979-5cdf9709377c",
+        "version": 1,
+        "intent": "db_operation",
+        "goal": "Clarificar y asistir consulta ambigua: necesito el saldo total de la sucursal belgrano numero 16",
+        "confidence": 0.95,
+        "recommended_agent": "capi_datab",
+        "fallback_agent": "capi_datab",
+        "rationale": "La consulta requiere operaciones sobre bases de datos; se utiliza el agente especialista con controles de validación y exportes auditables.",
+        "steps": [
+          {
+            "id": "D1",
+            "title": "Analizar requerimiento y sanitizar sentencia",
+            "description": "Interpretar la instrucción (JSON, SQL o lenguaje natural), validar tablas y evitar comandos restringidos (DROP/TRUNCATE).",
+            "agent": "capi_datab",
+            "inputs": [
+              "instruccion_usuario"
+            ],
+            "expected_output": "Sentencia SQL validada con parámetros normalizados",
+            "depends_on": []
+          },
+          {
+            "id": "D2",
+            "title": "Ejecutar operación transaccional en PostgreSQL",
+            "description": "Abrir conexión controlada, ejecutar la sentencia y capturar filas afectadas o resultados.",
+            "agent": "capi_datab",
+            "inputs": [],
+            "expected_output": "Resultado de la operación (filas, datos o confirmación)",
+            "depends_on": [
+              "D1"
+            ]
+          },
+          {
+            "id": "D3",
+            "title": "Exportar evidencia al workspace",
+            "description": "Serializar los resultados en el formato solicitado y guardar el archivo en ia_workspace/data/capi_DataB/.",
+            "agent": "capi_datab",
+            "inputs": [],
+            "expected_output": "Archivo DataB_YYYY_MM_DD_*.ext disponible para el usuario",
+            "depends_on": [
+              "D2"
+            ]
+          }
+        ],
+        "cooperative_agents": [],
+        "supporting_evidence": {
+          "progress_percent": 98.0,
+          "remaining_steps": 3,
+          "estimated_effort_seconds": 45,
+          "complexity": "low",
+          "entities": {
+            "sucursal": {
+              "nombre": "belgrano",
+              "numero": "16"
+            }
+          },
+          "context_used": false,
+          "semantic_confidence": 0.9,
+          "available_agents": [
+            "anomaly",
+            "branch",
+            "capi_datab",
+            "capi_desktop",
+            "summary"
+          ],
+          "user_id": "e2e-belgrano16-case2-new",
+          "session_id": "e2e-belgrano16-case2-new"
+        },
+        "generated_at": "2025-09-25T17:11:24.147402",
+        "intent_alignment": true,
+        "requires_replan": false,
+        "history": [],
+        "progress_percent": 98.0,
+        "remaining_steps": 3,
+        "complexity": "low",
+        "estimated_effort_seconds": 45
+      },
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_numero = $1 ORDER BY medido_en DESC LIMIT 1",
+      "parameters": [
+        16
+      ],
+      "output_format": "json",
+      "file_path": "/app/ia_workspace/data/sessions/session_e2e-belgrano16-case2-new/capi_DataB/DataB_2025_09_25_922759.json",
+      "rowcount": 1,
+      "rows": [
+        {
+          "sucursal_id": "SUC-364",
+          "sucursal_numero": 16,
+          "sucursal_nombre": "Belgrano",
+          "saldo_total_sucursal": "112000.00",
+          "caja_teorica_sucursal": "100000.00",
+          "total_atm": "57700.00",
+          "total_ats": "12100.00",
+          "total_tesoro": "13000.00",
+          "total_cajas_ventanilla": "5300.00",
+          "total_buzon_depositos": "6700.00",
+          "total_recaudacion": "4400.00",
+          "total_caja_chica": "1600.00",
+          "total_otros": "11200.00",
+          "medido_en": "2025-09-23 01:57:17.707471+00:00"
+        }
+      ],
+      "requires_approval": false,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "belgrano numero 16",
+          "branch_number": 16,
+          "branch_name": "Belgrano",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_numero",
+            "operator": "=",
+            "value": 16
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identificó la sucursal Belgrano número 16 para consultar su saldo total.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "metadata": {
+        "branch": {
+          "raw_text": "belgrano numero 16",
+          "branch_number": 16,
+          "branch_name": "Belgrano",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_numero",
+            "operator": "=",
+            "value": 16
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identificó la sucursal Belgrano número 16 para consultar su saldo total.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "summary_message": "Resultados: sucursal id=SUC-364, sucursal numero=16, sucursal nombre=Belgrano, saldo total sucursal=$112.000,00, caja teorica sucursal=100000.00, total atm=$57.700,00, total ats=$12.100,00, total tesoro=$13.000,00, total cajas ventanilla=$5.300,00, total buzon depositos=$6.700,00, total recaudacion=$4.400,00, total caja chica=$1.600,00, total otros=$11.200,00, medido en=2025-09-23 01:57:17.707471+00:00. Resultado exportado a DataB_2025_09_25_922759.json.",
+      "el_cajas": {
+        "analysis": [
+          {
+            "branch_id": "SUC-364",
+            "branch_name": "Belgrano",
+            "status": "warning",
+            "headline": "Belgrano: exceso de 12,000 ARS (12.0%)",
+            "measured_total": 112000.0,
+            "theoretical_total": 100000.0,
+            "difference": 12000.0,
+            "deviation_pct": 0.12,
+            "recommendations": [
+              {
+                "channel": "Saldo Total",
+                "action": "withdraw",
+                "amount": 4000.0,
+                "reason": "Exceso vs caja teorica",
+                "urgency": "programar",
+                "estimated_cost": 150015.2,
+                "weight_kg": 0.004
+              },
+              {
+                "channel": "ATM",
+                "action": "withdraw",
+                "amount": 0.0,
+                "reason": "Exceso canal vs distribucion esperada",
+                "urgency": "inmediato",
+                "estimated_cost": 120000.0,
+                "weight_kg": 0.0
+              },
+              {
+                "channel": "ATS",
+                "action": "withdraw",
+                "amount": 216.07,
+                "reason": "Exceso canal vs distribucion esperada",
+                "urgency": "programar",
+                "estimated_cost": 110000.69,
+                "weight_kg": 0.0
+              },
+              {
+                "channel": "Ventanilla",
+                "action": "withdraw",
+                "amount": 189.29,
+                "reason": "Exceso canal vs distribucion esperada",
+                "urgency": "programar",
+                "estimated_cost": 85000.49,
+                "weight_kg": 0.0
+              },
+              {
+                "channel": "Caja Chica",
+                "action": "withdraw",
+                "amount": 114.29,
+                "reason": "Exceso canal vs distribucion esperada",
+                "urgency": "programar",
+                "estimated_cost": 70000.25,
+                "weight_kg": 0.0
+              },
+              {
+                "channel": "Otros",
+                "action": "withdraw",
+                "amount": 500.0,
+                "reason": "Exceso canal vs distribucion esperada",
+                "urgency": "programar",
+                "estimated_cost": 100001.55,
+                "weight_kg": 0.0
+              }
+            ],
+            "channels": [
+              {
+                "channel": "ATM",
+                "amount": 57700.0,
+                "estimated_teorica": 51517.85714285714,
+                "share": 0.5151785714285714,
+                "deviation_pct": 0.1200000000000001
+              },
+              {
+                "channel": "ATS",
+                "amount": 12100.0,
+                "estimated_teorica": 10803.57142857143,
+                "share": 0.10803571428571429,
+                "deviation_pct": 0.11999999999999991
+              },
+              {
+                "channel": "Tesoro",
+                "amount": 13000.0,
+                "estimated_teorica": 11607.142857142857,
+                "share": 0.11607142857142858,
+                "deviation_pct": 0.12000000000000002
+              },
+              {
+                "channel": "Ventanilla",
+                "amount": 5300.0,
+                "estimated_teorica": 4732.142857142857,
+                "share": 0.04732142857142857,
+                "deviation_pct": 0.12000000000000006
+              },
+              {
+                "channel": "Buzon",
+                "amount": 6700.0,
+                "estimated_teorica": 5982.142857142858,
+                "share": 0.059821428571428574
+              },
+              {
+                "channel": "Recaudacion",
+                "amount": 4400.0,
+                "estimated_teorica": 3928.5714285714284,
+                "share": 0.039285714285714285
+              },
+              {
+                "channel": "Caja Chica",
+                "amount": 1600.0,
+                "estimated_teorica": 1428.5714285714284,
+                "share": 0.014285714285714285,
+                "deviation_pct": 0.1200000000000001
+              },
+              {
+                "channel": "Otros",
+                "amount": 11200.0,
+                "estimated_teorica": 10000.0,
+                "share": 0.1,
+                "deviation_pct": 0.12
+              }
+            ],
+            "alerts_created": 0,
+            "alerts_to_persist": [],
+            "alert_priority": "high",
+            "alert_escalated": false
+          }
+        ],
+        "calendar": {
+          "status": "atencion al publico",
+          "business_day": "si",
+          "holiday": "no"
+        },
+        "policies_loaded": 9,
+        "alerts_created": 0
+      }
+    }
+  },
+  "conversation_history": [],
+  "memory_window": [],
+  "reasoning_summary": {
+    "goal": "Clarificar y asistir consulta ambigua: necesito el saldo total de la sucursal belgrano numero 16",
+    "recommended_agent": "capi_datab",
+    "confidence": 0.95,
+    "version": 1,
+    "cooperative_agents": [],
+    "progress_percent": 98.0,
+    "remaining_steps": 3,
+    "complexity": "low",
+    "estimated_effort_seconds": 45,
+    "remaining_percent": 2.0
+  },
+  "processing_metrics": {
+    "react_steps": 5.0,
+    "react_latency_ms": 0.0,
+    "reasoning_time_ms": 1480.0,
+    "reasoning_steps": 3.0,
+    "reasoning_version": 1.0,
+    "reasoning_progress_percent": 98.0,
+    "reasoning_eta_seconds": 45.0,
+    "reasoning_remaining_steps": 3.0,
+    "supervisor_latency_ms": 0.0,
+    "supervisor_queue_length": 5.0,
+    "capi_datab_latency_ms": 1313.0,
+    "planner_confidence": 0.8,
+    "capi_datab_rows": 1.0,
+    "el_cajas_latency_ms": 7.0,
+    "el_cajas_alerts": 0.0
+  },
+  "shared_artifacts": {
+    "capi_datab": {
+      "mode": "db_operation",
+      "operation": {
+        "operation": "select",
+        "table": "public.saldos_sucursal",
+        "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_numero = $1 ORDER BY medido_en DESC LIMIT 1",
+        "parameters": [
+          16
+        ],
+        "output_format": "json",
+        "requires_approval": false,
+        "metadata": {
+          "branch": {
+            "raw_text": "belgrano numero 16",
+            "branch_number": 16,
+            "branch_name": "Belgrano",
+            "branch_id": null
+          },
+          "filters": [
+            {
+              "column": "sucursal_numero",
+              "operator": "=",
+              "value": 16
+            }
+          ],
+          "planner_source": "llm_branch_identifier",
+          "planner_confidence": 0.8,
+          "planner_reason": "Se identificó la sucursal Belgrano número 16 para consultar su saldo total.",
+          "planner_model": "gpt-3.5-turbo",
+          "suggested_table": "public.saldos_sucursal"
+        }
+      },
+      "export_file": "/app/ia_workspace/data/sessions/session_e2e-belgrano16-case2-new/capi_DataB/DataB_2025_09_25_922759.json",
+      "rows": [
+        {
+          "sucursal_id": "SUC-364",
+          "sucursal_numero": 16,
+          "sucursal_nombre": "Belgrano",
+          "saldo_total_sucursal": "112000.00",
+          "caja_teorica_sucursal": "100000.00",
+          "total_atm": "57700.00",
+          "total_ats": "12100.00",
+          "total_tesoro": "13000.00",
+          "total_cajas_ventanilla": "5300.00",
+          "total_buzon_depositos": "6700.00",
+          "total_recaudacion": "4400.00",
+          "total_caja_chica": "1600.00",
+          "total_otros": "11200.00",
+          "medido_en": "2025-09-23 01:57:17.707471+00:00"
+        }
+      ],
+      "rowcount": 1,
+      "success": true,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "belgrano numero 16",
+          "branch_number": 16,
+          "branch_name": "Belgrano",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_numero",
+            "operator": "=",
+            "value": 16
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identificó la sucursal Belgrano número 16 para consultar su saldo total.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "summary_message": "Resultados: sucursal id=SUC-364, sucursal numero=16, sucursal nombre=Belgrano, saldo total sucursal=$112.000,00, caja teorica sucursal=100000.00, total atm=$57.700,00, total ats=$12.100,00, total tesoro=$13.000,00, total cajas ventanilla=$5.300,00, total buzon depositos=$6.700,00, total recaudacion=$4.400,00, total caja chica=$1.600,00, total otros=$11.200,00, medido en=2025-09-23 01:57:17.707471+00:00. Resultado exportado a DataB_2025_09_25_922759.json.\n\nEl Cajas: Belgrano: exceso de 12,000 ARS (12.0%)",
+      "policies": [
+        {
+          "channel": "ATM",
+          "max_surplus_pct": "0.120",
+          "max_deficit_pct": "0.060",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "1500000.00",
+          "daily_deposit_limit": "1200000.00",
+          "reload_lead_hours": 6,
+          "sla_hours": 12,
+          "truck_fixed_cost": "120000.00",
+          "truck_variable_cost_per_kg": "3500.00",
+          "notes": "Prioridad alta: buffer robusto para ATM",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "ATS",
+          "max_surplus_pct": "0.100",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "900000.00",
+          "daily_deposit_limit": "600000.00",
+          "reload_lead_hours": 8,
+          "sla_hours": 16,
+          "truck_fixed_cost": "110000.00",
+          "truck_variable_cost_per_kg": "3200.00",
+          "notes": "ATS balance moderado",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Buzón",
+          "max_surplus_pct": "0.050",
+          "max_deficit_pct": "0.030",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": "250000.00",
+          "reload_lead_hours": 12,
+          "sla_hours": 24,
+          "truck_fixed_cost": "95000.00",
+          "truck_variable_cost_per_kg": "3000.00",
+          "notes": "Depósitos no inmediatos",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Caja Chica",
+          "max_surplus_pct": "0.040",
+          "max_deficit_pct": "0.030",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "100000.00",
+          "daily_deposit_limit": "80000.00",
+          "reload_lead_hours": 24,
+          "sla_hours": 48,
+          "truck_fixed_cost": "70000.00",
+          "truck_variable_cost_per_kg": "2200.00",
+          "notes": "Gastos operativos menores",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Otros",
+          "max_surplus_pct": "0.070",
+          "max_deficit_pct": "0.040",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "200000.00",
+          "daily_deposit_limit": "180000.00",
+          "reload_lead_hours": 12,
+          "sla_hours": 36,
+          "truck_fixed_cost": "100000.00",
+          "truck_variable_cost_per_kg": "3100.00",
+          "notes": "Reservas varias",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Recaudación",
+          "max_surplus_pct": "0.090",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "600000.00",
+          "daily_deposit_limit": "650000.00",
+          "reload_lead_hours": 10,
+          "sla_hours": 20,
+          "truck_fixed_cost": "130000.00",
+          "truck_variable_cost_per_kg": "3600.00",
+          "notes": "Grandes volúmenes corporativos",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Saldo Total",
+          "max_surplus_pct": "0.080",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "2500000.00",
+          "daily_deposit_limit": "2500000.00",
+          "reload_lead_hours": 6,
+          "sla_hours": 12,
+          "truck_fixed_cost": "150000.00",
+          "truck_variable_cost_per_kg": "3800.00",
+          "notes": "Tolerancia global de sucursal",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Tesoro",
+          "max_surplus_pct": "0.150",
+          "max_deficit_pct": "0.080",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 12,
+          "sla_hours": 24,
+          "truck_fixed_cost": "90000.00",
+          "truck_variable_cost_per_kg": "2800.00",
+          "notes": "Tesoro actúa como pulmón de la sucursal",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Ventanilla",
+          "max_surplus_pct": "0.080",
+          "max_deficit_pct": "0.040",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "400000.00",
+          "daily_deposit_limit": "350000.00",
+          "reload_lead_hours": 4,
+          "sla_hours": 8,
+          "truck_fixed_cost": "85000.00",
+          "truck_variable_cost_per_kg": "2600.00",
+          "notes": "Caja operativa al cliente",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        }
+      ]
+    },
+    "capi_elcajas": {
+      "analysis": [
+        {
+          "branch_id": "SUC-364",
+          "branch_name": "Belgrano",
+          "status": "warning",
+          "headline": "Belgrano: exceso de 12,000 ARS (12.0%)",
+          "measured_total": 112000.0,
+          "theoretical_total": 100000.0,
+          "difference": 12000.0,
+          "deviation_pct": 0.12,
+          "recommendations": [
+            {
+              "channel": "Saldo Total",
+              "action": "withdraw",
+              "amount": 4000.0,
+              "reason": "Exceso vs caja teorica",
+              "urgency": "programar",
+              "estimated_cost": 150015.2,
+              "weight_kg": 0.004
+            },
+            {
+              "channel": "ATM",
+              "action": "withdraw",
+              "amount": 0.0,
+              "reason": "Exceso canal vs distribucion esperada",
+              "urgency": "inmediato",
+              "estimated_cost": 120000.0,
+              "weight_kg": 0.0
+            },
+            {
+              "channel": "ATS",
+              "action": "withdraw",
+              "amount": 216.07,
+              "reason": "Exceso canal vs distribucion esperada",
+              "urgency": "programar",
+              "estimated_cost": 110000.69,
+              "weight_kg": 0.0
+            },
+            {
+              "channel": "Ventanilla",
+              "action": "withdraw",
+              "amount": 189.29,
+              "reason": "Exceso canal vs distribucion esperada",
+              "urgency": "programar",
+              "estimated_cost": 85000.49,
+              "weight_kg": 0.0
+            },
+            {
+              "channel": "Caja Chica",
+              "action": "withdraw",
+              "amount": 114.29,
+              "reason": "Exceso canal vs distribucion esperada",
+              "urgency": "programar",
+              "estimated_cost": 70000.25,
+              "weight_kg": 0.0
+            },
+            {
+              "channel": "Otros",
+              "action": "withdraw",
+              "amount": 500.0,
+              "reason": "Exceso canal vs distribucion esperada",
+              "urgency": "programar",
+              "estimated_cost": 100001.55,
+              "weight_kg": 0.0
+            }
+          ],
+          "channels": [
+            {
+              "channel": "ATM",
+              "amount": 57700.0,
+              "estimated_teorica": 51517.85714285714,
+              "share": 0.5151785714285714,
+              "deviation_pct": 0.1200000000000001
+            },
+            {
+              "channel": "ATS",
+              "amount": 12100.0,
+              "estimated_teorica": 10803.57142857143,
+              "share": 0.10803571428571429,
+              "deviation_pct": 0.11999999999999991
+            },
+            {
+              "channel": "Tesoro",
+              "amount": 13000.0,
+              "estimated_teorica": 11607.142857142857,
+              "share": 0.11607142857142858,
+              "deviation_pct": 0.12000000000000002
+            },
+            {
+              "channel": "Ventanilla",
+              "amount": 5300.0,
+              "estimated_teorica": 4732.142857142857,
+              "share": 0.04732142857142857,
+              "deviation_pct": 0.12000000000000006
+            },
+            {
+              "channel": "Buzon",
+              "amount": 6700.0,
+              "estimated_teorica": 5982.142857142858,
+              "share": 0.059821428571428574
+            },
+            {
+              "channel": "Recaudacion",
+              "amount": 4400.0,
+              "estimated_teorica": 3928.5714285714284,
+              "share": 0.039285714285714285
+            },
+            {
+              "channel": "Caja Chica",
+              "amount": 1600.0,
+              "estimated_teorica": 1428.5714285714284,
+              "share": 0.014285714285714285,
+              "deviation_pct": 0.1200000000000001
+            },
+            {
+              "channel": "Otros",
+              "amount": 11200.0,
+              "estimated_teorica": 10000.0,
+              "share": 0.1,
+              "deviation_pct": 0.12
+            }
+          ],
+          "alerts_created": 0,
+          "alerts_to_persist": [],
+          "alert_priority": "high",
+          "alert_escalated": false
+        }
+      ],
+      "calendar": {
+        "status": "atencion al publico",
+        "business_day": "si",
+        "holiday": "no"
+      },
+      "policies_loaded": 9,
+      "alerts_created": 0
+    }
+  },
+  "errors": []
+}

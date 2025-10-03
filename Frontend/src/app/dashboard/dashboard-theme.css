@@ -1,0 +1,90 @@
+/* Dashboard Binance-like theme: dark glass panels, subtle borders, clean spacing */
+
+:root {
+  --dash-bg: rgba(10,14,28,0.75);
+  --dash-panel: rgba(22,28,45,0.72);
+  --dash-panel-hover: rgba(30,38,60,0.85);
+  --dash-border: rgba(255,255,255,0.08);
+  --dash-accent: #00b8ff; /* color de inicio */
+  --dash-accent-soft: rgba(0,184,255,0.2);
+  --dash-green: #16c784;
+  --dash-red: #ff4d4f;
+  --dash-yellow: #f5c451;
+  --dash-text-primary: #f1f5f9;
+  --dash-text-secondary: #94a3b8;
+  --dash-radius: 14px;
+  --glass-blur: 18px;
+}
+
+body.dashboard-body {
+  backdrop-filter: blur(40px);
+}
+
+.dash-container{max-width:1500px;margin:0 auto;padding-left:1rem;padding-right:1rem;width:100%;}
+@media (min-width:1024px){.dash-container{padding-left:1.5rem;padding-right:1.5rem;}}
+
+.dash-grid-main{
+  display:grid;
+  grid-template-columns: repeat(12,1fr);
+  gap:20px;
+}
+
+.panel{
+  position:relative;
+  background:var(--dash-panel);
+  border:1px solid var(--dash-border);
+  border-radius:var(--dash-radius);
+  padding:18px 20px 20px;
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition:.25s ease;
+  overflow:hidden;
+}
+.panel:hover{background:var(--dash-panel-hover);border-color:rgba(255,255,255,0.15);} 
+.panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.panel-title{font-size:14px;font-weight:600;letter-spacing:.5px;color:var(--dash-text-primary);text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+.panel-sub{font-size:12px;color:var(--dash-text-secondary);}
+
+/* metric cards */
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin-bottom:26px;}
+.metric-card{background:linear-gradient(145deg,rgba(46,56,80,.65),rgba(32,40,60,.55));border:1px solid var(--dash-border);border-radius:var(--dash-radius);padding:14px 16px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;}
+.metric-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(255,255,255,0.12),transparent 60%);opacity:.55;pointer-events:none;}
+.metric-label{font-size:12px;font-weight:500;color:var(--dash-text-secondary);letter-spacing:.5px;text-transform:uppercase;}
+.metric-value{font-size:22px;font-weight:600;color:var(--dash-text-primary);line-height:1.2;}
+.metric-delta{font-size:12px;font-weight:500;display:inline-flex;align-items:center;gap:4px;margin-top:2px;}
+.delta-up{color:var(--dash-green);} .delta-down{color:var(--dash-red);} 
+
+/* charts layout */
+.charts-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;margin-bottom:26px;}
+.chart-span-7{grid-column:span 7;} .chart-span-5{grid-column:span 5;} 
+@media (max-width:1200px){.chart-span-7{grid-column:span 12}.chart-span-5{grid-column:span 12}}
+
+/* tables / lists */
+.table-panel{padding:0;display:flex;flex-direction:column;}
+.table-body{padding:4px 12px 14px;overflow:auto;max-height:420px;}
+
+/* anomaly / alerts zone */
+.alerts-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;margin-bottom:26px;}
+.alerts-span-8{grid-column:span 8;} .alerts-span-4{grid-column:span 4;} 
+@media (max-width:1200px){.alerts-span-8{grid-column:span 12}.alerts-span-4{grid-column:span 12}}
+
+/* footer strip */
+.dash-footer{margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;}
+.footer-box{background:linear-gradient(135deg,rgba(40,48,70,.7),rgba(32,40,60,.6));border:1px solid var(--dash-border);border-radius:var(--dash-radius);padding:14px 16px;display:flex;flex-direction:column;gap:4px;}
+.footer-label{font-size:11px;font-weight:600;color:var(--dash-text-secondary);letter-spacing:.6px;text-transform:uppercase;}
+.footer-value{font-size:13px;font-weight:500;color:var(--dash-text-primary);} 
+
+/* buttons */
+.dash-btn{background:var(--dash-accent-soft);color:var(--dash-accent);border:1px solid rgba(0,184,255,0.4);font-size:12px;font-weight:600;padding:8px 14px;border-radius:10px;display:inline-flex;align-items:center;gap:6px;transition:.25s;}
+.dash-btn:hover{background:rgba(0,184,255,0.32);box-shadow:0 0 0 1px rgba(0,184,255,0.4);} 
+.dash-toggle{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--dash-text-secondary);} 
+
+/* utility */
+.blur-separator{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:10px 0 18px;}
+.shadow-glow{box-shadow:0 8px 26px -4px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.04);} 
+
+/* scrollbars */
+.table-body::-webkit-scrollbar{width:8px;} .table-body::-webkit-scrollbar-track{background:rgba(255,255,255,0.04);} .table-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.18);border-radius:20px;} .table-body::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.28);} 
+
+/* responsive altitude for cashflow panel smaller heights */
+.panel-chart{min-height:420px;}

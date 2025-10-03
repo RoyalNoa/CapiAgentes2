@@ -1,0 +1,29 @@
+{
+  "operation": "select",
+  "table": "public.saldos_sucursal",
+  "rowcount": 1,
+  "generated_at": "2025-09-26T05:58:23.461628",
+  "session_id": "codex-e2e2",
+  "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+  "parameters": [
+    "%Belgrano%"
+  ],
+  "result": [
+    {
+      "sucursal_id": "SUC-365",
+      "sucursal_numero": 101,
+      "sucursal_nombre": "Belgrano",
+      "saldo_total_sucursal": "168000.00",
+      "caja_teorica_sucursal": "100000.00",
+      "total_atm": "83800.00",
+      "total_ats": "25600.00",
+      "total_tesoro": "20800.00",
+      "total_cajas_ventanilla": "10200.00",
+      "total_buzon_depositos": "3000.00",
+      "total_recaudacion": "4800.00",
+      "total_caja_chica": "3000.00",
+      "total_otros": "16800.00",
+      "medido_en": "2025-09-23 01:57:17.707471+00:00"
+    }
+  ]
+}

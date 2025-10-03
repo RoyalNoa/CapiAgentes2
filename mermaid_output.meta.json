@@ -1,0 +1,90 @@
+{
+  "basename": "mermaid_output",
+  "dynamic_enabled": true,
+  "exported_at": "2025-09-21T13:47:45.532514Z",
+  "graph_info": {
+    "built_at": "2025-09-21T13:47:45.514722",
+    "custom_agents": [],
+    "edge_count": 11,
+    "edges": [
+      [
+        "start",
+        "intent"
+      ],
+      [
+        "intent",
+        "react"
+      ],
+      [
+        "react",
+        "reasoning"
+      ],
+      [
+        "reasoning",
+        "supervisor"
+      ],
+      [
+        "supervisor",
+        "router"
+      ],
+      [
+        "summary",
+        "human_gate"
+      ],
+      [
+        "branch",
+        "human_gate"
+      ],
+      [
+        "anomaly",
+        "human_gate"
+      ],
+      [
+        "capi_desktop",
+        "human_gate"
+      ],
+      [
+        "human_gate",
+        "assemble"
+      ],
+      [
+        "assemble",
+        "finalize"
+      ]
+    ],
+    "enabled_agents": [
+      "anomaly",
+      "branch",
+      "capi_desktop",
+      "summary"
+    ],
+    "entrypoint": "start",
+    "has_current_graph": true,
+    "node_count": 15,
+    "nodes": [
+      "anomaly",
+      "assemble",
+      "branch",
+      "capi_desktop",
+      "capi_noticias",
+      "finalize",
+      "human_gate",
+      "intent",
+      "react",
+      "reasoning",
+      "router",
+      "smalltalk",
+      "start",
+      "summary",
+      "supervisor"
+    ],
+    "rebuild_reason": "initialize",
+    "registered_agents": [
+      "capi_desktop",
+      "capi_noticias"
+    ],
+    "trigger_agent": null,
+    "version": 1
+  },
+  "output_dir": "C:\\Users\\lucas\\OneDrive\\Desktop\\CAPI"
+}

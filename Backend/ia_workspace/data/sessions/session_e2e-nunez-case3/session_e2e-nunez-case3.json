@@ -1,0 +1,471 @@
+{
+  "session_id": "e2e-nunez-case3",
+  "sanitized_session_id": "e2e-nunez-case3",
+  "datab_exports": [
+    {
+      "filename": "DataB_2025_09_25_515675.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_515675.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-nunez-case3/capi_DataB/DataB_2025_09_25_515675.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 0,
+      "generated_at": "2025-09-25T16:57:43.526920"
+    },
+    {
+      "filename": "DataB_2025_09_25_586036.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_586036.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-nunez-case3/capi_DataB/DataB_2025_09_25_586036.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-25T16:57:43.600819"
+    },
+    {
+      "filename": "DataB_2025_09_25_916445.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_916445.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-nunez-case3/capi_DataB/DataB_2025_09_25_916445.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 0,
+      "generated_at": "2025-09-25T16:57:47.929169"
+    },
+    {
+      "filename": "DataB_2025_09_25_987657.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_987657.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-nunez-case3/capi_DataB/DataB_2025_09_25_987657.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-25T16:57:48.002437"
+    },
+    {
+      "filename": "DataB_2025_09_25_934073.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_934073.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-nunez-case3/capi_DataB/DataB_2025_09_25_934073.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 0,
+      "generated_at": "2025-09-25T16:58:19.945194"
+    },
+    {
+      "filename": "DataB_2025_09_25_991796.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_991796.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-nunez-case3/capi_DataB/DataB_2025_09_25_991796.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-25T16:58:20.003807"
+    },
+    {
+      "filename": "DataB_2025_09_25_396649.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_396649.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-nunez-case3/capi_DataB/DataB_2025_09_25_396649.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 0,
+      "generated_at": "2025-09-25T16:58:54.411114"
+    },
+    {
+      "filename": "DataB_2025_09_25_465504.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_465504.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-nunez-case3/capi_DataB/DataB_2025_09_25_465504.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-09-25T16:58:54.481779"
+    }
+  ],
+  "updated_at": "2025-09-25T16:58:54.514465",
+  "created_at": "2025-09-25T16:57:48.029591",
+  "status": "completed",
+  "active_agent": "summary",
+  "completed_nodes": [
+    "start",
+    "intent",
+    "react",
+    "reasoning",
+    "supervisor",
+    "router",
+    "capi_datab",
+    "human_gate",
+    "assemble",
+    "finalize"
+  ],
+  "intent": "db_operation",
+  "intent_confidence": 0.5,
+  "last_query": "cual es el saldo total de la sucursal de nunez",
+  "last_response": {
+    "message": "No se encontraron resultados para la sucursal 'Núñez'. Resultado exportado a DataB_2025_09_25_396649.json.",
+    "data": {
+      "react_observations": [
+        {
+          "summary": "Sin historial relevante.",
+          "recent_turns": []
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        },
+        {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      ],
+      "reasoning_plan": {
+        "plan_id": "68ee03f8-4c31-4f2d-9cf6-771bb7d5715b",
+        "version": 1,
+        "intent": "db_operation",
+        "goal": "Clarificar y asistir consulta ambigua: cual es el saldo total de la sucursal de nunez",
+        "confidence": 0.95,
+        "recommended_agent": "capi_datab",
+        "fallback_agent": "capi_datab",
+        "rationale": "La consulta requiere operaciones sobre bases de datos; se utiliza el agente especialista con controles de validación y exportes auditables.",
+        "steps": [
+          {
+            "id": "D1",
+            "title": "Analizar requerimiento y sanitizar sentencia",
+            "description": "Interpretar la instrucción (JSON, SQL o lenguaje natural), validar tablas y evitar comandos restringidos (DROP/TRUNCATE).",
+            "agent": "capi_datab",
+            "inputs": [
+              "instruccion_usuario"
+            ],
+            "expected_output": "Sentencia SQL validada con parámetros normalizados",
+            "depends_on": []
+          },
+          {
+            "id": "D2",
+            "title": "Ejecutar operación transaccional en PostgreSQL",
+            "description": "Abrir conexión controlada, ejecutar la sentencia y capturar filas afectadas o resultados.",
+            "agent": "capi_datab",
+            "inputs": [],
+            "expected_output": "Resultado de la operación (filas, datos o confirmación)",
+            "depends_on": [
+              "D1"
+            ]
+          },
+          {
+            "id": "D3",
+            "title": "Exportar evidencia al workspace",
+            "description": "Serializar los resultados en el formato solicitado y guardar el archivo en ia_workspace/data/capi_DataB/.",
+            "agent": "capi_datab",
+            "inputs": [],
+            "expected_output": "Archivo DataB_YYYY_MM_DD_*.ext disponible para el usuario",
+            "depends_on": [
+              "D2"
+            ]
+          }
+        ],
+        "cooperative_agents": [],
+        "supporting_evidence": {
+          "progress_percent": 98.0,
+          "remaining_steps": 3,
+          "estimated_effort_seconds": 45,
+          "complexity": "low",
+          "entities": {
+            "sucursal": "nunez"
+          },
+          "context_used": true,
+          "semantic_confidence": 1.0,
+          "available_agents": [
+            "anomaly",
+            "branch",
+            "capi_datab",
+            "capi_desktop",
+            "summary"
+          ],
+          "user_id": "e2e-nunez-case3",
+          "session_id": "e2e-nunez-case3"
+        },
+        "generated_at": "2025-09-25T16:58:53.322143",
+        "intent_alignment": true,
+        "requires_replan": false,
+        "history": [],
+        "progress_percent": 98.0,
+        "remaining_steps": 3,
+        "complexity": "low",
+        "estimated_effort_seconds": 45
+      },
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+      "parameters": [
+        "%Núñez%"
+      ],
+      "output_format": "json",
+      "file_path": "/app/ia_workspace/data/sessions/session_e2e-nunez-case3/capi_DataB/DataB_2025_09_25_396649.json",
+      "rowcount": 0,
+      "rows": [],
+      "requires_approval": false,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "nunez",
+          "branch_number": null,
+          "branch_name": "Núñez",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Núñez%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identifica la sucursal Núñez en la instrucción del usuario",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "metadata": {
+        "branch": {
+          "raw_text": "nunez",
+          "branch_number": null,
+          "branch_name": "Núñez",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Núñez%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identifica la sucursal Núñez en la instrucción del usuario",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal",
+        "branch_descriptor": "Núñez"
+      },
+      "summary_message": "No se encontraron resultados para la sucursal 'Núñez'. Resultado exportado a DataB_2025_09_25_396649.json."
+    }
+  },
+  "conversation_history": [],
+  "memory_window": [],
+  "reasoning_summary": {
+    "goal": "Clarificar y asistir consulta ambigua: cual es el saldo total de la sucursal de nunez",
+    "recommended_agent": "capi_datab",
+    "confidence": 0.95,
+    "version": 1,
+    "cooperative_agents": [],
+    "progress_percent": 98.0,
+    "remaining_steps": 3,
+    "complexity": "low",
+    "estimated_effort_seconds": 45,
+    "remaining_percent": 2.0
+  },
+  "processing_metrics": {
+    "react_steps": 5.0,
+    "react_latency_ms": 0.0,
+    "reasoning_time_ms": 1302.0,
+    "reasoning_steps": 3.0,
+    "reasoning_version": 1.0,
+    "reasoning_progress_percent": 98.0,
+    "reasoning_eta_seconds": 45.0,
+    "reasoning_remaining_steps": 3.0,
+    "supervisor_latency_ms": 0.0,
+    "supervisor_queue_length": 5.0,
+    "capi_datab_latency_ms": 1060.0,
+    "planner_confidence": 0.8,
+    "capi_datab_rows": 0.0
+  },
+  "shared_artifacts": {
+    "capi_datab": {
+      "mode": "db_operation",
+      "operation": {
+        "operation": "select",
+        "table": "public.saldos_sucursal",
+        "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+        "parameters": [
+          "%Núñez%"
+        ],
+        "output_format": "json",
+        "requires_approval": false,
+        "metadata": {
+          "branch": {
+            "raw_text": "nunez",
+            "branch_number": null,
+            "branch_name": "Núñez",
+            "branch_id": null
+          },
+          "filters": [
+            {
+              "column": "sucursal_nombre",
+              "operator": "ILIKE",
+              "value": "%Núñez%"
+            }
+          ],
+          "planner_source": "llm_branch_identifier",
+          "planner_confidence": 0.8,
+          "planner_reason": "Se identifica la sucursal Núñez en la instrucción del usuario",
+          "planner_model": "gpt-3.5-turbo",
+          "suggested_table": "public.saldos_sucursal"
+        }
+      },
+      "export_file": "/app/ia_workspace/data/sessions/session_e2e-nunez-case3/capi_DataB/DataB_2025_09_25_396649.json",
+      "rows": [],
+      "rowcount": 0,
+      "success": true,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "nunez",
+          "branch_number": null,
+          "branch_name": "Núñez",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Núñez%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identifica la sucursal Núñez en la instrucción del usuario",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "summary_message": "No se encontraron resultados para la sucursal 'Núñez'. Resultado exportado a DataB_2025_09_25_396649.json.",
+      "policies": [
+        {
+          "channel": "ATM",
+          "max_surplus_pct": "0.120",
+          "max_deficit_pct": "0.060",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "1500000.00",
+          "daily_deposit_limit": "1200000.00",
+          "reload_lead_hours": 6,
+          "sla_hours": 12,
+          "truck_fixed_cost": "120000.00",
+          "truck_variable_cost_per_kg": "3500.00",
+          "notes": "Prioridad alta: buffer robusto para ATM",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "ATS",
+          "max_surplus_pct": "0.100",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "900000.00",
+          "daily_deposit_limit": "600000.00",
+          "reload_lead_hours": 8,
+          "sla_hours": 16,
+          "truck_fixed_cost": "110000.00",
+          "truck_variable_cost_per_kg": "3200.00",
+          "notes": "ATS balance moderado",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Buzón",
+          "max_surplus_pct": "0.050",
+          "max_deficit_pct": "0.030",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": "250000.00",
+          "reload_lead_hours": 12,
+          "sla_hours": 24,
+          "truck_fixed_cost": "95000.00",
+          "truck_variable_cost_per_kg": "3000.00",
+          "notes": "Depósitos no inmediatos",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Caja Chica",
+          "max_surplus_pct": "0.040",
+          "max_deficit_pct": "0.030",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "100000.00",
+          "daily_deposit_limit": "80000.00",
+          "reload_lead_hours": 24,
+          "sla_hours": 48,
+          "truck_fixed_cost": "70000.00",
+          "truck_variable_cost_per_kg": "2200.00",
+          "notes": "Gastos operativos menores",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Otros",
+          "max_surplus_pct": "0.070",
+          "max_deficit_pct": "0.040",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "200000.00",
+          "daily_deposit_limit": "180000.00",
+          "reload_lead_hours": 12,
+          "sla_hours": 36,
+          "truck_fixed_cost": "100000.00",
+          "truck_variable_cost_per_kg": "3100.00",
+          "notes": "Reservas varias",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Recaudación",
+          "max_surplus_pct": "0.090",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "600000.00",
+          "daily_deposit_limit": "650000.00",
+          "reload_lead_hours": 10,
+          "sla_hours": 20,
+          "truck_fixed_cost": "130000.00",
+          "truck_variable_cost_per_kg": "3600.00",
+          "notes": "Grandes volúmenes corporativos",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Saldo Total",
+          "max_surplus_pct": "0.080",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "2500000.00",
+          "daily_deposit_limit": "2500000.00",
+          "reload_lead_hours": 6,
+          "sla_hours": 12,
+          "truck_fixed_cost": "150000.00",
+          "truck_variable_cost_per_kg": "3800.00",
+          "notes": "Tolerancia global de sucursal",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Tesoro",
+          "max_surplus_pct": "0.150",
+          "max_deficit_pct": "0.080",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 12,
+          "sla_hours": 24,
+          "truck_fixed_cost": "90000.00",
+          "truck_variable_cost_per_kg": "2800.00",
+          "notes": "Tesoro actúa como pulmón de la sucursal",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        },
+        {
+          "channel": "Ventanilla",
+          "max_surplus_pct": "0.080",
+          "max_deficit_pct": "0.040",
+          "min_buffer_amount": "1000.00",
+          "daily_withdrawal_limit": "400000.00",
+          "daily_deposit_limit": "350000.00",
+          "reload_lead_hours": 4,
+          "sla_hours": 8,
+          "truck_fixed_cost": "85000.00",
+          "truck_variable_cost_per_kg": "2600.00",
+          "notes": "Caja operativa al cliente",
+          "updated_at": "2025-09-25 14:51:43.458572+00:00"
+        }
+      ]
+    }
+  },
+  "errors": []
+}

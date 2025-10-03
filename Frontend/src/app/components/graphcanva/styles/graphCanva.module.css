@@ -1,0 +1,400 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top, rgba(14, 116, 144, 0.12), transparent 60%);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 23, 42, 0.75);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+.toolbarLeftGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.toolbarButton {
+  padding: 0.35rem 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(59, 130, 246, 0.15);
+  color: #e2e8f0;
+  font-size: 0.85rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.toolbarButton:hover:not(:disabled) {
+  background: rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+.toolbarButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.canvasWrapper {
+  flex: 1;
+  position: relative;
+}
+
+.flowControls {
+  bottom: 1.4rem !important;
+  left: 1.4rem !important;
+  padding: 0.55rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  background: rgba(1, 20, 40, 0.88);
+  box-shadow:
+    0 16px 35px rgba(0, 0, 0, 0.45),
+    inset 0 0 12px rgba(0, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  pointer-events: auto;
+  font-family: "Orbitron", "Inter", system-ui;
+}
+
+.flowControls :global(.react-flow__controls-button) {
+  width: auto;
+  height: auto;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(226, 232, 240, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.flowControls :global(.react-flow__controls-button:hover),
+.flowControls :global(.react-flow__controls-button:focus-visible) {
+  border-color: rgba(96, 202, 255, 0.6);
+  color: #e6f1ff;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(30, 64, 175, 0.18));
+  transform: translateY(-1px);
+}
+
+.flowControls :global(.react-flow__controls-button:focus-visible) {
+  outline: 2px solid rgba(59, 130, 246, 0.55);
+  outline-offset: 3px;
+}
+
+.flowControls :global(.react-flow__controls-button svg) {
+  width: 1rem;
+  height: 1rem;
+  stroke: currentColor;
+}
+
+.flowControls :global(.react-flow__controls-separator) {
+  background: rgba(56, 189, 248, 0.35);
+  height: 1px;
+}
+.loadingState {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(15, 23, 42, 0.6);
+  z-index: 10;
+  color: #e2e8f0;
+}
+
+.node {
+  position: relative;
+  min-width: 240px;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  border-radius: 1rem;
+  padding: 0.75rem 0.95rem;
+  box-shadow: 0 10px 30px rgba(15, 118, 110, 0.25);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  color: #e2e8f0;
+}
+
+.node:hover {
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+.selected {
+  border-color: rgba(59, 130, 246, 0.9) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.disabled {
+  opacity: 0.6;
+}
+
+.status-idle {
+  border-left: 4px solid rgba(148, 163, 184, 0.5);
+}
+
+.status-running {
+  border-left: 4px solid #38bdf8;
+  box-shadow: 0 6px 25px rgba(14, 165, 233, 0.35);
+}
+
+.status-success {
+  border-left: 4px solid #22c55e;
+}
+
+.status-error {
+  border-left: 4px solid #f87171;
+  box-shadow: 0 6px 25px rgba(248, 113, 113, 0.35);
+}
+
+.status-waiting {
+  border-left: 4px solid #facc15;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.8rem;
+}
+
+.statusIcon {
+  font-size: 1.15rem;
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.title {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.subtitle {
+  color: rgba(148, 163, 184, 0.85);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.metricsList {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+}
+
+.metricsList dt {
+  color: rgba(148, 163, 184, 0.8);
+}
+
+.metricsList dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+.handleLeft,
+.handleRight {
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(59, 130, 246, 0.8);
+  border: none;
+}
+
+.executionBadge {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  background: rgba(15, 118, 110, 0.9);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.catalogPanel {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  min-width: 220px;
+  background: rgba(15, 23, 42, 0.82);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 1rem;
+  padding: 0.75rem;
+  color: #e2e8f0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.catalogPanel h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  color: rgba(148, 163, 184, 0.75);
+}
+
+.catalogItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.4rem 0.2rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.catalogItem:last-of-type {
+  border-bottom: none;
+}
+
+.catalogItemName {
+  font-weight: 500;
+}
+
+.catalogItemGroup {
+  font-size: 0.7rem;
+  color: rgba(148, 163, 184, 0.7);
+}
+
+.executionSummary {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  min-width: 260px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 1rem;
+  padding: 0.85rem;
+  color: #e2e8f0;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+}
+
+.executionSummary strong {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.8);
+}
+
+.executionSummary p {
+  margin: 0.15rem 0;
+  font-size: 0.78rem;
+}
+
+
+.toolbarStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(15, 23, 42, 0.6);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.toolbarStatusDot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: rgba(148, 163, 184, 0.6);
+}
+
+.toolbarStatus[data-status="connected"] {
+  border-color: rgba(34, 197, 94, 0.6);
+  color: #bbf7d0;
+}
+
+.toolbarStatus[data-status="connected"] .toolbarStatusDot {
+  background: #22c55e;
+}
+
+.toolbarStatus[data-status="disconnected"] {
+  border-color: rgba(248, 113, 113, 0.6);
+  color: #fecaca;
+}
+
+.toolbarStatus[data-status="disconnected"] .toolbarStatusDot {
+  background: #f87171;
+}
+
+
+.ndvPanel {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  min-width: 280px;
+  max-width: 360px;
+  max-height: 320px;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 1rem;
+  padding: 0.75rem;
+  color: #e2e8f0;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.45);
+  display: flex;
+  flex-direction: column;
+}
+
+.ndvHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.ndvTitle {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ndvClose {
+  border: none;
+  background: transparent;
+  color: rgba(148, 163, 184, 0.8);
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.ndvBody {
+  flex: 1;
+  overflow: auto;
+  border-radius: 0.75rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  padding: 0.5rem;
+}
+
+.ndvPre {
+  margin: 0;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  color: #cbd5f5;
+  white-space: pre-wrap;
+}

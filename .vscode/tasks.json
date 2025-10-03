@@ -1,0 +1,10 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Rebuild backend container",
+			"type": "shell",
+			"command": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"c:\\Users\\lucas\\OneDrive\\Desktop\\CAPI\\docker.ps1\" -Action rebuild -BackendOnly"
+		}
+	]
+}

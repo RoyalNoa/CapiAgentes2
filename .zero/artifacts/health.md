@@ -1,0 +1,1661 @@
+# Salud .zero
+> Nota: Consolida los reportes automáticos para obtener un estado general de CapiAgentes sin revisar cada archivo individual.
+Generado: 2025-09-20 17:22:30
+
+## Conflictos
+
+# Conflictos (rápido)
+> Nota: Este reporte enumera duplicados detectados automáticamente; úsalo como punto de partida antes de depurar manualmente.
+Generado: 2025-09-20 17:22:19
+
+## Duplicados por nombre de archivo
+Total: 19
+### __init__.py
+- Backend/__init__.py
+- Backend/ia_workspace/agentes/__init__.py
+- Backend/ia_workspace/agentes/anomaly/__init__.py
+- Backend/ia_workspace/agentes/branch/__init__.py
+- Backend/ia_workspace/agentes/capi_desktop/__init__.py
+- Backend/ia_workspace/agentes/capi_noticias/__init__.py
+- Backend/ia_workspace/agentes/smalltalk_fallback/__init__.py
+- Backend/ia_workspace/agentes/summary/__init__.py
+- Backend/src/__init__.py
+- Backend/src/api/agents/__init__.py
+- Backend/src/application/__init__.py
+- Backend/src/application/conversation/__init__.py
+- Backend/src/application/nlp/__init__.py
+- Backend/src/application/reasoning/__init__.py
+- Backend/src/application/services/__init__.py
+- Backend/src/application/use_cases/__init__.py
+- Backend/src/core/__init__.py
+- Backend/src/core/monitoring/__init__.py
+- Backend/src/core/semantics/__init__.py
+- Backend/src/domain/__init__.py
+- Backend/src/domain/agents/__init__.py
+- Backend/src/domain/contracts/__init__.py
+- Backend/src/domain/entities/__init__.py
+- Backend/src/domain/repositories/__init__.py
+- Backend/src/domain/services/__init__.py
+- Backend/src/infrastructure/__init__.py
+- Backend/src/infrastructure/adapters/__init__.py
+- Backend/src/infrastructure/external/__init__.py
+- Backend/src/infrastructure/langgraph/__init__.py
+- Backend/src/infrastructure/langgraph/nodes/__init__.py
+- Backend/src/infrastructure/langgraph/persistence/__init__.py
+- Backend/src/infrastructure/repositories/__init__.py
+- Backend/src/infrastructure/websocket/__init__.py
+- Backend/src/observability/__init__.py
+- Backend/src/presentation/__init__.py
+- Backend/src/shared/__init__.py
+- Backend/src/workspace/__init__.py
+- launcher/src/launcher_app/__init__.py
+
+### README.md
+- README.md
+- .zero/README.md
+- Backend/ia_workspace/README.md
+- Backend/ia_workspace/data/README.md
+- Backend/ia_workspace/data/noticias/README.md
+- docs/README.md
+- launcher/docs/README.md
+- scripts/README.md
+
+### spec.py
+- Backend/ia_workspace/agentes/anomaly/spec.py
+- Backend/ia_workspace/agentes/branch/spec.py
+- Backend/ia_workspace/agentes/capi_desktop/spec.py
+- Backend/ia_workspace/agentes/capi_noticias/spec.py
+- Backend/ia_workspace/agentes/smalltalk_fallback/spec.py
+- Backend/ia_workspace/agentes/summary/spec.py
+
+### route.ts
+- Frontend/src/app/api/backend/kill/route.ts
+- Frontend/src/app/api/backend/launch/route.ts
+- Frontend/src/app/api/backend/start/route.ts
+- Frontend/src/app/api/backend/status/route.ts
+- Frontend/src/app/api/backend/stop/route.ts
+- Frontend/src/app/health/route.ts
+
+### handler.py
+- Backend/ia_workspace/agentes/anomaly/handler.py
+- Backend/ia_workspace/agentes/branch/handler.py
+- Backend/ia_workspace/agentes/capi_desktop/handler.py
+- Backend/ia_workspace/agentes/capi_noticias/handler.py
+- Backend/ia_workspace/agentes/smalltalk_fallback/handler.py
+- Backend/ia_workspace/agentes/summary/handler.py
+
+### page.tsx
+- Frontend/src/app/dashboard/page.tsx
+- Frontend/src/app/pages/agentes/page.tsx
+- Frontend/src/app/pages/home/page.tsx
+- Frontend/src/app/pages/map/page.tsx
+- Frontend/src/app/pages/map/components/Map/page.tsx
+- Frontend/src/app/workspace/page.tsx
+
+### styles.css
+- Frontend/src/app/components/footer/styles.css
+- Frontend/src/app/components/loader/styles.css
+- Frontend/src/app/pages/home/styles.css
+- Frontend/src/app/pages/map/styles.css
+- Frontend/src/app/pages/map/components/Map/styles.css
+
+### requirements.txt
+- Backend/requirements.txt
+- launcher/requirements.txt
+
+### processed.csv
+- Backend/data/processed.csv
+- Backend/ia_workspace/data/processed.csv
+
+### layout.tsx
+- Frontend/src/app/layout.tsx
+- Frontend/src/app/dashboard/layout.tsx
+
+### index.json
+- Backend/ia_workspace/data/noticias/index.json
+- Backend/ia_workspace/data/noticias/runs/index.json
+
+### Dockerfile
+- Backend/Dockerfile
+- Frontend/Dockerfile
+
+### datos_financieros.csv
+- Backend/data/datos_financieros.csv
+- Backend/ia_workspace/data/datos_financieros.csv
+
+### datos_financieros_muestra.csv
+- Backend/data/datos_financieros_muestra.csv
+- Backend/ia_workspace/data/datos_financieros_muestra.csv
+
+### config.py
+- Backend/src/core/config.py
+- Backend/src/infrastructure/langgraph/config.py
+
+### cocoCapi.png
+- Frontend/public/cocoCapi.png
+- launcher/assets/cocoCapi.png
+
+### .env.example
+- .env.example
+- Backend/.env.example
+
+### task_scheduler.py
+- Backend/src/shared/task_scheduler.py
+- Backend/src/workspace/task_scheduler.py
+
+### test_data.csv
+- Backend/data/test_data.csv
+- Backend/ia_workspace/data/test_data.csv
+
+
+
+
+## Salud de scripts
+
+# Reporte de salud de scripts
+> Nota: Este inventario describe los scripts disponibles en /.zero/scripts y su status para guiar automatizaciones.
+Generado: 2025-09-20 17:22:30
+
+## Lista de scripts
+- clean-experimental-scripts.ps1 - ✔ canonical
+- conflictos-final.ps1 - ✔ canonical
+- estructura.ps1 - ✔ canonical
+- pipeline.ps1 - ✔ canonical
+- safe-move-to-papelera.ps1 - ✔ canonical
+- zero-circuit-validate.ps1 - ✔ canonical
+- zerograh-validation.ps1 - ✔ canonical
+
+## Familias (para inspección)
+
+## Recomendaciones
+- Mantener solo los canónicos: pipeline.ps1, estructura.ps1, conflictos-final.ps1, zerograh-validation.ps1, zero-circuit-validate.ps1, safe-move-to-papelera.ps1, clean-experimental-scripts.ps1
+- Scripts experimentales → /.zero/dynamic/tools/experiments/<timestamp>/
+
+
+
+## Salud de prompts
+
+# Reporte de salud de prompts
+> Nota: Resume los prompts disponibles y resalta cuáles son canónicos para facilitar la colaboración entre equipos.
+Generado: 2025-09-20 17:22:30
+
+## Lista de prompts
+- Detector de errores.md - ✔ canonical
+- Guía Operativa - .Zero.md - ✔ canonical
+- Nuevo Cambio.md - ✔ canonical
+- ZeroGraph-Update.md - ✔ canonical
+
+## Familias (posibles duplicados)
+
+
+
+## ZeroGraph
+
+{
+  "meta": {
+    "version": "1.0",
+    "generated": "2025-09-20T03:03:43Z",
+    "project": "CapiAgentes",
+    "description": "LangGraph-enabled financial analytics assistant (FastAPI + Next.js)",
+    "environment": "workspace",
+    "status": "architecture_current",
+    "zero_spec_version": "2025-09-18"
+  },
+  "nodes": [
+    {
+      "id": "project:capiagentes",
+      "type": "Project",
+      "properties": {
+        "name": "CapiAgentes",
+        "description": "Conversational financial analyst with LangGraph orchestrator and multi-agent runtime",
+        "stack": [
+          "python-fastapi",
+          "langgraph",
+          "nextjs"
+        ],
+        "status": "production_ready"
+      }
+    },
+    {
+      "id": "domain:entities",
+      "type": "DomainLayer",
+      "properties": {
+        "module_path": "Backend/src/domain/entities",
+        "purpose": "Pydantic base entities describing financial records, alerts y nodos de grafos"
+      }
+    },
+    {
+      "id": "domain:contracts",
+      "type": "DomainLayer",
+      "properties": {
+        "module_path": "Backend/src/domain/contracts",
+        "purpose": "Interfaces y DTOs que fijan contratos entre agentes, intents y servicios"
+      }
+    },
+    {
+      "id": "domain:services",
+      "type": "DomainLayer",
+      "properties": {
+        "module_path": "Backend/src/domain/services",
+        "purpose": "Reglas de negocio puras: cálculos financieros, validación y agregaciones"
+      }
+    },
+    {
+      "id": "domain:agents",
+      "type": "DomainLayer",
+      "properties": {
+        "module_path": "Backend/src/domain/agents",
+        "purpose": "Modelos y eventos canónicos utilizados por agentes LangGraph"
+      }
+    },
+    {
+      "id": "domain:repositories",
+      "type": "DomainLayer",
+      "properties": {
+        "module_path": "Backend/src/domain/repositories",
+        "purpose": "Contratos de persistencia y adapters abstractos para data layer"
+      }
+    },
+    {
+      "id": "application:analysis",
+      "type": "ApplicationLayer",
+      "properties": {
+        "module_path": "Backend/src/application/analysis",
+        "responsibilities": "Orquestación de análisis financieros avanzados, scoring y monitoreo",
+        "depends_on": [
+          "domain:entities",
+          "domain:services"
+        ]
+      }
+    },
+    {
+      "id": "application:alerts",
+      "type": "ApplicationLayer",
+      "properties": {
+        "module_path": "Backend/src/application/alerts",
+        "responsibilities": "Gestión de alertas proactivas y patrones de riesgo",
+        "depends_on": [
+          "domain:services",
+          "domain:entities"
+        ]
+      }
+    },
+    {
+      "id": "application:conversation",
+      "type": "ApplicationLayer",
+      "properties": {
+        "module_path": "Backend/src/application/conversation",
+        "responsibilities": "Memoria conversacional, políticas anti-repetición y estado de sesiones",
+        "depends_on": [
+          "domain:entities",
+          "domain:contracts"
+        ]
+      }
+    },
+    {
+      "id": "application:document_generation",
+      "type": "ApplicationLayer",
+      "properties": {
+        "module_path": "Backend/src/application/document_generation",
+        "responsibilities": "Generación de reportes y documentos híbridos para usuarios",
+        "depends_on": [
+          "domain:entities",
+          "domain:services"
+        ]
+      }
+    },
+    {
+      "id": "application:nlp",
+      "type": "ApplicationLayer",
+      "properties": {
+        "module_path": "Backend/src/application/nlp",
+        "responsibilities": "Clasificación de intents, extracción semántica y embeddings",
+        "depends_on": [
+          "domain:contracts"
+        ]
+      }
+    },
+    {
+      "id": "application:reasoning",
+      "type": "ApplicationLayer",
+      "properties": {
+        "module_path": "Backend/src/application/reasoning",
+        "responsibilities": "Planner LLM, razonamiento multi-step y narrativas LangGraph",
+        "depends_on": [
+          "domain:services",
+          "domain:entities",
+          "domain:agents"
+        ]
+      }
+    },
+    {
+      "id": "application:services",
+      "type": "ApplicationLayer",
+      "properties": {
+        "module_path": "Backend/src/application/services",
+        "responsibilities": "Servicios de aplicación (config de agentes, token tracking, registry)",
+        "depends_on": [
+          "domain:services",
+          "domain:repositories",
+          "domain:contracts"
+        ]
+      }
+    },
+    {
+      "id": "application:use_cases",
+      "type": "ApplicationLayer",
+      "properties": {
+        "module_path": "Backend/src/application/use_cases",
+        "responsibilities": "Casos de uso agrupados (pipeline de comandos, workflows)",
+        "depends_on": [
+          "domain:entities",
+          "domain:services",
+          "domain:contracts"
+        ]
+      }
+    },
+    {
+      "id": "infrastructure:adapters",
+      "type": "InfrastructureLayer",
+      "properties": {
+        "module_path": "Backend/src/infrastructure/adapters",
+        "framework": "custom",
+        "exposes": "Wrappers para servicios externos (OpenAI, noticias, notifiers)"
+      }
+    },
+    {
+      "id": "infrastructure:database",
+      "type": "InfrastructureLayer",
+      "properties": {
+        "module_path": "Backend/src/infrastructure/database",
+        "framework": "sqlalchemy-lite",
+        "exposes": "Conexiones y migraciones sobre datasets SQL/CSV"
+      }
+    },
+    {
+      "id": "infrastructure:external",
+      "type": "InfrastructureLayer",
+      "properties": {
+        "module_path": "Backend/src/infrastructure/external",
+        "framework": "http-clients",
+        "exposes": "Integraciones con APIs externas (noticias, dashboards)"
+      }
+    },
+    {
+      "id": "infrastructure:langgraph",
+      "type": "InfrastructureLayer",
+      "properties": {
+        "module_path": "Backend/src/infrastructure/langgraph",
+        "framework": "langgraph",
+        "exposes": "Adaptadores, nodos y runtime de grafo conversacional"
+      }
+    },
+    {
+      "id": "infrastructure:repositories",
+      "type": "InfrastructureLayer",
+      "properties": {
+        "module_path": "Backend/src/infrastructure/repositories",
+        "framework": "file-system",
+        "exposes": "Repositorios de archivos CSV/JSON y DataProviders"
+      }
+    },
+    {
+      "id": "infrastructure:websocket",
+      "type": "InfrastructureLayer",
+      "properties": {
+        "module_path": "Backend/src/infrastructure/websocket",
+        "framework": "fastapi-websocket",
+        "exposes": "Broadcaster de eventos para visualización de grafo y agentes"
+      }
+    },
+    {
+      "id": "presentation:api",
+      "type": "PresentationLayer",
+      "properties": {
+        "module_path": "Backend/src/api",
+        "entrypoints": [
+          "GET /api/health",
+          "POST /api/command",
+          "GET /api/conversations",
+          "GET /api/orchestrator/info",
+          "POST /api/feedback"
+        ]
+      }
+    },
+    {
+      "id": "presentation:websocket",
+      "type": "PresentationLayer",
+      "properties": {
+        "module_path": "Backend/src/presentation",
+        "entrypoints": [
+          "WS /ws",
+          "WS /ws/agents",
+          "WS /ws/graph"
+        ]
+      }
+    },
+    {
+      "id": "shared:core",
+      "type": "SharedCore",
+      "properties": {
+        "module_path": "Backend/src/core",
+        "utilities": [
+          "logging",
+          "settings",
+          "instrumentation"
+        ]
+      }
+    },
+    {
+      "id": "shared:shared",
+      "type": "SharedCore",
+      "properties": {
+        "module_path": "Backend/src/shared",
+        "utilities": [
+          "memory_manager",
+          "token_tracking",
+          "helpers"
+        ]
+      }
+    },
+    {
+      "id": "orchestrator:graph_runtime",
+      "type": "OrchestratorRuntime",
+      "properties": {
+        "module_path": "Backend/src/infrastructure/langgraph/graph_runtime.py",
+        "graph_role": "runtime_adapter"
+      }
+    },
+    {
+      "id": "orchestrator:graph_builder",
+      "type": "OrchestratorRuntime",
+      "properties": {
+        "module_path": "Backend/src/infrastructure/langgraph/graph_builder.py",
+        "graph_role": "static_graph_builder"
+      }
+    },
+    {
+      "id": "orchestrator:dynamic_manager",
+      "type": "OrchestratorRuntime",
+      "properties": {
+        "module_path": "Backend/src/infrastructure/langgraph/dynamic_graph_builder.py",
+        "graph_role": "dynamic_agent_manager"
+      }
+    },
+    {
+      "id": "orchestrator:state_schema",
+      "type": "OrchestratorRuntime",
+      "properties": {
+        "module_path": "Backend/src/infrastructure/langgraph/state_schema.py",
+        "graph_role": "state_model"
+      }
+    },
+    {
+      "id": "agent:summary",
+      "type": "Agent",
+      "properties": {
+        "name": "summary",
+        "handler_path": "Backend/ia_workspace/agentes/summary/handler.py",
+        "privilege_level": "standard",
+        "capabilities": [
+          "financial_summary",
+          "dataset_overview"
+        ],
+        "supported_intents": [
+          "summary_request"
+        ]
+      }
+    },
+    {
+      "id": "agent:branch",
+      "type": "Agent",
+      "properties": {
+        "name": "branch",
+        "handler_path": "Backend/ia_workspace/agentes/branch/handler.py",
+        "privilege_level": "standard",
+        "capabilities": [
+          "branch_analysis",
+          "regional_kpi"
+        ],
+        "supported_intents": [
+          "branch_query"
+        ]
+      }
+    },
+    {
+      "id": "agent:anomaly",
+      "type": "Agent",
+      "properties": {
+        "name": "anomaly",
+        "handler_path": "Backend/ia_workspace/agentes/anomaly/handler.py",
+        "privilege_level": "elevated",
+        "capabilities": [
+          "anomaly_detection",
+          "alert_creation"
+        ],
+        "supported_intents": [
+          "anomaly_check"
+        ]
+      }
+    },
+    {
+      "id": "agent:capi_desktop",
+      "type": "Agent",
+      "properties": {
+        "name": "capi_desktop",
+        "handler_path": "Backend/ia_workspace/agentes/capi_desktop/handler.py",
+        "privilege_level": "privileged",
+        "capabilities": [
+          "desktop_assistance",
+          "file_operations"
+        ],
+        "supported_intents": [
+          "desktop_task"
+        ]
+      }
+    },
+    {
+      "id": "agent:capi_noticias",
+      "type": "Agent",
+      "properties": {
+        "name": "capi_noticias",
+        "handler_path": "Backend/ia_workspace/agentes/capi_noticias/handler.py",
+        "privilege_level": "standard",
+        "capabilities": [
+          "news_monitoring",
+          "external_feed"
+        ],
+        "supported_intents": [
+          "news_request"
+        ]
+      }
+    },
+    {
+      "id": "agent:smalltalk",
+      "type": "Agent",
+      "properties": {
+        "name": "smalltalk",
+        "handler_path": "Backend/ia_workspace/agentes/smalltalk_fallback/handler.py",
+        "privilege_level": "restricted",
+        "capabilities": [
+          "chit_chat",
+          "fallback"
+        ]
+      }
+    },
+    {
+      "id": "frontend:global_chat_overlay",
+      "type": "FrontendFeature",
+      "properties": {
+        "route": "/pages/home",
+        "description": "Overlay conversacional GlobalChat con HUD LangGraph",
+        "consumes_api": [
+          "presentation:api#POST /api/command"
+        ],
+        "consumes_ws": [
+          "presentation:websocket#WS /ws",
+          "presentation:websocket#WS /ws/agents"
+        ]
+      }
+    },
+    {
+      "id": "frontend:dashboard",
+      "type": "FrontendFeature",
+      "properties": {
+        "route": "/dashboard",
+        "description": "Panel de métricas financieras y status de agentes",
+        "consumes_api": [
+          "presentation:api#GET /api/conversations",
+          "presentation:api#GET /api/orchestrator/info"
+        ],
+        "consumes_ws": []
+      }
+    },
+    {
+      "id": "frontend:health_widget",
+      "type": "FrontendFeature",
+      "properties": {
+        "route": "/health",
+        "description": "Widget de healthcheck y metadatos del backend",
+        "consumes_api": [
+          "presentation:api#GET /api/health"
+        ],
+        "consumes_ws": []
+      }
+    },
+    {
+      "id": "dataset:agents_registry",
+      "type": "Dataset",
+      "properties": {
+        "path": "Backend/ia_workspace/data/agents_registry.json",
+        "data_type": "json",
+        "purpose": "Registro dinámico de agentes disponibles y metadata"
+      }
+    },
+    {
+      "id": "dataset:alerts_historical",
+      "type": "Dataset",
+      "properties": {
+        "path": "Backend/ia_workspace/data/alerts_historical.json",
+        "data_type": "json",
+        "purpose": "Histórico de alertas generadas por el sistema"
+      }
+    },
+    {
+      "id": "dataset:token_tracking",
+      "type": "Dataset",
+      "properties": {
+        "path": "Backend/ia_workspace/data/token_tracking.json",
+        "data_type": "json",
+        "purpose": "Auditoría de uso de tokens LLM"
+      }
+    },
+    {
+      "id": "dataset:schema_sql",
+      "type": "Dataset",
+      "properties": {
+        "path": "Backend/database/schema.sql",
+        "data_type": "sql",
+        "purpose": "Definición de esquema relacional para almacenamiento persistente"
+      }
+    },
+    {
+      "id": "dataset:seed_sql",
+      "type": "Dataset",
+      "properties": {
+        "path": "Backend/database/seed_data.sql",
+        "data_type": "sql",
+        "purpose": "Datos semilla para pruebas y demos"
+      }
+    },
+    {
+      "id": "dataset:financial_csv",
+      "type": "Dataset",
+      "properties": {
+        "path": "Backend/ia_workspace/data/datos_financieros.csv",
+        "data_type": "csv",
+        "purpose": "Dataset base de movimientos financieros"
+      }
+    },
+    {
+      "id": "script:docker_commands_ps1",
+      "type": "Script",
+      "properties": {
+        "path": "docker-commands.ps1",
+        "scope": "devops",
+        "effects": "Start/stop de stack docker compose completo"
+      }
+    },
+    {
+      "id": "script:docker_commands_sh",
+      "type": "Script",
+      "properties": {
+        "path": "docker-commands.sh",
+        "scope": "devops",
+        "effects": "Automatiza lifecycle docker en entornos POSIX"
+      }
+    },
+    {
+      "id": "script:build_executable",
+      "type": "Script",
+      "properties": {
+        "path": "build_executable.py",
+        "scope": "pipeline",
+        "effects": "Genera ejecutable desktop con PyInstaller"
+      }
+    },
+    {
+      "id": "script:zerograph_validation",
+      "type": "Script",
+      "properties": {
+        "path": ".zero/scripts/zerograh-validation.ps1",
+        "scope": "testing",
+        "effects": "Valida consistencia del ZeroGraph y políticas Zero"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "domain:entities",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "domain:contracts",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "domain:services",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "domain:agents",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "domain:repositories",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "application:analysis",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "application:alerts",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "application:conversation",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "application:document_generation",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "application:nlp",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "application:reasoning",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "application:services",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "application:use_cases",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "infrastructure:adapters",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "infrastructure:database",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "infrastructure:external",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "infrastructure:langgraph",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "infrastructure:repositories",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "infrastructure:websocket",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "presentation:api",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "presentation:websocket",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "shared:core",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "shared:shared",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "orchestrator:graph_runtime",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "orchestrator:graph_builder",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "orchestrator:dynamic_manager",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "orchestrator:state_schema",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "agent:summary",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "agent:branch",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "agent:anomaly",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "agent:capi_desktop",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "agent:capi_noticias",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "agent:smalltalk",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "frontend:global_chat_overlay",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "frontend:dashboard",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "frontend:health_widget",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "dataset:agents_registry",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "dataset:alerts_historical",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "dataset:token_tracking",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "dataset:schema_sql",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "dataset:seed_sql",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "dataset:financial_csv",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "script:docker_commands_ps1",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "script:docker_commands_sh",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "script:build_executable",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "contains",
+      "source": "project:capiagentes",
+      "target": "script:zerograph_validation",
+      "properties": {
+        "description": "Incluido en la topología del proyecto"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:analysis",
+      "target": "domain:entities",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:analysis",
+      "target": "domain:services",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:alerts",
+      "target": "domain:services",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:alerts",
+      "target": "domain:entities",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:conversation",
+      "target": "domain:entities",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:conversation",
+      "target": "domain:contracts",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:document_generation",
+      "target": "domain:entities",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:document_generation",
+      "target": "domain:services",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:nlp",
+      "target": "domain:contracts",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:reasoning",
+      "target": "domain:services",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:reasoning",
+      "target": "domain:entities",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:reasoning",
+      "target": "domain:agents",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:services",
+      "target": "domain:services",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:services",
+      "target": "domain:repositories",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:services",
+      "target": "domain:contracts",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:use_cases",
+      "target": "domain:entities",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:use_cases",
+      "target": "domain:services",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "application:use_cases",
+      "target": "domain:contracts",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:adapters",
+      "target": "application:services",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:adapters",
+      "target": "application:analysis",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:database",
+      "target": "domain:repositories",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:external",
+      "target": "application:alerts",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:external",
+      "target": "application:nlp",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:langgraph",
+      "target": "application:reasoning",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:langgraph",
+      "target": "application:conversation",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:repositories",
+      "target": "domain:repositories",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:repositories",
+      "target": "domain:entities",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:websocket",
+      "target": "shared:core",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "depends_on",
+      "source": "infrastructure:websocket",
+      "target": "application:services",
+      "properties": {
+        "reason": "import"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "application:use_cases",
+      "properties": {
+        "interface": "REST:/api/command",
+        "method": "POST"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "application:services",
+      "properties": {
+        "interface": "REST:/api/conversations",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:api",
+      "target": "application:alerts",
+      "properties": {
+        "interface": "REST:/api/feedback",
+        "method": "POST"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:websocket",
+      "target": "orchestrator:graph_runtime",
+      "properties": {
+        "interface": "WebSocket:/ws",
+        "method": "STREAM"
+      }
+    },
+    {
+      "type": "exposes",
+      "source": "presentation:websocket",
+      "target": "infrastructure:websocket",
+      "properties": {
+        "interface": "WebSocket:/ws/agents",
+        "method": "STREAM"
+      }
+    },
+    {
+      "type": "invokes",
+      "source": "orchestrator:graph_runtime",
+      "target": "agent:summary",
+      "properties": {
+        "trigger": "intent",
+        "path": "LangGraphRuntime.process_query.summary"
+      }
+    },
+    {
+      "type": "invokes",
+      "source": "orchestrator:graph_runtime",
+      "target": "agent:branch",
+      "properties": {
+        "trigger": "intent",
+        "path": "LangGraphRuntime.process_query.branch"
+      }
+    },
+    {
+      "type": "invokes",
+      "source": "orchestrator:graph_runtime",
+      "target": "agent:anomaly",
+      "properties": {
+        "trigger": "intent",
+        "path": "LangGraphRuntime.process_query.anomaly"
+      }
+    },
+    {
+      "type": "invokes",
+      "source": "orchestrator:graph_runtime",
+      "target": "agent:capi_desktop",
+      "properties": {
+        "trigger": "intent",
+        "path": "LangGraphRuntime.process_query.desktop"
+      }
+    },
+    {
+      "type": "invokes",
+      "source": "orchestrator:graph_runtime",
+      "target": "agent:capi_noticias",
+      "properties": {
+        "trigger": "intent",
+        "path": "LangGraphRuntime.process_query.news"
+      }
+    },
+    {
+      "type": "invokes",
+      "source": "orchestrator:graph_runtime",
+      "target": "agent:smalltalk",
+      "properties": {
+        "trigger": "intent",
+        "path": "LangGraphRuntime.process_query.smalltalk"
+      }
+    },
+    {
+      "type": "invokes",
+      "source": "orchestrator:dynamic_manager",
+      "target": "application:services",
+      "properties": {
+        "trigger": "scheduled",
+        "path": "DynamicGraphManager.refresh_graph"
+      }
+    },
+    {
+      "type": "invokes",
+      "source": "orchestrator:dynamic_manager",
+      "target": "agent:summary",
+      "properties": {
+        "trigger": "manual",
+        "path": "DynamicGraphManager.register_agent"
+      }
+    },
+    {
+      "type": "invokes",
+      "source": "orchestrator:graph_builder",
+      "target": "application:reasoning",
+      "properties": {
+        "trigger": "intent",
+        "path": "GraphBuilder.build_minimal"
+      }
+    },
+    {
+      "type": "privilege_controls",
+      "source": "presentation:api",
+      "target": "agent:summary",
+      "properties": {
+        "policy": "agent_privileges_json"
+      }
+    },
+    {
+      "type": "privilege_controls",
+      "source": "presentation:api",
+      "target": "agent:branch",
+      "properties": {
+        "policy": "agent_privileges_json"
+      }
+    },
+    {
+      "type": "privilege_controls",
+      "source": "presentation:api",
+      "target": "agent:anomaly",
+      "properties": {
+        "policy": "agent_privileges_json"
+      }
+    },
+    {
+      "type": "privilege_controls",
+      "source": "presentation:api",
+      "target": "agent:capi_desktop",
+      "properties": {
+        "policy": "agent_privileges_json"
+      }
+    },
+    {
+      "type": "privilege_controls",
+      "source": "presentation:api",
+      "target": "agent:capi_noticias",
+      "properties": {
+        "policy": "agent_privileges_json"
+      }
+    },
+    {
+      "type": "privilege_controls",
+      "source": "presentation:api",
+      "target": "agent:smalltalk",
+      "properties": {
+        "policy": "agent_privileges_json"
+      }
+    },
+    {
+      "type": "persists_to",
+      "source": "application:services",
+      "target": "dataset:token_tracking",
+      "properties": {
+        "operation": "write",
+        "guard": "privilege_check"
+      }
+    },
+    {
+      "type": "persists_to",
+      "source": "application:alerts",
+      "target": "dataset:alerts_historical",
+      "properties": {
+        "operation": "write",
+        "guard": "schema_validation"
+      }
+    },
+    {
+      "type": "persists_to",
+      "source": "infrastructure:repositories",
+      "target": "dataset:agents_registry",
+      "properties": {
+        "operation": "read",
+        "guard": "privilege_check"
+      }
+    },
+    {
+      "type": "persists_to",
+      "source": "infrastructure:database",
+      "target": "dataset:schema_sql",
+      "properties": {
+        "operation": "read",
+        "guard": "migration_lock"
+      }
+    },
+    {
+      "type": "persists_to",
+      "source": "application:analysis",
+      "target": "dataset:financial_csv",
+      "properties": {
+        "operation": "read",
+        "guard": "schema_validation"
+      }
+    },
+    {
+      "type": "persists_to",
+      "source": "agent:anomaly",
+      "target": "dataset:alerts_historical",
+      "properties": {
+        "operation": "write",
+        "guard": "privilege_check"
+      }
+    },
+    {
+      "type": "persists_to",
+      "source": "agent:capi_desktop",
+      "target": "dataset:financial_csv",
+      "properties": {
+        "operation": "read",
+        "guard": "sandbox_path_whitelist"
+      }
+    },
+    {
+      "type": "renders",
+      "source": "frontend:global_chat_overlay",
+      "target": "presentation:websocket",
+      "properties": {
+        "channel": "WebSocket",
+        "cadence": "live"
+      }
+    },
+    {
+      "type": "renders",
+      "source": "frontend:dashboard",
+      "target": "presentation:api",
+      "properties": {
+        "channel": "REST",
+        "cadence": "poll"
+      }
+    },
+    {
+      "type": "renders",
+      "source": "frontend:health_widget",
+      "target": "presentation:api",
+      "properties": {
+        "channel": "REST",
+        "cadence": "on_demand"
+      }
+    },
+    {
+      "type": "generates",
+      "source": "script:build_executable",
+      "target": "frontend:dashboard",
+      "properties": {
+        "artifact": "desktop_bundle"
+      }
+    },
+    {
+      "type": "tests",
+      "source": "script:zerograph_validation",
+      "target": "project:capiagentes",
+      "properties": {
+        "coverage": "zero_graph_consistency"
+      }
+    }
+  ],
+  "graph_metrics": {
+    "total_nodes": 47,
+    "total_relationships": 107,
+    "node_types_distribution": {
+      "Project": 1,
+      "DomainLayer": 5,
+      "ApplicationLayer": 8,
+      "InfrastructureLayer": 6,
+      "PresentationLayer": 2,
+      "SharedCore": 2,
+      "OrchestratorRuntime": 4,
+      "Agent": 6,
+      "FrontendFeature": 3,
+      "Dataset": 6,
+      "Script": 4
+    },
+    "relationship_types_distribution": {
+      "contains": 46,
+      "depends_on": 29,
+      "exposes": 5,
+      "invokes": 9,
+      "privilege_controls": 6,
+      "persists_to": 7,
+      "renders": 3,
+      "generates": 1,
+      "tests": 1
+    }
+  }
+}
+
+
+## Catálogo .zero
+
+# Catálogo .zero
+> Nota: Catálogo maestro de scripts y prompts .zero para que cualquiera identifique puntos de entrada rápidamente.
+Generado: 2025-09-20 17:22:30
+
+## Scripts
+- clean-experimental-scripts.ps1 - ✔ canonical
+- conflictos-final.ps1 - ✔ canonical
+- estructura.ps1 - ✔ canonical
+- pipeline.ps1 - ✔ canonical
+- safe-move-to-papelera.ps1 - ✔ canonical
+- zero-circuit-validate.ps1 - ✔ canonical
+- zerograh-validation.ps1 - ✔ canonical
+
+## Prompts
+- Detector de errores.md - ✔ canonical
+- Guía Operativa - .Zero.md - ✔ canonical
+- Nuevo Cambio.md - ✔ canonical
+- ZeroGraph-Update.md - ✔ canonical
+
+
+
+## Zero Health
+
+# ZeroGraph Validation
+Generated: 2025-09-20T17:17:26.6421418-03:00
+> Nota: Este archivo resume la validación estructural de ZeroGraph para confirmar que la topología del proyecto sigue coherente.
+Resultado: ✅ Sin errores detectados
+
+
+

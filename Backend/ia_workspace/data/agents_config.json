@@ -1,0 +1,9 @@
+{
+  "summary": true,
+  "branch": true,
+  "anomaly": true,
+  "capi_desktop": true,
+  "capi_datab": true,
+  "smalltalk": false,
+  "capi_noticias": true
+}

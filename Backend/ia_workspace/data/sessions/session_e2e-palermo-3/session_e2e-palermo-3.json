@@ -1,0 +1,16 @@
+{
+  "session_id": "e2e-palermo-3",
+  "sanitized_session_id": "e2e-palermo-3",
+  "datab_exports": [
+    {
+      "filename": "DataB_2025_09_25_570501.json",
+      "relative_path": "capi_DataB/DataB_2025_09_25_570501.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_e2e-palermo-3/capi_DataB/DataB_2025_09_25_570501.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-09-25T07:56:32.580183"
+    }
+  ],
+  "updated_at": "2025-09-25T07:56:32.580194"
+}

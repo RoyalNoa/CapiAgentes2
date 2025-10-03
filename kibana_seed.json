@@ -1,0 +1,89 @@
+[
+  {
+    "type": "search",
+    "id": "agent-response-errors",
+    "attributes": {
+      "title": "Agent Response Errors",
+      "description": "Errores devueltos por agentes",
+      "columns": [
+        "@timestamp",
+        "agent_name",
+        "error_code",
+        "error_message",
+        "channel"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query\":\"event_type: agent_error AND error_code: \\\"agent_response_error\\\"\",\"language\":\"kuery\"},\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"highlightAll\":true,\"version\":true}"
+      }
+    },
+    "references": [
+      {
+        "id": "d0b327ec-371b-4c2c-a6ec-9067d7b65598",
+        "type": "index-pattern",
+        "name": "kibanaSavedObjectMeta.searchSourceJSON.index"
+      }
+    ]
+  },
+  {
+    "type": "search",
+    "id": "negative-feedback",
+    "attributes": {
+      "title": "Negative Feedback",
+      "description": "Feedback < 3",
+      "columns": [
+        "@timestamp",
+        "agent_name",
+        "feedback_score",
+        "feedback_text",
+        "channel"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query\":\"event_type: feedback_recorded AND feedback_score < 3\",\"language\":\"kuery\"},\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"highlightAll\":true,\"version\":true}"
+      }
+    },
+    "references": [
+      {
+        "id": "d0b327ec-371b-4c2c-a6ec-9067d7b65598",
+        "type": "index-pattern",
+        "name": "kibanaSavedObjectMeta.searchSourceJSON.index"
+      }
+    ]
+  },
+  {
+    "type": "search",
+    "id": "high-token-usage",
+    "attributes": {
+      "title": "High Token Usage",
+      "description": "Tokens totales > 1000",
+      "columns": [
+        "@timestamp",
+        "agent_name",
+        "tokens_total",
+        "latency_ms",
+        "query_preview"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query\":\"event_type: agent_turn_completed AND tokens_total > 1000\",\"language\":\"kuery\"},\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"highlightAll\":true,\"version\":true}"
+      }
+    },
+    "references": [
+      {
+        "id": "d0b327ec-371b-4c2c-a6ec-9067d7b65598",
+        "type": "index-pattern",
+        "name": "kibanaSavedObjectMeta.searchSourceJSON.index"
+      }
+    ]
+  }
+]

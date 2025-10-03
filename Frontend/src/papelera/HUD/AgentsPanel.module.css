@@ -1,0 +1,356 @@
+/* ==========================================
+   AGENTS PANEL - HUD STYLE
+   ========================================== */
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+.header {
+  padding: 25px 30px;
+  background: rgba(0, 40, 80, 0.8);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  box-shadow: 0 0 10px #00ffff;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #00ffff;
+  text-shadow:
+    0 0 15px rgba(0, 255, 255, 0.8),
+    0 0 30px rgba(0, 255, 255, 0.4);
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.badge {
+  padding: 8px 16px;
+  background: rgba(0, 255, 136, 0.2);
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%);
+  box-shadow:
+    inset 0 0 15px rgba(0, 255, 136, 0.3),
+    0 0 10px rgba(0, 255, 136, 0.4);
+}
+
+/* ==========================================
+   CONTENT
+   ========================================== */
+.content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #0099cc transparent;
+}
+
+.content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #0099cc;
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(0, 153, 204, 0.5);
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: #00ffff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+/* ==========================================
+   LOADING STATE
+   ========================================== */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 200px;
+  color: #8aa0c5;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  border-top: 2px solid #00ffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   AGENTS LIST
+   ========================================== */
+.agentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.agentCard {
+  background:
+    linear-gradient(135deg, rgba(0, 60, 120, 0.4), rgba(0, 40, 80, 0.6)),
+    radial-gradient(circle at center, rgba(0, 255, 255, 0.05), transparent 70%);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  padding: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 15px) 0,
+    100% 15px,
+    100% 100%,
+    15px 100%,
+    0 calc(100% - 15px)
+  );
+}
+
+.agentCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.agentCard:hover {
+  border-color: rgba(0, 255, 255, 0.4);
+  box-shadow:
+    0 0 30px rgba(0, 255, 255, 0.2),
+    inset 0 0 20px rgba(0, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.agentCard:hover::before {
+  opacity: 1;
+}
+
+.agentCard.selected {
+  border-color: #00ffff;
+  background:
+    linear-gradient(135deg, rgba(0, 80, 160, 0.6), rgba(0, 60, 120, 0.8)),
+    radial-gradient(circle at center, rgba(0, 255, 255, 0.1), transparent 70%);
+  box-shadow:
+    0 0 40px rgba(0, 255, 255, 0.3),
+    inset 0 0 30px rgba(0, 255, 255, 0.15);
+}
+
+.agentCard.selected::before {
+  opacity: 1;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  box-shadow: 0 0 10px #00ffff;
+}
+
+/* ==========================================
+   AGENT HEADER
+   ========================================== */
+.agentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.agentInfo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.statusIndicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+.statusIndicator.active {
+  background: #00ff88;
+  box-shadow: 0 0 15px #00ff88;
+}
+
+.statusIndicator.idle {
+  background: #0099cc;
+  box-shadow: 0 0 15px #0099cc;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.agentName {
+  font-size: 16px;
+  font-weight: 700;
+  color: #e6f1ff;
+  text-shadow: 0 0 10px rgba(230, 241, 255, 0.5);
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* ==========================================
+   SWITCH
+   ========================================== */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(60, 80, 120, 0.8);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  border-radius: 15px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  top: 3px;
+  background:
+    linear-gradient(135deg, #ffffff, #e6f1ff);
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.switch input:checked + .slider {
+  background: linear-gradient(90deg, rgba(0, 255, 255, 0.4), rgba(0, 255, 136, 0.4));
+  border-color: #00ff88;
+  box-shadow:
+    inset 0 0 15px rgba(0, 255, 136, 0.3),
+    0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(30px);
+  background: linear-gradient(135deg, #00ff88, #00ffff);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    0 0 15px rgba(0, 255, 136, 0.6);
+}
+
+/* ==========================================
+   AGENT DESCRIPTION & STATS
+   ========================================== */
+.agentDescription {
+  color: #8aa0c5;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 15px 0;
+}
+
+.agentStats {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.statValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+  letter-spacing: 1px;
+}
+
+.statLabel {
+  font-size: 10px;
+  color: #8aa0c5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 768px) {
+  .header {
+    padding: 20px 25px;
+  }
+
+  .content {
+    padding: 25px;
+  }
+
+  .agentCard {
+    padding: 20px;
+  }
+
+  .agentStats {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .stat {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

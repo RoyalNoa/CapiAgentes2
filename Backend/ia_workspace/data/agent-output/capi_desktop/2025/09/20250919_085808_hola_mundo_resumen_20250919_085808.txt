@@ -1,0 +1,5 @@
+Archivo: hola mundo.xlsx
+Filas: 0 | Columnas: 1
+Columnas: Me gusta la mandarina
+--------------------------------------------------------------------------------
+[SIN DATOS EN LA HOJA]

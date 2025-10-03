@@ -1,0 +1,50 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	start(start)
+	intent(intent)
+	react(react)
+	reasoning(reasoning)
+	supervisor(supervisor)
+	router(router)
+	smalltalk(smalltalk)
+	summary(summary)
+	branch(branch)
+	anomaly(anomaly)
+	capi_noticias(capi_noticias)
+	capi_desktop(capi_desktop)
+	human_gate(human_gate)
+	assemble(assemble)
+	finalize(finalize)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> start;
+	anomaly --> human_gate;
+	assemble --> finalize;
+	branch --> human_gate;
+	capi_desktop --> human_gate;
+	human_gate --> assemble;
+	intent --> react;
+	react --> reasoning;
+	reasoning --> supervisor;
+	router -.-> anomaly;
+	router -.-> assemble;
+	router -.-> branch;
+	router -.-> capi_desktop;
+	router -.-> capi_noticias;
+	router -.-> finalize;
+	router -.-> human_gate;
+	router -.-> smalltalk;
+	router -.-> summary;
+	start --> intent;
+	summary --> human_gate;
+	supervisor --> router;
+	capi_noticias --> __end__;
+	finalize --> __end__;
+	smalltalk --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc
