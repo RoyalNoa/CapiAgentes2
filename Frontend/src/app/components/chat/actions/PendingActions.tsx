@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { CHAT_THEME } from '../chatTheme';
+import styles from './PendingActions.module.css';
 
 interface PendingAction {
   id: string;
@@ -60,144 +60,64 @@ export default function PendingActions({
   if (!currentPendingAction) return null;
 
   return (
-    <div
-      style={{
-        margin: '12px 20px 0',
-        padding: '14px 16px',
-        borderRadius: '8px',
-        border: `1px solid ${CHAT_THEME.colors.primary}40`,
-        background: 'linear-gradient(135deg, rgba(0, 255, 255, 0.08), rgba(0, 255, 255, 0.03))',
-        boxShadow: '0 6px 18px rgba(0, 0, 0, 0.35)',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '10px'
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <div
-          style={{
-            width: '6px',
-            height: '6px',
-            borderRadius: '50%',
-            background: CHAT_THEME.colors.primary,
-            boxShadow: `0 0 10px ${CHAT_THEME.colors.primary}80`,
-            animation: 'pulse 2s infinite'
-          }}
-        />
-        <span
-          style={{
-            fontSize: '11px',
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            fontFamily: CHAT_THEME.fonts.heading,
-            color: CHAT_THEME.colors.primaryAlt
-          }}
-        >
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <div className={styles.indicator} />
+        <span className={styles.label}>
           Acción requerida
         </span>
-        <span
-          style={{
-            marginLeft: 'auto',
-            fontSize: '10px',
-            color: CHAT_THEME.colors.textMuted,
-            fontFamily: CHAT_THEME.fonts.ui
-          }}
-        >
+        <span className={styles.actionType}>
           {currentPendingAction.label}
         </span>
       </div>
 
-      <div
-        style={{
-          fontSize: '11px',
-          color: CHAT_THEME.colors.text,
-          fontFamily: CHAT_THEME.fonts.ui,
-          lineHeight: '1.4'
-        }}
-      >
+      <div className={styles.description}>
         {approvalReason || '¿Deseas ejecutar la acción sugerida?'}
       </div>
 
       {pendingActionDetails?.fileName && (
-        <div
-          style={{
-            fontSize: '10px',
-            color: CHAT_THEME.colors.textMuted,
-            fontFamily: CHAT_THEME.fonts.ui
-          }}
-        >
+        <div className={styles.detail}>
           Archivo sugerido:
-          <span style={{ color: CHAT_THEME.colors.primaryAlt, marginLeft: '4px' }}>{pendingActionDetails.fileName}</span>
+          <span className={styles.detailValue}>
+            {pendingActionDetails.fileName}
+          </span>
         </div>
       )}
 
       {pendingActionDetails?.branchName && (
-        <div
-          style={{
-            fontSize: '10px',
-            color: CHAT_THEME.colors.textMuted,
-            fontFamily: CHAT_THEME.fonts.ui
-          }}
-        >
+        <div className={styles.detail}>
           Sucursal:
-          <span style={{ color: CHAT_THEME.colors.text, marginLeft: '4px' }}>{pendingActionDetails.branchName}</span>
+          <span className={styles.detailNormal}>
+            {pendingActionDetails.branchName}
+          </span>
         </div>
       )}
 
       {pendingActionDetails?.summary && (
-        <div
-          style={{
-            fontSize: '10px',
-            color: CHAT_THEME.colors.text,
-            fontFamily: CHAT_THEME.fonts.ui,
-            lineHeight: '1.5'
-          }}
-        >
+        <div className={styles.summary}>
           {pendingActionDetails.summary}
         </div>
       )}
 
-      <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
+      <div className={styles.buttons}>
         <button
           onClick={() => handleActionDecision(true)}
           disabled={isDecisionDisabled}
-          style={{
-            padding: '6px 14px',
-            borderRadius: '4px',
-            border: `1px solid ${CHAT_THEME.colors.primary}60`,
-            background: `linear-gradient(135deg, ${CHAT_THEME.colors.primary}30, ${CHAT_THEME.colors.primary}10)`,
-            color: CHAT_THEME.colors.primary,
-            fontSize: '11px',
-            fontFamily: CHAT_THEME.fonts.ui,
-            cursor: isDecisionDisabled ? 'not-allowed' : 'pointer',
-            opacity: isDecisionDisabled ? 0.6 : 1,
-            transition: 'all 0.2s ease'
-          }}
+          className={`${styles.button} ${styles.approveButton}`}
         >
           Sí, guardar
         </button>
         <button
           onClick={() => handleActionDecision(false)}
           disabled={isDecisionDisabled}
-          style={{
-            padding: '6px 14px',
-            borderRadius: '4px',
-            border: '1px solid rgba(255, 107, 107, 0.5)',
-            background: 'rgba(255, 107, 107, 0.12)',
-            color: '#ff6b6b',
-            fontSize: '11px',
-            fontFamily: CHAT_THEME.fonts.ui,
-            cursor: isDecisionDisabled ? 'not-allowed' : 'pointer',
-            opacity: isDecisionDisabled ? 0.6 : 1,
-            transition: 'all 0.2s ease'
-          }}
+          className={`${styles.button} ${styles.rejectButton}`}
         >
           No, gracias
         </button>
       </div>
 
       {(actionSubmitting || loading) && (
-        <div style={{ textAlign: 'right', fontSize: '9px', color: CHAT_THEME.colors.textMuted }}>
+        <div className={styles.loading}>
           Registrando decisión...
         </div>
       )}

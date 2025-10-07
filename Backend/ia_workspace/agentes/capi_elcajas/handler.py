@@ -17,6 +17,7 @@ from src.domain.agents.agent_models import AgentResult, AgentTask, IntentType, T
 from src.application.services.cash_policy_service import CashPolicyService
 from src.application.services.calendar_service import CalendarService
 from src.infrastructure.workspace.session_storage import SessionStorage, resolve_workspace_root
+from src.infrastructure.agents.progress_emitter import agent_progress
 logger = get_logger(__name__)
 
 AVERAGE_BILL_VALUE = 1000.0  # ARS por billete asumido para estimar peso transportado
@@ -82,8 +83,27 @@ class ElCajasAgent(BaseAgent):
     async def process(self, task: AgentTask) -> AgentResult:
         start_time = time.time()
         branch_rows = self._extract_branch_rows(task)
+        branch_count = len(branch_rows)
+        branch_hint = None
+        if branch_rows and isinstance(branch_rows[0], dict):
+            branch_hint = branch_rows[0].get('branch_name') or branch_rows[0].get('sucursal') or branch_rows[0].get('branch') or branch_rows[0].get('name')
+
+        agent_progress.start(
+            self.AGENT_NAME,
+            task.session_id,
+            query=task.query,
+            branch=branch_hint,
+            extra={'branches': branch_count},
+        )
 
         if not branch_rows:
+            agent_progress.success(
+                self.AGENT_NAME,
+                task.session_id,
+                detail='Sin datos de sucursales para analizar',
+                branch=branch_hint,
+                extra={'branches': branch_count},
+            )
             return AgentResult(
                 task_id=task.task_id,
                 agent_name=self.agent_name,
@@ -153,6 +173,14 @@ class ElCajasAgent(BaseAgent):
             'alert_operations': alert_operations,
             'recommendation_files': recommendation_files,
         }
+
+        agent_progress.success(
+            self.AGENT_NAME,
+            task.session_id,
+            detail=message,
+            branch=branch_hint if branch_count == 1 else None,
+            extra={'branches': branch_count, 'alerts_created': alerts_created},
+        )
 
         return AgentResult(
             task_id=task.task_id,

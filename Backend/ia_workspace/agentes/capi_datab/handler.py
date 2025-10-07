@@ -21,6 +21,7 @@ from src.domain.utils.branch_identifier import BranchIdentifier, validate_table
 from src.infrastructure.langgraph.utils.capi_datab_formatter import compose_success_message, extract_branch_descriptor, relax_branch_filters
 from src.infrastructure.workspace.session_storage import resolve_workspace_root
 from src.application.reasoning.llm_reasoner import LLMReasoner
+from src.infrastructure.agents.progress_emitter import agent_progress
 
 logger = get_logger(__name__)
 
@@ -172,6 +173,16 @@ class CapiDataBAgent(BaseAgent):
         )
         relax_branch_filters(operation, branch_hint)
 
+        agent_progress.start(
+            self.AGENT_NAME,
+            session_id,
+            query=getattr(operation, 'raw_request', None) or operation.description,
+            operation=operation.operation,
+            table=operation.table,
+            branch=branch_hint,
+            extra={'user_id': user_id},
+        )
+
         try:
             execution = self._run_sync(self._run_operation(operation))
             file_path = self._export_result(operation, execution, session_id=session_id)
@@ -206,6 +217,14 @@ class CapiDataBAgent(BaseAgent):
             )
             data_payload["summary_message"] = message
             duration = (datetime.now() - start_time).total_seconds()
+            agent_progress.success(
+                self.AGENT_NAME,
+                session_id,
+                detail=message,
+                rowcount=execution.rowcount,
+                branch=branch_hint,
+                extra={"operation": operation.operation, "table": operation.table, "file": str(file_path)},
+            )
             return AgentResult(
                 task_id=task_id or f"datab_{session_id}_{start_time.timestamp():.0f}",
                 agent_name=self.AGENT_NAME,
@@ -220,6 +239,12 @@ class CapiDataBAgent(BaseAgent):
                 "error": str(exc),
                 "operation": operation.preview(),
             })
+            agent_progress.error(
+                self.AGENT_NAME,
+                session_id,
+                detail=str(exc),
+                extra={"operation": operation.operation, "table": operation.table},
+            )
             duration = (datetime.now() - start_time).total_seconds()
             return AgentResult(
                 task_id=task_id or f"datab_{session_id}_{start_time.timestamp():.0f}",

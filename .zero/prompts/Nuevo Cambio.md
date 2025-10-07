@@ -65,7 +65,6 @@ Move-Item 'ruta/original.ext' (Join-Path '.zero/dynamic/papelera' "ruta-original
 ## 8) Salida esperada
 - Sesión en `/.zero/dynamic/sessions/YYYY-MM/DD-change.md` (tres bullets: acciones, comandos sugeridos, ubicación de outputs).
 - Plan numerado + resumen de impacto.
-- Parches/documentos según lista blanca.
 - Nota sobre ZeroGraph (delta adjunto o "no aplica").
 - Resumen final con estado de pruebas recomendadas.
 

@@ -55,6 +55,7 @@ CAPI/
 - `docs/README.md`: overview of available documents
 - `docs/reorganizacion_repo.md`: checklist for cleaning the repository root
 - `docs/Nuevas Funcionalidades/LoggingJSON.md`: guía para logging JSON + stack Elastic
+- `docs/mcp-server.md`: instrucciones para instalar y conectar el servidor MCP local
 
 ## Quick start
 1. Run the platform with `./docker-commands.ps1 start` (Windows) or
