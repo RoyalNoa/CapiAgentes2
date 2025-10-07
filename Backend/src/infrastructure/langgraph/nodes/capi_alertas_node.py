@@ -133,7 +133,7 @@ class CapiAlertasNode(GraphNode):
             if isinstance(alert, dict):
                 normalized.append(alert)
             elif hasattr(alert, "dict"):
-                normalized.append(alert.dict())
+                normalized.append(alert.model_dump() if hasattr(alert, 'model_dump') else alert.dict())
         return normalized
 
     def _summarize(self, alerts: List[Dict[str, Any]]) -> Dict[str, Any]:

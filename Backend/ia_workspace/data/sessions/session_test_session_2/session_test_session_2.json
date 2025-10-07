@@ -2,10 +2,10 @@
   "created_at": "2025-10-02T12:52:36.722705",
   "session_id": "test_session_2",
   "sanitized_session_id": "test_session_2",
-  "updated_at": "2025-10-02T17:21:47.219068",
+  "updated_at": "2025-10-07T00:09:59.766905",
   "datab_exports": [],
-  "status": "processing",
-  "trace_id": "trace-1759436507.053055",
+  "status": "completed",
+  "trace_id": "trace-1759806594.548011",
   "user_id": "test_user",
   "workflow_mode": "chat",
   "active_agent": "summary",
@@ -18,7 +18,8 @@
     "router",
     "summary",
     "human_gate",
-    "assemble"
+    "assemble",
+    "finalize"
   ],
   "intent": "summary_request",
   "intent_confidence": 0.4,
@@ -51,7 +52,7 @@
         }
       ],
       "reasoning_plan": {
-        "plan_id": "0fa13c4f-5496-4d77-98e0-cb7b3aec9f8e",
+        "plan_id": "04a0e69c-7f91-444c-90a6-af17135ad046",
         "version": 1,
         "intent": "summary_request",
         "goal": "Entregar resumen financiero estratégico",
@@ -115,9 +116,8 @@
           "complexity": "medium",
           "entities": {},
           "context_used": false,
-          "semantic_confidence": 0.4,
+          "semantic_confidence": 1.0,
           "available_agents": [
-            "agente_g",
             "anomaly",
             "branch",
             "capi_datab",
@@ -127,7 +127,7 @@
           "user_id": "test_user",
           "session_id": "test_session_2"
         },
-        "generated_at": "2025-10-02T20:21:47.210239",
+        "generated_at": "2025-10-07T03:09:59.752760",
         "intent_alignment": true,
         "requires_replan": false,
         "history": [],
@@ -145,8 +145,9 @@
     }
   },
   "response_metadata": {
-    "intent_reasoning": "Legacy pattern match preferred: Legacy: Matched 2 pattern(s) with score 0.43 | semantic suggested summary_request (0.400)",
+    "intent_reasoning": "Semantic pattern match: La consulta solicita un resumen de datos financieros, por lo que el intent 'summary' con el agente 'summary' es el mÃ¡s adecuado. (confidence=1.000, entities=0) | legacy patterns matched: \\b(resumen|summary|sumario|sintesis)\\b, \\b(mostrar|show|dame|give me).*\\b(resumen|summary)\\b",
     "intent_matched_patterns": [
+      "semantic_pattern:summary_request",
       "\\b(resumen|summary|sumario|sintesis)\\b",
       "\\b(mostrar|show|dame|give me).*\\b(resumen|summary)\\b"
     ],
@@ -205,13 +206,13 @@
       }
     ],
     "react_recommended_agent": "summary",
-    "react_finished_at": "2025-10-02T17:21:47.205509",
+    "react_finished_at": "2025-10-07T00:09:58.606593",
     "active_agent": "summary",
     "loop_fallback": "summary",
     "react_follow_up": false,
     "needs_retry": null,
     "reasoning_plan": {
-      "plan_id": "0fa13c4f-5496-4d77-98e0-cb7b3aec9f8e",
+      "plan_id": "04a0e69c-7f91-444c-90a6-af17135ad046",
       "version": 1,
       "intent": "summary_request",
       "goal": "Entregar resumen financiero estratégico",
@@ -275,9 +276,8 @@
         "complexity": "medium",
         "entities": {},
         "context_used": false,
-        "semantic_confidence": 0.4,
+        "semantic_confidence": 1.0,
         "available_agents": [
-          "agente_g",
           "anomaly",
           "branch",
           "capi_datab",
@@ -287,7 +287,7 @@
         "user_id": "test_user",
         "session_id": "test_session_2"
       },
-      "generated_at": "2025-10-02T20:21:47.210239",
+      "generated_at": "2025-10-07T03:09:59.752760",
       "intent_alignment": true,
       "requires_replan": false,
       "history": [],
@@ -310,7 +310,7 @@
       "smalltalk"
     ],
     "supervisor_selected": "summary",
-    "supervisor_ran_at": "2025-10-02T17:21:47.211424",
+    "supervisor_ran_at": "2025-10-07T00:09:59.753770",
     "semantic_result": {
       "intent": "summary_request",
       "confidence": 0.4,
@@ -351,7 +351,7 @@
   "processing_metrics": {
     "react_steps": 5.0,
     "react_latency_ms": 0.0,
-    "reasoning_time_ms": 4.0,
+    "reasoning_time_ms": 1146.0,
     "reasoning_steps": 4.0,
     "reasoning_version": 1.0,
     "reasoning_progress_percent": 98.0,

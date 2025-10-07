@@ -4,7 +4,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 from src.application.services.cash_policy_service import CashPolicyService
 
@@ -30,8 +30,8 @@ class CashPolicyModel(BaseModel):
     notes: Optional[str] = Field(None, description="Notas operativas")
     updated_at: Optional[str] = Field(None, description="Última actualización ISO8601")
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
+
 
 
 class UpdateCashPolicyRequest(BaseModel):
@@ -59,7 +59,7 @@ async def upsert_cash_policy(
     service: CashPolicyService = Depends(get_cash_policy_service),
 ) -> Dict[str, Any]:
     try:
-        return await service.upsert_policy(channel, request.dict(exclude_unset=True))
+        return await service.upsert_policy(channel, request.model_dump(exclude_unset=True))
     except ValueError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 

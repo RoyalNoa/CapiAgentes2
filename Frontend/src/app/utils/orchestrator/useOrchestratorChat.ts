@@ -370,16 +370,6 @@ export function useOrchestratorChat(clientId: string = 'default'): HookReturn {
     appendUserMessage(text);
     setLoading(true);
 
-    // Add progress indicator message
-    const progressMessage = {
-      id: genId(),
-      role: 'agent' as const,
-      agent: 'system',
-      content: '🔍 Analizando consulta...',
-      payload: { is_progress: true, progress_step: 'analyzing' }
-    };
-    setMessages(prev => [...prev, progressMessage]);
-
     const sock = socketRef.current;
     const payload = { instruction: text, client_id: clientId };
 

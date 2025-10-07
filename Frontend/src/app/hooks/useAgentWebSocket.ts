@@ -13,10 +13,11 @@ Propósito: Comunicación en tiempo real con sistema de agentes
 
 'use client';
 
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback, useMemo } from 'react';
+import { getApiBase } from '@/app/utils/orchestrator/client';
 
 export interface AgentEvent {
-  type: 'node_transition' | 'agent_start' | 'agent_end' | 'connection' | 'history' | 'state' | 'pong' | 'error';
+  type: 'node_transition' | 'agent_start' | 'agent_end' | 'agent_progress' | 'connection' | 'history' | 'state' | 'pong' | 'error';
   id?: string;
   timestamp?: string;
   session_id?: string;
@@ -49,11 +50,32 @@ interface UseAgentWebSocketReturn {
   sendPing: () => void;
 }
 
+function buildAgentWebSocketUrl(explicitUrl?: string): string {
+  const trimmed = explicitUrl?.trim();
+  if (trimmed) {
+    return trimmed;
+  }
+
+  try {
+    const apiBase = getApiBase();
+    const parsed = new URL(apiBase);
+    parsed.protocol = parsed.protocol === 'https:' ? 'wss:' : 'ws:';
+    parsed.pathname = '/ws/agents';
+    parsed.search = '';
+    parsed.hash = '';
+    return parsed.toString();
+  } catch (error) {
+    console.warn('Falling back to default agent WebSocket URL', error);
+    return 'ws://localhost:8000/ws/agents';
+  }
+}
+
 const MAX_EVENTS = 100;
 const RECONNECT_ATTEMPTS = 3;
 const RECONNECT_DELAY = 2000;
 
-export function useAgentWebSocket(url: string = 'ws://localhost:8000/ws/agents'): UseAgentWebSocketReturn {
+export function useAgentWebSocket(rawUrl?: string): UseAgentWebSocketReturn {
+  const wsUrl = useMemo(() => buildAgentWebSocketUrl(rawUrl), [rawUrl]);
   const [isConnected, setIsConnected] = useState(false);
   const [connectionState, setConnectionState] = useState<'connecting' | 'connected' | 'disconnected' | 'error'>('disconnected');
   const [events, setEvents] = useState<AgentEvent[]>([]);
@@ -117,7 +139,8 @@ export function useAgentWebSocket(url: string = 'ws://localhost:8000/ws/agents')
           break;
         }
         case 'agent_start':
-        case 'agent_end': {
+        case 'agent_end':
+        case 'agent_progress': {
           const agentEvent = data as AgentEvent;
           addEvent(agentEvent);
           if (agentEvent.session_id) {
@@ -168,7 +191,7 @@ export function useAgentWebSocket(url: string = 'ws://localhost:8000/ws/agents')
     setConnectionState('connecting');
 
     try {
-      wsRef.current = new WebSocket(url);
+      wsRef.current = new WebSocket(wsUrl);
 
       wsRef.current.onopen = () => {
         console.log('Agent WebSocket connected');
@@ -205,7 +228,7 @@ export function useAgentWebSocket(url: string = 'ws://localhost:8000/ws/agents')
       console.error('Failed to create WebSocket connection:', error);
       setConnectionState('error');
     }
-  }, [url, handleMessage]);
+  }, [wsUrl, handleMessage]);
 
   const attemptReconnect = useCallback(() => {
     if (isManualDisconnectRef.current || reconnectAttemptRef.current >= RECONNECT_ATTEMPTS) {

@@ -42,19 +42,20 @@ build_cache/
 **/venv/
 **/env/
 
+# Environment files
+.env
+Frontend/.env.local
+Backend/.env.local
+!**/.env.example
+
 # Application logs (runtime generated)
 logs/
 **/logs/
 !logs/.gitkeep
 
-# Environment files - TRACK main .env for team collaboration
-# Only exclude local development overrides
-Frontend/.env.local
-Backend/.env.local
-# Track main .env and examples for team setup
-!.env
-!.env.example
-!**/.env.example
+# Local assistant artifacts
+.claude/
+.zero/
 
 # OS and Editor files
 .DS_Store
@@ -64,6 +65,11 @@ Thumbs.db
 .vscode/settings.json
 .vscode/launch.json
 .idea/
+
+# Secrets and runtime caches
+secrets/
+voice_cache/
+**/voice_cache/*
 
 # Generated executables (PyInstaller output)
 *.exe
@@ -85,6 +91,9 @@ executable_output/
 **/*.sqlite
 **/*.sqlite3
 
+# TypeScript incremental builds
+**/tsconfig.tsbuildinfo
+
 # Temporary files
 **/tmp/
 **/temp/
@@ -94,3 +103,5 @@ executable_output/
 # Important: .npmrc, package.json, requirements.txt,
 # docker-compose.yml, and configuration files ARE tracked
 ############################################################
+# Ignore local session snapshots
+**/ia_workspace/data/sessions/*

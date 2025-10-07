@@ -109,7 +109,10 @@ class GraphState(BaseModel):
             "current_node": self.current_node,
             "completed_nodes": self.completed_nodes,
             "detected_intent": self.detected_intent.value if self.detected_intent else None,
-            "agent_results": {k: (v.dict() if hasattr(v, "dict") else v) for k, v in self.agent_results.items()},
+            "agent_results": {
+                k: (v.model_dump() if hasattr(v, "model_dump") else v.dict() if hasattr(v, "dict") else v)
+                for k, v in self.agent_results.items()
+            },
             "processing_metrics": self.processing_metrics,
             "reasoning_trace": self.reasoning_trace,
             "reasoning_summary": self.reasoning_summary,

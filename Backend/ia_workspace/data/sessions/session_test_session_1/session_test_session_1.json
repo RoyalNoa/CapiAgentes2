@@ -2,7 +2,7 @@
   "created_at": "2025-09-25T04:36:42.740771",
   "session_id": "test_session_1",
   "sanitized_session_id": "test_session_1",
-  "updated_at": "2025-09-25T05:04:40.999661",
+  "updated_at": "2025-10-07T00:09:54.477775",
   "datab_exports": [],
   "status": "completed",
   "active_agent": "smalltalk",
@@ -47,11 +47,11 @@
         }
       ],
       "reasoning_plan": {
-        "plan_id": "c6151552-a006-4ed2-af4e-8885bb81d3b7",
+        "plan_id": "9b91b6c1-9ff5-4900-9834-e4c75337c159",
         "version": 1,
         "intent": "greeting",
         "goal": "Mantener interacción cordial y guiar a capacidades",
-        "confidence": 0.9,
+        "confidence": 0.95,
         "recommended_agent": "summary",
         "fallback_agent": "assemble",
         "rationale": "Se identificó interacción social; se prepara una respuesta cordial con monitor de intención latente para escalar si aparecen necesidades de negocio.",
@@ -92,13 +92,13 @@
           "intent"
         ],
         "supporting_evidence": {
-          "progress_percent": 92.5,
+          "progress_percent": 97.5,
           "remaining_steps": 3,
           "estimated_effort_seconds": 50,
           "complexity": "medium",
           "entities": {},
           "context_used": false,
-          "semantic_confidence": 0.2,
+          "semantic_confidence": 1.0,
           "available_agents": [
             "anomaly",
             "branch",
@@ -109,11 +109,11 @@
           "user_id": "test_user",
           "session_id": "test_session_1"
         },
-        "generated_at": "2025-09-25T08:04:40.988487",
+        "generated_at": "2025-10-07T03:09:54.462017",
         "intent_alignment": false,
         "requires_replan": false,
         "history": [],
-        "progress_percent": 92.5,
+        "progress_percent": 97.5,
         "remaining_steps": 3,
         "complexity": "medium",
         "estimated_effort_seconds": 50
@@ -131,29 +131,204 @@
   "reasoning_summary": {
     "goal": "Mantener interacción cordial y guiar a capacidades",
     "recommended_agent": "summary",
-    "confidence": 0.9,
+    "confidence": 0.95,
     "version": 1,
     "cooperative_agents": [
       "intent"
     ],
-    "progress_percent": 92.5,
+    "progress_percent": 97.5,
     "remaining_steps": 3,
     "complexity": "medium",
     "estimated_effort_seconds": 50,
-    "remaining_percent": 7.5
+    "remaining_percent": 2.5
   },
   "processing_metrics": {
     "react_steps": 5.0,
     "react_latency_ms": 0.0,
-    "reasoning_time_ms": 4.0,
+    "reasoning_time_ms": 889.0,
     "reasoning_steps": 3.0,
     "reasoning_version": 1.0,
-    "reasoning_progress_percent": 92.5,
+    "reasoning_progress_percent": 97.5,
     "reasoning_eta_seconds": 50.0,
     "reasoning_remaining_steps": 3.0,
     "supervisor_latency_ms": 0.0,
     "supervisor_queue_length": 5.0
   },
   "shared_artifacts": {},
-  "errors": []
+  "errors": [],
+  "trace_id": "trace-1759806590.829115",
+  "user_id": "test_user",
+  "workflow_mode": "chat",
+  "response_metadata": {
+    "intent_reasoning": "Semantic pattern match: La consulta es un saludo amigable. (confidence=1.000, entities=0) | legacy patterns matched: \\b(hola|hello|hi|hey|buenos\\s+\\S+|buenas\\s+tardes|buenas\\s+noches)\\b",
+    "intent_matched_patterns": [
+      "semantic_pattern:greeting",
+      "\\b(hola|hello|hi|hey|buenos\\s+\\S+|buenas\\s+tardes|buenas\\s+noches)\\b"
+    ],
+    "react_trace": [
+      {
+        "thought": "Reviso el contexto reciente para entender la conversacion.",
+        "action": "summarize_context",
+        "observation": {
+          "summary": "Sin historial relevante.",
+          "recent_turns": []
+        }
+      },
+      {
+        "thought": "Verifico metricas previas para identificar senales relevantes.",
+        "action": "collect_metrics",
+        "params": {},
+        "iteration": 0,
+        "observation": {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      },
+      {
+        "thought": "Mantengo conversacion ligera acorde al saludo.",
+        "action": "smalltalk_memory",
+        "params": {},
+        "iteration": 1,
+        "observation": {
+          "observation": "Responder cordialmente.",
+          "memory_window": [],
+          "recommended_agent": "smalltalk"
+        }
+      },
+      {
+        "thought": "Mantengo conversacion ligera acorde al saludo.",
+        "action": "smalltalk_memory",
+        "params": {},
+        "iteration": 2,
+        "observation": {
+          "observation": "Responder cordialmente.",
+          "memory_window": [],
+          "recommended_agent": "smalltalk"
+        }
+      },
+      {
+        "thought": "Finalizo el ciclo ReAct con una recomendacion.",
+        "action": "finish",
+        "observation": {
+          "message": "Derivare la consulta 'Hola, Ã‚Â¿cÃƒÂ³mo estÃƒÂ¡s?' al agente 'smalltalk' con la evidencia recopilada.",
+          "recommended_agent": "smalltalk"
+        }
+      }
+    ],
+    "react_recommended_agent": "smalltalk",
+    "react_finished_at": "2025-10-07T00:09:53.572533",
+    "active_agent": "smalltalk",
+    "loop_fallback": "summary",
+    "react_follow_up": false,
+    "needs_retry": null,
+    "reasoning_plan": {
+      "plan_id": "9b91b6c1-9ff5-4900-9834-e4c75337c159",
+      "version": 1,
+      "intent": "greeting",
+      "goal": "Mantener interacción cordial y guiar a capacidades",
+      "confidence": 0.95,
+      "recommended_agent": "summary",
+      "fallback_agent": "assemble",
+      "rationale": "Se identificó interacción social; se prepara una respuesta cordial con monitor de intención latente para escalar si aparecen necesidades de negocio.",
+      "steps": [
+        {
+          "id": "T1",
+          "title": "Responder cordialmente",
+          "description": "Ofrecer una respuesta amable y mantener tono profesional.",
+          "agent": "summary",
+          "inputs": [],
+          "expected_output": "Respuesta en lenguaje natural",
+          "depends_on": []
+        },
+        {
+          "id": "T2",
+          "title": "Detectar intención latente",
+          "description": "Evaluar si el usuario esconde una necesidad de negocio tras el saludo.",
+          "agent": "intent",
+          "inputs": [],
+          "expected_output": "Posible intención secundaria",
+          "depends_on": [
+            "T1"
+          ]
+        },
+        {
+          "id": "T3",
+          "title": "Redirigir a capacidades clave",
+          "description": "Sugerir análisis o acciones disponibles según el contexto.",
+          "agent": "summary",
+          "inputs": [],
+          "expected_output": "Sugerencias contextualizadas",
+          "depends_on": [
+            "T2"
+          ]
+        }
+      ],
+      "cooperative_agents": [
+        "intent"
+      ],
+      "supporting_evidence": {
+        "progress_percent": 97.5,
+        "remaining_steps": 3,
+        "estimated_effort_seconds": 50,
+        "complexity": "medium",
+        "entities": {},
+        "context_used": false,
+        "semantic_confidence": 1.0,
+        "available_agents": [
+          "anomaly",
+          "branch",
+          "capi_datab",
+          "capi_desktop",
+          "summary"
+        ],
+        "user_id": "test_user",
+        "session_id": "test_session_1"
+      },
+      "generated_at": "2025-10-07T03:09:54.462017",
+      "intent_alignment": false,
+      "requires_replan": false,
+      "history": [],
+      "progress_percent": 97.5,
+      "remaining_steps": 3,
+      "complexity": "medium",
+      "estimated_effort_seconds": 50
+    },
+    "reasoning_confidence": 0.95,
+    "recommended_agent": "summary",
+    "reasoning_progress_percent": 97.5,
+    "reasoning_eta_seconds": 50,
+    "reasoning_remaining_steps": 3,
+    "reasoning_complexity": "medium",
+    "reasoning_needs_react": true,
+    "supervisor_queue": [
+      "smalltalk",
+      "summary",
+      "intent",
+      "anomaly",
+      "capi_desktop"
+    ],
+    "supervisor_selected": "smalltalk",
+    "supervisor_ran_at": "2025-10-07T00:09:54.463058",
+    "semantic_result": {
+      "intent": "unknown",
+      "confidence": 0.2,
+      "target_agent": "assemble",
+      "routing_agent": "summary",
+      "entities": {},
+      "reasoning": "Fallback classification executed (feature_flag_disabled)",
+      "requires_clarification": true,
+      "provider": "fallback",
+      "model": ""
+    },
+    "agent_type": "summary",
+    "summary_hash": "111ac8b4d4ae8fdc",
+    "is_repeated": false,
+    "deduplication_applied": true,
+    "assembled_at": "assemble",
+    "workflow_completed": true,
+    "total_nodes": 9
+  },
+  "routing_decision": "summary"
 }

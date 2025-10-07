@@ -37,6 +37,8 @@ interface GlobalChatContextType {
   switchSession: (sessionId: string) => void;
   refreshSessions: () => Promise<void>;
 
+  agentEvents: AgentEvent[];
+
 
   // Sucursal state (from maps integration)
   selectedSucursal: any;
@@ -439,6 +441,8 @@ export function GlobalChatProvider({ children }: GlobalChatProviderProps) {
     createNewSession,
     switchSession,
     refreshSessions,
+
+    agentEvents,
 
     // Sucursal state
     selectedSucursal,

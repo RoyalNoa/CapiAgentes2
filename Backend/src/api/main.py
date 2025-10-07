@@ -464,11 +464,12 @@ async def websocket_endpoint(ws: WebSocket) -> None:
             logger.info('[WEBSOCKET DEBUG] Using LangGraph orchestrator', extra=session_extra)
 
             try:
-                # Broadcast node transition: input â†’ intent
+                # Broadcast node transition: input → intent
                 await event_broadcaster.broadcast_node_transition(
                     from_node="input",
                     to_node="intent",
                     session_id=client_id,
+                    action="intent",
                     meta={"query": instruction[:100]}  # Truncate long queries
                 )
 
@@ -521,11 +522,12 @@ async def websocket_endpoint(ws: WebSocket) -> None:
                             meta={"response_type": response_type}
                         )
 
-                    # Broadcast node transition: agent â†’ response
+                    # Broadcast node transition: agent → response
                     await event_broadcaster.broadcast_node_transition(
                         from_node="execution",
                         to_node="response",
                         session_id=client_id,
+                        action="response",
                         meta={"agent": agent_name, "success": True}
                     )
 

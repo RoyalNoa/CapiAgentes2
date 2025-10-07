@@ -1,13 +1,16 @@
 import os
 from typing import Optional, List, Union
 from enum import Enum
+from types import SimpleNamespace
 
 # Pydantic v2: BaseSettings moved to pydantic_settings
 try:
-    from pydantic_settings import BaseSettings
+    from pydantic_settings import BaseSettings, SettingsConfigDict
 except ImportError:  # fallback if earlier version present
     from pydantic import BaseSettings  # type: ignore
+    SettingsConfigDict = dict  # type: ignore
 from pydantic import Field, field_validator, model_validator
+from pydantic.fields import ModelPrivateAttr
 
 
 class LogLevel(str, Enum):
@@ -28,7 +31,49 @@ class Environment(str, Enum):
 _BASE_ENV_SNAPSHOT = dict(os.environ)
 
 
+
+if not hasattr(ModelPrivateAttr, '__capi_env_patch__'):
+    _original_private_attr_getattr = getattr(ModelPrivateAttr, '__getattr__', None)
+    _original_private_attr_setattr = getattr(ModelPrivateAttr, '__setattr__', None)
+
+    def _capi_private_attr_getattr(self, item):
+        if _original_private_attr_getattr is not None:
+            try:
+                return _original_private_attr_getattr(self, item)
+            except AttributeError:
+                pass
+        default = getattr(self, 'default', None)
+        if default is not None and hasattr(default, item):
+            return getattr(default, item)
+        raise AttributeError(f"{type(self).__name__!r} object has no attribute {item!r}")
+
+    def _capi_private_attr_setattr(self, item, value):
+        if _original_private_attr_setattr is not None:
+            try:
+                return _original_private_attr_setattr(self, item, value)
+            except AttributeError:
+                pass
+        default = getattr(self, 'default', None)
+        if default is not None and hasattr(default, item):
+            setattr(default, item, value)
+            return
+        raise AttributeError(f"{type(self).__name__!r} object has no attribute {item!r}")
+
+    ModelPrivateAttr.__getattr__ = _capi_private_attr_getattr  # type: ignore[assignment]
+    ModelPrivateAttr.__setattr__ = _capi_private_attr_setattr  # type: ignore[assignment]
+    ModelPrivateAttr.__capi_env_patch__ = True  # type: ignore[attr-defined]
+
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=None,
+        env_file_encoding='utf-8',
+        case_sensitive=True,
+        use_enum_values=True,
+        extra='allow',
+    )
+
+    _config_proxy = SimpleNamespace(env_file=None, env_file_encoding='utf-8')
+
     # Application
     APP_NAME: str = Field(default="CapiAgentes API", description="Application name")
     APP_VERSION: str = Field(default="1.0.0", description="Application version")
@@ -83,8 +128,16 @@ class Settings(BaseSettings):
 
     def __init__(self, **values):
         # Honor dynamically patched Config.env_file/env_file_encoding (used in tests)
-        env_file = getattr(self.__class__.Config, 'env_file', None)
-        env_file_encoding = getattr(self.__class__.Config, 'env_file_encoding', 'utf-8')
+        proxy = getattr(self.__class__, '_config_proxy', None)
+        env_file_override = getattr(proxy, 'env_file', None) if proxy else None
+        env_file_encoding_override = getattr(proxy, 'env_file_encoding', None) if proxy else None
+
+        model_cfg = getattr(self.__class__, 'model_config', {}) or {}
+        env_file_default = model_cfg.get('env_file')
+        env_file_encoding_default = model_cfg.get('env_file_encoding', 'utf-8')
+
+        env_file = env_file_override if env_file_override is not None else env_file_default
+        env_file_encoding = env_file_encoding_override or env_file_encoding_default
         # Temporarily mask OS-level ENVIRONMENT if it's the same as baseline to avoid leaking into defaults
         masked = False
         backup = None
@@ -222,15 +275,11 @@ class Settings(BaseSettings):
         parts = [p.strip() for p in raw.split(',') if p.strip()]
         return parts or ["*"]
 
-    class Config:
-        # Let Pydantic read env vars and optional .env if explicitly provided by the runtime/tests
-        env_file = None
-        env_file_encoding = "utf-8"
-        case_sensitive = True
-        use_enum_values = True
-        extra = "allow"  # tolerate additional env vars not explicitly modeled
-
 from functools import lru_cache
+
+
+# Backward compatibility: allow tests to patch Settings.Config
+type(Settings).__setattr__(Settings, 'Config', Settings._config_proxy)  # type: ignore[attr-defined]
 
 
 @lru_cache(maxsize=1)

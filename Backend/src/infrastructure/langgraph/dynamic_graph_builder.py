@@ -240,8 +240,25 @@ class DynamicGraphBuilder(GraphBuilder):
         self.add_edge("react", "reasoning")
         self.add_edge("reasoning", "supervisor")
         self.add_edge("supervisor", "loop_controller")
-        self.add_edge("loop_controller", "router")
-        self.add_edge("loop_controller", "assemble")
+
+        # FIX: Loop controller should have CONDITIONAL edge, not both edges
+        # It should go to router OR assemble based on routing_decision
+        def _loop_controller_resolver(state: GraphState) -> str:
+            decision = getattr(state, "routing_decision", None)
+            if decision == "assemble":
+                return "assemble"
+            elif decision and decision != "assemble":
+                # Any other decision goes back to router
+                return "router"
+            else:
+                # Default to assemble if no decision
+                return "assemble"
+
+        self.add_conditional_edges(
+            "loop_controller",
+            _loop_controller_resolver,
+            {"router": "router", "assemble": "assemble"}
+        )
 
         def _safe_add_edge(src: str, dst: str) -> None:
             if (src, dst) not in self._edges:

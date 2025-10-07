@@ -1,0 +1,55 @@
+{
+  "events": [
+    {
+      "type": "agent_progress",
+      "agent": "capi_datab",
+      "session_id": "session-global-001",
+      "timestamp": "2025-10-06T15:47:18.012Z",
+      "content": "Consultando cash_movements (Sucursal Palermo)…",
+      "metadata": {
+        "stage": "start",
+        "tone": "progress",
+        "action": "database_query",
+        "content": "Consultando cash_movements (Sucursal Palermo)…",
+        "query": "saldo sucursal Palermo",
+        "operation": "select",
+        "table": "cash_movements",
+        "branch": "Sucursal Palermo"
+      }
+    },
+    {
+      "type": "agent_progress",
+      "agent": "capi_datab",
+      "session_id": "session-global-001",
+      "timestamp": "2025-10-06T15:47:18.820Z",
+      "content": "Sistema financiero: 12 registros procesados (Sucursal Palermo).",
+      "metadata": {
+        "stage": "success",
+        "tone": "success",
+        "action": "database_query",
+        "content": "Sistema financiero: 12 registros procesados (Sucursal Palermo).",
+        "rowcount": 12,
+        "branch": "Sucursal Palermo",
+        "operation": "select",
+        "table": "cash_movements",
+        "file": "DataB_20251006_124455.json"
+      }
+    },
+    {
+      "type": "agent_progress",
+      "agent": "capi_datab",
+      "session_id": "session-global-001",
+      "timestamp": "2025-10-06T15:47:19.104Z",
+      "content": "Sistema financiero reporta: timeout al conectar con Postgres",
+      "metadata": {
+        "stage": "error",
+        "tone": "error",
+        "action": "database_query",
+        "content": "Sistema financiero reporta: timeout al conectar con Postgres",
+        "detail": "timeout al conectar con Postgres",
+        "operation": "select",
+        "table": "cash_movements"
+      }
+    }
+  ]
+}

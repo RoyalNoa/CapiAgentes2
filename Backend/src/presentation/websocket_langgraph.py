@@ -66,9 +66,16 @@ class LangGraphWebSocketEndpoint:
                     )
 
                     # Send response
+                    if hasattr(response, "model_dump"):
+                        payload = response.model_dump()
+                    elif hasattr(response, "dict"):
+                        payload = response.dict()
+                    else:
+                        payload = str(response)
+
                     await websocket.send_json({
                         "type": "response",
-                        "data": response.dict() if hasattr(response, 'dict') else str(response)
+                        "data": payload
                     })
 
                 elif message.get("type") == "ping":
