@@ -8,12 +8,13 @@
 
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { ROUTES } from '@/app/utils/constants';
 import styles from './HUDNavigator.module.css';
+import { useNavigationMode } from '@/app/contexts/NavigationModeContext';
 
 const isRouteActive = (currentPath: string, target: string): boolean => {
   if (currentPath === target) {
@@ -30,9 +31,20 @@ const isRouteActive = (currentPath: string, target: string): boolean => {
 export default function HUDNavigator() {
   const pathname = usePathname();
   const router = useRouter();
+  const { isDeveloper } = useNavigationMode();
+
+  const visibleRoutes = useMemo(() => {
+    if (isDeveloper) {
+      return ROUTES;
+    }
+
+    return ROUTES.filter((route) => route.clientVisible);
+  }, [isDeveloper]);
 
   useEffect(() => {
-    ROUTES.forEach((route) => {
+    const routesToPrefetch = isDeveloper ? ROUTES : visibleRoutes;
+
+    routesToPrefetch.forEach((route) => {
       if (route.to !== pathname) {
         try {
           router.prefetch(route.to);
@@ -41,7 +53,7 @@ export default function HUDNavigator() {
         }
       }
     });
-  }, [pathname, router]);
+  }, [pathname, router, isDeveloper, visibleRoutes]);
 
   if (!pathname) {
     return null;
@@ -50,7 +62,7 @@ export default function HUDNavigator() {
   return (
     <nav className={styles.navigatorShell} aria-label="Global navigation">
       <ul className={styles.navigatorList}>
-        {ROUTES.map((route) => {
+        {visibleRoutes.map((route) => {
           const active = isRouteActive(pathname, route.to);
 
           return (
