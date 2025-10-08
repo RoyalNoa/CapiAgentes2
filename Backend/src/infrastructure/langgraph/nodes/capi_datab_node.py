@@ -257,12 +257,22 @@ class CapiDataBNode(GraphNode):
 
         alerts_persisted = False
         if shared_bucket.get("rows"):
+            el_cajas_node = None
+            original_inline_flag = True
             try:
                 el_cajas_node = CapiElCajasNode()
+                original_inline_flag = getattr(el_cajas_node, "_is_agent_node", False)
+                el_cajas_node._is_agent_node = False
                 updated = el_cajas_node.run(updated)
                 updated, alerts_persisted = self._persist_elcajas_alerts(updated)
             except Exception as exc:  # pragma: no cover - defensive logging
                 logger.error({"event": "capi_elcajas_inline_failed", "error": str(exc)})
+            finally:
+                if el_cajas_node is not None:
+                    try:
+                        el_cajas_node._is_agent_node = original_inline_flag
+                    except Exception:
+                        pass
 
         self._emit_agent_end(state, success=success, duration_ms=processing_ms)
         return updated

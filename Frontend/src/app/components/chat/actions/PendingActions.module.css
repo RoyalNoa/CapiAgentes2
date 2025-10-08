@@ -1,0 +1,194 @@
+/* PendingActions.module.css - Estilos para acciones pendientes */
+
+.container {
+  margin: 12px 16px 0;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.08), rgba(0, 229, 255, 0.03));
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Header de la acción */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Indicador pulsante */
+.indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--chat-primary, #00e5ff);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Etiqueta de acción requerida */
+.label {
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--chat-primary-alt, #7df9ff);
+}
+
+/* Tipo de acción */
+.actionType {
+  margin-left: auto;
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 10px;
+  color: rgba(214, 239, 255, 0.6);
+  letter-spacing: 0.04em;
+}
+
+/* Descripción de la acción */
+.description {
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 11px;
+  color: rgba(214, 239, 255, 0.95);
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+/* Detalles adicionales */
+.detail {
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 10px;
+  color: rgba(159, 190, 222, 0.75);
+  letter-spacing: 0.04em;
+}
+
+.detail span {
+  margin-left: 4px;
+}
+
+/* Valor destacado en detalles */
+.detailValue {
+  color: var(--chat-primary-alt, #7df9ff);
+}
+
+/* Valor normal en detalles */
+.detailNormal {
+  color: rgba(214, 239, 255, 0.95);
+}
+
+/* Resumen */
+.summary {
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 10px;
+  color: rgba(214, 239, 255, 0.95);
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+/* Contenedor de botones */
+.buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* Botón base */
+.button {
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: none;
+  text-transform: uppercase;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Botón de aprobar */
+.approveButton {
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(0, 229, 255, 0.1));
+  color: var(--chat-primary, #00e5ff);
+}
+
+.approveButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.3), rgba(0, 229, 255, 0.15));
+  border-color: rgba(0, 229, 255, 0.6);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+/* Botón de rechazar */
+.rejectButton {
+  border: 1px solid rgba(255, 107, 107, 0.5);
+  background: rgba(255, 107, 107, 0.12);
+  color: #ff6b6b;
+}
+
+.rejectButton:hover:not(:disabled) {
+  background: rgba(255, 107, 107, 0.18);
+  border-color: rgba(255, 107, 107, 0.7);
+  box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+}
+
+/* Estado de carga */
+.loading {
+  text-align: right;
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 9px;
+  color: rgba(159, 190, 222, 0.6);
+  letter-spacing: 0.04em;
+  animation: fadeInOut 1.5s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Media queries para móvil */
+@media (max-width: 768px) {
+  .container {
+    margin: 10px 12px 0;
+    padding: 12px 14px;
+  }
+
+  .label {
+    font-size: 10px;
+  }
+
+  .description {
+    font-size: 10px;
+  }
+
+  .detail {
+    font-size: 9px;
+  }
+
+  .button {
+    padding: 5px 12px;
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,487 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(8, 14, 26, 0.95), rgba(4, 9, 18, 0.94));
+  border-radius: 12px;
+}
+
+.feed {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;  /* Reducido de 16px */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;  /* Reducido de 8px a 4px */
+}
+
+.feed::-webkit-scrollbar {
+  width: 6px;
+}
+
+.feed::-webkit-scrollbar-thumb {
+  background: rgba(0, 229, 255, 0.15);
+  border-radius: 3px;
+}
+
+.sucursalCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(214, 239, 255, 0.85);
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 6px;
+  padding: 8px 16px; /* Unificado a 16px horizontal */
+}
+
+.sucursalCard button {
+  margin-left: 12px;
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 10px;
+  color: rgba(214, 239, 255, 0.7);
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.sucursalCard button:hover {
+  color: var(--chat-primary, rgba(0, 229, 255, 0.9));
+}
+
+.agentHeader {
+  margin-top: 1px;  /* Reducido aún más */
+  margin-bottom: 0px;  /* Sin margen inferior */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  color: var(--chat-primary-alt, rgba(0, 229, 255, 0.7));
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+}
+
+.eventRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 4px 0;
+  transition: padding-left 0.2s ease;
+}
+
+.indented {
+  padding-left: 18px;
+  border-left: 1px solid rgba(0, 229, 255, 0.08);
+}
+
+.eventBullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+  background: rgba(0, 229, 255, 0.6);
+}
+
+.eventBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.eventSummary {
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(214, 239, 255, 0.9);
+}
+
+.eventDetail {
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(159, 190, 222, 0.75);
+}
+
+.progress .eventBullet,
+.eventBulletActive {
+  background: var(--hud-warning);
+  box-shadow: 0 0 8px rgba(255, 154, 0, 0.45);
+}
+
+.progress .eventSummary {
+  color: var(--hud-warning-light, #ffbf70);
+}
+
+.success .eventBullet,
+.eventBulletCompleted {
+  background: var(--chat-primary);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+}
+
+.success .eventSummary {
+  color: rgba(125, 249, 255, 0.95);
+}
+
+.warning .eventBullet {
+  background: var(--hud-warning-alt, #ffcc33);
+  box-shadow: 0 0 8px rgba(255, 204, 51, 0.4);
+}
+
+.warning .eventSummary {
+  color: var(--hud-warning-light-alt, #ffd47a);
+}
+
+.info .eventBullet {
+  background: var(--chat-info, #5ad1ff);
+  box-shadow: 0 0 8px rgba(90, 209, 255, 0.45);
+}
+
+.info .eventSummary {
+  color: var(--chat-info-light, #a6e8ff);
+}
+
+.error .eventBullet {
+  background: var(--hud-error, #ff5c77);
+  box-shadow: 0 0 12px rgba(255, 92, 119, 0.55);
+}
+
+.error .eventSummary {
+  color: var(--hud-error-light, #ff8097);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+/* Morphing text animation */
+.morphingText {
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--hud-warning, var(--hud-warning));
+  margin: 8px 0;
+  padding-left: 16px;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.morphingText.withShimmer {
+  background: linear-gradient(
+    90deg,
+    var(--hud-warning) 0%,
+    var(--hud-warning) 35%,
+    #ffffff 50%,
+    var(--hud-warning) 65%,
+    var(--hud-warning) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  animation: whiteGlowSweep 1s linear 2;
+}
+
+@keyframes whiteGlowSweep {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.morphingText.completed {
+  color: rgba(125, 249, 255, 0.95);
+}
+
+/* Orchestrator message container */
+.orchestratorMessage {
+  display: flex;
+  align-items: center;
+  gap: 8px;  /* Reducido de 12px */
+  padding: 6px 16px;  /* Reducido de 8px */
+  margin: 4px 0;  /* Reducido de 8px */
+}
+
+/* Processing indicator dots */
+.processingIndicator {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.processingDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--hud-warning);
+  animation: processingPulse 1.5s ease-in-out infinite; /* Unificado a 1.5s */
+}
+
+.processingDot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.processingDot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes processingPulse {
+  0%, 60%, 100% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+}
+
+/* Event container styling for new simulation */
+.eventContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;  /* Reducido de 8px */
+  padding: 1px 16px;  /* Reducido aún más */
+  margin: 0;  /* Sin margen vertical */
+  transition: all 0.3s ease;
+}
+
+.eventContainerActive {
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Event text styling for simulation */
+.eventText {
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(214, 239, 255, 0.7);
+  transition: color 0.3s ease;
+}
+
+.eventTextActive {
+  color: var(--hud-warning);
+}
+
+.eventTextCompleted {
+  color: rgba(125, 249, 255, 0.95);
+}
+
+/* Morphing phase styles */
+.morphingText.waitingBatch {
+    color: var(--hud-warning);
+    background: linear-gradient(
+      90deg,
+      var(--hud-warning) 0%,
+      var(--hud-warning) 35%,
+      #ffffff 50%,
+      var(--hud-warning) 65%,
+      var(--hud-warning) 100%
+    );
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: whiteGlowSweep 1.4s linear infinite;
+  }
+
+  .morphingText.final {
+    color: rgba(125, 249, 255, 0.95);
+    background: none;
+    -webkit-text-fill-color: currentColor;
+  }
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.pendingActions {
+  padding: 0 16px 12px;
+}
+
+.voiceStatus {
+  padding: 8px 16px; /* Unificado a 16px horizontal */
+  background: rgba(255, 107, 107, 0.1);
+  border-top: 1px solid rgba(255, 107, 107, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.voiceNotice {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(159, 190, 222, 0.75);
+}
+
+.voicePartial {
+  color: rgba(214, 239, 255, 0.9);
+}
+
+.voiceError {
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #ff6b6b;
+}
+
+.inputRow {
+  padding: 12px 16px 16px;
+  border-top: 1px solid rgba(0, 229, 255, 0.08);
+}
+
+.voiceButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.voiceButton:hover {
+  border-color: rgba(0, 229, 255, 0.45);
+}
+
+.voiceButtonContent {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.voiceButtonActive {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.12), rgba(0, 229, 255, 0.25));
+  transform: scale(1.05);
+}
+
+.voiceButtonLabel {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(214, 239, 255, 0.88);
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  text-transform: uppercase;
+}
+
+/* Bot\u00f3n de micr\u00f3fono para grabaci\u00f3n de voz */
+.micButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  background-color: var(--chat-primary);
+}
+
+.micButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.micButton.pressed {
+  background-color: var(--hud-error);
+  transform: scale(1.1);
+}
+
+.micButton.recording {
+  background-color: var(--hud-warning);
+  animation: recordPulse 1.5s ease-in-out infinite; /* Unificado a 1.5s */
+}
+
+@keyframes recordPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 153, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 153, 0, 0.8);
+  }
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .feed {
+    padding: 12px;
+    gap: 6px;
+  }
+
+  .morphingText {
+    font-size: 11px;
+    padding-left: 12px;
+  }
+
+  .eventSummary {
+    font-size: 11px;
+  }
+
+  .eventText {
+    font-size: 11px;
+  }
+
+  .eventDetail {
+    font-size: 10px;
+  }
+
+  .agentHeader {
+    font-size: 10px;
+  }
+
+  .eventContainer {
+    padding: 2px 12px;
+    margin: 1px 0;
+  }
+
+  .orchestratorMessage {
+    padding: 4px 12px;  /* Reducido más para móvil */
+    margin: 3px 0;  /* Reducido para móvil */
+  }
+
+  .sucursalCard {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .voiceStatus {
+    padding: 6px 10px;
+  }
+
+  .inputRow {
+    padding: 10px 12px 12px;
+  }
+}
+
+
+
+
+

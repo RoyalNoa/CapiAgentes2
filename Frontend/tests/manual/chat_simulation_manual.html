@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Chat Simulación - CapiAgentes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #00e5ff;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #00e5ff;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+        }
+        .test-section {
+            background: rgba(0, 229, 255, 0.05);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        button {
+            background: linear-gradient(135deg, #00e5ff, #0099cc);
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 229, 255, 0.5);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .console {
+            background: #000;
+            border: 1px solid #00e5ff;
+            border-radius: 4px;
+            padding: 15px;
+            height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin: 20px 0;
+        }
+        .log-entry {
+            margin: 5px 0;
+            padding: 5px;
+            border-left: 3px solid transparent;
+        }
+        .log-info { border-left-color: #00e5ff; color: #00e5ff; }
+        .log-success { border-left-color: #00ff00; color: #00ff00; }
+        .log-warning { border-left-color: #ffaa00; color: #ffaa00; }
+        .log-error { border-left-color: #ff0066; color: #ff0066; }
+        .log-debug { border-left-color: #999; color: #999; }
+
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+        .status-connected { background: #00ff00; }
+        .status-disconnected { background: #ff0066; }
+        .status-connecting { background: #ffaa00; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Test Chat Simulación - CapiAgentes</h1>
+
+        <div class="test-section">
+            <h2>Estado de Conexiones</h2>
+            <div>
+                <span class="status-indicator" id="wsStatus"></span>
+                <span id="wsStatusText">WebSocket: Desconectado</span>
+            </div>
+            <div>
+                <span class="status-indicator" id="apiStatus"></span>
+                <span id="apiStatusText">API Backend: Desconectado</span>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>Pruebas de Simulación</h2>
+            <div class="button-group">
+                <button onclick="testConnection()">1. Probar Conexión</button>
+                <button onclick="testSimpleQuery()">2. Consulta Simple</button>
+                <button onclick="testCompleteSimulation()">3. Simulación Completa</button>
+                <button onclick="testAgentEvents()">4. Eventos de Agentes</button>
+                <button onclick="clearConsole()">Limpiar Consola</button>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>Consola de Eventos</h2>
+            <div id="console" class="console"></div>
+        </div>
+    </div>
+
+    <script>
+        let ws = null;
+        let wsAgents = null;
+        const API_BASE = 'http://localhost:8000';
+        const WS_BASE = 'ws://localhost:8000';
+
+        // Logging helper
+        function log(message, type = 'info') {
+            const console = document.getElementById('console');
+            const timestamp = new Date().toLocaleTimeString();
+            const entry = document.createElement('div');
+            entry.className = `log-entry log-${type}`;
+            entry.textContent = `[${timestamp}] ${message}`;
+            console.appendChild(entry);
+            console.scrollTop = console.scrollHeight;
+        }
+
+        // WebSocket de Agentes
+        function connectAgentWebSocket() {
+            const wsUrl = `${WS_BASE}/ws/agents`;
+            log(`Conectando a WebSocket de agentes: ${wsUrl}`, 'info');
+
+            wsAgents = new WebSocket(wsUrl);
+
+            wsAgents.onopen = () => {
+                log('✅ WebSocket de agentes conectado', 'success');
+                document.getElementById('wsStatus').className = 'status-indicator status-connected';
+                document.getElementById('wsStatusText').textContent = 'WebSocket: Conectado';
+
+                // Solicitar historial
+                wsAgents.send(JSON.stringify({
+                    type: 'get_history',
+                    limit: 20
+                }));
+            };
+
+            wsAgents.onmessage = (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+
+                    // Log diferente según el tipo de evento
+                    switch(data.type) {
+                        case 'agent_start':
+                            log(`🎯 AGENT START: ${data.agent || 'unknown'} - ${data.meta?.content || 'Sin contenido'}`, 'info');
+                            break;
+                        case 'agent_end':
+                            log(`✅ AGENT END: ${data.agent || 'unknown'} (${data.duration_ms}ms)`, 'success');
+                            break;
+                        case 'node_transition':
+                            log(`🔄 NODE TRANSITION: ${data.from} → ${data.to}`, 'warning');
+                            break;
+                        default:
+                            log(`📦 Evento: ${data.type}`, 'debug');
+                    }
+
+                    // Mostrar detalles importantes
+                    if (data.meta?.content) {
+                        log(`   📝 Contenido: ${data.meta.content}`, 'debug');
+                    }
+
+                } catch (error) {
+                    log(`Error parsing WebSocket message: ${error.message}`, 'error');
+                }
+            };
+
+            wsAgents.onerror = (error) => {
+                log(`❌ Error en WebSocket: ${error}`, 'error');
+                document.getElementById('wsStatus').className = 'status-indicator status-disconnected';
+            };
+
+            wsAgents.onclose = () => {
+                log('WebSocket de agentes desconectado', 'warning');
+                document.getElementById('wsStatus').className = 'status-indicator status-disconnected';
+                document.getElementById('wsStatusText').textContent = 'WebSocket: Desconectado';
+            };
+        }
+
+        // Test Connection
+        async function testConnection() {
+            log('=== PRUEBA DE CONEXIÓN ===', 'info');
+
+            // Test API
+            try {
+                const response = await fetch(`${API_BASE}/api/health`);
+                const data = await response.json();
+                log(`✅ API Backend: ${data.status}`, 'success');
+                document.getElementById('apiStatus').className = 'status-indicator status-connected';
+                document.getElementById('apiStatusText').textContent = 'API Backend: Conectado';
+            } catch (error) {
+                log(`❌ Error conectando API: ${error.message}`, 'error');
+                document.getElementById('apiStatus').className = 'status-indicator status-disconnected';
+            }
+
+            // Connect WebSocket
+            if (!wsAgents || wsAgents.readyState !== WebSocket.OPEN) {
+                connectAgentWebSocket();
+            }
+        }
+
+        // Test Simple Query
+        async function testSimpleQuery() {
+            log('=== CONSULTA SIMPLE ===', 'info');
+
+            try {
+                const query = "Muestra un resumen de los datos financieros";
+                log(`Enviando: "${query}"`, 'info');
+
+                const response = await fetch(`${API_BASE}/api/command`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ instruction: query })
+                });
+
+                const data = await response.json();
+                log(`Respuesta recibida:`, 'success');
+                log(`Agent: ${data.agent}`, 'debug');
+                log(`Response: ${JSON.stringify(data.response?.respuesta).substring(0, 100)}...`, 'debug');
+
+                // Mostrar metadata
+                if (data.response?.metadata) {
+                    log(`Nodos completados: ${data.response.metadata.completed_nodes?.join(' → ')}`, 'info');
+                }
+
+            } catch (error) {
+                log(`❌ Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Test Complete Simulation
+        async function testCompleteSimulation() {
+            log('=== SIMULACIÓN COMPLETA ===', 'info');
+            log('Verificando que los eventos lleguen con contenido...', 'warning');
+
+            // Limpiar eventos previos
+            let eventCount = 0;
+            let events = [];
+
+            // Escuchar eventos por 10 segundos
+            const originalHandler = wsAgents.onmessage;
+
+            wsAgents.onmessage = (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+                    eventCount++;
+                    events.push(data);
+
+                    // Log especial para simulación
+                    if (data.type === 'agent_start' || data.type === 'agent_end') {
+                        const content = data.meta?.content || data.data?.content || 'SIN CONTENIDO';
+                        log(`📊 [${eventCount}] ${data.type}: ${data.agent} - "${content}"`,
+                            content !== 'SIN CONTENIDO' ? 'success' : 'error');
+                    }
+                } catch (error) {
+                    log(`Error: ${error.message}`, 'error');
+                }
+            };
+
+            // Hacer la consulta
+            try {
+                const queries = [
+                    "Analiza los datos financieros",
+                    "Detecta anomalías en las transacciones",
+                    "¿Cuál es el saldo de la sucursal 001?"
+                ];
+
+                const query = queries[Math.floor(Math.random() * queries.length)];
+                log(`📤 Enviando: "${query}"`, 'info');
+
+                const response = await fetch(`${API_BASE}/api/command`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ instruction: query })
+                });
+
+                const data = await response.json();
+
+                // Esperar un poco para recibir todos los eventos
+                setTimeout(() => {
+                    log(`📈 RESUMEN DE SIMULACIÓN:`, 'warning');
+                    log(`   Total eventos recibidos: ${eventCount}`, 'info');
+                    log(`   Eventos con contenido: ${events.filter(e => e.meta?.content).length}`,
+                        events.some(e => e.meta?.content) ? 'success' : 'error');
+                    log(`   Agentes involucrados: ${[...new Set(events.map(e => e.agent).filter(Boolean))].join(', ')}`, 'info');
+
+                    // Verificar si los eventos tienen contenido
+                    if (!events.some(e => e.meta?.content)) {
+                        log('⚠️ PROBLEMA: Los eventos NO tienen contenido descriptivo', 'error');
+                        log('   El backend debe enviar meta.content en base.py', 'warning');
+                    } else {
+                        log('✅ Los eventos tienen contenido descriptivo', 'success');
+                    }
+
+                    // Restaurar handler original
+                    wsAgents.onmessage = originalHandler;
+                }, 3000);
+
+            } catch (error) {
+                log(`❌ Error: ${error.message}`, 'error');
+                wsAgents.onmessage = originalHandler;
+            }
+        }
+
+        // Test Agent Events
+        async function testAgentEvents() {
+            log('=== PRUEBA EVENTOS DE AGENTES ===', 'info');
+
+            if (!wsAgents || wsAgents.readyState !== WebSocket.OPEN) {
+                log('WebSocket no conectado, conectando...', 'warning');
+                connectAgentWebSocket();
+                setTimeout(testAgentEvents, 2000);
+                return;
+            }
+
+            // Enviar ping
+            log('Enviando ping...', 'info');
+            wsAgents.send(JSON.stringify({
+                type: 'ping',
+                timestamp: new Date().toISOString()
+            }));
+
+            // Solicitar historial
+            log('Solicitando historial de eventos...', 'info');
+            wsAgents.send(JSON.stringify({
+                type: 'get_history',
+                limit: 10
+            }));
+        }
+
+        function clearConsole() {
+            document.getElementById('console').innerHTML = '';
+            log('Consola limpiada', 'info');
+        }
+
+        // Auto-conectar al cargar
+        window.onload = () => {
+            log('Sistema de pruebas iniciado', 'info');
+            log('Ejecuta las pruebas en orden para verificar la simulación', 'warning');
+            testConnection();
+        };
+    </script>
+</body>
+</html>

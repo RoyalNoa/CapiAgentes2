@@ -513,6 +513,44 @@ class LangGraphRuntime:
         except Exception as exc:  # pragma: no cover - defensive logging
             logger.debug({"event": "state_snapshot_failed", "error": str(exc)})
 
+    def _map_node_to_action(self, node_name: str) -> str:
+        """
+        Map node name to semantic action type for frontend display.
+
+        Args:
+            node_name: Name of the node (e.g., "intent", "router", "summary")
+
+        Returns:
+            Semantic action string (e.g., "intent", "router", "summary_generation")
+        """
+        node_lower = node_name.lower()
+
+        action_map = {
+            # Orchestration nodes
+            'start': 'start',
+            'intent': 'intent',
+            'router': 'router',
+            'supervisor': 'supervisor',
+            'react': 'react',
+            'reasoning': 'reasoning',
+            'human_gate': 'human_gate',
+            'assemble': 'assemble',
+            'finalize': 'finalize',
+
+            # Agent nodes
+            'summary': 'summary_generation',
+            'branch': 'branch_analysis',
+            'anomaly': 'anomaly_detection',
+            'capidatab': 'database_query',
+            'capielcajas': 'branch_operations',
+            'capidesktop': 'desktop_operation',
+            'capinoticias': 'news_analysis',
+            'smalltalk': 'conversation',
+        }
+
+        return action_map.get(node_lower, node_name.lower())
+
+
     def _emit_transition(
         self,
         from_node: Optional[str],
@@ -520,16 +558,36 @@ class LangGraphRuntime:
         session_id: str,
         state: GraphState,
     ) -> None:
+        """Emit node transition event with semantic action type and inter-agent metadata."""
+
         if not self.event_broadcaster or not from_node or not to_node:
             return
+
+        # NUEVO: Determine semantic action type based on target node
+        action = self._map_node_to_action(to_node)
+
+        # Build metadata
+        meta = {
+            "trace_id": state.trace_id,
+            "completed_nodes": list(state.completed_nodes),
+        }
+
+        # NUEVO: Extract target_agent/routing_agent from state metadata
+        if state.response_metadata:
+            semantic_result = state.response_metadata.get("semantic_result", {})
+
+            if semantic_result.get("target_agent"):
+                meta["target_agent"] = semantic_result["target_agent"]
+
+            if semantic_result.get("routing_agent"):
+                meta["routing_agent"] = semantic_result["routing_agent"]
+
         coro = self.event_broadcaster.broadcast_node_transition(
             from_node,
             to_node,
             session_id,
-            meta={
-                "trace_id": state.trace_id,
-                "completed_nodes": list(state.completed_nodes),
-            },
+            action=action,  # ← NUEVO: semantic action type
+            meta=meta,      # ← INCLUYE target_agent/routing_agent
         )
         self._dispatch_async(coro, "node_transition")
 
@@ -545,15 +603,20 @@ class LangGraphRuntime:
             except Exception as exc:  # pragma: no cover
                 logger.debug({"event": "async_dispatch_failed", "step": description, "error": str(exc)})
         else:
-            task = loop.create_task(coro)
-
-            def _log_failure(task: asyncio.Task) -> None:
-                with suppress(asyncio.CancelledError):
-                    exc = task.exception()
-                if exc:
+            # CRITICAL FIX: Use run_coroutine_threadsafe for true immediate execution
+            # This forces the event to be sent RIGHT NOW, not queued
+            async def _emit_with_flush():
+                try:
+                    await coro
+                    # Force immediate flush by yielding control
+                    await asyncio.sleep(0)
+                except Exception as exc:
                     logger.debug({"event": "async_task_failed", "step": description, "error": str(exc)})
 
-            task.add_done_callback(_log_failure)
+            # Force immediate execution - this is the key!
+            future = asyncio.run_coroutine_threadsafe(_emit_with_flush(), loop)
+            # Don't wait for result - fire and forget
+            future.add_done_callback(lambda f: f.exception() if not f.cancelled() else None)
 
     # ------------------------------------------------------------------
     # Respuestas y metadatos

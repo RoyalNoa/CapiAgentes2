@@ -3,7 +3,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { FolderIcon, SparklesIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { useGlobalChat } from '@/app/contexts/GlobalChatContext';
-import SimpleChatBox from './SimpleChatBox';
+import { SimpleChatBox } from '.';
 import styles from './GlobalChatOverlay.module.css';
 import SessionFilesViewer from './SessionFilesViewer';
 
@@ -24,12 +24,12 @@ export default function GlobalChatOverlay() {
   const {
     isOpen,
     setIsOpen,
-    selectedSucursal,
-    setSelectedSucursal,
     chatWidth,
     setChatWidth,
     chatPosition,
     setChatPosition,
+    selectedSucursal,
+    setSelectedSucursal,
     showSidebar,
     setShowSidebar,
     activeSessionId,

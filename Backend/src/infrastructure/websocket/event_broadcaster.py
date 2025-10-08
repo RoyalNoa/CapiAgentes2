@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import json
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, Any, Set, Optional, List
 from fastapi import WebSocket
 import asyncio
@@ -69,31 +69,29 @@ class AgentEventBroadcaster:
         from_node: str,
         to_node: str,
         session_id: str,
+        action: Optional[str] = None,
         meta: Optional[Dict[str, Any]] = None
-    ):
-        """
-        Broadcast node transition event.
+    ) -> None:
+        """Broadcast node transition event with semantic action type."""
+        meta = meta or {}
 
-        Args:
-            from_node: Source node ID
-            to_node: Target node ID
-            session_id: Session identifier
-            meta: Additional metadata
-        """
         payload = {
             "from": from_node,
             "to": to_node,
-            **(meta or {})
+            "session_id": session_id,
+            **meta
         }
+
+        if action:
+            payload["action"] = action
+
         event = {
             "type": "node_transition",
             "id": str(uuid.uuid4()),
-            "timestamp": datetime.now().isoformat(),
-            "from": from_node,
-            "to": to_node,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "session_id": session_id,
-            "meta": meta or {},
-            "data": payload
+            "data": payload,
+            "meta": meta
         }
 
         await self._broadcast_event(event)
@@ -102,28 +100,29 @@ class AgentEventBroadcaster:
         self,
         agent_name: str,
         session_id: str,
+        action: Optional[str] = None,
         meta: Optional[Dict[str, Any]] = None
-    ):
-        """
-        Broadcast agent start event.
+    ) -> None:
+        """Broadcast agent start event with semantic action type."""
+        meta = meta or {}
 
-        Args:
-            agent_name: Name of the agent starting execution
-            session_id: Session identifier
-            meta: Additional metadata (e.g., input_tokens)
-        """
         payload = {
             "agent": agent_name,
-            **(meta or {})
+            "session_id": session_id,
+            **meta
         }
+
+        if action:
+            payload["action"] = action
+
         event = {
             "type": "agent_start",
             "id": str(uuid.uuid4()),
-            "timestamp": datetime.now().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "agent": agent_name,
             "session_id": session_id,
-            "meta": meta or {},
-            "data": payload
+            "data": payload,
+            "meta": meta
         }
 
         await self._broadcast_event(event)
@@ -134,37 +133,38 @@ class AgentEventBroadcaster:
         session_id: str,
         success: bool = True,
         duration_ms: Optional[float] = None,
+        action: Optional[str] = None,
         meta: Optional[Dict[str, Any]] = None
-    ):
-        """
-        Broadcast agent end event.
+    ) -> None:
+        """Broadcast agent end event with semantic action type."""
+        meta = meta or {}
 
-        Args:
-            agent_name: Name of the agent that finished
-            session_id: Session identifier
-            success: Whether execution was successful
-            duration_ms: Execution duration in milliseconds
-            meta: Additional metadata (e.g., output_tokens)
-        """
         payload = {
             "agent": agent_name,
+            "session_id": session_id,
             "success": success,
-            **(meta or {})
+            **meta
         }
+
+        if action:
+            payload["action"] = action
+
+        if duration_ms is not None:
+            payload["duration_ms"] = duration_ms
+
         event = {
             "type": "agent_end",
             "id": str(uuid.uuid4()),
-            "timestamp": datetime.now().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "agent": agent_name,
             "session_id": session_id,
             "ok": success,
-            "meta": meta or {},
-            "data": payload
+            "data": payload,
+            "meta": meta
         }
 
         if duration_ms is not None:
             event["duration_ms"] = duration_ms
-            payload["duration_ms"] = duration_ms
 
         await self._broadcast_event(event)
 
@@ -188,6 +188,9 @@ class AgentEventBroadcaster:
         for connection in self._connections:
             try:
                 await connection.send_text(message)
+                # CRITICAL FIX: Force immediate flush of WebSocket buffer
+                # This ensures event is sent immediately, not batched
+                await asyncio.sleep(0)  # Yield control to allow immediate send
             except Exception as e:
                 logger.warning(f"Failed to send WebSocket message: {e}")
                 disconnected.add(connection)
@@ -196,7 +199,7 @@ class AgentEventBroadcaster:
         for conn in disconnected:
             self._connections.discard(conn)
 
-        logger.debug(f"Broadcasted {event['type']} event to {len(self._connections)} connections")
+        logger.info(f"Broadcasted {event['type']} event to {len(self._connections)} connections")
 
     def _add_to_history(self, event: Dict[str, Any]):
         """Add event to internal history for debugging."""

@@ -112,6 +112,29 @@ class EnhancedRuntimeGraph:
         snapshot = self._state_snapshot(state)
         self._event_broadcaster.update_session_state(session_id, snapshot)
 
+    def _map_node_to_action(self, node_name: str) -> str:
+        """Map node name to semantic action type for frontend display."""
+        node_lower = node_name.lower()
+
+        action_map = {
+            'intent': 'intent',
+            'planner': 'planner',
+            'analysis': 'analysis',
+            'research': 'research',
+            'execution': 'execution',
+            'validation': 'validation',
+            'response': 'response',
+            'supervisor': 'planner',
+            'router': 'intent',
+            'summary': 'summary_generation',
+            'branch': 'branch_analysis',
+            'anomaly': 'anomaly_detection',
+            'datab': 'database_query',
+            'capidatab': 'database_query',
+        }
+
+        return action_map.get(node_lower, node_name.lower())
+
     def _emit_transition(self, previous: str, following: Optional[str], session_id: str, state: GraphState, step_index: int):
         if not self._event_broadcaster or not previous:
             return
@@ -126,11 +149,14 @@ class EnhancedRuntimeGraph:
             'state': snapshot,
         }
         clean_meta = {k: v for k, v in meta.items() if v is not None}
+        # Map node to semantic action
+        action = self._map_node_to_action(following) if following else None
         self._schedule_event(
             self._event_broadcaster.broadcast_node_transition(
                 from_node=previous,
                 to_node=following,
                 session_id=session_id or 'unknown',
+                action=action,
                 meta=clean_meta
             )
         )

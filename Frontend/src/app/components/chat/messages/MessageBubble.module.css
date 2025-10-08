@@ -1,0 +1,176 @@
+/* MessageBubble.module.css - Estilos para burbujas de mensajes */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 8px;
+}
+
+/* Header del mensaje */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.headerUser {
+  justify-content: flex-end;
+}
+
+.headerBot {
+  justify-content: flex-start;
+}
+
+/* Avatar */
+.avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  flex-shrink: 0;
+}
+
+.avatarBot {
+  background: linear-gradient(135deg, var(--chat-primary, #00e5ff), var(--chat-primary-alt, #7df9ff));
+  color: #0a0f1c;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+}
+
+.avatarUser {
+  background: linear-gradient(135deg, rgba(214, 239, 255, 0.6), rgba(214, 239, 255, 0.4));
+  color: #0a0f1c;
+}
+
+/* Nombre del sender */
+.senderName {
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 11px;
+  color: rgba(214, 239, 255, 0.6);
+  letter-spacing: 0.04em;
+}
+
+/* Timestamp */
+.timestamp {
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 10px;
+  color: rgba(214, 239, 255, 0.4);
+  letter-spacing: 0.02em;
+}
+
+.timestampUser {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.timestampBot {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Contenedor del contenido */
+.messageWrapper {
+  display: flex;
+}
+
+.messageWrapperUser {
+  justify-content: flex-end;
+}
+
+.messageWrapperBot {
+  justify-content: flex-start;
+}
+
+/* Burbuja del mensaje */
+.bubble {
+  max-width: 85%;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  position: relative;
+  color: rgba(214, 239, 255, 0.95);
+}
+
+.bubbleUser {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.07), rgba(0, 229, 255, 0.04));
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  box-shadow: 0 2px 12px rgba(0, 229, 255, 0.09);
+}
+
+.bubbleBot {
+  background: rgba(14, 22, 38, 0.85);
+  border: 1px solid rgba(29, 43, 74, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Accent corner decorativo */
+.cornerAccent {
+  position: absolute;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+}
+
+.cornerAccentUser {
+  right: 6px;
+  border-top: 1px solid rgba(0, 229, 255, 0.25);
+  border-right: 1px solid rgba(0, 229, 255, 0.25);
+}
+
+.cornerAccentBot {
+  left: 6px;
+  border-top: 1px solid rgba(29, 43, 74, 0.6);
+  border-left: 1px solid rgba(29, 43, 74, 0.6);
+}
+
+/* Estado de animación de entrada */
+.entering {
+  animation: messageSlideIn 0.3s ease;
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media queries para móvil */
+@media (max-width: 768px) {
+  .container {
+    margin-bottom: 16px;
+    gap: 6px;
+  }
+
+  .bubble {
+    max-width: 90%;
+    padding: 12px 14px;
+    font-size: 11px;
+  }
+
+  .avatar {
+    width: 18px;
+    height: 18px;
+    font-size: 7px;
+  }
+
+  .senderName {
+    font-size: 10px;
+  }
+
+  .timestamp {
+    font-size: 9px;
+  }
+}
