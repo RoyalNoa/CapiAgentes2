@@ -674,12 +674,16 @@ class LangGraphRuntime:
             if not message:
                 message = "Se requiere aprobacion humana para continuar."
 
+        response_data = dict(final_state.response_data) if final_state.response_data else {}
+        if final_state.shared_artifacts:
+            response_data.setdefault("shared_artifacts", final_state.shared_artifacts)
+
         return ResponseEnvelope(
             trace_id=final_state.trace_id,
             response_type=resp_type,
             intent=(final_state.detected_intent or IntentType.UNKNOWN),
             message=message,
-            data=final_state.response_data,
+            data=response_data,
             meta=meta,
         )
 

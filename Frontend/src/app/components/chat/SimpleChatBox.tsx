@@ -16,7 +16,8 @@ import {
   getEventClasses,
   getFriendlyAgentName,
   buildAgentTaskEvents,
-  type ReasoningPlanStep
+  type ReasoningPlanStep,
+  type SimulatedEvent
 } from '@/app/utils/chatHelpers';
 
 // Tipos para mayor seguridad
@@ -76,6 +77,8 @@ function SimpleChatBox({ sucursal, onRemoveSucursal }: ChatBoxProps) {
   } = useGlobalChat();
 
   const feedRef = useRef<HTMLDivElement>(null);
+  const completedEventIdsRef = useRef<Set<string>>(new Set());
+  const [archivedEvents, setArchivedEvents] = useState<SimulatedEvent[]>([]);
 
   // Ref para mantener estado actualizado y evitar stale closures
   const messagesRef = useRef(messages);
@@ -129,6 +132,7 @@ function SimpleChatBox({ sucursal, onRemoveSucursal }: ChatBoxProps) {
 
     try {
       // Limpiar estado anterior y preparar para nueva simulación
+      completedEventIdsRef.current.clear();
       resetForNewMessage(text);
 
       // Iniciar morphing text inmediatamente
@@ -331,6 +335,28 @@ function SimpleChatBox({ sucursal, onRemoveSucursal }: ChatBoxProps) {
     simState.originalQuery
   ]);
 
+  // Persistir eventos completados para que queden visibles en el timeline
+  useEffect(() => {
+    simState.simulatedEvents.forEach(event => {
+      if (event.status !== 'completed') {
+        return;
+      }
+      if (completedEventIdsRef.current.has(event.id)) {
+        return;
+      }
+
+      completedEventIdsRef.current.add(event.id);
+
+      setArchivedEvents(prev => {
+        const alreadyStored = prev.some(item => item.id === event.id);
+        if (alreadyStored) {
+          return prev;
+        }
+        return [...prev, { ...event, status: 'completed' }];
+      });
+    });
+  }, [simState.simulatedEvents]);
+
   const handleSubmitAction = useCallback(async (params: { actionId: string; approved: boolean }) => {
     await submitAction(params);
   }, [submitAction]);
@@ -409,17 +435,19 @@ function SimpleChatBox({ sucursal, onRemoveSucursal }: ChatBoxProps) {
 
         {/* Eventos simulados con streaming visual y mensajes contextuales */}
         {console.log('🎨 RENDERIZANDO EVENTOS:', simState.simulatedEvents.length, simState.simulatedEvents)}
-        {simState.simulatedEvents.map((event, idx) => {
-          if (event.status === 'pending') return null;
+        {(() => {
+          const timelineEvents = [...archivedEvents, ...simState.simulatedEvents];
+          return timelineEvents.map((event, idx) => {
+            if (event.status === 'pending') return null;
 
-          const showHeader =
-            idx === 0 ||
-            (idx > 0 && simState.simulatedEvents[idx - 1].agent !== event.agent);
+            const showHeader =
+              idx === 0 ||
+              (idx > 0 && timelineEvents[idx - 1].agent !== event.agent);
 
-          const { containerClass, bulletClass, textClass } = getEventClasses(styles, event.status);
+            const { containerClass, bulletClass, textClass } = getEventClasses(styles, event.status);
 
-          return (
-            <div key={event.id}>
+            return (
+              <div key={event.id}>
               {showHeader && (
                 <div className={styles.agentHeader}>
                   {event.friendlyName || getFriendlyAgentName(event.agent)}
@@ -439,8 +467,9 @@ function SimpleChatBox({ sucursal, onRemoveSucursal }: ChatBoxProps) {
                 </div>
               </div>
             </div>
-          );
-        })}
+            );
+          });
+        })()}
       </div>
 
       {/* Acciones pendientes */}

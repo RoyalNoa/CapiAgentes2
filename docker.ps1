@@ -6,6 +6,17 @@
     Advanced Docker orchestration with multi-environment support, health monitoring,
     performance optimization, and comprehensive logging for production deployments.
 
+.NOTES
+    Comandos de Docker disponibles:
+    - docker compose up -d: Levanta los servicios definidos en segundo plano segun el perfil seleccionado.
+    - docker compose down --remove-orphans --timeout 30: Detiene la pila y limpia contenedores huerfanos de manera controlada.
+    - docker compose build [--no-cache --pull --parallel]: Construye o reconstruye imagenes aprovechando cache y descarga opcional de bases.
+    - docker compose logs [-f --tail=50]: Muestra los registros en vivo de los servicios para depuracion.
+    - docker compose ps --format table: Lista el estado actual de los contenedores del proyecto.
+    - docker image prune -f / docker builder prune -f: Elimina imagenes y cache no utilizadas para recuperar espacio.
+    - docker system prune -a -f --volumes: Realiza una limpieza profunda de recursos, redes y volumenes no referenciados.
+    - docker exec -it <contenedor> <comando>: Ejecuta comandos interactivos dentro de un contenedor en ejecucion.
+    - docker run --rm -v <volumen>:/data alpine tar czf ...: Genera respaldos compactados de volumenes de datos desde contenedores efimeros.
 .PARAMETER Action
     Operations: up|down|restart|install|rebuild|ps|logs|health|dev|test|prod|monitor|clean|backup
 
@@ -442,3 +453,4 @@ switch ($Action) {
 }
 
 Log 'Operation completed successfully!' 'Green' 'SUCCESS'
+

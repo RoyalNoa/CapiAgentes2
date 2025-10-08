@@ -1162,9 +1162,765 @@
       "table": "public.alertas",
       "rowcount": 1,
       "generated_at": "2025-10-03T03:19:07.583685"
+    },
+    {
+      "filename": "DataB_2025_10_07_224846.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_224846.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_224846.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T04:11:10.253578"
+    },
+    {
+      "filename": "DataB_2025_10_07_318010.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_318010.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_318010.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T04:11:10.336019"
+    },
+    {
+      "filename": "DataB_2025_10_07_482004.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_482004.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_482004.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T04:11:10.494859"
+    },
+    {
+      "filename": "DataB_2025_10_07_664141.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_664141.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_664141.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T04:11:16.681035"
+    },
+    {
+      "filename": "DataB_2025_10_07_743258.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_743258.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_743258.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T04:11:16.759582"
+    },
+    {
+      "filename": "DataB_2025_10_07_893426.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_893426.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_893426.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T04:11:16.911105"
+    },
+    {
+      "filename": "DataB_2025_10_07_736725.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_736725.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_736725.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:12:36.757985"
+    },
+    {
+      "filename": "DataB_2025_10_07_861812.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_861812.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_861812.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:12:36.889172"
+    },
+    {
+      "filename": "DataB_2025_10_07_096730.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_096730.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_096730.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:12:37.120451"
+    },
+    {
+      "filename": "DataB_2025_10_07_832605.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_832605.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_832605.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:12:42.858335"
+    },
+    {
+      "filename": "DataB_2025_10_07_956437.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_956437.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_956437.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:12:42.982765"
+    },
+    {
+      "filename": "DataB_2025_10_07_213197.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_213197.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_213197.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:12:43.244015"
+    },
+    {
+      "filename": "DataB_2025_10_07_580861.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_580861.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_580861.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:21:17.611147"
+    },
+    {
+      "filename": "DataB_2025_10_07_721649.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_721649.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_721649.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:21:17.750599"
+    },
+    {
+      "filename": "DataB_2025_10_07_973793.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_973793.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_973793.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:21:17.997426"
+    },
+    {
+      "filename": "DataB_2025_10_07_065054.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_065054.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_065054.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:21:25.084515"
+    },
+    {
+      "filename": "DataB_2025_10_07_157726.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_157726.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_157726.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:21:25.181257"
+    },
+    {
+      "filename": "DataB_2025_10_07_335836.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_335836.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_335836.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:21:25.356270"
+    },
+    {
+      "filename": "DataB_2025_10_07_633057.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_633057.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_633057.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:37:18.654956"
+    },
+    {
+      "filename": "DataB_2025_10_07_746732.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_746732.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_746732.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:37:18.770115"
+    },
+    {
+      "filename": "DataB_2025_10_07_973053.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_973053.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_973053.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:37:18.998201"
+    },
+    {
+      "filename": "DataB_2025_10_07_685559.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_685559.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_685559.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:37:25.713606"
+    },
+    {
+      "filename": "DataB_2025_10_07_812026.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_812026.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_812026.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:37:25.839599"
+    },
+    {
+      "filename": "DataB_2025_10_07_082154.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_082154.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_082154.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:37:26.108414"
+    },
+    {
+      "filename": "DataB_2025_10_07_447006.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_447006.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_447006.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:54:29.465045"
+    },
+    {
+      "filename": "DataB_2025_10_07_534909.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_534909.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_534909.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:54:29.555737"
+    },
+    {
+      "filename": "DataB_2025_10_07_720706.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_720706.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_720706.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:54:29.738798"
+    },
+    {
+      "filename": "DataB_2025_10_07_357999.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_357999.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_357999.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:54:35.376912"
+    },
+    {
+      "filename": "DataB_2025_10_07_450858.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_450858.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_450858.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:54:35.469728"
+    },
+    {
+      "filename": "DataB_2025_10_07_640982.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_640982.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_640982.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:54:35.661946"
+    },
+    {
+      "filename": "DataB_2025_10_07_166223.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_166223.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_166223.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:34:59.189230"
+    },
+    {
+      "filename": "DataB_2025_10_07_284741.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_284741.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_284741.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T21:34:59.306324"
+    },
+    {
+      "filename": "DataB_2025_10_07_511742.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_511742.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_511742.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:34:59.539871"
+    },
+    {
+      "filename": "DataB_2025_10_07_393102.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_393102.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_393102.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:35:05.415160"
+    },
+    {
+      "filename": "DataB_2025_10_07_487209.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_487209.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_487209.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T21:35:05.510752"
+    },
+    {
+      "filename": "DataB_2025_10_07_652426.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_652426.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_652426.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:35:05.671440"
+    },
+    {
+      "filename": "DataB_2025_10_07_972660.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_972660.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_972660.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:42:53.992878"
+    },
+    {
+      "filename": "DataB_2025_10_07_072541.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_072541.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_072541.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T21:42:54.092790"
+    },
+    {
+      "filename": "DataB_2025_10_07_297652.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_297652.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_297652.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:42:54.320400"
+    },
+    {
+      "filename": "DataB_2025_10_07_136607.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_136607.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_136607.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:43:00.201125"
+    },
+    {
+      "filename": "DataB_2025_10_07_294002.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_294002.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_294002.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T21:43:00.314187"
+    },
+    {
+      "filename": "DataB_2025_10_07_485054.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_485054.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_485054.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:43:00.506179"
+    },
+    {
+      "filename": "DataB_2025_10_07_016310.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_016310.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_016310.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:59:18.040508"
+    },
+    {
+      "filename": "DataB_2025_10_07_111008.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_111008.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_111008.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T21:59:18.129154"
+    },
+    {
+      "filename": "DataB_2025_10_07_279845.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_279845.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_279845.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:59:18.301991"
+    },
+    {
+      "filename": "DataB_2025_10_07_269716.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_269716.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_269716.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:59:24.288133"
+    },
+    {
+      "filename": "DataB_2025_10_07_359091.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_359091.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_359091.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T21:59:24.376987"
+    },
+    {
+      "filename": "DataB_2025_10_07_521577.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_521577.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_521577.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:59:24.542521"
+    },
+    {
+      "filename": "DataB_2025_10_07_966066.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_966066.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_966066.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:04:31.982765"
+    },
+    {
+      "filename": "DataB_2025_10_07_061803.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_061803.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_061803.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:04:32.079867"
+    },
+    {
+      "filename": "DataB_2025_10_07_265705.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_265705.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_265705.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:04:32.288458"
+    },
+    {
+      "filename": "DataB_2025_10_07_599152.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_599152.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_599152.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:04:37.619434"
+    },
+    {
+      "filename": "DataB_2025_10_07_694956.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_694956.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_694956.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:04:37.718261"
+    },
+    {
+      "filename": "DataB_2025_10_07_876271.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_876271.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_876271.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:04:37.901073"
+    },
+    {
+      "filename": "DataB_2025_10_07_713321.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_713321.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_713321.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:05:57.739905"
+    },
+    {
+      "filename": "DataB_2025_10_07_824805.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_824805.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_824805.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:05:57.849071"
+    },
+    {
+      "filename": "DataB_2025_10_07_062991.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_062991.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_062991.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:05:58.086075"
+    },
+    {
+      "filename": "DataB_2025_10_07_353560.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_353560.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_353560.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:06:05.373700"
+    },
+    {
+      "filename": "DataB_2025_10_07_456659.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_456659.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_456659.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:06:05.481290"
+    },
+    {
+      "filename": "DataB_2025_10_07_662235.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_662235.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_662235.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:06:05.688836"
+    },
+    {
+      "filename": "DataB_2025_10_07_537582.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_537582.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_537582.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:07:47.557562"
+    },
+    {
+      "filename": "DataB_2025_10_07_651123.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_651123.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_651123.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:07:47.680246"
+    },
+    {
+      "filename": "DataB_2025_10_07_874722.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_874722.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_874722.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:07:47.901723"
+    },
+    {
+      "filename": "DataB_2025_10_07_732795.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_732795.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_732795.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:07:54.752938"
+    },
+    {
+      "filename": "DataB_2025_10_07_823142.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_823142.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_823142.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:07:54.845321"
+    },
+    {
+      "filename": "DataB_2025_10_07_051347.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_051347.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_051347.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:07:55.069720"
+    },
+    {
+      "filename": "DataB_2025_10_07_881689.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_881689.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_881689.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:35:57.899930"
+    },
+    {
+      "filename": "DataB_2025_10_07_961579.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_961579.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_961579.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:35:58.002195"
+    },
+    {
+      "filename": "DataB_2025_10_07_114839.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_114839.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_114839.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:35:58.130571"
+    },
+    {
+      "filename": "DataB_2025_10_07_968889.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_968889.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_968889.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:36:02.984653"
+    },
+    {
+      "filename": "DataB_2025_10_07_040392.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_040392.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_040392.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:36:03.052806"
+    },
+    {
+      "filename": "DataB_2025_10_07_157651.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_157651.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_157651.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:36:03.173017"
+    },
+    {
+      "filename": "DataB_2025_10_08_549889.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_549889.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_549889.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:37:41.585367"
+    },
+    {
+      "filename": "DataB_2025_10_08_711771.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_711771.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_711771.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T00:37:41.734668"
+    },
+    {
+      "filename": "DataB_2025_10_08_967430.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_967430.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_967430.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:37:41.990349"
+    },
+    {
+      "filename": "DataB_2025_10_08_012384.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_012384.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_012384.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:37:48.033854"
+    },
+    {
+      "filename": "DataB_2025_10_08_135441.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_135441.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_135441.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T00:37:48.157051"
+    },
+    {
+      "filename": "DataB_2025_10_08_330673.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_330673.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_330673.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:37:48.355264"
+    },
+    {
+      "filename": "DataB_2025_10_08_030516.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_030516.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_030516.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:44:10.047889"
+    },
+    {
+      "filename": "DataB_2025_10_08_106604.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_106604.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_106604.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T00:44:10.121407"
+    },
+    {
+      "filename": "DataB_2025_10_08_234823.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_234823.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_234823.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:44:10.248381"
+    },
+    {
+      "filename": "DataB_2025_10_08_106321.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_106321.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_106321.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:44:16.142040"
+    },
+    {
+      "filename": "DataB_2025_10_08_199871.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_199871.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_199871.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T00:44:16.217804"
+    },
+    {
+      "filename": "DataB_2025_10_08_337420.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_337420.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_337420.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:44:16.354333"
     }
   ],
-  "updated_at": "2025-10-03T15:30:47.673608",
+  "updated_at": "2025-10-08T00:44:42.304768",
   "created_at": "2025-09-24T19:41:36.430881",
   "status": "completed",
   "active_agent": "summary",
@@ -1175,16 +1931,18 @@
     "reasoning",
     "supervisor",
     "router",
-    "summary",
-    "human_gate",
+    "capi_datab",
+    "capi_elcajas",
+    "loop_controller",
+    "loop_controller",
     "assemble",
-    "finalize"
+    "FinalizeNode"
   ],
-  "intent": "unknown",
-  "intent_confidence": 0.2,
-  "last_query": "Tenés idea cuál es el nuevo de estos de estos dos?",
+  "intent": "db_operation",
+  "intent_confidence": 0.5,
+  "last_query": "cual es el saldo de la sucursal de recoleta?",
   "last_response": {
-    "message": "📊 *Resumen financiero*:\n\n⚠️ No se encontraron datos financieros para analizar.\n\nPor favor, carga algunos archivos CSV o Excel en el sistema.",
+    "message": "Resultados para la sucursal 'Recoleta': sucursal id=SUC-419, sucursal numero=313, sucursal nombre=Recoleta, saldo total sucursal=$164.000,00, caja teorica sucursal=100000.00, total atm=$75.600,00, total ats=$25.100,00, total tesoro=$23.200,00, total cajas ventanilla=$8.000,00, total buzon depositos=$9.700,00, total recaudacion=$3.400,00, total caja chica=$2.600,00, total otros=$16.400,00, medido en=2025-10-03 02:38:29.086113+00:00. Resultado exportado a DataB_2025_10_08_106321.json.\n\nEl Cajas: Recoleta: exceso de 64,000 ARS (64.0%)\n\nGenere una alerta automatica (ID: 260) con las desviaciones detectadas.\n\nNo guardaré la recomendación en el escritorio por pedido del usuario.",
     "data": {
       "react_observations": [
         {
@@ -1205,57 +1963,58 @@
         }
       ],
       "reasoning_plan": {
-        "plan_id": "d56ef86f-1111-47c4-8668-9b95b4938720",
+        "plan_id": "d152e755-4c2a-4672-95d2-35c133c2276f",
         "version": 1,
-        "intent": "unknown",
-        "goal": "Clarificar y asistir consulta ambigua: Tenés idea cuál es el nuevo de estos de estos dos?",
+        "intent": "db_operation",
+        "goal": "Clarificar y asistir consulta ambigua: cual es el saldo de la sucursal de recoleta?",
         "confidence": 0.95,
-        "recommended_agent": "summary",
-        "fallback_agent": "assemble",
-        "rationale": "Consulta ambigua: se elabora estrategia de clarificación y recopilación de señales antes de seleccionar agente definitivo.",
+        "recommended_agent": "capi_datab",
+        "fallback_agent": "capi_datab",
+        "rationale": "La consulta requiere operaciones sobre bases de datos; se utiliza el agente especialista con controles de validación y exportes auditables.",
         "steps": [
           {
-            "id": "E1",
-            "title": "Solicitar clarificación",
-            "description": "Pedir más detalles al usuario para reducir ambigüedad.",
-            "agent": "summary",
-            "inputs": [],
-            "expected_output": "Detalle adicional de la consulta",
+            "id": "D1",
+            "title": "Analizar requerimiento y sanitizar sentencia",
+            "description": "Interpretar la instrucción (JSON, SQL o lenguaje natural), validar tablas y evitar comandos restringidos (DROP/TRUNCATE).",
+            "agent": "capi_datab",
+            "inputs": [
+              "instruccion_usuario"
+            ],
+            "expected_output": "Sentencia SQL validada con parámetros normalizados",
             "depends_on": []
           },
           {
-            "id": "E2",
-            "title": "Identificar señales financieras",
-            "description": "Buscar palabras clave que alineen la consulta con agentes especializados.",
-            "agent": "intent",
+            "id": "D2",
+            "title": "Ejecutar operación transaccional en PostgreSQL",
+            "description": "Abrir conexión controlada, ejecutar la sentencia y capturar filas afectadas o resultados.",
+            "agent": "capi_datab",
             "inputs": [],
-            "expected_output": "Intentos candidatos",
+            "expected_output": "Resultado de la operación (filas, datos o confirmación)",
             "depends_on": [
-              "E1"
+              "D1"
             ]
           },
           {
-            "id": "E3",
-            "title": "Preparar respuesta inicial",
-            "description": "Ofrecer orientación y sugerir capacidades relevantes mientras se espera aclaración.",
-            "agent": "summary",
+            "id": "D3",
+            "title": "Exportar evidencia al workspace",
+            "description": "Serializar los resultados en el formato solicitado y guardar el archivo en ia_workspace/data/capi_DataB/.",
+            "agent": "capi_datab",
             "inputs": [],
-            "expected_output": "Guía introductoria",
+            "expected_output": "Archivo DataB_YYYY_MM_DD_*.ext disponible para el usuario",
             "depends_on": [
-              "E1",
-              "E2"
+              "D2"
             ]
           }
         ],
-        "cooperative_agents": [
-          "intent"
-        ],
+        "cooperative_agents": [],
         "supporting_evidence": {
-          "progress_percent": 97.5,
+          "progress_percent": 98.0,
           "remaining_steps": 3,
-          "estimated_effort_seconds": 50,
-          "complexity": "medium",
-          "entities": {},
+          "estimated_effort_seconds": 45,
+          "complexity": "low",
+          "entities": {
+            "sucursal": "recoleta"
+          },
           "context_used": false,
           "semantic_confidence": 0.9,
           "available_agents": [
@@ -1265,62 +2024,1093 @@
             "capi_desktop",
             "summary"
           ],
-          "user_id": "voice-client",
+          "user_id": "global",
           "session_id": "global"
         },
-        "generated_at": "2025-10-03T15:30:47.576685",
-        "intent_alignment": false,
+        "generated_at": "2025-10-08T00:44:14.549171",
+        "intent_alignment": true,
         "requires_replan": false,
         "history": [],
-        "progress_percent": 97.5,
+        "progress_percent": 98.0,
         "remaining_steps": 3,
-        "complexity": "medium",
-        "estimated_effort_seconds": 50
+        "complexity": "low",
+        "estimated_effort_seconds": 45
       },
-      "total_records": 0,
-      "total_amount": 0.0,
-      "anomalies_detected": 0,
-      "date_range": "Sin datos",
-      "branches": [],
-      "categories": []
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+      "parameters": [
+        "%Recoleta%"
+      ],
+      "output_format": "json",
+      "file_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_106321.json",
+      "rowcount": 1,
+      "rows": [
+        {
+          "sucursal_id": "SUC-419",
+          "sucursal_numero": 313,
+          "sucursal_nombre": "Recoleta",
+          "saldo_total_sucursal": "164000.00",
+          "caja_teorica_sucursal": "100000.00",
+          "total_atm": "75600.00",
+          "total_ats": "25100.00",
+          "total_tesoro": "23200.00",
+          "total_cajas_ventanilla": "8000.00",
+          "total_buzon_depositos": "9700.00",
+          "total_recaudacion": "3400.00",
+          "total_caja_chica": "2600.00",
+          "total_otros": "16400.00",
+          "medido_en": "2025-10-03 02:38:29.086113+00:00"
+        }
+      ],
+      "requires_approval": false,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "recoleta",
+          "branch_number": null,
+          "branch_name": "Recoleta",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Recoleta%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identifica claramente la sucursal 'Recoleta' para consultar su saldo.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "metadata": {
+        "branch": {
+          "raw_text": "recoleta",
+          "branch_number": null,
+          "branch_name": "Recoleta",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Recoleta%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identifica claramente la sucursal 'Recoleta' para consultar su saldo.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal",
+        "branch_descriptor": "Recoleta"
+      },
+      "summary_message": "Resultados para la sucursal 'Recoleta': sucursal id=SUC-419, sucursal numero=313, sucursal nombre=Recoleta, saldo total sucursal=$164.000,00, caja teorica sucursal=100000.00, total atm=$75.600,00, total ats=$25.100,00, total tesoro=$23.200,00, total cajas ventanilla=$8.000,00, total buzon depositos=$9.700,00, total recaudacion=$3.400,00, total caja chica=$2.600,00, total otros=$16.400,00, medido en=2025-10-03 02:38:29.086113+00:00. Resultado exportado a DataB_2025_10_08_106321.json.",
+      "el_cajas": {
+        "analysis": [
+          {
+            "branch_id": "SUC-419",
+            "branch_name": "Recoleta",
+            "status": "alert",
+            "headline": "Recoleta: exceso de 64,000 ARS (64.0%)",
+            "measured_total": 164000.0,
+            "theoretical_total": 100000.0,
+            "difference": 64000.0,
+            "deviation_pct": 0.64,
+            "recommendations": [
+              {
+                "channel": "Saldo Total",
+                "action": "withdraw",
+                "amount": 56000.0,
+                "reason": "Exceso vs caja teorica",
+                "urgency": "programar",
+                "estimated_cost": 150212.8,
+                "weight_kg": 0.056
+              },
+              {
+                "channel": "ATM",
+                "action": "withdraw",
+                "amount": 23970.73,
+                "reason": "Exceso canal vs distribucion esperada",
+                "urgency": "inmediato",
+                "estimated_cost": 120083.9,
+                "weight_kg": 0.024
+              },
+              {
+                "channel": "ATM",
+                "action": "deposit",
+                "amount": 424400.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "inmediato",
+                "estimated_cost": 121485.4,
+                "weight_kg": 0.424
+              },
+              {
+                "channel": "ATS",
+                "action": "withdraw",
+                "amount": 8264.63,
+                "reason": "Exceso canal vs distribucion esperada",
+                "urgency": "programar",
+                "estimated_cost": 110026.45,
+                "weight_kg": 0.008
+              },
+              {
+                "channel": "ATS",
+                "action": "deposit",
+                "amount": 274900.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "proximo turno",
+                "estimated_cost": 110879.68,
+                "weight_kg": 0.275
+              },
+              {
+                "channel": "Tesoro",
+                "action": "withdraw",
+                "amount": 6931.71,
+                "reason": "Exceso canal vs distribucion esperada",
+                "urgency": "programar",
+                "estimated_cost": 90019.41,
+                "weight_kg": 0.007
+              },
+              {
+                "channel": "Tesoro",
+                "action": "deposit",
+                "amount": 726800.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "proximo turno",
+                "estimated_cost": 92035.04,
+                "weight_kg": 0.727
+              },
+              {
+                "channel": "Ventanilla",
+                "action": "withdraw",
+                "amount": 2731.71,
+                "reason": "Exceso canal vs distribucion esperada",
+                "urgency": "programar",
+                "estimated_cost": 85007.1,
+                "weight_kg": 0.003
+              },
+              {
+                "channel": "Ventanilla",
+                "action": "deposit",
+                "amount": 142000.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "proximo turno",
+                "estimated_cost": 85369.2,
+                "weight_kg": 0.142
+              },
+              {
+                "channel": "Caja Chica",
+                "action": "withdraw",
+                "amount": 951.22,
+                "reason": "Exceso canal vs distribucion esperada",
+                "urgency": "programar",
+                "estimated_cost": 70002.09,
+                "weight_kg": 0.001
+              },
+              {
+                "channel": "Caja Chica",
+                "action": "deposit",
+                "amount": 27400.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "proximo turno",
+                "estimated_cost": 70060.28,
+                "weight_kg": 0.027
+              },
+              {
+                "channel": "Otros",
+                "action": "withdraw",
+                "amount": 5700.0,
+                "reason": "Exceso canal vs distribucion esperada",
+                "urgency": "programar",
+                "estimated_cost": 100017.67,
+                "weight_kg": 0.006
+              },
+              {
+                "channel": "Otros",
+                "action": "deposit",
+                "amount": 33600.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "proximo turno",
+                "estimated_cost": 100104.16,
+                "weight_kg": 0.034
+              }
+            ],
+            "channels": [
+              {
+                "channel": "ATM",
+                "amount": 75600.0,
+                "estimated_teorica": 46097.560975609755,
+                "share": 0.4609756097560976,
+                "deviation_pct": 0.64
+              },
+              {
+                "channel": "ATS",
+                "amount": 25100.0,
+                "estimated_teorica": 15304.878048780487,
+                "share": 0.15304878048780488,
+                "deviation_pct": 0.6400000000000001
+              },
+              {
+                "channel": "Tesoro",
+                "amount": 23200.0,
+                "estimated_teorica": 14146.341463414632,
+                "share": 0.14146341463414633,
+                "deviation_pct": 0.6400000000000002
+              },
+              {
+                "channel": "Ventanilla",
+                "amount": 8000.0,
+                "estimated_teorica": 4878.048780487805,
+                "share": 0.04878048780487805,
+                "deviation_pct": 0.64
+              },
+              {
+                "channel": "Buzon",
+                "amount": 9700.0,
+                "estimated_teorica": 5914.634146341463,
+                "share": 0.05914634146341463
+              },
+              {
+                "channel": "Recaudacion",
+                "amount": 3400.0,
+                "estimated_teorica": 2073.1707317073174,
+                "share": 0.020731707317073172
+              },
+              {
+                "channel": "Caja Chica",
+                "amount": 2600.0,
+                "estimated_teorica": 1585.3658536585367,
+                "share": 0.015853658536585366,
+                "deviation_pct": 0.6399999999999999
+              },
+              {
+                "channel": "Otros",
+                "amount": 16400.0,
+                "estimated_teorica": 10000.0,
+                "share": 0.1,
+                "deviation_pct": 0.64
+              }
+            ],
+            "alerts_created": 1,
+            "alerts_to_persist": [
+              {
+                "priority": "critical",
+                "prioridad": "critica",
+                "status": "active",
+                "estado": "abierta",
+                "problema": "Recoleta: exceso de 64,000 ARS (64.0%)",
+                "hipotesis": "Desvio detectado en Recoleta",
+                "impacto": "Diferencia de 64,000 ARS (64.0%)",
+                "datos_clave": [
+                  "Diferencia total: 64,000 ARS",
+                  "Desvio porcentual: 64.0%",
+                  "Sucursal: Recoleta (SUC-419)",
+                  "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]",
+                  "Medicion: 2025-10-08T00:44:16.246004+00:00"
+                ],
+                "acciones": "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]; ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada [inmediato]; ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada [programar]; ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada [programar]; Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada [programar]; Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada [programar]; Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada [programar]; Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo [proximo turno]",
+                "sucursal_id": "SUC-419",
+                "branch_name": "Recoleta",
+                "summary": "Recoleta: exceso de 64,000 ARS (64.0%). Severidad: alert",
+                "dedupe_clave": "e9f3a6c789b318050d23754cdd9bf7cf07f3f34ee824bf047f7c8081938b65e2",
+                "creada_en": "2025-10-08T00:44:16.246004+00:00",
+                "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+                "agent_source": "capi_elcajas"
+              }
+            ],
+            "alert_priority": "critical",
+            "alert_escalated": true,
+            "alert_operation": {
+              "table": "public.alertas",
+              "values": {
+                "prioridad": "critica",
+                "estado": "abierta",
+                "problema": "Recoleta: exceso de 64,000 ARS (64.0%)",
+                "hipotesis": "Desvio detectado en Recoleta",
+                "impacto": "Diferencia de 64,000 ARS (64.0%)",
+                "datos_clave": [
+                  "Diferencia total: 64,000 ARS",
+                  "Desvio porcentual: 64.0%",
+                  "Sucursal: Recoleta (SUC-419)",
+                  "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]",
+                  "Medicion: 2025-10-08T00:44:16.246004+00:00"
+                ],
+                "acciones": "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]; ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada [inmediato]; ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada [programar]; ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada [programar]; Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada [programar]; Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada [programar]; Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada [programar]; Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo [proximo turno]",
+                "sucursal_id": "SUC-419",
+                "dedupe_clave": "e9f3a6c789b318050d23754cdd9bf7cf07f3f34ee824bf047f7c8081938b65e2",
+                "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+                "creada_en": "2025-10-08 00:44:16.246004+00:00"
+              },
+              "description": "Insert alerta El Cajas - Recoleta",
+              "branch_id": "SUC-419",
+              "branch_name": "Recoleta",
+              "source": "capi_elcajas",
+              "payload": {
+                "priority": "critical",
+                "prioridad": "critica",
+                "status": "active",
+                "estado": "abierta",
+                "problema": "Recoleta: exceso de 64,000 ARS (64.0%)",
+                "hipotesis": "Desvio detectado en Recoleta",
+                "impacto": "Diferencia de 64,000 ARS (64.0%)",
+                "datos_clave": [
+                  "Diferencia total: 64,000 ARS",
+                  "Desvio porcentual: 64.0%",
+                  "Sucursal: Recoleta (SUC-419)",
+                  "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]",
+                  "Medicion: 2025-10-08T00:44:16.246004+00:00"
+                ],
+                "acciones": "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]; ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada [inmediato]; ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada [programar]; ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada [programar]; Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada [programar]; Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada [programar]; Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada [programar]; Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo [proximo turno]",
+                "sucursal_id": "SUC-419",
+                "branch_name": "Recoleta",
+                "summary": "Recoleta: exceso de 64,000 ARS (64.0%). Severidad: alert",
+                "dedupe_clave": "e9f3a6c789b318050d23754cdd9bf7cf07f3f34ee824bf047f7c8081938b65e2",
+                "creada_en": "2025-10-08T00:44:16.246004+00:00",
+                "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+                "agent_source": "capi_elcajas"
+              }
+            },
+            "recommendation_artifact": {
+              "path": "/app/ia_workspace/data/sessions/session_global/capi_elcajas/recommendation_SUC-419_20251008_004416.json",
+              "filename": "recommendation_SUC-419_20251008_004416.json",
+              "relative_path": "capi_elcajas/recommendation_SUC-419_20251008_004416.json",
+              "created_at": "2025-10-08T00:44:16.246004+00:00",
+              "summary": "Recoleta: exceso de 64,000 ARS (64.0%). Severidad: alert",
+              "hypothesis": "Desvio detectado en Recoleta",
+              "impact": "Diferencia de 64,000 ARS (64.0%)",
+              "suggested_actions": [
+                "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica",
+                "ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada",
+                "ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo",
+                "ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada",
+                "ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo",
+                "Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada",
+                "Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo",
+                "Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada",
+                "Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo",
+                "Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada",
+                "Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo",
+                "Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada",
+                "Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo"
+              ]
+            }
+          }
+        ],
+        "calendar": {
+          "status": "cerrado",
+          "business_day": "si",
+          "holiday": "no"
+        },
+        "policies_loaded": 9,
+        "alerts_created": 1,
+        "alert_operations": [
+          {
+            "table": "public.alertas",
+            "values": {
+              "prioridad": "critica",
+              "estado": "abierta",
+              "problema": "Recoleta: exceso de 64,000 ARS (64.0%)",
+              "hipotesis": "Desvio detectado en Recoleta",
+              "impacto": "Diferencia de 64,000 ARS (64.0%)",
+              "datos_clave": [
+                "Diferencia total: 64,000 ARS",
+                "Desvio porcentual: 64.0%",
+                "Sucursal: Recoleta (SUC-419)",
+                "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]",
+                "Medicion: 2025-10-08T00:44:16.246004+00:00"
+              ],
+              "acciones": "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]; ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada [inmediato]; ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada [programar]; ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada [programar]; Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada [programar]; Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada [programar]; Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada [programar]; Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "SUC-419",
+              "dedupe_clave": "e9f3a6c789b318050d23754cdd9bf7cf07f3f34ee824bf047f7c8081938b65e2",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "creada_en": "2025-10-08 00:44:16.246004+00:00"
+            },
+            "description": "Insert alerta El Cajas - Recoleta",
+            "branch_id": "SUC-419",
+            "branch_name": "Recoleta",
+            "source": "capi_elcajas",
+            "payload": {
+              "priority": "critical",
+              "prioridad": "critica",
+              "status": "active",
+              "estado": "abierta",
+              "problema": "Recoleta: exceso de 64,000 ARS (64.0%)",
+              "hipotesis": "Desvio detectado en Recoleta",
+              "impacto": "Diferencia de 64,000 ARS (64.0%)",
+              "datos_clave": [
+                "Diferencia total: 64,000 ARS",
+                "Desvio porcentual: 64.0%",
+                "Sucursal: Recoleta (SUC-419)",
+                "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]",
+                "Medicion: 2025-10-08T00:44:16.246004+00:00"
+              ],
+              "acciones": "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]; ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada [inmediato]; ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada [programar]; ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada [programar]; Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada [programar]; Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada [programar]; Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada [programar]; Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "SUC-419",
+              "branch_name": "Recoleta",
+              "summary": "Recoleta: exceso de 64,000 ARS (64.0%). Severidad: alert",
+              "dedupe_clave": "e9f3a6c789b318050d23754cdd9bf7cf07f3f34ee824bf047f7c8081938b65e2",
+              "creada_en": "2025-10-08T00:44:16.246004+00:00",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "agent_source": "capi_elcajas"
+            }
+          }
+        ],
+        "recommendation_files": [
+          {
+            "path": "/app/ia_workspace/data/sessions/session_global/capi_elcajas/recommendation_SUC-419_20251008_004416.json",
+            "filename": "recommendation_SUC-419_20251008_004416.json",
+            "relative_path": "capi_elcajas/recommendation_SUC-419_20251008_004416.json",
+            "created_at": "2025-10-08T00:44:16.246004+00:00",
+            "summary": "Recoleta: exceso de 64,000 ARS (64.0%). Severidad: alert",
+            "hypothesis": "Desvio detectado en Recoleta",
+            "impact": "Diferencia de 64,000 ARS (64.0%)",
+            "suggested_actions": [
+              "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica",
+              "ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada",
+              "ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo",
+              "ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada",
+              "ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo",
+              "Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada",
+              "Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo",
+              "Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada",
+              "Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo",
+              "Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada",
+              "Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo",
+              "Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada",
+              "Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo"
+            ]
+          }
+        ]
+      }
     }
   },
   "conversation_history": [],
   "memory_window": [],
   "reasoning_summary": {
-    "goal": "Clarificar y asistir consulta ambigua: Tenés idea cuál es el nuevo de estos de estos dos?",
-    "recommended_agent": "summary",
+    "goal": "Clarificar y asistir consulta ambigua: cual es el saldo de la sucursal de recoleta?",
+    "recommended_agent": "capi_datab",
     "confidence": 0.95,
     "version": 1,
-    "cooperative_agents": [
-      "intent"
-    ],
-    "progress_percent": 97.5,
+    "cooperative_agents": [],
+    "progress_percent": 98.0,
     "remaining_steps": 3,
-    "complexity": "medium",
-    "estimated_effort_seconds": 50,
-    "remaining_percent": 2.5
+    "complexity": "low",
+    "estimated_effort_seconds": 45,
+    "remaining_percent": 2.0
   },
   "processing_metrics": {
     "react_steps": 5.0,
     "react_latency_ms": 0.0,
-    "reasoning_time_ms": 1399.0,
+    "reasoning_time_ms": 2309.0,
     "reasoning_steps": 3.0,
     "reasoning_version": 1.0,
-    "reasoning_progress_percent": 97.5,
-    "reasoning_eta_seconds": 50.0,
+    "reasoning_progress_percent": 98.0,
+    "reasoning_eta_seconds": 45.0,
     "reasoning_remaining_steps": 3.0,
     "supervisor_latency_ms": 0.0,
-    "supervisor_queue_length": 5.0
+    "supervisor_queue_length": 5.0,
+    "capi_datab_latency_ms": 1519.0,
+    "planner_confidence": 0.8,
+    "capi_datab_rows": 1.0,
+    "el_cajas_latency_ms": 32.0,
+    "el_cajas_alerts": 1.0
   },
-  "shared_artifacts": {},
+  "shared_artifacts": {
+    "capi_datab": {
+      "mode": "db_operation",
+      "operation": {
+        "operation": "select",
+        "table": "public.saldos_sucursal",
+        "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+        "parameters": [
+          "%Recoleta%"
+        ],
+        "output_format": "json",
+        "requires_approval": false,
+        "metadata": {
+          "branch": {
+            "raw_text": "recoleta",
+            "branch_number": null,
+            "branch_name": "Recoleta",
+            "branch_id": null
+          },
+          "filters": [
+            {
+              "column": "sucursal_nombre",
+              "operator": "ILIKE",
+              "value": "%Recoleta%"
+            }
+          ],
+          "planner_source": "llm_branch_identifier",
+          "planner_confidence": 0.8,
+          "planner_reason": "Se identifica claramente la sucursal 'Recoleta' para consultar su saldo.",
+          "planner_model": "gpt-3.5-turbo",
+          "suggested_table": "public.saldos_sucursal"
+        }
+      },
+      "export_file": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_106321.json",
+      "rows": [
+        {
+          "sucursal_id": "SUC-419",
+          "sucursal_numero": 313,
+          "sucursal_nombre": "Recoleta",
+          "saldo_total_sucursal": "164000.00",
+          "caja_teorica_sucursal": "100000.00",
+          "total_atm": "75600.00",
+          "total_ats": "25100.00",
+          "total_tesoro": "23200.00",
+          "total_cajas_ventanilla": "8000.00",
+          "total_buzon_depositos": "9700.00",
+          "total_recaudacion": "3400.00",
+          "total_caja_chica": "2600.00",
+          "total_otros": "16400.00",
+          "medido_en": "2025-10-03 02:38:29.086113+00:00"
+        }
+      ],
+      "rowcount": 1,
+      "success": true,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "recoleta",
+          "branch_number": null,
+          "branch_name": "Recoleta",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Recoleta%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identifica claramente la sucursal 'Recoleta' para consultar su saldo.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "summary_message": "Resultados para la sucursal 'Recoleta': sucursal id=SUC-419, sucursal numero=313, sucursal nombre=Recoleta, saldo total sucursal=$164.000,00, caja teorica sucursal=100000.00, total atm=$75.600,00, total ats=$25.100,00, total tesoro=$23.200,00, total cajas ventanilla=$8.000,00, total buzon depositos=$9.700,00, total recaudacion=$3.400,00, total caja chica=$2.600,00, total otros=$16.400,00, medido en=2025-10-03 02:38:29.086113+00:00. Resultado exportado a DataB_2025_10_08_106321.json.\n\nEl Cajas: Recoleta: exceso de 64,000 ARS (64.0%)",
+      "policies": [
+        {
+          "channel": "ATM",
+          "max_surplus_pct": "0.120",
+          "max_deficit_pct": "0.060",
+          "min_buffer_amount": "500000.00",
+          "daily_withdrawal_limit": "1500000.00",
+          "daily_deposit_limit": "1200000.00",
+          "reload_lead_hours": 6,
+          "sla_hours": 12,
+          "truck_fixed_cost": "120000.00",
+          "truck_variable_cost_per_kg": "3500.00",
+          "notes": "Prioridad alta: buffer robusto para ATM",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "ATS",
+          "max_surplus_pct": "0.100",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "300000.00",
+          "daily_withdrawal_limit": "900000.00",
+          "daily_deposit_limit": "600000.00",
+          "reload_lead_hours": 8,
+          "sla_hours": 16,
+          "truck_fixed_cost": "110000.00",
+          "truck_variable_cost_per_kg": "3200.00",
+          "notes": "ATS balance moderado",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Buzón",
+          "max_surplus_pct": "0.050",
+          "max_deficit_pct": "0.030",
+          "min_buffer_amount": "50000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": "250000.00",
+          "reload_lead_hours": 12,
+          "sla_hours": 24,
+          "truck_fixed_cost": "95000.00",
+          "truck_variable_cost_per_kg": "3000.00",
+          "notes": "Depósitos no inmediatos",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Caja Chica",
+          "max_surplus_pct": "0.040",
+          "max_deficit_pct": "0.030",
+          "min_buffer_amount": "30000.00",
+          "daily_withdrawal_limit": "100000.00",
+          "daily_deposit_limit": "80000.00",
+          "reload_lead_hours": 24,
+          "sla_hours": 48,
+          "truck_fixed_cost": "70000.00",
+          "truck_variable_cost_per_kg": "2200.00",
+          "notes": "Gastos operativos menores",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Otros",
+          "max_surplus_pct": "0.070",
+          "max_deficit_pct": "0.040",
+          "min_buffer_amount": "50000.00",
+          "daily_withdrawal_limit": "200000.00",
+          "daily_deposit_limit": "180000.00",
+          "reload_lead_hours": 12,
+          "sla_hours": 36,
+          "truck_fixed_cost": "100000.00",
+          "truck_variable_cost_per_kg": "3100.00",
+          "notes": "Reservas varias",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Recaudación",
+          "max_surplus_pct": "0.090",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "200000.00",
+          "daily_withdrawal_limit": "600000.00",
+          "daily_deposit_limit": "650000.00",
+          "reload_lead_hours": 10,
+          "sla_hours": 20,
+          "truck_fixed_cost": "130000.00",
+          "truck_variable_cost_per_kg": "3600.00",
+          "notes": "Grandes volúmenes corporativos",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Saldo Total",
+          "max_surplus_pct": "0.080",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "600000.00",
+          "daily_withdrawal_limit": "2500000.00",
+          "daily_deposit_limit": "2500000.00",
+          "reload_lead_hours": 6,
+          "sla_hours": 12,
+          "truck_fixed_cost": "150000.00",
+          "truck_variable_cost_per_kg": "3800.00",
+          "notes": "Tolerancia global de sucursal",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Tesoro",
+          "max_surplus_pct": "0.150",
+          "max_deficit_pct": "0.080",
+          "min_buffer_amount": "750000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 12,
+          "sla_hours": 24,
+          "truck_fixed_cost": "90000.00",
+          "truck_variable_cost_per_kg": "2800.00",
+          "notes": "Tesoro actúa como pulmón de la sucursal",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        },
+        {
+          "channel": "Ventanilla",
+          "max_surplus_pct": "0.080",
+          "max_deficit_pct": "0.040",
+          "min_buffer_amount": "150000.00",
+          "daily_withdrawal_limit": "400000.00",
+          "daily_deposit_limit": "350000.00",
+          "reload_lead_hours": 4,
+          "sla_hours": 8,
+          "truck_fixed_cost": "85000.00",
+          "truck_variable_cost_per_kg": "2600.00",
+          "notes": "Caja operativa al cliente",
+          "updated_at": "2025-10-03 02:38:22.647173+00:00"
+        }
+      ]
+    },
+    "capi_elcajas": {
+      "analysis": [
+        {
+          "branch_id": "SUC-419",
+          "branch_name": "Recoleta",
+          "status": "alert",
+          "headline": "Recoleta: exceso de 64,000 ARS (64.0%)",
+          "measured_total": 164000.0,
+          "theoretical_total": 100000.0,
+          "difference": 64000.0,
+          "deviation_pct": 0.64,
+          "recommendations": [
+            {
+              "channel": "Saldo Total",
+              "action": "withdraw",
+              "amount": 56000.0,
+              "reason": "Exceso vs caja teorica",
+              "urgency": "programar",
+              "estimated_cost": 150212.8,
+              "weight_kg": 0.056
+            },
+            {
+              "channel": "ATM",
+              "action": "withdraw",
+              "amount": 23970.73,
+              "reason": "Exceso canal vs distribucion esperada",
+              "urgency": "inmediato",
+              "estimated_cost": 120083.9,
+              "weight_kg": 0.024
+            },
+            {
+              "channel": "ATM",
+              "action": "deposit",
+              "amount": 424400.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "inmediato",
+              "estimated_cost": 121485.4,
+              "weight_kg": 0.424
+            },
+            {
+              "channel": "ATS",
+              "action": "withdraw",
+              "amount": 8264.63,
+              "reason": "Exceso canal vs distribucion esperada",
+              "urgency": "programar",
+              "estimated_cost": 110026.45,
+              "weight_kg": 0.008
+            },
+            {
+              "channel": "ATS",
+              "action": "deposit",
+              "amount": 274900.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "proximo turno",
+              "estimated_cost": 110879.68,
+              "weight_kg": 0.275
+            },
+            {
+              "channel": "Tesoro",
+              "action": "withdraw",
+              "amount": 6931.71,
+              "reason": "Exceso canal vs distribucion esperada",
+              "urgency": "programar",
+              "estimated_cost": 90019.41,
+              "weight_kg": 0.007
+            },
+            {
+              "channel": "Tesoro",
+              "action": "deposit",
+              "amount": 726800.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "proximo turno",
+              "estimated_cost": 92035.04,
+              "weight_kg": 0.727
+            },
+            {
+              "channel": "Ventanilla",
+              "action": "withdraw",
+              "amount": 2731.71,
+              "reason": "Exceso canal vs distribucion esperada",
+              "urgency": "programar",
+              "estimated_cost": 85007.1,
+              "weight_kg": 0.003
+            },
+            {
+              "channel": "Ventanilla",
+              "action": "deposit",
+              "amount": 142000.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "proximo turno",
+              "estimated_cost": 85369.2,
+              "weight_kg": 0.142
+            },
+            {
+              "channel": "Caja Chica",
+              "action": "withdraw",
+              "amount": 951.22,
+              "reason": "Exceso canal vs distribucion esperada",
+              "urgency": "programar",
+              "estimated_cost": 70002.09,
+              "weight_kg": 0.001
+            },
+            {
+              "channel": "Caja Chica",
+              "action": "deposit",
+              "amount": 27400.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "proximo turno",
+              "estimated_cost": 70060.28,
+              "weight_kg": 0.027
+            },
+            {
+              "channel": "Otros",
+              "action": "withdraw",
+              "amount": 5700.0,
+              "reason": "Exceso canal vs distribucion esperada",
+              "urgency": "programar",
+              "estimated_cost": 100017.67,
+              "weight_kg": 0.006
+            },
+            {
+              "channel": "Otros",
+              "action": "deposit",
+              "amount": 33600.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "proximo turno",
+              "estimated_cost": 100104.16,
+              "weight_kg": 0.034
+            }
+          ],
+          "channels": [
+            {
+              "channel": "ATM",
+              "amount": 75600.0,
+              "estimated_teorica": 46097.560975609755,
+              "share": 0.4609756097560976,
+              "deviation_pct": 0.64
+            },
+            {
+              "channel": "ATS",
+              "amount": 25100.0,
+              "estimated_teorica": 15304.878048780487,
+              "share": 0.15304878048780488,
+              "deviation_pct": 0.6400000000000001
+            },
+            {
+              "channel": "Tesoro",
+              "amount": 23200.0,
+              "estimated_teorica": 14146.341463414632,
+              "share": 0.14146341463414633,
+              "deviation_pct": 0.6400000000000002
+            },
+            {
+              "channel": "Ventanilla",
+              "amount": 8000.0,
+              "estimated_teorica": 4878.048780487805,
+              "share": 0.04878048780487805,
+              "deviation_pct": 0.64
+            },
+            {
+              "channel": "Buzon",
+              "amount": 9700.0,
+              "estimated_teorica": 5914.634146341463,
+              "share": 0.05914634146341463
+            },
+            {
+              "channel": "Recaudacion",
+              "amount": 3400.0,
+              "estimated_teorica": 2073.1707317073174,
+              "share": 0.020731707317073172
+            },
+            {
+              "channel": "Caja Chica",
+              "amount": 2600.0,
+              "estimated_teorica": 1585.3658536585367,
+              "share": 0.015853658536585366,
+              "deviation_pct": 0.6399999999999999
+            },
+            {
+              "channel": "Otros",
+              "amount": 16400.0,
+              "estimated_teorica": 10000.0,
+              "share": 0.1,
+              "deviation_pct": 0.64
+            }
+          ],
+          "alerts_created": 1,
+          "alerts_to_persist": [
+            {
+              "priority": "critical",
+              "prioridad": "critica",
+              "status": "active",
+              "estado": "abierta",
+              "problema": "Recoleta: exceso de 64,000 ARS (64.0%)",
+              "hipotesis": "Desvio detectado en Recoleta",
+              "impacto": "Diferencia de 64,000 ARS (64.0%)",
+              "datos_clave": [
+                "Diferencia total: 64,000 ARS",
+                "Desvio porcentual: 64.0%",
+                "Sucursal: Recoleta (SUC-419)",
+                "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]",
+                "Medicion: 2025-10-08T00:44:16.246004+00:00"
+              ],
+              "acciones": "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]; ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada [inmediato]; ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada [programar]; ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada [programar]; Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada [programar]; Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada [programar]; Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada [programar]; Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "SUC-419",
+              "branch_name": "Recoleta",
+              "summary": "Recoleta: exceso de 64,000 ARS (64.0%). Severidad: alert",
+              "dedupe_clave": "e9f3a6c789b318050d23754cdd9bf7cf07f3f34ee824bf047f7c8081938b65e2",
+              "creada_en": "2025-10-08T00:44:16.246004+00:00",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "agent_source": "capi_elcajas"
+            }
+          ],
+          "alert_priority": "critical",
+          "alert_escalated": true,
+          "alert_operation": {
+            "table": "public.alertas",
+            "values": {
+              "prioridad": "critica",
+              "estado": "abierta",
+              "problema": "Recoleta: exceso de 64,000 ARS (64.0%)",
+              "hipotesis": "Desvio detectado en Recoleta",
+              "impacto": "Diferencia de 64,000 ARS (64.0%)",
+              "datos_clave": [
+                "Diferencia total: 64,000 ARS",
+                "Desvio porcentual: 64.0%",
+                "Sucursal: Recoleta (SUC-419)",
+                "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]",
+                "Medicion: 2025-10-08T00:44:16.246004+00:00"
+              ],
+              "acciones": "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]; ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada [inmediato]; ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada [programar]; ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada [programar]; Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada [programar]; Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada [programar]; Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada [programar]; Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "SUC-419",
+              "dedupe_clave": "e9f3a6c789b318050d23754cdd9bf7cf07f3f34ee824bf047f7c8081938b65e2",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "creada_en": "2025-10-08 00:44:16.246004+00:00"
+            },
+            "description": "Insert alerta El Cajas - Recoleta",
+            "branch_id": "SUC-419",
+            "branch_name": "Recoleta",
+            "source": "capi_elcajas",
+            "payload": {
+              "priority": "critical",
+              "prioridad": "critica",
+              "status": "active",
+              "estado": "abierta",
+              "problema": "Recoleta: exceso de 64,000 ARS (64.0%)",
+              "hipotesis": "Desvio detectado en Recoleta",
+              "impacto": "Diferencia de 64,000 ARS (64.0%)",
+              "datos_clave": [
+                "Diferencia total: 64,000 ARS",
+                "Desvio porcentual: 64.0%",
+                "Sucursal: Recoleta (SUC-419)",
+                "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]",
+                "Medicion: 2025-10-08T00:44:16.246004+00:00"
+              ],
+              "acciones": "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]; ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada [inmediato]; ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada [programar]; ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada [programar]; Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada [programar]; Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada [programar]; Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada [programar]; Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "SUC-419",
+              "branch_name": "Recoleta",
+              "summary": "Recoleta: exceso de 64,000 ARS (64.0%). Severidad: alert",
+              "dedupe_clave": "e9f3a6c789b318050d23754cdd9bf7cf07f3f34ee824bf047f7c8081938b65e2",
+              "creada_en": "2025-10-08T00:44:16.246004+00:00",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "agent_source": "capi_elcajas"
+            }
+          },
+          "recommendation_artifact": {
+            "path": "/app/ia_workspace/data/sessions/session_global/capi_elcajas/recommendation_SUC-419_20251008_004416.json",
+            "filename": "recommendation_SUC-419_20251008_004416.json",
+            "relative_path": "capi_elcajas/recommendation_SUC-419_20251008_004416.json",
+            "created_at": "2025-10-08T00:44:16.246004+00:00",
+            "summary": "Recoleta: exceso de 64,000 ARS (64.0%). Severidad: alert",
+            "hypothesis": "Desvio detectado en Recoleta",
+            "impact": "Diferencia de 64,000 ARS (64.0%)",
+            "suggested_actions": [
+              "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica",
+              "ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada",
+              "ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo",
+              "ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada",
+              "ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo",
+              "Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada",
+              "Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo",
+              "Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada",
+              "Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo",
+              "Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada",
+              "Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo",
+              "Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada",
+              "Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo"
+            ]
+          }
+        }
+      ],
+      "calendar": {
+        "status": "cerrado",
+        "business_day": "si",
+        "holiday": "no"
+      },
+      "policies_loaded": 9,
+      "alerts_created": 1,
+      "alert_operations": [
+        {
+          "table": "public.alertas",
+          "values": {
+            "prioridad": "critica",
+            "estado": "abierta",
+            "problema": "Recoleta: exceso de 64,000 ARS (64.0%)",
+            "hipotesis": "Desvio detectado en Recoleta",
+            "impacto": "Diferencia de 64,000 ARS (64.0%)",
+            "datos_clave": [
+              "Diferencia total: 64,000 ARS",
+              "Desvio porcentual: 64.0%",
+              "Sucursal: Recoleta (SUC-419)",
+              "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]",
+              "Medicion: 2025-10-08T00:44:16.246004+00:00"
+            ],
+            "acciones": "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]; ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada [inmediato]; ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada [programar]; ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada [programar]; Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada [programar]; Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada [programar]; Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada [programar]; Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo [proximo turno]",
+            "sucursal_id": "SUC-419",
+            "dedupe_clave": "e9f3a6c789b318050d23754cdd9bf7cf07f3f34ee824bf047f7c8081938b65e2",
+            "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+            "creada_en": "2025-10-08 00:44:16.246004+00:00"
+          },
+          "description": "Insert alerta El Cajas - Recoleta",
+          "branch_id": "SUC-419",
+          "branch_name": "Recoleta",
+          "source": "capi_elcajas",
+          "payload": {
+            "priority": "critical",
+            "prioridad": "critica",
+            "status": "active",
+            "estado": "abierta",
+            "problema": "Recoleta: exceso de 64,000 ARS (64.0%)",
+            "hipotesis": "Desvio detectado en Recoleta",
+            "impacto": "Diferencia de 64,000 ARS (64.0%)",
+            "datos_clave": [
+              "Diferencia total: 64,000 ARS",
+              "Desvio porcentual: 64.0%",
+              "Sucursal: Recoleta (SUC-419)",
+              "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]",
+              "Medicion: 2025-10-08T00:44:16.246004+00:00"
+            ],
+            "acciones": "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica [programar]; ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada [inmediato]; ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo [inmediato]; ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada [programar]; ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo [proximo turno]; Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada [programar]; Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada [programar]; Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada [programar]; Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada [programar]; Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo [proximo turno]",
+            "sucursal_id": "SUC-419",
+            "branch_name": "Recoleta",
+            "summary": "Recoleta: exceso de 64,000 ARS (64.0%). Severidad: alert",
+            "dedupe_clave": "e9f3a6c789b318050d23754cdd9bf7cf07f3f34ee824bf047f7c8081938b65e2",
+            "creada_en": "2025-10-08T00:44:16.246004+00:00",
+            "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+            "agent_source": "capi_elcajas",
+            "persisted": true,
+            "database_id": 260
+          },
+          "persisted": true,
+          "database_id": 260
+        }
+      ],
+      "recommendation_files": [
+        {
+          "path": "/app/ia_workspace/data/sessions/session_global/capi_elcajas/recommendation_SUC-419_20251008_004416.json",
+          "filename": "recommendation_SUC-419_20251008_004416.json",
+          "relative_path": "capi_elcajas/recommendation_SUC-419_20251008_004416.json",
+          "created_at": "2025-10-08T00:44:16.246004+00:00",
+          "summary": "Recoleta: exceso de 64,000 ARS (64.0%). Severidad: alert",
+          "hypothesis": "Desvio detectado en Recoleta",
+          "impact": "Diferencia de 64,000 ARS (64.0%)",
+          "suggested_actions": [
+            "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica",
+            "ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada",
+            "ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo",
+            "ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada",
+            "ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo",
+            "Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada",
+            "Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo",
+            "Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada",
+            "Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo",
+            "Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada",
+            "Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo",
+            "Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada",
+            "Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo"
+          ]
+        }
+      ]
+    }
+  },
   "errors": [],
-  "trace_id": "trace-1759505440.539252",
-  "user_id": "voice-client",
+  "trace_id": "trace-1759884245.611425",
+  "user_id": "global",
   "workflow_mode": "chat",
   "response_metadata": {
-    "intent_reasoning": "No legacy patterns matched",
-    "intent_matched_patterns": [],
+    "intent_reasoning": "Semantic pattern match: La consulta solicita información sobre el saldo de una sucursal, por lo que se selecciona el intent 'db_operation' y el agente 'capi_datab'. Se incluye la entidad 'sucursal' con el valor 'recoleta'. (confidence=0.900, entities=1)",
+    "intent_matched_patterns": [
+      "semantic_pattern:db_operation"
+    ],
     "react_trace": [
       {
         "thought": "Reviso el contexto reciente para entender la conversacion.",
@@ -1364,69 +3154,70 @@
         "thought": "Finalizo el ciclo ReAct con una recomendacion.",
         "action": "finish",
         "observation": {
-          "message": "Derivare la consulta 'Tenés idea cuál es el nuevo de estos de estos dos?' al agente 'summary' con la evidencia recopilada.",
+          "message": "Derivare la consulta 'cual es el saldo de la sucursal de recoleta?' al agente 'summary' con la evidencia recopilada.",
           "recommended_agent": "summary"
         }
       }
     ],
     "react_recommended_agent": "summary",
-    "react_finished_at": "2025-10-03T15:30:46.180254",
+    "react_finished_at": "2025-10-08T00:44:12.244301",
     "active_agent": "summary",
-    "loop_fallback": "summary",
+    "loop_fallback": "capi_datab",
     "react_follow_up": false,
     "needs_retry": null,
     "reasoning_plan": {
-      "plan_id": "d56ef86f-1111-47c4-8668-9b95b4938720",
+      "plan_id": "d152e755-4c2a-4672-95d2-35c133c2276f",
       "version": 1,
-      "intent": "unknown",
-      "goal": "Clarificar y asistir consulta ambigua: Tenés idea cuál es el nuevo de estos de estos dos?",
+      "intent": "db_operation",
+      "goal": "Clarificar y asistir consulta ambigua: cual es el saldo de la sucursal de recoleta?",
       "confidence": 0.95,
-      "recommended_agent": "summary",
-      "fallback_agent": "assemble",
-      "rationale": "Consulta ambigua: se elabora estrategia de clarificación y recopilación de señales antes de seleccionar agente definitivo.",
+      "recommended_agent": "capi_datab",
+      "fallback_agent": "capi_datab",
+      "rationale": "La consulta requiere operaciones sobre bases de datos; se utiliza el agente especialista con controles de validación y exportes auditables.",
       "steps": [
         {
-          "id": "E1",
-          "title": "Solicitar clarificación",
-          "description": "Pedir más detalles al usuario para reducir ambigüedad.",
-          "agent": "summary",
-          "inputs": [],
-          "expected_output": "Detalle adicional de la consulta",
+          "id": "D1",
+          "title": "Analizar requerimiento y sanitizar sentencia",
+          "description": "Interpretar la instrucción (JSON, SQL o lenguaje natural), validar tablas y evitar comandos restringidos (DROP/TRUNCATE).",
+          "agent": "capi_datab",
+          "inputs": [
+            "instruccion_usuario"
+          ],
+          "expected_output": "Sentencia SQL validada con parámetros normalizados",
           "depends_on": []
         },
         {
-          "id": "E2",
-          "title": "Identificar señales financieras",
-          "description": "Buscar palabras clave que alineen la consulta con agentes especializados.",
-          "agent": "intent",
+          "id": "D2",
+          "title": "Ejecutar operación transaccional en PostgreSQL",
+          "description": "Abrir conexión controlada, ejecutar la sentencia y capturar filas afectadas o resultados.",
+          "agent": "capi_datab",
           "inputs": [],
-          "expected_output": "Intentos candidatos",
+          "expected_output": "Resultado de la operación (filas, datos o confirmación)",
           "depends_on": [
-            "E1"
+            "D1"
           ]
         },
         {
-          "id": "E3",
-          "title": "Preparar respuesta inicial",
-          "description": "Ofrecer orientación y sugerir capacidades relevantes mientras se espera aclaración.",
-          "agent": "summary",
+          "id": "D3",
+          "title": "Exportar evidencia al workspace",
+          "description": "Serializar los resultados en el formato solicitado y guardar el archivo en ia_workspace/data/capi_DataB/.",
+          "agent": "capi_datab",
           "inputs": [],
-          "expected_output": "Guía introductoria",
+          "expected_output": "Archivo DataB_YYYY_MM_DD_*.ext disponible para el usuario",
           "depends_on": [
-            "E1",
-            "E2"
+            "D2"
           ]
         }
       ],
-      "cooperative_agents": [
-        "intent"
-      ],
+      "cooperative_agents": [],
       "supporting_evidence": {
-        "progress_percent": 97.5,
+        "progress_percent": 98.0,
         "remaining_steps": 3,
-        "estimated_effort_seconds": 50,
-        "complexity": "medium",
-        "entities": {},
+        "estimated_effort_seconds": 45,
+        "complexity": "low",
+        "entities": {
+          "sucursal": "recoleta"
+        },
         "context_used": false,
         "semantic_confidence": 0.9,
         "available_agents": [
@@ -1436,52 +3227,215 @@
           "capi_desktop",
           "summary"
         ],
-        "user_id": "voice-client",
+        "user_id": "global",
         "session_id": "global"
       },
-      "generated_at": "2025-10-03T15:30:47.576685",
-      "intent_alignment": false,
+      "generated_at": "2025-10-08T00:44:14.549171",
+      "intent_alignment": true,
       "requires_replan": false,
       "history": [],
-      "progress_percent": 97.5,
+      "progress_percent": 98.0,
       "remaining_steps": 3,
-      "complexity": "medium",
-      "estimated_effort_seconds": 50
+      "complexity": "low",
+      "estimated_effort_seconds": 45
     },
     "reasoning_confidence": 0.95,
-    "recommended_agent": "summary",
-    "reasoning_progress_percent": 97.5,
-    "reasoning_eta_seconds": 50,
+    "recommended_agent": "capi_datab",
+    "reasoning_progress_percent": 98.0,
+    "reasoning_eta_seconds": 45,
     "reasoning_remaining_steps": 3,
-    "reasoning_complexity": "medium",
+    "reasoning_complexity": "low",
     "reasoning_needs_react": true,
     "supervisor_queue": [
       "summary",
-      "intent",
+      "capi_datab",
       "anomaly",
       "capi_desktop",
       "smalltalk"
     ],
     "supervisor_selected": "summary",
-    "supervisor_ran_at": "2025-10-03T15:30:47.584537",
+    "supervisor_ran_at": "2025-10-08T00:44:14.558076",
     "semantic_result": {
-      "intent": "unknown",
-      "confidence": 0.2,
-      "target_agent": "assemble",
-      "routing_agent": "summary",
-      "entities": {},
+      "intent": "db_operation",
+      "confidence": 0.5,
+      "target_agent": "capi_datab",
+      "routing_agent": "capi_datab",
+      "entities": {
+        "branch_hint": "cual es el saldo de la sucursal de recoleta?"
+      },
       "reasoning": "Fallback classification executed (feature_flag_disabled)",
-      "requires_clarification": true,
+      "requires_clarification": false,
       "provider": "fallback",
       "model": ""
     },
-    "agent_type": "summary",
-    "summary_hash": "111ac8b4d4ae8fdc",
-    "is_repeated": false,
-    "deduplication_applied": true,
+    "agent": "capi_datab",
+    "db_operation": {
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+      "parameters": [
+        "%Recoleta%"
+      ],
+      "output_format": "json",
+      "requires_approval": false,
+      "metadata": {
+        "branch": {
+          "raw_text": "recoleta",
+          "branch_number": null,
+          "branch_name": "Recoleta",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%Recoleta%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "Se identifica claramente la sucursal 'Recoleta' para consultar su saldo.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      }
+    },
+    "db_operation_status": "completed",
+    "planner_metadata": {
+      "branch": {
+        "raw_text": "recoleta",
+        "branch_number": null,
+        "branch_name": "Recoleta",
+        "branch_id": null
+      },
+      "filters": [
+        {
+          "column": "sucursal_nombre",
+          "operator": "ILIKE",
+          "value": "%Recoleta%"
+        }
+      ],
+      "planner_source": "llm_branch_identifier",
+      "planner_confidence": 0.8,
+      "planner_reason": "Se identifica claramente la sucursal 'Recoleta' para consultar su saldo.",
+      "planner_model": "gpt-3.5-turbo",
+      "suggested_table": "public.saldos_sucursal"
+    },
+    "agent_raw_message": "Resultados para la sucursal 'Recoleta': sucursal id=SUC-419, sucursal numero=313, sucursal nombre=Recoleta, saldo total sucursal=$164.000,00, caja teorica sucursal=100000.00, total atm=$75.600,00, total ats=$25.100,00, total tesoro=$23.200,00, total cajas ventanilla=$8.000,00, total buzon depositos=$9.700,00, total recaudacion=$3.400,00, total caja chica=$2.600,00, total otros=$16.400,00, medido en=2025-10-03 02:38:29.086113+00:00. Resultado exportado a DataB_2025_10_08_106321.json.",
+    "result_summary": "Resultados para la sucursal 'Recoleta': sucursal id=SUC-419, sucursal numero=313, sucursal nombre=Recoleta, saldo total sucursal=$164.000,00, caja teorica sucursal=100000.00, total atm=$75.600,00, total ats=$25.100,00, total tesoro=$23.200,00, total cajas ventanilla=$8.000,00, total buzon depositos=$9.700,00, total recaudacion=$3.400,00, total caja chica=$2.600,00, total otros=$16.400,00, medido en=2025-10-03 02:38:29.086113+00:00. Resultado exportado a DataB_2025_10_08_106321.json.\n\nEl Cajas: Recoleta: exceso de 64,000 ARS (64.0%)",
+    "desktop_instruction": {
+      "intent": "escribir_archivo_txt",
+      "parameters": {
+        "filename": "DataB_2025_10_08_106321_desktop.txt",
+        "content": "{\n  \"operation\": \"select\",\n  \"table\": \"public.saldos_sucursal\",\n  \"rowcount\": 1,\n  \"generated_at\": \"2025-10-08T00:44:16.125940\",\n  \"session_id\": \"global\",\n  \"sql\": \"SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1\",\n  \"parameters\": [\n    \"%Recoleta%\"\n  ],\n  \"result\": [\n    {\n      \"sucursal_id\": \"SUC-419\",\n      \"sucursal_numero\": 313,\n      \"sucursal_nombre\": \"Recoleta\",\n      \"saldo_total_sucursal\": \"164000.00\",\n      \"caja_teorica_sucursal\": \"100000.00\",\n      \"total_atm\": \"75600.00\",\n      \"total_ats\": \"25100.00\",\n      \"total_tesoro\": \"23200.00\",\n      \"total_cajas_ventanilla\": \"8000.00\",\n      \"total_buzon_depositos\": \"9700.00\",\n      \"total_recaudacion\": \"3400.00\",\n      \"total_caja_chica\": \"2600.00\",\n      \"total_otros\": \"16400.00\",\n      \"medido_en\": \"2025-10-03 02:38:29.086113+00:00\"\n    }\n  ]\n}"
+      },
+      "action": "write_file"
+    },
+    "semantic_action": "EXPORT_FILE",
+    "requires_human_approval": false,
+    "datab_desktop_ready": true,
+    "el_cajas_status": "alert",
+    "el_cajas_alerts": 1,
+    "el_cajas_pending": false,
+    "actions": [],
+    "desktop_recommendation": {
+      "path": "/app/ia_workspace/data/sessions/session_global/capi_elcajas/recommendation_SUC-419_20251008_004416.json",
+      "filename": "recommendation_SUC-419_20251008_004416.json",
+      "relative_path": "capi_elcajas/recommendation_SUC-419_20251008_004416.json",
+      "created_at": "2025-10-08T00:44:16.246004+00:00",
+      "summary": "Recoleta: exceso de 64,000 ARS (64.0%). Severidad: alert",
+      "hypothesis": "Desvio detectado en Recoleta",
+      "impact": "Diferencia de 64,000 ARS (64.0%)",
+      "suggested_actions": [
+        "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica",
+        "ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada",
+        "ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo",
+        "ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada",
+        "ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo",
+        "Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada",
+        "Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo",
+        "Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada",
+        "Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo",
+        "Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada",
+        "Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo",
+        "Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada",
+        "Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo"
+      ]
+    },
+    "pending_desktop_instruction": null,
+    "approval_reason": "Deseas que guardemos la recomendacion en el escritorio?",
+    "el_cajas_alert_ids": [
+      "260"
+    ],
+    "el_cajas_alert_persisted": true,
+    "human_decision": {
+      "approved": false,
+      "metadata": {
+        "action_id": "save_recommendation",
+        "label": "Guardar recomendacion en escritorio",
+        "action_payload": {
+          "artifact_path": "/app/ia_workspace/data/sessions/session_global/capi_elcajas/recommendation_SUC-419_20251008_004416.json",
+          "artifact_filename": "recommendation_SUC-419_20251008_004416.json",
+          "summary": "Recoleta: exceso de 64,000 ARS (64.0%). Severidad: alert",
+          "hypothesis": "Desvio detectado en Recoleta",
+          "impact": "Diferencia de 64,000 ARS (64.0%)",
+          "suggested_actions": [
+            "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica",
+            "ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada",
+            "ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo",
+            "ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada",
+            "ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo",
+            "Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada",
+            "Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo",
+            "Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada",
+            "Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo",
+            "Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada",
+            "Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo",
+            "Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada",
+            "Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo"
+          ],
+          "branch_name": null,
+          "session_id": "global"
+        },
+        "raw_action": {
+          "id": "save_recommendation",
+          "label": "Guardar recomendacion en escritorio",
+          "payload": {
+            "artifact_path": "/app/ia_workspace/data/sessions/session_global/capi_elcajas/recommendation_SUC-419_20251008_004416.json",
+            "artifact_filename": "recommendation_SUC-419_20251008_004416.json",
+            "summary": "Recoleta: exceso de 64,000 ARS (64.0%). Severidad: alert",
+            "hypothesis": "Desvio detectado en Recoleta",
+            "impact": "Diferencia de 64,000 ARS (64.0%)",
+            "suggested_actions": [
+              "Saldo Total: withdraw 56,000 ARS - Exceso vs caja teorica",
+              "ATM: withdraw 23,971 ARS - Exceso canal vs distribucion esperada",
+              "ATM: deposit 424,400 ARS - Monto por debajo del colchon minimo",
+              "ATS: withdraw 8,265 ARS - Exceso canal vs distribucion esperada",
+              "ATS: deposit 274,900 ARS - Monto por debajo del colchon minimo",
+              "Tesoro: withdraw 6,932 ARS - Exceso canal vs distribucion esperada",
+              "Tesoro: deposit 726,800 ARS - Monto por debajo del colchon minimo",
+              "Ventanilla: withdraw 2,732 ARS - Exceso canal vs distribucion esperada",
+              "Ventanilla: deposit 142,000 ARS - Monto por debajo del colchon minimo",
+              "Caja Chica: withdraw 951 ARS - Exceso canal vs distribucion esperada",
+              "Caja Chica: deposit 27,400 ARS - Monto por debajo del colchon minimo",
+              "Otros: withdraw 5,700 ARS - Exceso canal vs distribucion esperada",
+              "Otros: deposit 33,600 ARS - Monto por debajo del colchon minimo"
+            ],
+            "branch_name": null,
+            "session_id": "global"
+          }
+        }
+      },
+      "node": "human_gate",
+      "resumed_at": "2025-10-08T00:44:42.215167"
+    },
+    "human_approved": false,
+    "loop_controller": {
+      "iteration": 1,
+      "max": 3
+    },
     "assembled_at": "assemble",
     "workflow_completed": true,
-    "total_nodes": 9
+    "total_nodes": 11
   },
-  "routing_decision": "summary"
+  "routing_decision": "assemble"
 }

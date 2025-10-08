@@ -1,5 +1,6 @@
 import { Message } from '@/app/types/chat';
 import type { AgentEvent } from '@/app/hooks/useAgentWebSocket';
+import { buildNarrativeAgentSteps, type NarrativePlanStep } from './agentNarrativeCatalog';
 
 // Tipo comn para payloads de eventos de agente
 export type AgentEventPayload = {
@@ -360,6 +361,8 @@ export interface SimulatedEvent {
   primaryText: string;
   detail?: string;
   status: SimulatedEventStatus;
+  timestamp?: number;
+  source?: 'event' | 'artifact' | 'synthetic' | 'fallback';
 }
 
 export interface ReasoningPlanStep {
@@ -530,6 +533,302 @@ const extractAlertSummary = (alert: any): string | undefined => {
   return undefined;
 };
 
+const parseEventTimestamp = (event: AgentEvent): number | undefined => {
+  if (typeof event.timestamp === 'string') {
+    const parsed = Date.parse(event.timestamp);
+    if (!Number.isNaN(parsed)) {
+      return parsed;
+    }
+  }
+
+  if (typeof event.timestamp === 'number' && Number.isFinite(event.timestamp)) {
+    return event.timestamp;
+  }
+
+  const dataTimestamp = typeof event.data?.timestamp === 'string'
+    ? Date.parse(event.data.timestamp)
+    : typeof event.data?.timestamp === 'number'
+      ? event.data.timestamp
+      : undefined;
+
+  if (typeof dataTimestamp === 'number' && !Number.isNaN(dataTimestamp)) {
+    return dataTimestamp;
+  }
+
+  const metaTimestamp = typeof event.meta?.timestamp === 'string'
+    ? Date.parse(event.meta.timestamp)
+    : typeof event.meta?.timestamp === 'number'
+      ? event.meta.timestamp
+      : undefined;
+
+  if (typeof metaTimestamp === 'number' && !Number.isNaN(metaTimestamp)) {
+    return metaTimestamp;
+  }
+
+  return undefined;
+};
+
+const pickAgentFromEvent = (event: AgentEvent): string | undefined => {
+  const candidateValues: Array<unknown> = [
+    event.agent,
+    event.data?.agent,
+    event.data?.agent_name,
+    event.data?.actor,
+    event.data?.metadata?.agent,
+    event.meta?.agent,
+    event.data?.from,
+    event.data?.node,
+    event.data?.current_node,
+    event.data?.state?.current_node,
+    event.to,
+    event.meta?.node
+  ];
+
+  for (const value of candidateValues) {
+    if (typeof value === 'string') {
+      const trimmed = value.trim();
+      if (trimmed.length > 0) {
+        return trimmed;
+      }
+    }
+  }
+
+  return undefined;
+};
+
+const formatEventTypeLabel = (eventType?: string): string => {
+  if (!eventType) {
+    return 'evento';
+  }
+  const normalized = eventType.replace(/_/g, ' ').trim().toLowerCase();
+  if (!normalized) {
+    return 'evento';
+  }
+  return normalized.charAt(0).toUpperCase() + normalized.slice(1);
+};
+
+const extractEventTexts = (event: AgentEvent): { primary?: string; detail?: string } => {
+  const primary = pickFirstString([
+    event.data?.message,
+    event.data?.content,
+    event.data?.detail,
+    event.data?.description,
+    event.data?.summary,
+    event.meta?.message,
+    event.meta?.content,
+    event.meta?.summary,
+    event.data?.status,
+    event.data?.reason,
+    event.meta?.status,
+  ]);
+
+  const detail = pickFirstString([
+    event.data?.detail,
+    event.data?.result,
+    event.data?.action,
+    event.meta?.detail,
+    event.meta?.context,
+    event.meta?.action,
+    event.data?.response,
+  ]);
+
+  return { primary, detail };
+};
+
+const collectExpectedAgents = (
+  artifacts: Record<string, any>,
+  planSteps: ReasoningPlanStep[] | undefined,
+  agentEvents: AgentEvent[]
+): string[] => {
+  const ordered: string[] = [];
+  const seen = new Set<string>();
+
+  const pushAgent = (agent?: string) => {
+    if (!agent) {
+      return;
+    }
+    const normalized = normalizeAgentName(agent);
+    if (normalized.length === 0 || isOrchestrationAgent(normalized)) {
+      return;
+    }
+    if (seen.has(normalized)) {
+      return;
+    }
+    seen.add(normalized);
+    ordered.push(agent);
+  };
+
+  if (Array.isArray(planSteps)) {
+    planSteps.forEach(step => {
+      if (typeof step?.agent === 'string') {
+        pushAgent(step.agent);
+      }
+    });
+  }
+
+  Object.keys(artifacts || {}).forEach(key => {
+    pushAgent(key);
+  });
+
+  agentEvents.forEach(event => {
+    const agent = pickAgentFromEvent(event);
+    if (agent) {
+      pushAgent(agent);
+      return;
+    }
+
+    const fallbackAgent =
+      typeof event.data?.from === 'string' ? event.data.from :
+      typeof event.data?.agent_name === 'string' ? event.data.agent_name :
+      undefined;
+
+    if (fallbackAgent) {
+      pushAgent(fallbackAgent);
+    }
+  });
+
+  return ordered;
+};
+
+interface BuildEventsFromAgentStreamParams {
+  agentEvents: AgentEvent[];
+  artifacts: Record<string, any>;
+  planSteps?: ReasoningPlanStep[];
+}
+
+const MAX_STREAM_EVENTS_PER_AGENT = 8;
+
+const buildEventsFromAgentStream = ({
+  agentEvents,
+  artifacts,
+  planSteps
+}: BuildEventsFromAgentStreamParams): SimulatedEvent[] => {
+  if (!Array.isArray(agentEvents) || agentEvents.length === 0) {
+    return [];
+  }
+
+  const chronological = [...agentEvents].reverse();
+  const expectedAgents = collectExpectedAgents(artifacts, planSteps, agentEvents);
+
+  type IntermediateEvent = SimulatedEvent & {
+    timestamp: number;
+    source: 'event' | 'synthetic';
+    orderKey: number;
+  };
+
+  const groupedCount = new Map<string, number>();
+  const dedupe = new Set<string>();
+  const streamEvents: IntermediateEvent[] = [];
+
+  chronological.forEach((event, chronologicalIndex) => {
+    if (event.type === 'agent_start' || event.type === 'agent_end') {
+      return;
+    }
+
+    const agentRaw = pickAgentFromEvent(event);
+    if (!agentRaw) {
+      return;
+    }
+
+    const normalizedAgent = normalizeAgentName(agentRaw);
+    if (!normalizedAgent || isOrchestrationAgent(normalizedAgent)) {
+      return;
+    }
+
+    const parsedTimestamp = parseEventTimestamp(event);
+    const timestamp = typeof parsedTimestamp === 'number' && Number.isFinite(parsedTimestamp)
+      ? parsedTimestamp
+      : chronologicalIndex;
+
+    const { primary, detail } = extractEventTexts(event);
+    const artifact = pickArtifactForAgent(artifacts, agentRaw);
+
+    const baseText = primary ?? formatEventTypeLabel(event.type);
+    const friendlyName = getFriendlyAgentName(agentRaw);
+
+    const summaryText = shortenText(baseText || `${friendlyName} ejecutando ${formatEventTypeLabel(event.type)}`);
+    const detailText = detail
+      ? shortenText(detail)
+      : typeof artifact?.summary_message === 'string'
+        ? shortenText(artifact.summary_message)
+        : undefined;
+
+    const dedupeKey = [
+      normalizedAgent,
+      event.type ?? 'event',
+      summaryText,
+      detailText ?? ''
+    ].join('|');
+    if (dedupe.has(dedupeKey)) {
+      return;
+    }
+    dedupe.add(dedupeKey);
+
+    const currentCount = groupedCount.get(normalizedAgent) ?? 0;
+    if (currentCount >= MAX_STREAM_EVENTS_PER_AGENT) {
+      return;
+    }
+    groupedCount.set(normalizedAgent, currentCount + 1);
+
+    const id =
+      typeof event.id === 'string' && event.id.trim().length > 0
+        ? event.id.trim()
+        : `agent-stream-${normalizedAgent}-${timestamp}-${currentCount}`;
+
+    streamEvents.push({
+      id,
+      agent: agentRaw,
+      friendlyName,
+      primaryText: summaryText,
+      detail: detailText,
+      status: 'pending',
+      timestamp,
+      source: 'event',
+      orderKey: chronologicalIndex
+    });
+  });
+
+  streamEvents.sort((a, b) => {
+    if (a.timestamp === b.timestamp) {
+      return a.orderKey - b.orderKey;
+    }
+    return a.timestamp - b.timestamp;
+  });
+
+  const seenAgents = new Set(streamEvents.map(event => normalizeAgentName(event.agent)));
+  const lastTimestamp = streamEvents.length > 0 ? streamEvents[streamEvents.length - 1].timestamp : Date.now();
+  let syntheticTimestamp = lastTimestamp;
+
+  expectedAgents.forEach((agentKey, index) => {
+    const normalized = normalizeAgentName(agentKey);
+    if (!normalized || isOrchestrationAgent(normalized) || seenAgents.has(normalized)) {
+      return;
+    }
+    seenAgents.add(normalized);
+    syntheticTimestamp += index + 1;
+    streamEvents.push({
+      id: `agent-silent-${normalized}-${syntheticTimestamp}`,
+      agent: agentKey,
+      friendlyName: getFriendlyAgentName(agentKey),
+      primaryText: 'Sin actividad reportada',
+      detail: 'El agente no emitió eventos durante la ejecución de esta consulta.',
+      status: 'pending',
+      timestamp: syntheticTimestamp,
+      source: 'synthetic',
+      orderKey: Number.POSITIVE_INFINITY
+    });
+  });
+
+  streamEvents.sort((a, b) => {
+    if (a.timestamp === b.timestamp) {
+      return a.orderKey - b.orderKey;
+    }
+    return a.timestamp - b.timestamp;
+  });
+
+  return streamEvents.map(({ orderKey, ...rest }) => rest);
+};
+
 const buildEventsFromAgentMessages = (messages: Message[]): SimulatedEvent[] => {
   const events: SimulatedEvent[] = [];
   const seen = new Set<string>();
@@ -583,7 +882,8 @@ const buildEventsFromAgentMessages = (messages: Message[]): SimulatedEvent[] => 
       friendlyName,
       primaryText: shortenText(primaryText),
       detail: detailText ? shortenText(detailText) : undefined,
-      status: 'pending'
+      status: 'pending',
+      source: 'fallback'
     });
   });
 
@@ -600,127 +900,48 @@ const buildEventsFromArtifacts = (payload: any, planSteps?: ReasoningPlanStep[])
     return [];
   }
 
+  const narrativeAgents = buildNarrativeAgentSteps(artifacts, planSteps as NarrativePlanStep[]);
+  if (narrativeAgents.length === 0) {
+    return [];
+  }
+
+  const timestamp = Date.now();
   const events: SimulatedEvent[] = [];
   const seen = new Set<string>();
   const agentCounts = new Map<string, number>();
-  const timestamp = Date.now();
 
-  const pushEvent = (agent: string, text: string, detail?: string) => {
-    const normalizedAgent = agent.trim() || 'agente';
-    const cleanText = shortenText(text);
-    if (!cleanText) {
-      return;
-    }
-    const dedupeKey = `${normalizeAgentName(normalizedAgent)}-${cleanText}`;
-    if (seen.has(dedupeKey)) {
-      return;
-    }
-    const currentCount = agentCounts.get(normalizedAgent) ?? 0;
-    if (currentCount >= 6) {
-      return;
-    }
-    seen.add(dedupeKey);
-    agentCounts.set(normalizedAgent, currentCount + 1);
-    events.push({
-      id: `artifact-${normalizeAgentName(normalizedAgent)}-${events.length}-${timestamp}`,
-      agent: normalizedAgent,
-      friendlyName: getFriendlyAgentName(normalizedAgent),
-      primaryText: cleanText,
-      detail: detail ? shortenText(detail) : undefined,
-      status: 'pending'
-    });
-  };
+  narrativeAgents.forEach(({ agentKey, steps }) => {
+    const normalizedAgent = normalizeAgentName(agentKey);
+    const friendlyName = getFriendlyAgentName(agentKey);
 
-  const addArtifactExtras = (agent: string, artifact: any) => {
-    if (!artifact || typeof artifact !== 'object') {
-      return;
-    }
-
-    if (typeof artifact.rowcount === 'number') {
-      pushEvent(agent, formatRowCountText(artifact.rowcount));
-    } else if (Array.isArray(artifact.rows)) {
-      pushEvent(agent, formatRowCountText(artifact.rows.length));
-    }
-
-    if (typeof artifact.export_file === 'string' && artifact.export_file.trim().length > 0) {
-      const parts = artifact.export_file.trim().split(/[\/]/);
-      const fileName = parts.length > 0 ? parts[parts.length - 1] : artifact.export_file.trim();
-      pushEvent(agent, `Exportando resultados a ${fileName}`);
-    }
-
-    if (Array.isArray(artifact.analysis) && artifact.analysis.length > 0) {
-      const headline = extractAlertSummary(artifact.analysis[0]);
-      if (headline) {
-        pushEvent(agent, `Analizando ${headline}`);
-      }
-    }
-
-    if (Array.isArray(artifact.alerts)) {
-      artifact.alerts.slice(0, 2).forEach(alert => {
-        const summary = extractAlertSummary(alert);
-        if (summary) {
-          pushEvent(agent, `Generando alerta: ${summary}`);
-        }
-      });
-    }
-
-    if (Array.isArray(artifact.recommendation_files) && artifact.recommendation_files.length > 0) {
-      const recommendation = artifact.recommendation_files[0];
-      const label = typeof recommendation?.summary === 'string' && recommendation.summary.trim().length > 0
-        ? recommendation.summary.trim()
-        : recommendation?.filename;
-      if (label) {
-        pushEvent(agent, `Registrando recomendacion ${label}`);
-      }
-    }
-
-    if (typeof artifact.summary_message === 'string' && artifact.summary_message.trim().length > 0) {
-      pushEvent(agent, artifact.summary_message);
-    }
-  };
-
-  const processedAgents = new Set<string>();
-  const planList = Array.isArray(planSteps) ? planSteps : [];
-
-  if (planList.length > 0) {
-    planList.forEach(step => {
-      if (!step) {
+    steps.forEach((stepText, index) => {
+      const primaryText = shortenText(stepText);
+      if (!primaryText) {
         return;
       }
-      const agent = step.agent && step.agent.trim().length > 0 ? step.agent : 'planificador';
-      const artifact = pickArtifactForAgent(artifacts, agent);
-      const branchName = artifact ? extractBranchName(artifact) : undefined;
-      let addedFromArtifact = false;
-      if (artifact) {
-        const operationText = formatDbOperation(artifact.operation, branchName);
-        if (operationText) {
-          pushEvent(agent, operationText);
-          addedFromArtifact = true;
-        }
-      }
-      if (!addedFromArtifact) {
-        const fallback = pickFirstString([step.title, step.description, step.expected_output]);
-        if (fallback) {
-          pushEvent(agent, fallback);
-        }
-      }
-      if (artifact) {
-        addArtifactExtras(agent, artifact);
-        processedAgents.add(agent);
-      }
-    });
-  }
 
-  Object.entries(artifacts).forEach(([agent, artifact]) => {
-    if (processedAgents.has(agent)) {
-      return;
-    }
-    const branchName = extractBranchName(artifact);
-    const operationText = formatDbOperation(artifact?.operation, branchName);
-    if (operationText) {
-      pushEvent(agent, operationText);
-    }
-    addArtifactExtras(agent, artifact);
+      const dedupeKey = `${normalizedAgent}-${primaryText}`;
+      if (seen.has(dedupeKey)) {
+        return;
+      }
+
+      const currentCount = agentCounts.get(normalizedAgent) ?? 0;
+      if (currentCount >= 6) {
+        return;
+      }
+
+      seen.add(dedupeKey);
+      agentCounts.set(normalizedAgent, currentCount + 1);
+
+      events.push({
+        id: `artifact-${normalizedAgent}-${timestamp}-${events.length}-${index}`,
+        agent: agentKey,
+        friendlyName,
+        primaryText,
+        status: 'pending',
+        source: 'artifact'
+      });
+    });
   });
 
   return events;
@@ -733,13 +954,30 @@ interface BuildAgentTaskEventsParams {
 }
 
 export function buildAgentTaskEvents({ agentEvents, planSteps, finalMessage }: BuildAgentTaskEventsParams): SimulatedEvent[] {
-  const primary = buildEventsFromAgentMessages(agentEvents);
-  if (primary.length > 0) {
-    return primary;
+  const payload = finalMessage && typeof finalMessage === 'object' ? (finalMessage.payload ?? finalMessage) : undefined;
+
+  const artifacts = getSharedArtifacts(payload);
+  const streamTimeline = buildEventsFromAgentStream({
+    agentEvents,
+    artifacts,
+    planSteps
+  });
+
+  if (streamTimeline.length > 0) {
+    return streamTimeline;
   }
 
-  const payload = finalMessage && typeof finalMessage === 'object' ? (finalMessage.payload ?? finalMessage) : undefined;
-  return buildEventsFromArtifacts(payload, planSteps);
+  const narrative = buildEventsFromArtifacts(payload, planSteps);
+  if (narrative.length > 0) {
+    return narrative;
+  }
+
+  const fallback = buildEventsFromAgentMessages(agentEvents);
+  if (fallback.length > 0) {
+    return fallback;
+  }
+
+  return [];
 }
 
 
@@ -792,6 +1030,14 @@ export function simulationReducer(
         morphingKey: action.payload.incrementKey
           ? state.morphingKey + 1
           : state.morphingKey
+      };
+
+    case 'SUSPEND_MORPHING':
+      return {
+        ...state,
+        morphingText: '',
+        morphingPhase: null,
+        morphingKey: state.morphingKey + 1
       };
 
     case 'SET_EVENTS':
@@ -853,6 +1099,3 @@ export function simulationReducer(
       return state;
   }
 }
-
-
-

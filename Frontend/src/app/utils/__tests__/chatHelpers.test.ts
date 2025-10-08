@@ -339,10 +339,88 @@ describe('chatHelpers', () => {
       const events = buildAgentTaskEvents({ agentEvents: [], finalMessage });
       const primaryTexts = events.map(event => event.primaryText);
 
-      expect(primaryTexts.some(text => text.includes('Consultando'))).toBe(true);
-      expect(primaryTexts.some(text => text.includes('Procesando 1 resultado'))).toBe(true);
-      expect(primaryTexts.some(text => text.includes('Exportando resultados'))).toBe(true);
-      expect(primaryTexts.some(text => text.includes('Generando alerta'))).toBe(true);
+      expect(primaryTexts).toEqual([
+        'Disenando script SQL a medida',
+        'Ejecutando consulta transaccional sobre public.test_table',
+        'Consolidando evidencias en summary_message',
+        'Definiendo operacion SQL (select)',
+        'Confirmando integridad y permisos antes de ejecutar',
+        'Guardando dataset en workspace seguro',
+        'Generando analisis (analysis)',
+        'Persistiendo alertas (alerts_to_persist)',
+        'Creando recomendacion (recommendation_artifact)'
+      ]);
+
+      expect(events.every(event => event.source === 'artifact')).toBe(true);
+    });
+
+    it('should prioritize intermediate node transitions from agent stream', () => {
+      const agentEvents = [
+        {
+          type: 'agent_start',
+          agent: 'capi_elcajas',
+          timestamp: '2025-10-07T19:10:20.000Z',
+          session_id: 'session'
+        },
+        {
+          type: 'node_transition',
+          id: 'evt-1',
+          timestamp: '2025-10-07T19:10:21.000Z',
+          session_id: 'session',
+          data: {
+            from: 'capi_datab',
+            content: 'Consultando public.saldos_sucursal (Recoleta)…'
+          },
+          meta: {
+            content: 'Consultando public.saldos_sucursal (Recoleta)…'
+          }
+        },
+        {
+          type: 'node_transition',
+          id: 'evt-2',
+          timestamp: '2025-10-07T19:10:22.000Z',
+          session_id: 'session',
+          data: {
+            from: 'capi_elcajas',
+            content: 'Generando analisis (analysis)',
+            action: 'branch_operations'
+          },
+          meta: {
+            content: 'Generando analisis (analysis)'
+          }
+        },
+        {
+          type: 'node_transition',
+          id: 'evt-3',
+          timestamp: '2025-10-07T19:10:23.000Z',
+          session_id: 'session',
+          data: {
+            from: 'capi_datab',
+            content: 'Archivo generado en DataB_2025_10_07.json',
+            action: 'export'
+          },
+          meta: {
+            content: 'Archivo generado en DataB_2025_10_07.json'
+          }
+        },
+        {
+          type: 'agent_end',
+          agent: 'capi_datab',
+          timestamp: '2025-10-07T19:10:24.000Z',
+          session_id: 'session'
+        }
+      ] as unknown as Message[];
+
+      const events = buildAgentTaskEvents({ agentEvents });
+      const summaries = events.map(event => `${event.friendlyName}: ${event.primaryText}`);
+
+      expect(summaries).toEqual([
+        'Capi DataB: Consultando public.saldos_sucursal (Recoleta)…',
+        'Capi ElCajas: Generando analisis (analysis)',
+        'Capi DataB: Archivo generado en DataB_2025_10_07.json'
+      ]);
+
+      expect(events.every(event => event.source === 'event')).toBe(true);
     });
 
     it('should return empty array when no data is available', () => {

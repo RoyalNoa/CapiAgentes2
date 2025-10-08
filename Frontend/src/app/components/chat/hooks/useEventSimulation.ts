@@ -59,6 +59,7 @@ export function useEventSimulation() {
     }
 
     dispatch({ type: 'SET_EVENTS', payload: simEvents });
+    dispatch({ type: 'SUSPEND_MORPHING' });
 
     const eventActiveDuration = ANIMATION_CONFIG.timings.shimmerDuration * 2;
     const betweenEvents = ANIMATION_CONFIG.timings.betweenEvents;
