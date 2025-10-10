@@ -135,10 +135,10 @@ class VisualOptimizedNode(GraphNode):
     def _get_visual_action(self) -> str:
         """Obtiene el tipo de acción con contexto visual."""
         action_map = {
-            "summary": "analyzing_financials",
+            "capi_gus": "analyzing_financials",
             "branch": "evaluating_performance",
             "anomaly": "detecting_patterns",
-            "smalltalk": "conversing",
+            "capi_gus": "conversing",
             "capi_datab": "querying_database",
             "capi_elcajas": "processing_transactions",
             "capi_desktop": "accessing_files"
@@ -153,7 +153,7 @@ class VisualOptimizedNode(GraphNode):
     def _get_processing_message(self) -> str:
         """Mensaje dramático durante procesamiento."""
         messages = {
-            "summary": "Analizando métricas financieras complejas...",
+            "capi_gus": "Analizando métricas financieras complejas...",
             "branch": "Evaluando rendimiento multi-dimensional...",
             "anomaly": "Aplicando algoritmos de detección avanzados...",
             "datab": "Consultando bases de datos distribuidas...",
@@ -170,7 +170,7 @@ class VisualOptimizedNode(GraphNode):
     def _get_analyzing_message(self) -> str:
         """Mensaje dramático durante análisis."""
         messages = {
-            "summary": "Generando insights ejecutivos...",
+            "capi_gus": "Generando insights amigables...",
             "branch": "Calculando KPIs críticos...",
             "anomaly": "Identificando patrones ocultos...",
             "datab": "Optimizando consultas complejas...",
@@ -192,7 +192,7 @@ class VisualOptimizedNode(GraphNode):
     def _needs_intermediate_checkpoint(self) -> bool:
         """Decide si necesita checkpoint intermedio."""
         # Para nodos que tardan más, agregar checkpoint intermedio
-        heavy_nodes = ["summary", "anomaly", "datab"]
+        heavy_nodes = ["capi_gus", "anomaly", "datab"]
         return any(node in self.name.lower() for node in heavy_nodes)
 
     def _update_state_with_result(self, state: GraphState, result: Dict[str, Any]) -> GraphState:
@@ -202,11 +202,11 @@ class VisualOptimizedNode(GraphNode):
         return state
 
 
-class VisualSummaryNode(VisualOptimizedNode):
-    """Nodo de resumen con máximo impacto visual."""
+class VisualCapiGusNode(VisualOptimizedNode):
+    """Nodo de respuesta conversacional con máximo impacto visual."""
 
     def __init__(self):
-        super().__init__(name="summary_visual")
+        super().__init__(name="capi_gus_visual")
         self.MIN_PROCESSING_TIME = 2.5  # Más tiempo para este nodo importante
 
     def _process_with_visual_timing(self, state: GraphState) -> Dict[str, Any]:
@@ -224,7 +224,7 @@ class VisualSummaryNode(VisualOptimizedNode):
             time.sleep(duration)
 
         return {
-            "summary": {
+            "capi_gus": {
                 "total_revenue": 1500000,
                 "growth": "+15.3%",
                 "top_branch": "SUC-404",

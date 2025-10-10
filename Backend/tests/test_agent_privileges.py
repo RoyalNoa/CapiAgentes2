@@ -41,9 +41,9 @@ async def _run_privileges_demo():
             ]
         },
 
-        # Summary Agent (STANDARD)
+        # Capi Gus Agent (STANDARD)
         {
-            "agent": "summary",
+            "agent": "capi_gus",
             "operations": [
                 ("read_file", "/app/ia_workspace/data/test.txt"),
                 ("write_file", "/app/ia_workspace/data/output.txt"),  # Debería fallar
@@ -52,9 +52,9 @@ async def _run_privileges_demo():
             ]
         },
 
-        # Smalltalk Agent (RESTRICTED)
+        # Capi Gus (RESTRICTED)
         {
-            "agent": "smalltalk",
+            "agent": "capi_gus",
             "operations": [
                 ("read_file", "/app/ia_workspace/data/test.txt"),  # Debería fallar
                 ("basic_calculations", None),  # Permitido
@@ -125,7 +125,7 @@ async def _run_privileges_demo():
     print("[OK] capi_desktop: Acceso privilegiado a archivos del usuario")
     print("[INFO] anomaly: Acceso elevado con permisos de alertas")
     print("[INFO] summary: Acceso estándar solo lectura")
-    print("[INFO] smalltalk: Acceso restringido sin archivos")
+    print("[INFO] capi_gus: Acceso restringido sin archivos")
     print("\n[SUCCESS] Sistema de privilegios funcionando correctamente!")
 
 

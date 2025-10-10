@@ -2,10 +2,10 @@
   "created_at": "2025-09-24T19:41:51.508102",
   "session_id": "dashboard",
   "sanitized_session_id": "dashboard",
-  "updated_at": "2025-09-26T05:33:08.230250",
+  "updated_at": "2025-10-08T18:44:51.674605",
   "datab_exports": [],
   "status": "completed",
-  "active_agent": "summary",
+  "active_agent": "capi_gus",
   "completed_nodes": [
     "start",
     "intent",
@@ -13,16 +13,16 @@
     "reasoning",
     "supervisor",
     "router",
-    "summary",
+    "capi_gus",
     "human_gate",
     "assemble",
     "finalize"
   ],
-  "intent": "summary_request",
-  "intent_confidence": 0.4,
-  "last_query": "Dame un resumen completo de los datos",
+  "intent": "unknown",
+  "intent_confidence": 0.2,
+  "last_query": "Muestra las mejores sucursales por ingresos",
   "last_response": {
-    "message": "📊 *Resumen financiero*:\n\n⚠️ No se encontraron datos financieros para analizar.\n\nPor favor, carga algunos archivos CSV o Excel en el sistema.",
+    "message": "Lamentablemente, no dispongo de un saldo actualizado para la sucursal en este momento. Sin embargo, el insight más relevante es la falta de información financiera disponible. ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
     "data": {
       "react_observations": [
         {
@@ -40,76 +40,58 @@
           "metrics": {},
           "data_summary": {},
           "recommended_agent": null
-        },
-        {
-          "observation": "No hay metricas almacenadas.",
-          "metrics": {},
-          "data_summary": {},
-          "recommended_agent": null
         }
       ],
       "reasoning_plan": {
-        "plan_id": "ca5de062-71ab-4686-a623-56861edde812",
+        "plan_id": "02fa0149-07a5-49fb-a73f-fa3517492cc5",
         "version": 1,
-        "intent": "summary_request",
-        "goal": "Entregar resumen financiero estratégico",
+        "intent": "query",
+        "goal": "Clarificar y asistir consulta ambigua: Muestra las mejores sucursales por ingresos",
         "confidence": 0.95,
-        "recommended_agent": "summary",
+        "recommended_agent": "capi_desktop",
         "fallback_agent": "assemble",
-        "rationale": "La intención es generar un resumen financiero. Se planifica cargar datos, calcular métricas críticas, validar anomalías y narrar resultados.",
+        "rationale": "Consulta ambigua: se elabora estrategia de clarificación y recopilación de señales antes de seleccionar agente definitivo.",
         "steps": [
           {
-            "id": "S1",
-            "title": "Cargar datos financieros vigentes",
-            "description": "Garantizar que la base de datos esté sincronizada antes de calcular métricas.",
+            "id": "E1",
+            "title": "Solicitar clarificación",
+            "description": "Pedir más detalles al usuario para reducir ambigüedad.",
             "agent": "capi_desktop",
             "inputs": [],
-            "expected_output": "Dataset consolidado para análisis",
+            "expected_output": "Detalle adicional de la consulta",
             "depends_on": []
           },
           {
-            "id": "S2",
-            "title": "Calcular métricas clave",
-            "description": "Obtener totales, variaciones y ratios relevantes para la gerencia.",
-            "agent": "summary",
+            "id": "E2",
+            "title": "Identificar señales financieras",
+            "description": "Buscar palabras clave que alineen la consulta con agentes especializados.",
+            "agent": "intent",
             "inputs": [],
-            "expected_output": "Paquete de métricas financieras",
+            "expected_output": "Intentos candidatos",
             "depends_on": [
-              "S1"
+              "E1"
             ]
           },
           {
-            "id": "S3",
-            "title": "Escanear anomalías críticas",
-            "description": "Complementar el resumen con detección de anomalías para alertas tempranas.",
-            "agent": "anomaly",
+            "id": "E3",
+            "title": "Preparar respuesta inicial",
+            "description": "Ofrecer orientación y sugerir capacidades relevantes mientras se espera aclaración.",
+            "agent": "capi_desktop",
             "inputs": [],
-            "expected_output": "Listado de anomalías priorizadas",
+            "expected_output": "Guía introductoria",
             "depends_on": [
-              "S2"
-            ]
-          },
-          {
-            "id": "S4",
-            "title": "Construir narrativa ejecutiva",
-            "description": "Traducir métricas y anomalías en un relato ejecutivo con próximos pasos.",
-            "agent": "summary",
-            "inputs": [],
-            "expected_output": "Resumen narrado listo para el usuario",
-            "depends_on": [
-              "S2",
-              "S3"
+              "E1",
+              "E2"
             ]
           }
         ],
         "cooperative_agents": [
-          "anomaly",
-          "capi_desktop"
+          "intent"
         ],
         "supporting_evidence": {
-          "progress_percent": 98.0,
-          "remaining_steps": 4,
-          "estimated_effort_seconds": 64,
+          "progress_percent": 97.5,
+          "remaining_steps": 3,
+          "estimated_effort_seconds": 50,
           "complexity": "medium",
           "entities": {},
           "context_used": false,
@@ -119,57 +101,347 @@
             "branch",
             "capi_datab",
             "capi_desktop",
-            "summary"
+            "capi_gus"
           ],
           "user_id": "dashboard",
           "session_id": "dashboard"
         },
-        "generated_at": "2025-09-26T05:33:08.150541",
-        "intent_alignment": true,
+        "generated_at": "2025-10-08T18:44:50.612347",
+        "intent_alignment": false,
         "requires_replan": false,
         "history": [],
-        "progress_percent": 98.0,
-        "remaining_steps": 4,
+        "progress_percent": 97.5,
+        "remaining_steps": 3,
         "complexity": "medium",
-        "estimated_effort_seconds": 64
+        "estimated_effort_seconds": 50
       },
-      "total_records": 0,
-      "total_amount": 0.0,
-      "anomalies_detected": 0,
-      "date_range": "Sin datos",
-      "branches": [],
-      "categories": []
+      "response": "Lamentablemente, no dispongo de un saldo actualizado para la sucursal en este momento. Sin embargo, el insight más relevante es la falta de información financiera disponible. ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "capi_gus": {
+        "type": "conversation_summary",
+        "agent": "capi_gus",
+        "created_at": "2025-10-08T18:44:51.656404+00:00",
+        "query": "Muestra las mejores sucursales por ingresos",
+        "message": "Lamentablemente, no dispongo de un saldo actualizado para la sucursal en este momento. Sin embargo, el insight más relevante es la falta de información financiera disponible. ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+        "base_message": "No pude encontrar un saldo actualizado para responder \"Muestra las mejores sucursales por ingresos\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+        "branch": null,
+        "balance": null,
+        "balance_text": null,
+        "theoretical_balance": null,
+        "theoretical_balance_text": null,
+        "delta": null,
+        "delta_text": null,
+        "distribution_detail": null,
+        "distribution_breakdown": {},
+        "alerts": {
+          "count": 0,
+          "ids": [],
+          "headlines": [],
+          "duplicates": []
+        },
+        "raw_alert_text": null,
+        "closing_prompt": "¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+        "llm_generated": true,
+        "context_snapshot": {
+          "branch": null,
+          "balance_value": null,
+          "balance_text": null,
+          "theoretical_value": null,
+          "theoretical_text": null,
+          "difference_value": null,
+          "difference_text": null,
+          "distribution_text": null,
+          "distribution_breakdown": {},
+          "alert_summary": {
+            "count": 0,
+            "ids": [],
+            "headlines": [],
+            "duplicates": []
+          },
+          "raw_alert_text": null,
+          "export_file": null,
+          "previous_summary": null,
+          "original_query": "Muestra las mejores sucursales por ingresos"
+        },
+        "llm_usage": {
+          "model": "gpt-3.5-turbo",
+          "prompt_tokens": 444,
+          "completion_tokens": 58,
+          "total_tokens": 502,
+          "cost_usd": 0.000782,
+          "processing_time": 0.9918,
+          "finish_reason": "stop"
+        }
+      }
     }
   },
   "conversation_history": [],
   "memory_window": [],
   "reasoning_summary": {
-    "goal": "Entregar resumen financiero estratégico",
-    "recommended_agent": "summary",
+    "goal": "Clarificar y asistir consulta ambigua: Muestra las mejores sucursales por ingresos",
+    "recommended_agent": "capi_desktop",
     "confidence": 0.95,
     "version": 1,
     "cooperative_agents": [
-      "anomaly",
-      "capi_desktop"
+      "intent"
     ],
-    "progress_percent": 98.0,
-    "remaining_steps": 4,
+    "progress_percent": 97.5,
+    "remaining_steps": 3,
     "complexity": "medium",
-    "estimated_effort_seconds": 64,
-    "remaining_percent": 2.0
+    "estimated_effort_seconds": 50,
+    "remaining_percent": 2.5
   },
   "processing_metrics": {
     "react_steps": 5.0,
     "react_latency_ms": 0.0,
-    "reasoning_time_ms": 1519.0,
-    "reasoning_steps": 4.0,
+    "reasoning_time_ms": 1719.0,
+    "reasoning_steps": 3.0,
     "reasoning_version": 1.0,
-    "reasoning_progress_percent": 98.0,
-    "reasoning_eta_seconds": 64.0,
-    "reasoning_remaining_steps": 4.0,
+    "reasoning_progress_percent": 97.5,
+    "reasoning_eta_seconds": 50.0,
+    "reasoning_remaining_steps": 3.0,
     "supervisor_latency_ms": 0.0,
-    "supervisor_queue_length": 4.0
+    "supervisor_queue_length": 6.0
   },
-  "shared_artifacts": {},
-  "errors": []
+  "shared_artifacts": {
+    "capi_gus": {
+      "type": "conversation_summary",
+      "agent": "capi_gus",
+      "created_at": "2025-10-08T18:44:51.656404+00:00",
+      "query": "Muestra las mejores sucursales por ingresos",
+      "message": "Lamentablemente, no dispongo de un saldo actualizado para la sucursal en este momento. Sin embargo, el insight más relevante es la falta de información financiera disponible. ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "base_message": "No pude encontrar un saldo actualizado para responder \"Muestra las mejores sucursales por ingresos\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "branch": null,
+      "balance": null,
+      "balance_text": null,
+      "theoretical_balance": null,
+      "theoretical_balance_text": null,
+      "delta": null,
+      "delta_text": null,
+      "distribution_detail": null,
+      "distribution_breakdown": {},
+      "alerts": {
+        "count": 0,
+        "ids": [],
+        "headlines": [],
+        "duplicates": []
+      },
+      "raw_alert_text": null,
+      "closing_prompt": "¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "llm_generated": true,
+      "context_snapshot": {
+        "branch": null,
+        "balance_value": null,
+        "balance_text": null,
+        "theoretical_value": null,
+        "theoretical_text": null,
+        "difference_value": null,
+        "difference_text": null,
+        "distribution_text": null,
+        "distribution_breakdown": {},
+        "alert_summary": {
+          "count": 0,
+          "ids": [],
+          "headlines": [],
+          "duplicates": []
+        },
+        "raw_alert_text": null,
+        "export_file": null,
+        "previous_summary": null,
+        "original_query": "Muestra las mejores sucursales por ingresos"
+      },
+      "llm_usage": {
+        "model": "gpt-3.5-turbo",
+        "prompt_tokens": 444,
+        "completion_tokens": 58,
+        "total_tokens": 502,
+        "cost_usd": 0.000782,
+        "processing_time": 0.9918,
+        "finish_reason": "stop"
+      }
+    }
+  },
+  "errors": [],
+  "trace_id": "trace-1759949081.024254",
+  "user_id": "dashboard",
+  "workflow_mode": "chat",
+  "response_metadata": {
+    "intent_reasoning": "Semantic pattern match: La consulta solicita información sobre sucursales por ingresos, por lo que el intent 'query' y el agente 'capi_datab' son los más adecuados. (confidence=0.900, entities=0)",
+    "intent_matched_patterns": [
+      "semantic_pattern:query"
+    ],
+    "react_trace": [
+      {
+        "thought": "Reviso el contexto reciente para entender la conversacion.",
+        "action": "summarize_context",
+        "observation": {
+          "summary": "Sin historial relevante.",
+          "recent_turns": []
+        }
+      },
+      {
+        "thought": "Verifico metricas previas para identificar senales relevantes.",
+        "action": "collect_metrics",
+        "params": {},
+        "iteration": 0,
+        "observation": {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      },
+      {
+        "thought": "Sin senales claras, tomo metricas generales para decidir.",
+        "action": "collect_metrics",
+        "params": {},
+        "iteration": 1,
+        "observation": {
+          "observation": "No hay metricas almacenadas.",
+          "metrics": {},
+          "data_summary": {},
+          "recommended_agent": null
+        }
+      },
+      {
+        "thought": "Ya tengo una recomendacion, concluyo la iteracion.",
+        "action": null,
+        "params": {},
+        "iteration": 2
+      },
+      {
+        "thought": "Finalizo el ciclo ReAct con una recomendacion.",
+        "action": "finish",
+        "observation": {
+          "message": "Derivare la consulta 'Muestra las mejores sucursales por ingresos' al agente 'capi_gus' con la evidencia recopilada.",
+          "recommended_agent": "capi_gus"
+        }
+      }
+    ],
+    "react_recommended_agent": "capi_gus",
+    "react_finished_at": "2025-10-08T18:44:48.894866",
+    "active_agent": "capi_gus",
+    "loop_fallback": "capi_desktop",
+    "react_follow_up": false,
+    "needs_retry": null,
+    "reasoning_plan": {
+      "plan_id": "02fa0149-07a5-49fb-a73f-fa3517492cc5",
+      "version": 1,
+      "intent": "query",
+      "goal": "Clarificar y asistir consulta ambigua: Muestra las mejores sucursales por ingresos",
+      "confidence": 0.95,
+      "recommended_agent": "capi_desktop",
+      "fallback_agent": "assemble",
+      "rationale": "Consulta ambigua: se elabora estrategia de clarificación y recopilación de señales antes de seleccionar agente definitivo.",
+      "steps": [
+        {
+          "id": "E1",
+          "title": "Solicitar clarificación",
+          "description": "Pedir más detalles al usuario para reducir ambigüedad.",
+          "agent": "capi_desktop",
+          "inputs": [],
+          "expected_output": "Detalle adicional de la consulta",
+          "depends_on": []
+        },
+        {
+          "id": "E2",
+          "title": "Identificar señales financieras",
+          "description": "Buscar palabras clave que alineen la consulta con agentes especializados.",
+          "agent": "intent",
+          "inputs": [],
+          "expected_output": "Intentos candidatos",
+          "depends_on": [
+            "E1"
+          ]
+        },
+        {
+          "id": "E3",
+          "title": "Preparar respuesta inicial",
+          "description": "Ofrecer orientación y sugerir capacidades relevantes mientras se espera aclaración.",
+          "agent": "capi_desktop",
+          "inputs": [],
+          "expected_output": "Guía introductoria",
+          "depends_on": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "cooperative_agents": [
+        "intent"
+      ],
+      "supporting_evidence": {
+        "progress_percent": 97.5,
+        "remaining_steps": 3,
+        "estimated_effort_seconds": 50,
+        "complexity": "medium",
+        "entities": {},
+        "context_used": false,
+        "semantic_confidence": 1.0,
+        "available_agents": [
+          "anomaly",
+          "branch",
+          "capi_datab",
+          "capi_desktop",
+          "capi_gus"
+        ],
+        "user_id": "dashboard",
+        "session_id": "dashboard"
+      },
+      "generated_at": "2025-10-08T18:44:50.612347",
+      "intent_alignment": false,
+      "requires_replan": false,
+      "history": [],
+      "progress_percent": 97.5,
+      "remaining_steps": 3,
+      "complexity": "medium",
+      "estimated_effort_seconds": 50
+    },
+    "reasoning_confidence": 0.95,
+    "recommended_agent": "capi_desktop",
+    "reasoning_progress_percent": 97.5,
+    "reasoning_eta_seconds": 50,
+    "reasoning_remaining_steps": 3,
+    "reasoning_complexity": "medium",
+    "reasoning_needs_react": true,
+    "supervisor_queue": [
+      "capi_gus",
+      "capi_desktop",
+      "intent",
+      "summary",
+      "anomaly",
+      "smalltalk"
+    ],
+    "supervisor_selected": "capi_gus",
+    "supervisor_ran_at": "2025-10-08T18:44:50.618432",
+    "semantic_result": {
+      "intent": "unknown",
+      "confidence": 0.2,
+      "target_agent": "assemble",
+      "routing_agent": "capi_gus",
+      "entities": {},
+      "reasoning": "Fallback classification executed (feature_flag_disabled)",
+      "requires_clarification": true,
+      "provider": "fallback",
+      "model": ""
+    },
+    "agent_type": "capi_gus",
+    "speaker": "capi_gus",
+    "friendly_summary": true,
+    "agent_raw_message": "Lamentablemente, no dispongo de un saldo actualizado para la sucursal en este momento. Sin embargo, el insight más relevante es la falta de información financiera disponible. ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "result_summary": "Lamentablemente, no dispongo de un saldo actualizado para la sucursal en este momento. Sin embargo, el insight más relevante es la falta de información financiera disponible. ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "capi_gus_base_message": "No pude encontrar un saldo actualizado para responder \"Muestra las mejores sucursales por ingresos\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "capi_gus_llm_usage": {
+      "model": "gpt-3.5-turbo",
+      "prompt_tokens": 444,
+      "completion_tokens": 58,
+      "total_tokens": 502,
+      "cost_usd": 0.000782,
+      "processing_time": 0.9918,
+      "finish_reason": "stop"
+    },
+    "assembled_at": "assemble",
+    "workflow_completed": true,
+    "total_nodes": 9
+  },
+  "routing_decision": "human_gate"
 }

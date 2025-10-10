@@ -74,10 +74,12 @@ const AGENT_ACTION_LOOKUP: Record<string, string> = {
   capielcajas: 'branch_operations',
   capidesktop: 'desktop_operation',
   capinoticias: 'news_analysis',
-  summary: 'summary_generation',
+  capigus: 'conversation_summary',
+  capi_gus: 'conversation_summary',
+  summary: 'conversation_summary',
   branch: 'branch_analysis',
   anomaly: 'anomaly_detection',
-  smalltalk: 'conversation'
+  capi_gus: 'conversation'
 };
 const normalizeForSearch = (value: string): string => {
   return value
@@ -588,8 +590,8 @@ const AGENT_DEFINITIONS: Record<string, AgentNarrativeDefinition> = {
       () => 'Resumiendo hallazgos (summary)'
     ]
   },
-  // El agente Summary genera mensajes de recapitulacion en lenguaje natural.
-  summary_generation: {
+  // El agente Capi Gus genera mensajes de recapitulación en lenguaje natural.
+  conversation_summary: {
     contexts: [
       {
         id: 'diario',
@@ -622,7 +624,7 @@ const AGENT_DEFINITIONS: Record<string, AgentNarrativeDefinition> = {
     sequence: [
       () => 'Reuniendo artefactos asociados',
       () => 'Analizando metricas (response_metadata)',
-      () => 'Redactando summary_message'
+      () => 'Redactando respuesta final'
     ]
   },
   // El agente Branch se centra en los KPI operativos de cada sucursal.
@@ -699,7 +701,7 @@ const AGENT_DEFINITIONS: Record<string, AgentNarrativeDefinition> = {
       () => 'Reportando riesgos priorizados'
     ]
   },
-  // Manejador de smalltalk / conversacion liviana.
+  // Manejador de capi_gus / conversacion liviana.
   conversation: {
     contexts: [
       {

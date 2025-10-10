@@ -13,8 +13,10 @@ class DummyAgent:
         self._data = data or {}
         self._status = status
         self.agent_email = "agente.g@example.com"
+        self.last_task = None
 
     def process(self, task):
+        self.last_task = task
         return AgentResult(
             task_id=task.task_id,
             agent_name="agente_g",
@@ -67,3 +69,19 @@ def test_agente_g_node_missing_instruction(monkeypatch, base_state):
     assert result_state.status == WorkflowStatus.INITIALIZED
     assert "instruccion" in result_state.response_message.lower()
     assert "agente_g_missing_instruction" in [err.get("error_type") for err in result_state.errors]
+
+
+def test_agente_g_node_infers_send_email_from_query(monkeypatch, base_state):
+    dummy_agent = DummyAgent()
+    monkeypatch.setattr(AgenteGNode, "_initialize_agent", lambda self: (dummy_agent, None))
+    node = AgenteGNode()
+    query_state = base_state.model_copy(update={"original_query": "Envia un correo a finanzas@example.com con asunto Reporte semanal"})
+
+    result_state = node.run(query_state)
+
+    assert result_state.response_message
+    assert dummy_agent.last_task is not None
+    assert dummy_agent.last_task.metadata["operation"] == "send_gmail"
+    params = dummy_agent.last_task.metadata["parameters"]
+    assert params.get("compose_context")
+    assert params.get("compose_context")

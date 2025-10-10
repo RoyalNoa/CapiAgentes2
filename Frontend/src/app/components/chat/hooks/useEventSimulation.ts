@@ -239,7 +239,7 @@ export function useEventSimulation() {
   }, []);
 
   const handleBatchComplete = useCallback(
-    (appendMessage?: (msg: any) => void, currentMorphingText?: string) => {
+    (currentMorphingText?: string) => {
       chatLogger.debug('Batch completo, finalizando morphing');
 
       // Use a ref to get the latest morphing text
@@ -255,29 +255,13 @@ export function useEventSimulation() {
         }
       });
 
-      if (appendMessage && textToPersist) {
-        timerManager.current.set(
-          'persistOrchestrator',
-          () => {
-            appendMessage({
-              id: `orchestrator-${Date.now()}`,
-              role: 'agent',
-              content: textToPersist,
-              agent: 'orchestrator'
-            });
-            dispatch({ type: 'CLEAR_MORPHING' });
-          },
-          ANIMATION_CONFIG.timings.finalDisplay
-        );
-      } else {
-        timerManager.current.set(
-          'clearMorphing',
-          () => {
-            dispatch({ type: 'CLEAR_MORPHING' });
-          },
-          ANIMATION_CONFIG.timings.finalDisplay
-        );
-      }
+      timerManager.current.set(
+        'clearMorphing',
+        () => {
+          dispatch({ type: 'CLEAR_MORPHING' });
+        },
+        ANIMATION_CONFIG.timings.finalDisplay
+      );
     },
     [] // No dependencies needed since we use stateRef
   );
@@ -309,7 +293,6 @@ export function useEventSimulation() {
     timerManager: timerManager.current
   };
 }
-
 
 
 

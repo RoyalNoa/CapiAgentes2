@@ -22,13 +22,13 @@ class AgentConfigRepository(Protocol):
 
 DEFAULT_AGENTS: Dict[str, bool] = {
     # Keep canonical names aligned with IA/ARCHITECTURE.md and existing agents
-    "summary": True,
+    "capi_gus": True,
     "branch": True,
     "anomaly": True,
-    "smalltalk": False,  # Disabled by default for production
     "capi_desktop": True,
     "capi_datab": True,
     "capi_noticias": False,
+    "agente_g": True,
 }
 
 
@@ -83,7 +83,7 @@ class AgentConfigService:
             return enabled
 
         # Fallback for critical agents
-        critical_agents = {"capi_desktop", "capi_datab", "summary", "branch", "anomaly"}
+        critical_agents = {"capi_desktop", "capi_datab", "capi_gus", "summary", "branch", "anomaly"}
         if normalized_name in critical_agents:
             logger.warning({"event": "critical_agent_missing_config", "agent": normalized_name, "defaulting_to": True})
             return True

@@ -152,10 +152,12 @@ export function getActionType(msg: Message): string {
     'capielcajas': 'branch_operations',
     'capidesktop': 'desktop_operation',
     'capinoticias': 'news_analysis',
-    'summary': 'summary_generation',
+    'capigus': 'conversation_summary',
+    'capigusagent': 'conversation_summary',
+    'summary': 'conversation_summary',
     'branch': 'branch_analysis',
     'anomaly': 'anomaly_detection',
-    'smalltalk': 'conversation'
+    'capi_gus': 'conversation'
   };
 
   return actionMap[normalizedAgent] || 'agent_processing';
@@ -174,10 +176,12 @@ const ACTION_TYPE_MAP: Record<string, string> = {
   'capielcajas': 'branch_operations',
   'capidesktop': 'desktop_operation',
   'capinoticias': 'news_analysis',
-  'summary': 'summary_generation',
+  'capigus': 'conversation_summary',
+  'capigusagent': 'conversation_summary',
+  'summary': 'conversation_summary',
   'branch': 'branch_analysis',
   'anomaly': 'anomaly_detection',
-  'smalltalk': 'conversation'
+  'capi_gus': 'conversation'
 };
 
 /**
@@ -269,19 +273,23 @@ export const AGENT_FRIENDLY_NAMES: Record<string, string> = {
   'capinoticias': 'Capi Noticias',
   'capi_noticias': 'Capi Noticias',
   'noticias': 'Capi Noticias',
-  'summary': 'Capi Summary',
-  'summaryagent': 'Capi Summary',
-  'summarynode': 'Capi Summary',
+  'capigus': 'Capi Gus',
+  'capi_gus': 'Capi Gus',
+  'capigusagent': 'Capi Gus',
+  'capigusnode': 'Capi Gus',
+  'summary': 'Capi Gus',
+  'summaryagent': 'Capi Gus',
+  'summarynode': 'Capi Gus',
   'branch': 'Capi Branch',
   'branchagent': 'Capi Branch',
   'branchnode': 'Capi Branch',
   'anomaly': 'Capi Anomaly',
   'anomalyagent': 'Capi Anomaly',
   'anomalynode': 'Capi Anomaly',
-  'smalltalk': 'Capi Smalltalk',
-  'smalltalk_fallback': 'Capi Smalltalk',
-  'smalltalkfallback': 'Capi Smalltalk',
-  'smalltalknode': 'Capi Smalltalk',
+  'capi_gus': 'Capi Capi Gus',
+  'capi_gus_fallback': 'Capi Capi Gus',
+  'capi_gusfallback': 'Capi Capi Gus',
+  'capi_gusnode': 'Capi Capi Gus',
   'capi': 'Sistema' // Fallback for generic 'capi'
 };
 

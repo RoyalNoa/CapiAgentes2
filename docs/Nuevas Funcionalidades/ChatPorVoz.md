@@ -54,6 +54,20 @@ Implementar un modo de conversación por voz (input y output) sobre el stack act
 - Instalar soportes: `npm install --prefix Frontend recordrtc` (o usar API nativa `MediaRecorder`).
 - Para streaming de audio a WebSocket usar `ws` en Node dev server y API nativa en browser (sin paquetes).
 
+### 3.4 Proveedor TTS ElevenLabs (implementado)
+- Configuración por variables de entorno:
+  ```dotenv
+  VOICE_TTS_PROVIDER=elevenlabs
+  ELEVENLABS_API_KEY=tu_token
+  ELEVENLABS_VOICE_ID=vgekQLm3GYiKMHUnPVvY
+  ELEVENLABS_MODEL_ID=eleven_multilingual_v2
+  # ELEVENLABS_VOICE_SETTINGS={"stability":0.4,"similarity_boost":0.7}
+  ELEVENLABS_API_BASE_URL=https://api.elevenlabs.io
+  ```
+- `VOICE_TTS_PROVIDER` admite `google` (default) o `elevenlabs`. El backend selecciona dinámicamente el cliente TTS correcto al iniciar.
+- `ELEVENLABS_VOICE_SETTINGS` acepta un JSON con los parámetros opcionales de la voz (stability, similarity, style, etc.).
+- Tras modificar las variables, reiniciar el backend para que `VoiceOrchestrator` cargue el nuevo proveedor.
+
 ## 4. Backend paso a paso
 1. **Crear módulo de configuración** `Backend/src/core/voice_config.py` que lea envs y normalice defaults.
 2. **Agregar router WebSocket** en `Backend/src/api/main.py`:

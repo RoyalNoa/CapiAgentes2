@@ -224,7 +224,7 @@ class RealtimeEventBus:
             'summary': 'financial_summary',
             'branch': 'branch_analysis',
             'anomaly': 'anomaly_detection',
-            'smalltalk': 'conversation',
+            'capi_gus': 'conversation',
             'capi_datab': 'database_query',
             'capi_elcajas': 'branch_operations',
             'capi_desktop': 'desktop_operation',

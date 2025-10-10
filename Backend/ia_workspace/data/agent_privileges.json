@@ -92,15 +92,6 @@
       ],
       "reason": "Desktop digital requiere acceso completo a archivos del usuario"
     },
-    "smalltalk": {
-      "privilege_level": "restricted",
-      "custom_permissions": [],
-      "restrictions": [
-        "no_file_access",
-        "no_system_access"
-      ],
-      "reason": "Agente conversacional sin necesidad de acceso a archivos"
-    },
     "capi_noticias": {
       "privilege_level": "standard",
       "custom_permissions": [
@@ -124,6 +115,15 @@
         "requires_update_approval"
       ],
       "reason": "Agente especializado en operaciones ABMC sobre PostgreSQL"
+    },
+    "capi_gus": {
+      "privilege_level": "restricted",
+      "custom_permissions": [],
+      "restrictions": [
+        "no_file_access",
+        "no_system_access"
+      ],
+      "reason": "Agente conversacional y narrador final"
     }
   },
   "security_policies": {

@@ -166,14 +166,14 @@ export const AGENT_MESSAGES: Record<string, AgentMessage> = {
     ]
   },
 
-  // Summary Agent - Resumen financiero
-  'summary_generation': {
-    default: 'Generando resumen financiero...',
+  // Capi Gus - Respuesta amigable al usuario
+  'conversation_summary': {
+    default: 'Armando una respuesta clara para vos...',
     contextual: {
       'diario': [
         'Recopilando datos del día...',
         'Calculando métricas principales...',
-        'Preparando resumen ejecutivo...'
+        'Preparando respuesta ejecutiva...'
       ],
       'mensual': [
         'Analizando tendencias del mes...',
@@ -183,13 +183,13 @@ export const AGENT_MESSAGES: Record<string, AgentMessage> = {
       'total': [
         'Consolidando información global...',
         'Calculando totales generales...',
-        'Preparando vista integral...'
+        'Preparando mensaje final...'
       ]
     },
     progressive: [
       'Recopilando información...',
       'Analizando datos...',
-      'Generando resumen...'
+      'Escribiendo respuesta...'
     ]
   },
 
@@ -247,7 +247,7 @@ export const AGENT_MESSAGES: Record<string, AgentMessage> = {
     ]
   },
 
-  // SmallTalk Agent - Conversación
+  // Capi Gus - Conversación
   'conversation': {
     default: 'Procesando tu mensaje...',
     contextual: {
@@ -280,10 +280,11 @@ AGENT_MESSAGES['capi_desktop'] = AGENT_MESSAGES['desktop_operation'];
 AGENT_MESSAGES['capidesktop'] = AGENT_MESSAGES['desktop_operation'];
 AGENT_MESSAGES['capi_noticias'] = AGENT_MESSAGES['news_analysis'];
 AGENT_MESSAGES['capinoticias'] = AGENT_MESSAGES['news_analysis'];
-AGENT_MESSAGES['summary'] = AGENT_MESSAGES['summary_generation'];
+AGENT_MESSAGES['capi_gus'] = AGENT_MESSAGES['conversation_summary'];
+AGENT_MESSAGES['summary'] = AGENT_MESSAGES['conversation_summary'];
 AGENT_MESSAGES['branch'] = AGENT_MESSAGES['branch_analysis'];
 AGENT_MESSAGES['anomaly'] = AGENT_MESSAGES['anomaly_detection'];
-AGENT_MESSAGES['smalltalk'] = AGENT_MESSAGES['conversation'];
+AGENT_MESSAGES['capi_gus'] = AGENT_MESSAGES['conversation'];
 
 /**
  * Obtiene mensajes contextuales basados en el query del usuario
@@ -339,8 +340,9 @@ export const AGENT_FRIENDLY_NAMES: Record<string, string> = {
   'capi_elcajas': 'Control de Cajas',
   'capi_desktop': 'Gestor de Archivos',
   'capi_noticias': 'Monitor de Noticias',
-  'summary': 'Analizador General',
+  'capi_gus': 'Capi Gus',
+  'summary': 'Capi Gus',
   'branch': 'Evaluador de Sucursales',
   'anomaly': 'Detector de Anomalías',
-  'smalltalk': 'Asistente Virtual'
+  'capi_gus': 'Asistente Virtual'
 };

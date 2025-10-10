@@ -18,7 +18,7 @@ const AGENT_COLORS: Record<string, string> = {
   summary: '#0b3d91',
   branch: '#2a9d8f',
   anomaly: '#f4a261',
-  smalltalk: '#e76f51',
+  capi_gus: '#e76f51',
   capi_desktop: '#6a4c93',
   capi_datab: '#577590',
   capi_noticias: '#ff9f1c',

@@ -49,6 +49,12 @@ services:
       LOG_FORMAT: ${LOG_FORMAT:-json}
       GOOGLE_APPLICATION_CREDENTIALS: ${GOOGLE_APPLICATION_CREDENTIALS:-/run/secrets/voice-streaming-sa.json}
       VOICE_STREAM_STORAGE_DIR: ${VOICE_STREAM_STORAGE_DIR:-/app/voice_cache}
+      VOICE_TTS_PROVIDER: ${VOICE_TTS_PROVIDER:-google}
+      ELEVENLABS_API_KEY: ${ELEVENLABS_API_KEY:-}
+      ELEVENLABS_VOICE_ID: ${ELEVENLABS_VOICE_ID:-}
+      ELEVENLABS_MODEL_ID: ${ELEVENLABS_MODEL_ID:-eleven_multilingual_v2}
+      ELEVENLABS_API_BASE_URL: ${ELEVENLABS_API_BASE_URL:-https://api.elevenlabs.io}
+      ELEVENLABS_VOICE_SETTINGS: ${ELEVENLABS_VOICE_SETTINGS:-}
     volumes:
       - ./Backend/logs:/app/logs
       - ./Backend/ia_workspace:/app/ia_workspace
@@ -74,7 +80,7 @@ services:
       context: Frontend
       dockerfile: Dockerfile
       args:
-        NEXT_PUBLIC_API_BASE: ${NEXT_PUBLIC_API_BASE:-http://backend:8000}
+        NEXT_PUBLIC_API_BASE: ${NEXT_PUBLIC_API_BASE_DOCKER:-http://backend:8000}
         NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
         NEXT_PUBLIC_GOOGLE_MAP_ID: ${NEXT_PUBLIC_GOOGLE_MAP_ID}
     container_name: capi-frontend
@@ -83,7 +89,7 @@ services:
       - "3000:3000"
     environment:
       NODE_ENV: production
-      NEXT_PUBLIC_API_BASE: ${NEXT_PUBLIC_API_BASE:-http://localhost:8000}
+      NEXT_PUBLIC_API_BASE: http://backend:8000
       NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
       NEXT_PUBLIC_GOOGLE_MAP_ID: ${NEXT_PUBLIC_GOOGLE_MAP_ID}
       NEXT_TELEMETRY_DISABLED: 1
@@ -93,7 +99,7 @@ services:
       backend:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
       interval: 30s
       timeout: 10s
       retries: 3

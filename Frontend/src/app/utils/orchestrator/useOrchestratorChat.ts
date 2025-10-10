@@ -95,6 +95,17 @@ function ensureSocket(): OrchestratorSocket {
   return socketSingleton;
 }
 
+const STREAM_EVENT_TYPES = new Set([
+  'node_transition',
+  'agent_start',
+  'agent_end',
+  'agent_progress',
+  'history',
+  'state',
+  'connection',
+  'pong',
+]);
+
 function normalizeWSPayload(raw: any): OrchestratorMessage | null {
   if (!raw) return null;
   // Esperado: { agent, response } o { error }
@@ -119,7 +130,7 @@ function normalizeWSPayload(raw: any): OrchestratorMessage | null {
     } else {
       printable = String(raw.response);
     }
-  return {
+    return {
       id: genId(),
       role: 'agent',
       agent: raw.agent,
@@ -127,7 +138,19 @@ function normalizeWSPayload(raw: any): OrchestratorMessage | null {
       payload: raw.response,
     };
   }
-  // Mensaje suelto
+  // Mensaje suelto o evento
+  if (typeof raw === 'object' && typeof raw.type === 'string') {
+    const type = raw.type.toLowerCase();
+    if (STREAM_EVENT_TYPES.has(type)) {
+      return null;
+    }
+    return {
+      id: genId(),
+      role: 'system',
+      content: JSON.stringify(raw).slice(0, 400),
+      payload: raw,
+    };
+  }
   if (typeof raw === 'string') {
     return { id: genId(), role: 'system', content: raw };
   }
@@ -187,7 +210,31 @@ export function useOrchestratorChat(clientId: string = 'default'): HookReturn {
   }, [clientId]);
 
   const applyResultSideData = useCallback((result: OrchestratorResult | null, rawPayload?: any) => {
-    if (result?.summary) setSummary(result.summary);
+    const candidateStrings: (string | undefined)[] = [];
+    if (typeof rawPayload === 'string') {
+      candidateStrings.push(rawPayload);
+    } else if (rawPayload && typeof rawPayload === 'object') {
+      const responseField = (rawPayload as any)?.response;
+      if (typeof responseField === 'string') {
+        candidateStrings.push(responseField);
+      } else if (responseField && typeof responseField === 'object') {
+        candidateStrings.push(responseField.respuesta, responseField.message, responseField.mensaje);
+      }
+      candidateStrings.push(
+        (rawPayload as any)?.respuesta,
+        (rawPayload as any)?.message,
+        (rawPayload as any)?.mensaje,
+      );
+    }
+    const friendlySummary =
+      candidateStrings.find((value): value is string => typeof value === 'string' && value.trim().length > 0)?.trim() ?? null;
+
+    if (friendlySummary) {
+      setSummary(friendlySummary);
+    } else if (result?.summary) {
+      setSummary(result.summary);
+    }
+
     if (result?.anomalies) setAnomalies(result.anomalies);
     if (result?.dashboard) setDashboard(result.dashboard);
 
@@ -202,7 +249,7 @@ export function useOrchestratorChat(clientId: string = 'default'): HookReturn {
     const metadata = metaCandidates.length > 0 ? metaCandidates[0] : undefined;
 
     if (metadata) {
-      if (!result?.summary && metadata.result_summary) setSummary(metadata.result_summary);
+      if (!friendlySummary && !result?.summary && metadata.result_summary) setSummary(metadata.result_summary);
       if (!result?.anomalies && metadata.anomalies) setAnomalies(metadata.anomalies);
       if (!result?.dashboard && metadata.dashboard) setDashboard(metadata.dashboard);
     }
@@ -323,32 +370,55 @@ export function useOrchestratorChat(clientId: string = 'default'): HookReturn {
   setLoading(false);
 }, [setMessages]);
 
-  const deliverAgentResponse = useCallback((result: OrchestratorResult, rawPayload?: any) => {
-  const payloadForMeta = rawPayload ?? (result && typeof result === 'object' ? (result as any).response : undefined);
-  applyResultSideData(result, payloadForMeta);
-  const agentName = result.agent || 'orchestrator';
-  const responsePayload = result.response ?? result.data ?? result;
-  let printable = '';
+  const deliverAgentResponse = useCallback(
+    (
+      result: OrchestratorResult,
+      rawPayload?: any,
+      options?: { forceAppend?: boolean }
+    ) => {
+      const payloadForMeta =
+        rawPayload ?? (result && typeof result === 'object' ? (result as any).response : undefined);
 
-  if (typeof responsePayload === 'string') {
-    printable = responsePayload;
-  } else if (typeof result.message === 'string' && result.message.trim()) {
-    printable = result.message;
-  } else if (responsePayload && typeof responsePayload === 'object') {
-    const semantic = (responsePayload as any)?.respuesta || (responsePayload as any)?.message || (responsePayload as any)?.mensaje;
-    printable = typeof semantic === 'string' && semantic.trim() ? semantic : JSON.stringify(responsePayload).slice(0, 800);
-  } else {
-    printable = JSON.stringify(responsePayload ?? '').slice(0, 800);
-  }
+      applyResultSideData(result, payloadForMeta);
 
-  finalizeAndAppend({
-    id: genId(),
-    role: 'agent',
-    agent: agentName,
-    content: printable,
-    payload: responsePayload,
-  });
-}, [applyResultSideData, finalizeAndAppend]);
+      const shouldAppend = options?.forceAppend ?? true;
+
+      if (!shouldAppend) {
+        return;
+      }
+
+      const agentName = result.agent || 'orchestrator';
+      const responsePayload = result.response ?? result.data ?? result;
+
+      let printable = '';
+
+      if (typeof responsePayload === 'string') {
+        printable = responsePayload;
+      } else if (typeof result.message === 'string' && result.message.trim()) {
+        printable = result.message;
+      } else if (responsePayload && typeof responsePayload === 'object') {
+        const semantic =
+          (responsePayload as any)?.respuesta ||
+          (responsePayload as any)?.message ||
+          (responsePayload as any)?.mensaje;
+        printable =
+          typeof semantic === 'string' && semantic.trim()
+            ? semantic
+            : JSON.stringify(responsePayload).slice(0, 800);
+      } else {
+        printable = JSON.stringify(responsePayload ?? '').slice(0, 800);
+      }
+
+      finalizeAndAppend({
+        id: genId(),
+        role: 'agent',
+        agent: agentName,
+        content: printable,
+        payload: responsePayload,
+      });
+    },
+    [applyResultSideData, finalizeAndAppend],
+  );
 
   const sendCommand = useCallback(async (text: string) => {
     if (!text.trim()) {
@@ -381,7 +451,7 @@ export function useOrchestratorChat(clientId: string = 'default'): HookReturn {
           hasAgent: !!result?.agent,
           hasResponse: !!result?.response,
         });
-        deliverAgentResponse(result || {});
+        deliverAgentResponse(result || {}, undefined, { forceAppend: true });
       } catch (httpError: any) {
         hookLogger.error(`HTTP Command Failed [${commandId}]`, {
           errorMessage: httpError?.message,
@@ -506,7 +576,7 @@ export function useOrchestratorChat(clientId: string = 'default'): HookReturn {
           anomalies: envelope?.data?.anomalies,
           dashboard: envelope?.data?.dashboard,
         } as OrchestratorResult;
-        deliverAgentResponse(normalizedResult, envelope);
+        deliverAgentResponse(normalizedResult, envelope, { forceAppend: true });
       } else {
         applyResultSideData(null, response);
         const fallbackMessage = response?.message ?? (approved ? 'Decisión registrada.' : 'Se registró la decisión.');

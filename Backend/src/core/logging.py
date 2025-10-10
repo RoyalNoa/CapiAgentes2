@@ -214,15 +214,23 @@ def setup_unified_logging() -> None:
     console_handler.setLevel(logging.INFO)
     root_logger.addHandler(console_handler)
 
-    file_handler = logging.handlers.RotatingFileHandler(
-        log_file_path,
-        maxBytes=DEFAULT_MAX_BYTES,
-        backupCount=DEFAULT_BACKUP_COUNT,
-        encoding="utf-8",
-    )
-    file_handler.setFormatter(formatter)
-    file_handler.setLevel(logging.INFO)
-    root_logger.addHandler(file_handler)
+    try:
+        file_handler = logging.handlers.RotatingFileHandler(
+            log_file_path,
+            maxBytes=DEFAULT_MAX_BYTES,
+            backupCount=DEFAULT_BACKUP_COUNT,
+            encoding="utf-8",
+        )
+    except OSError as exc:
+        root_logger.warning(
+            "File logging disabled for %s (%s). Falling back to console-only logging.",
+            log_file_path,
+            exc,
+        )
+    else:
+        file_handler.setFormatter(formatter)
+        file_handler.setLevel(logging.INFO)
+        root_logger.addHandler(file_handler)
 
     _install_exception_hooks()
     logging.getLogger("uvicorn").propagate = True

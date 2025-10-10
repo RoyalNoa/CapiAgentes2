@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import re
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from enum import Enum
@@ -34,8 +35,9 @@ _ALLOWED_AGENTS = {
     "summary",
     "branch",
     "anomaly",
-    "smalltalk",
+    "capi_gus",
     "capi_noticias",
+    "agente_g",
     "assemble",
 }
 
@@ -48,38 +50,40 @@ _DEFAULT_AGENT_BY_INTENT = {
     Intent.BRANCH_QUERY: "branch",
     Intent.ANOMALY: "anomaly",
     Intent.ANOMALY_QUERY: "anomaly",
-    Intent.SMALL_TALK: "smalltalk",
-    Intent.GREETING: "smalltalk",
+    Intent.SMALL_TALK: "capi_gus",
+    Intent.GREETING: "capi_gus",
     Intent.NEWS_MONITORING: "capi_noticias",
+    Intent.GOOGLE_WORKSPACE: "agente_g",
+    Intent.GOOGLE_GMAIL: "agente_g",
+    Intent.GOOGLE_DRIVE: "agente_g",
+    Intent.GOOGLE_CALENDAR: "agente_g",
 }
 
+
 _LLM_ROUTER_SYSTEM_PROMPT = """
-Eres un orquestador experto que enruta consultas de usuarios a agentes
-especializados. RecibirÃƒÆ’Ã‚Â¡s un JSON con la consulta del usuario y contexto.
+Eres un orquestador experto que enruta consultas de usuarios a agentes especializados. Recibiras un JSON con la consulta del usuario y contexto.
 Devuelve siempre un JSON con exactamente los siguientes campos:
 {{
   "intent": "...",                // string (usa los intents permitidos)
   "target_agent": "...",          // string (usa los agentes permitidos)
-  "confidence": 0.0-1.0,           // nÃƒÆ’Ã‚Âºmero entre 0 y 1
-  "entities": {{...}},               // objeto opcional con entidades relevantes
-  "requires_clarification": bool,  // true si falta informaciÃƒÆ’Ã‚Â³n
-  "reasoning": "..."              // explicaciÃƒÆ’Ã‚Â³n breve
+  "confidence": 0.0-1.0,           // numero entre 0 y 1
+  "entities": {{ ... }},           // objeto opcional con entidades relevantes
+  "requires_clarification": bool,  // true si falta informacion
+  "reasoning": "..."              // explicacion breve
 }}
 
-Intents permitidos: {intents}
-Agentes permitidos: {agents}
+Intents permitidos: {{intents}}
+Agentes permitidos: {{agents}}
 
 Reglas importantes:
-- Elige el intent y agente mÃƒÆ’Ã‚Â¡s adecuado segÃƒÆ’Ã‚Âºn la consulta y el contexto.
-- Para consultas sobre dinero/efectivo en una sucursal, usa intent
-  "db_operation" y agent "capi_datab" e incluye en entities la sucursal
-  (nombre, nÃƒÆ’Ã‚Âºmero o identificador).
-- Si la consulta es amigable/saludo, utiliza intent "small_talk" o
-  "greeting" con agent "smalltalk".
-- Si no estÃƒÆ’Ã‚Â¡s seguro, usa intent "unknown", agent "assemble" y marca
-  requires_clarification=true.
-- MantÃƒÆ’Ã‚Â©n el JSON estricto; no agregues texto extra ni comentarios.
+- Elige el intent y agente mas adecuado segun la consulta y el contexto.
+- Para operaciones con Gmail, Google Drive o Calendar asigna el agente "agente_g" e incluye en entities los parametros relevantes (por ejemplo `gmail_operation`, `email_recipients`, `drive_query`, `calendar_window`).
+- Para consultas sobre dinero o efectivo en una sucursal, usa intent "db_operation" y agent "capi_datab" e incluye en entities la sucursal (nombre, numero o identificador).
+- Si la consulta es amigable o un saludo, utiliza intent "small_talk" o "greeting" con agent "capi_gus".
+- Si no estas seguro, usa intent "unknown", agent "assemble" y marca requires_clarification=true.
+- Manten el JSON estricto; no agregues texto extra ni comentarios.
 """.strip()
+
 
 
 
@@ -237,11 +241,69 @@ class SemanticIntentService:
         intent = Intent.UNKNOWN
 
         lower_query = (query or "").lower()
+        google_tokens = ("google", "workspace", "gmail", "correo", "correos", "mail", "drive", "calendar", "calendario", "agenda", "evento", "reunion")
+        email_tokens = ("correo", "correos", "mail", "gmail", "email")
+        drive_tokens = ("drive", "documento", "documentos", "archivo en drive", "gdrive")
+        calendar_tokens = ("calendar", "calendario", "evento", "eventos", "reunion", "reunión", "agendar", "agenda")
+        send_tokens = ("enviar", "mandar", "remitir", "responder")
+        list_tokens = ("listar", "ver", "mostrar", "consultar")
+        google_present = any(token in lower_query for token in google_tokens)
+        if google_present:
+            target_agent = "agente_g"
+            intent = Intent.GOOGLE_WORKSPACE
+            confidence = 0.55
+            if any(token in lower_query for token in email_tokens):
+                operation = "list"
+                if any(token in lower_query for token in send_tokens):
+                    operation = "send"
+                elif "habilitar" in lower_query or "activar" in lower_query:
+                    operation = "enable_push"
+                elif "deshabilitar" in lower_query or "desactivar" in lower_query:
+                    operation = "disable_push"
+                intent = Intent.GOOGLE_GMAIL
+                entities["gmail_operation"] = operation
+                if operation == "send":
+                    recipients = self._extract_emails(query)
+                    if recipients:
+                        entities["email_recipients"] = recipients
+                if any(token in lower_query for token in list_tokens) and "no leido" in lower_query:
+                    entities["gmail_query"] = "is:unread"
+            elif any(token in lower_query for token in drive_tokens):
+                intent = Intent.GOOGLE_DRIVE
+                if any(token in lower_query for token in list_tokens):
+                    entities["drive_operation"] = "list"
+                elif "crear" in lower_query or "generar" in lower_query:
+                    entities["drive_operation"] = "create"
+                else:
+                    entities["drive_operation"] = "list"
+            elif any(token in lower_query for token in calendar_tokens):
+                intent = Intent.GOOGLE_CALENDAR
+                if "crear" in lower_query or "agendar" in lower_query:
+                    entities["calendar_operation"] = "create_event"
+                else:
+                    entities["calendar_operation"] = "list_events"
+            return IntentResult(
+                intent=intent,
+                confidence=confidence,
+                target_agent=target_agent,
+                entities=entities,
+                context_resolved=bool(entities),
+                reasoning=message or f"Fallback classification executed ({reason})",
+                requires_clarification=False,
+                provider="fallback",
+                model=""
+            )
+
         branch_tokens = ("sucursal", "branch", "agencia", "oficina")
         money_tokens = ("saldo", "saldos", "balance", "efectivo", "dinero", "caja", "movimiento")
         branch_present = any(token in lower_query for token in branch_tokens)
         money_present = any(token in lower_query for token in money_tokens)
-        if branch_present and money_present:
+        greeting_tokens = ("hola", "hello", "buenas", "saludos", "gracias", "buenos dias", "buenas tardes", "buenas noches")
+        if any(token in lower_query for token in greeting_tokens):
+            intent = Intent.GREETING
+            target_agent = "capi_gus"
+            confidence = 0.4
+        elif branch_present and money_present:
             intent = Intent.DB_OPERATION
             entities["branch_hint"] = query
             target_agent = "capi_datab"
@@ -282,6 +344,28 @@ class SemanticIntentService:
                 self.context_manager.track_branch_reference(session_id, branch_name)
             except Exception as exc:  # pragma: no cover - defensive logging
                 logger.warning({"event": "context_tracking_failed", "error": str(exc)})
+
+    @staticmethod
+    def _extract_emails(text: Optional[str]) -> list[str]:
+        if not text:
+            return []
+        matches = re.findall(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}", text)
+        seen = set()
+        emails: list[str] = []
+        for match in matches:
+            normalized = match.lower()
+            if normalized not in seen:
+                seen.add(normalized)
+                emails.append(normalized)
+        if emails:
+            return emails
+        tokens = [token.strip("()[]{}<>'\".,;") for token in text.split()]
+        for token in tokens:
+            lowered = token.lower()
+            if "@" in lowered and "." in lowered and lowered not in seen:
+                seen.add(lowered)
+                emails.append(lowered)
+        return emails
 
     def _run_sync(self, coro):
         try:

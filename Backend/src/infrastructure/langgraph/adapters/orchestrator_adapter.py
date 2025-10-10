@@ -10,6 +10,7 @@ import json
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 from contextlib import suppress
+from pathlib import Path
 
 from src.observability.agent_metrics import record_turn_event, record_error_event
 from src.infrastructure.langgraph.graph_runtime import LangGraphRuntime
@@ -131,19 +132,117 @@ class LangGraphOrchestratorAdapter:
         return fallback
 
     def _extract_response_text(self, envelope: ResponseEnvelope) -> str:
-        if hasattr(envelope, "data") and envelope.data:
-            if isinstance(envelope.data, dict):
-                return str(envelope.data.get("response", ""))
-            return str(envelope.data)
-        if hasattr(envelope, "response"):
-            return str(envelope.response)
+        data_attr = getattr(envelope, "data", None)
+        if isinstance(data_attr, dict):
+            gus_payload = data_attr.get("capi_gus")
+            if isinstance(gus_payload, dict):
+                gus_message = gus_payload.get("message")
+                if gus_message:
+                    return str(gus_message)
+            friendly_fallback = self._compose_friendly_fallback(data_attr, envelope)
+            if friendly_fallback:
+                return friendly_fallback
+            response_field = data_attr.get("response")
+            if response_field:
+                return str(response_field)
+            return str(data_attr)
+
+        message_attr = getattr(envelope, "message", None)
+        if message_attr:
+            return str(message_attr)
+
+        response_attr = getattr(envelope, "response", None)
+        if response_attr:
+            return str(response_attr)
+
         return ""
+
+    def _compose_friendly_fallback(self, data: Dict[str, Any], envelope: ResponseEnvelope) -> Optional[str]:
+        response_field = data.get("response")
+        summary_message = data.get("summary_message")
+        if response_field and response_field != summary_message:
+            return None
+
+        rows = data.get("rows")
+        if not isinstance(rows, list) or not rows:
+            return None
+        first_row = rows[0]
+        if not isinstance(first_row, dict):
+            return None
+
+        branch = first_row.get("sucursal_nombre") or first_row.get("branch_name") or "la sucursal consultada"
+        balance = first_row.get("saldo_total_sucursal")
+        theoretical = first_row.get("caja_teorica_sucursal")
+
+        delta_value: Optional[float]
+        try:
+            delta_value = (float(theoretical) - float(balance)) if balance is not None and theoretical is not None else None
+        except (TypeError, ValueError):
+            delta_value = None
+
+        balance_text = self._format_currency(balance)
+        theoretical_text = self._format_currency(theoretical)
+        delta_text = self._format_currency(delta_value) if delta_value is not None else None
+
+        parts: List[str] = []
+        if balance_text:
+            parts.append(f"El saldo actual de la sucursal '{branch}' es {balance_text}.")
+        if theoretical_text:
+            if delta_value is not None:
+                if delta_value > 0:
+                    parts.append(f"La caja teórica proyecta {theoretical_text} y detecto un faltante de {delta_text}.")
+                elif delta_value < 0:
+                    parts.append(f"La caja teórica proyecta {theoretical_text} y observo un excedente de {delta_text}.")
+                else:
+                    parts.append(f"La caja teórica coincide con {theoretical_text}.")
+            else:
+                parts.append(f"La caja teórica proyecta {theoretical_text}.")
+
+        meta = envelope.meta if isinstance(getattr(envelope, "meta", None), dict) else {}
+        response_meta = meta.get("response_metadata")
+        if isinstance(response_meta, dict):
+            alert_msg = response_meta.get("alert_notification")
+            if alert_msg:
+                normalized = str(alert_msg).strip().rstrip(".")
+                if normalized:
+                    parts.append(f"{normalized}.")
+
+        file_path = data.get("file_path")
+        closing_question: str
+        if isinstance(file_path, str) and file_path:
+            try:
+                file_name = Path(file_path).name
+            except Exception:
+                file_name = None
+            if file_name:
+                closing_question = f"¿Querés que guarde este análisis en el escritorio como {file_name}?"
+            else:
+                closing_question = "¿Querés que guarde este análisis en el escritorio o seguimos con otra consulta?"
+        else:
+            closing_question = "¿Querés que guarde este análisis en el escritorio o seguimos con otra consulta?"
+
+        if not parts:
+            return None
+
+        parts.append(closing_question)
+        return " ".join(part.strip() for part in parts if part)
+
+    @staticmethod
+    def _format_currency(value: Any) -> Optional[str]:
+        try:
+            amount = float(value)
+        except (TypeError, ValueError):
+            return None
+        sign = "-" if amount < 0 else ""
+        integer_part, decimal_part = f"{abs(amount):,.2f}".split(".")
+        integer_part = integer_part.replace(",", ".")
+        return f"{sign}${integer_part},{decimal_part}"
 
     def _resolve_active_agent(self, envelope: ResponseEnvelope, response_text: str) -> str:
         meta = envelope.meta if isinstance(getattr(envelope, "meta", None), dict) else {}
         completed_nodes = meta.get("completed_nodes")
         if isinstance(completed_nodes, (list, tuple)):
-            for agent_node in ("smalltalk", "summary", "branch", "anomaly"):
+            for agent_node in ("capi_gus", "branch", "anomaly"):
                 if agent_node in completed_nodes:
                     return agent_node
         if hasattr(envelope, "data") and isinstance(envelope.data, dict):
@@ -152,14 +251,14 @@ class LangGraphOrchestratorAdapter:
             stage = envelope.data.get("workflow_stage")
             if isinstance(stage, str):
                 lowered = stage.lower()
-                if "summary" in lowered:
-                    return "summary"
+                if "capi_gus" in lowered or "gus" in lowered or "summary" in lowered:
+                    return "capi_gus"
                 if "branch" in lowered:
                     return "branch"
                 if "anomaly" in lowered:
                     return "anomaly"
-                if "smalltalk" in lowered:
-                    return "smalltalk"
+                if "capi_gus" in lowered or "gus" in lowered:
+                    return "capi_gus"
         return "unknown"
 
     async def _maybe_enhance_with_llm(
@@ -289,6 +388,11 @@ class LangGraphOrchestratorAdapter:
                 setattr(envelope, "trace_id", trace_id)
 
         response_text = self._extract_response_text(envelope)
+        if response_text:
+            with suppress(Exception):
+                setattr(envelope, "message", response_text)
+                if isinstance(envelope.data, dict):
+                    envelope.data.setdefault("response", response_text)
         active_agent = self._resolve_active_agent(envelope, response_text)
 
         effective_trace_id = getattr(envelope, "trace_id", None) or trace_id
@@ -302,6 +406,11 @@ class LangGraphOrchestratorAdapter:
             trace_id=effective_trace_id,
         )
         response_text = self._extract_response_text(envelope)
+        if response_text:
+            with suppress(Exception):
+                setattr(envelope, "message", response_text)
+                if isinstance(envelope.data, dict):
+                    envelope.data.setdefault("response", response_text)
         input_tokens = int(usage_details.get("prompt_tokens", 0))
         output_tokens = int(usage_details.get("completion_tokens", 0))
         tokens_used = int(usage_details.get("total_tokens", input_tokens + output_tokens))

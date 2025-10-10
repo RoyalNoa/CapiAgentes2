@@ -1,4 +1,4 @@
-"""Voice streaming endpoints for Google Cloud STT/TTS integration."""
+"""Voice streaming endpoints for STT/TTS integration."""
 from __future__ import annotations
 
 import asyncio
@@ -49,9 +49,11 @@ async def voice_config(request: Request) -> Dict[str, Any]:
     """Expose non-sensitive configuration for health checks."""
     manager = _get_voice_orchestrator(request)
     settings = manager.settings
+    provider = (settings.tts_provider or "google").lower()
     return {
         "language": settings.google_speech_language,
-        "tts_voice": settings.google_tts_voice,
+        "tts_voice": settings.elevenlabs_voice_id if provider == "elevenlabs" else settings.google_tts_voice,
+        "tts_provider": provider,
         "sample_rate": settings.voice_stream_sample_rate,
         "chunk_ms": settings.voice_stream_chunk_ms,
         "bucket_configured": bool(settings.voice_stream_bucket),

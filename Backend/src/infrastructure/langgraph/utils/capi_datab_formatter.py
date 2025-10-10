@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple
@@ -126,6 +127,9 @@ def compose_success_message(
     if rows:
         first_row = rows[0]
         if isinstance(first_row, dict) and first_row:
+            narrative = _compose_branch_narrative(first_row, branch)
+            if narrative:
+                return narrative + suffix
             if len(first_row) == 1:
                 col, value = next(iter(first_row.items()))
                 formatted = _format_value(value, col)
@@ -217,7 +221,10 @@ def _format_value(value: Any, column: Optional[str] = None) -> str:
     if value is None:
         return "sin datos"
     column_lower = (column or "").lower()
-    treat_as_currency = any(keyword in column_lower for keyword in ("saldo", "monto", "importe", "total", "amount", "balance"))
+    treat_as_currency = any(
+        keyword in column_lower
+        for keyword in ("saldo", "monto", "importe", "total", "amount", "balance", "caja")
+    )
     value_str = str(value).strip()
     if treat_as_currency:
         try:
@@ -258,11 +265,136 @@ def _compose_export_suffix(export_file: Optional[str]) -> str:
         filename = str(export_file)
     if not filename:
         return ""
-    return f" Resultado exportado a {filename}."
+    return f" Si precisas revisar el detalle puedo compartirte el archivo {filename}."
+
+
+def _compose_branch_narrative(row: Dict[str, Any], branch: Optional[str]) -> Optional[str]:
+    branch_name = branch or row.get("sucursal_nombre") or row.get("branch_name")
+    branch_name = str(branch_name).strip() if branch_name else None
+
+    primary_fields: Tuple[str, ...] = (
+        "saldo_total_sucursal",
+        "saldo_total",
+        "total_saldo",
+        "saldo",
+        "balance_total",
+    )
+    primary_value_text = None
+    primary_label = None
+    primary_field = None
+    primary_raw_value: Any = None
+    for candidate in primary_fields:
+        if candidate in row and row.get(candidate) is not None:
+            primary_field = candidate
+            primary_raw_value = row.get(candidate)
+            primary_value_text = _format_value(primary_raw_value, candidate)
+            primary_label = _humanize_column(candidate)
+            break
+
+    if not primary_value_text:
+        return None
+
+    sentences: List[str] = []
+    if branch_name:
+        sentences.append(f"El saldo total de la sucursal '{branch_name}' es {primary_value_text}.")
+    else:
+        sentences.append(f"El {primary_label} es {primary_value_text}.")
+
+    theoretical_fields: Tuple[str, ...] = (
+        "caja_teorica_sucursal",
+        "saldo_teorico",
+        "teorico_total",
+    )
+    theoretic_raw_value: Any = None
+    theoretic_field = None
+    for candidate in theoretical_fields:
+        if candidate in row and row.get(candidate) is not None:
+            theoretic_raw_value = row.get(candidate)
+            theoretic_field = candidate
+            formatted = _format_value(theoretic_raw_value, candidate)
+            theoretical_sentence = f"La caja teórica registrada asciende a {formatted}."
+            delta = _delta_values(theoretic_raw_value, primary_raw_value)
+            if delta is not None and delta != 0:
+                diff_text = _format_value(abs(delta), "delta_saldo")
+                if delta > 0:
+                    theoretical_sentence += f" Existe una brecha de {diff_text} respecto del saldo operativo."
+                else:
+                    theoretical_sentence += f" El saldo operativo supera a la caja teórica por {diff_text}."
+            sentences.append(theoretical_sentence)
+            break
+
+    distribution_map = [
+        ("total_atm", "ATM"),
+        ("total_ats", "ATS"),
+        ("total_tesoro", "Tesoro"),
+        ("total_cajas_ventanilla", "cajas ventanilla"),
+        ("total_buzon_depositos", "buzón de depósitos"),
+        ("total_recaudacion", "recaudación"),
+        ("total_caja_chica", "caja chica"),
+        ("total_otros", "otros"),
+    ]
+    distribution_parts = []
+    for field, label in distribution_map:
+        if field in row and row.get(field) is not None:
+            distribution_parts.append(f"{label} { _format_value(row[field], field) }")
+
+    if distribution_parts:
+        sentences.append("Distribución actual: " + ", ".join(distribution_parts) + ".")
+
+    measured_at = row.get("medido_en") or row.get("fecha")
+    timestamp_text = _format_timestamp(measured_at)
+    if timestamp_text:
+        sentences.append(f"Última medición: {timestamp_text}.")
+
+    return " ".join(_strip_sentence(sentence) for sentence in sentences if sentence)
 
 
 def _is_dict(value: Optional[Dict[str, Any]]) -> bool:
     return isinstance(value, dict) and bool(value)
+
+
+def _delta_values(reference: Any, comparable: Any) -> Optional[Decimal]:
+    ref = _as_decimal(reference)
+    target = _as_decimal(comparable)
+    if ref is None or target is None:
+        return None
+    return ref - target
+
+
+def _as_decimal(value: Any) -> Optional[Decimal]:
+    if value is None:
+        return None
+    try:
+        return Decimal(str(value))
+    except (InvalidOperation, TypeError):
+        return None
+
+
+def _format_timestamp(value: Any) -> Optional[str]:
+    if not value:
+        return None
+    if isinstance(value, datetime):
+        dt = value
+    elif isinstance(value, str):
+        cleaned = value.strip()
+        if not cleaned:
+            return None
+        cleaned = cleaned.replace("Z", "+00:00") if cleaned.endswith("Z") else cleaned
+        try:
+            dt = datetime.fromisoformat(cleaned)
+        except ValueError:
+            return cleaned
+    else:
+        return None
+
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    dt = dt.astimezone(timezone.utc)
+    return dt.strftime("%d/%m/%Y %H:%M UTC")
+
+
+def _strip_sentence(sentence: str) -> str:
+    return sentence.strip().replace("  ", " ")
 
 
 __all__ = [

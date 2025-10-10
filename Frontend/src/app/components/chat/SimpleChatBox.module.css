@@ -15,6 +15,123 @@
   gap: 4px;  /* Reducido de 8px a 4px */
 }
 
+.turnBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.simulationSection {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.simulationBanner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 229, 255, 0.28);
+  background: linear-gradient(135deg, rgba(12, 24, 40, 0.7), rgba(8, 18, 32, 0.6));
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  color: rgba(214, 239, 255, 0.85);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+}
+
+.simulationBanner:disabled {
+  opacity: 0.85;
+  cursor: default;
+}
+
+.simulationBanner:not(:disabled):hover {
+  border-color: rgba(0, 229, 255, 0.45);
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.18);
+}
+
+.simulationLabel {
+  font-size: 11px;
+}
+
+.simulationGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 12%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 88%
+  );
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  animation: hudSweep 3s linear infinite;
+}
+
+@keyframes hudSweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.simulationContent {
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  background: linear-gradient(135deg, rgba(4, 12, 22, 0.92), rgba(3, 8, 15, 0.88));
+  max-height: 9999px;
+  transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
+  opacity: 1;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.simulationContentCollapsed {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 14px;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.morphingWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.simulationTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.timelineEntry {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.simulationEmpty {
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(150, 178, 206, 0.75);
+}
+
 .feed::-webkit-scrollbar {
   width: 6px;
 }
@@ -325,9 +442,9 @@
 }
 
 .voiceStatus {
-  padding: 8px 16px; /* Unificado a 16px horizontal */
-  background: rgba(255, 107, 107, 0.1);
-  border-top: 1px solid rgba(255, 107, 107, 0.2);
+  padding: 8px 16px;
+  background: rgba(8, 18, 32, 0.7);
+  border-top: 1px solid rgba(0, 229, 255, 0.08);
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -336,18 +453,93 @@
 .voiceNotice {
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(159, 190, 222, 0.75);
+  color: rgba(135, 188, 255, 0.8);
 }
 
 .voicePartial {
-  color: rgba(214, 239, 255, 0.9);
+  color: rgba(214, 239, 255, 0.85);
+  font-size: 11px;
+  letter-spacing: 0.03em;
 }
 
 .voiceError {
   font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
   font-size: 11px;
   letter-spacing: 0.04em;
-  color: #ff6b6b;
+  color: #ff9c6b;
+}
+
+.voiceControls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 4px 16px 12px;
+}
+
+.voiceControlButton {
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  background: rgba(6, 14, 26, 0.85);
+  color: rgba(214, 239, 255, 0.9);
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.voiceControlButton:hover {
+  border-color: rgba(0, 229, 255, 0.5);
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.voiceControlButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.voiceControlButtonMuted {
+  border-color: rgba(255, 115, 115, 0.5);
+  color: rgba(255, 189, 189, 0.9);
+}
+
+.voicePlayback {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.voiceAudioPreview,
+.voiceAudioPreviewPlaying {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  border-radius: 10px;
+  padding: 6px 10px;
+  background: rgba(4, 12, 22, 0.8);
+  box-shadow: inset 0 0 12px rgba(0, 229, 255, 0.06);
+}
+
+.voiceAudioPreviewPlaying {
+  border-color: rgba(125, 249, 255, 0.35);
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.18);
+}
+
+.voicePreviewLabel {
+  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(214, 239, 255, 0.88);
+}
+
+.voiceCaptureState {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(214, 239, 255, 0.8);
 }
 
 .inputRow {
@@ -391,41 +583,75 @@
   text-transform: uppercase;
 }
 
-/* Bot\u00f3n de micr\u00f3fono para grabaci\u00f3n de voz */
+/* Botón de micrófono inspirado en HUDNavigator (solo icono) */
 .micButton {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  display: flex;
+  border: 1px solid rgba(96, 202, 255, 0.55);
+  background: rgba(1, 20, 40, 0.92);
+  color: rgba(226, 232, 240, 0.95);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
-  background-color: var(--chat-primary);
+  cursor: pointer;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.18s ease;
+}
+
+.micButton svg {
+  stroke: currentColor;
+}
+
+.micButton:hover:not(:disabled),
+.micButton:focus-visible {
+  border-color: rgba(96, 202, 255, 0.9);
+  color: #e6f1ff;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.28), rgba(12, 74, 110, 0.22));
+  box-shadow: 0 0 16px rgba(14, 165, 233, 0.32);
+  transform: translateY(-1px);
+}
+
+.micButton:focus-visible {
+  outline: 2px solid rgba(96, 202, 255, 0.55);
+  outline-offset: 3px;
 }
 
 .micButton:disabled {
-  opacity: 0.5;
+  opacity: 0.45;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .micButton.pressed {
-  background-color: var(--hud-error);
-  transform: scale(1.1);
+  border-color: rgba(248, 113, 113, 0.6);
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.3), rgba(127, 29, 29, 0.24));
+  box-shadow:
+    0 0 16px rgba(248, 113, 113, 0.35),
+    inset 0 0 12px rgba(127, 29, 29, 0.24);
 }
 
 .micButton.recording {
-  background-color: var(--hud-warning);
-  animation: recordPulse 1.5s ease-in-out infinite; /* Unificado a 1.5s */
+  border-color: rgba(251, 191, 36, 0.75);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.32), rgba(120, 53, 15, 0.24));
+  color: #fffbeb;
+  animation: recordPulse 1.6s ease-in-out infinite;
+  box-shadow:
+    0 0 20px rgba(251, 191, 36, 0.4),
+    inset 0 0 14px rgba(120, 53, 15, 0.28);
 }
 
 @keyframes recordPulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 153, 0, 0.5);
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.55);
   }
   50% {
-    box-shadow: 0 0 30px rgba(255, 153, 0, 0.8);
+    box-shadow: 0 0 32px rgba(251, 191, 36, 0.85);
   }
 }
 

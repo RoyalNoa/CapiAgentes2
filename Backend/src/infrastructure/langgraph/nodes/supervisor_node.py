@@ -22,7 +22,7 @@ class SupervisorNode(GraphNode):
             "summary",
             "anomaly",
             "capi_desktop",
-            "smalltalk",
+            "capi_gus",
         ]
 
     def run(self, state: GraphState) -> GraphState:

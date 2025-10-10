@@ -42,6 +42,10 @@ class IntentType(str, Enum):
     NEWS_MONITORING = "news_monitoring"
     FALLBACK = "fallback"
     UNKNOWN = "unknown"
+    GOOGLE_WORKSPACE = "google_workspace"
+    GOOGLE_GMAIL = "google_gmail"
+    GOOGLE_DRIVE = "google_drive"
+    GOOGLE_CALENDAR = "google_calendar"
 
 
 class ResponseType(str, Enum):

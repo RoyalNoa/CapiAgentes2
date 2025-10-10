@@ -40,13 +40,13 @@ class ReActNode(GraphNode):
             "inspect_desktop": self._tool_inspect_desktop,
             "detect_anomalies": self._tool_detect_anomalies,
             "gather_news": self._tool_gather_news,
-            "smalltalk_memory": self._tool_smalltalk_memory,
         }
         self._file_keywords = {"archivo", "file", "excel", "pdf", "word", "documento"}
         self._summary_keywords = {"resumen", "summary", "total", "general", "overview"}
         self._anomaly_keywords = {"anomalia", "anomaly", "irregular", "outlier", "sospech"}
         self._news_keywords = {"noticia", "news", "ambito", "alerta", "liquidez"}
         self._greeting_keywords = {"hola", "hello", "saludos", "buenos dias"}
+        self._google_keywords = {"correo", "correos", "gmail", "mail", "google", "drive", "calendar", "calendario", "agenda", "evento"}
 
     def run(self, state: GraphState) -> GraphState:
         start = time.time()
@@ -176,12 +176,20 @@ class ReActNode(GraphNode):
                 recommended_agent="capi_desktop",
             )
 
+        if any(token in query_lower for token in self._google_keywords):
+            return ActionDecision(
+                tool_name=None,
+                thought="Detecto una solicitud vinculada a Gmail, Drive o Calendar; delego en Agente G.",
+                kwargs={},
+                recommended_agent="agente_g",
+            )
+
         if any(token in query_lower for token in self._summary_keywords):
             return ActionDecision(
                 tool_name="collect_metrics",
-                thought="Necesito datos para un resumen financiero.",
+                thought="Necesito datos para explicarlo de forma clara.",
                 kwargs={},
-                recommended_agent="summary",
+                recommended_agent="capi_gus",
             )
 
         if any(token in query_lower for token in self._anomaly_keywords):
@@ -202,10 +210,10 @@ class ReActNode(GraphNode):
 
         if any(token in query_lower for token in self._greeting_keywords):
             return ActionDecision(
-                tool_name="smalltalk_memory",
-                thought="Mantengo conversacion ligera acorde al saludo.",
+                tool_name=None,
+                thought="El usuario saluda; responderá Capi Gus de forma cordial.",
                 kwargs={},
-                recommended_agent="smalltalk",
+                recommended_agent="capi_gus",
             )
 
         # Default: if we already recommended something, finish, otherwise fallback to summary
@@ -221,7 +229,7 @@ class ReActNode(GraphNode):
             tool_name="collect_metrics",
             thought="Sin senales claras, tomo metricas generales para decidir.",
             kwargs={},
-            recommended_agent="summary",
+            recommended_agent="capi_gus",
         )
 
     def _build_finish_message(
@@ -302,16 +310,6 @@ class ReActNode(GraphNode):
             "news": news_buffer,
             "recommended_agent": "capi_noticias",
         }
-
-    def _tool_smalltalk_memory(self, state: GraphState, payload: Dict[str, Any]) -> Dict[str, Any]:
-        memory = list(state.memory_window or [])
-        observation = memory[-1]["content"] if memory else "Responder cordialmente."
-        return {
-            "observation": observation,
-            "memory_window": memory,
-            "recommended_agent": "smalltalk",
-        }
-
 
 __all__ = ["ReActNode"]
 

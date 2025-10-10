@@ -32,8 +32,7 @@ _AGENT_LABELS = {
     'anomaly': 'Detección de anomalías',
     'anomalyagent': 'Detección de anomalías',
     'anomaly_detection': 'Detección de anomalías',
-    'smalltalk': 'Asistente conversacional',
-    'smalltalkfallbackagent': 'Asistente conversacional',
+    'capi_gus': 'Asistente conversacional',
     'conversation': 'Asistente conversacional',
     'agente_g': 'Agente Google Workspace',
 }
@@ -60,8 +59,7 @@ _AGENT_ACTIONS = {
     'anomaly': 'anomaly_detection',
     'anomalyagent': 'anomaly_detection',
     'anomaly_detection': 'anomaly_detection',
-    'smalltalk': 'conversation',
-    'smalltalkfallbackagent': 'conversation',
+    'capi_gus': 'conversation',
     'conversation': 'conversation',
     'agente_g': 'workspace_operation',
 }

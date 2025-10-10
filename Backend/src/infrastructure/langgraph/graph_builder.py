@@ -20,8 +20,7 @@ from src.infrastructure.langgraph.nodes.reasoning_node import ReasoningNode
 from src.infrastructure.langgraph.nodes.supervisor_node import SupervisorNode
 from src.infrastructure.langgraph.nodes.loop_controller_node import LoopControllerNode
 from src.infrastructure.langgraph.nodes.router_node import RouterNode
-from src.infrastructure.langgraph.nodes.smalltalk_node import SmalltalkNode
-from src.infrastructure.langgraph.nodes.summary_node import SummaryNode
+from src.infrastructure.langgraph.nodes.capi_gus_node import CapiGusNode
 from src.infrastructure.langgraph.nodes.branch_node import BranchNode
 from src.infrastructure.langgraph.nodes.anomaly_node import AnomalyNode
 from src.infrastructure.langgraph.nodes.capi_desktop_node import CapiDesktopNode
@@ -103,8 +102,7 @@ class GraphBuilder:
         self.add_node(RouterNode(name="router"))
 
         # Agent / specialized nodes
-        self.add_node(SmalltalkNode(name="smalltalk"))
-        self.add_node(SummaryNode(name="summary"))
+        self.add_node(CapiGusNode(name="capi_gus"))
         self.add_node(BranchNode(name="branch"))
         self.add_node(AnomalyNode(name="anomaly"))
         if _CAPI_NOTICIAS_AVAILABLE:
@@ -147,8 +145,7 @@ class GraphBuilder:
         available_targets = {
             name
             for name in (
-                "smalltalk",
-                "summary",
+                "capi_gus",
                 "branch",
                 "anomaly",
                 "capi_desktop",
@@ -216,13 +213,14 @@ class GraphBuilder:
                     return "capi_desktop"
                 if metadata.get("datab_skip_human"):
                     return "assemble"
-                return "human_gate"
+                return "capi_gus"
 
             path_map = {
                 "capi_alertas": "capi_alertas",
                 "capi_desktop": "capi_desktop",
                 "capi_elcajas": "capi_elcajas",
                 "human_gate": "human_gate",
+                "capi_gus": "capi_gus",
                 "assemble": "assemble",
             }
             if not alertas_available:
@@ -230,12 +228,16 @@ class GraphBuilder:
 
             self.add_conditional_edges("capi_datab", _datab_router, path_map)
         for agent_name in list(available_targets):
-            if agent_name in {"assemble", "finalize"}:
+            if agent_name in {"assemble", "finalize", "capi_elcajas", "capi_gus"}:
                 continue
             if agent_name == "capi_datab":
                 continue
             if agent_name in self._nodes:
                 self.add_edge(agent_name, "human_gate")
+        if "capi_elcajas" in self._nodes and "capi_gus" in self._nodes:
+            self.add_edge("capi_elcajas", "capi_gus")
+        if "capi_gus" in self._nodes:
+            self.add_edge("capi_gus", "human_gate")
         self.add_edge("human_gate", "assemble")
         self.add_edge("assemble", "finalize")
 

@@ -352,15 +352,25 @@ class AdvancedReasoner:
                 "contraste con métricas globales."
             )
             base_confidence = max(base_confidence, 0.68)
+        elif primary_intent in {Intent.GOOGLE_WORKSPACE, Intent.GOOGLE_GMAIL, Intent.GOOGLE_DRIVE, Intent.GOOGLE_CALENDAR}:
+            preferred = ["agente_g"]
+            recommended_agent = self._select_enabled_agent(preferred, enabled_set)
+            steps = self._google_workspace_steps(recommended_agent)
+            rationale = (
+                "La consulta solicita acciones sobre Google Workspace; se delega en Agente G "
+                "para validar credenciales y ejecutar Gmail, Drive o Calendar."
+            )
+            fallback_agent = recommended_agent or fallback_agent
+            base_confidence = max(base_confidence, 0.65)
         elif primary_intent in {Intent.GREETING, Intent.SMALL_TALK}:
-            preferred_smalltalk = self._select_enabled_agent(["smalltalk"], enabled_set)
-            if preferred_smalltalk:
-                recommended_agent = preferred_smalltalk
+            preferred_capi_gus = self._select_enabled_agent(["capi_gus"], enabled_set)
+            if preferred_capi_gus:
+                recommended_agent = preferred_capi_gus
                 intent_alignment = True
             else:
                 recommended_agent = self._select_enabled_agent(["summary"], enabled_set)
                 intent_alignment = False
-            steps = self._smalltalk_steps(recommended_agent)
+            steps = self._conversation_steps(recommended_agent)
             rationale = (
                 "Se identificó interacción social; se prepara una respuesta cordial con "
                 "monitor de intención latente para escalar si aparecen necesidades de negocio."
@@ -368,7 +378,7 @@ class AdvancedReasoner:
             base_confidence = max(base_confidence, 0.6)
         else:
             recommended_agent = self._select_enabled_agent(
-                ["summary", "smalltalk", "capi_desktop", "capi_datab"], enabled_set
+                ["summary", "capi_gus", "capi_desktop", "capi_datab"], enabled_set
             )
             steps = self._exploratory_steps(recommended_agent, enabled_set)
             rationale = (
@@ -468,6 +478,10 @@ class AdvancedReasoner:
             Intent.ANOMALY_QUERY: "Detectar y explicar anomalías financieras",
             Intent.GREETING: "Mantener interacción cordial y guiar a capacidades",
             Intent.SMALL_TALK: "Mantener conversación ligera sin perder contexto",
+            Intent.GOOGLE_WORKSPACE: "Atender una solicitud de Google Workspace (Gmail, Drive o Calendar)",
+            Intent.GOOGLE_GMAIL: "Gestionar una operación de Gmail solicitada por el usuario",
+            Intent.GOOGLE_DRIVE: "Ejecutar una operación en Google Drive solicitada por el usuario",
+            Intent.GOOGLE_CALENDAR: "Gestionar un evento en Google Calendar solicitado por el usuario",
         }
         return lookup.get(intent, f"Clarificar y asistir consulta ambigua: {query[:60]}")
 
@@ -646,13 +660,41 @@ class AdvancedReasoner:
             ),
         ]
 
-    def _smalltalk_steps(self, agent: Optional[str]) -> List[ReasoningStep]:
+    def _google_workspace_steps(self, agent: Optional[str]) -> List[ReasoningStep]:
+        agent_name = agent or "agente_g"
+        return [
+            ReasoningStep(
+                step_id="G1",
+                title="Interpretar instrucción de Google Workspace",
+                description="Clasificar si la operación requerida corresponde a Gmail, Drive o Calendar y validar parámetros sensibles.",
+                agent=agent_name,
+                expected_output="Operación y parámetros normalizados",
+            ),
+            ReasoningStep(
+                step_id="G2",
+                title="Ejecutar operación solicitada",
+                description="Invocar la API correspondiente (Gmail, Drive o Calendar) respetando scopes autorizados.",
+                agent=agent_name,
+                depends_on=["G1"],
+                expected_output="Resultado bruto de la operación de Google Workspace",
+            ),
+            ReasoningStep(
+                step_id="G3",
+                title="Registrar métricas y artefactos",
+                description="Guardar métricas de Google Workspace, adjuntar artefactos relevantes y preparar mensaje para el usuario.",
+                agent=agent_name,
+                depends_on=["G2"],
+                expected_output="Resumen auditable de la operación",
+            ),
+        ]
+
+    def _conversation_steps(self, agent: Optional[str]) -> List[ReasoningStep]:
         return [
             ReasoningStep(
                 step_id="T1",
                 title="Responder cordialmente",
                 description="Ofrecer una respuesta amable y mantener tono profesional.",
-                agent=agent or "smalltalk",
+                agent=agent or "capi_gus",
                 expected_output="Respuesta en lenguaje natural",
             ),
             ReasoningStep(
@@ -676,7 +718,7 @@ class AdvancedReasoner:
     def _exploratory_steps(
         self, agent: Optional[str], enabled_agents: Set[str]
     ) -> List[ReasoningStep]:
-        clarifier = agent or "smalltalk"
+        clarifier = agent or "capi_gus"
         analyst = "summary" if "summary" in enabled_agents else agent
         return [
             ReasoningStep(

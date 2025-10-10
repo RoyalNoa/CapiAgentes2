@@ -112,13 +112,13 @@ class StreamingNode(GraphNode):
         pass
 
 
-class StreamingSummaryNode(StreamingNode):
+class StreamingCapiGusNode(StreamingNode):
     """
     Ejemplo: Nodo de resumen con streaming token-by-token.
     """
 
     def __init__(self):
-        super().__init__(name="summary_streaming")
+        super().__init__(name="capi_gus_streaming")
 
     async def process_incrementally(self, state: GraphState) -> AsyncGenerator[str, None]:
         """

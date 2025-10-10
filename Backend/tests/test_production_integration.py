@@ -96,7 +96,7 @@ def test_feature_flag_disables_semantic(router_with_stub):
     )
 
     updated = router_with_stub.run(state)
-    assert updated.routing_decision in {"assemble", "capi_datab", "summary", "anomaly"}
+    assert updated.routing_decision in {"assemble", "capi_datab", "capi_gus", "summary", "anomaly"}
 
 
 def test_metrics_are_tracked(router_with_stub):

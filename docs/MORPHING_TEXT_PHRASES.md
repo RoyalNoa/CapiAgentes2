@@ -138,7 +138,7 @@ Orden específico para la animación inicial:
 - "Identificando outliers..."
 - "Evaluando desviaciones..."
 
-### SmallTalk Agent (Conversación)
+### Capi Gus (Conversación)
 - "Procesando saludo..."
 - "Generando respuesta..."
 - "Preparando mensaje..."

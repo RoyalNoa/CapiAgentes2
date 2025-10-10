@@ -25,12 +25,12 @@ Este catálogo está pensado para leerlo en 1 minuto. Cada agente en formato mí
 - Datos: workspace financiero.
 - Ejemplo: “Detecta anomalías del último mes”.
 
-4) SmallTalk/Fallback (Saludo y guía)
-- Qué hace: Saluda, mantiene charla ligera y sugiere acciones cuando la pregunta no es clara.
-- Entradas: ninguna.
-- Salidas: mensaje amable y acciones sugeridas (ver resumen, sucursales, anomalías).
-- Datos: no requiere datos financieros.
-- Ejemplo: “Hola, ¿qué puedes hacer?”
+4) Capi Gus (Conversación y narrativa)
+- Qué hace: Responde saludos, mantiene la conversación y entrega la narrativa final con datos consolidados.
+- Entradas: consulta del usuario; opcionalmente métricas agregadas desde otros agentes.
+- Salidas: mensaje en lenguaje natural, sugerencias y artefactos de resumen en .
+- Datos: usa información proporcionada por los demás agentes y contexto del router.
+- Ejemplo: “Hola, ¿qué puedes hacer?” o “¿Podés darme una conclusión rápida?”
 
 5) Capi Desktop (Archivos Office)
 - Qué hace: Lee/escribe/modifica archivos CSV/Excel/Word, backups y validaciones con foco en seguridad.
@@ -150,6 +150,8 @@ Notas de autorización por agente
 - **Salidas que escribe**: `response_message`, `response_data` con resumen de la API y artefactos en `shared_artifacts['agente_g']`.
 - **Ejemplo de uso**: "Listar correos no leidos" devuelve encabezados; una instruccion `create_calendar_event` agenda una reunion.
 - **Notas**: operaciones sensibles (enviar correo, compartir archivo, habilitar/deshabilitar push de Gmail) requieren aprobación a través de HumanGate.
+- **Actualizacion 2025-10**: el nodo infiere operaciones `send_gmail`, `list_drive` o `create_calendar_event` automaticamente y delega redaccion de correos al LLM integrado.
+- **Metricas**: agrega `google_metrics.llm_*` cuando se usa la composicion asistida de correos.
 
 #### CapiDataBNode (`capi_datab`)
 - **Proposito**: orquesta operaciones ABMC sobre PostgreSQL y deja evidencia en `ia_workspace/data/capi_DataB/`.
@@ -167,7 +169,7 @@ Notas de autorización por agente
 - **Notas**: depende del servicio programado; usa `/api/agents/capi_noticias/status` para comprobar la frecuencia y ultimas ejecuciones.
 
 ### Agentes de conversacion y experiencia
-#### SmalltalkNode (`smalltalk`)
+#### Capi GusNode (`capi_gus`)
 - **Proposito**: responde saludos y cortesias sin requerir LLM.
 - **Entradas que lee**: texto original en minúsculas.
 - **Salidas que escribe**: `response_message` con una respuesta amable, `response_metadata.response_source`.
@@ -180,3 +182,4 @@ Notas de autorización por agente
 - **Observabilidad**: cada nodo anota eventos (`logger.info`) y metricas en `processing_metrics`; revisa `logs/langgraph` cuando algo no rote como esperabas.
 - **Integracion frontend**: el HUD consume `response_metadata` y `reasoning_trace`. Mantener esos campos consistentes facilita explicar decisiones a usuarios finales.
 - **Checklist de onboarding**: repasar este catalogo, ejecutar un flujo end-to-end (saludo, resumen, operacion de escritorio) y practicar el uso del HumanGate via API para comprender pausas y reanudaciones.
+

@@ -36,18 +36,12 @@ export default function ChatInput({
     }
   }, [input, loading, onSend]);
 
-  const handleSendClick = useCallback(() => {
-    void handleSend();
-  }, [handleSend]);
-
   const handleInputKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       void handleSend();
     }
   }, [handleSend]);
-
-  const canSend = input.trim().length > 0 && !loading;
 
   return (
     <div className={`${styles.container} ${loading ? styles.loading : ''}`}>
@@ -104,16 +98,6 @@ export default function ChatInput({
           className={styles.inputField}
         />
 
-        {/* Botón de enviar */}
-        <button
-          type="button"
-          onClick={handleSendClick}
-          disabled={!canSend}
-          className={styles.sendButton}
-        >
-          <SendIcon />
-        </button>
-
         {/* Slot derecho para botones adicionales */}
         {rightSlot && (
           <div className={styles.rightSlot}>
@@ -124,16 +108,3 @@ export default function ChatInput({
     </div>
   );
 }
-
-const SendIcon = () => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-    focusable="false"
-    fill="currentColor"
-  >
-    <path d="M3.172 20.828 21 12 3.172 3.172l-.003 7.657 10.059 1.171-10.056 1.171z" />
-  </svg>
-);

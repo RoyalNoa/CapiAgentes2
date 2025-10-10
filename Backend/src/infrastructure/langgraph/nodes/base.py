@@ -63,7 +63,7 @@ class GraphNode(ABC):
 
         Examples:
             'IntentNode' → 'intent'
-            'SummaryNode' → 'summary_generation'
+            'CapiGusNode' → 'conversation_summary'
             'CapiDataBNode' → 'database_query'
         """
         node_name = self.name.lower()
@@ -90,10 +90,15 @@ class GraphNode(ABC):
             'finalize': 'finalize',
             'finalizenode': 'finalize',
 
-            # Agent nodes - Summary
-            'summary': 'summary_generation',
-            'summarynode': 'summary_generation',
-            'summaryagent': 'summary_generation',
+            # Agent nodes - Conversational response (Capi Gus)
+            'capi_gus': 'conversation_summary',
+            'capigus': 'conversation_summary',
+            'capi_gusnode': 'conversation_summary',
+            'capigusnode': 'conversation_summary',
+            'capigusagent': 'conversation_summary',
+            'summary': 'conversation_summary',
+            'summarynode': 'conversation_summary',
+            'summaryagent': 'conversation_summary',
 
             # Agent nodes - Branch
             'branch': 'branch_analysis',
@@ -130,10 +135,7 @@ class GraphNode(ABC):
             'capinoticiasnode': 'news_analysis',
             'noticias': 'news_analysis',
 
-            # Agent nodes - Smalltalk
-            'smalltalk': 'conversation',
-            'smalltalknode': 'conversation',
-            'smalltalkagent': 'conversation',
+            # Agent nodes - Capi Gus
         }
 
         return action_map.get(node_name, 'agent_start')
@@ -228,7 +230,6 @@ class GraphNode(ABC):
                     'capi_datab': 'Consulta de base de datos completada',
                     'capi_desktop': 'Operación de escritorio completada',
                     'capi_elcajas': 'Análisis de cajas completado',
-                    'smalltalk': 'Respuesta generada'
                 }
                 task_content = agent_messages.get(self.name, f'Tarea completada por {self.name}')
 

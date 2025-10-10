@@ -3,7 +3,7 @@
 ## Flujo principal LangGraph
 - Grafo base (`graph_builder.py`): `start -> intent -> react -> reasoning -> supervisor -> loop_controller`.
 - El `router` decide el agente y puede devolver multiples destinos validos segun `routing_decision` o `parallel_targets`.
-- Agentes habilitados: `smalltalk`, `summary`, `branch`, `anomaly`, `capi_desktop`, `capi_datab`, `capi_noticias` (opcional). Todos conectan a `human_gate` y luego a `assemble -> finalize`.
+- Agentes habilitados: `capi_gus`, `summary`, `branch`, `anomaly`, `capi_desktop`, `capi_datab`, `capi_noticias` (opcional). Todos conectan a `human_gate` y luego a `assemble -> finalize`.
 - `loop_controller` permite cortar temprano hacia `assemble` si no hay accion pendiente.
 
 ## Clasificacion e intencion
@@ -29,7 +29,7 @@
 - `execute_operation` se conecta a PostgreSQL via `asyncpg`, exporta resultados a `/ia_workspace/data/capi_DataB/` y refuerza seguridad (`WHERE` obligatorio, bloquea `DROP/TRUNCATE`).
 
 ## Limitaciones observadas
-- El router depende de `Intent.DB_OPERATION`; consultas libres sobre sucursales muchas veces quedan como `Intent.UNKNOWN` y van a `assemble`/`smalltalk`.
+- El router depende de `Intent.DB_OPERATION`; consultas libres sobre sucursales muchas veces quedan como `Intent.UNKNOWN` y van a `assemble`/`capi_gus`.
 - El planificador actual del agente no entiende agregaciones distintas a balances y su prompt no incluye catalogo de tablas/columnas.
 - No hay capa semantica que traduzca filtros arbitrarios (fechas, montos, top N) a SQL parametrizado.
 - Metricas de exito del agente no distinguen entre errores de parsing y falta de intencion.

@@ -12,53 +12,7 @@
   gap: 10px;
 }
 
-/* Header de la acción */
-.header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Indicador pulsante */
-.indicator {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--chat-primary, #00e5ff);
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.8;
-  }
-}
-
-/* Etiqueta de acción requerida */
-.label {
-  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--chat-primary-alt, #7df9ff);
-}
-
-/* Tipo de acción */
-.actionType {
-  margin-left: auto;
-  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
-  font-size: 10px;
-  color: rgba(214, 239, 255, 0.6);
-  letter-spacing: 0.04em;
-}
-
-/* Descripción de la acción */
+/* Texto principal de la decision */
 .description {
   font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
   font-size: 11px;
@@ -89,15 +43,6 @@
   color: rgba(214, 239, 255, 0.95);
 }
 
-/* Resumen */
-.summary {
-  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
-  font-size: 10px;
-  color: rgba(214, 239, 255, 0.95);
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-}
-
 /* Contenedor de botones */
 .buttons {
   display: flex;
@@ -105,7 +50,7 @@
   justify-content: flex-end;
 }
 
-/* Botón base */
+/* Boton base */
 .button {
   padding: 6px 14px;
   border-radius: 4px;
@@ -123,7 +68,7 @@
   opacity: 0.6;
 }
 
-/* Botón de aprobar */
+/* Boton de aprobar */
 .approveButton {
   border: 1px solid rgba(0, 229, 255, 0.4);
   background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(0, 229, 255, 0.1));
@@ -136,7 +81,7 @@
   box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
 }
 
-/* Botón de rechazar */
+/* Boton de rechazar */
 .rejectButton {
   border: 1px solid rgba(255, 107, 107, 0.5);
   background: rgba(255, 107, 107, 0.12);
@@ -168,15 +113,11 @@
   }
 }
 
-/* Media queries para móvil */
+/* Media queries para movil */
 @media (max-width: 768px) {
   .container {
     margin: 10px 12px 0;
     padding: 12px 14px;
-  }
-
-  .label {
-    font-size: 10px;
   }
 
   .description {

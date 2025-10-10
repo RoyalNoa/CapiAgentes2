@@ -20,7 +20,7 @@ export default function PendingActions({
   pendingActions,
   approvalReason,
   onSubmitAction,
-  loading
+  loading,
 }: PendingActionsProps) {
   const [actionSubmitting, setActionSubmitting] = useState(false);
 
@@ -29,14 +29,18 @@ export default function PendingActions({
   const pendingActionDetails = useMemo(() => {
     if (!currentPendingAction) return null;
     const payload = currentPendingAction.payload ?? {};
-    const fileCandidate = payload.artifact_filename ?? payload.filename ?? payload.relative_path ?? payload.path;
+    const fileCandidate =
+      payload.artifact_filename ??
+      payload.filename ??
+      payload.relative_path ??
+      payload.path;
     const branchCandidate = payload.branch_name ?? payload.branch;
-    const summaryCandidate = typeof payload.summary === 'string' && payload.summary.trim() ? payload.summary : null;
-    const hypothesisCandidate = typeof payload.hypothesis === 'string' && payload.hypothesis.trim() ? payload.hypothesis : null;
+
     return {
-      fileName: typeof fileCandidate === 'string' && fileCandidate.trim() ? fileCandidate : null,
-      branchName: typeof branchCandidate === 'string' && branchCandidate.trim() ? branchCandidate : null,
-      summary: summaryCandidate ?? hypothesisCandidate,
+      fileName:
+        typeof fileCandidate === 'string' && fileCandidate.trim() ? fileCandidate : null,
+      branchName:
+        typeof branchCandidate === 'string' && branchCandidate.trim() ? branchCandidate : null,
     };
   }, [currentPendingAction]);
 
@@ -51,7 +55,7 @@ export default function PendingActions({
       setActionSubmitting(true);
       await onSubmitAction({ actionId: currentPendingAction.id, approved });
     } catch (error) {
-      console.error('No se pudo registrar la decisión humana', error);
+      console.error('No se pudo registrar la decision humana', error);
     } finally {
       setActionSubmitting(false);
     }
@@ -61,18 +65,8 @@ export default function PendingActions({
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.indicator} />
-        <span className={styles.label}>
-          Acción requerida
-        </span>
-        <span className={styles.actionType}>
-          {currentPendingAction.label}
-        </span>
-      </div>
-
       <div className={styles.description}>
-        {approvalReason || '¿Deseas ejecutar la acción sugerida?'}
+        {approvalReason || 'Deseas ejecutar la accion sugerida?'}
       </div>
 
       {pendingActionDetails?.fileName && (
@@ -93,19 +87,13 @@ export default function PendingActions({
         </div>
       )}
 
-      {pendingActionDetails?.summary && (
-        <div className={styles.summary}>
-          {pendingActionDetails.summary}
-        </div>
-      )}
-
       <div className={styles.buttons}>
         <button
           onClick={() => handleActionDecision(true)}
           disabled={isDecisionDisabled}
           className={`${styles.button} ${styles.approveButton}`}
         >
-          Sí, guardar
+          Si, guardar
         </button>
         <button
           onClick={() => handleActionDecision(false)}
@@ -118,7 +106,7 @@ export default function PendingActions({
 
       {(actionSubmitting || loading) && (
         <div className={styles.loading}>
-          Registrando decisión...
+          Registrando decision...
         </div>
       )}
     </div>
