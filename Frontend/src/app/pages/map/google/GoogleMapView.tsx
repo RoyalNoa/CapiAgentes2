@@ -32,6 +32,15 @@ type SucursalRecord = {
   medido_en?: string | null;
 };
 
+type AlertSummary = {
+  id: string;
+  status?: string | null;
+  priority?: string | null;
+  sucursal?: {
+    sucursal_id?: string | null;
+  } | null;
+};
+
 type GoogleMapViewProps = {
   onSucursalSelect: (sucursal: SucursalRecord | null) => void;
   selectedSucursal?: SucursalRecord | null;
@@ -96,6 +105,33 @@ const MAP_STYLES = [
   { featureType: 'water', stylers: [{ color: '#06111f' }] },
 ];
 
+type MarkerAppearance = {
+  imageUrl: string;
+  size: number;
+};
+
+const DEFAULT_MARKER_APPEARANCE: MarkerAppearance = {
+  imageUrl: '/point-violeta.png',
+  size: 32,
+};
+
+const ALERT_MARKER_APPEARANCE: MarkerAppearance = {
+  imageUrl: '/point-rojo.png',
+  size: 36,
+};
+
+const FALLBACK_MARKER_APPEARANCE: MarkerAppearance = {
+  imageUrl: '/point.png',
+  size: 26,
+};
+
+const NEUTRAL_MARKER_APPEARANCE: MarkerAppearance = {
+  imageUrl: '/point.png',
+  size: 32,
+};
+
+const BALANCE_TOLERANCE = 0.15;
+
 
 type AdvancedMarkerOptions = {
   map: any;
@@ -119,6 +155,76 @@ function createAdvancedMarker(options: AdvancedMarkerOptions): any {
     zIndex: options.zIndex,
     icon,
   });
+}
+
+function buildAlertsIndex(alerts: AlertSummary[]): Map<string, AlertSummary[]> {
+  const index = new Map<string, AlertSummary[]>();
+  alerts.forEach((alert) => {
+    const sucursalId = alert?.sucursal?.sucursal_id;
+    if (!sucursalId) {
+      return;
+    }
+    const normalizedId = sucursalId.toString();
+    const bucket = index.get(normalizedId) ?? [];
+    bucket.push(alert);
+    index.set(normalizedId, bucket);
+  });
+  return index;
+}
+
+function isAlertActive(alert: AlertSummary): boolean {
+  const status = (alert.status ?? '').toLowerCase();
+  if (!status) {
+    return false;
+  }
+  const resolvedStatuses = new Set([
+    'resuelta',
+    'resuelto',
+    'resolved',
+    'silenciada',
+    'cerrada',
+    'closed',
+    'completada',
+  ]);
+  return !resolvedStatuses.has(status);
+}
+
+function hasActiveAlerts(alerts: AlertSummary[] | undefined): boolean {
+  return Boolean(alerts?.some((alert) => isAlertActive(alert)));
+}
+
+function getCoverageRatio(record: SucursalRecord): number | null {
+  if (!Number.isFinite(record.caja_teorica_sucursal) || !record.caja_teorica_sucursal) {
+    return null;
+  }
+  return record.saldo_total_sucursal / record.caja_teorica_sucursal;
+}
+
+function resolveMarkerAppearance(
+  record: SucursalRecord,
+  alertsIndex: Map<string, AlertSummary[]>
+): MarkerAppearance {
+  const alerts = alertsIndex.get(record.sucursal_id) ?? [];
+  const activeAlert = hasActiveAlerts(alerts);
+  const ratio = getCoverageRatio(record);
+
+  if (activeAlert) {
+    return ALERT_MARKER_APPEARANCE;
+  }
+
+  if (ratio === null) {
+    return DEFAULT_MARKER_APPEARANCE;
+  }
+
+  if (ratio < 1 - BALANCE_TOLERANCE) {
+    return ALERT_MARKER_APPEARANCE;
+  }
+
+  if (ratio <= 1 + BALANCE_TOLERANCE) {
+    return NEUTRAL_MARKER_APPEARANCE;
+  }
+
+  return DEFAULT_MARKER_APPEARANCE;
 }
 
 function updateMarkerPosition(marker: any, position: LatLngLiteral): void {
@@ -343,6 +449,7 @@ export default function GoogleMapView({
   const markersRef = useRef<any[]>([]);
   const infoWindowRef = useRef<any | null>(null);
   const branchDataRef = useRef<SucursalRecord[]>([]);
+  const alertsIndexRef = useRef<Map<string, AlertSummary[]>>(new Map<string, AlertSummary[]>());
   const simulationRoutesRef = useRef<SimulationRoute[]>([]);
   const simulationActiveRoutesRef = useRef<SimulationRoute[]>([]);
   const pendingSimulationRef = useRef(false);
@@ -534,11 +641,31 @@ export default function GoogleMapView({
         await loadGoogleMaps();
         if (!isMounted) return;
 
-        const response = await fetch('/api/maps/sucursales');
-        if (!response.ok) {
+        const [sucursalesResponse, alertsResponse] = await Promise.all([
+          fetch('/api/maps/sucursales'),
+          fetch('/api/maps/alerts?limit=200').catch((error) => {
+            console.warn('Fallo la carga de alertas para el mapa:', error);
+            return null;
+          }),
+        ]);
+
+        if (!sucursalesResponse?.ok) {
           throw new Error('No se pudo cargar la informacion de sucursales.');
         }
-        const payload: SucursalRecord[] = await response.json();
+
+        const payload: SucursalRecord[] = await sucursalesResponse.json();
+
+        if (alertsResponse && alertsResponse.ok) {
+          try {
+            const alertsPayload: AlertSummary[] = await alertsResponse.json();
+            alertsIndexRef.current = buildAlertsIndex(Array.isArray(alertsPayload) ? alertsPayload : []);
+          } catch (alertsError) {
+            console.warn('No se pudieron interpretar las alertas del mapa:', alertsError);
+            alertsIndexRef.current = new Map<string, AlertSummary[]>();
+          }
+        } else {
+          alertsIndexRef.current = new Map<string, AlertSummary[]>();
+        }
         if (!isMounted) return;
 
         if (!containerRef.current) {
@@ -570,12 +697,13 @@ export default function GoogleMapView({
         infoWindowRef.current = new window.google.maps.InfoWindow({ maxWidth: 320 });
 
         markersRef.current = sanitizedRecords.map((record) => {
+          const appearance = resolveMarkerAppearance(record, alertsIndexRef.current) ?? FALLBACK_MARKER_APPEARANCE;
           const marker = createAdvancedMarker({
             map,
             position: { lat: record.latitud, lng: record.longitud },
             title: record.sucursal_nombre,
-            imageUrl: '/point.png',
-            size: 26,
+            imageUrl: appearance.imageUrl || FALLBACK_MARKER_APPEARANCE.imageUrl,
+            size: appearance.size || FALLBACK_MARKER_APPEARANCE.size,
           });
 
           marker.addListener('click', () => {

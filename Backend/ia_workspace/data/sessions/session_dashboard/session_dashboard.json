@@ -2,7 +2,7 @@
   "created_at": "2025-09-24T19:41:51.508102",
   "session_id": "dashboard",
   "sanitized_session_id": "dashboard",
-  "updated_at": "2025-10-03T19:31:07.576810",
+  "updated_at": "2025-10-10T13:54:22.219792",
   "datab_exports": [],
   "status": "completed",
   "active_agent": "summary",
@@ -19,10 +19,10 @@
     "finalize"
   ],
   "intent": "anomaly_query",
-  "intent_confidence": 0.4,
+  "intent_confidence": 1.0,
   "last_query": "¿Hay anomalías detectadas?",
   "last_response": {
-    "message": "🔍 *Detección de Anomalías*:\n\n• **Total de anomalías detectadas**: 3\n• **Severidad alta**: 1 🚨\n• **Severidad media**: 1 ⚠️\n• **Severidad baja**: 1 ℹ️\n• **Sucursales afectadas**: 3\n• **Nivel de riesgo**: 🚨 HIGH\n\n📋 **Evaluación**: Se detectaron anomalías de alta severidad que requieren atención inmediata\n\n🏢 **Sucursales con anomalías**: Sucursal Sur, Sucursal Central, Sucursal Norte\n\n📌 **Recomendaciones**:\n1. Revisar y validar transacciones con montos inusuales\n2. Implementar controles adicionales para transacciones de alto valor\n3. Investigar actividad inusual en horarios no habituales\n\n🔍 **Tipos detectados**:\n• Montos inusuales: 1\n• Picos de frecuencia: 1\n• Desviaciones de patrón: 1",
+    "message": "🔍 *Detección de Anomalías*:\n\n• **Total de anomalías detectadas**: 3\n• **Severidad alta**: 1 🚨\n• **Severidad media**: 1 ⚠️\n• **Severidad baja**: 1 ℹ️\n• **Sucursales afectadas**: 3\n• **Nivel de riesgo**: 🚨 HIGH\n\n📋 **Evaluación**: Se detectaron anomalías de alta severidad que requieren atención inmediata\n\n🏢 **Sucursales con anomalías**: Sucursal Central, Sucursal Sur, Sucursal Norte\n\n📌 **Recomendaciones**:\n1. Revisar y validar transacciones con montos inusuales\n2. Implementar controles adicionales para transacciones de alto valor\n3. Investigar actividad inusual en horarios no habituales\n\n🔍 **Tipos detectados**:\n• Montos inusuales: 1\n• Picos de frecuencia: 1\n• Desviaciones de patrón: 1",
     "data": {
       "react_observations": [
         {
@@ -43,7 +43,7 @@
         }
       ],
       "reasoning_plan": {
-        "plan_id": "4cbb549c-8b2e-4d20-a213-392665f01b2c",
+        "plan_id": "6a33f630-929f-40bd-b4fc-63b37cf44f1e",
         "version": 1,
         "intent": "anomaly_query",
         "goal": "Detectar y explicar anomalías financieras",
@@ -116,7 +116,7 @@
           "user_id": "dashboard",
           "session_id": "dashboard"
         },
-        "generated_at": "2025-10-03T19:31:07.498746",
+        "generated_at": "2025-10-10T13:54:21.069230",
         "intent_alignment": true,
         "requires_replan": false,
         "history": [],
@@ -131,8 +131,8 @@
       "low_severity_count": 1,
       "average_confidence": 0.78,
       "affected_branches": [
-        "Sucursal Sur",
         "Sucursal Central",
+        "Sucursal Sur",
         "Sucursal Norte"
       ],
       "risk_level": "HIGH",
@@ -208,7 +208,7 @@
   "processing_metrics": {
     "react_steps": 5.0,
     "react_latency_ms": 0.0,
-    "reasoning_time_ms": 975.0,
+    "reasoning_time_ms": 1310.0,
     "reasoning_steps": 4.0,
     "reasoning_version": 1.0,
     "reasoning_progress_percent": 98.0,
@@ -219,11 +219,11 @@
   },
   "shared_artifacts": {},
   "errors": [],
-  "trace_id": "trace-1759519862.30582",
+  "trace_id": "trace-1760104452.46089",
   "user_id": "dashboard",
   "workflow_mode": "chat",
   "response_metadata": {
-    "intent_reasoning": "Semantic pattern match: La consulta se refiere a la detección de anomalías. (confidence=1.000, entities=0) | legacy patterns matched: \\b(anomali[ao]s?|anomaly|anomalies)\\b",
+    "intent_reasoning": "Semantic pattern match: La consulta parece estar relacionada con la detección de anomalías. (confidence=1.000, entities=0) | legacy patterns matched: \\b(anomali[ao]s?|anomaly|anomalies)\\b",
     "intent_matched_patterns": [
       "semantic_pattern:anomaly_query",
       "\\b(anomali[ao]s?|anomaly|anomalies)\\b"
@@ -277,13 +277,13 @@
       }
     ],
     "react_recommended_agent": "summary",
-    "react_finished_at": "2025-10-03T19:31:06.521265",
+    "react_finished_at": "2025-10-10T13:54:19.762859",
     "active_agent": "summary",
     "loop_fallback": "anomaly",
     "react_follow_up": false,
     "needs_retry": null,
     "reasoning_plan": {
-      "plan_id": "4cbb549c-8b2e-4d20-a213-392665f01b2c",
+      "plan_id": "6a33f630-929f-40bd-b4fc-63b37cf44f1e",
       "version": 1,
       "intent": "anomaly_query",
       "goal": "Detectar y explicar anomalías financieras",
@@ -356,7 +356,7 @@
         "user_id": "dashboard",
         "session_id": "dashboard"
       },
-      "generated_at": "2025-10-03T19:31:07.498746",
+      "generated_at": "2025-10-10T13:54:21.069230",
       "intent_alignment": true,
       "requires_replan": false,
       "history": [],
@@ -379,17 +379,17 @@
       "smalltalk"
     ],
     "supervisor_selected": "summary",
-    "supervisor_ran_at": "2025-10-03T19:31:07.504869",
+    "supervisor_ran_at": "2025-10-10T13:54:21.094306",
     "semantic_result": {
       "intent": "anomaly_query",
-      "confidence": 0.4,
+      "confidence": 1.0,
       "target_agent": "anomaly",
       "routing_agent": "anomaly",
       "entities": {},
-      "reasoning": "Fallback classification executed (feature_flag_disabled)",
+      "reasoning": "La consulta hace referencia a la detección de anomalías.",
       "requires_clarification": false,
-      "provider": "fallback",
-      "model": ""
+      "provider": "openai",
+      "model": "gpt-3.5-turbo"
     },
     "agent_type": "anomaly",
     "anomaly_hash": "c553754fb08a7247",

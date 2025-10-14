@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600&display=swap');
+
 .heroCircle {
   width: 640px;
   height: 640px;
@@ -20,9 +22,178 @@
   object-fit: none;
 }
 
+.teleprompterWrapper {
+  margin-top: 100px;
+  width: min(90vw, 1200px);
+  border-radius: 24px;
+  padding: 18px 28px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, rgba(8, 16, 32, 0.88) 0%, rgba(18, 32, 56, 0.9) 50%, rgba(6, 22, 48, 0.88) 100%);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), inset 0 0 24px rgba(0, 255, 204, 0.12);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.teleprompterStatic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.weatherWidget {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: #e0fdf8;
+  font-family: 'Orbitron', 'Courier New', monospace;
+  letter-spacing: 0.08em;
+}
+
+.weatherIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.25), rgba(12, 46, 80, 0.85));
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.weatherIcon svg {
+  width: 44px;
+  height: 44px;
+}
+
+.weatherLocation {
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.weatherDetails {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  color: rgba(224, 253, 248, 0.78);
+}
+
+.weatherDivider {
+  margin: 0 8px;
+  font-size: 0.9em;
+  color: rgba(148, 163, 184, 0.7);
+}
+
+.counterGroup {
+  display: flex;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.counterItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 180px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(94, 234, 212, 0.28);
+  background: linear-gradient(160deg, rgba(12, 50, 72, 0.65) 0%, rgba(10, 30, 54, 0.62) 100%);
+  box-shadow: inset 0 0 24px rgba(94, 234, 212, 0.15);
+  font-family: 'Orbitron', 'Courier New', monospace;
+  letter-spacing: 0.08em;
+  color: #9ae6ff;
+}
+
+.counterLabel {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: rgba(148, 233, 215, 0.65);
+  margin-bottom: 6px;
+}
+
+.counterValue {
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: #f0fff4;
+  text-shadow: 0 0 12px rgba(94, 234, 212, 0.5);
+}
+
+.teleprompterTicker {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(90deg, rgba(3, 7, 18, 0.95) 0%, rgba(12, 45, 65, 0.92) 50%, rgba(3, 7, 18, 0.95) 100%);
+  box-shadow: inset 0 0 35px rgba(0, 255, 204, 0.08);
+}
+
+.tickerContent {
+  display: inline-flex;
+  align-items: center;
+  gap: 48px;
+  padding: 14px 0;
+  min-width: 100%;
+  animation: ticker-slide 36s linear infinite;
+  font-family: 'Orbitron', 'Courier New', monospace;
+  letter-spacing: 0.1em;
+  color: rgba(148, 233, 215, 0.92);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.tickerItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.tickerItem::before {
+  content: '◆';
+  margin-right: 18px;
+  color: rgba(94, 234, 212, 0.75);
+}
+
+@keyframes ticker-slide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @media (max-width: 640px) {
   .heroCircle {
     width: min(72vw, 360px);
     height: min(72vw, 360px);
+  }
+
+  .teleprompterWrapper {
+    margin-top: 72px;
+    padding: 16px;
+  }
+
+  .counterGroup {
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .counterItem {
+    min-width: unset;
+    flex: 1;
+  }
+
+  .tickerContent {
+    font-size: 0.75rem;
+    gap: 32px;
   }
 }

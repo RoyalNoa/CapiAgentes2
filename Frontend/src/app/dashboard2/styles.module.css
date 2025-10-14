@@ -1,0 +1,210 @@
+.stage {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background: radial-gradient(circle at 12% 18%, rgba(0, 218, 255, 0.18), transparent 48%),
+    radial-gradient(circle at 82% 12%, rgba(88, 28, 135, 0.18), transparent 46%), #030917;
+  color: #e6f6ff;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.32;
+  filter: saturate(1.2) contrast(1.08) brightness(0.86);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(3, 9, 23, 0.2) 0%, rgba(3, 9, 23, 0.85) 100%);
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 1.5rem 3.5rem;
+  gap: 2.5rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.24) transparent;
+}
+
+.overlay::-webkit-scrollbar {
+  width: 8px;
+}
+
+.overlay::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overlay::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.32), rgba(14, 165, 233, 0.22));
+  border-radius: 999px;
+}
+
+.panel {
+  width: 100%;
+  max-width: 1180px;
+  border-radius: 32px;
+  background: rgba(5, 17, 32, 0.82);
+  border: 1px solid rgba(45, 212, 191, 0.26);
+  box-shadow: 0 32px 80px rgba(3, 10, 24, 0.55);
+  backdrop-filter: blur(14px);
+  padding: 2.75rem clamp(1.5rem, 5vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.menuBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.75rem;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 640px;
+  padding-top: 0.5rem;
+}
+
+.titleHero {
+  font-size: clamp(2rem, 4.5vw, 2.85rem);
+  line-height: 1.08;
+  font-weight: 700;
+  color: #e9fbff;
+  text-shadow: 0 18px 52px rgba(59, 130, 246, 0.32);
+}
+
+.titleCopy {
+  font-size: clamp(1rem, 2.4vw, 1.15rem);
+  line-height: 1.65;
+  color: rgba(191, 233, 255, 0.78);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.actionMenus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.selectGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: clamp(180px, 18vw, 240px);
+}
+
+.selectLabel {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(163, 231, 255, 0.72);
+}
+
+.selectControl {
+  appearance: none;
+  border-radius: 999px;
+  background: rgba(7, 28, 49, 0.85);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  color: #e6f6ff;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  box-shadow: 0 18px 45px rgba(4, 16, 32, 0.55);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.selectControl:focus {
+  border-color: rgba(125, 249, 255, 0.65);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22), 0 18px 45px rgba(4, 16, 32, 0.55);
+}
+
+.selectControl:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  border-color: rgba(45, 212, 191, 0.16);
+}
+
+.errorCard {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  border-radius: 20px;
+  border: 1px solid rgba(248, 113, 113, 0.55);
+  background: rgba(88, 28, 135, 0.22);
+  color: #fecdd3;
+}
+
+.errorAccent {
+  width: 0.4rem;
+  align-self: stretch;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(248, 113, 113, 0.8), rgba(239, 68, 68, 0.55));
+}
+
+.placeholderCard {
+  border-radius: 28px;
+  border: 1px dashed rgba(148, 163, 184, 0.28);
+  background: rgba(7, 26, 49, 0.65);
+  padding: 3rem;
+  text-align: center;
+  color: rgba(191, 219, 254, 0.75);
+  font-size: 0.95rem;
+}
+
+.placeholderCard strong {
+  display: block;
+  font-size: 1.05rem;
+  color: rgba(224, 242, 254, 0.95);
+  margin-bottom: 0.4rem;
+}
+
+@media (max-width: 960px) {
+  .overlay {
+    padding-top: 4rem;
+  }
+
+  .panel {
+    padding: 2.25rem 1.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .panel {
+    border-radius: 24px;
+  }
+
+  .actionMenus {
+    width: 100%;
+  }
+
+  .selectGroup {
+    min-width: 100%;
+  }
+
+  .placeholderCard {
+    padding: 2.5rem 1.5rem;
+  }
+}
