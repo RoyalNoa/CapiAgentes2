@@ -672,6 +672,10 @@ async def api_command(request: Request):
 
         base_extra = {'request_id': request_id, 'client_id': client_id, 'session_id': client_id}
         logger.info(
+            '[EMAIL_TRACE] backend.api_command',
+            extra=dict(base_extra, log_context=f"instruction_raw={instruction}")
+        )
+        logger.info(
             'Command payload validated',
             extra=dict(base_extra, log_context=f"instruction={instruction[:80]} file={file_path or '<none>'}")
         )

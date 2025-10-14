@@ -15,6 +15,7 @@ import re
 import textwrap
 
 import time
+from concurrent.futures import ThreadPoolExecutor
 
 from dataclasses import dataclass
 
@@ -182,6 +183,7 @@ class AgenteGAgent(BaseAgent):
         self._llm_reasoner = llm_reasoner
 
         self._compose_with_llm = compose_with_llm
+        self._llm_executor: ThreadPoolExecutor | None = ThreadPoolExecutor(max_workers=1)
 
 
 
@@ -653,20 +655,25 @@ class AgenteGAgent(BaseAgent):
 
 
     def _op_send_gmail(self, params: Dict[str, Any]) -> OperationResult:
-        to = params.get("to") or []
-        if isinstance(to, str):
-            to = [address.strip() for address in to.split(",") if address.strip()]
+        to_raw = params.get("to") or []
+        if isinstance(to_raw, str):
+            to_raw = [address.strip() for address in to_raw.split(",") if address.strip()]
+        compose_context = params.get("compose_context")
+        normalized_to = self._normalize_recipients(to_raw)
+        if not normalized_to and compose_context:
+            inferred = self._extract_emails(compose_context)
+            normalized_to = self._normalize_recipients(inferred)
+        params["to"] = list(normalized_to)
 
         subject = params.get("subject")
         body = params.get("body")
-        compose_context = params.get("compose_context")
         llm_metrics: Dict[str, Any] = {}
         if params.get("compose_with_llm", True):
             subject, body, llm_metrics = self._ensure_email_content(
                 subject=subject,
                 body=body,
                 compose_context=compose_context,
-                recipients=to,
+                recipients=list(normalized_to),
                 cc=params.get("cc"),
                 bcc=params.get("bcc"),
             )
@@ -676,7 +683,7 @@ class AgenteGAgent(BaseAgent):
         bcc = params.get("bcc")
 
         sent = self.gmail.send_plain_text(
-            to=list(to),
+            to=list(normalized_to),
             subject=str(subject),
             body=str(body),
             cc=[c.strip() for c in cc] if isinstance(cc, list) else None,
@@ -688,20 +695,40 @@ class AgenteGAgent(BaseAgent):
             "type": "email_sent",
             "message_id": sent.get("id"),
             "thread_id": sent.get("threadId"),
-            "recipients": to,
+            "recipients": list(normalized_to),
             "subject": subject,
         }
 
-        message = f"Correo enviado a {', '.join(to)}."
+        message = f"Correo enviado a {', '.join(normalized_to)}."
         metrics = {
             "google_api_calls": 1,
-            "recipients": len(to),
+            "recipients": len(normalized_to),
         }
         if llm_metrics:
             metrics.update(llm_metrics)
 
         return OperationResult(message=message, data=sent, artifact=artifact, metrics=metrics)
 
+
+    def _normalize_recipients(self, items: list[str]) -> list[str]:
+        normalized: list[str] = []
+        seen: set[str] = set()
+        for raw in items or []:
+            if not raw:
+                continue
+            for candidate in self._extract_emails(raw):
+                if candidate not in seen:
+                    seen.add(candidate)
+                    normalized.append(candidate)
+            cleaned = raw.strip().lower()
+            if "@" not in cleaned and "gmail.com" in cleaned:
+                local = cleaned.replace(" ", "").split("gmail.com", 1)[0].rstrip("@.")
+                if local:
+                    candidate = f"{local}@gmail.com"
+                    if candidate not in seen:
+                        seen.add(candidate)
+                        normalized.append(candidate)
+        return normalized
 
     def _ensure_email_content(
         self,
@@ -713,6 +740,7 @@ class AgenteGAgent(BaseAgent):
         cc: Optional[Any],
         bcc: Optional[Any],
     ) -> tuple[str, str, Dict[str, Any]]:
+        recipients = self._normalize_recipients(recipients)
         normalized_subject = (subject or "").strip()
         normalized_body = (body or "").strip()
         metrics: Dict[str, Any] = {}
@@ -788,17 +816,26 @@ class AgenteGAgent(BaseAgent):
 
     def _run_reasoner(self, reasoner: LLMReasoner, prompt: str, system_prompt: str) -> Optional[LLMReasoningResult]:
         async def _invoke() -> LLMReasoningResult:
-            return await reasoner.reason(query=prompt, system_prompt=system_prompt, response_format="json_object", max_output_tokens=600)
+            return await reasoner.reason(
+                query=prompt,
+                system_prompt=system_prompt,
+                response_format="json_object",
+                max_output_tokens=600,
+            )
+
         try:
-            return asyncio.run(_invoke())
+            asyncio.get_running_loop()
         except RuntimeError:
-            loop = asyncio.new_event_loop()
-            try:
-                asyncio.set_event_loop(loop)
-                return loop.run_until_complete(_invoke())
-            finally:
-                asyncio.set_event_loop(None)
-                loop.close()
+            return asyncio.run(_invoke())
+
+        if self._llm_executor is None:
+            self._llm_executor = ThreadPoolExecutor(max_workers=1)
+
+        def _run_sync() -> LLMReasoningResult:
+            return asyncio.run(_invoke())
+
+        future = self._llm_executor.submit(_run_sync)
+        return future.result()
 
     def _get_llm_reasoner(self) -> Optional[LLMReasoner]:
         if not self._compose_with_llm:
@@ -816,7 +853,7 @@ class AgenteGAgent(BaseAgent):
     def _extract_emails(text: str) -> list[str]:
         if not text:
             return []
-        matches = re.findall(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}", text)
+        matches = re.findall(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", text)
         seen = set()
         results: list[str] = []
         for match in matches:
@@ -959,5 +996,6 @@ class AgenteGAgent(BaseAgent):
 
 
 __all__ = ["AgenteGAgent", "SUPPORTED_INTENTS"]
+
 
 

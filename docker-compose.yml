@@ -33,6 +33,8 @@ services:
       context: Backend
       dockerfile: Dockerfile
       target: base
+    env_file:
+      - .env
     container_name: capi-backend
     restart: unless-stopped
     command: ["python", "src/api/main.py"]
@@ -55,12 +57,18 @@ services:
       ELEVENLABS_MODEL_ID: ${ELEVENLABS_MODEL_ID:-eleven_multilingual_v2}
       ELEVENLABS_API_BASE_URL: ${ELEVENLABS_API_BASE_URL:-https://api.elevenlabs.io}
       ELEVENLABS_VOICE_SETTINGS: ${ELEVENLABS_VOICE_SETTINGS:-}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GOOGLE_OAUTH_SCOPES: ${GOOGLE_OAUTH_SCOPES}
+      GOOGLE_AGENT_EMAIL: ${GOOGLE_AGENT_EMAIL}
+      GOOGLE_TOKEN_STORE: ${GOOGLE_TOKEN_STORE}
     volumes:
       - ./Backend/logs:/app/logs
       - ./Backend/ia_workspace:/app/ia_workspace
       - ./secrets/voice-streaming-sa.json:/run/secrets/voice-streaming-sa.json:ro
+      - ./secrets/google-agente-g.json:/app/secrets/google-agente-g.json:ro
       # Montar el escritorio del usuario para acceso del CAPI Desktop
-      - "${HOST_DESKTOP_PATH:-C:/Users/lucas/OneDrive/Desktop}:/app/user_desktop:rw"
+      - "${HOST_DESKTOP_PATH:-/mnt/c/Users/lucas/OneDrive/Desktop}:/app/user_desktop:rw"
       - ./voice_cache:/app/voice_cache
     networks:
       - capi-network

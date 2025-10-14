@@ -36,6 +36,12 @@ from src.infrastructure.langgraph.nodes.capi_datab_node import CapiDataBNode
 from src.infrastructure.langgraph.nodes.capi_elcajas_node import CapiElCajasNode
 from src.infrastructure.langgraph.nodes.capi_alertas_node import CapiAlertasNode
 from src.infrastructure.langgraph.nodes.human_gate_node import HumanGateNode
+try:
+    from src.infrastructure.langgraph.nodes.agente_g_node import AgenteGNode
+    _AGENTE_G_AVAILABLE = True
+except ImportError:
+    AgenteGNode = None
+    _AGENTE_G_AVAILABLE = False
 try:  # Optional agent with heavy deps
     from src.infrastructure.langgraph.nodes.capi_noticias_node import CapiNoticiasNode
     _CAPI_NOTICIAS_AVAILABLE = True
@@ -74,6 +80,8 @@ class DynamicGraphBuilder(GraphBuilder):
         }
         if _CAPI_NOTICIAS_AVAILABLE:
             self._core_agents.add("capi_noticias")
+        if _AGENTE_G_AVAILABLE:
+            self._core_agents.add("agente_g")
         self._default_checkpointer = checkpointer
         self._default_interrupts = tuple(interrupt_before or ())
 
@@ -151,6 +159,8 @@ class DynamicGraphBuilder(GraphBuilder):
         self.add_node(CapiDataBNode(name="capi_datab"))
         self.add_node(CapiElCajasNode(name="capi_elcajas"))
         self.add_node(CapiAlertasNode(name="capi_alertas"))
+        if _AGENTE_G_AVAILABLE:
+            self.add_node(AgenteGNode(name="agente_g"))
         self.add_node(HumanGateNode(name="human_gate"))
         self.add_node(AssembleNode(name="assemble"))
         self.add_node(FinalizeNode(name="finalize"))
@@ -262,6 +272,8 @@ class DynamicGraphBuilder(GraphBuilder):
                 self.add_edge(src, dst)
 
         built_in_agents = ["capi_gus", "branch", "anomaly", "capi_desktop", "summary"]
+        if _AGENTE_G_AVAILABLE:
+            built_in_agents.append("agente_g")
         if _CAPI_NOTICIAS_AVAILABLE:
             built_in_agents.append("capi_noticias")
 

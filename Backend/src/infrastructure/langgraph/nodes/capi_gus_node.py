@@ -163,6 +163,51 @@ class CapiGusNode(GraphNode):
         shared = getattr(state, "shared_artifacts", {}) or {}
         metadata = getattr(state, "response_metadata", {}) or {}
 
+        def _build_gmail_confirmation(recipient_list: list[str], subject_line: str) -> Tuple[str, Dict[str, Any]]:
+            subject_text = subject_line if subject_line else "(sin asunto)"
+            joined = ", ".join(recipient_list) if recipient_list else "el destinatario indicado"
+            message_text = f"Te confirmo que envié el correo a {joined} con asunto \"{subject_text}\". ¿Necesitás algo más?"
+            artifact_payload = {
+                "type": "gmail_send_confirmation",
+                "agent": "agente_g",
+                "recipients": recipient_list,
+                "subject": subject_text,
+                "created_at": datetime.now(timezone.utc).isoformat(),
+                "query": state.original_query,
+            }
+            return message_text, artifact_payload
+
+        agente_operation = metadata.get("agente_g_operation")
+        if isinstance(agente_operation, str) and agente_operation == "send_gmail":
+            parameters = metadata.get("agente_g_parameters") or {}
+            if not isinstance(parameters, dict):
+                parameters = {}
+            recipients = parameters.get("to") or []
+            if isinstance(recipients, str):
+                recipients = [recipients]
+            elif not isinstance(recipients, list):
+                recipients = []
+            recipients = [str(item).strip() for item in recipients if item]
+            subject = str(parameters.get("subject") or "(sin asunto)")
+            message, artifact = _build_gmail_confirmation(recipients, subject)
+            return message, artifact, None
+
+        agente_shared = shared.get("agente_g") if isinstance(shared, dict) else None
+        if isinstance(agente_shared, list):
+            for raw_artifact in reversed(agente_shared):
+                if isinstance(raw_artifact, dict) and raw_artifact.get("type") == "email_sent":
+                    recipients = raw_artifact.get("recipients")
+                    subject = raw_artifact.get("subject") or "(sin asunto)"
+                    if isinstance(recipients, list):
+                        recipient_list = [str(item).strip() for item in recipients if item]
+                    elif isinstance(recipients, str):
+                        recipient_list = [recipients]
+                    else:
+                        recipient_list = []
+                    message, artifact = _build_gmail_confirmation(recipient_list, str(subject))
+                    artifact.update(raw_artifact)
+                    return message, artifact, None
+
         datab_bucket = shared.get("capi_datab") if isinstance(shared, dict) else {}
         elcajas_bucket = shared.get("capi_elcajas") if isinstance(shared, dict) else {}
 

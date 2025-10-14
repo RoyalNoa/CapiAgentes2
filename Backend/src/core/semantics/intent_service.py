@@ -12,6 +12,7 @@ from __future__ import annotations
 import asyncio
 import json
 import re
+import unicodedata
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from enum import Enum
@@ -40,6 +41,13 @@ _ALLOWED_AGENTS = {
     "agente_g",
     "assemble",
 }
+
+_COMMON_EMAIL_DOMAINS = (
+    "gmail.com",
+    "hotmail.com",
+    "outlook.com",
+    "yahoo.com",
+)
 
 _DEFAULT_AGENT_BY_INTENT = {
     Intent.DB_OPERATION: "capi_datab",
@@ -165,6 +173,7 @@ class SemanticIntentService:
                 target_agent = self._select_agent(intent_enum, parsed.get("target_agent"))
                 entities = parsed.get("entities") or {}
                 if isinstance(entities, dict):
+                    self._normalize_email_entities(query, entities)
                     self._maybe_track_context(payload.get("context"), entities)
                 confidence = self._sanitize_confidence(parsed.get("confidence"))
                 requires_clarification = bool(parsed.get("requires_clarification"))
@@ -225,6 +234,123 @@ class SemanticIntentService:
             return 0.0
         return max(0.0, min(confidence, 1.0))
 
+    @staticmethod
+    def _strip_diacritics(value: str) -> str:
+        if not value:
+            return ""
+        normalized = unicodedata.normalize("NFKD", value)
+        return "".join(ch for ch in normalized if not unicodedata.combining(ch))
+
+    @classmethod
+    def _tokenize_for_intent(cls, text: str) -> list[str]:
+        plain = cls._strip_diacritics((text or "").lower())
+        return re.findall(r"[a-zñ]+", plain)
+
+    @staticmethod
+    def _looks_like_send_token(token: str) -> bool:
+        if not token:
+            return False
+        if token.startswith("envi") and len(token) > 4 and token[4] in {"a", "e", "o"}:
+            return True
+        if token.startswith("mand"):
+            if token.startswith("mandat"):
+                return False
+            allowed_prefixes = (
+                "manda",
+                "mandar",
+                "mandame",
+                "mandanos",
+                "mandalo",
+                "mandala",
+                "mandale",
+                "mandales",
+                "mandalos",
+                "mandalas",
+                "mandarme",
+                "mandarnos",
+            )
+            return any(token.startswith(prefix) for prefix in allowed_prefixes)
+        if token.startswith("remit"):
+            return True
+        if token.startswith("respond"):
+            return True
+        return False
+
+    def _normalize_email_entities(self, query: str, entities: Dict[str, Any]) -> None:
+        raw = entities.get("email_recipients")
+        normalized = self._coerce_recipient_list(raw)
+        if not normalized:
+            normalized = self._extract_emails(query)
+        if not normalized:
+            normalized = self._repair_emails_from_text(query)
+        if normalized:
+            entities["email_recipients"] = normalized
+
+    def _coerce_recipient_list(self, recipients: Any) -> list[str]:
+        if not recipients:
+            return []
+        if isinstance(recipients, str):
+            candidates = [recipients]
+        elif isinstance(recipients, (list, tuple, set)):
+            candidates = [str(item) for item in recipients if isinstance(item, (str, bytes))]
+        else:
+            return []
+
+        repaired: list[str] = []
+        for candidate in candidates:
+            candidate = candidate.strip()
+            if not candidate:
+                continue
+            repaired_email = self._repair_email_candidate(candidate)
+            if repaired_email:
+                repaired.append(repaired_email)
+
+        return repaired
+
+    def _repair_email_candidate(self, value: str) -> Optional[str]:
+        lowered = value.lower().strip()
+        extracted = self._extract_emails(lowered)
+        if extracted:
+            return extracted[0]
+        if "@" in lowered:
+            return None
+        for domain in _COMMON_EMAIL_DOMAINS:
+            if lowered.endswith(domain) and lowered != domain:
+                local = lowered[: -len(domain)].rstrip(".@ ")
+                if local:
+                    rebuilt = f"{local}@{domain}"
+                    rebuilt_emails = self._extract_emails(rebuilt)
+                    if rebuilt_emails:
+                        return rebuilt_emails[0]
+        domain_match = re.search(r"[A-Za-z-]+\.[A-Za-z]{2,}(?:\.[A-Za-z]{2,})*$", lowered)
+        if not domain_match:
+            return None
+        domain = domain_match.group(0).lstrip(".")
+        local = lowered[: domain_match.start()].rstrip(".@ ")
+        if not local or not domain or "." not in domain:
+            return None
+        rebuilt = f"{local}@{domain}"
+        rebuilt_emails = self._extract_emails(rebuilt)
+        if rebuilt_emails:
+            return rebuilt_emails[0]
+        return None
+
+    def _repair_emails_from_text(self, text: str) -> list[str]:
+        if not text:
+            return []
+        normalized_text = self._strip_diacritics(text.lower())
+        repaired: list[str] = []
+        seen: set[str] = set()
+        for raw in re.split(r"[\s,;]+", normalized_text):
+            token = raw.strip("()[]{}<>\"'.,;:-")
+            if not token:
+                continue
+            candidate = self._repair_email_candidate(token)
+            if candidate and candidate not in seen:
+                seen.add(candidate)
+                repaired.append(candidate)
+        return repaired
+
     def _parse_llm_response(self, response: str) -> Optional[Dict[str, Any]]:
         try:
             return json.loads(response)
@@ -245,7 +371,7 @@ class SemanticIntentService:
         email_tokens = ("correo", "correos", "mail", "gmail", "email")
         drive_tokens = ("drive", "documento", "documentos", "archivo en drive", "gdrive")
         calendar_tokens = ("calendar", "calendario", "evento", "eventos", "reunion", "reunión", "agendar", "agenda")
-        send_tokens = ("enviar", "mandar", "remitir", "responder")
+        send_tokens = ("enviar", "envia", "mandar", "remitir", "responder")
         list_tokens = ("listar", "ver", "mostrar", "consultar")
         google_present = any(token in lower_query for token in google_tokens)
         if google_present:
@@ -254,7 +380,11 @@ class SemanticIntentService:
             confidence = 0.55
             if any(token in lower_query for token in email_tokens):
                 operation = "list"
-                if any(token in lower_query for token in send_tokens):
+                normalized_tokens = self._tokenize_for_intent(lower_query)
+                send_detected = any(self._looks_like_send_token(token) for token in normalized_tokens)
+                if not send_detected and any(token in lower_query for token in send_tokens):
+                    send_detected = True
+                if send_detected:
                     operation = "send"
                 elif "habilitar" in lower_query or "activar" in lower_query:
                     operation = "enable_push"
@@ -264,6 +394,8 @@ class SemanticIntentService:
                 entities["gmail_operation"] = operation
                 if operation == "send":
                     recipients = self._extract_emails(query)
+                    if not recipients:
+                        recipients = self._repair_emails_from_text(query)
                     if recipients:
                         entities["email_recipients"] = recipients
                 if any(token in lower_query for token in list_tokens) and "no leido" in lower_query:

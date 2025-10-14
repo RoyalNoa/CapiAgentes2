@@ -58,6 +58,7 @@ def test_agente_g_node_with_instruction(monkeypatch, base_state):
     assert result_state.shared_artifacts.get("agente_g")
     assert result_state.response_metadata.get("agente_g_operation") == "list_gmail"
     assert result_state.response_metadata.get("google_metrics", {}).get("google_api_calls") == 2
+    assert result_state.response_metadata.get("requires_human_approval") is False
 
 
 def test_agente_g_node_missing_instruction(monkeypatch, base_state):
@@ -84,4 +85,25 @@ def test_agente_g_node_infers_send_email_from_query(monkeypatch, base_state):
     assert dummy_agent.last_task.metadata["operation"] == "send_gmail"
     params = dummy_agent.last_task.metadata["parameters"]
     assert params.get("compose_context")
-    assert params.get("compose_context")
+    assert params.get("to") == ["finanzas@example.com"]
+    assert "Capi Gus te confirma" in (result_state.response_message or "")
+    metadata = result_state.response_metadata or {}
+    assert metadata.get("requires_human_approval") is False
+    assert metadata.get("active_agent") == "capi_gus"
+    assert metadata.get("workflow_stage") == "capi_gus_followup"
+
+
+def test_agente_g_node_rejects_invalid_email_recipient(monkeypatch, base_state):
+    dummy_agent = DummyAgent()
+    monkeypatch.setattr(AgenteGNode, "_initialize_agent", lambda self: (dummy_agent, None))
+    node = AgenteGNode()
+    invalid_query = "Envia un correo a lucasnoa94gmail.com que diga hola mundo"
+    state = base_state.model_copy(update={"original_query": invalid_query})
+
+    result_state = node.run(state)
+
+    assert dummy_agent.last_task is None
+    assert "correo" in (result_state.response_message or "").lower()
+    metadata = result_state.response_metadata or {}
+    assert metadata.get("validation_error") == "invalid_email_recipients"
+    assert metadata.get("requires_clarification") is True

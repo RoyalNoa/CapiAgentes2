@@ -658,7 +658,6 @@ useEffect(() => {
               simulation: {
                 ...turn.simulation,
                 status: 'running',
-                collapsed: false,
               },
             }
           : turn,

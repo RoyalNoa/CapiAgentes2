@@ -40,6 +40,14 @@ def intent_service() -> SemanticIntentService:
             "entities": {},
             "reasoning": "Saludo detectado",
         },
+        "enviar correo distorsionado": {
+            "intent": "google_gmail",
+            "target_agent": "agente_g",
+            "confidence": 0.9,
+            "requires_clarification": False,
+            "entities": {"email_recipients": ["lucasnoa94gmail.com"]},
+            "reasoning": "Solicitud de envio de correo",
+        },
     }
     return SemanticIntentService(reasoner=StubReasoner(responses))
 
@@ -61,6 +69,12 @@ def test_capi_gus_detection(intent_service: SemanticIntentService):
     assert result.target_agent == "capi_gus"
 
 
+def test_llm_email_recipients_are_repaired(intent_service: SemanticIntentService):
+    result = intent_service.classify_intent("enviar correo distorsionado")
+    assert result.target_agent == "agente_g"
+    assert result.entities.get("email_recipients") == ["lucasnoa94@gmail.com"]
+
+
 def test_fallback_routes_to_agente_g():
     service = SemanticIntentService(reasoner=StubReasoner({}))
     result = service.classify_intent("enviar un correo a ventas@example.com avisando sobre el reporte semanal")
@@ -68,6 +82,17 @@ def test_fallback_routes_to_agente_g():
     assert result.intent in {Intent.GOOGLE_GMAIL, Intent.GOOGLE_WORKSPACE}
     assert "email_recipients" in result.entities
     assert "ventas@example.com" in result.entities.get("email_recipients", [])
+
+
+def test_fallback_understands_envia_variant_and_repairs_email():
+    service = SemanticIntentService(reasoner=StubReasoner({}))
+    query = "envia un mail a lucasnoa94gmail.com (con arroba)"
+    result = service.classify_intent(query)
+
+    assert result.target_agent == "agente_g"
+    assert result.intent == Intent.GOOGLE_GMAIL
+    assert result.entities.get("gmail_operation") == "send"
+    assert result.entities.get("email_recipients") == ["lucasnoa94@gmail.com"]
 
 
 def test_fallback_when_llm_fails():

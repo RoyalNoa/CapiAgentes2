@@ -25,8 +25,10 @@ class AssembleNode(GraphNode):
 
         # Ensure we have a response message
         response_message = state.response_message
+        fallback_used = False
         if not response_message:
             response_message = self._generate_fallback_response(state)
+            fallback_used = True
 
         # Finalize response data and metadata
         response_data = dict(state.response_data) if state.response_data else {}
@@ -38,12 +40,18 @@ class AssembleNode(GraphNode):
             "workflow_completed": True,
             "total_nodes": len(state.completed_nodes) + 1,  # +1 for current node
         })
+        if fallback_used:
+            response_metadata.setdefault("active_agent", "capi_gus")
+            response_metadata.setdefault("workflow_stage", "capi_gus_fallback")
+            response_metadata.setdefault("capi_gus_fallback", True)
 
         # Update state
         s = StateMutator.update_field(state, "current_node", self.name)
         s = StateMutator.update_field(s, "response_message", response_message)
         s = StateMutator.update_field(s, "response_data", response_data)
         s = StateMutator.update_field(s, "response_metadata", response_metadata)
+        if fallback_used:
+            s = StateMutator.update_field(s, "active_agent", "capi_gus")
         s = StateMutator.append_to_list(s, "completed_nodes", self.name)
 
         logger.info(
@@ -75,9 +83,21 @@ class AssembleNode(GraphNode):
             confidence = state.intent_confidence or 0.0
 
             if confidence < 0.3:
-                return f"🤔 No estoy seguro de cómo ayudarte con '{query}'. ¿Podrías ser más específico? Puedo ayudarte con resúmenes financieros, análisis de sucursales o detección de anomalías."
+                return (
+                    f"No estoy del todo seguro de cómo ayudarte con '{query}'. "
+                    "¿Podés darme un poco más de contexto? Tengo a mano resúmenes financieros, análisis de sucursales "
+                    "y detección de anomalías."
+                )
             else:
-                return f"📋 He procesado tu consulta sobre '{query}' (intención: {intent_name}), pero no pude generar una respuesta específica. ¿Podrías reformular la pregunta?"
+                return (
+                    f"Revisé tu consulta sobre '{query}' (intención: {intent_name}), "
+                    "pero no encontré una respuesta puntual en mis tableros. "
+                    "¿Querés reformular la pregunta o darme algún dato extra?"
+                )
 
         # Generic fallback
-        return f"🤖 He recibido tu consulta: '{query}'. Puedo ayudarte con análisis financieros, resúmenes de datos, detección de anomalías y análisis por sucursales. ¿Qué te gustaría hacer?"
+        return (
+            f"Recibí tu consulta: '{query}'. "
+            "Estoy listo para ayudarte con análisis financieros, resúmenes, detección de anomalías o métricas de sucursales. "
+            "Contame un poco más así avanzamos."
+        )

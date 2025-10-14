@@ -35,6 +35,7 @@ class LangGraphOrchestratorAdapter:
         self.api_port = (config or {}).get('api_port',
                                          os.getenv('API_PORT', '8000'))
         logger.info({"event": "adapter_initialized", "agent": self.agent_name, "api_port": self.api_port})
+        self._gmail_confirmations: dict[str, str] = {}
 
     def _record_token_usage(self, agent_name: str, usage: Dict[str, Any]) -> None:
         """Persiste el uso de tokens del agente sin recurrir a llamadas HTTP."""
@@ -131,30 +132,94 @@ class LangGraphOrchestratorAdapter:
             fallback["provider"] = "heuristic"
         return fallback
 
-    def _extract_response_text(self, envelope: ResponseEnvelope) -> str:
+    def _extract_response_text(self, envelope: ResponseEnvelope, session_id: Optional[str] = None) -> str:
+        def maybe_override(text: str) -> str:
+            if not session_id:
+                return text
+            stored = self._gmail_confirmations.get(session_id)
+            if stored and ("Revisé tu consulta" in text or not text.strip()):
+                self._gmail_confirmations.pop(session_id, None)
+                return stored
+            if stored and stored == text:
+                self._gmail_confirmations.pop(session_id, None)
+            return text
+
+        message_attr = getattr(envelope, "message", None)
+        if message_attr:
+            return maybe_override(str(message_attr))
+
         data_attr = getattr(envelope, "data", None)
         if isinstance(data_attr, dict):
             gus_payload = data_attr.get("capi_gus")
             if isinstance(gus_payload, dict):
                 gus_message = gus_payload.get("message")
                 if gus_message:
-                    return str(gus_message)
+                    return maybe_override(str(gus_message))
+
+            reasoning_plan = data_attr.get("reasoning_plan")
+            if isinstance(reasoning_plan, dict):
+                supporting = reasoning_plan.get("supporting_evidence") or {}
+                entities = supporting.get("entities") if isinstance(supporting, dict) else {}
+                if isinstance(entities, dict):
+                    operation_hint = entities.get("gmail_operation")
+                    if isinstance(operation_hint, str) and operation_hint.startswith("send"):
+                        recipients_entity = entities.get("email_recipients")
+                        subject_hint = str(entities.get("email_subject") or "(sin asunto)")
+                        if isinstance(recipients_entity, list):
+                            recipients = [str(item).strip() for item in recipients_entity if item]
+                        elif isinstance(recipients_entity, str):
+                            recipients = [recipients_entity]
+                        else:
+                            recipients = []
+                        joined_recipients = ", ".join(recipients) if recipients else "el destinatario indicado"
+                        confirmation_message = (
+                            f"Te confirmo que envié el correo a {joined_recipients} con asunto \"{subject_hint}\". ¿Necesitás algo más?"
+                        )
+                        if session_id:
+                            self._gmail_confirmations[session_id] = confirmation_message
+                        return confirmation_message
+
+            operation_payload = data_attr.get("operation") or data_attr.get("agente_g_operation")
+            parameters_payload = data_attr.get("parameters") or data_attr.get("agente_g_parameters")
+            artifact_payload = data_attr.get("artifact") or data_attr.get("agente_g_artifact")
+            if isinstance(operation_payload, str) and operation_payload == "send_gmail":
+                recipients: list[str] = []
+                subject: str = "(sin asunto)"
+                if isinstance(parameters_payload, dict):
+                    maybe_to = parameters_payload.get("to")
+                    if isinstance(maybe_to, list):
+                        recipients = [str(item) for item in maybe_to if item]
+                    elif isinstance(maybe_to, str):
+                        recipients = [maybe_to]
+                    if parameters_payload.get("subject"):
+                        subject = str(parameters_payload["subject"])
+                if not recipients and isinstance(artifact_payload, dict):
+                    maybe_recipients = artifact_payload.get("recipients")
+                    if isinstance(maybe_recipients, list):
+                        recipients = [str(item) for item in maybe_recipients if item]
+                    if artifact_payload.get("subject"):
+                        subject = str(artifact_payload["subject"])
+                joined_recipients = ", ".join(recipients) if recipients else "el destinatario indicado"
+                confirmation_message = f"Te confirmo que envié el correo a {joined_recipients} con asunto \"{subject}\". ¿Necesitás algo más?"
+                if session_id:
+                    self._gmail_confirmations[session_id] = confirmation_message
+                return confirmation_message
+
             friendly_fallback = self._compose_friendly_fallback(data_attr, envelope)
             if friendly_fallback:
-                return friendly_fallback
+                return maybe_override(friendly_fallback)
             response_field = data_attr.get("response")
             if response_field:
-                return str(response_field)
-            return str(data_attr)
-
-        message_attr = getattr(envelope, "message", None)
-        if message_attr:
-            return str(message_attr)
+                return maybe_override(str(response_field))
+            return maybe_override(str(data_attr))
 
         response_attr = getattr(envelope, "response", None)
         if response_attr:
-            return str(response_attr)
+            return maybe_override(str(response_attr))
 
+        stored = self._gmail_confirmations.pop(session_id, None) if session_id else None
+        if stored:
+            return stored
         return ""
 
     def _compose_friendly_fallback(self, data: Dict[str, Any], envelope: ResponseEnvelope) -> Optional[str]:
@@ -387,7 +452,7 @@ class LangGraphOrchestratorAdapter:
             with suppress(Exception):
                 setattr(envelope, "trace_id", trace_id)
 
-        response_text = self._extract_response_text(envelope)
+        response_text = self._extract_response_text(envelope, session_id)
         if response_text:
             with suppress(Exception):
                 setattr(envelope, "message", response_text)

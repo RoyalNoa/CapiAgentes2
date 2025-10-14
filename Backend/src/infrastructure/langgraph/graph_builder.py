@@ -26,6 +26,12 @@ from src.infrastructure.langgraph.nodes.anomaly_node import AnomalyNode
 from src.infrastructure.langgraph.nodes.capi_desktop_node import CapiDesktopNode
 from src.infrastructure.langgraph.nodes.capi_datab_node import CapiDataBNode
 from src.infrastructure.langgraph.nodes.capi_elcajas_node import CapiElCajasNode
+try:
+        _AGENTE_G_AVAILABLE = True
+except ImportError:
+    AgenteGNode = None
+    _AGENTE_G_AVAILABLE = False
+from src.infrastructure.langgraph.nodes.agente_g_node import AgenteGNode
 from src.infrastructure.langgraph.nodes.human_gate_node import HumanGateNode
 try:
     from src.infrastructure.langgraph.nodes.capi_noticias_node import CapiNoticiasNode
@@ -110,6 +116,8 @@ class GraphBuilder:
         self.add_node(CapiDesktopNode(name="capi_desktop"))
         self.add_node(CapiDataBNode(name="capi_datab"))
         self.add_node(CapiElCajasNode(name="capi_elcajas"))
+        if _AGENTE_G_AVAILABLE:
+            self.add_node(AgenteGNode(name="agente_g"))
         self.add_node(HumanGateNode(name="human_gate"))
         self.add_node(AssembleNode(name="assemble"))
         self.add_node(FinalizeNode(name="finalize"))
@@ -156,6 +164,8 @@ class GraphBuilder:
             )
             if name in self._nodes
         }
+        if _AGENTE_G_AVAILABLE and "agente_g" in self._nodes:
+            available_targets.add("agente_g")
         if "assemble" not in available_targets:
             available_targets.add("assemble")
 

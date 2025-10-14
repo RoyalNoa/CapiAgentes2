@@ -434,6 +434,11 @@ export function useOrchestratorChat(clientId: string = 'default'): HookReturn {
       connStatus,
       messagesCount: messages.length
     });
+    hookLogger.info(`[EMAIL_TRACE] frontend.dispatch`, {
+      stage: 'before_send',
+      commandId,
+      rawInstruction: text
+    });
 
     setPendingActions([]);
     setApprovalReason(null);
