@@ -28,8 +28,7 @@ from src.infrastructure.langgraph.nodes.supervisor_node import SupervisorNode
 from src.infrastructure.langgraph.nodes.loop_controller_node import LoopControllerNode
 from src.infrastructure.langgraph.nodes.router_node import RouterNode
 from src.infrastructure.langgraph.nodes.assemble_node import AssembleNode
-from src.infrastructure.langgraph.nodes.smalltalk_node import SmalltalkNode
-from src.infrastructure.langgraph.nodes.summary_node import SummaryNode
+from src.infrastructure.langgraph.nodes.capi_gus_node import CapiGusNode
 from src.infrastructure.langgraph.nodes.branch_node import BranchNode
 from src.infrastructure.langgraph.nodes.anomaly_node import AnomalyNode
 from src.infrastructure.langgraph.nodes.capi_desktop_node import CapiDesktopNode
@@ -37,6 +36,12 @@ from src.infrastructure.langgraph.nodes.capi_datab_node import CapiDataBNode
 from src.infrastructure.langgraph.nodes.capi_elcajas_node import CapiElCajasNode
 from src.infrastructure.langgraph.nodes.capi_alertas_node import CapiAlertasNode
 from src.infrastructure.langgraph.nodes.human_gate_node import HumanGateNode
+try:
+    from src.infrastructure.langgraph.nodes.agente_g_node import AgenteGNode
+    _AGENTE_G_AVAILABLE = True
+except ImportError:
+    AgenteGNode = None
+    _AGENTE_G_AVAILABLE = False
 try:  # Optional agent with heavy deps
     from src.infrastructure.langgraph.nodes.capi_noticias_node import CapiNoticiasNode
     _CAPI_NOTICIAS_AVAILABLE = True
@@ -65,8 +70,7 @@ class DynamicGraphBuilder(GraphBuilder):
         self._last_build_info: Dict[str, Any] = {}
         self._last_compiled_graph: Any | None = None
         self._core_agents: Set[str] = {
-            "smalltalk",
-            "summary",
+            "capi_gus",
             "branch",
             "anomaly",
             "capi_desktop",
@@ -76,6 +80,8 @@ class DynamicGraphBuilder(GraphBuilder):
         }
         if _CAPI_NOTICIAS_AVAILABLE:
             self._core_agents.add("capi_noticias")
+        if _AGENTE_G_AVAILABLE:
+            self._core_agents.add("agente_g")
         self._default_checkpointer = checkpointer
         self._default_interrupts = tuple(interrupt_before or ())
 
@@ -144,8 +150,7 @@ class DynamicGraphBuilder(GraphBuilder):
         self.add_node(LoopControllerNode(name="loop_controller"))
         self.add_node(RouterNode(name="router"))
 
-        self.add_node(SmalltalkNode(name="smalltalk"))
-        self.add_node(SummaryNode(name="summary"))
+        self.add_node(CapiGusNode(name="capi_gus"))
         self.add_node(BranchNode(name="branch"))
         self.add_node(AnomalyNode(name="anomaly"))
         if _CAPI_NOTICIAS_AVAILABLE:
@@ -154,6 +159,8 @@ class DynamicGraphBuilder(GraphBuilder):
         self.add_node(CapiDataBNode(name="capi_datab"))
         self.add_node(CapiElCajasNode(name="capi_elcajas"))
         self.add_node(CapiAlertasNode(name="capi_alertas"))
+        if _AGENTE_G_AVAILABLE:
+            self.add_node(AgenteGNode(name="agente_g"))
         self.add_node(HumanGateNode(name="human_gate"))
         self.add_node(AssembleNode(name="assemble"))
         self.add_node(FinalizeNode(name="finalize"))
@@ -264,11 +271,13 @@ class DynamicGraphBuilder(GraphBuilder):
             if (src, dst) not in self._edges:
                 self.add_edge(src, dst)
 
-        built_in_agents = ["smalltalk", "summary", "branch", "anomaly", "capi_desktop"]
+        built_in_agents = ["capi_gus", "branch", "anomaly", "capi_desktop", "summary"]
+        if _AGENTE_G_AVAILABLE:
+            built_in_agents.append("agente_g")
         if _CAPI_NOTICIAS_AVAILABLE:
             built_in_agents.append("capi_noticias")
 
-        prioritized = {"smalltalk", "summary", "branch", "anomaly", "capi_desktop", "capi_datab", "capi_elcajas"}
+        prioritized = {"capi_gus", "branch", "anomaly", "capi_desktop", "capi_datab", "capi_elcajas", "summary", "agente_g"}
         for agent_name in built_in_agents:
             if agent_name in self._nodes and self.registry_service.config_service.is_enabled(agent_name):
                 _safe_add_edge(agent_name, "human_gate")

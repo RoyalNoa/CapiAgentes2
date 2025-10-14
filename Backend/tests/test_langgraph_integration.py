@@ -67,10 +67,10 @@ async def test_langgraph_orchestrator_summary():
     # Verify metadata
     assert result.meta is not None
     assert "completed_nodes" in result.meta
-    assert "summary" in str(result.meta.get("completed_nodes", []))
+    assert "capi_gus" in str(result.meta.get("completed_nodes", []))
     reasoning_plan = result.data.get("reasoning_plan") if isinstance(result.data, dict) else None
     assert reasoning_plan is not None
-    assert reasoning_plan.get("recommended_agent") in {"summary", "capi_desktop", "capi_datab"}
+    assert reasoning_plan.get("recommended_agent") in {"capi_gus", "capi_desktop", "capi_datab", "summary"}
     meta_summary = result.meta.get("reasoning_summary")
     assert meta_summary is not None
     assert meta_summary.get("progress_percent") is not None

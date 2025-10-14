@@ -19,6 +19,7 @@ langchain-openai>=0.3.33
 google-cloud-speech>=2.26.0
 google-cloud-texttospeech>=2.19.0
 soundfile>=0.12.1
+google-api-python-client>=2.184.0
 
 # Vector Database
 faiss-cpu>=1.7.4

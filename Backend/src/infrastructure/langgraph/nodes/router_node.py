@@ -34,7 +34,7 @@ class RouterNode(GraphNode):
 
         metadata_snapshot = dict(state.response_metadata or {})
         completed_nodes = list(state.completed_nodes or [])
-        if "capi_datab" in completed_nodes and "capi_elcajas" not in completed_nodes:
+        if "capi_datab" in completed_nodes and "capi_gus" not in completed_nodes:
             target_agent: Optional[str] = None
             if metadata_snapshot.get("el_cajas_pending") or metadata_snapshot.get("el_cajas_status") not in (None, "ok", "unknown"):
                 target_agent = "capi_elcajas"
@@ -42,7 +42,10 @@ class RouterNode(GraphNode):
                 target_agent = "capi_desktop"
             elif metadata_snapshot.get("datab_skip_human"):
                 target_agent = "assemble"
-            if target_agent:
+            if target_agent is None:
+                target_agent = "capi_gus"
+
+            if target_agent and target_agent not in completed_nodes:
                 logger.info({"event": "router_short_circuit", "from": "capi_datab", "target": target_agent})
                 intent = state.detected_intent or Intent.UNKNOWN
                 confidence = state.intent_confidence or 0.0
@@ -113,14 +116,18 @@ class RouterNode(GraphNode):
     def _select_enabled_agent(self, suggested: str, intent: Intent) -> str:
         candidates = []
         suggested = (suggested or "").strip().lower()
+        if suggested == "smalltalk":
+            suggested = "capi_gus"
         if suggested:
             candidates.append(suggested)
 
         default_agent = self.semantic_service._select_agent(intent, None)
+        if default_agent == "smalltalk":
+            default_agent = "capi_gus"
         if default_agent not in candidates:
             candidates.append(default_agent)
 
-        candidates.extend(["summary", "capi_datab", "capi_desktop", "assemble"])
+        candidates.extend(["capi_gus", "capi_datab", "capi_desktop", "agente_g", "assemble", "summary"])
 
         for agent in candidates:
             if agent and self._agent_service.is_enabled(agent):

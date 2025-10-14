@@ -2,10 +2,10 @@
   "created_at": "2025-10-02T12:52:37.299586",
   "session_id": "test_session_3",
   "sanitized_session_id": "test_session_3",
-  "updated_at": "2025-10-02T17:21:47.433545",
+  "updated_at": "2025-10-07T00:10:05.096893",
   "datab_exports": [],
-  "status": "processing",
-  "trace_id": "trace-1759436507.2937",
+  "status": "completed",
+  "trace_id": "trace-1759806599.842293",
   "user_id": "test_user",
   "workflow_mode": "chat",
   "active_agent": "summary",
@@ -18,7 +18,8 @@
     "router",
     "summary",
     "human_gate",
-    "assemble"
+    "assemble",
+    "finalize"
   ],
   "intent": "unknown",
   "intent_confidence": 0.2,
@@ -45,11 +46,11 @@
         }
       ],
       "reasoning_plan": {
-        "plan_id": "089404d7-f22a-4bfd-ab52-a1378834d42c",
+        "plan_id": "4aaa5864-da2f-4f87-817b-0da47c561f13",
         "version": 1,
         "intent": "unknown",
         "goal": "Clarificar y asistir consulta ambigua: Ã‚Â¿CÃƒÂ³mo cocinar pasta?",
-        "confidence": 0.85,
+        "confidence": 0.95,
         "recommended_agent": "summary",
         "fallback_agent": "assemble",
         "rationale": "Consulta ambigua: se elabora estrategia de clarificación y recopilación de señales antes de seleccionar agente definitivo.",
@@ -91,15 +92,14 @@
           "intent"
         ],
         "supporting_evidence": {
-          "progress_percent": 87.5,
+          "progress_percent": 97.5,
           "remaining_steps": 3,
           "estimated_effort_seconds": 50,
           "complexity": "medium",
           "entities": {},
           "context_used": false,
-          "semantic_confidence": 0.2,
+          "semantic_confidence": 0.8,
           "available_agents": [
-            "agente_g",
             "anomaly",
             "branch",
             "capi_datab",
@@ -109,11 +109,11 @@
           "user_id": "test_user",
           "session_id": "test_session_3"
         },
-        "generated_at": "2025-10-02T20:21:47.423586",
+        "generated_at": "2025-10-07T03:10:05.080482",
         "intent_alignment": false,
         "requires_replan": false,
         "history": [],
-        "progress_percent": 87.5,
+        "progress_percent": 97.5,
         "remaining_steps": 3,
         "complexity": "medium",
         "estimated_effort_seconds": 50
@@ -178,17 +178,17 @@
       }
     ],
     "react_recommended_agent": "summary",
-    "react_finished_at": "2025-10-02T17:21:47.419583",
+    "react_finished_at": "2025-10-07T00:10:03.856307",
     "active_agent": "summary",
     "loop_fallback": "summary",
     "react_follow_up": false,
     "needs_retry": null,
     "reasoning_plan": {
-      "plan_id": "089404d7-f22a-4bfd-ab52-a1378834d42c",
+      "plan_id": "4aaa5864-da2f-4f87-817b-0da47c561f13",
       "version": 1,
       "intent": "unknown",
       "goal": "Clarificar y asistir consulta ambigua: Ã‚Â¿CÃƒÂ³mo cocinar pasta?",
-      "confidence": 0.85,
+      "confidence": 0.95,
       "recommended_agent": "summary",
       "fallback_agent": "assemble",
       "rationale": "Consulta ambigua: se elabora estrategia de clarificación y recopilación de señales antes de seleccionar agente definitivo.",
@@ -230,15 +230,14 @@
         "intent"
       ],
       "supporting_evidence": {
-        "progress_percent": 87.5,
+        "progress_percent": 97.5,
         "remaining_steps": 3,
         "estimated_effort_seconds": 50,
         "complexity": "medium",
         "entities": {},
         "context_used": false,
-        "semantic_confidence": 0.2,
+        "semantic_confidence": 0.8,
         "available_agents": [
-          "agente_g",
           "anomaly",
           "branch",
           "capi_datab",
@@ -248,18 +247,18 @@
         "user_id": "test_user",
         "session_id": "test_session_3"
       },
-      "generated_at": "2025-10-02T20:21:47.423586",
+      "generated_at": "2025-10-07T03:10:05.080482",
       "intent_alignment": false,
       "requires_replan": false,
       "history": [],
-      "progress_percent": 87.5,
+      "progress_percent": 97.5,
       "remaining_steps": 3,
       "complexity": "medium",
       "estimated_effort_seconds": 50
     },
-    "reasoning_confidence": 0.85,
+    "reasoning_confidence": 0.95,
     "recommended_agent": "summary",
-    "reasoning_progress_percent": 87.5,
+    "reasoning_progress_percent": 97.5,
     "reasoning_eta_seconds": 50,
     "reasoning_remaining_steps": 3,
     "reasoning_complexity": "medium",
@@ -272,7 +271,7 @@
       "smalltalk"
     ],
     "supervisor_selected": "summary",
-    "supervisor_ran_at": "2025-10-02T17:21:47.425207",
+    "supervisor_ran_at": "2025-10-07T00:10:05.081510",
     "semantic_result": {
       "intent": "unknown",
       "confidence": 0.2,
@@ -298,24 +297,24 @@
   "reasoning_summary": {
     "goal": "Clarificar y asistir consulta ambigua: Ã‚Â¿CÃƒÂ³mo cocinar pasta?",
     "recommended_agent": "summary",
-    "confidence": 0.8500000000000001,
+    "confidence": 0.95,
     "version": 1,
     "cooperative_agents": [
       "intent"
     ],
-    "progress_percent": 87.5,
+    "progress_percent": 97.5,
     "remaining_steps": 3,
     "complexity": "medium",
     "estimated_effort_seconds": 50,
-    "remaining_percent": 12.5
+    "remaining_percent": 2.5
   },
   "processing_metrics": {
     "react_steps": 5.0,
     "react_latency_ms": 0.0,
-    "reasoning_time_ms": 4.0,
+    "reasoning_time_ms": 1224.0,
     "reasoning_steps": 3.0,
     "reasoning_version": 1.0,
-    "reasoning_progress_percent": 87.5,
+    "reasoning_progress_percent": 97.5,
     "reasoning_eta_seconds": 50.0,
     "reasoning_remaining_steps": 3.0,
     "supervisor_latency_ms": 0.0,

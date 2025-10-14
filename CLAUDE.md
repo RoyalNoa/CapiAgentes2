@@ -41,7 +41,7 @@ ia_workspace/                # AI dynamic interaction space
 │   ├── summary/           # Financial summary agent
 │   ├── branch/            # Branch analysis agent
 │   ├── anomaly/           # Anomaly detection agent
-│   └── smalltalk_fallback/ # Conversation fallback agent
+│   └── capi_gus_fallback/ # Conversation fallback agent
 └── data/                  # Manipulable data (CSV, JSON, cache)
 ```
 
@@ -165,7 +165,7 @@ npx tsc --noEmit
 ### Unified LangGraph Orchestrator
 Created via `Backend/src/presentation/orchestrator_factory.py` - OrchestratorFactory
 - **LangGraph-based orchestration** with graph workflow execution
-- **Complete node coverage**: Summary, Branch, Anomaly, and Smalltalk nodes
+- **Complete node coverage**: Summary, Branch, Anomaly, and Capi Gus nodes
 - **Real data integration**: Uses FileDataRepository and FinancialAnalysisService
 - **Domain-driven architecture**: Eliminates hardcoded data, uses repository patterns
 - **Hybrid agent integration**: Bridge pattern connects existing agents with LangGraph nodes
@@ -179,7 +179,7 @@ Created via `Backend/src/presentation/orchestrator_factory.py` - OrchestratorFac
 - **SummaryAgent**: Financial summaries and total metrics
 - **BranchAgent**: Branch-specific performance analysis
 - **AnomalyAgent**: Financial irregularity detection
-- **SmallTalkFallbackAgent**: Greetings, conversation, and unknown intent handling
+- **Capi Gus (Conversación)**: Greetings, conversation, and unknown intent handling
 - **CapiDatabNode**: Database queries and balance operations with semantic planning
 - **CapiDesktopNode**: File operations and desktop integration
 - **CapiNoticiasNode**: News analysis and external content processing (optional dependency)
@@ -221,7 +221,7 @@ Created via `Backend/src/presentation/orchestrator_factory.py` - OrchestratorFac
 
 ### LangGraph Workflow Architecture
 ```
-User Query → StartNode → IntentNode → ReActNode → ReasoningNode → SupervisorNode → RouterNode → [SummaryNode|BranchNode|AnomalyNode|SmalltalkNode|CapiDatabNode|CapiDesktopNode|CapiNoticiasNode] → HumanGateNode → AssembleNode → FinalizeNode
+User Query → StartNode → IntentNode → ReActNode → ReasoningNode → SupervisorNode → RouterNode → [SummaryNode|BranchNode|AnomalyNode|Capi GusNode|CapiDatabNode|CapiDesktopNode|CapiNoticiasNode] → HumanGateNode → AssembleNode → FinalizeNode
 ```
 
 #### Advanced Multi-Agent Architecture

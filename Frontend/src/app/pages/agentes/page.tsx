@@ -74,9 +74,9 @@ const statusClassMap: Record<ExtendedAgentData['status'], string> = {
 
 const FALLBACK_AGENTS: ExtendedAgentData[] = [
   {
-    name: 'summary',
+    name: 'capi_gus',
     enabled: true,
-    description: 'Financial summaries',
+    description: 'Respuestas ejecutivas',
     status: 'active',
     metrics: { tokens_used: 15420, cost_usd: 0.0231, requests: 142, avg_response_time: 1.2 }
   },
@@ -95,7 +95,7 @@ const FALLBACK_AGENTS: ExtendedAgentData[] = [
     metrics: { tokens_used: 22150, cost_usd: 0.0332, requests: 201, avg_response_time: 2.1 }
   },
   {
-    name: 'smalltalk',
+    name: 'capi_gus',
     enabled: false,
     description: 'Conversation handling',
     status: 'idle',

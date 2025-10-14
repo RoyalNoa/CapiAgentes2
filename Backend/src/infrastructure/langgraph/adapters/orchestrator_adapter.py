@@ -10,6 +10,7 @@ import json
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 from contextlib import suppress
+from pathlib import Path
 
 from src.observability.agent_metrics import record_turn_event, record_error_event
 from src.infrastructure.langgraph.graph_runtime import LangGraphRuntime
@@ -34,6 +35,7 @@ class LangGraphOrchestratorAdapter:
         self.api_port = (config or {}).get('api_port',
                                          os.getenv('API_PORT', '8000'))
         logger.info({"event": "adapter_initialized", "agent": self.agent_name, "api_port": self.api_port})
+        self._gmail_confirmations: dict[str, str] = {}
 
     def _record_token_usage(self, agent_name: str, usage: Dict[str, Any]) -> None:
         """Persiste el uso de tokens del agente sin recurrir a llamadas HTTP."""
@@ -130,20 +132,182 @@ class LangGraphOrchestratorAdapter:
             fallback["provider"] = "heuristic"
         return fallback
 
-    def _extract_response_text(self, envelope: ResponseEnvelope) -> str:
-        if hasattr(envelope, "data") and envelope.data:
-            if isinstance(envelope.data, dict):
-                return str(envelope.data.get("response", ""))
-            return str(envelope.data)
-        if hasattr(envelope, "response"):
-            return str(envelope.response)
+    def _extract_response_text(self, envelope: ResponseEnvelope, session_id: Optional[str] = None) -> str:
+        def maybe_override(text: str) -> str:
+            if not session_id:
+                return text
+            stored = self._gmail_confirmations.get(session_id)
+            if stored and ("Revisé tu consulta" in text or not text.strip()):
+                self._gmail_confirmations.pop(session_id, None)
+                return stored
+            if stored and stored == text:
+                self._gmail_confirmations.pop(session_id, None)
+            return text
+
+        message_attr = getattr(envelope, "message", None)
+        if message_attr:
+            return maybe_override(str(message_attr))
+
+        data_attr = getattr(envelope, "data", None)
+        if isinstance(data_attr, dict):
+            gus_payload = data_attr.get("capi_gus")
+            if isinstance(gus_payload, dict):
+                gus_message = gus_payload.get("message")
+                if gus_message:
+                    return maybe_override(str(gus_message))
+
+            reasoning_plan = data_attr.get("reasoning_plan")
+            if isinstance(reasoning_plan, dict):
+                supporting = reasoning_plan.get("supporting_evidence") or {}
+                entities = supporting.get("entities") if isinstance(supporting, dict) else {}
+                if isinstance(entities, dict):
+                    operation_hint = entities.get("gmail_operation")
+                    if isinstance(operation_hint, str) and operation_hint.startswith("send"):
+                        recipients_entity = entities.get("email_recipients")
+                        subject_hint = str(entities.get("email_subject") or "(sin asunto)")
+                        if isinstance(recipients_entity, list):
+                            recipients = [str(item).strip() for item in recipients_entity if item]
+                        elif isinstance(recipients_entity, str):
+                            recipients = [recipients_entity]
+                        else:
+                            recipients = []
+                        joined_recipients = ", ".join(recipients) if recipients else "el destinatario indicado"
+                        confirmation_message = (
+                            f"Te confirmo que envié el correo a {joined_recipients} con asunto \"{subject_hint}\". ¿Necesitás algo más?"
+                        )
+                        if session_id:
+                            self._gmail_confirmations[session_id] = confirmation_message
+                        return confirmation_message
+
+            operation_payload = data_attr.get("operation") or data_attr.get("agente_g_operation")
+            parameters_payload = data_attr.get("parameters") or data_attr.get("agente_g_parameters")
+            artifact_payload = data_attr.get("artifact") or data_attr.get("agente_g_artifact")
+            if isinstance(operation_payload, str) and operation_payload == "send_gmail":
+                recipients: list[str] = []
+                subject: str = "(sin asunto)"
+                if isinstance(parameters_payload, dict):
+                    maybe_to = parameters_payload.get("to")
+                    if isinstance(maybe_to, list):
+                        recipients = [str(item) for item in maybe_to if item]
+                    elif isinstance(maybe_to, str):
+                        recipients = [maybe_to]
+                    if parameters_payload.get("subject"):
+                        subject = str(parameters_payload["subject"])
+                if not recipients and isinstance(artifact_payload, dict):
+                    maybe_recipients = artifact_payload.get("recipients")
+                    if isinstance(maybe_recipients, list):
+                        recipients = [str(item) for item in maybe_recipients if item]
+                    if artifact_payload.get("subject"):
+                        subject = str(artifact_payload["subject"])
+                joined_recipients = ", ".join(recipients) if recipients else "el destinatario indicado"
+                confirmation_message = f"Te confirmo que envié el correo a {joined_recipients} con asunto \"{subject}\". ¿Necesitás algo más?"
+                if session_id:
+                    self._gmail_confirmations[session_id] = confirmation_message
+                return confirmation_message
+
+            friendly_fallback = self._compose_friendly_fallback(data_attr, envelope)
+            if friendly_fallback:
+                return maybe_override(friendly_fallback)
+            response_field = data_attr.get("response")
+            if response_field:
+                return maybe_override(str(response_field))
+            return maybe_override(str(data_attr))
+
+        response_attr = getattr(envelope, "response", None)
+        if response_attr:
+            return maybe_override(str(response_attr))
+
+        stored = self._gmail_confirmations.pop(session_id, None) if session_id else None
+        if stored:
+            return stored
         return ""
+
+    def _compose_friendly_fallback(self, data: Dict[str, Any], envelope: ResponseEnvelope) -> Optional[str]:
+        response_field = data.get("response")
+        summary_message = data.get("summary_message")
+        if response_field and response_field != summary_message:
+            return None
+
+        rows = data.get("rows")
+        if not isinstance(rows, list) or not rows:
+            return None
+        first_row = rows[0]
+        if not isinstance(first_row, dict):
+            return None
+
+        branch = first_row.get("sucursal_nombre") or first_row.get("branch_name") or "la sucursal consultada"
+        balance = first_row.get("saldo_total_sucursal")
+        theoretical = first_row.get("caja_teorica_sucursal")
+
+        delta_value: Optional[float]
+        try:
+            delta_value = (float(theoretical) - float(balance)) if balance is not None and theoretical is not None else None
+        except (TypeError, ValueError):
+            delta_value = None
+
+        balance_text = self._format_currency(balance)
+        theoretical_text = self._format_currency(theoretical)
+        delta_text = self._format_currency(delta_value) if delta_value is not None else None
+
+        parts: List[str] = []
+        if balance_text:
+            parts.append(f"El saldo actual de la sucursal '{branch}' es {balance_text}.")
+        if theoretical_text:
+            if delta_value is not None:
+                if delta_value > 0:
+                    parts.append(f"La caja teórica proyecta {theoretical_text} y detecto un faltante de {delta_text}.")
+                elif delta_value < 0:
+                    parts.append(f"La caja teórica proyecta {theoretical_text} y observo un excedente de {delta_text}.")
+                else:
+                    parts.append(f"La caja teórica coincide con {theoretical_text}.")
+            else:
+                parts.append(f"La caja teórica proyecta {theoretical_text}.")
+
+        meta = envelope.meta if isinstance(getattr(envelope, "meta", None), dict) else {}
+        response_meta = meta.get("response_metadata")
+        if isinstance(response_meta, dict):
+            alert_msg = response_meta.get("alert_notification")
+            if alert_msg:
+                normalized = str(alert_msg).strip().rstrip(".")
+                if normalized:
+                    parts.append(f"{normalized}.")
+
+        file_path = data.get("file_path")
+        closing_question: str
+        if isinstance(file_path, str) and file_path:
+            try:
+                file_name = Path(file_path).name
+            except Exception:
+                file_name = None
+            if file_name:
+                closing_question = f"¿Querés que guarde este análisis en el escritorio como {file_name}?"
+            else:
+                closing_question = "¿Querés que guarde este análisis en el escritorio o seguimos con otra consulta?"
+        else:
+            closing_question = "¿Querés que guarde este análisis en el escritorio o seguimos con otra consulta?"
+
+        if not parts:
+            return None
+
+        parts.append(closing_question)
+        return " ".join(part.strip() for part in parts if part)
+
+    @staticmethod
+    def _format_currency(value: Any) -> Optional[str]:
+        try:
+            amount = float(value)
+        except (TypeError, ValueError):
+            return None
+        sign = "-" if amount < 0 else ""
+        integer_part, decimal_part = f"{abs(amount):,.2f}".split(".")
+        integer_part = integer_part.replace(",", ".")
+        return f"{sign}${integer_part},{decimal_part}"
 
     def _resolve_active_agent(self, envelope: ResponseEnvelope, response_text: str) -> str:
         meta = envelope.meta if isinstance(getattr(envelope, "meta", None), dict) else {}
         completed_nodes = meta.get("completed_nodes")
         if isinstance(completed_nodes, (list, tuple)):
-            for agent_node in ("smalltalk", "summary", "branch", "anomaly"):
+            for agent_node in ("capi_gus", "branch", "anomaly"):
                 if agent_node in completed_nodes:
                     return agent_node
         if hasattr(envelope, "data") and isinstance(envelope.data, dict):
@@ -152,14 +316,14 @@ class LangGraphOrchestratorAdapter:
             stage = envelope.data.get("workflow_stage")
             if isinstance(stage, str):
                 lowered = stage.lower()
-                if "summary" in lowered:
-                    return "summary"
+                if "capi_gus" in lowered or "gus" in lowered or "summary" in lowered:
+                    return "capi_gus"
                 if "branch" in lowered:
                     return "branch"
                 if "anomaly" in lowered:
                     return "anomaly"
-                if "smalltalk" in lowered:
-                    return "smalltalk"
+                if "capi_gus" in lowered or "gus" in lowered:
+                    return "capi_gus"
         return "unknown"
 
     async def _maybe_enhance_with_llm(
@@ -288,7 +452,12 @@ class LangGraphOrchestratorAdapter:
             with suppress(Exception):
                 setattr(envelope, "trace_id", trace_id)
 
-        response_text = self._extract_response_text(envelope)
+        response_text = self._extract_response_text(envelope, session_id)
+        if response_text:
+            with suppress(Exception):
+                setattr(envelope, "message", response_text)
+                if isinstance(envelope.data, dict):
+                    envelope.data.setdefault("response", response_text)
         active_agent = self._resolve_active_agent(envelope, response_text)
 
         effective_trace_id = getattr(envelope, "trace_id", None) or trace_id
@@ -302,6 +471,11 @@ class LangGraphOrchestratorAdapter:
             trace_id=effective_trace_id,
         )
         response_text = self._extract_response_text(envelope)
+        if response_text:
+            with suppress(Exception):
+                setattr(envelope, "message", response_text)
+                if isinstance(envelope.data, dict):
+                    envelope.data.setdefault("response", response_text)
         input_tokens = int(usage_details.get("prompt_tokens", 0))
         output_tokens = int(usage_details.get("completion_tokens", 0))
         tokens_used = int(usage_details.get("total_tokens", input_tokens + output_tokens))

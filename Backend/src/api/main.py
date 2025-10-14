@@ -22,6 +22,7 @@ import locale
 import sys
 import asyncio
 import uuid
+from decimal import Decimal
 from typing import Any, Dict, List, Optional
 from datetime import datetime
 from pathlib import Path
@@ -92,6 +93,23 @@ logger = get_logger(__name__)
 logger_msg = "Using Unified LangGraph Orchestrator"
 
 # Use LangGraph orchestrator from factory
+
+
+def _sanitize_for_json(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {k: _sanitize_for_json(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_sanitize_for_json(v) for v in value]
+    if isinstance(value, set):
+        return [_sanitize_for_json(v) for v in value]
+    if isinstance(value, Decimal):
+        try:
+            return float(value)
+        except Exception:
+            return str(value)
+    if isinstance(value, datetime):
+        return value.isoformat()
+    return value
 
 app = FastAPI(title="CapiAgentes Chat Server")
 app.state.start_time = datetime.now()
@@ -541,6 +559,14 @@ async def websocket_endpoint(ws: WebSocket) -> None:
                         "request_id": result["data"].get("request_id"),
                     }
 
+                    data_payload = result.get("data")
+                    if isinstance(data_payload, dict):
+                        safe_data = _sanitize_for_json(data_payload)
+                        response_payload["data"] = safe_data
+                        shared_artifacts = safe_data.get("shared_artifacts")
+                        if shared_artifacts:
+                            response_payload.setdefault("shared_artifacts", shared_artifacts)
+
                     meta_payload = result_obj.meta if isinstance(result_obj.meta, dict) else {}
                     if meta_payload:
                         response_payload["metadata"] = meta_payload
@@ -646,6 +672,10 @@ async def api_command(request: Request):
 
         base_extra = {'request_id': request_id, 'client_id': client_id, 'session_id': client_id}
         logger.info(
+            '[EMAIL_TRACE] backend.api_command',
+            extra=dict(base_extra, log_context=f"instruction_raw={instruction}")
+        )
+        logger.info(
             'Command payload validated',
             extra=dict(base_extra, log_context=f"instruction={instruction[:80]} file={file_path or '<none>'}")
         )
@@ -738,6 +768,12 @@ async def api_command(request: Request):
                     },
                     'diagnostics': classification_info
                 }
+
+                safe_data = _sanitize_for_json(result.get('data', {}))
+                response_data['response']['data'] = safe_data
+                shared_artifacts = safe_data.get('shared_artifacts') if isinstance(safe_data, dict) else None
+                if shared_artifacts:
+                    response_data['response'].setdefault('shared_artifacts', shared_artifacts)
 
                 meta_payload = result_obj.meta if isinstance(result_obj.meta, dict) else {}
                 if meta_payload:

@@ -152,7 +152,11 @@
 .inputWrapper {
   display: flex;
   gap: 12px;
+<<<<<<< HEAD
   align-items: flex-end;
+=======
+  align-items: center;
+>>>>>>> origin/develop
 }
 
 /* Campo de texto */
@@ -183,6 +187,7 @@
   color: rgba(159, 190, 222, 0.5);
 }
 
+<<<<<<< HEAD
 /* Botón de enviar */
 .sendButton {
   padding: 10px 20px;
@@ -224,6 +229,8 @@
   );
 }
 
+=======
+>>>>>>> origin/develop
 /* Slot derecho para botones adicionales */
 .rightSlot {
   display: flex;
@@ -237,6 +244,7 @@
   pointer-events: none;
 }
 
+<<<<<<< HEAD
 .loading .sendButton {
   animation: loadingPulse 1.5s ease-in-out infinite;
 }
@@ -250,6 +258,8 @@
   }
 }
 
+=======
+>>>>>>> origin/develop
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
@@ -276,13 +286,20 @@
     font-size: 12px;
   }
 
+<<<<<<< HEAD
   .sendButton {
     padding: 10px 16px;
     font-size: 11px;
   }
 
+=======
+>>>>>>> origin/develop
   .alertButton {
     padding: 5px 10px;
     font-size: 9px;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/develop

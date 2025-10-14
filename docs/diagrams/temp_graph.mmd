@@ -11,7 +11,7 @@ graph TD;
 	reasoning(reasoning)
 	supervisor(supervisor)
 	router(router)
-	smalltalk(smalltalk)
+	capi_gus(capi_gus)
 	summary(summary)
 	branch(branch)
 	anomaly(anomaly)
@@ -37,14 +37,14 @@ graph TD;
 	router -.-> capi_noticias;
 	router -.-> finalize;
 	router -.-> human_gate;
-	router -.-> smalltalk;
+	router -.-> capi_gus;
 	router -.-> summary;
 	start --> intent;
 	summary --> human_gate;
 	supervisor --> router;
 	capi_noticias --> __end__;
 	finalize --> __end__;
-	smalltalk --> __end__;
+	capi_gus --> __end__;
 	classDef default fill:#f2f0ff,line-height:1.2
 	classDef first fill-opacity:0
 	classDef last fill:#bfb6fc

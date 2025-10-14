@@ -79,7 +79,7 @@ def test_router_short_circuits_to_el_cajas_after_datab():
 
         semantic_instance = semantic_mock.return_value
         semantic_instance.classify_intent.return_value = MagicMock(
-            target_agent='summary',
+            target_agent='capi_gus',
             intent=Intent.SUMMARY_REQUEST,
             confidence=0.5,
             requires_clarification=False,

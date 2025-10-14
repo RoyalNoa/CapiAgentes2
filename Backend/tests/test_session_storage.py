@@ -22,8 +22,8 @@ def sample_state() -> GraphState:
         completed_nodes=["start", "finalize"],
         detected_intent=IntentType.QUERY,
         intent_confidence=0.92,
-        routing_decision="summary",
-        active_agent="summary",
+        routing_decision="capi_gus",
+        active_agent="capi_gus",
         conversation_history=[
             {"role": "user", "content": "Hola"},
             {"role": "assistant", "content": "¡Hola!"},

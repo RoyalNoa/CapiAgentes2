@@ -15,7 +15,7 @@ def test_token_usage_service_timeline(tmp_path: Path) -> None:
     service = TokenUsageService(token_file=tmp_path / "token_tracking.json")
 
     service.record_usage(
-        "summary",
+        "capi_gus",
         tokens_used=100,
         cost_usd=0.12,
         prompt_tokens=70,
@@ -23,7 +23,7 @@ def test_token_usage_service_timeline(tmp_path: Path) -> None:
         usage_timestamp=_iso(-2),
     )
     service.record_usage(
-        "summary",
+        "capi_gus",
         tokens_used=50,
         cost_usd=0.05,
         prompt_tokens=30,
@@ -55,6 +55,6 @@ def test_token_usage_service_timeline(tmp_path: Path) -> None:
     latest_date = max(day_map)
     day2 = day_map[latest_date]
     assert day2["total_tokens"] == 90
-    assert day2["agents"]["summary"]["tokens"] == 50
+    assert day2["agents"]["capi_gus"]["tokens"] == 50
     assert day2["agents"]["branch"]["tokens"] == 40
     assert day2["total_cost_usd"] == 0.07

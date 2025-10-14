@@ -672,14 +672,15 @@ class CapiDataBNode(GraphNode):
         else:
             addition = 'Genere una alerta automatica con las desviaciones detectadas.'
 
-        if addition not in message:
-            new_message = f"{message}\n\n{addition}" if message else addition
-            state = StateMutator.update_field(state, 'response_message', new_message)
-
-        artifact = self._extract_latest_recommendation(state)
         metadata_updates: Dict[str, Any] = {
             'el_cajas_alert_persisted': True,
+            'alert_notification': addition,
         }
+
+        if addition and addition not in message:
+            metadata_updates['alert_notification'] = addition
+
+        artifact = self._extract_latest_recommendation(state)
         if duplicate_claves:
             metadata_updates['el_cajas_alert_duplicate'] = True
             metadata_updates['el_cajas_alert_duplicates'] = duplicate_claves

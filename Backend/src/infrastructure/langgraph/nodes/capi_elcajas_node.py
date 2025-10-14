@@ -168,7 +168,7 @@ class CapiElCajasNode(GraphNode):
         updated = StateMutator.merge_dict(updated, "response_data", {"el_cajas": data})
         updated = StateMutator.merge_dict(updated, "shared_artifacts", shared_updates)
         updated = StateMutator.merge_dict(updated, "processing_metrics", metrics)
-        updated = StateMutator.update_field(updated, "routing_decision", "human_gate")
+        updated = StateMutator.update_field(updated, "routing_decision", "capi_gus")
         updated = StateMutator.update_field(updated, "response_message", combined_message)
         updated = self._prepare_desktop_action(updated, data)
         updated = StateMutator.append_to_list(updated, "completed_nodes", self.name)

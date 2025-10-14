@@ -31,8 +31,7 @@ from src.infrastructure.langgraph.nodes.reasoning_node import ReasoningNode
 from src.infrastructure.langgraph.nodes.supervisor_node import SupervisorNode
 from src.infrastructure.langgraph.nodes.router_node import RouterNode
 from src.infrastructure.langgraph.nodes.loop_controller_node import LoopControllerNode
-from src.infrastructure.langgraph.nodes.smalltalk_node import SmalltalkNode
-from src.infrastructure.langgraph.nodes.summary_node import SummaryNode
+from src.infrastructure.langgraph.nodes.capi_gus_node import CapiGusNode
 from src.infrastructure.langgraph.nodes.branch_node import BranchNode
 from src.infrastructure.langgraph.nodes.anomaly_node import AnomalyNode
 from src.infrastructure.langgraph.nodes.capi_desktop_node import CapiDesktopNode
@@ -330,9 +329,10 @@ class LangGraphRuntime:
             state = node.run(state)
 
         decision = state.routing_decision or state.active_agent or "assemble"
+        if decision == "human_gate":
+            decision = "capi_gus"
         agent_nodes = {
-            "smalltalk": SmalltalkNode(name="smalltalk"),
-            "summary": SummaryNode(name="summary"),
+            "capi_gus": CapiGusNode(name="capi_gus"),
             "branch": BranchNode(name="branch"),
             "anomaly": AnomalyNode(name="anomaly"),
             "capi_desktop": CapiDesktopNode(name="capi_desktop"),
@@ -518,7 +518,11 @@ class LangGraphRuntime:
         Map node name to semantic action type for frontend display.
 
         Args:
+<<<<<<< HEAD
             node_name: Name of the node (e.g., "intent", "router", "summary")
+=======
+            node_name: Name of the node (e.g., "intent", "router", "capi_gus")
+>>>>>>> origin/develop
 
         Returns:
             Semantic action string (e.g., "intent", "router", "summary_generation")
@@ -544,8 +548,13 @@ class LangGraphRuntime:
             'capidatab': 'database_query',
             'capielcajas': 'branch_operations',
             'capidesktop': 'desktop_operation',
+<<<<<<< HEAD
             'capinoticias': 'news_analysis',
             'smalltalk': 'conversation',
+=======
+            'capi_gus': 'conversation',
+            'capinoticias': 'news_analysis',
+>>>>>>> origin/develop
         }
 
         return action_map.get(node_lower, node_name.lower())
@@ -674,12 +683,16 @@ class LangGraphRuntime:
             if not message:
                 message = "Se requiere aprobacion humana para continuar."
 
+        response_data = dict(final_state.response_data) if final_state.response_data else {}
+        if final_state.shared_artifacts:
+            response_data.setdefault("shared_artifacts", final_state.shared_artifacts)
+
         return ResponseEnvelope(
             trace_id=final_state.trace_id,
             response_type=resp_type,
             intent=(final_state.detected_intent or IntentType.UNKNOWN),
             message=message,
-            data=final_state.response_data,
+            data=response_data,
             meta=meta,
         )
 

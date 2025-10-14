@@ -144,7 +144,11 @@ export const AGENT_PHRASES = {
     'Identificando outliers...',
     'Evaluando desviaciones...'
   ],
+<<<<<<< HEAD
   smalltalk: [
+=======
+  capi_gus: [
+>>>>>>> origin/develop
     'Procesando saludo...',
     'Generando respuesta...',
     'Preparando mensaje...',

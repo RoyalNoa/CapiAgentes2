@@ -1164,6 +1164,7 @@
       "generated_at": "2025-10-03T03:19:07.583685"
     },
     {
+<<<<<<< HEAD
       "filename": "DataB_2025_10_03_976831.json",
       "relative_path": "capi_DataB/DataB_2025_10_03_976831.json",
       "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_03_976831.json",
@@ -1237,9 +1238,2730 @@
     }
   ],
   "updated_at": "2025-10-03T18:10:44.156396",
+=======
+      "filename": "DataB_2025_10_07_224846.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_224846.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_224846.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T04:11:10.253578"
+    },
+    {
+      "filename": "DataB_2025_10_07_318010.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_318010.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_318010.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T04:11:10.336019"
+    },
+    {
+      "filename": "DataB_2025_10_07_482004.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_482004.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_482004.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T04:11:10.494859"
+    },
+    {
+      "filename": "DataB_2025_10_07_664141.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_664141.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_664141.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T04:11:16.681035"
+    },
+    {
+      "filename": "DataB_2025_10_07_743258.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_743258.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_743258.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T04:11:16.759582"
+    },
+    {
+      "filename": "DataB_2025_10_07_893426.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_893426.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_893426.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T04:11:16.911105"
+    },
+    {
+      "filename": "DataB_2025_10_07_736725.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_736725.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_736725.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:12:36.757985"
+    },
+    {
+      "filename": "DataB_2025_10_07_861812.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_861812.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_861812.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:12:36.889172"
+    },
+    {
+      "filename": "DataB_2025_10_07_096730.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_096730.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_096730.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:12:37.120451"
+    },
+    {
+      "filename": "DataB_2025_10_07_832605.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_832605.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_832605.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:12:42.858335"
+    },
+    {
+      "filename": "DataB_2025_10_07_956437.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_956437.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_956437.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:12:42.982765"
+    },
+    {
+      "filename": "DataB_2025_10_07_213197.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_213197.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_213197.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:12:43.244015"
+    },
+    {
+      "filename": "DataB_2025_10_07_580861.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_580861.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_580861.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:21:17.611147"
+    },
+    {
+      "filename": "DataB_2025_10_07_721649.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_721649.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_721649.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:21:17.750599"
+    },
+    {
+      "filename": "DataB_2025_10_07_973793.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_973793.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_973793.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:21:17.997426"
+    },
+    {
+      "filename": "DataB_2025_10_07_065054.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_065054.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_065054.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:21:25.084515"
+    },
+    {
+      "filename": "DataB_2025_10_07_157726.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_157726.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_157726.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:21:25.181257"
+    },
+    {
+      "filename": "DataB_2025_10_07_335836.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_335836.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_335836.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:21:25.356270"
+    },
+    {
+      "filename": "DataB_2025_10_07_633057.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_633057.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_633057.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:37:18.654956"
+    },
+    {
+      "filename": "DataB_2025_10_07_746732.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_746732.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_746732.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:37:18.770115"
+    },
+    {
+      "filename": "DataB_2025_10_07_973053.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_973053.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_973053.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:37:18.998201"
+    },
+    {
+      "filename": "DataB_2025_10_07_685559.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_685559.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_685559.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:37:25.713606"
+    },
+    {
+      "filename": "DataB_2025_10_07_812026.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_812026.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_812026.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:37:25.839599"
+    },
+    {
+      "filename": "DataB_2025_10_07_082154.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_082154.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_082154.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:37:26.108414"
+    },
+    {
+      "filename": "DataB_2025_10_07_447006.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_447006.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_447006.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:54:29.465045"
+    },
+    {
+      "filename": "DataB_2025_10_07_534909.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_534909.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_534909.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:54:29.555737"
+    },
+    {
+      "filename": "DataB_2025_10_07_720706.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_720706.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_720706.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:54:29.738798"
+    },
+    {
+      "filename": "DataB_2025_10_07_357999.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_357999.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_357999.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:54:35.376912"
+    },
+    {
+      "filename": "DataB_2025_10_07_450858.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_450858.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_450858.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T20:54:35.469728"
+    },
+    {
+      "filename": "DataB_2025_10_07_640982.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_640982.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_640982.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T20:54:35.661946"
+    },
+    {
+      "filename": "DataB_2025_10_07_166223.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_166223.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_166223.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:34:59.189230"
+    },
+    {
+      "filename": "DataB_2025_10_07_284741.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_284741.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_284741.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T21:34:59.306324"
+    },
+    {
+      "filename": "DataB_2025_10_07_511742.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_511742.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_511742.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:34:59.539871"
+    },
+    {
+      "filename": "DataB_2025_10_07_393102.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_393102.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_393102.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:35:05.415160"
+    },
+    {
+      "filename": "DataB_2025_10_07_487209.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_487209.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_487209.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T21:35:05.510752"
+    },
+    {
+      "filename": "DataB_2025_10_07_652426.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_652426.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_652426.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:35:05.671440"
+    },
+    {
+      "filename": "DataB_2025_10_07_972660.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_972660.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_972660.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:42:53.992878"
+    },
+    {
+      "filename": "DataB_2025_10_07_072541.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_072541.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_072541.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T21:42:54.092790"
+    },
+    {
+      "filename": "DataB_2025_10_07_297652.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_297652.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_297652.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:42:54.320400"
+    },
+    {
+      "filename": "DataB_2025_10_07_136607.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_136607.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_136607.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:43:00.201125"
+    },
+    {
+      "filename": "DataB_2025_10_07_294002.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_294002.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_294002.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T21:43:00.314187"
+    },
+    {
+      "filename": "DataB_2025_10_07_485054.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_485054.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_485054.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:43:00.506179"
+    },
+    {
+      "filename": "DataB_2025_10_07_016310.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_016310.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_016310.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:59:18.040508"
+    },
+    {
+      "filename": "DataB_2025_10_07_111008.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_111008.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_111008.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T21:59:18.129154"
+    },
+    {
+      "filename": "DataB_2025_10_07_279845.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_279845.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_279845.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:59:18.301991"
+    },
+    {
+      "filename": "DataB_2025_10_07_269716.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_269716.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_269716.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:59:24.288133"
+    },
+    {
+      "filename": "DataB_2025_10_07_359091.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_359091.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_359091.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T21:59:24.376987"
+    },
+    {
+      "filename": "DataB_2025_10_07_521577.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_521577.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_521577.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T21:59:24.542521"
+    },
+    {
+      "filename": "DataB_2025_10_07_966066.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_966066.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_966066.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:04:31.982765"
+    },
+    {
+      "filename": "DataB_2025_10_07_061803.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_061803.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_061803.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:04:32.079867"
+    },
+    {
+      "filename": "DataB_2025_10_07_265705.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_265705.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_265705.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:04:32.288458"
+    },
+    {
+      "filename": "DataB_2025_10_07_599152.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_599152.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_599152.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:04:37.619434"
+    },
+    {
+      "filename": "DataB_2025_10_07_694956.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_694956.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_694956.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:04:37.718261"
+    },
+    {
+      "filename": "DataB_2025_10_07_876271.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_876271.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_876271.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:04:37.901073"
+    },
+    {
+      "filename": "DataB_2025_10_07_713321.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_713321.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_713321.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:05:57.739905"
+    },
+    {
+      "filename": "DataB_2025_10_07_824805.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_824805.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_824805.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:05:57.849071"
+    },
+    {
+      "filename": "DataB_2025_10_07_062991.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_062991.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_062991.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:05:58.086075"
+    },
+    {
+      "filename": "DataB_2025_10_07_353560.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_353560.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_353560.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:06:05.373700"
+    },
+    {
+      "filename": "DataB_2025_10_07_456659.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_456659.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_456659.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:06:05.481290"
+    },
+    {
+      "filename": "DataB_2025_10_07_662235.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_662235.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_662235.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:06:05.688836"
+    },
+    {
+      "filename": "DataB_2025_10_07_537582.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_537582.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_537582.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:07:47.557562"
+    },
+    {
+      "filename": "DataB_2025_10_07_651123.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_651123.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_651123.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:07:47.680246"
+    },
+    {
+      "filename": "DataB_2025_10_07_874722.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_874722.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_874722.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:07:47.901723"
+    },
+    {
+      "filename": "DataB_2025_10_07_732795.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_732795.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_732795.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:07:54.752938"
+    },
+    {
+      "filename": "DataB_2025_10_07_823142.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_823142.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_823142.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:07:54.845321"
+    },
+    {
+      "filename": "DataB_2025_10_07_051347.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_051347.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_051347.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:07:55.069720"
+    },
+    {
+      "filename": "DataB_2025_10_07_881689.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_881689.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_881689.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:35:57.899930"
+    },
+    {
+      "filename": "DataB_2025_10_07_961579.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_961579.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_961579.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:35:58.002195"
+    },
+    {
+      "filename": "DataB_2025_10_07_114839.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_114839.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_114839.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:35:58.130571"
+    },
+    {
+      "filename": "DataB_2025_10_07_968889.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_968889.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_968889.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:36:02.984653"
+    },
+    {
+      "filename": "DataB_2025_10_07_040392.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_040392.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_040392.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-07T22:36:03.052806"
+    },
+    {
+      "filename": "DataB_2025_10_07_157651.json",
+      "relative_path": "capi_DataB/DataB_2025_10_07_157651.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_157651.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-07T22:36:03.173017"
+    },
+    {
+      "filename": "DataB_2025_10_08_549889.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_549889.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_549889.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:37:41.585367"
+    },
+    {
+      "filename": "DataB_2025_10_08_711771.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_711771.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_711771.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T00:37:41.734668"
+    },
+    {
+      "filename": "DataB_2025_10_08_967430.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_967430.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_967430.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:37:41.990349"
+    },
+    {
+      "filename": "DataB_2025_10_08_012384.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_012384.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_012384.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:37:48.033854"
+    },
+    {
+      "filename": "DataB_2025_10_08_135441.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_135441.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_135441.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T00:37:48.157051"
+    },
+    {
+      "filename": "DataB_2025_10_08_330673.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_330673.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_330673.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:37:48.355264"
+    },
+    {
+      "filename": "DataB_2025_10_08_030516.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_030516.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_030516.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:44:10.047889"
+    },
+    {
+      "filename": "DataB_2025_10_08_106604.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_106604.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_106604.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T00:44:10.121407"
+    },
+    {
+      "filename": "DataB_2025_10_08_234823.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_234823.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_234823.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:44:10.248381"
+    },
+    {
+      "filename": "DataB_2025_10_08_106321.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_106321.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_106321.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:44:16.142040"
+    },
+    {
+      "filename": "DataB_2025_10_08_199871.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_199871.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_199871.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T00:44:16.217804"
+    },
+    {
+      "filename": "DataB_2025_10_08_337420.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_337420.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_337420.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T00:44:16.354333"
+    },
+    {
+      "filename": "DataB_2025_10_08_339512.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_339512.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_339512.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T12:51:40.408536"
+    },
+    {
+      "filename": "DataB_2025_10_08_715327.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_715327.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_715327.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T12:51:40.783661"
+    },
+    {
+      "filename": "DataB_2025_10_08_285137.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_285137.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_285137.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T12:51:41.353331"
+    },
+    {
+      "filename": "DataB_2025_10_08_818794.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_818794.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_818794.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T12:51:49.860140"
+    },
+    {
+      "filename": "DataB_2025_10_08_015141.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_015141.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_015141.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T12:51:50.078761"
+    },
+    {
+      "filename": "DataB_2025_10_08_405532.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_405532.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_405532.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T12:51:50.455863"
+    },
+    {
+      "filename": "DataB_2025_10_08_264344.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_264344.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_264344.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T13:29:12.329585"
+    },
+    {
+      "filename": "DataB_2025_10_08_624028.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_624028.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_624028.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T13:29:12.697786"
+    },
+    {
+      "filename": "DataB_2025_10_08_017799.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_017799.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_017799.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T13:29:13.082959"
+    },
+    {
+      "filename": "DataB_2025_10_08_004019.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_004019.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_004019.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T13:30:29.038789"
+    },
+    {
+      "filename": "DataB_2025_10_08_175269.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_175269.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_175269.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T13:30:29.206909"
+    },
+    {
+      "filename": "DataB_2025_10_08_534003.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_534003.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_534003.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T13:30:29.601482"
+    },
+    {
+      "filename": "DataB_2025_10_08_078636.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_078636.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_078636.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T13:36:39.113395"
+    },
+    {
+      "filename": "DataB_2025_10_08_255883.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_255883.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_255883.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T13:36:39.298616"
+    },
+    {
+      "filename": "DataB_2025_10_08_658093.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_658093.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_658093.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T13:36:39.702910"
+    },
+    {
+      "filename": "DataB_2025_10_08_261126.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_261126.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_261126.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T14:08:27.316412"
+    },
+    {
+      "filename": "DataB_2025_10_08_445492.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_445492.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_445492.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T14:08:27.480767"
+    },
+    {
+      "filename": "DataB_2025_10_08_797732.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_797732.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_797732.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T14:08:27.839635"
+    },
+    {
+      "filename": "DataB_2025_10_08_618971.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_618971.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_618971.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T14:08:38.690661"
+    },
+    {
+      "filename": "DataB_2025_10_08_965452.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_965452.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_965452.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T14:08:39.034262"
+    },
+    {
+      "filename": "DataB_2025_10_08_599523.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_599523.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_599523.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T14:08:39.664350"
+    },
+    {
+      "filename": "DataB_2025_10_08_511780.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_511780.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_511780.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T14:36:42.523156"
+    },
+    {
+      "filename": "DataB_2025_10_08_577187.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_577187.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_577187.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T14:36:42.589450"
+    },
+    {
+      "filename": "DataB_2025_10_08_694700.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_694700.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_694700.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T14:36:42.705826"
+    },
+    {
+      "filename": "DataB_2025_10_08_813399.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_813399.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_813399.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T14:36:50.828243"
+    },
+    {
+      "filename": "DataB_2025_10_08_882782.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_882782.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_882782.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T14:36:50.893449"
+    },
+    {
+      "filename": "DataB_2025_10_08_046042.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_046042.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_046042.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T14:36:51.057982"
+    },
+    {
+      "filename": "DataB_2025_10_08_552454.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_552454.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_552454.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T16:50:56.567015"
+    },
+    {
+      "filename": "DataB_2025_10_08_624402.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_624402.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_624402.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T16:50:56.639430"
+    },
+    {
+      "filename": "DataB_2025_10_08_750882.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_750882.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_750882.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T16:50:56.763458"
+    },
+    {
+      "filename": "DataB_2025_10_08_256020.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_256020.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_256020.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T16:51:05.268799"
+    },
+    {
+      "filename": "DataB_2025_10_08_330958.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_330958.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_330958.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T16:51:05.347670"
+    },
+    {
+      "filename": "DataB_2025_10_08_494085.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_494085.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_494085.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T16:51:05.511294"
+    },
+    {
+      "filename": "DataB_2025_10_08_662029.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_662029.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_662029.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T17:00:57.675848"
+    },
+    {
+      "filename": "DataB_2025_10_08_733565.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_733565.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_733565.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T17:00:57.746587"
+    },
+    {
+      "filename": "DataB_2025_10_08_858122.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_858122.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_858122.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T17:00:57.871463"
+    },
+    {
+      "filename": "DataB_2025_10_08_082926.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_082926.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_082926.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T17:01:05.101137"
+    },
+    {
+      "filename": "DataB_2025_10_08_161501.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_161501.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_161501.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T17:01:05.176913"
+    },
+    {
+      "filename": "DataB_2025_10_08_314120.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_314120.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_314120.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T17:01:05.330772"
+    },
+    {
+      "filename": "DataB_2025_10_08_700878.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_700878.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_700878.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T17:02:23.746848"
+    },
+    {
+      "filename": "DataB_2025_10_08_808076.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_808076.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_808076.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T17:02:23.821009"
+    },
+    {
+      "filename": "DataB_2025_10_08_982237.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_982237.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_982237.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T17:02:24.000156"
+    },
+    {
+      "filename": "DataB_2025_10_08_056670.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_056670.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_056670.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T17:02:36.072317"
+    },
+    {
+      "filename": "DataB_2025_10_08_137586.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_137586.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_137586.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T17:02:36.181246"
+    },
+    {
+      "filename": "DataB_2025_10_08_322776.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_322776.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_322776.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T17:02:36.342769"
+    },
+    {
+      "filename": "DataB_2025_10_08_713695.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_713695.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_713695.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T18:29:46.728731"
+    },
+    {
+      "filename": "DataB_2025_10_08_788570.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_788570.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_788570.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T18:29:46.806869"
+    },
+    {
+      "filename": "DataB_2025_10_08_920585.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_920585.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_920585.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T18:29:46.935268"
+    },
+    {
+      "filename": "DataB_2025_10_08_548987.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_548987.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_548987.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T18:29:52.561717"
+    },
+    {
+      "filename": "DataB_2025_10_08_617434.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_617434.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_617434.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T18:29:52.630819"
+    },
+    {
+      "filename": "DataB_2025_10_08_741046.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_741046.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_741046.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T18:29:52.757363"
+    },
+    {
+      "filename": "DataB_2025_10_08_267654.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_267654.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_267654.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T18:34:57.284441"
+    },
+    {
+      "filename": "DataB_2025_10_08_344395.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_344395.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_344395.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T18:34:57.357959"
+    },
+    {
+      "filename": "DataB_2025_10_08_469566.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_469566.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_469566.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T18:34:57.481055"
+    },
+    {
+      "filename": "DataB_2025_10_08_350501.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_350501.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_350501.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T18:35:04.365138"
+    },
+    {
+      "filename": "DataB_2025_10_08_428416.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_428416.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_428416.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T18:35:04.481779"
+    },
+    {
+      "filename": "DataB_2025_10_08_590824.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_590824.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_590824.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T18:35:04.606666"
+    },
+    {
+      "filename": "DataB_2025_10_08_063967.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_063967.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_063967.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T18:46:46.080070"
+    },
+    {
+      "filename": "DataB_2025_10_08_142128.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_142128.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_142128.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T18:46:46.157356"
+    },
+    {
+      "filename": "DataB_2025_10_08_312246.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_312246.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_312246.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T18:46:46.326935"
+    },
+    {
+      "filename": "DataB_2025_10_08_300073.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_300073.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_300073.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T18:46:55.313411"
+    },
+    {
+      "filename": "DataB_2025_10_08_371729.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_371729.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_371729.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T18:46:55.385328"
+    },
+    {
+      "filename": "DataB_2025_10_08_526489.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_526489.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_526489.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T18:46:55.542775"
+    },
+    {
+      "filename": "DataB_2025_10_08_545246.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_545246.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_545246.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T19:34:31.589284"
+    },
+    {
+      "filename": "DataB_2025_10_08_749963.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_749963.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_749963.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T19:34:31.785530"
+    },
+    {
+      "filename": "DataB_2025_10_08_255376.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_255376.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_255376.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T19:34:32.300756"
+    },
+    {
+      "filename": "DataB_2025_10_08_692730.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_692730.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_692730.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T19:34:39.735034"
+    },
+    {
+      "filename": "DataB_2025_10_08_881657.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_881657.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_881657.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T19:34:39.925824"
+    },
+    {
+      "filename": "DataB_2025_10_08_320459.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_320459.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_320459.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T19:34:40.473686"
+    },
+    {
+      "filename": "DataB_2025_10_08_487995.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_487995.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_487995.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T20:08:10.514710"
+    },
+    {
+      "filename": "DataB_2025_10_08_650070.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_650070.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_650070.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T20:08:10.677775"
+    },
+    {
+      "filename": "DataB_2025_10_08_935555.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_935555.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_935555.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T20:08:10.958349"
+    },
+    {
+      "filename": "DataB_2025_10_08_758563.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_758563.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_758563.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T20:08:19.785312"
+    },
+    {
+      "filename": "DataB_2025_10_08_883632.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_883632.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_883632.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-08T20:08:19.913087"
+    },
+    {
+      "filename": "DataB_2025_10_08_108170.json",
+      "relative_path": "capi_DataB/DataB_2025_10_08_108170.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_08_108170.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-08T20:08:20.130340"
+    },
+    {
+      "filename": "DataB_2025_10_09_886691.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_886691.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_886691.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T01:53:35.899054"
+    },
+    {
+      "filename": "DataB_2025_10_09_959044.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_959044.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_959044.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T01:53:35.980806"
+    },
+    {
+      "filename": "DataB_2025_10_09_126546.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_126546.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_126546.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T01:53:36.142244"
+    },
+    {
+      "filename": "DataB_2025_10_09_095484.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_095484.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_095484.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T01:53:42.109959"
+    },
+    {
+      "filename": "DataB_2025_10_09_167015.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_167015.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_167015.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T01:53:42.178272"
+    },
+    {
+      "filename": "DataB_2025_10_09_324131.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_324131.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_324131.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T01:53:42.339821"
+    },
+    {
+      "filename": "DataB_2025_10_09_149339.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_149339.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_149339.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T01:58:20.165622"
+    },
+    {
+      "filename": "DataB_2025_10_09_233302.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_233302.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_233302.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T01:58:20.253629"
+    },
+    {
+      "filename": "DataB_2025_10_09_386875.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_386875.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_386875.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T01:58:20.399829"
+    },
+    {
+      "filename": "DataB_2025_10_09_741357.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_741357.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_741357.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T01:58:27.755622"
+    },
+    {
+      "filename": "DataB_2025_10_09_817513.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_817513.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_817513.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T01:58:27.833637"
+    },
+    {
+      "filename": "DataB_2025_10_09_967223.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_967223.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_967223.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T01:58:27.983141"
+    },
+    {
+      "filename": "DataB_2025_10_09_089679.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_089679.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_089679.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T01:58:52.109009"
+    },
+    {
+      "filename": "DataB_2025_10_09_169027.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_169027.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_169027.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T01:58:52.181445"
+    },
+    {
+      "filename": "DataB_2025_10_09_291245.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_291245.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_291245.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T01:58:52.303891"
+    },
+    {
+      "filename": "DataB_2025_10_09_709556.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_709556.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_709556.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T01:58:59.725833"
+    },
+    {
+      "filename": "DataB_2025_10_09_787811.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_787811.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_787811.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T01:58:59.842443"
+    },
+    {
+      "filename": "DataB_2025_10_09_971925.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_971925.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_971925.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T01:58:59.987311"
+    },
+    {
+      "filename": "DataB_2025_10_09_306333.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_306333.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_306333.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T02:25:22.321648"
+    },
+    {
+      "filename": "DataB_2025_10_09_385364.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_385364.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_385364.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T02:25:22.402949"
+    },
+    {
+      "filename": "DataB_2025_10_09_540762.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_540762.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_540762.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T02:25:22.553464"
+    },
+    {
+      "filename": "DataB_2025_10_09_648208.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_648208.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_648208.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T02:25:31.708573"
+    },
+    {
+      "filename": "DataB_2025_10_09_773147.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_773147.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_773147.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T02:25:31.790922"
+    },
+    {
+      "filename": "DataB_2025_10_09_925212.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_925212.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_925212.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T02:25:31.942814"
+    },
+    {
+      "filename": "DataB_2025_10_09_253855.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_253855.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_253855.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T02:25:57.268867"
+    },
+    {
+      "filename": "DataB_2025_10_09_334420.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_334420.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_334420.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T02:25:57.348584"
+    },
+    {
+      "filename": "DataB_2025_10_09_474861.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_474861.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_474861.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T02:25:57.486895"
+    },
+    {
+      "filename": "DataB_2025_10_09_490024.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_490024.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_490024.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T02:26:04.508443"
+    },
+    {
+      "filename": "DataB_2025_10_09_573511.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_573511.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_573511.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T02:26:04.593380"
+    },
+    {
+      "filename": "DataB_2025_10_09_716781.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_716781.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_716781.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T02:26:04.732599"
+    },
+    {
+      "filename": "DataB_2025_10_09_718000.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_718000.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_718000.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T02:41:58.734595"
+    },
+    {
+      "filename": "DataB_2025_10_09_801872.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_801872.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_801872.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T02:41:58.818825"
+    },
+    {
+      "filename": "DataB_2025_10_09_956350.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_956350.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_956350.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T02:41:58.973081"
+    },
+    {
+      "filename": "DataB_2025_10_09_733936.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_733936.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_733936.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T02:42:06.748301"
+    },
+    {
+      "filename": "DataB_2025_10_09_810599.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_810599.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_810599.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T02:42:06.825290"
+    },
+    {
+      "filename": "DataB_2025_10_09_944628.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_944628.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_944628.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T02:42:06.957108"
+    },
+    {
+      "filename": "DataB_2025_10_09_721975.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_721975.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_721975.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T03:01:09.736813"
+    },
+    {
+      "filename": "DataB_2025_10_09_808038.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_808038.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_808038.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T03:01:09.828882"
+    },
+    {
+      "filename": "DataB_2025_10_09_958896.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_958896.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_958896.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T03:01:09.973125"
+    },
+    {
+      "filename": "DataB_2025_10_09_134114.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_134114.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_134114.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T03:01:19.157692"
+    },
+    {
+      "filename": "DataB_2025_10_09_225009.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_225009.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_225009.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T03:01:19.246666"
+    },
+    {
+      "filename": "DataB_2025_10_09_410465.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_410465.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_410465.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T03:01:19.434811"
+    },
+    {
+      "filename": "DataB_2025_10_09_010460.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_010460.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_010460.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T04:24:13.030334"
+    },
+    {
+      "filename": "DataB_2025_10_09_108420.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_108420.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_108420.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T04:24:13.124252"
+    },
+    {
+      "filename": "DataB_2025_10_09_286602.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_286602.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_286602.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T04:24:13.299682"
+    },
+    {
+      "filename": "DataB_2025_10_09_917715.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_917715.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_917715.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T04:24:23.940741"
+    },
+    {
+      "filename": "DataB_2025_10_09_014723.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_014723.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_014723.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T04:24:24.030724"
+    },
+    {
+      "filename": "DataB_2025_10_09_213218.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_213218.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_213218.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T04:24:24.228207"
+    },
+    {
+      "filename": "DataB_2025_10_09_203604.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_203604.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_203604.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T04:46:42.218379"
+    },
+    {
+      "filename": "DataB_2025_10_09_279235.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_279235.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_279235.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T04:46:42.294918"
+    },
+    {
+      "filename": "DataB_2025_10_09_468967.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_468967.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_468967.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T04:46:42.481187"
+    },
+    {
+      "filename": "DataB_2025_10_09_712582.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_712582.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_712582.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T04:46:55.730858"
+    },
+    {
+      "filename": "DataB_2025_10_09_794197.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_794197.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_794197.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T04:46:55.812061"
+    },
+    {
+      "filename": "DataB_2025_10_09_971519.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_971519.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_971519.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T04:46:55.992728"
+    },
+    {
+      "filename": "DataB_2025_10_09_448907.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_448907.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_448907.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T04:49:42.557245"
+    },
+    {
+      "filename": "DataB_2025_10_09_898079.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_898079.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_898079.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T04:49:42.955438"
+    },
+    {
+      "filename": "DataB_2025_10_09_604300.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_604300.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_604300.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T04:49:43.671731"
+    },
+    {
+      "filename": "DataB_2025_10_09_995918.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_995918.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_995918.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T04:49:53.029739"
+    },
+    {
+      "filename": "DataB_2025_10_09_195304.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_195304.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_195304.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T04:49:53.253861"
+    },
+    {
+      "filename": "DataB_2025_10_09_524570.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_524570.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_524570.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T04:49:53.553648"
+    },
+    {
+      "filename": "DataB_2025_10_09_901510.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_901510.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_901510.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:14:27.915335"
+    },
+    {
+      "filename": "DataB_2025_10_09_983519.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_983519.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_983519.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T05:14:27.999172"
+    },
+    {
+      "filename": "DataB_2025_10_09_124473.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_124473.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_124473.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:14:28.137476"
+    },
+    {
+      "filename": "DataB_2025_10_09_276057.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_276057.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_276057.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:14:35.294131"
+    },
+    {
+      "filename": "DataB_2025_10_09_359116.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_359116.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_359116.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T05:14:35.373925"
+    },
+    {
+      "filename": "DataB_2025_10_09_484352.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_484352.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_484352.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:14:35.497206"
+    },
+    {
+      "filename": "DataB_2025_10_09_318953.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_318953.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_318953.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:16:31.340449"
+    },
+    {
+      "filename": "DataB_2025_10_09_401072.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_401072.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_401072.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T05:16:31.415223"
+    },
+    {
+      "filename": "DataB_2025_10_09_528735.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_528735.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_528735.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:16:31.542006"
+    },
+    {
+      "filename": "DataB_2025_10_09_158075.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_158075.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_158075.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:16:40.174047"
+    },
+    {
+      "filename": "DataB_2025_10_09_232314.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_232314.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_232314.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T05:16:40.243342"
+    },
+    {
+      "filename": "DataB_2025_10_09_760175.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_760175.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_760175.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:16:40.781331"
+    },
+    {
+      "filename": "DataB_2025_10_09_529663.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_529663.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_529663.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:31:31.552039"
+    },
+    {
+      "filename": "DataB_2025_10_09_643610.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_643610.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_643610.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T05:31:31.659027"
+    },
+    {
+      "filename": "DataB_2025_10_09_853940.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_853940.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_853940.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:31:31.866813"
+    },
+    {
+      "filename": "DataB_2025_10_09_134992.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_134992.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_134992.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:31:41.155393"
+    },
+    {
+      "filename": "DataB_2025_10_09_214036.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_214036.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_214036.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T05:31:41.227872"
+    },
+    {
+      "filename": "DataB_2025_10_09_341118.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_341118.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_341118.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:31:41.356766"
+    },
+    {
+      "filename": "DataB_2025_10_09_762468.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_762468.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_762468.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:32:04.886854"
+    },
+    {
+      "filename": "DataB_2025_10_09_956114.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_956114.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_956114.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T05:32:04.974892"
+    },
+    {
+      "filename": "DataB_2025_10_09_101988.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_101988.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_101988.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:32:05.122093"
+    },
+    {
+      "filename": "DataB_2025_10_09_959796.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_959796.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_959796.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:32:12.977841"
+    },
+    {
+      "filename": "DataB_2025_10_09_038946.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_038946.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_038946.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T05:32:13.055597"
+    },
+    {
+      "filename": "DataB_2025_10_09_174433.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_174433.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_174433.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:32:13.193505"
+    },
+    {
+      "filename": "DataB_2025_10_09_853387.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_853387.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_853387.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:34:03.870006"
+    },
+    {
+      "filename": "DataB_2025_10_09_930462.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_930462.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_930462.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T05:34:03.946401"
+    },
+    {
+      "filename": "DataB_2025_10_09_065366.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_065366.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_065366.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:34:04.079909"
+    },
+    {
+      "filename": "DataB_2025_10_09_203856.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_203856.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_203856.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:34:12.221065"
+    },
+    {
+      "filename": "DataB_2025_10_09_314738.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_314738.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_314738.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T05:34:12.331394"
+    },
+    {
+      "filename": "DataB_2025_10_09_459310.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_459310.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_459310.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T05:34:12.475319"
+    },
+    {
+      "filename": "DataB_2025_10_09_403075.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_403075.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_403075.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:16:42.506995"
+    },
+    {
+      "filename": "DataB_2025_10_09_687417.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_687417.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_687417.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T08:16:42.718774"
+    },
+    {
+      "filename": "DataB_2025_10_09_017009.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_017009.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_017009.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:16:43.057760"
+    },
+    {
+      "filename": "DataB_2025_10_09_359526.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_359526.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_359526.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:16:52.412962"
+    },
+    {
+      "filename": "DataB_2025_10_09_609811.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_609811.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_609811.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T08:16:52.716058"
+    },
+    {
+      "filename": "DataB_2025_10_09_114034.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_114034.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_114034.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:16:53.219167"
+    },
+    {
+      "filename": "DataB_2025_10_09_572420.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_572420.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_572420.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:17:59.681384"
+    },
+    {
+      "filename": "DataB_2025_10_09_997662.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_997662.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_997662.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T08:18:00.047953"
+    },
+    {
+      "filename": "DataB_2025_10_09_284528.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_284528.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_284528.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:18:00.325355"
+    },
+    {
+      "filename": "DataB_2025_10_09_243512.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_243512.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_243512.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:18:11.286757"
+    },
+    {
+      "filename": "DataB_2025_10_09_519216.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_519216.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_519216.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T08:18:11.589584"
+    },
+    {
+      "filename": "DataB_2025_10_09_919974.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_919974.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_919974.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:18:11.961621"
+    },
+    {
+      "filename": "DataB_2025_10_09_236742.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_236742.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_236742.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:18:29.344498"
+    },
+    {
+      "filename": "DataB_2025_10_09_627114.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_627114.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_627114.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T08:18:29.693169"
+    },
+    {
+      "filename": "DataB_2025_10_09_340082.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_340082.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_340082.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:18:30.417266"
+    },
+    {
+      "filename": "DataB_2025_10_09_129584.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_129584.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_129584.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:18:43.215912"
+    },
+    {
+      "filename": "DataB_2025_10_09_528653.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_528653.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_528653.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T08:18:43.602258"
+    },
+    {
+      "filename": "DataB_2025_10_09_141615.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_141615.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_141615.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:18:44.216204"
+    },
+    {
+      "filename": "DataB_2025_10_09_122555.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_122555.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_122555.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:19:15.224990"
+    },
+    {
+      "filename": "DataB_2025_10_09_347748.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_347748.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_347748.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T08:19:15.380402"
+    },
+    {
+      "filename": "DataB_2025_10_09_683989.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_683989.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_683989.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:19:15.735846"
+    },
+    {
+      "filename": "DataB_2025_10_09_582487.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_582487.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_582487.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:19:25.641529"
+    },
+    {
+      "filename": "DataB_2025_10_09_857106.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_857106.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_857106.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T08:19:25.911903"
+    },
+    {
+      "filename": "DataB_2025_10_09_259675.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_259675.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_259675.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T08:19:26.331375"
+    },
+    {
+      "filename": "DataB_2025_10_09_619487.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_619487.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_619487.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T13:25:32.667259"
+    },
+    {
+      "filename": "DataB_2025_10_09_845396.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_845396.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_845396.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T13:25:32.899783"
+    },
+    {
+      "filename": "DataB_2025_10_09_297691.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_297691.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_297691.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T13:25:33.344279"
+    },
+    {
+      "filename": "DataB_2025_10_09_373787.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_373787.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_373787.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T13:25:47.452243"
+    },
+    {
+      "filename": "DataB_2025_10_09_719073.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_719073.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_719073.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T13:25:47.786457"
+    },
+    {
+      "filename": "DataB_2025_10_09_142524.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_142524.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_142524.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T13:25:48.211702"
+    },
+    {
+      "filename": "DataB_2025_10_09_073580.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_073580.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_073580.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T13:30:57.112080"
+    },
+    {
+      "filename": "DataB_2025_10_09_423016.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_423016.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_423016.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T13:30:57.499679"
+    },
+    {
+      "filename": "DataB_2025_10_09_959791.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_959791.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_959791.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T13:30:58.033763"
+    },
+    {
+      "filename": "DataB_2025_10_09_876622.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_876622.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_876622.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T13:31:10.905013"
+    },
+    {
+      "filename": "DataB_2025_10_09_047821.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_047821.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_047821.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T13:31:11.081886"
+    },
+    {
+      "filename": "DataB_2025_10_09_372116.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_372116.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_372116.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T13:31:11.438228"
+    },
+    {
+      "filename": "DataB_2025_10_09_083763.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_083763.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_083763.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T15:02:20.100467"
+    },
+    {
+      "filename": "DataB_2025_10_09_161404.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_161404.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_161404.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T15:02:20.174742"
+    },
+    {
+      "filename": "DataB_2025_10_09_322385.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_322385.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_322385.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T15:02:20.339825"
+    },
+    {
+      "filename": "DataB_2025_10_09_407752.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_407752.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_407752.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T15:02:31.422047"
+    },
+    {
+      "filename": "DataB_2025_10_09_608230.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_608230.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_608230.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T15:02:31.636544"
+    },
+    {
+      "filename": "DataB_2025_10_09_505129.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_505129.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_505129.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T15:03:21.522772"
+    },
+    {
+      "filename": "DataB_2025_10_09_584047.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_584047.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_584047.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T15:03:21.597594"
+    },
+    {
+      "filename": "DataB_2025_10_09_722048.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_722048.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_722048.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T15:03:21.735713"
+    },
+    {
+      "filename": "DataB_2025_10_09_725580.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_725580.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_725580.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T15:03:28.739207"
+    },
+    {
+      "filename": "DataB_2025_10_09_798837.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_798837.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_798837.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T15:03:28.815915"
+    },
+    {
+      "filename": "DataB_2025_10_09_929742.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_929742.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_929742.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T15:03:28.943670"
+    },
+    {
+      "filename": "DataB_2025_10_09_324433.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_324433.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_324433.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T21:23:08.464126"
+    },
+    {
+      "filename": "DataB_2025_10_09_792064.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_792064.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_792064.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T21:23:08.831590"
+    },
+    {
+      "filename": "DataB_2025_10_09_172948.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_172948.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_172948.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T21:23:09.242448"
+    },
+    {
+      "filename": "DataB_2025_10_09_870838.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_870838.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_870838.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T21:23:19.919622"
+    },
+    {
+      "filename": "DataB_2025_10_09_089485.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_089485.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_089485.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-09T21:23:20.138709"
+    },
+    {
+      "filename": "DataB_2025_10_09_582324.json",
+      "relative_path": "capi_DataB/DataB_2025_10_09_582324.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_09_582324.json",
+      "operation": "insert",
+      "table": "public.alertas",
+      "rowcount": 1,
+      "generated_at": "2025-10-09T21:23:20.656329"
+    }
+  ],
+  "updated_at": "2025-10-13T23:50:03.272749",
+>>>>>>> origin/develop
   "created_at": "2025-09-24T19:41:36.430881",
   "status": "completed",
-  "active_agent": "summary",
+  "active_agent": "capi_gus",
   "completed_nodes": [
     "start",
     "intent",
@@ -1247,17 +3969,29 @@
     "reasoning",
     "supervisor",
     "router",
+<<<<<<< HEAD
     "capi_datab",
     "capi_elcajas",
+=======
+    "capi_gus",
+>>>>>>> origin/develop
     "human_gate",
     "assemble",
     "finalize"
   ],
+<<<<<<< HEAD
   "intent": "db_operation",
   "intent_confidence": 0.9,
   "last_query": "el saldo de la sucursal central esta por debajo de su caja teorica ?",
   "last_response": {
     "message": "Resultados para la sucursal 'Central': sucursal id=S001, sucursal numero=1, sucursal nombre=Sucursal Central, saldo total sucursal=$100.000,00, caja teorica sucursal=2485000.00, total atm=$1.200.000,00, total ats=$300.000,00, total tesoro=$600.000,00, total cajas ventanilla=$200.000,00, total buzon depositos=$90.000,00, total recaudacion=$180.000,00, total caja chica=$15.000,00, total otros=$20.000,00, medido en=2025-10-03 16:55:33.199922+00:00. Resultado exportado a DataB_2025_10_03_933018.json.\n\nEl Cajas: Sucursal Central: deficit de 2,385,000 ARS (-96.0%)\n\nNo se pudo crear la alerta en la base de datos (Error al ejecutar la operación de base de datos: insert or update on table \"alertas\" violates foreign key constraint \"alertas_agente_id_fkey\" DETAIL:  Key (agente_id)=(b37d1f90-6b35-4fb3-866e-2f88c9b2).",
+=======
+  "intent": "unknown",
+  "intent_confidence": 0.2,
+  "last_query": "A quién debería votar en la final de BDG o viernes de garaje?",
+  "last_response": {
+    "message": "Lamentablemente, no contamos con información actualizada sobre el saldo en este momento. ¿Podrías proporcionar más detalles o indicar la sucursal que te interesa revisar? ¿En qué podemos ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+>>>>>>> origin/develop
     "data": {
       "react_observations": [
         {
@@ -1278,6 +4012,7 @@
         }
       ],
       "reasoning_plan": {
+<<<<<<< HEAD
         "plan_id": "bbb79963-b930-4deb-b5bf-2c382406471f",
         "version": 1,
         "intent": "db_operation",
@@ -1296,6 +4031,24 @@
               "instruccion_usuario"
             ],
             "expected_output": "Sentencia SQL validada con parámetros normalizados",
+=======
+        "plan_id": "050b0448-bfe5-4967-af31-0b32c46779b1",
+        "version": 1,
+        "intent": "unknown",
+        "goal": "Clarificar y asistir consulta ambigua: A quién debería votar en la final de BDG o viernes de garaje",
+        "confidence": 0.95,
+        "recommended_agent": "capi_gus",
+        "fallback_agent": "assemble",
+        "rationale": "Consulta ambigua: se elabora estrategia de clarificación y recopilación de señales antes de seleccionar agente definitivo.",
+        "steps": [
+          {
+            "id": "E1",
+            "title": "Solicitar clarificación",
+            "description": "Pedir más detalles al usuario para reducir ambigüedad.",
+            "agent": "capi_gus",
+            "inputs": [],
+            "expected_output": "Detalle adicional de la consulta",
+>>>>>>> origin/develop
             "depends_on": []
           },
           {
@@ -1310,10 +4063,17 @@
             ]
           },
           {
+<<<<<<< HEAD
             "id": "D3",
             "title": "Exportar evidencia al workspace",
             "description": "Serializar los resultados en el formato solicitado y guardar el archivo en ia_workspace/data/capi_DataB/.",
             "agent": "capi_datab",
+=======
+            "id": "E3",
+            "title": "Preparar respuesta inicial",
+            "description": "Ofrecer orientación y sugerir capacidades relevantes mientras se espera aclaración.",
+            "agent": "capi_gus",
+>>>>>>> origin/develop
             "inputs": [],
             "expected_output": "Archivo DataB_YYYY_MM_DD_*.ext disponible para el usuario",
             "depends_on": [
@@ -1331,19 +4091,25 @@
             "sucursal": "central"
           },
           "context_used": false,
-          "semantic_confidence": 0.9,
+          "semantic_confidence": 1.0,
           "available_agents": [
+            "agente_g",
             "anomaly",
             "branch",
             "capi_datab",
             "capi_desktop",
-            "summary"
+            "capi_gus"
           ],
           "user_id": "global",
           "session_id": "global"
         },
+<<<<<<< HEAD
         "generated_at": "2025-10-03T18:10:41.448722",
         "intent_alignment": true,
+=======
+        "generated_at": "2025-10-13T23:50:02.219975",
+        "intent_alignment": false,
+>>>>>>> origin/develop
         "requires_replan": false,
         "history": [],
         "progress_percent": 98.0,
@@ -1351,6 +4117,7 @@
         "complexity": "low",
         "estimated_effort_seconds": 45
       },
+<<<<<<< HEAD
       "operation": "select",
       "table": "public.saldos_sucursal",
       "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
@@ -1764,14 +4531,77 @@
             ]
           }
         ]
+=======
+      "response": "Lamentablemente, no contamos con información actualizada sobre el saldo en este momento. ¿Podrías proporcionar más detalles o indicar la sucursal que te interesa revisar? ¿En qué podemos ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "capi_gus": {
+        "type": "conversation_summary",
+        "agent": "capi_gus",
+        "created_at": "2025-10-13T23:50:03.250749+00:00",
+        "query": "A quién debería votar en la final de BDG o viernes de garaje?",
+        "message": "Lamentablemente, no contamos con información actualizada sobre el saldo en este momento. ¿Podrías proporcionar más detalles o indicar la sucursal que te interesa revisar? ¿En qué podemos ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+        "base_message": "No pude encontrar un saldo actualizado para responder \"A quién debería votar en la final de BDG o viernes de garaje?\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+        "branch": null,
+        "balance": null,
+        "balance_text": null,
+        "theoretical_balance": null,
+        "theoretical_balance_text": null,
+        "delta": null,
+        "delta_text": null,
+        "distribution_detail": null,
+        "distribution_breakdown": {},
+        "alerts": {
+          "count": 0,
+          "ids": [],
+          "headlines": [],
+          "duplicates": []
+        },
+        "raw_alert_text": null,
+        "closing_prompt": "¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+        "llm_generated": true,
+        "context_snapshot": {
+          "branch": null,
+          "balance_value": null,
+          "balance_text": null,
+          "theoretical_value": null,
+          "theoretical_text": null,
+          "difference_value": null,
+          "difference_text": null,
+          "distribution_text": null,
+          "distribution_breakdown": {},
+          "alert_summary": {
+            "count": 0,
+            "ids": [],
+            "headlines": [],
+            "duplicates": []
+          },
+          "raw_alert_text": null,
+          "export_file": null,
+          "previous_summary": null,
+          "original_query": "A quién debería votar en la final de BDG o viernes de garaje?"
+        },
+        "llm_usage": {
+          "model": "gpt-3.5-turbo",
+          "prompt_tokens": 463,
+          "completion_tokens": 47,
+          "total_tokens": 510,
+          "cost_usd": 0.000789,
+          "processing_time": 0.9785,
+          "finish_reason": "stop"
+        }
+>>>>>>> origin/develop
       }
     }
   },
   "conversation_history": [],
   "memory_window": [],
   "reasoning_summary": {
+<<<<<<< HEAD
     "goal": "Clarificar y asistir consulta ambigua: el saldo de la sucursal central esta por debajo de su caja t",
     "recommended_agent": "capi_datab",
+=======
+    "goal": "Clarificar y asistir consulta ambigua: A quién debería votar en la final de BDG o viernes de garaje",
+    "recommended_agent": "capi_gus",
+>>>>>>> origin/develop
     "confidence": 0.95,
     "version": 1,
     "cooperative_agents": [],
@@ -1784,7 +4614,11 @@
   "processing_metrics": {
     "react_steps": 5.0,
     "react_latency_ms": 0.0,
+<<<<<<< HEAD
     "reasoning_time_ms": 1247.0,
+=======
+    "reasoning_time_ms": 947.0,
+>>>>>>> origin/develop
     "reasoning_steps": 3.0,
     "reasoning_version": 1.0,
     "reasoning_progress_percent": 98.0,
@@ -2351,9 +5185,73 @@
       ]
     }
   },
+<<<<<<< HEAD
   "errors": [],
   "trace_id": "trace-1759515031.80244",
   "user_id": "global",
+=======
+  "shared_artifacts": {
+    "capi_gus": {
+      "type": "conversation_summary",
+      "agent": "capi_gus",
+      "created_at": "2025-10-13T23:50:03.250749+00:00",
+      "query": "A quién debería votar en la final de BDG o viernes de garaje?",
+      "message": "Lamentablemente, no contamos con información actualizada sobre el saldo en este momento. ¿Podrías proporcionar más detalles o indicar la sucursal que te interesa revisar? ¿En qué podemos ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "base_message": "No pude encontrar un saldo actualizado para responder \"A quién debería votar en la final de BDG o viernes de garaje?\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "branch": null,
+      "balance": null,
+      "balance_text": null,
+      "theoretical_balance": null,
+      "theoretical_balance_text": null,
+      "delta": null,
+      "delta_text": null,
+      "distribution_detail": null,
+      "distribution_breakdown": {},
+      "alerts": {
+        "count": 0,
+        "ids": [],
+        "headlines": [],
+        "duplicates": []
+      },
+      "raw_alert_text": null,
+      "closing_prompt": "¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "llm_generated": true,
+      "context_snapshot": {
+        "branch": null,
+        "balance_value": null,
+        "balance_text": null,
+        "theoretical_value": null,
+        "theoretical_text": null,
+        "difference_value": null,
+        "difference_text": null,
+        "distribution_text": null,
+        "distribution_breakdown": {},
+        "alert_summary": {
+          "count": 0,
+          "ids": [],
+          "headlines": [],
+          "duplicates": []
+        },
+        "raw_alert_text": null,
+        "export_file": null,
+        "previous_summary": null,
+        "original_query": "A quién debería votar en la final de BDG o viernes de garaje?"
+      },
+      "llm_usage": {
+        "model": "gpt-3.5-turbo",
+        "prompt_tokens": 463,
+        "completion_tokens": 47,
+        "total_tokens": 510,
+        "cost_usd": 0.000789,
+        "processing_time": 0.9785,
+        "finish_reason": "stop"
+      }
+    }
+  },
+  "errors": [],
+  "trace_id": "trace-1760399395.29737",
+  "user_id": "voice-client",
+>>>>>>> origin/develop
   "workflow_mode": "chat",
   "response_metadata": {
     "intent_reasoning": "Semantic pattern match: La consulta involucra operaciones financieras en una sucursal, por lo que se selecciona el intent 'db_operation' y el agente 'capi_datab'. Se identifica la sucursal 'central' como entidad relevante. (confidence=0.900, entities=1)",
@@ -2403,6 +5301,7 @@
         "thought": "Finalizo el ciclo ReAct con una recomendacion.",
         "action": "finish",
         "observation": {
+<<<<<<< HEAD
           "message": "Derivare la consulta 'el saldo de la sucursal central esta por debajo de su caja teorica ?' al agente 'summary' con la evidencia recopilada.",
           "recommended_agent": "summary"
         }
@@ -2433,6 +5332,36 @@
             "instruccion_usuario"
           ],
           "expected_output": "Sentencia SQL validada con parámetros normalizados",
+=======
+          "message": "Derivare la consulta 'A quién debería votar en la final de BDG o viernes de garaje?' al agente 'capi_gus' con la evidencia recopilada.",
+          "recommended_agent": "capi_gus"
+        }
+      }
+    ],
+    "react_recommended_agent": "capi_gus",
+    "react_finished_at": "2025-10-13T23:50:01.276678",
+    "active_agent": "capi_gus",
+    "loop_fallback": "capi_gus",
+    "react_follow_up": false,
+    "needs_retry": null,
+    "reasoning_plan": {
+      "plan_id": "050b0448-bfe5-4967-af31-0b32c46779b1",
+      "version": 1,
+      "intent": "unknown",
+      "goal": "Clarificar y asistir consulta ambigua: A quién debería votar en la final de BDG o viernes de garaje",
+      "confidence": 0.95,
+      "recommended_agent": "capi_gus",
+      "fallback_agent": "assemble",
+      "rationale": "Consulta ambigua: se elabora estrategia de clarificación y recopilación de señales antes de seleccionar agente definitivo.",
+      "steps": [
+        {
+          "id": "E1",
+          "title": "Solicitar clarificación",
+          "description": "Pedir más detalles al usuario para reducir ambigüedad.",
+          "agent": "capi_gus",
+          "inputs": [],
+          "expected_output": "Detalle adicional de la consulta",
+>>>>>>> origin/develop
           "depends_on": []
         },
         {
@@ -2447,10 +5376,17 @@
           ]
         },
         {
+<<<<<<< HEAD
           "id": "D3",
           "title": "Exportar evidencia al workspace",
           "description": "Serializar los resultados en el formato solicitado y guardar el archivo en ia_workspace/data/capi_DataB/.",
           "agent": "capi_datab",
+=======
+          "id": "E3",
+          "title": "Preparar respuesta inicial",
+          "description": "Ofrecer orientación y sugerir capacidades relevantes mientras se espera aclaración.",
+          "agent": "capi_gus",
+>>>>>>> origin/develop
           "inputs": [],
           "expected_output": "Archivo DataB_YYYY_MM_DD_*.ext disponible para el usuario",
           "depends_on": [
@@ -2468,19 +5404,25 @@
           "sucursal": "central"
         },
         "context_used": false,
-        "semantic_confidence": 0.9,
+        "semantic_confidence": 1.0,
         "available_agents": [
+          "agente_g",
           "anomaly",
           "branch",
           "capi_datab",
           "capi_desktop",
-          "summary"
+          "capi_gus"
         ],
         "user_id": "global",
         "session_id": "global"
       },
+<<<<<<< HEAD
       "generated_at": "2025-10-03T18:10:41.448722",
       "intent_alignment": true,
+=======
+      "generated_at": "2025-10-13T23:50:02.219975",
+      "intent_alignment": false,
+>>>>>>> origin/develop
       "requires_replan": false,
       "history": [],
       "progress_percent": 98.0,
@@ -2489,19 +5431,31 @@
       "estimated_effort_seconds": 45
     },
     "reasoning_confidence": 0.95,
+<<<<<<< HEAD
     "recommended_agent": "capi_datab",
     "reasoning_progress_percent": 98.0,
     "reasoning_eta_seconds": 45,
+=======
+    "recommended_agent": "capi_gus",
+    "reasoning_progress_percent": 97.5,
+    "reasoning_eta_seconds": 50,
+>>>>>>> origin/develop
     "reasoning_remaining_steps": 3,
     "reasoning_complexity": "low",
     "reasoning_needs_react": true,
     "supervisor_queue": [
+<<<<<<< HEAD
       "summary",
       "capi_datab",
+=======
+      "capi_gus",
+      "intent",
+      "summary",
+>>>>>>> origin/develop
       "anomaly",
-      "capi_desktop",
-      "smalltalk"
+      "capi_desktop"
     ],
+<<<<<<< HEAD
     "supervisor_selected": "summary",
     "supervisor_ran_at": "2025-10-03T18:10:41.455578",
     "semantic_result": {
@@ -2655,9 +5609,43 @@
     "approval_reason": "Deseas que guardemos la recomendacion en el escritorio?",
     "el_cajas_alert_persisted": false,
     "el_cajas_alert_error": "Error al ejecutar la operación de base de datos: insert or update on table \"alertas\" violates foreign key constraint \"alertas_agente_id_fkey\" DETAIL:  Key (agente_id)=(b37d1f90-6b35-4fb3-866e-2f88c9b2",
+=======
+    "supervisor_selected": "capi_gus",
+    "supervisor_ran_at": "2025-10-13T23:50:02.227932",
+    "semantic_result": {
+      "intent": "unknown",
+      "confidence": 0.2,
+      "target_agent": "assemble",
+      "routing_agent": "capi_gus",
+      "entities": {},
+      "reasoning": "Fallback classification executed (feature_flag_disabled)",
+      "requires_clarification": true,
+      "provider": "fallback",
+      "model": ""
+    },
+    "agent_type": "capi_gus",
+    "speaker": "capi_gus",
+    "friendly_summary": true,
+    "agent_raw_message": "Lamentablemente, no contamos con información actualizada sobre el saldo en este momento. ¿Podrías proporcionar más detalles o indicar la sucursal que te interesa revisar? ¿En qué podemos ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "result_summary": "Lamentablemente, no contamos con información actualizada sobre el saldo en este momento. ¿Podrías proporcionar más detalles o indicar la sucursal que te interesa revisar? ¿En qué podemos ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "capi_gus_base_message": "No pude encontrar un saldo actualizado para responder \"A quién debería votar en la final de BDG o viernes de garaje?\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "capi_gus_llm_usage": {
+      "model": "gpt-3.5-turbo",
+      "prompt_tokens": 463,
+      "completion_tokens": 47,
+      "total_tokens": 510,
+      "cost_usd": 0.000789,
+      "processing_time": 0.9785,
+      "finish_reason": "stop"
+    },
+>>>>>>> origin/develop
     "assembled_at": "assemble",
     "workflow_completed": true,
     "total_nodes": 10
   },
+<<<<<<< HEAD
   "routing_decision": "assemble"
+=======
+  "routing_decision": "human_gate"
+>>>>>>> origin/develop
 }

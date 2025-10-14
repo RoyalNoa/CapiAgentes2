@@ -101,11 +101,64 @@ interface VoiceStreamState {
   reset: () => void;
 }
 
+function resolveApiBase(): string {
+  const fallback = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:8000';
+  if (typeof window === 'undefined') {
+    return fallback;
+  }
+
+  try {
+    const candidate = new URL(fallback, window.location.origin);
+    const browserHost = window.location.hostname;
+    if (candidate.hostname === 'backend' || candidate.hostname === 'localhost') {
+      candidate.hostname = browserHost;
+    }
+    if (!candidate.port) {
+      candidate.port = window.location.port === '3000' ? '8000' : window.location.port;
+    }
+    return candidate.toString().replace(/\/$/, '');
+  } catch {
+    const protocol = window.location.protocol;
+    const host = window.location.hostname;
+    const port = window.location.port === '3000' ? '8000' : window.location.port;
+    return `${protocol}//${host}${port ? `:${port}` : ''}`;
+  }
+}
+
 function resolveWsUrl(): string {
-  const base = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:8000';
-  const wsBase = base.replace(/^http/i, base.startsWith('https') ? 'wss' : 'ws');
+  const base = resolveApiBase();
+  const normalized = base.endsWith('/') ? base.slice(0, -1) : base;
+  const wsBase = normalized.startsWith('https')
+    ? normalized.replace(/^https:/i, 'wss:')
+    : normalized.replace(/^http:/i, 'ws:');
   return `${wsBase}/api/voice/stream`;
 }
+
+const describeMediaError = (error: any): string => {
+  const name = typeof error?.name === 'string' ? error.name : '';
+  const message = typeof error?.message === 'string' ? error.message : '';
+
+  if (name === 'NotAllowedError' || /permission/i.test(message)) {
+    return 'No pudimos acceder al micrófono. Revisa los permisos del navegador.';
+  }
+  if (name === 'NotFoundError' || /found/i.test(message)) {
+    return 'No encontramos un micrófono disponible. Conecta o habilita un dispositivo de audio.';
+  }
+  if (name === 'NotReadableError') {
+    return 'El dispositivo de audio está en uso por otra aplicación.';
+  }
+  if (name === 'SecurityError' || /secure context/i.test(message)) {
+    return 'La captura de voz requiere ejecutar la app en un contexto seguro (HTTPS).';
+  }
+  if (name === 'SecurityError' || message === 'secure_context_required') {
+    return 'Activa HTTPS (por ejemplo https://localhost) para usar el micrófono.';
+  }
+  if (message === 'media_devices_unavailable') {
+    return 'Este navegador no expone la API de audio necesaria para grabar voz.';
+  }
+
+  return message || 'No pudimos iniciar la captura de audio';
+};
 
 function mergeChannels(buffer: AudioBuffer): Float32Array {
   if (buffer.numberOfChannels === 1) {
@@ -311,6 +364,12 @@ export default function useVoiceStream(options: VoiceStreamOptions): VoiceStream
   const startRecording = useCallback(async () => {
     if (isRecording || isProcessing) return;
     try {
+      if (typeof window !== 'undefined' && !window.isSecureContext) {
+        throw new Error('secure_context_required');
+      }
+      if (typeof navigator === 'undefined' || !navigator.mediaDevices?.getUserMedia) {
+        throw new Error('media_devices_unavailable');
+      }
       reset();
       setIsProcessing(false);
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -399,7 +458,7 @@ export default function useVoiceStream(options: VoiceStreamOptions): VoiceStream
       setError(null);
     } catch (err: any) {
       console.error('Voice recording error', err);
-      setError(err?.message || 'No se pudo iniciar la captura de audio');
+      setError(describeMediaError(err));
       setIsRecording(false);
       onStageUpdate?.({ stage: 'transcription', status: 'error' });
       onStageUpdate?.({ stage: 'orchestration', status: 'error' });

@@ -12,6 +12,7 @@
   gap: 10px;
 }
 
+<<<<<<< HEAD
 /* Header de la acción */
 .header {
   display: flex;
@@ -59,6 +60,9 @@
 }
 
 /* Descripción de la acción */
+=======
+/* Texto principal de la decision */
+>>>>>>> origin/develop
 .description {
   font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
   font-size: 11px;
@@ -89,6 +93,7 @@
   color: rgba(214, 239, 255, 0.95);
 }
 
+<<<<<<< HEAD
 /* Resumen */
 .summary {
   font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
@@ -98,6 +103,8 @@
   letter-spacing: 0.04em;
 }
 
+=======
+>>>>>>> origin/develop
 /* Contenedor de botones */
 .buttons {
   display: flex;
@@ -105,7 +112,11 @@
   justify-content: flex-end;
 }
 
+<<<<<<< HEAD
 /* Botón base */
+=======
+/* Boton base */
+>>>>>>> origin/develop
 .button {
   padding: 6px 14px;
   border-radius: 4px;
@@ -123,7 +134,11 @@
   opacity: 0.6;
 }
 
+<<<<<<< HEAD
 /* Botón de aprobar */
+=======
+/* Boton de aprobar */
+>>>>>>> origin/develop
 .approveButton {
   border: 1px solid rgba(0, 229, 255, 0.4);
   background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(0, 229, 255, 0.1));
@@ -136,7 +151,11 @@
   box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
 }
 
+<<<<<<< HEAD
 /* Botón de rechazar */
+=======
+/* Boton de rechazar */
+>>>>>>> origin/develop
 .rejectButton {
   border: 1px solid rgba(255, 107, 107, 0.5);
   background: rgba(255, 107, 107, 0.12);
@@ -168,17 +187,24 @@
   }
 }
 
+<<<<<<< HEAD
 /* Media queries para móvil */
+=======
+/* Media queries para movil */
+>>>>>>> origin/develop
 @media (max-width: 768px) {
   .container {
     margin: 10px 12px 0;
     padding: 12px 14px;
   }
 
+<<<<<<< HEAD
   .label {
     font-size: 10px;
   }
 
+=======
+>>>>>>> origin/develop
   .description {
     font-size: 10px;
   }
@@ -191,4 +217,8 @@
     padding: 5px 12px;
     font-size: 10px;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/develop

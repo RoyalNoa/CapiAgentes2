@@ -143,7 +143,11 @@ class GraphCanvaPinItem(BaseModel):
 
     model_config = ConfigDict(populate_by_name=True, extra="allow", protected_namespaces=())
 
-    json: Dict[str, Any] = Field(default_factory=dict)
+    json_payload: Dict[str, Any] = Field(
+        default_factory=dict,
+        validation_alias=AliasChoices('json', 'json_payload'),
+        serialization_alias='json',
+    )
     binary: Optional[Dict[str, Any]] = None
     paired_item: Optional[Any] = Field(default=None, alias="paired_item")
 

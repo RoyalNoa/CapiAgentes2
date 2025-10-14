@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 from ..core.exceptions import DatabaseError
 from ..infrastructure.database.postgres_client import (
@@ -45,8 +45,7 @@ class SucursalBase(BaseModel):
     observacion: Optional[str] = None
     medido_en: Optional[datetime] = None
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class SucursalCreate(SucursalBase):
@@ -80,8 +79,7 @@ class DispositivoBase(BaseModel):
     observacion: Optional[str] = None
     medido_en: Optional[datetime] = None
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class DispositivoCreate(DispositivoBase):
@@ -118,7 +116,7 @@ async def create_sucursal(
     db: PostgreSQLClient = Depends(get_db_client),
 ) -> SucursalResponse:
     try:
-        record = await db.create_sucursal(payload.dict(exclude_unset=True))
+        record = await db.create_sucursal(payload.model_dump(exclude_unset=True))
         return SucursalResponse(**record)
     except DatabaseError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
@@ -131,7 +129,7 @@ async def update_sucursal(
     db: PostgreSQLClient = Depends(get_db_client),
 ) -> SucursalResponse:
     try:
-        record = await db.update_sucursal(sucursal_id, payload.dict(exclude_unset=True))
+        record = await db.update_sucursal(sucursal_id, payload.model_dump(exclude_unset=True))
         return SucursalResponse(**record)
     except DatabaseError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
@@ -165,7 +163,7 @@ async def create_dispositivo(
     db: PostgreSQLClient = Depends(get_db_client),
 ) -> DispositivoResponse:
     try:
-        record = await db.create_dispositivo(payload.dict(exclude_unset=True))
+        record = await db.create_dispositivo(payload.model_dump(exclude_unset=True))
         return DispositivoResponse(**record)
     except DatabaseError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
@@ -178,7 +176,7 @@ async def update_dispositivo(
     db: PostgreSQLClient = Depends(get_db_client),
 ) -> DispositivoResponse:
     try:
-        record = await db.update_dispositivo(record_id, payload.dict(exclude_unset=True))
+        record = await db.update_dispositivo(record_id, payload.model_dump(exclude_unset=True))
         return DispositivoResponse(**record)
     except DatabaseError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc

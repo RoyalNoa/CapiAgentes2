@@ -20,7 +20,7 @@ def _base_state(query: str) -> GraphState:
 
 def test_reasoning_node_generates_plan_for_summary():
     node = ReasoningNode()
-    node._reasoner.config_service.set_enabled("summary", True)
+    node._reasoner.config_service.set_enabled("capi_gus", True)
     state = _base_state("Necesito un resumen ejecutivo de los datos financieros del mes")
     state = StateMutator.update_field(state, "detected_intent", Intent.SUMMARY_REQUEST)
 
@@ -28,7 +28,7 @@ def test_reasoning_node_generates_plan_for_summary():
 
     plan = result.response_metadata.get("reasoning_plan")
     assert plan is not None, "Reasoning plan should be generated"
-    assert plan["recommended_agent"] in {"summary", "capi_desktop"}
+    assert plan["recommended_agent"] in {"capi_gus", "summary", "capi_desktop"}
     assert plan["goal"]
     assert plan["version"] == 1
     assert plan["plan_id"]
@@ -48,7 +48,7 @@ def test_reasoning_node_generates_plan_for_summary():
 
 def test_reasoning_node_generates_plan_for_file_operation():
     node = ReasoningNode()
-    node._reasoner.config_service.set_enabled("summary", True)
+    node._reasoner.config_service.set_enabled("capi_gus", True)
     state = _base_state("Muéstrame qué contiene el archivo ventas_actuales.xlsx")
     state = StateMutator.update_field(state, "detected_intent", Intent.FILE_OPERATION)
 
@@ -65,7 +65,7 @@ def test_reasoning_node_generates_plan_for_file_operation():
 
 def test_reasoning_node_replans_when_agent_disabled():
     node = ReasoningNode()
-    node._reasoner.config_service.set_enabled("summary", True)
+    node._reasoner.config_service.set_enabled("capi_gus", True)
     state = _base_state("Hola, puedes resumir los datos?")
     state = StateMutator.update_field(state, "detected_intent", Intent.SUMMARY_REQUEST)
 
@@ -74,7 +74,7 @@ def test_reasoning_node_replans_when_agent_disabled():
     plan_id = first_plan["plan_id"]
 
     # Disable summary agent to force replan and inject an error signal
-    node._reasoner.config_service.set_enabled("summary", False)
+    node._reasoner.config_service.set_enabled("capi_gus", False)
     errored_state = StateMutator.append_to_list(first_result, "errors", {"type": "agent_failure"})
 
     second_result = node.run(errored_state)
@@ -86,7 +86,7 @@ def test_reasoning_node_replans_when_agent_disabled():
     assert second_plan["history"], "Replan should keep history of previous versions"
 
     # Restore summary agent for downstream suites
-    node._reasoner.config_service.set_enabled("summary", True)
+    node._reasoner.config_service.set_enabled("capi_gus", True)
 
 
 def test_reasoning_node_handles_empty_query_gracefully():

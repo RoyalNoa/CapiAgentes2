@@ -135,10 +135,9 @@ def _get_agent_description(agent_name: str) -> str:
     2. Devolver la descripción encontrada o, si no existe, construir una cadena genérica que incluya el nombre del agente.
     """
     descriptions = {
-        "summary": "Provides financial summaries and total metrics",
+        "capi_gus": "Capi Gus - Gestiona saludos, resúmenes y narrativa final para el usuario",
         "branch": "Analyzes branch-specific performance",
         "anomaly": "Detects financial irregularities and outliers",
-        "smalltalk": "Handles greetings and general conversation",
         "capi_desktop": "Capi Desktop - Manages CSV, Excel, Word files with security",
         "capi_datab": "Capi DataB - Ejecuta ABMC en PostgreSQL y exporta resultados seguros"
     }
@@ -180,7 +179,7 @@ async def refresh_agents():
 @router.get("/agents/token-tracking")
 async def get_token_tracking(days: int = Query(30, ge=1, le=90)):
     """Devuelve resumen de consumo de tokens y lnea de tiempo."""
-    default_agents = ["summary", "branch", "anomaly", "smalltalk", "capi_desktop", "capi_datab"]
+    default_agents = ["capi_gus", "branch", "anomaly", "capi_desktop", "capi_datab"]
     try:
         return _token_usage_service.get_summary(default_agents, days=days)
     except Exception as e:
@@ -1012,7 +1011,7 @@ def _build_conceptual_mermaid_diagram(graph_obj, *, logger) -> str:
         "    supervisor(supervisor):::control",
         "    loop_controller(loop_controller):::control",
         "    router(router):::control",
-        "    smalltalk(smalltalk):::agent",
+        "    capi_gus(capi_gus):::agent",
         "    summary(summary):::agent",
         "    branch(branch):::agent",
         "    anomaly(anomaly):::agent",
@@ -1042,7 +1041,7 @@ def _build_conceptual_mermaid_diagram(graph_obj, *, logger) -> str:
         "    supervisor --> loop_controller;",
         "    loop_controller --> router;",
         "    loop_controller --> assemble;",
-        "    router -.-> smalltalk;",
+        "    router -.-> capi_gus;",
         "    router -.-> summary;",
         "    router -.-> branch;",
         "    router -.-> anomaly;",
@@ -1051,7 +1050,7 @@ def _build_conceptual_mermaid_diagram(graph_obj, *, logger) -> str:
         "    router -.-> capi_datab;",
         "    capi_datab -->|alertas| capi_alertas;",
         "    capi_datab -->|exporta evidencia| capi_desktop;",
-        "    smalltalk --> assemble;",
+        "    capi_gus --> assemble;",
         "    summary --> assemble;",
         "    branch --> assemble;",
         "    anomaly --> assemble;",
@@ -1366,7 +1365,6 @@ async def run_capi_noticias(payload: Dict[str, Any] | None = Body(None)):
             status_code=500,
             content={"error": {"code": "CAPI_NOTICIAS_RUN_ERROR", "message": str(e)}}
         )
-
 
 
 

@@ -224,7 +224,11 @@ class RealtimeEventBus:
             'summary': 'financial_summary',
             'branch': 'branch_analysis',
             'anomaly': 'anomaly_detection',
+<<<<<<< HEAD
             'smalltalk': 'conversation',
+=======
+            'capi_gus': 'conversation',
+>>>>>>> origin/develop
             'capi_datab': 'database_query',
             'capi_elcajas': 'branch_operations',
             'capi_desktop': 'desktop_operation',
@@ -268,4 +272,8 @@ def emit_progress(agent: str, session_id: str, content: str):
 
 def emit_end(agent: str, session_id: str, success: bool = True):
     """Helper rápido para emitir fin de agente."""
+<<<<<<< HEAD
     get_event_bus().emit_agent_end(agent, session_id, success)
+=======
+    get_event_bus().emit_agent_end(agent, session_id, success)
+>>>>>>> origin/develop

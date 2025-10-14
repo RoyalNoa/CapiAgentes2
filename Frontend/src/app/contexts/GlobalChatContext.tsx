@@ -95,117 +95,6 @@ export function GlobalChatProvider({ children }: GlobalChatProviderProps) {
     disconnect: disconnectAgentStream,
   } = useAgentWebSocket();
 
-  const processedAgentEventIdsRef = useRef<Set<string>>(new Set());
-
-  const formatAgentEvent = useCallback((event: AgentEvent) => {
-    const eventDate = event.timestamp ? new Date(event.timestamp) : new Date();
-    const validDate = !Number.isNaN(eventDate.getTime());
-    const displayDate = validDate ? eventDate : new Date();
-    const formattedTime = displayDate.toLocaleTimeString('es-ES', {
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-    });
-
-    const typeLabel = (event.type || 'evento')
-      .toString()
-      .replace(/_/g, ' ')
-      .toUpperCase();
-
-    const dataObject = (event.data && typeof event.data === 'object')
-      ? (event.data as Record<string, unknown>)
-      : undefined;
-
-    const agentLabel = event.agent
-      || (typeof dataObject?.agent === 'string' ? String(dataObject.agent) : 'system');
-    const sessionLabel = event.session_id
-      || (typeof dataObject?.session_id === 'string' ? String(dataObject.session_id) : undefined);
-
-    const transition = event.from || event.to
-      ? `${event.from ?? 'origin'} -> ${event.to ?? 'target'}`
-      : null;
-
-    let detail: string | null = null;
-
-    if (typeof event.data === 'string') {
-      detail = event.data;
-    } else if (dataObject) {
-      const candidateFields = ['message', 'detail', 'description', 'summary', 'status', 'reason', 'step'];
-      for (const field of candidateFields) {
-        const value = dataObject[field];
-        if (typeof value === 'string' && value.trim()) {
-          detail = value.trim();
-          break;
-        }
-      }
-
-      if (!detail && dataObject.state && typeof dataObject.state === 'object') {
-        const stateData = dataObject.state as Record<string, unknown>;
-        const stateFields = ['current_node', 'status', 'node'];
-        for (const field of stateFields) {
-          const value = stateData[field];
-          if (typeof value === 'string' && value.trim()) {
-            detail = `${field}: ${value.trim()}`;
-            break;
-          }
-        }
-      }
-
-      if (!detail) {
-        const dataEntries = Object.entries(dataObject)
-          .filter(([key, value]) => typeof value === 'string' && key !== 'agent')
-          .map(([key, value]) => `${key}: ${String(value).trim()}`)
-          .slice(0, 2);
-        if (dataEntries.length > 0) {
-          detail = dataEntries.join(' | ');
-        }
-      }
-    }
-
-    if (detail && detail.length > 160) {
-      detail = detail.slice(0, 157) + '...';
-    }
-
-    const segments = [
-      `[${formattedTime}]`,
-      `[${typeLabel}]`,
-      `agent: ${agentLabel}`,
-    ];
-
-    if (sessionLabel) {
-      segments.push(`session: ${sessionLabel}`);
-    }
-
-    if (transition) {
-      segments.push(transition);
-    }
-
-    return detail ? `${segments.join(' ')} - ${detail}` : segments.join(' ');
-  }, []);
-
-  const getAgentEventKey = useCallback((event: AgentEvent) => {
-    if (typeof event.id === 'string' && event.id.trim().length > 0) {
-      return event.id.trim();
-    }
-
-    const fallbackParts = [
-      event.type ?? '',
-      event.timestamp ?? '',
-      event.agent ?? '',
-      event.session_id ?? '',
-    ].filter(Boolean);
-
-    if (fallbackParts.length > 0) {
-      return fallbackParts.join('|');
-    }
-
-    try {
-      return JSON.stringify(event).slice(0, 120);
-    } catch {
-      return `event-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-    }
-  }, []);
-
   useEffect(() => {
     connectAgentStream();
     return () => {
@@ -214,49 +103,13 @@ export function GlobalChatProvider({ children }: GlobalChatProviderProps) {
   }, [connectAgentStream, disconnectAgentStream]);
 
   useEffect(() => {
-    if (!Array.isArray(agentEvents) || agentEvents.length === 0) {
-      return;
-    }
-
-    const seen = processedAgentEventIdsRef.current;
-    const orderedEvents = [...agentEvents].reverse();
-    const newMessages: OrchestratorMessage[] = [];
-
-    for (const event of orderedEvents) {
-      const key = getAgentEventKey(event);
-      if (seen.has(key)) {
-        continue;
-      }
-      seen.add(key);
-
-      const summary = formatAgentEvent(event);
-
-      let eventAgent: string | undefined;
-      if (typeof event.agent === 'string' && event.agent.trim()) {
-        eventAgent = event.agent.trim();
-      } else if (event.data && typeof event.data === 'object') {
-        const agentValue = (event.data as Record<string, unknown>).agent;
-        if (typeof agentValue === 'string' && agentValue.trim()) {
-          eventAgent = agentValue.trim();
-        }
-      }
-
-      newMessages.push({
-        id: `agent-event-${key}`,
-        role: 'system',
-        content: summary,
-        agent: eventAgent,
-        payload: {
-          type: 'agent_event',
-          event,
-        },
+    if (agentEvents && agentEvents.length > 0) {
+      console.debug('[GlobalChat] agentEvents update', {
+        count: agentEvents.length,
+        latest: agentEvents[0],
       });
     }
-
-    if (newMessages.length > 0) {
-      newMessages.forEach((message) => appendLocalMessage(message));
-    }
-  }, [agentEvents, formatAgentEvent, getAgentEventKey, appendLocalMessage]);
+  }, [agentEvents]);
 
   const sanitizeSessionId = useCallback((sessionId: string) => {
     const cleaned = sessionId.replace(/[^A-Za-z0-9._-]/g, '_').slice(0, 128);

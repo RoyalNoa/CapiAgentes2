@@ -47,6 +47,7 @@ export default function ChatInput({
     }
   }, [handleSend]);
 
+<<<<<<< HEAD
   const canSend = input.trim().length > 0 && !loading;
 
   return (
@@ -54,6 +55,13 @@ export default function ChatInput({
       {/* Borde decorativo superior */}
       <div className={styles.topAccent} />
 
+=======
+  return (
+    <div className={`${styles.container} ${loading ? styles.loading : ''}`}>
+      {/* Borde decorativo superior */}
+      <div className={styles.topAccent} />
+
+>>>>>>> origin/develop
       {/* Contexto de alerta */}
       {alertContext && (
         <div className={styles.alertContext}>
@@ -104,6 +112,7 @@ export default function ChatInput({
           className={styles.inputField}
         />
 
+<<<<<<< HEAD
         {/* Botón de enviar */}
         <button
           type="button"
@@ -114,6 +123,8 @@ export default function ChatInput({
           <SendIcon />
         </button>
 
+=======
+>>>>>>> origin/develop
         {/* Slot derecho para botones adicionales */}
         {rightSlot && (
           <div className={styles.rightSlot}>
@@ -124,6 +135,7 @@ export default function ChatInput({
     </div>
   );
 }
+<<<<<<< HEAD
 
 const SendIcon = () => (
   <svg
@@ -137,3 +149,5 @@ const SendIcon = () => (
     <path d="M3.172 20.828 21 12 3.172 3.172l-.003 7.657 10.059 1.171-10.056 1.171z" />
   </svg>
 );
+=======
+>>>>>>> origin/develop

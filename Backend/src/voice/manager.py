@@ -5,7 +5,7 @@ import base64
 import time
 
 from dataclasses import dataclass, field
-from typing import Any, AsyncGenerator, AsyncIterator, Optional
+from typing import Any, AsyncGenerator, AsyncIterator, Optional, Protocol
 
 from src.core.logging import get_logger
 from src.observability.agent_metrics import record_error_event, record_turn_event
@@ -13,6 +13,7 @@ from src.domain.agents.agent_models import ResponseEnvelope
 from src.voice.audio_models import TranscriptSegment, VoiceTurnResult
 from src.voice.google_stt import GoogleSpeechClient
 from src.voice.google_tts import GoogleTextToSpeechClient
+from src.voice.elevenlabs_tts import ElevenLabsTextToSpeechClient
 from src.voice.settings import VoiceSettings
 from src.voice.storage import VoiceStorage
 from src.voice import metrics as voice_metrics
@@ -20,19 +21,40 @@ from src.voice import metrics as voice_metrics
 logger = get_logger(__name__)
 
 
+class TextToSpeechClient(Protocol):
+    async def synthesize(
+        self,
+        *,
+        text: str,
+        language_code: Optional[str] = None,
+        voice_name: Optional[str] = None,
+        audio_encoding: Optional[str] = None,
+        speaking_rate: float | None = None,
+        pitch: float | None = None,
+    ) -> tuple[str, str]:
+        ...
+
+
 @dataclass
 class VoiceOrchestrator:
     orchestrator: Any
     settings: VoiceSettings
     speech: GoogleSpeechClient | None = None
-    tts: GoogleTextToSpeechClient | None = None
+    tts: TextToSpeechClient | None = None
     storage: VoiceStorage | None = None
     metrics: Any | None = None
     _turn_counters: dict[str, int] = field(default_factory=dict, init=False)
 
     def __post_init__(self) -> None:
         self.speech = self.speech or GoogleSpeechClient(self.settings)
-        self.tts = self.tts or GoogleTextToSpeechClient(self.settings)
+        if self.tts is None:
+            provider = (self.settings.tts_provider or "google").lower()
+            if provider == "elevenlabs":
+                self.tts = ElevenLabsTextToSpeechClient(self.settings)
+                logger.info({"event": "voice_tts_provider_selected", "provider": "elevenlabs"})
+            else:
+                self.tts = GoogleTextToSpeechClient(self.settings)
+                logger.info({"event": "voice_tts_provider_selected", "provider": "google"})
         self.storage = self.storage or VoiceStorage(self.settings)
         self.metrics = self.metrics or voice_metrics
 

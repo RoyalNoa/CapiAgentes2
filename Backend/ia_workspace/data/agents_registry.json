@@ -1,4 +1,35 @@
 {
+  "agente_g": {
+    "agent_name": "agente_g",
+    "display_name": "Agente Google Workspace",
+    "version": "1.0.0",
+    "description": "Agente que gestiona Gmail, Drive y Calendar para automatizar flujos de Google Workspace.",
+    "category": "workspace_automation",
+    "supported_intents": [
+      "google_workspace",
+      "google_gmail",
+      "google_drive",
+      "google_calendar",
+      "query"
+    ],
+    "capabilities": {
+      "gmail_read": true,
+      "gmail_send": true,
+      "drive_list": true,
+      "drive_create": true,
+      "calendar_create": true,
+      "requires_human_for_send": true
+    },
+    "metadata": {
+      "agent_class_path": "agentes.agente_g.handler.AgenteGAgent",
+      "node_class_path": "src.infrastructure.langgraph.nodes.agente_g_node.AgenteGNode",
+      "priority": "medium",
+      "production_ready": false,
+      "enabled": true
+    },
+    "author": "System",
+    "created_at": "2025-10-03T00:00:00Z"
+  },
   "capi_datab": {
     "agent_name": "capi_datab",
     "display_name": "Capi DataB",

@@ -24,9 +24,16 @@ from pathlib import Path
 from typing import Any, Dict
 
 try:
-    from pythonjsonlogger import jsonlogger
+    from pythonjsonlogger.json import JsonFormatter as _JsonFormatterBase  # type: ignore[attr-defined]
 except ImportError:
-    jsonlogger = None  # type: ignore[assignment]
+    try:
+        from pythonjsonlogger import jsonlogger as _legacy_jsonlogger  # type: ignore
+    except ImportError:
+        _JsonFormatterBase = None  # type: ignore[assignment]
+    else:
+        _JsonFormatterBase = _legacy_jsonlogger.JsonFormatter  # type: ignore[attr-defined]
+else:
+    _legacy_jsonlogger = None
 
 
 LOG_FILE_NAME = "backend.log"
@@ -59,9 +66,9 @@ class UnifiedFormatter(logging.Formatter):
         return f"[{timestamp}] {LOG_PREFIX} [{level}] [{logger_name}] {message}{context_segment}"
 
 
-if jsonlogger is not None:
+if _JsonFormatterBase is not None:
 
-    class JsonFormatter(jsonlogger.JsonFormatter):
+    class JsonFormatter(_JsonFormatterBase):
         """Formatter JSON compatible con Elastic y Loki."""
 
         def add_fields(
@@ -192,7 +199,7 @@ def setup_unified_logging() -> None:
     global _logging_configured
 
     log_format = os.getenv("LOG_FORMAT", "text").lower()
-    use_json = log_format == "json" and jsonlogger is not None
+    use_json = log_format == "json" and _JsonFormatterBase is not None
 
     log_file_path = _build_log_file_path()
     formatter: logging.Formatter = JsonFormatter(fmt="%(message)s") if use_json else UnifiedFormatter()
@@ -207,15 +214,23 @@ def setup_unified_logging() -> None:
     console_handler.setLevel(logging.INFO)
     root_logger.addHandler(console_handler)
 
-    file_handler = logging.handlers.RotatingFileHandler(
-        log_file_path,
-        maxBytes=DEFAULT_MAX_BYTES,
-        backupCount=DEFAULT_BACKUP_COUNT,
-        encoding="utf-8",
-    )
-    file_handler.setFormatter(formatter)
-    file_handler.setLevel(logging.INFO)
-    root_logger.addHandler(file_handler)
+    try:
+        file_handler = logging.handlers.RotatingFileHandler(
+            log_file_path,
+            maxBytes=DEFAULT_MAX_BYTES,
+            backupCount=DEFAULT_BACKUP_COUNT,
+            encoding="utf-8",
+        )
+    except OSError as exc:
+        root_logger.warning(
+            "File logging disabled for %s (%s). Falling back to console-only logging.",
+            log_file_path,
+            exc,
+        )
+    else:
+        file_handler.setFormatter(formatter)
+        file_handler.setLevel(logging.INFO)
+        root_logger.addHandler(file_handler)
 
     _install_exception_hooks()
     logging.getLogger("uvicorn").propagate = True

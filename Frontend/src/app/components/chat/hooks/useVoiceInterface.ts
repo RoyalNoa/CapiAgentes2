@@ -22,11 +22,30 @@ export default function useVoiceInterface({ sessionId, onMessageAppend }: UseVoi
   const [isMicPressed, setIsMicPressed] = useState(false);
   const [isAudioMuted, setIsAudioMuted] = useState(false);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [isSecureContextAvailable, setIsSecureContextAvailable] = useState(true);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const activeVoiceTurnRef = useRef<string | null>(null);
   const publishedUserTurnsRef = useRef<Set<string>>(new Set<string>());
   const publishedAgentTurnsRef = useRef<Set<string>>(new Set<string>());
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsSecureContextAvailable(window.isSecureContext);
+    }
+  }, []);
+
+  const ensureSecureContext = useCallback(() => {
+    if (!isSecureContextAvailable) {
+      setVoiceNotice('La captura de voz requiere abrir la app en HTTPS (por ejemplo https://localhost) o marcar el origen como seguro en tu navegador.');
+      return false;
+    }
+    if (typeof navigator === 'undefined' || !navigator.mediaDevices?.getUserMedia) {
+      setVoiceNotice('Este navegador no expone captura de micrófono disponible para la experiencia de voz.');
+      return false;
+    }
+    return true;
+  }, [isSecureContextAvailable]);
 
   const pushStageUpdate = useCallback((update: VoiceStageUpdate) => {
     setVoiceStages((prev) => ({ ...prev, [update.stage]: update.status }));
@@ -115,6 +134,10 @@ export default function useVoiceInterface({ sessionId, onMessageAppend }: UseVoi
     if (isRecording || isProcessing) {
       return;
     }
+    if (!ensureSecureContext()) {
+      setIsMicPressed(false);
+      return;
+    }
     const turnId = `voice-${Date.now()}`;
     activeVoiceTurnRef.current = turnId;
     publishedUserTurnsRef.current = new Set<string>();
@@ -127,10 +150,14 @@ export default function useVoiceInterface({ sessionId, onMessageAppend }: UseVoi
     resetVoiceStream();
     void startRecording().catch((err) => {
       console.error('No se pudo iniciar la captura de audio', err);
-      setVoiceNotice('No pudimos iniciar la captura de audio');
+      const friendly =
+        typeof err?.message === 'string' && err.message.trim().length > 0
+          ? err.message.trim()
+          : 'No pudimos iniciar la captura de audio';
+      setVoiceNotice(`${friendly}. Verificá los permisos del micrófono o recarga en un origen seguro (HTTPS).`);
       setIsMicPressed(false);
     });
-  }, [isProcessing, isRecording, resetVoiceStream, startRecording]);
+  }, [ensureSecureContext, isProcessing, isRecording, resetVoiceStream, startRecording]);
 
   const finishVoiceRecording = useCallback(() => {
     if (!isRecording) {
@@ -181,7 +208,12 @@ export default function useVoiceInterface({ sessionId, onMessageAppend }: UseVoi
 
   useEffect(() => {
     if (voiceError) {
-      setVoiceNotice(voiceError);
+      const normalized = voiceError.trim();
+      if (/secure/i.test(normalized)) {
+        setVoiceNotice('Necesitás abrir la app en HTTPS o marcar este origen como seguro para habilitar el micrófono.');
+      } else {
+        setVoiceNotice(normalized);
+      }
     }
   }, [voiceError]);
 
