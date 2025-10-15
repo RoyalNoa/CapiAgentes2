@@ -226,6 +226,40 @@ export function getMorphingClasses(
   });
 }
 
+export function extractReasoningPlanStepsFromMessage(message: MessageWithOptionalPayload | undefined): ReasoningPlanStep[] {
+  if (!message || typeof message !== 'object') {
+    return [];
+  }
+
+  const payload = message.payload ?? message;
+  const planCandidates: Array<Record<string, unknown> | undefined> = [
+    (payload as Record<string, unknown>)?.response_metadata as Record<string, unknown> | undefined,
+    (payload as Record<string, unknown>)?.meta as Record<string, unknown> | undefined,
+    (payload as Record<string, unknown>)?.reasoning_plan as Record<string, unknown> | undefined,
+    (payload as Record<string, unknown>)?.data?.reasoning_plan as Record<string, unknown> | undefined,
+    (payload as Record<string, unknown>)?.data as Record<string, unknown> | undefined,
+    (payload as Record<string, unknown>)?.metadata as Record<string, unknown> | undefined,
+  ];
+
+  for (const candidate of planCandidates) {
+    if (!candidate || typeof candidate !== 'object') {
+      continue;
+    }
+
+    const reasoningContainer =
+      candidate.reasoning_plan && typeof candidate.reasoning_plan === 'object'
+        ? (candidate.reasoning_plan as Record<string, unknown>)
+        : candidate;
+
+    const steps = (reasoningContainer as Record<string, unknown>)?.steps;
+    if (Array.isArray(steps) && steps.length > 0) {
+      return steps as ReasoningPlanStep[];
+    }
+  }
+
+  return [];
+}
+
 /**
  * Helper para clases de eventos
  */
@@ -277,19 +311,18 @@ export const AGENT_FRIENDLY_NAMES: Record<string, string> = {
   'capi_gus': 'Capi Gus',
   'capigusagent': 'Capi Gus',
   'capigusnode': 'Capi Gus',
-  'summary': 'Capi Gus',
-  'summaryagent': 'Capi Gus',
-  'summarynode': 'Capi Gus',
+  'summary': 'Capi Summary',
+  'summaryagent': 'Capi Summary',
+  'summarynode': 'Capi Summary',
   'branch': 'Capi Branch',
   'branchagent': 'Capi Branch',
   'branchnode': 'Capi Branch',
   'anomaly': 'Capi Anomaly',
   'anomalyagent': 'Capi Anomaly',
   'anomalynode': 'Capi Anomaly',
-  'capi_gus': 'Capi Capi Gus',
-  'capi_gus_fallback': 'Capi Capi Gus',
-  'capi_gusfallback': 'Capi Capi Gus',
-  'capi_gusnode': 'Capi Capi Gus',
+  'capi_gus_fallback': 'Capi Gus',
+  'capi_gusfallback': 'Capi Gus',
+  'capi_gusnode': 'Capi Gus',
   'capi': 'Sistema' // Fallback for generic 'capi'
 };
 
@@ -380,6 +413,10 @@ export interface ReasoningPlanStep {
   expected_output?: string;
   agent?: string;
 }
+
+type MessageWithOptionalPayload = Record<string, unknown> & {
+  payload?: Record<string, unknown>;
+};
 
 const pickFirstString = (values: unknown[]): string | undefined => {
   for (const value of values) {

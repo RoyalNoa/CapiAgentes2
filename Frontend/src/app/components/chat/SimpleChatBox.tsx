@@ -23,6 +23,7 @@ import {
   getEventClasses,
   getFriendlyAgentName,
   buildAgentTaskEvents,
+  extractReasoningPlanStepsFromMessage,
   type ReasoningPlanStep,
   type SimulatedEvent,
 } from '@/app/utils/chatHelpers';
@@ -262,40 +263,6 @@ const createDecisionFromText = (
   content: text,
 });
 
-const extractReasoningPlanSteps = (message: MessageWithPayload): ReasoningPlanStep[] => {
-  if (!message || typeof message !== 'object') {
-    return [];
-  }
-
-  const payload = message.payload ?? message;
-  const planContainers: Array<Record<string, unknown>> = [
-    payload?.response_metadata,
-    payload?.meta,
-    payload?.reasoning_plan,
-    payload?.data?.reasoning_plan,
-    payload?.data,
-    payload?.metadata,
-  ];
-
-  for (const container of planContainers) {
-    if (!container || typeof container !== 'object') {
-      continue;
-    }
-
-    const plan =
-      container.reasoning_plan && typeof container.reasoning_plan === 'object'
-        ? container.reasoning_plan
-        : container;
-
-    const steps = (plan as Record<string, unknown>)?.steps;
-    if (Array.isArray(steps) && steps.length > 0) {
-      return steps as ReasoningPlanStep[];
-    }
-  }
-
-  return [];
-};
-
 const toBubbleMessage = (
   message: OrchestratorMessage | undefined,
   fallback: 'user' | 'bot',
@@ -311,11 +278,25 @@ const toBubbleMessage = (
     typeof message.content === 'string' ? message.content : null,
     typeof payload.respuesta === 'string' ? payload.respuesta : null,
     typeof payload.message === 'string' ? payload.message : null,
+    typeof payload.response === 'string' ? payload.response : null,
     typeof (message as any)?.text === 'string' ? (message as any).text : null,
   ];
 
   const text =
     textCandidates.find(value => typeof value === 'string' && value.trim().length > 0)?.trim() ?? '';
+
+  if (!text) {
+    const hasPlanOnly =
+      payload &&
+      typeof payload === 'object' &&
+      payload.reasoning_plan &&
+      !payload.respuesta &&
+      !payload.message &&
+      !payload.response;
+    if (hasPlanOnly) {
+      return null;
+    }
+  }
 
   return {
     id: message.id || getMessageKey(message),
@@ -633,7 +614,11 @@ useEffect(() => {
       return;
     }
 
-    const relevantAgentEvents = sessionAgentEvents.slice(activeTurn.simulation.startEventIndex);
+    const startIndex = Math.min(
+      activeTurn.simulation.startEventIndex,
+      sessionAgentEvents.length,
+    );
+    const relevantAgentEvents = sessionAgentEvents.slice(startIndex);
     const finalMessage = activeTurn.agentMessages[0];
     const currentMessages = messagesRef.current;
 
@@ -643,7 +628,7 @@ useEffect(() => {
       index >= Math.max(0, currentMessages.length - 10);
       index -= 1
     ) {
-      const candidate = extractReasoningPlanSteps(currentMessages[index] as MessageWithPayload);
+      const candidate = extractReasoningPlanStepsFromMessage(currentMessages[index] as MessageWithPayload);
       if (candidate.length > 0) {
         planSteps = candidate;
         break;
