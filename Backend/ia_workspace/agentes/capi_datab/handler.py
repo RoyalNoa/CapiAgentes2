@@ -108,10 +108,10 @@ class CapiDataBAgent(BaseAgent):
             self._reasoner = llm_reasoner
         else:
             try:
-                self._reasoner = LLMReasoner(model="gpt-4.1", temperature=0.1, max_tokens=350)
+                self._reasoner = LLMReasoner(model="gpt-4.1-mini", temperature=0.1, max_tokens=350)
             except Exception as exc:  # pragma: no cover - defensive
                 self._logger.warning({"event": "capi_datab_reasoner_fallback", "error": str(exc)})
-                self._reasoner = LLMReasoner(model="gpt-4o", temperature=0.1, max_tokens=350)
+                self._reasoner = LLMReasoner(model="gpt-4.1", temperature=0.1, max_tokens=350)
 
     # ------------------------------------------------------------------
     # Public API

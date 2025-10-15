@@ -2,13 +2,13 @@
   "created_at": "2025-10-02T12:52:36.722705",
   "session_id": "test_session_2",
   "sanitized_session_id": "test_session_2",
-  "updated_at": "2025-10-07T00:09:59.766905",
+  "updated_at": "2025-10-14T16:37:09.689025",
   "datab_exports": [],
   "status": "completed",
-  "trace_id": "trace-1759806594.548011",
+  "trace_id": "trace-1760470598.938618",
   "user_id": "test_user",
   "workflow_mode": "chat",
-  "active_agent": "summary",
+  "active_agent": "capi_gus",
   "completed_nodes": [
     "start",
     "intent",
@@ -16,7 +16,7 @@
     "reasoning",
     "supervisor",
     "router",
-    "summary",
+    "capi_gus",
     "human_gate",
     "assemble",
     "finalize"
@@ -25,7 +25,7 @@
   "intent_confidence": 0.4,
   "last_query": "Dame un resumen de los datos financieros",
   "last_response": {
-    "message": "📊 *Resumen financiero*:\n\n⚠️ No se encontraron datos financieros para analizar.\n\nPor favor, carga algunos archivos CSV o Excel en el sistema.",
+    "message": "Lamentablemente, no tengo información actualizada para brindarte un resumen financiero en este momento. ¿Podrías proporcionarme más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
     "data": {
       "react_observations": [
         {
@@ -52,12 +52,12 @@
         }
       ],
       "reasoning_plan": {
-        "plan_id": "04a0e69c-7f91-444c-90a6-af17135ad046",
+        "plan_id": "41f59073-737f-4d7e-bfa7-6ecfa86c359a",
         "version": 1,
         "intent": "summary_request",
         "goal": "Entregar resumen financiero estratégico",
         "confidence": 0.95,
-        "recommended_agent": "summary",
+        "recommended_agent": "capi_gus",
         "fallback_agent": "assemble",
         "rationale": "La intención es generar un resumen financiero. Se planifica cargar datos, calcular métricas críticas, validar anomalías y narrar resultados.",
         "steps": [
@@ -74,7 +74,7 @@
             "id": "S2",
             "title": "Calcular métricas clave",
             "description": "Obtener totales, variaciones y ratios relevantes para la gerencia.",
-            "agent": "summary",
+            "agent": "capi_gus",
             "inputs": [],
             "expected_output": "Paquete de métricas financieras",
             "depends_on": [
@@ -96,7 +96,7 @@
             "id": "S4",
             "title": "Construir narrativa ejecutiva",
             "description": "Traducir métricas y anomalías en un relato ejecutivo con próximos pasos.",
-            "agent": "summary",
+            "agent": "capi_gus",
             "inputs": [],
             "expected_output": "Resumen narrado listo para el usuario",
             "depends_on": [
@@ -116,18 +116,19 @@
           "complexity": "medium",
           "entities": {},
           "context_used": false,
-          "semantic_confidence": 1.0,
+          "semantic_confidence": 0.4,
           "available_agents": [
+            "agente_g",
             "anomaly",
             "branch",
             "capi_datab",
             "capi_desktop",
-            "summary"
+            "capi_gus"
           ],
           "user_id": "test_user",
           "session_id": "test_session_2"
         },
-        "generated_at": "2025-10-07T03:09:59.752760",
+        "generated_at": "2025-10-14T19:37:07.393880",
         "intent_alignment": true,
         "requires_replan": false,
         "history": [],
@@ -136,18 +137,68 @@
         "complexity": "medium",
         "estimated_effort_seconds": 64
       },
-      "total_records": 0,
-      "total_amount": 0.0,
-      "anomalies_detected": 0,
-      "date_range": "Sin datos",
-      "branches": [],
-      "categories": []
+      "response": "Lamentablemente, no tengo información actualizada para brindarte un resumen financiero en este momento. ¿Podrías proporcionarme más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "capi_gus": {
+        "type": "conversation_summary",
+        "agent": "capi_gus",
+        "created_at": "2025-10-14T19:37:09.683561+00:00",
+        "query": "Dame un resumen de los datos financieros",
+        "message": "Lamentablemente, no tengo información actualizada para brindarte un resumen financiero en este momento. ¿Podrías proporcionarme más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+        "base_message": "No pude generar un resumen actualizado de los datos para responder \"Dame un resumen de los datos financieros\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+        "branch": null,
+        "balance": null,
+        "balance_text": null,
+        "theoretical_balance": null,
+        "theoretical_balance_text": null,
+        "delta": null,
+        "delta_text": null,
+        "distribution_detail": null,
+        "distribution_breakdown": {},
+        "alerts": {
+          "count": 0,
+          "ids": [],
+          "headlines": [],
+          "duplicates": []
+        },
+        "raw_alert_text": null,
+        "closing_prompt": "¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+        "llm_generated": true,
+        "context_snapshot": {
+          "branch": null,
+          "balance_value": null,
+          "balance_text": null,
+          "theoretical_value": null,
+          "theoretical_text": null,
+          "difference_value": null,
+          "difference_text": null,
+          "distribution_text": null,
+          "distribution_breakdown": {},
+          "alert_summary": {
+            "count": 0,
+            "ids": [],
+            "headlines": [],
+            "duplicates": []
+          },
+          "raw_alert_text": null,
+          "export_file": null,
+          "previous_summary": null,
+          "original_query": "Dame un resumen de los datos financieros"
+        },
+        "llm_usage": {
+          "model": "gpt-3.5-turbo",
+          "prompt_tokens": 448,
+          "completion_tokens": 51,
+          "total_tokens": 499,
+          "cost_usd": 0.000774,
+          "processing_time": 2.2772,
+          "finish_reason": "stop"
+        }
+      }
     }
   },
   "response_metadata": {
-    "intent_reasoning": "Semantic pattern match: La consulta solicita un resumen de datos financieros, por lo que el intent 'summary' con el agente 'summary' es el mÃ¡s adecuado. (confidence=1.000, entities=0) | legacy patterns matched: \\b(resumen|summary|sumario|sintesis)\\b, \\b(mostrar|show|dame|give me).*\\b(resumen|summary)\\b",
+    "intent_reasoning": "Legacy pattern match preferred: Legacy: Matched 2 pattern(s) with score 0.43 | semantic suggested summary_request (0.400)",
     "intent_matched_patterns": [
-      "semantic_pattern:summary_request",
       "\\b(resumen|summary|sumario|sintesis)\\b",
       "\\b(mostrar|show|dame|give me).*\\b(resumen|summary)\\b"
     ],
@@ -173,7 +224,7 @@
         }
       },
       {
-        "thought": "Necesito datos para un resumen financiero.",
+        "thought": "Necesito datos para explicarlo de forma clara.",
         "action": "collect_metrics",
         "params": {},
         "iteration": 1,
@@ -185,7 +236,7 @@
         }
       },
       {
-        "thought": "Necesito datos para un resumen financiero.",
+        "thought": "Necesito datos para explicarlo de forma clara.",
         "action": "collect_metrics",
         "params": {},
         "iteration": 2,
@@ -200,24 +251,24 @@
         "thought": "Finalizo el ciclo ReAct con una recomendacion.",
         "action": "finish",
         "observation": {
-          "message": "Derivare la consulta 'Dame un resumen de los datos financieros' al agente 'summary' con la evidencia recopilada.",
-          "recommended_agent": "summary"
+          "message": "Derivare la consulta 'Dame un resumen de los datos financieros' al agente 'capi_gus' con la evidencia recopilada.",
+          "recommended_agent": "capi_gus"
         }
       }
     ],
-    "react_recommended_agent": "summary",
-    "react_finished_at": "2025-10-07T00:09:58.606593",
-    "active_agent": "summary",
-    "loop_fallback": "summary",
+    "react_recommended_agent": "capi_gus",
+    "react_finished_at": "2025-10-14T16:37:01.044002",
+    "active_agent": "capi_gus",
+    "loop_fallback": "capi_gus",
     "react_follow_up": false,
     "needs_retry": null,
     "reasoning_plan": {
-      "plan_id": "04a0e69c-7f91-444c-90a6-af17135ad046",
+      "plan_id": "41f59073-737f-4d7e-bfa7-6ecfa86c359a",
       "version": 1,
       "intent": "summary_request",
       "goal": "Entregar resumen financiero estratégico",
       "confidence": 0.95,
-      "recommended_agent": "summary",
+      "recommended_agent": "capi_gus",
       "fallback_agent": "assemble",
       "rationale": "La intención es generar un resumen financiero. Se planifica cargar datos, calcular métricas críticas, validar anomalías y narrar resultados.",
       "steps": [
@@ -234,7 +285,7 @@
           "id": "S2",
           "title": "Calcular métricas clave",
           "description": "Obtener totales, variaciones y ratios relevantes para la gerencia.",
-          "agent": "summary",
+          "agent": "capi_gus",
           "inputs": [],
           "expected_output": "Paquete de métricas financieras",
           "depends_on": [
@@ -256,7 +307,7 @@
           "id": "S4",
           "title": "Construir narrativa ejecutiva",
           "description": "Traducir métricas y anomalías en un relato ejecutivo con próximos pasos.",
-          "agent": "summary",
+          "agent": "capi_gus",
           "inputs": [],
           "expected_output": "Resumen narrado listo para el usuario",
           "depends_on": [
@@ -276,18 +327,19 @@
         "complexity": "medium",
         "entities": {},
         "context_used": false,
-        "semantic_confidence": 1.0,
+        "semantic_confidence": 0.4,
         "available_agents": [
+          "agente_g",
           "anomaly",
           "branch",
           "capi_datab",
           "capi_desktop",
-          "summary"
+          "capi_gus"
         ],
         "user_id": "test_user",
         "session_id": "test_session_2"
       },
-      "generated_at": "2025-10-07T03:09:59.752760",
+      "generated_at": "2025-10-14T19:37:07.393880",
       "intent_alignment": true,
       "requires_replan": false,
       "history": [],
@@ -297,45 +349,56 @@
       "estimated_effort_seconds": 64
     },
     "reasoning_confidence": 0.95,
-    "recommended_agent": "summary",
+    "recommended_agent": "capi_gus",
     "reasoning_progress_percent": 98.0,
     "reasoning_eta_seconds": 64,
     "reasoning_remaining_steps": 4,
     "reasoning_complexity": "medium",
     "reasoning_needs_react": true,
     "supervisor_queue": [
-      "summary",
+      "capi_gus",
       "anomaly",
       "capi_desktop",
-      "smalltalk"
+      "summary"
     ],
-    "supervisor_selected": "summary",
-    "supervisor_ran_at": "2025-10-07T00:09:59.753770",
+    "supervisor_selected": "capi_gus",
+    "supervisor_ran_at": "2025-10-14T16:37:07.394914",
     "semantic_result": {
       "intent": "summary_request",
       "confidence": 0.4,
       "target_agent": "summary",
-      "routing_agent": "summary",
+      "routing_agent": "capi_gus",
       "entities": {},
       "reasoning": "Fallback classification executed (feature_flag_disabled)",
       "requires_clarification": false,
       "provider": "fallback",
       "model": ""
     },
-    "agent_type": "summary",
-    "summary_hash": "111ac8b4d4ae8fdc",
-    "is_repeated": false,
-    "deduplication_applied": true,
+    "agent_type": "capi_gus",
+    "speaker": "capi_gus",
+    "friendly_summary": true,
+    "agent_raw_message": "Lamentablemente, no tengo información actualizada para brindarte un resumen financiero en este momento. ¿Podrías proporcionarme más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "result_summary": "Lamentablemente, no tengo información actualizada para brindarte un resumen financiero en este momento. ¿Podrías proporcionarme más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "capi_gus_base_message": "No pude generar un resumen actualizado de los datos para responder \"Dame un resumen de los datos financieros\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "capi_gus_llm_usage": {
+      "model": "gpt-3.5-turbo",
+      "prompt_tokens": 448,
+      "completion_tokens": 51,
+      "total_tokens": 499,
+      "cost_usd": 0.000774,
+      "processing_time": 2.2772,
+      "finish_reason": "stop"
+    },
     "assembled_at": "assemble",
     "workflow_completed": true,
     "total_nodes": 9
   },
-  "routing_decision": "summary",
+  "routing_decision": "human_gate",
   "conversation_history": [],
   "memory_window": [],
   "reasoning_summary": {
     "goal": "Entregar resumen financiero estratégico",
-    "recommended_agent": "summary",
+    "recommended_agent": "capi_gus",
     "confidence": 0.95,
     "version": 1,
     "cooperative_agents": [
@@ -350,8 +413,8 @@
   },
   "processing_metrics": {
     "react_steps": 5.0,
-    "react_latency_ms": 0.0,
-    "reasoning_time_ms": 1146.0,
+    "react_latency_ms": 1.0,
+    "reasoning_time_ms": 6348.0,
     "reasoning_steps": 4.0,
     "reasoning_version": 1.0,
     "reasoning_progress_percent": 98.0,
@@ -360,6 +423,63 @@
     "supervisor_latency_ms": 0.0,
     "supervisor_queue_length": 4.0
   },
-  "shared_artifacts": {},
+  "shared_artifacts": {
+    "capi_gus": {
+      "type": "conversation_summary",
+      "agent": "capi_gus",
+      "created_at": "2025-10-14T19:37:09.683561+00:00",
+      "query": "Dame un resumen de los datos financieros",
+      "message": "Lamentablemente, no tengo información actualizada para brindarte un resumen financiero en este momento. ¿Podrías proporcionarme más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "base_message": "No pude generar un resumen actualizado de los datos para responder \"Dame un resumen de los datos financieros\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "branch": null,
+      "balance": null,
+      "balance_text": null,
+      "theoretical_balance": null,
+      "theoretical_balance_text": null,
+      "delta": null,
+      "delta_text": null,
+      "distribution_detail": null,
+      "distribution_breakdown": {},
+      "alerts": {
+        "count": 0,
+        "ids": [],
+        "headlines": [],
+        "duplicates": []
+      },
+      "raw_alert_text": null,
+      "closing_prompt": "¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "llm_generated": true,
+      "context_snapshot": {
+        "branch": null,
+        "balance_value": null,
+        "balance_text": null,
+        "theoretical_value": null,
+        "theoretical_text": null,
+        "difference_value": null,
+        "difference_text": null,
+        "distribution_text": null,
+        "distribution_breakdown": {},
+        "alert_summary": {
+          "count": 0,
+          "ids": [],
+          "headlines": [],
+          "duplicates": []
+        },
+        "raw_alert_text": null,
+        "export_file": null,
+        "previous_summary": null,
+        "original_query": "Dame un resumen de los datos financieros"
+      },
+      "llm_usage": {
+        "model": "gpt-3.5-turbo",
+        "prompt_tokens": 448,
+        "completion_tokens": 51,
+        "total_tokens": 499,
+        "cost_usd": 0.000774,
+        "processing_time": 2.2772,
+        "finish_reason": "stop"
+      }
+    }
+  },
   "errors": []
 }

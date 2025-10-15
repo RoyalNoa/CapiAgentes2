@@ -53,7 +53,8 @@
       "Bash(npm test)",
       "Bash(start chrome:*)",
       "Bash(npm install:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(git fetch:*)"
     ],
     "deny": [],
     "ask": []

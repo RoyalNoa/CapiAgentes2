@@ -1,0 +1,18 @@
+{
+  "messages": [
+    {
+      "id": "fallback-1",
+      "thread_id": "fallback-thread-1",
+      "snippet": "Lucas confirmó que necesita trasladar 150.000 desde la bóveda hacia la sucursal.",
+      "from": "lucasnoa94@gmail.com",
+      "subject": "Re: Solicitud de distribución de efectivo hacia la sucursal",
+      "date": "Mon, 13 Oct 2025 21:34:25 -0300",
+      "received_at": "2025-10-13T00:34:25",
+      "unread": false,
+      "amount_total": 150000.0,
+      "amounts": [
+        {"raw": "$150.000", "value": 150000.0, "currency": "ARS"}
+      ]
+    }
+  ]
+}

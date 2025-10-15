@@ -44,6 +44,12 @@ try:
     _FALLBACK_NEWS_AVAILABLE = True
 except ImportError:  # pragma: no cover - optional dependency
     _FALLBACK_NEWS_AVAILABLE = False
+try:
+    from src.infrastructure.langgraph.nodes.agente_g_node import AgenteGNode
+    _FALLBACK_AGENTE_G_AVAILABLE = True
+except ImportError:  # pragma: no cover - optional dependency
+    AgenteGNode = None
+    _FALLBACK_AGENTE_G_AVAILABLE = False
 
 # Servicios dinámicos de agentes
 from src.application.services.agent_registry_service import (
@@ -341,6 +347,8 @@ class LangGraphRuntime:
         }
         if _FALLBACK_NEWS_AVAILABLE:
             agent_nodes.setdefault("capi_noticias", CapiNoticiasNode(name="capi_noticias"))
+        if _FALLBACK_AGENTE_G_AVAILABLE:
+            agent_nodes.setdefault("agente_g", AgenteGNode(name="agente_g"))
 
         agent_node = agent_nodes.get(decision)
         if agent_node is not None:
@@ -761,6 +769,4 @@ class LangGraphRuntime:
 
     def is_dynamic_system_available(self) -> bool:
         return self.dynamic_manager is not None and self.registry_service is not None
-
-
 

@@ -18,6 +18,7 @@ from langgraph.errors import NodeInterrupt
 from src.infrastructure.langgraph.state import GraphState, WorkflowStatus, StateMutator
 from src.infrastructure.websocket.event_broadcaster import get_event_broadcaster
 from src.core.logging import get_logger
+from src.infrastructure.langgraph.utils.timing import scale_duration, workflow_sleep
 
 logger = get_logger(__name__)
 
@@ -125,7 +126,7 @@ class CompetitionOrchestrator:
                     yield checkpoint
 
                     # Delay visual para que se vea la animación
-                    await asyncio.sleep(self.TRANSITION_DURATION)
+                    await workflow_sleep(self.TRANSITION_DURATION)
 
         except Exception as e:
             logger.error(f"Error in visual execution: {e}")
@@ -152,7 +153,7 @@ class CompetitionOrchestrator:
                 message=self._get_start_message(node),
                 animation_type="shimmer",
                 color_state="orange",
-                duration_ms=self.SHIMMER_DURATION * 1000
+                duration_ms=scale_duration(self.SHIMMER_DURATION) * 1000
             )
 
         elif event_type == "on_node_end":
@@ -163,7 +164,7 @@ class CompetitionOrchestrator:
                 message=self._get_end_message(node),
                 animation_type="glow",
                 color_state="cyan",
-                duration_ms=self.TRANSITION_DURATION * 1000
+                duration_ms=scale_duration(self.TRANSITION_DURATION) * 1000
             )
 
         return None
@@ -202,7 +203,7 @@ class CompetitionOrchestrator:
     async def _start_with_visual(self, state: GraphState) -> GraphState:
         """Nodo inicial con efecto dramático."""
         # Delay para efecto de entrada
-        await asyncio.sleep(0.3)
+        await workflow_sleep(0.3)
 
         state = StateMutator.update_field(state, "status", WorkflowStatus.PROCESSING)
         state = StateMutator.append_to_list(state, "completed_nodes", "start")
@@ -222,7 +223,7 @@ class CompetitionOrchestrator:
         start_time = time.time()
 
         # Simular procesamiento de intent
-        await asyncio.sleep(0.5)
+        await workflow_sleep(0.5)
 
         # Clasificar (simplificado)
         query_lower = state.query.lower()
@@ -240,7 +241,7 @@ class CompetitionOrchestrator:
         # Garantizar tiempo mínimo para animación
         elapsed = time.time() - start_time
         if elapsed < self.MIN_NODE_DURATION:
-            await asyncio.sleep(self.MIN_NODE_DURATION - elapsed)
+            await workflow_sleep(max(self.MIN_NODE_DURATION - elapsed, 0.0))
 
         # Checkpoint con información visual
         raise NodeInterrupt({
@@ -271,7 +272,7 @@ class CompetitionOrchestrator:
                 "message": step_message,
                 "progress": steps.index((step_message, duration)) / len(steps)
             })
-            await asyncio.sleep(duration)
+            await workflow_sleep(duration)
 
         # Actualizar estado con resultado
         summary_data = {
@@ -288,7 +289,7 @@ class CompetitionOrchestrator:
     async def _branch_with_checkpoint(self, state: GraphState) -> GraphState:
         """Análisis de sucursal con checkpointing."""
         # Timing perfecto para shimmer
-        await asyncio.sleep(self.SHIMMER_DURATION)
+        await workflow_sleep(self.SHIMMER_DURATION)
 
         branch_data = {
             "branch": "SUC-404",
@@ -311,7 +312,7 @@ class CompetitionOrchestrator:
     async def _anomaly_with_checkpoint(self, state: GraphState) -> GraphState:
         """Detección de anomalías con suspenso visual."""
         # Crear suspenso con timing dramático
-        await asyncio.sleep(1.0)  # Pausa dramática
+        await workflow_sleep(1.0)  # Pausa dramática
 
         # Checkpoint intermedio para suspenso
         raise NodeInterrupt({
@@ -322,7 +323,7 @@ class CompetitionOrchestrator:
             "progress": 0.5
         })
 
-        await asyncio.sleep(1.5)  # Más suspenso
+        await workflow_sleep(1.5)  # Más suspenso
 
         anomaly_data = {
             "anomalies_detected": 0,
@@ -337,12 +338,12 @@ class CompetitionOrchestrator:
     async def _router_with_visual(self, state: GraphState) -> GraphState:
         """Router con efecto visual de decisión."""
         # Efecto visual de routing
-        await asyncio.sleep(0.3)
+        await workflow_sleep(0.3)
         return state
 
     async def _assemble_with_visual(self, state: GraphState) -> GraphState:
         """Ensamblaje con efecto de compilación."""
-        await asyncio.sleep(0.5)
+        await workflow_sleep(0.5)
 
         # Compilar respuesta
         response = self._build_response(state)

@@ -178,6 +178,11 @@ class GraphBuilder:
             if decision and decision in available_targets:
                 return decision
             metadata = getattr(state, "response_metadata", {}) or {}
+            if not isinstance(metadata, dict):
+                metadata = {}
+            recommended_agent = metadata.get("recommended_agent")
+            if recommended_agent and recommended_agent in available_targets:
+                return recommended_agent
             parallel = metadata.get("parallel_targets")
             if isinstance(parallel, (list, tuple)):
                 valid_parallel = tuple(target for target in parallel if target in available_targets)
@@ -223,7 +228,7 @@ class GraphBuilder:
                     return "capi_desktop"
                 if metadata.get("datab_skip_human"):
                     return "assemble"
-                return "capi_gus"
+                return "human_gate"
 
             path_map = {
                 "capi_alertas": "capi_alertas",

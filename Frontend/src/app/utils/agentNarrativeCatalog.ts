@@ -74,12 +74,11 @@ const AGENT_ACTION_LOOKUP: Record<string, string> = {
   capielcajas: 'branch_operations',
   capidesktop: 'desktop_operation',
   capinoticias: 'news_analysis',
-  capigus: 'conversation_summary',
-  capi_gus: 'conversation_summary',
-  summary: 'conversation_summary',
+  capigus: 'conversation',
+  capi_gus: 'conversation',
+  summary: 'conversation',
   branch: 'branch_analysis',
   anomaly: 'anomaly_detection',
-  capi_gus: 'conversation'
 };
 const normalizeForSearch = (value: string): string => {
   return value
@@ -816,7 +815,6 @@ export const buildNarrativeAgentSteps = (
 
   return results;
 };
-
 
 
 

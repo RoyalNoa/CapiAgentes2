@@ -118,16 +118,20 @@ class RouterNode(GraphNode):
         suggested = (suggested or "").strip().lower()
         if suggested == "smalltalk":
             suggested = "capi_gus"
+        if suggested == "summary":
+            suggested = "capi_gus"
         if suggested:
             candidates.append(suggested)
 
         default_agent = self.semantic_service._select_agent(intent, None)
         if default_agent == "smalltalk":
             default_agent = "capi_gus"
+        if default_agent == "summary":
+            default_agent = "capi_gus"
         if default_agent not in candidates:
             candidates.append(default_agent)
 
-        candidates.extend(["capi_gus", "capi_datab", "capi_desktop", "agente_g", "assemble", "summary"])
+        candidates.extend(["capi_gus", "capi_datab", "capi_desktop", "agente_g", "assemble"])
 
         for agent in candidates:
             if agent and self._agent_service.is_enabled(agent):

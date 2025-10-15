@@ -62,11 +62,13 @@ services:
       GOOGLE_OAUTH_SCOPES: ${GOOGLE_OAUTH_SCOPES}
       GOOGLE_AGENT_EMAIL: ${GOOGLE_AGENT_EMAIL}
       GOOGLE_TOKEN_STORE: ${GOOGLE_TOKEN_STORE}
+      AGENTE_G_OFFLINE_MODE: ${AGENTE_G_OFFLINE_MODE:-0}
+      AGENTE_G_FALLBACK_PATH: ${AGENTE_G_FALLBACK_PATH:-/app/ia_workspace/data/fallback/gmail_mailbox_sample.json}
     volumes:
       - ./Backend/logs:/app/logs
       - ./Backend/ia_workspace:/app/ia_workspace
       - ./secrets/voice-streaming-sa.json:/run/secrets/voice-streaming-sa.json:ro
-      - ./secrets/google-agente-g.json:/app/secrets/google-agente-g.json:ro
+      - ./secrets:/app/secrets:rw
       # Montar el escritorio del usuario para acceso del CAPI Desktop
       - "${HOST_DESKTOP_PATH:-/mnt/c/Users/lucas/OneDrive/Desktop}:/app/user_desktop:rw"
       - ./voice_cache:/app/voice_cache

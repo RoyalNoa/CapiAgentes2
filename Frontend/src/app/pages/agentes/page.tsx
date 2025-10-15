@@ -76,44 +76,86 @@ const FALLBACK_AGENTS: ExtendedAgentData[] = [
   {
     name: 'capi_gus',
     enabled: true,
-    description: 'Respuestas ejecutivas',
+    description: 'Respuestas ejecutivas multi-canal',
     status: 'active',
-    metrics: { tokens_used: 15420, cost_usd: 0.0231, requests: 142, avg_response_time: 1.2 }
+    metrics: { tokens_used: 18420, cost_usd: 0.0272, requests: 163, avg_response_time: 1.1 }
   },
   {
     name: 'branch',
     enabled: true,
-    description: 'Branch analysis',
+    description: 'Análisis de sucursales y sucursales virtuales',
     status: 'active',
-    metrics: { tokens_used: 8930, cost_usd: 0.0134, requests: 89, avg_response_time: 0.9 }
+    metrics: { tokens_used: 11280, cost_usd: 0.0164, requests: 108, avg_response_time: 0.8 }
   },
   {
     name: 'anomaly',
     enabled: true,
-    description: 'Anomaly detection',
+    description: 'Detección de anomalías transaccionales',
     status: 'processing',
-    metrics: { tokens_used: 22150, cost_usd: 0.0332, requests: 201, avg_response_time: 2.1 }
+    metrics: { tokens_used: 24560, cost_usd: 0.0368, requests: 224, avg_response_time: 2.0 }
   },
   {
-    name: 'capi_gus',
+    name: 'scribe',
     enabled: false,
-    description: 'Conversation handling',
+    description: 'Registro de sesiones y auditoría',
     status: 'idle',
-    metrics: { tokens_used: 3200, cost_usd: 0.0048, requests: 32, avg_response_time: 0.5 }
+    metrics: { tokens_used: 4200, cost_usd: 0.0061, requests: 41, avg_response_time: 0.6 }
   },
   {
     name: 'capi_desktop',
     enabled: true,
-    description: 'Document management',
+    description: 'Automatización en desktop remotos',
     status: 'active',
-    metrics: { tokens_used: 18750, cost_usd: 0.0281, requests: 156, avg_response_time: 1.8 }
+    metrics: { tokens_used: 19710, cost_usd: 0.0295, requests: 166, avg_response_time: 1.6 }
+  },
+  {
+    name: 'ops_router',
+    enabled: true,
+    description: 'Orquestador de flujos operativos',
+    status: 'processing',
+    metrics: { tokens_used: 16590, cost_usd: 0.0246, requests: 138, avg_response_time: 2.4 }
+  },
+  {
+    name: 'risk_guardian',
+    enabled: true,
+    description: 'Evaluación de riesgos y cumplimiento',
+    status: 'active',
+    metrics: { tokens_used: 15110, cost_usd: 0.0223, requests: 119, avg_response_time: 1.3 }
+  },
+  {
+    name: 'atlas_mapper',
+    enabled: false,
+    description: 'Cartografía de conocimiento interno',
+    status: 'idle',
+    metrics: { tokens_used: 3120, cost_usd: 0.0047, requests: 29, avg_response_time: 0.7 }
+  },
+  {
+    name: 'vector_forge',
+    enabled: true,
+    description: 'Embeddings y enriquecimiento semántico',
+    status: 'processing',
+    metrics: { tokens_used: 22870, cost_usd: 0.0348, requests: 192, avg_response_time: 2.7 }
+  },
+  {
+    name: 'comms_bridge',
+    enabled: true,
+    description: 'Integraciones con canales externos',
+    status: 'active',
+    metrics: { tokens_used: 10340, cost_usd: 0.0155, requests: 97, avg_response_time: 1.0 }
+  },
+  {
+    name: 'sentinel',
+    enabled: false,
+    description: 'Monitoreo de seguridad y alertas',
+    status: 'error',
+    metrics: { tokens_used: 1890, cost_usd: 0.0028, requests: 18, avg_response_time: 0.9 }
   },
   {
     name: 'capi_datab',
     enabled: true,
-    description: 'Database automation',
+    description: 'Automatización de bases de datos y ETL',
     status: 'idle',
-    metrics: { tokens_used: 0, cost_usd: 0.0, requests: 0, avg_response_time: 0.0 }
+    metrics: { tokens_used: 5400, cost_usd: 0.0081, requests: 52, avg_response_time: 1.5 }
   }
 ];
 
@@ -411,11 +453,6 @@ export default function AgentesPage() {
             </div>
 
             {/* Toolbar central reservada para futuras acciones */}
-
-            <div className={styles.summaryBoard}>
-              {/* Summary tiles reservados para futura información */}
-            </div>
-
             {/* agentGridContent reservado para reactivar la grilla de agentes */}
           </div>
         }

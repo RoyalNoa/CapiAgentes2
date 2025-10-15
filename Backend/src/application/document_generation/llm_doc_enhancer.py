@@ -74,7 +74,7 @@ class LLMDocumentEnhancer:
     
     def __init__(self, 
                  openai_api_key: Optional[str] = None,
-                 model: str = "gpt-4",
+                 model: str = "gpt-5",
                  temperature: float = 0.3):
         """
         Inicializa el enhancer de documentos

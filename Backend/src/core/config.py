@@ -117,6 +117,20 @@ class Settings(BaseSettings):
     UPLOAD_MAX_SIZE: int = Field(default=10 * 1024 * 1024, description="Max upload size in bytes")
     STORAGE_PATH: str = Field(default="./data/storage", description="File storage path")
 
+    # Workflow / Simulation Timing
+    WORKFLOW_TIMING_SCALE: float = Field(
+        default=0.15,
+        description="Multiplier applied to workflow simulation sleeps (use <1.0 to speed up animations).",
+        ge=0.0,
+        le=10.0,
+    )
+    WORKFLOW_MIN_SLEEP_SECONDS: float = Field(
+        default=0.0,
+        description="Lower bound in seconds applied after scaling workflow sleeps.",
+        ge=0.0,
+        le=1.0,
+    )
+
     # AI Configuration
     DEFAULT_MODEL: str = Field(default="gpt-3.5-turbo", description="Default AI model")
     MAX_TOKENS: int = Field(default=4096, description="Max tokens per request", ge=1, le=32000)
