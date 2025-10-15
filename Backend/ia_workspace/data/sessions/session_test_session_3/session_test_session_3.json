@@ -2,13 +2,13 @@
   "created_at": "2025-10-02T12:52:37.299586",
   "session_id": "test_session_3",
   "sanitized_session_id": "test_session_3",
-  "updated_at": "2025-10-07T00:10:05.096893",
+  "updated_at": "2025-10-14T16:37:38.445753",
   "datab_exports": [],
   "status": "completed",
-  "trace_id": "trace-1759806599.842293",
+  "trace_id": "trace-1760470629.751707",
   "user_id": "test_user",
   "workflow_mode": "chat",
-  "active_agent": "summary",
+  "active_agent": "capi_gus",
   "completed_nodes": [
     "start",
     "intent",
@@ -16,7 +16,7 @@
     "reasoning",
     "supervisor",
     "router",
-    "summary",
+    "capi_gus",
     "human_gate",
     "assemble",
     "finalize"
@@ -25,7 +25,7 @@
   "intent_confidence": 0.2,
   "last_query": "Ã‚Â¿CÃƒÂ³mo cocinar pasta?",
   "last_response": {
-    "message": "📊 *Resumen financiero*:\n\n⚠️ No se encontraron datos financieros para analizar.\n\nPor favor, carga algunos archivos CSV o Excel en el sistema.",
+    "message": "Lamentablemente no cuento con información financiera actualizada para brindarte el saldo actual. ¿Podrías proporcionar más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte hoy? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
     "data": {
       "react_observations": [
         {
@@ -46,12 +46,12 @@
         }
       ],
       "reasoning_plan": {
-        "plan_id": "4aaa5864-da2f-4f87-817b-0da47c561f13",
+        "plan_id": "3826a5bf-e596-486c-8ae2-0e0e6a0c9f95",
         "version": 1,
         "intent": "unknown",
         "goal": "Clarificar y asistir consulta ambigua: Ã‚Â¿CÃƒÂ³mo cocinar pasta?",
-        "confidence": 0.95,
-        "recommended_agent": "summary",
+        "confidence": 0.85,
+        "recommended_agent": "capi_gus",
         "fallback_agent": "assemble",
         "rationale": "Consulta ambigua: se elabora estrategia de clarificación y recopilación de señales antes de seleccionar agente definitivo.",
         "steps": [
@@ -59,7 +59,7 @@
             "id": "E1",
             "title": "Solicitar clarificación",
             "description": "Pedir más detalles al usuario para reducir ambigüedad.",
-            "agent": "summary",
+            "agent": "capi_gus",
             "inputs": [],
             "expected_output": "Detalle adicional de la consulta",
             "depends_on": []
@@ -79,7 +79,7 @@
             "id": "E3",
             "title": "Preparar respuesta inicial",
             "description": "Ofrecer orientación y sugerir capacidades relevantes mientras se espera aclaración.",
-            "agent": "summary",
+            "agent": "capi_gus",
             "inputs": [],
             "expected_output": "Guía introductoria",
             "depends_on": [
@@ -92,38 +92,90 @@
           "intent"
         ],
         "supporting_evidence": {
-          "progress_percent": 97.5,
+          "progress_percent": 87.5,
           "remaining_steps": 3,
           "estimated_effort_seconds": 50,
           "complexity": "medium",
           "entities": {},
           "context_used": false,
-          "semantic_confidence": 0.8,
+          "semantic_confidence": 0.2,
           "available_agents": [
+            "agente_g",
             "anomaly",
             "branch",
             "capi_datab",
             "capi_desktop",
-            "summary"
+            "capi_gus"
           ],
           "user_id": "test_user",
           "session_id": "test_session_3"
         },
-        "generated_at": "2025-10-07T03:10:05.080482",
+        "generated_at": "2025-10-14T19:37:37.308867",
         "intent_alignment": false,
         "requires_replan": false,
         "history": [],
-        "progress_percent": 97.5,
+        "progress_percent": 87.5,
         "remaining_steps": 3,
         "complexity": "medium",
         "estimated_effort_seconds": 50
       },
-      "total_records": 0,
-      "total_amount": 0.0,
-      "anomalies_detected": 0,
-      "date_range": "Sin datos",
-      "branches": [],
-      "categories": []
+      "response": "Lamentablemente no cuento con información financiera actualizada para brindarte el saldo actual. ¿Podrías proporcionar más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte hoy? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "capi_gus": {
+        "type": "conversation_summary",
+        "agent": "capi_gus",
+        "created_at": "2025-10-14T19:37:38.443529+00:00",
+        "query": "Ã‚Â¿CÃƒÂ³mo cocinar pasta?",
+        "message": "Lamentablemente no cuento con información financiera actualizada para brindarte el saldo actual. ¿Podrías proporcionar más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte hoy? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+        "base_message": "No pude generar un resumen actualizado de los datos para responder \"Ã‚Â¿CÃƒÂ³mo cocinar pasta?\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+        "branch": null,
+        "balance": null,
+        "balance_text": null,
+        "theoretical_balance": null,
+        "theoretical_balance_text": null,
+        "delta": null,
+        "delta_text": null,
+        "distribution_detail": null,
+        "distribution_breakdown": {},
+        "alerts": {
+          "count": 0,
+          "ids": [],
+          "headlines": [],
+          "duplicates": []
+        },
+        "raw_alert_text": null,
+        "closing_prompt": "¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+        "llm_generated": true,
+        "context_snapshot": {
+          "branch": null,
+          "balance_value": null,
+          "balance_text": null,
+          "theoretical_value": null,
+          "theoretical_text": null,
+          "difference_value": null,
+          "difference_text": null,
+          "distribution_text": null,
+          "distribution_breakdown": {},
+          "alert_summary": {
+            "count": 0,
+            "ids": [],
+            "headlines": [],
+            "duplicates": []
+          },
+          "raw_alert_text": null,
+          "export_file": null,
+          "previous_summary": null,
+          "original_query": "Ã‚Â¿CÃƒÂ³mo cocinar pasta?"
+        },
+        "llm_usage": {
+          "model": "gpt-3.5-turbo",
+          "prompt_tokens": 457,
+          "completion_tokens": 50,
+          "total_tokens": 507,
+          "cost_usd": 0.000786,
+          "processing_time": 1.1231,
+          "finish_reason": "stop"
+        }
+      }
     }
   },
   "response_metadata": {
@@ -172,24 +224,24 @@
         "thought": "Finalizo el ciclo ReAct con una recomendacion.",
         "action": "finish",
         "observation": {
-          "message": "Derivare la consulta 'Ã‚Â¿CÃƒÂ³mo cocinar pasta?' al agente 'summary' con la evidencia recopilada.",
-          "recommended_agent": "summary"
+          "message": "Derivare la consulta 'Ã‚Â¿CÃƒÂ³mo cocinar pasta?' al agente 'capi_gus' con la evidencia recopilada.",
+          "recommended_agent": "capi_gus"
         }
       }
     ],
-    "react_recommended_agent": "summary",
-    "react_finished_at": "2025-10-07T00:10:03.856307",
-    "active_agent": "summary",
-    "loop_fallback": "summary",
+    "react_recommended_agent": "capi_gus",
+    "react_finished_at": "2025-10-14T16:37:30.795902",
+    "active_agent": "capi_gus",
+    "loop_fallback": "capi_gus",
     "react_follow_up": false,
     "needs_retry": null,
     "reasoning_plan": {
-      "plan_id": "4aaa5864-da2f-4f87-817b-0da47c561f13",
+      "plan_id": "3826a5bf-e596-486c-8ae2-0e0e6a0c9f95",
       "version": 1,
       "intent": "unknown",
       "goal": "Clarificar y asistir consulta ambigua: Ã‚Â¿CÃƒÂ³mo cocinar pasta?",
-      "confidence": 0.95,
-      "recommended_agent": "summary",
+      "confidence": 0.85,
+      "recommended_agent": "capi_gus",
       "fallback_agent": "assemble",
       "rationale": "Consulta ambigua: se elabora estrategia de clarificación y recopilación de señales antes de seleccionar agente definitivo.",
       "steps": [
@@ -197,7 +249,7 @@
           "id": "E1",
           "title": "Solicitar clarificación",
           "description": "Pedir más detalles al usuario para reducir ambigüedad.",
-          "agent": "summary",
+          "agent": "capi_gus",
           "inputs": [],
           "expected_output": "Detalle adicional de la consulta",
           "depends_on": []
@@ -217,7 +269,7 @@
           "id": "E3",
           "title": "Preparar respuesta inicial",
           "description": "Ofrecer orientación y sugerir capacidades relevantes mientras se espera aclaración.",
-          "agent": "summary",
+          "agent": "capi_gus",
           "inputs": [],
           "expected_output": "Guía introductoria",
           "depends_on": [
@@ -230,96 +282,165 @@
         "intent"
       ],
       "supporting_evidence": {
-        "progress_percent": 97.5,
+        "progress_percent": 87.5,
         "remaining_steps": 3,
         "estimated_effort_seconds": 50,
         "complexity": "medium",
         "entities": {},
         "context_used": false,
-        "semantic_confidence": 0.8,
+        "semantic_confidence": 0.2,
         "available_agents": [
+          "agente_g",
           "anomaly",
           "branch",
           "capi_datab",
           "capi_desktop",
-          "summary"
+          "capi_gus"
         ],
         "user_id": "test_user",
         "session_id": "test_session_3"
       },
-      "generated_at": "2025-10-07T03:10:05.080482",
+      "generated_at": "2025-10-14T19:37:37.308867",
       "intent_alignment": false,
       "requires_replan": false,
       "history": [],
-      "progress_percent": 97.5,
+      "progress_percent": 87.5,
       "remaining_steps": 3,
       "complexity": "medium",
       "estimated_effort_seconds": 50
     },
-    "reasoning_confidence": 0.95,
-    "recommended_agent": "summary",
-    "reasoning_progress_percent": 97.5,
+    "reasoning_confidence": 0.85,
+    "recommended_agent": "capi_gus",
+    "reasoning_progress_percent": 87.5,
     "reasoning_eta_seconds": 50,
     "reasoning_remaining_steps": 3,
     "reasoning_complexity": "medium",
     "reasoning_needs_react": true,
     "supervisor_queue": [
-      "summary",
+      "capi_gus",
       "intent",
+      "summary",
       "anomaly",
-      "capi_desktop",
-      "smalltalk"
+      "capi_desktop"
     ],
-    "supervisor_selected": "summary",
-    "supervisor_ran_at": "2025-10-07T00:10:05.081510",
+    "supervisor_selected": "capi_gus",
+    "supervisor_ran_at": "2025-10-14T16:37:37.309903",
     "semantic_result": {
       "intent": "unknown",
       "confidence": 0.2,
       "target_agent": "assemble",
-      "routing_agent": "summary",
+      "routing_agent": "capi_gus",
       "entities": {},
       "reasoning": "Fallback classification executed (feature_flag_disabled)",
       "requires_clarification": true,
       "provider": "fallback",
       "model": ""
     },
-    "agent_type": "summary",
-    "summary_hash": "111ac8b4d4ae8fdc",
-    "is_repeated": false,
-    "deduplication_applied": true,
+    "agent_type": "capi_gus",
+    "speaker": "capi_gus",
+    "friendly_summary": true,
+    "agent_raw_message": "Lamentablemente no cuento con información financiera actualizada para brindarte el saldo actual. ¿Podrías proporcionar más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte hoy? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "result_summary": "Lamentablemente no cuento con información financiera actualizada para brindarte el saldo actual. ¿Podrías proporcionar más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte hoy? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "capi_gus_base_message": "No pude generar un resumen actualizado de los datos para responder \"Ã‚Â¿CÃƒÂ³mo cocinar pasta?\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "capi_gus_llm_usage": {
+      "model": "gpt-3.5-turbo",
+      "prompt_tokens": 457,
+      "completion_tokens": 50,
+      "total_tokens": 507,
+      "cost_usd": 0.000786,
+      "processing_time": 1.1231,
+      "finish_reason": "stop"
+    },
     "assembled_at": "assemble",
     "workflow_completed": true,
     "total_nodes": 9
   },
-  "routing_decision": "summary",
+  "routing_decision": "human_gate",
   "conversation_history": [],
   "memory_window": [],
   "reasoning_summary": {
     "goal": "Clarificar y asistir consulta ambigua: Ã‚Â¿CÃƒÂ³mo cocinar pasta?",
-    "recommended_agent": "summary",
-    "confidence": 0.95,
+    "recommended_agent": "capi_gus",
+    "confidence": 0.8500000000000001,
     "version": 1,
     "cooperative_agents": [
       "intent"
     ],
-    "progress_percent": 97.5,
+    "progress_percent": 87.5,
     "remaining_steps": 3,
     "complexity": "medium",
     "estimated_effort_seconds": 50,
-    "remaining_percent": 2.5
+    "remaining_percent": 12.5
   },
   "processing_metrics": {
     "react_steps": 5.0,
     "react_latency_ms": 0.0,
-    "reasoning_time_ms": 1224.0,
+    "reasoning_time_ms": 6512.0,
     "reasoning_steps": 3.0,
     "reasoning_version": 1.0,
-    "reasoning_progress_percent": 97.5,
+    "reasoning_progress_percent": 87.5,
     "reasoning_eta_seconds": 50.0,
     "reasoning_remaining_steps": 3.0,
-    "supervisor_latency_ms": 0.0,
+    "supervisor_latency_ms": 1.0,
     "supervisor_queue_length": 5.0
   },
-  "shared_artifacts": {},
+  "shared_artifacts": {
+    "capi_gus": {
+      "type": "conversation_summary",
+      "agent": "capi_gus",
+      "created_at": "2025-10-14T19:37:38.443529+00:00",
+      "query": "Ã‚Â¿CÃƒÂ³mo cocinar pasta?",
+      "message": "Lamentablemente no cuento con información financiera actualizada para brindarte el saldo actual. ¿Podrías proporcionar más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte hoy? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "base_message": "No pude generar un resumen actualizado de los datos para responder \"Ã‚Â¿CÃƒÂ³mo cocinar pasta?\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "branch": null,
+      "balance": null,
+      "balance_text": null,
+      "theoretical_balance": null,
+      "theoretical_balance_text": null,
+      "delta": null,
+      "delta_text": null,
+      "distribution_detail": null,
+      "distribution_breakdown": {},
+      "alerts": {
+        "count": 0,
+        "ids": [],
+        "headlines": [],
+        "duplicates": []
+      },
+      "raw_alert_text": null,
+      "closing_prompt": "¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "llm_generated": true,
+      "context_snapshot": {
+        "branch": null,
+        "balance_value": null,
+        "balance_text": null,
+        "theoretical_value": null,
+        "theoretical_text": null,
+        "difference_value": null,
+        "difference_text": null,
+        "distribution_text": null,
+        "distribution_breakdown": {},
+        "alert_summary": {
+          "count": 0,
+          "ids": [],
+          "headlines": [],
+          "duplicates": []
+        },
+        "raw_alert_text": null,
+        "export_file": null,
+        "previous_summary": null,
+        "original_query": "Ã‚Â¿CÃƒÂ³mo cocinar pasta?"
+      },
+      "llm_usage": {
+        "model": "gpt-3.5-turbo",
+        "prompt_tokens": 457,
+        "completion_tokens": 50,
+        "total_tokens": 507,
+        "cost_usd": 0.000786,
+        "processing_time": 1.1231,
+        "finish_reason": "stop"
+      }
+    }
+  },
   "errors": []
 }

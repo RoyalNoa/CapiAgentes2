@@ -224,11 +224,13 @@ async def test_voice_orchestrator_records_errors(monkeypatch):
         metrics=metrics,
     )
 
-    with pytest.raises(RuntimeError):
-        await voice.complete_turn(transcript='hola', session_id='sess-err', user_id='user-err')
+    result = await voice.complete_turn(transcript='hola', session_id='sess-err', user_id='user-err')
 
+    assert result.response_audio_base64 == ""
+    assert result.audio_url is None
     assert metrics.started == 1
     assert metrics.failed == 1
+    assert metrics.completed == 1
     assert errors and errors[0]['error_code'] == 'tts_failure'
 
 

@@ -43,11 +43,15 @@ class LLMReasoner:
     """OpenAI chat wrapper that exposes usage metrics for downstream services."""
 
     _DEFAULT_MODEL = "gpt-4o-mini"
+    _RESPONSES_PREFIXES = ("gpt-4.1", "gpt-4.1-mini", "o4", "o4-mini", "gpt-5")
     _PRICING_TABLE: Dict[str, Dict[str, float]] = {
         # Prices expressed in USD per 1K tokens (prompt/completion)
         "gpt-4o": {"prompt": 0.005, "completion": 0.015},
         "gpt-4o-mini": {"prompt": 0.00015, "completion": 0.0006},
         "gpt-3.5-turbo": {"prompt": 0.0015, "completion": 0.002},
+        "gpt-4.1": {"prompt": 0.005, "completion": 0.015},
+        "gpt-4.1-mini": {"prompt": 0.002, "completion": 0.008},
+        "gpt-5": {"prompt": 0.005, "completion": 0.015},
     }
 
     def __init__(
@@ -72,6 +76,11 @@ class LLMReasoner:
             'organization': self.organization,
             'timeout': timeout,
         }
+        model_key = (self.model or "").lower()
+        self._use_responses_endpoint = any(
+            model_key.startswith(prefix) for prefix in self._RESPONSES_PREFIXES
+        )
+
         if not self.api_key:
             LOGGER.warning("LLMReasoner initialized without OPENAI_API_KEY; calls will fail")
 
@@ -98,6 +107,12 @@ class LLMReasoner:
                 error=message,
             )
 
+        model_key = (self.model or "").lower()
+        use_responses_endpoint = any(
+            model_key.startswith(prefix) for prefix in self._RESPONSES_PREFIXES
+        )
+        self._use_responses_endpoint = use_responses_endpoint
+
         max_tokens = max_output_tokens or self.max_tokens
         start = time.perf_counter()
         messages = self._build_messages(
@@ -109,18 +124,39 @@ class LLMReasoner:
 
         client_kwargs = {k: v for k, v in self._client_options.items() if v is not None}
 
-        def _invoke_sync():
+        chat_response_format = self._normalize_chat_response_format(response_format)
+        responses_text_config = self._normalize_responses_text_config(response_format)
+
+        def _invoke_chat():
             client = OpenAI(**client_kwargs)
-            return client.chat.completions.create(
-                model=self.model,
-                temperature=self.temperature,
-                max_tokens=max(1, max_tokens),
-                messages=messages,
-                response_format={"type": response_format} if response_format else None,
-            )
+            request_kwargs: Dict[str, Any] = {
+                "model": self.model,
+                "max_tokens": max(1, max_tokens),
+                "messages": messages,
+            }
+            if self.temperature is not None:
+                request_kwargs["temperature"] = self.temperature
+            if chat_response_format is not None:
+                request_kwargs["response_format"] = chat_response_format
+            return client.chat.completions.create(**request_kwargs)
+
+        def _invoke_responses():
+            client = OpenAI(**client_kwargs)
+            input_payload = [{"role": item["role"], "content": item["content"]} for item in messages]
+            request_kwargs: Dict[str, Any] = {
+                "model": self.model,
+                "input": input_payload,
+                "max_output_tokens": max(1, max_tokens),
+            }
+            if responses_text_config is not None:
+                request_kwargs["text"] = responses_text_config
+            return client.responses.create(**request_kwargs)
 
         try:
-            response = await asyncio.to_thread(_invoke_sync)
+            if use_responses_endpoint:
+                response = await asyncio.to_thread(_invoke_responses)
+            else:
+                response = await asyncio.to_thread(_invoke_chat)
         except OpenAIError as exc:
             duration = time.perf_counter() - start
             LOGGER.error({"event": "llm_reasoner_request_failed", "trace_id": trace_id, "error": str(exc), "model": self.model, "duration_ms": int(duration * 1000)})
@@ -145,15 +181,37 @@ class LLMReasoner:
             )
 
         duration = time.perf_counter() - start
-        choice = response.choices[0] if response.choices else None
-        message = choice.message.content if choice and choice.message else None
-        finish_reason = choice.finish_reason if choice else None
-        usage = getattr(response, "usage", None) or {}
-        prompt_tokens = getattr(usage, "prompt_tokens", 0) or usage.get("prompt_tokens", 0) or 0
-        completion_tokens = getattr(usage, "completion_tokens", 0) or usage.get("completion_tokens", 0) or 0
-        total_tokens = getattr(usage, "total_tokens", 0) or usage.get("total_tokens", prompt_tokens + completion_tokens)
+        if use_responses_endpoint:
+            message = getattr(response, "output_text", None)
+            if not message:
+                parts: List[str] = []
+                for output in getattr(response, "output", []) or []:
+                    for content in getattr(output, "content", []) or []:
+                        if getattr(content, "type", None) == "output_text":
+                            parts.append(getattr(content, "text", ""))
+                message = "".join(parts) if parts else None
+            usage = getattr(response, "usage", {}) or {}
+            prompt_tokens = getattr(usage, "input_tokens", 0) or usage.get("prompt_tokens", 0) or 0
+            completion_tokens = getattr(usage, "output_tokens", 0) or usage.get("completion_tokens", 0) or 0
+            total_tokens = getattr(usage, "total_tokens", 0) or prompt_tokens + completion_tokens
+            finish_reason = None
+            for output in getattr(response, "output", []) or []:
+                finish_reason = getattr(output, "finish_reason", None)
+                if finish_reason:
+                    break
+        else:
+            choice = response.choices[0] if response.choices else None
+            message = choice.message.content if choice and choice.message else None
+            finish_reason = choice.finish_reason if choice else None
+            usage = getattr(response, "usage", None) or {}
+            prompt_tokens = getattr(usage, "prompt_tokens", 0) or usage.get("prompt_tokens", 0) or 0
+            completion_tokens = getattr(usage, "completion_tokens", 0) or usage.get("completion_tokens", 0) or 0
+            total_tokens = getattr(usage, "total_tokens", 0) or usage.get("total_tokens", prompt_tokens + completion_tokens)
         cost_usd = self._estimate_cost(self.model, prompt_tokens, completion_tokens)
-        confidence = self._estimate_confidence(choice)
+        confidence = 0.0
+        if not use_responses_endpoint:
+            choice = response.choices[0] if response.choices else None
+            confidence = self._estimate_confidence(choice)
 
         usage_metadata = {
             "prompt_tokens": prompt_tokens,
@@ -180,6 +238,34 @@ class LLMReasoner:
             finish_reason=finish_reason,
             usage_metadata=usage_metadata,
         )
+
+    @staticmethod
+    def _normalize_chat_response_format(response_format: Optional[Any]) -> Optional[Dict[str, Any]]:
+        if response_format is None:
+            return None
+        if isinstance(response_format, dict):
+            if "type" in response_format:
+                return response_format
+            inner = response_format.get("format")
+            if isinstance(inner, dict) and "type" in inner:
+                return inner
+            return response_format
+        if isinstance(response_format, str) and response_format:
+            return {"type": response_format}
+        return None
+
+    @staticmethod
+    def _normalize_responses_text_config(response_format: Optional[Any]) -> Optional[Dict[str, Any]]:
+        if response_format is None:
+            return None
+        if isinstance(response_format, dict):
+            if "format" in response_format:
+                return response_format
+            return {"format": response_format}
+        if isinstance(response_format, str) and response_format:
+            return {"format": {"type": response_format}}
+        return None
+
     def _build_messages(
         self,
         *,

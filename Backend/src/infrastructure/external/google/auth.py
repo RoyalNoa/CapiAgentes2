@@ -5,14 +5,17 @@ import json
 import os
 import threading
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable, List, Sequence
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 
+from src.core.logging import get_logger
+
 _TOKEN_URI = "https://oauth2.googleapis.com/token"
+LOGGER = get_logger(__name__)
 
 
 @dataclass(frozen=True)
@@ -124,16 +127,35 @@ class GoogleCredentialsManager:
             "scopes": data.get("scopes") or credentials.scopes,
         }
         tmp_path = self._settings.token_store.with_suffix(".tmp")
-        tmp_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
-        tmp_path.replace(self._settings.token_store)
+        try:
+            tmp_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+            tmp_path.replace(self._settings.token_store)
+        except PermissionError:
+            LOGGER.warning(
+                {
+                    "event": "google_token_persist_skipped",
+                    "reason": "permission_denied",
+                    "path": str(self._settings.token_store),
+                }
+            )
+        except OSError as exc:  # pragma: no cover - defensive
+            LOGGER.warning(
+                {
+                    "event": "google_token_persist_skipped",
+                    "reason": "os_error",
+                    "error": str(exc),
+                    "path": str(self._settings.token_store),
+                }
+            )
 
     @staticmethod
     def _parse_expiry(value: str | None) -> datetime | None:
         if not value:
             return None
         try:
-            # Google stores expiry in RFC3339 format
-            return datetime.fromisoformat(value.replace("Z", "+00:00"))
+            # Google stores expiry in RFC3339 format; normalize to naive UTC datetime
+            parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+            return parsed.astimezone(timezone.utc).replace(tzinfo=None)
         except ValueError:
             return None
 

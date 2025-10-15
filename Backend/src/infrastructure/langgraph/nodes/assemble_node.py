@@ -78,26 +78,27 @@ class AssembleNode(GraphNode):
         query = state.original_query or "consulta"
 
         # Check if we detected an intent
+        brand_voice = "Capi Gus"
         if state.detected_intent:
             intent_name = getattr(state.detected_intent, "value", str(state.detected_intent))
             confidence = state.intent_confidence or 0.0
 
             if confidence < 0.3:
                 return (
-                    f"No estoy del todo seguro de cómo ayudarte con '{query}'. "
+                    f"{brand_voice} todavía no está del todo seguro de cómo ayudarte con '{query}'. "
                     "¿Podés darme un poco más de contexto? Tengo a mano resúmenes financieros, análisis de sucursales "
                     "y detección de anomalías."
                 )
             else:
                 return (
-                    f"Revisé tu consulta sobre '{query}' (intención: {intent_name}), "
+                    f"{brand_voice} revisó tu consulta sobre '{query}' (intención: {intent_name}), "
                     "pero no encontré una respuesta puntual en mis tableros. "
                     "¿Querés reformular la pregunta o darme algún dato extra?"
                 )
 
         # Generic fallback
         return (
-            f"Recibí tu consulta: '{query}'. "
+            f"Capi Gus recibió tu consulta: '{query}'. "
             "Estoy listo para ayudarte con análisis financieros, resúmenes, detección de anomalías o métricas de sucursales. "
             "Contame un poco más así avanzamos."
         )

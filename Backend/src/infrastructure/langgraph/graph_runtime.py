@@ -44,6 +44,12 @@ try:
     _FALLBACK_NEWS_AVAILABLE = True
 except ImportError:  # pragma: no cover - optional dependency
     _FALLBACK_NEWS_AVAILABLE = False
+try:
+    from src.infrastructure.langgraph.nodes.agente_g_node import AgenteGNode
+    _FALLBACK_AGENTE_G_AVAILABLE = True
+except ImportError:  # pragma: no cover - optional dependency
+    AgenteGNode = None
+    _FALLBACK_AGENTE_G_AVAILABLE = False
 
 # Servicios dinámicos de agentes
 from src.application.services.agent_registry_service import (
@@ -341,6 +347,8 @@ class LangGraphRuntime:
         }
         if _FALLBACK_NEWS_AVAILABLE:
             agent_nodes.setdefault("capi_noticias", CapiNoticiasNode(name="capi_noticias"))
+        if _FALLBACK_AGENTE_G_AVAILABLE:
+            agent_nodes.setdefault("agente_g", AgenteGNode(name="agente_g"))
 
         agent_node = agent_nodes.get(decision)
         if agent_node is not None:
@@ -518,11 +526,7 @@ class LangGraphRuntime:
         Map node name to semantic action type for frontend display.
 
         Args:
-<<<<<<< HEAD
-            node_name: Name of the node (e.g., "intent", "router", "summary")
-=======
-            node_name: Name of the node (e.g., "intent", "router", "capi_gus")
->>>>>>> origin/develop
+            node_name: Name of the node (e.g., "intent", "router", "summary", "capi_gus")
 
         Returns:
             Semantic action string (e.g., "intent", "router", "summary_generation")
@@ -548,13 +552,9 @@ class LangGraphRuntime:
             'capidatab': 'database_query',
             'capielcajas': 'branch_operations',
             'capidesktop': 'desktop_operation',
-<<<<<<< HEAD
             'capinoticias': 'news_analysis',
             'smalltalk': 'conversation',
-=======
             'capi_gus': 'conversation',
-            'capinoticias': 'news_analysis',
->>>>>>> origin/develop
         }
 
         return action_map.get(node_lower, node_name.lower())
@@ -770,6 +770,4 @@ class LangGraphRuntime:
 
     def is_dynamic_system_available(self) -> bool:
         return self.dynamic_manager is not None and self.registry_service is not None
-
-
 

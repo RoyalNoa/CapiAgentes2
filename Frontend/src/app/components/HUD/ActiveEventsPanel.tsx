@@ -1,21 +1,31 @@
 /**
  * Ruta: Frontend/src/app/components/HUD/ActiveEventsPanel.tsx
- * Descripción: Panel de eventos activos del sistema sin "Active Events" title
+ * Descripción: Muestra el workflow más reciente con el mismo estilo de la vista de chat.
  * Estado: Activo
- * Autor: Claude Code
- * Última actualización: 2025-09-14
  */
 
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import styles from './ActiveEventsPanel.module.css';
+import chatStyles from '../chat/SimpleChatBox.module.css';
+import { useGlobalChat } from '@/app/contexts/GlobalChatContext';
+import {
+  buildAgentTaskEvents,
+  extractReasoningPlanStepsFromMessage,
+  getEventClasses,
+  getFriendlyAgentName,
+  type ReasoningPlanStep,
+  type SimulatedEvent,
+} from '@/app/utils/chatHelpers';
+import type { AgentEvent } from '@/app/hooks/useAgentWebSocket';
+import type { OrchestratorMessage } from '@/app/utils/orchestrator/useOrchestratorChat';
 
 interface Event {
   id: string;
   type: string;
   timestamp: string;
-  data?: any;
+  data?: Record<string, unknown>;
   agent?: string;
 }
 
@@ -24,141 +34,165 @@ interface ActiveEventsPanelProps {
   isConnected: boolean;
 }
 
-export const ActiveEventsPanel: React.FC<ActiveEventsPanelProps> = ({
-  events,
-  isConnected
-}) => {
-  const formatTimestamp = (timestamp: string): string => {
-    try {
-      const date = new Date(timestamp);
-      return date.toLocaleTimeString('en-US', {
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      });
-    } catch {
-      return 'INVALID';
+const normalizeSessionId = (value: string | null | undefined) => {
+  if (!value) {
+    return 'global';
+  }
+  return value.toLowerCase().replace(/^session[_-]?/, '');
+};
+
+const pickFinalAgentMessage = (messages: OrchestratorMessage[]): OrchestratorMessage | undefined => {
+  for (let index = messages.length - 1; index >= 0; index -= 1) {
+    const message = messages[index];
+    if (!message) {
+      continue;
     }
-  };
+    const role = message.role ?? ((message as unknown as { sender?: string })?.sender ?? 'agent');
+    if (role !== 'agent') {
+      continue;
+    }
+    const payload = (message as any)?.payload ?? {};
+    const hasContent =
+      (typeof message.content === 'string' && message.content.trim().length > 0) ||
+      typeof (payload?.respuesta ?? payload?.message ?? payload?.response) === 'string';
+    if (hasContent || Object.keys(payload ?? {}).length > 0) {
+      return message;
+    }
+  }
+  return undefined;
+};
 
-  const getEventTypeColor = (type: string): string => {
-    const typeMap: Record<string, string> = {
-      'agent_start': '#00ff88',
-      'agent_end': '#00ffff',
-      'node_transition': '#ffaa00',
-      'error': '#ff3333',
-      'connection': '#0099cc',
-      'disconnect': '#ff3333'
-    };
-    return typeMap[type] || '#8aa0c5';
-  };
+export const ActiveEventsPanel: React.FC<ActiveEventsPanelProps> = ({
+  events: _events,
+  isConnected,
+}) => {
+  const { messages, agentEvents, activeSessionId } = useGlobalChat();
 
-  const getEventIcon = (type: string): string => {
-    const iconMap: Record<string, string> = {
-      'agent_start': '▶',
-      'agent_end': '◼',
-      'node_transition': '↔',
-      'error': '⚠',
-      'connection': '🔗',
-      'disconnect': '❌'
-    };
-    return iconMap[type] || '●';
-  };
+  const typedMessages = (messages ?? []) as OrchestratorMessage[];
 
-  // Filtrar eventos reales de agentes y mostrar los últimos 15
-  const agentEvents = events.filter(event =>
-    event.type.includes('agent') ||
-    event.type.includes('node') ||
-    event.agent ||
-    (event.data && event.data.agent)
-  );
+  const sessionAgentEvents = useMemo<AgentEvent[]>(() => {
+    if (!agentEvents || agentEvents.length === 0) {
+      return [];
+    }
 
-  const recentEvents = agentEvents.slice(-15).reverse();
+    const targetSession = normalizeSessionId(activeSessionId ?? 'global');
+
+    return agentEvents.filter(event => {
+      const rawSession =
+        (event as any)?.session_id ??
+        (event as any)?.data?.session_id ??
+        (event as any)?.meta?.session_id ??
+        null;
+
+      if (!rawSession) {
+        return targetSession === 'global';
+      }
+
+      return normalizeSessionId(String(rawSession)) === targetSession;
+    });
+  }, [agentEvents, activeSessionId]);
+
+  const planSteps = useMemo<ReasoningPlanStep[]>(() => {
+    if (!typedMessages || typedMessages.length === 0) {
+      return [];
+    }
+
+    for (
+      let index = typedMessages.length - 1;
+      index >= Math.max(0, typedMessages.length - 10);
+      index -= 1
+    ) {
+      const candidate = extractReasoningPlanStepsFromMessage(typedMessages[index] as any);
+      if (candidate.length > 0) {
+        return candidate;
+      }
+    }
+
+    return [];
+  }, [typedMessages]);
+
+  const finalMessage = useMemo<OrchestratorMessage | undefined>(() => {
+    if (!typedMessages || typedMessages.length === 0) {
+      return undefined;
+    }
+    return pickFinalAgentMessage(typedMessages);
+  }, [typedMessages]);
+
+  const workflowEvents = useMemo<SimulatedEvent[]>(() => {
+    const timeline = buildAgentTaskEvents({
+      agentEvents: sessionAgentEvents,
+      planSteps,
+      finalMessage,
+    });
+
+    if (!timeline || timeline.length === 0) {
+      return [];
+    }
+
+    return timeline.map((event, index) => {
+      const normalizedStatus: SimulatedEvent['status'] =
+        event.status === 'active'
+          ? 'active'
+          : event.status === 'completed'
+            ? 'completed'
+            : 'completed';
+
+      return {
+        ...event,
+        id: event.id ?? `workflow-event-${index}`,
+        status: normalizedStatus,
+      };
+    });
+  }, [sessionAgentEvents, planSteps, finalMessage]);
+
+  const workflowLabel = useMemo(() => {
+    if (!finalMessage?.agent) {
+      return 'Última ejecución';
+    }
+    return getFriendlyAgentName(finalMessage.agent);
+  }, [finalMessage?.agent]);
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h2 className={styles.title}>SYSTEM EVENTS</h2>
-        <div className={styles.controls}>
-          <div className={styles.connectionBadge} data-connected={isConnected}>
-            {isConnected ? 'LIVE' : 'OFFLINE'}
-          </div>
-          <span className={styles.eventCount}>{recentEvents.length}/15</span>
+      <div className={styles.headerRow}>
+        <div className={styles.titleBlock}>
+          <span className={styles.title}>Workflow</span>
+          <span className={styles.subtitle}>{workflowLabel}</span>
+        </div>
+        <div className={styles.connectionBadge} data-connected={isConnected ? 'true' : 'false'}>
+          {isConnected ? 'LIVE' : 'OFFLINE'}
         </div>
       </div>
 
-      <div className={styles.content}>
-        {recentEvents.length === 0 ? (
-          <div className={styles.noEvents}>
-            <div className={styles.noEventsIcon}>📡</div>
-            <span>Waiting for system events...</span>
-            <div className={styles.connectionStatus}>
-              Connection: {isConnected ? 'Active' : 'Disconnected'}
-            </div>
+      <div className={`${chatStyles.simulationContent} ${styles.timelineSurface}`}>
+        {workflowEvents.length === 0 ? (
+          <div className={styles.emptyState}>
+            <span>Sin workflow activo</span>
+            <span>Interactúa en el chat para generar uno nuevo.</span>
           </div>
         ) : (
-          <div className={styles.eventsList}>
-            {recentEvents.map((event, index) => (
-              <div key={event.id || index} className={styles.eventItem}>
-                <div className={styles.eventHeader}>
-                  <div className={styles.eventType}>
-                    <span
-                      className={styles.eventIcon}
-                      style={{ color: getEventTypeColor(event.type) }}
-                    >
-                      {getEventIcon(event.type)}
-                    </span>
-                    <span className={styles.eventTypeText}>
-                      {event.type.replace(/_/g, ' ').toUpperCase()}
-                    </span>
+          <div className={`${chatStyles.simulationTimeline} ${styles.timelineContent}`}>
+            {workflowEvents.map((event, index) => {
+              const previous = workflowEvents[index - 1];
+              const showHeader = index === 0 || (previous && previous.agent !== event.agent);
+              const friendlyName = event.friendlyName || getFriendlyAgentName(event.agent);
+              const { containerClass, bulletClass, textClass } = getEventClasses(chatStyles, event.status);
+
+              return (
+                <div key={event.id} className={chatStyles.timelineEntry}>
+                  {showHeader ? <div className={chatStyles.agentHeader}>{friendlyName}</div> : null}
+                  <div className={containerClass}>
+                    <div className={bulletClass} />
+                    <div className={chatStyles.eventBody}>
+                      <div className={`${chatStyles.eventSummary} ${textClass}`}>{event.primaryText}</div>
+                      {event.detail ? <div className={chatStyles.eventDetail}>{event.detail}</div> : null}
+                    </div>
                   </div>
-                  <span className={styles.eventTime}>
-                    {formatTimestamp(event.timestamp)}
-                  </span>
                 </div>
-
-                {event.agent && (
-                  <div className={styles.eventAgent}>
-                    Agent: <span className={styles.agentName}>{event.agent}</span>
-                  </div>
-                )}
-
-                {event.data && (
-                  <div className={styles.eventData}>
-                    {typeof event.data === 'object' ? (
-                      Object.entries(event.data).slice(0, 2).map(([key, value]) => (
-                        <div key={key} className={styles.dataItem}>
-                          <span className={styles.dataKey}>{key}:</span>
-                          <span className={styles.dataValue}>
-                            {typeof value === 'string' ? value : JSON.stringify(value)}
-                          </span>
-                        </div>
-                      ))
-                    ) : (
-                      <div className={styles.dataItem}>
-                        <span className={styles.dataValue}>{String(event.data)}</span>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                <div className={styles.eventIndicator}
-                     style={{ backgroundColor: getEventTypeColor(event.type) }} />
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
-      </div>
-
-      <div className={styles.footer}>
-        <div className={styles.statusIndicator}>
-          <div
-            className={styles.statusDot}
-            style={{ backgroundColor: isConnected ? '#00ff88' : '#ff3333' }}
-          />
-          <span>MONITORING</span>
-        </div>
       </div>
     </div>
   );

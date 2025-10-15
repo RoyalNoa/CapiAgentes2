@@ -50,11 +50,52 @@ class VoiceOrchestrator:
         if self.tts is None:
             provider = (self.settings.tts_provider or "google").lower()
             if provider == "elevenlabs":
-                self.tts = ElevenLabsTextToSpeechClient(self.settings)
-                logger.info({"event": "voice_tts_provider_selected", "provider": "elevenlabs"})
+                if not (self.settings.elevenlabs_api_key and self.settings.elevenlabs_voice_id):
+                    logger.warning(
+                        {
+                            "event": "voice_tts_disabled",
+                            "provider": "elevenlabs",
+                            "reason": "missing_api_key_or_voice_id",
+                        }
+                    )
+                    self.tts = None
+                else:
+                    try:
+                        self.tts = ElevenLabsTextToSpeechClient(self.settings)
+                        logger.info({"event": "voice_tts_provider_selected", "provider": "elevenlabs"})
+                    except Exception as exc:  # pragma: no cover - defensive
+                        logger.warning(
+                            {
+                                "event": "voice_tts_disabled",
+                                "provider": "elevenlabs",
+                                "reason": "initialization_failed",
+                                "error": str(exc),
+                            }
+                        )
+                        self.tts = None
+            elif provider == "google":
+                try:
+                    self.tts = GoogleTextToSpeechClient(self.settings)
+                    logger.info({"event": "voice_tts_provider_selected", "provider": "google"})
+                except Exception as exc:  # pragma: no cover - defensive
+                    logger.warning(
+                        {
+                            "event": "voice_tts_disabled",
+                            "provider": "google",
+                            "reason": "initialization_failed",
+                            "error": str(exc),
+                        }
+                    )
+                    self.tts = None
             else:
-                self.tts = GoogleTextToSpeechClient(self.settings)
-                logger.info({"event": "voice_tts_provider_selected", "provider": "google"})
+                logger.warning(
+                    {
+                        "event": "voice_tts_disabled",
+                        "provider": provider,
+                        "reason": "unsupported_provider",
+                    }
+                )
+                self.tts = None
         self.storage = self.storage or VoiceStorage(self.settings)
         self.metrics = self.metrics or voice_metrics
 
@@ -125,23 +166,43 @@ class VoiceOrchestrator:
             raise
 
         response_text = self._extract_response_text(envelope)
-        try:
-            audio_b64, mime_type = await self.tts.synthesize(text=response_text)
-        except Exception as exc:
-            if self.metrics and metrics_token is not None:
-                try:
-                    self.metrics.voice_turn_failed(metrics_token)
-                except Exception:  # pragma: no cover - metrics must not break flow
-                    pass
-            self._record_error(
-                session_id=session_id,
-                turn_id=turn_id,
-                error_code="tts_failure",
-                error_message=str(exc),
-                user_id=user_id,
-                trace_id=trace_id,
+        audio_b64: str = ""
+        mime_type: str = "audio/mpeg"
+        if self.tts is None:
+            logger.info(
+                {
+                    "event": "voice_tts_skipped",
+                    "reason": "provider_unavailable",
+                    "session_id": session_id,
+                    "turn_id": turn_id,
+                }
             )
-            raise
+        else:
+            try:
+                audio_b64, mime_type = await self.tts.synthesize(text=response_text)
+            except Exception as exc:
+                logger.warning(
+                    {
+                        "event": "voice_tts_failure",
+                        "error": str(exc),
+                        "session_id": session_id,
+                        "turn_id": turn_id,
+                    }
+                )
+                audio_b64 = ""
+                if self.metrics and metrics_token is not None:
+                    try:
+                        self.metrics.voice_turn_failed(metrics_token)
+                    except Exception:  # pragma: no cover - best effort
+                        pass
+                self._record_error(
+                    session_id=session_id,
+                    turn_id=turn_id,
+                    error_code="tts_failure",
+                    error_message=str(exc),
+                    user_id=user_id,
+                    trace_id=trace_id,
+                )
 
         audio_bytes = base64.b64decode(audio_b64.encode("ascii")) if audio_b64 else b""
         audio_url = None

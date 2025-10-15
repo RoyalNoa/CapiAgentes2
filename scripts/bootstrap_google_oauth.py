@@ -8,7 +8,10 @@ from pathlib import Path
 from google_auth_oauthlib.flow import InstalledAppFlow
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-BACKEND_SRC = REPO_ROOT / "Backend" / "src"
+BACKEND_ROOT = REPO_ROOT / "Backend"
+if str(BACKEND_ROOT) not in sys.path:
+    sys.path.insert(0, str(BACKEND_ROOT))
+BACKEND_SRC = BACKEND_ROOT / "src"
 if str(BACKEND_SRC) not in sys.path:
     sys.path.insert(0, str(BACKEND_SRC))
 

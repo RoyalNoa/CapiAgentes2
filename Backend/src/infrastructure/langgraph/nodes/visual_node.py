@@ -14,6 +14,7 @@ from langgraph.checkpoint import interrupt
 from src.infrastructure.langgraph.nodes.base import GraphNode
 from src.infrastructure.langgraph.state import GraphState, StateMutator
 from src.infrastructure.websocket.event_broadcaster import get_event_broadcaster
+from src.infrastructure.langgraph.utils.timing import scale_duration, workflow_sleep_sync
 from src.core.logging import get_logger
 
 logger = get_logger(__name__)
@@ -80,7 +81,7 @@ class VisualOptimizedNode(GraphNode):
             if elapsed < self.MIN_PROCESSING_TIME:
                 # Esperar para que la animación se vea completa
                 remaining = self.MIN_PROCESSING_TIME - elapsed
-                time.sleep(remaining)
+                workflow_sleep_sync(remaining)
                 logger.debug(f"Visual delay added: {remaining:.2f}s for better UX")
 
             # 6. EMITIR FINALIZACIÓN con transición suave
@@ -102,7 +103,7 @@ class VisualOptimizedNode(GraphNode):
             action=self._get_visual_action(),
             meta={
                 "visual_effect": "shimmer",
-                "expected_duration": self.OPTIMAL_SHIMMER_TIME,
+                "expected_duration": scale_duration(self.OPTIMAL_SHIMMER_TIME),
                 "animation": "pulse",
                 "color_transition": "orange_to_processing"
             }
@@ -129,7 +130,7 @@ class VisualOptimizedNode(GraphNode):
         Override este método en subclases.
         """
         # Simulación - Override en subclases reales
-        time.sleep(self.OPTIMAL_SHIMMER_TIME)
+        workflow_sleep_sync(self.OPTIMAL_SHIMMER_TIME)
         return {"processed": True}
 
     def _get_visual_action(self) -> str:
@@ -248,7 +249,7 @@ class VisualCapiGusNode(VisualOptimizedNode):
 
         for step_name, duration in steps:
             logger.info(f"Visual step: {step_name}")
-            time.sleep(duration)
+            workflow_sleep_sync(duration)
 
         return {
 <<<<<<< HEAD
@@ -274,7 +275,7 @@ class VisualBranchNode(VisualOptimizedNode):
     def _process_with_visual_timing(self, state: GraphState) -> Dict[str, Any]:
         """Procesa análisis de sucursal con timing visual."""
         # Timing optimizado para shimmer perfecto
-        time.sleep(self.OPTIMAL_SHIMMER_TIME)
+        workflow_sleep_sync(self.OPTIMAL_SHIMMER_TIME)
 
         return {
             "branch_analysis": {
@@ -308,7 +309,7 @@ class VisualAnomalyNode(VisualOptimizedNode):
 
         for step, duration in dramatic_steps:
             logger.info(f"Dramatic step: {step}")
-            time.sleep(duration)
+            workflow_sleep_sync(duration)
 
         return {
             "anomalies": {

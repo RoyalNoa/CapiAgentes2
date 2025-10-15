@@ -271,10 +271,10 @@ class NLQueryPlanner:
             self._reasoner = reasoner
         else:
             try:
-                self._reasoner = LLMReasoner(model="gpt-4.1", temperature=0.1, max_tokens=350)
+                self._reasoner = LLMReasoner(model="gpt-4.1-mini", temperature=0.1, max_tokens=350)
             except Exception as exc:  # pragma: no cover - defensive
                 logger.warning({"event": "capi_datab_planner_reasoner_fallback", "error": str(exc)})
-                self._reasoner = LLMReasoner(model="gpt-4o", temperature=0.1, max_tokens=350)
+                self._reasoner = LLMReasoner(model="gpt-4.1", temperature=0.1, max_tokens=350)
         self.catalog = catalog or SchemaCatalog.default()
         self.min_confidence = min_confidence
         self._system_prompt = _PLANNER_PROMPT_TEMPLATE.format(

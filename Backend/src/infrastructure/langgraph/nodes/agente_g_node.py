@@ -137,6 +137,19 @@ class AgenteGNode(GraphNode):
 
         response_payload = dict(result.data or {})
 
+        def _ensure_response_fields(payload: Dict[str, Any], message_value: str) -> None:
+            if payload.get("response"):
+                return
+            nested = payload.get("result")
+            candidate = None
+            if isinstance(nested, dict):
+                candidate = nested.get("response") or nested.get("message") or nested.get("summary")
+                if candidate:
+                    payload.setdefault("summary_message", nested.get("summary_message") or nested.get("summary"))
+                    if nested.get("shared_artifacts") and not payload.get("shared_artifacts"):
+                        payload["shared_artifacts"] = nested["shared_artifacts"]
+            payload["response"] = candidate or message_value
+
         metrics = response_payload.get("metrics")
         if metrics:
             meta_update.setdefault("google_metrics", metrics)
@@ -148,9 +161,10 @@ class AgenteGNode(GraphNode):
             meta_update["active_agent"] = "capi_gus"
             meta_update["workflow_stage"] = "capi_gus_followup"
             meta_update["capi_gus_confirmation_message"] = final_message
-            response_payload.setdefault("response", final_message)
+            _ensure_response_fields(response_payload, final_message)
         else:
             updated = StateMutator.update_field(updated, "response_message", result.message)
+            _ensure_response_fields(response_payload, result.message)
 
         response_payload.setdefault("operation", operation)
         response_payload.setdefault("parameters", send_parameters)
@@ -246,8 +260,9 @@ class AgenteGNode(GraphNode):
         if not query_lower:
             return None
 
-        if ("enviar" in query_lower or "envia" in query_lower or "enviá" in query_lower or "mandar" in query_lower or "responder" in query_lower) and (
-            "correo" in query_lower or "mail" in query_lower or "gmail" in query_lower or "email" in query_lower
+        email_tokens = ("correo", "correos", "mail", "mails", "gmail", "email")
+        if ("enviar" in query_lower or "envia" in query_lower or "enviá" in query_lower or "mandar" in query_lower or "responder" in query_lower) and any(
+            token in query_lower for token in email_tokens
         ):
             recipients = self._extract_emails(query)
             subject = self._extract_slot(query, ("asunto", "subject"))
@@ -265,12 +280,16 @@ class AgenteGNode(GraphNode):
                 parameters["body"] = query.strip()
             return {"operation": "send_gmail", "parameters": parameters}
 
-        if "listar" in query_lower and ("correo" in query_lower or "mail" in query_lower or "gmail" in query_lower):
-            filter_value = "is:unread" if "no leido" in query_lower or "no leído" in query_lower else None
-            params: Dict[str, Any] = {}
-            if filter_value:
-                params["query"] = filter_value
-            return {"operation": "list_gmail", "parameters": params}
+        if any(token in query_lower for token in email_tokens):
+            list_keywords = ("listar", "ver", "mostrar", "consultar", "revisar", "chequear", "saber")
+            unread_markers = ("no leido", "no leído", "sin leer", "nuev", "lleg", "recient")
+            wants_list = any(keyword in query_lower for keyword in list_keywords) or "cuanto" in query_lower
+            wants_unread = any(marker in query_lower for marker in unread_markers)
+            if wants_list or wants_unread:
+                params: Dict[str, Any] = {}
+                if wants_unread or "nuevo" in query_lower or "nueva" in query_lower or "nuevos" in query_lower or "nuevas" in query_lower:
+                    params["query"] = "is:unread"
+                return {"operation": "list_gmail", "parameters": params}
 
         if "listar" in query_lower and "drive" in query_lower:
             drive_query = self._extract_slot(query, ("filtro", "query", "busca"))
