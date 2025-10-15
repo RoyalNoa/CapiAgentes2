@@ -1164,6 +1164,81 @@
       "generated_at": "2025-10-03T03:19:07.583685"
     },
     {
+<<<<<<< HEAD
+      "filename": "DataB_2025_10_03_976831.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_976831.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_03_976831.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T18:09:19.993058"
+    },
+    {
+      "filename": "DataB_2025_10_03_051557.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_051557.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_03_051557.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T18:09:20.063266"
+    },
+    {
+      "filename": "DataB_2025_10_03_362345.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_362345.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_03_362345.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T18:09:25.372698"
+    },
+    {
+      "filename": "DataB_2025_10_03_422630.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_422630.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_03_422630.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T18:09:25.436685"
+    },
+    {
+      "filename": "DataB_2025_10_03_438935.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_438935.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_03_438935.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T18:10:38.452758"
+    },
+    {
+      "filename": "DataB_2025_10_03_511450.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_511450.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_03_511450.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T18:10:38.526321"
+    },
+    {
+      "filename": "DataB_2025_10_03_933018.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_933018.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_03_933018.json",
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "rowcount": 1,
+      "generated_at": "2025-10-03T18:10:43.945273"
+    },
+    {
+      "filename": "DataB_2025_10_03_002005.json",
+      "relative_path": "capi_DataB/DataB_2025_10_03_002005.json",
+      "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_03_002005.json",
+      "operation": "select",
+      "table": "alerts.cash_policies",
+      "rowcount": 9,
+      "generated_at": "2025-10-03T18:10:44.013234"
+    }
+  ],
+  "updated_at": "2025-10-03T18:10:44.156396",
+=======
       "filename": "DataB_2025_10_07_224846.json",
       "relative_path": "capi_DataB/DataB_2025_10_07_224846.json",
       "absolute_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_07_224846.json",
@@ -3883,6 +3958,7 @@
     }
   ],
   "updated_at": "2025-10-13T23:50:03.272749",
+>>>>>>> origin/develop
   "created_at": "2025-09-24T19:41:36.430881",
   "status": "completed",
   "active_agent": "capi_gus",
@@ -3893,16 +3969,29 @@
     "reasoning",
     "supervisor",
     "router",
+<<<<<<< HEAD
+    "capi_datab",
+    "capi_elcajas",
+=======
     "capi_gus",
+>>>>>>> origin/develop
     "human_gate",
     "assemble",
     "finalize"
   ],
+<<<<<<< HEAD
+  "intent": "db_operation",
+  "intent_confidence": 0.9,
+  "last_query": "el saldo de la sucursal central esta por debajo de su caja teorica ?",
+  "last_response": {
+    "message": "Resultados para la sucursal 'Central': sucursal id=S001, sucursal numero=1, sucursal nombre=Sucursal Central, saldo total sucursal=$100.000,00, caja teorica sucursal=2485000.00, total atm=$1.200.000,00, total ats=$300.000,00, total tesoro=$600.000,00, total cajas ventanilla=$200.000,00, total buzon depositos=$90.000,00, total recaudacion=$180.000,00, total caja chica=$15.000,00, total otros=$20.000,00, medido en=2025-10-03 16:55:33.199922+00:00. Resultado exportado a DataB_2025_10_03_933018.json.\n\nEl Cajas: Sucursal Central: deficit de 2,385,000 ARS (-96.0%)\n\nNo se pudo crear la alerta en la base de datos (Error al ejecutar la operación de base de datos: insert or update on table \"alertas\" violates foreign key constraint \"alertas_agente_id_fkey\" DETAIL:  Key (agente_id)=(b37d1f90-6b35-4fb3-866e-2f88c9b2).",
+=======
   "intent": "unknown",
   "intent_confidence": 0.2,
   "last_query": "A quién debería votar en la final de BDG o viernes de garaje?",
   "last_response": {
     "message": "Lamentablemente, no contamos con información actualizada sobre el saldo en este momento. ¿Podrías proporcionar más detalles o indicar la sucursal que te interesa revisar? ¿En qué podemos ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+>>>>>>> origin/develop
     "data": {
       "react_observations": [
         {
@@ -3923,6 +4012,26 @@
         }
       ],
       "reasoning_plan": {
+<<<<<<< HEAD
+        "plan_id": "bbb79963-b930-4deb-b5bf-2c382406471f",
+        "version": 1,
+        "intent": "db_operation",
+        "goal": "Clarificar y asistir consulta ambigua: el saldo de la sucursal central esta por debajo de su caja t",
+        "confidence": 0.95,
+        "recommended_agent": "capi_datab",
+        "fallback_agent": "capi_datab",
+        "rationale": "La consulta requiere operaciones sobre bases de datos; se utiliza el agente especialista con controles de validación y exportes auditables.",
+        "steps": [
+          {
+            "id": "D1",
+            "title": "Analizar requerimiento y sanitizar sentencia",
+            "description": "Interpretar la instrucción (JSON, SQL o lenguaje natural), validar tablas y evitar comandos restringidos (DROP/TRUNCATE).",
+            "agent": "capi_datab",
+            "inputs": [
+              "instruccion_usuario"
+            ],
+            "expected_output": "Sentencia SQL validada con parámetros normalizados",
+=======
         "plan_id": "050b0448-bfe5-4967-af31-0b32c46779b1",
         "version": 1,
         "intent": "unknown",
@@ -3939,41 +4048,48 @@
             "agent": "capi_gus",
             "inputs": [],
             "expected_output": "Detalle adicional de la consulta",
+>>>>>>> origin/develop
             "depends_on": []
           },
           {
-            "id": "E2",
-            "title": "Identificar señales financieras",
-            "description": "Buscar palabras clave que alineen la consulta con agentes especializados.",
-            "agent": "intent",
+            "id": "D2",
+            "title": "Ejecutar operación transaccional en PostgreSQL",
+            "description": "Abrir conexión controlada, ejecutar la sentencia y capturar filas afectadas o resultados.",
+            "agent": "capi_datab",
             "inputs": [],
-            "expected_output": "Intentos candidatos",
+            "expected_output": "Resultado de la operación (filas, datos o confirmación)",
             "depends_on": [
-              "E1"
+              "D1"
             ]
           },
           {
+<<<<<<< HEAD
+            "id": "D3",
+            "title": "Exportar evidencia al workspace",
+            "description": "Serializar los resultados en el formato solicitado y guardar el archivo en ia_workspace/data/capi_DataB/.",
+            "agent": "capi_datab",
+=======
             "id": "E3",
             "title": "Preparar respuesta inicial",
             "description": "Ofrecer orientación y sugerir capacidades relevantes mientras se espera aclaración.",
             "agent": "capi_gus",
+>>>>>>> origin/develop
             "inputs": [],
-            "expected_output": "Guía introductoria",
+            "expected_output": "Archivo DataB_YYYY_MM_DD_*.ext disponible para el usuario",
             "depends_on": [
-              "E1",
-              "E2"
+              "D2"
             ]
           }
         ],
-        "cooperative_agents": [
-          "intent"
-        ],
+        "cooperative_agents": [],
         "supporting_evidence": {
-          "progress_percent": 97.5,
+          "progress_percent": 98.0,
           "remaining_steps": 3,
-          "estimated_effort_seconds": 50,
-          "complexity": "medium",
-          "entities": {},
+          "estimated_effort_seconds": 45,
+          "complexity": "low",
+          "entities": {
+            "sucursal": "central"
+          },
           "context_used": false,
           "semantic_confidence": 1.0,
           "available_agents": [
@@ -3984,18 +4100,438 @@
             "capi_desktop",
             "capi_gus"
           ],
-          "user_id": "voice-client",
+          "user_id": "global",
           "session_id": "global"
         },
+<<<<<<< HEAD
+        "generated_at": "2025-10-03T18:10:41.448722",
+        "intent_alignment": true,
+=======
         "generated_at": "2025-10-13T23:50:02.219975",
         "intent_alignment": false,
+>>>>>>> origin/develop
         "requires_replan": false,
         "history": [],
-        "progress_percent": 97.5,
+        "progress_percent": 98.0,
         "remaining_steps": 3,
-        "complexity": "medium",
-        "estimated_effort_seconds": 50
+        "complexity": "low",
+        "estimated_effort_seconds": 45
       },
+<<<<<<< HEAD
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+      "parameters": [
+        "%central%"
+      ],
+      "output_format": "json",
+      "file_path": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_03_933018.json",
+      "rowcount": 1,
+      "rows": [
+        {
+          "sucursal_id": "S001",
+          "sucursal_numero": 1,
+          "sucursal_nombre": "Sucursal Central",
+          "saldo_total_sucursal": "100000.00",
+          "caja_teorica_sucursal": "2485000.00",
+          "total_atm": "1200000.00",
+          "total_ats": "300000.00",
+          "total_tesoro": "600000.00",
+          "total_cajas_ventanilla": "200000.00",
+          "total_buzon_depositos": "90000.00",
+          "total_recaudacion": "180000.00",
+          "total_caja_chica": "15000.00",
+          "total_otros": "20000.00",
+          "medido_en": "2025-10-03 16:55:33.199922+00:00"
+        }
+      ],
+      "requires_approval": false,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "sucursal central",
+          "branch_number": null,
+          "branch_name": "central",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%central%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "La instrucción menciona la sucursal central y hace referencia a su saldo en comparación con su caja teórica.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "metadata": {
+        "branch": {
+          "raw_text": "sucursal central",
+          "branch_number": null,
+          "branch_name": "central",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%central%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "La instrucción menciona la sucursal central y hace referencia a su saldo en comparación con su caja teórica.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal",
+        "branch_descriptor": "Central"
+      },
+      "summary_message": "Resultados para la sucursal 'Central': sucursal id=S001, sucursal numero=1, sucursal nombre=Sucursal Central, saldo total sucursal=$100.000,00, caja teorica sucursal=2485000.00, total atm=$1.200.000,00, total ats=$300.000,00, total tesoro=$600.000,00, total cajas ventanilla=$200.000,00, total buzon depositos=$90.000,00, total recaudacion=$180.000,00, total caja chica=$15.000,00, total otros=$20.000,00, medido en=2025-10-03 16:55:33.199922+00:00. Resultado exportado a DataB_2025_10_03_933018.json.",
+      "el_cajas": {
+        "analysis": [
+          {
+            "branch_id": "S001",
+            "branch_name": "Sucursal Central",
+            "status": "alert",
+            "headline": "Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+            "measured_total": 100000.0,
+            "theoretical_total": 2485000.0,
+            "difference": -2385000.0,
+            "deviation_pct": -0.959758551307847,
+            "recommendations": [
+              {
+                "channel": "Saldo Total",
+                "action": "deposit",
+                "amount": 2260750.0,
+                "reason": "Deficit vs caja teorica",
+                "urgency": "proximo turno",
+                "estimated_cost": 158590.85,
+                "weight_kg": 2.261
+              },
+              {
+                "channel": "ATM",
+                "action": "deposit",
+                "amount": 26830800.0,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "inmediato",
+                "estimated_cost": 213907.8,
+                "weight_kg": 26.831
+              },
+              {
+                "channel": "ATS",
+                "action": "deposit",
+                "amount": 6782250.0,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 131703.2,
+                "weight_kg": 6.782
+              },
+              {
+                "channel": "Tesoro",
+                "action": "deposit",
+                "amount": 13117200.0,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 126728.16,
+                "weight_kg": 13.117
+              },
+              {
+                "channel": "Tesoro",
+                "action": "deposit",
+                "amount": 150000.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "proximo turno",
+                "estimated_cost": 90420.0,
+                "weight_kg": 0.15
+              },
+              {
+                "channel": "Ventanilla",
+                "action": "deposit",
+                "amount": 4571200.0,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 96885.12,
+                "weight_kg": 4.571
+              },
+              {
+                "channel": "Caja Chica",
+                "action": "deposit",
+                "amount": 346567.5,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 70762.45,
+                "weight_kg": 0.347
+              },
+              {
+                "channel": "Caja Chica",
+                "action": "deposit",
+                "amount": 15000.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "proximo turno",
+                "estimated_cost": 70033.0,
+                "weight_kg": 0.015
+              },
+              {
+                "channel": "Otros",
+                "action": "deposit",
+                "amount": 457120.0,
+                "reason": "Deficit canal vs distribucion esperada",
+                "urgency": "proximo turno",
+                "estimated_cost": 101417.07,
+                "weight_kg": 0.457
+              },
+              {
+                "channel": "Otros",
+                "action": "deposit",
+                "amount": 30000.0,
+                "reason": "Monto por debajo del colchon minimo",
+                "urgency": "proximo turno",
+                "estimated_cost": 100093.0,
+                "weight_kg": 0.03
+              }
+            ],
+            "channels": [
+              {
+                "channel": "ATM",
+                "amount": 1200000.0,
+                "estimated_teorica": 29820000.0,
+                "share": 12.0,
+                "deviation_pct": -0.959758551307847
+              },
+              {
+                "channel": "ATS",
+                "amount": 300000.0,
+                "estimated_teorica": 7455000.0,
+                "share": 3.0,
+                "deviation_pct": -0.959758551307847
+              },
+              {
+                "channel": "Tesoro",
+                "amount": 600000.0,
+                "estimated_teorica": 14910000.0,
+                "share": 6.0,
+                "deviation_pct": -0.959758551307847
+              },
+              {
+                "channel": "Ventanilla",
+                "amount": 200000.0,
+                "estimated_teorica": 4970000.0,
+                "share": 2.0,
+                "deviation_pct": -0.959758551307847
+              },
+              {
+                "channel": "Buzon",
+                "amount": 90000.0,
+                "estimated_teorica": 2236500.0,
+                "share": 0.9
+              },
+              {
+                "channel": "Recaudacion",
+                "amount": 180000.0,
+                "estimated_teorica": 4473000.0,
+                "share": 1.8
+              },
+              {
+                "channel": "Caja Chica",
+                "amount": 15000.0,
+                "estimated_teorica": 372750.0,
+                "share": 0.15,
+                "deviation_pct": -0.959758551307847
+              },
+              {
+                "channel": "Otros",
+                "amount": 20000.0,
+                "estimated_teorica": 497000.0,
+                "share": 0.2,
+                "deviation_pct": -0.959758551307847
+              }
+            ],
+            "alerts_created": 1,
+            "alerts_to_persist": [
+              {
+                "priority": "critical",
+                "prioridad": "critica",
+                "status": "active",
+                "estado": "abierta",
+                "problema": "Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+                "hipotesis": "Desvio detectado en Sucursal Central",
+                "impacto": "Diferencia de 2,385,000 ARS (-96.0%)",
+                "datos_clave": [
+                  "Diferencia total: -2,385,000 ARS",
+                  "Desvio porcentual: -96.0%",
+                  "Sucursal: Sucursal Central (S001)",
+                  "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]",
+                  "Medicion: 2025-10-03T18:10:44.039436+00:00"
+                ],
+                "acciones": "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada [inmediato]; ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo [proximo turno]",
+                "sucursal_id": "S001",
+                "branch_name": "Sucursal Central",
+                "summary": "Sucursal Central: déficit de 2,385,000 ARS (96.0%). Severidad: alert",
+                "dedupe_clave": "ec57980f789d4c90b13b687dd4af71cd47611325579b9c9de8fd47cba73d1705",
+                "creada_en": "2025-10-03T18:10:44.039436+00:00",
+                "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+                "agent_source": "capi_elcajas"
+              }
+            ],
+            "alert_priority": "critical",
+            "alert_escalated": true,
+            "alert_operation": {
+              "table": "public.alertas",
+              "values": {
+                "prioridad": "critica",
+                "estado": "abierta",
+                "problema": "Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+                "hipotesis": "Desvio detectado en Sucursal Central",
+                "impacto": "Diferencia de 2,385,000 ARS (-96.0%)",
+                "datos_clave": [
+                  "Diferencia total: -2,385,000 ARS",
+                  "Desvio porcentual: -96.0%",
+                  "Sucursal: Sucursal Central (S001)",
+                  "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]",
+                  "Medicion: 2025-10-03T18:10:44.039436+00:00"
+                ],
+                "acciones": "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada [inmediato]; ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo [proximo turno]",
+                "sucursal_id": "S001",
+                "dedupe_clave": "ec57980f789d4c90b13b687dd4af71cd47611325579b9c9de8fd47cba73d1705",
+                "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+                "creada_en": "2025-10-03 18:10:44.039436+00:00"
+              },
+              "description": "Insert alerta El Cajas - Sucursal Central",
+              "branch_id": "S001",
+              "branch_name": "Sucursal Central",
+              "source": "capi_elcajas",
+              "payload": {
+                "priority": "critical",
+                "prioridad": "critica",
+                "status": "active",
+                "estado": "abierta",
+                "problema": "Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+                "hipotesis": "Desvio detectado en Sucursal Central",
+                "impacto": "Diferencia de 2,385,000 ARS (-96.0%)",
+                "datos_clave": [
+                  "Diferencia total: -2,385,000 ARS",
+                  "Desvio porcentual: -96.0%",
+                  "Sucursal: Sucursal Central (S001)",
+                  "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]",
+                  "Medicion: 2025-10-03T18:10:44.039436+00:00"
+                ],
+                "acciones": "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada [inmediato]; ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo [proximo turno]",
+                "sucursal_id": "S001",
+                "branch_name": "Sucursal Central",
+                "summary": "Sucursal Central: déficit de 2,385,000 ARS (96.0%). Severidad: alert",
+                "dedupe_clave": "ec57980f789d4c90b13b687dd4af71cd47611325579b9c9de8fd47cba73d1705",
+                "creada_en": "2025-10-03T18:10:44.039436+00:00",
+                "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+                "agent_source": "capi_elcajas"
+              }
+            },
+            "recommendation_artifact": {
+              "path": "/app/ia_workspace/data/sessions/session_global/capi_elcajas/recommendation_S001_20251003_181044.json",
+              "filename": "recommendation_S001_20251003_181044.json",
+              "relative_path": "capi_elcajas/recommendation_S001_20251003_181044.json",
+              "created_at": "2025-10-03T18:10:44.039436+00:00",
+              "summary": "Sucursal Central: déficit de 2,385,000 ARS (96.0%). Severidad: alert",
+              "hypothesis": "Desvio detectado en Sucursal Central",
+              "impact": "Diferencia de 2,385,000 ARS (-96.0%)",
+              "suggested_actions": [
+                "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica",
+                "ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada",
+                "ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada",
+                "Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada",
+                "Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo",
+                "Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada",
+                "Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada",
+                "Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo",
+                "Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada",
+                "Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo"
+              ]
+            }
+          }
+        ],
+        "calendar": {
+          "status": "operativo",
+          "business_day": "si",
+          "holiday": "no"
+        },
+        "policies_loaded": 9,
+        "alerts_created": 1,
+        "alert_operations": [
+          {
+            "table": "public.alertas",
+            "values": {
+              "prioridad": "critica",
+              "estado": "abierta",
+              "problema": "Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+              "hipotesis": "Desvio detectado en Sucursal Central",
+              "impacto": "Diferencia de 2,385,000 ARS (-96.0%)",
+              "datos_clave": [
+                "Diferencia total: -2,385,000 ARS",
+                "Desvio porcentual: -96.0%",
+                "Sucursal: Sucursal Central (S001)",
+                "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-10-03T18:10:44.039436+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada [inmediato]; ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "S001",
+              "dedupe_clave": "ec57980f789d4c90b13b687dd4af71cd47611325579b9c9de8fd47cba73d1705",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "creada_en": "2025-10-03 18:10:44.039436+00:00"
+            },
+            "description": "Insert alerta El Cajas - Sucursal Central",
+            "branch_id": "S001",
+            "branch_name": "Sucursal Central",
+            "source": "capi_elcajas",
+            "payload": {
+              "priority": "critical",
+              "prioridad": "critica",
+              "status": "active",
+              "estado": "abierta",
+              "problema": "Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+              "hipotesis": "Desvio detectado en Sucursal Central",
+              "impacto": "Diferencia de 2,385,000 ARS (-96.0%)",
+              "datos_clave": [
+                "Diferencia total: -2,385,000 ARS",
+                "Desvio porcentual: -96.0%",
+                "Sucursal: Sucursal Central (S001)",
+                "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-10-03T18:10:44.039436+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada [inmediato]; ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "S001",
+              "branch_name": "Sucursal Central",
+              "summary": "Sucursal Central: déficit de 2,385,000 ARS (96.0%). Severidad: alert",
+              "dedupe_clave": "ec57980f789d4c90b13b687dd4af71cd47611325579b9c9de8fd47cba73d1705",
+              "creada_en": "2025-10-03T18:10:44.039436+00:00",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "agent_source": "capi_elcajas"
+            }
+          }
+        ],
+        "recommendation_files": [
+          {
+            "path": "/app/ia_workspace/data/sessions/session_global/capi_elcajas/recommendation_S001_20251003_181044.json",
+            "filename": "recommendation_S001_20251003_181044.json",
+            "relative_path": "capi_elcajas/recommendation_S001_20251003_181044.json",
+            "created_at": "2025-10-03T18:10:44.039436+00:00",
+            "summary": "Sucursal Central: déficit de 2,385,000 ARS (96.0%). Severidad: alert",
+            "hypothesis": "Desvio detectado en Sucursal Central",
+            "impact": "Diferencia de 2,385,000 ARS (-96.0%)",
+            "suggested_actions": [
+              "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica",
+              "ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada",
+              "ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada",
+              "Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada",
+              "Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo",
+              "Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada",
+              "Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada",
+              "Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo",
+              "Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada",
+              "Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo"
+            ]
+          }
+        ]
+=======
       "response": "Lamentablemente, no contamos con información actualizada sobre el saldo en este momento. ¿Podrías proporcionar más detalles o indicar la sucursal que te interesa revisar? ¿En qué podemos ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
       "capi_gus": {
         "type": "conversation_summary",
@@ -4052,37 +4588,608 @@
           "processing_time": 0.9785,
           "finish_reason": "stop"
         }
+>>>>>>> origin/develop
       }
     }
   },
   "conversation_history": [],
   "memory_window": [],
   "reasoning_summary": {
+<<<<<<< HEAD
+    "goal": "Clarificar y asistir consulta ambigua: el saldo de la sucursal central esta por debajo de su caja t",
+    "recommended_agent": "capi_datab",
+=======
     "goal": "Clarificar y asistir consulta ambigua: A quién debería votar en la final de BDG o viernes de garaje",
     "recommended_agent": "capi_gus",
+>>>>>>> origin/develop
     "confidence": 0.95,
     "version": 1,
-    "cooperative_agents": [
-      "intent"
-    ],
-    "progress_percent": 97.5,
+    "cooperative_agents": [],
+    "progress_percent": 98.0,
     "remaining_steps": 3,
-    "complexity": "medium",
-    "estimated_effort_seconds": 50,
-    "remaining_percent": 2.5
+    "complexity": "low",
+    "estimated_effort_seconds": 45,
+    "remaining_percent": 2.0
   },
   "processing_metrics": {
     "react_steps": 5.0,
     "react_latency_ms": 0.0,
+<<<<<<< HEAD
+    "reasoning_time_ms": 1247.0,
+=======
     "reasoning_time_ms": 947.0,
+>>>>>>> origin/develop
     "reasoning_steps": 3.0,
     "reasoning_version": 1.0,
-    "reasoning_progress_percent": 97.5,
-    "reasoning_eta_seconds": 50.0,
+    "reasoning_progress_percent": 98.0,
+    "reasoning_eta_seconds": 45.0,
     "reasoning_remaining_steps": 3.0,
     "supervisor_latency_ms": 0.0,
-    "supervisor_queue_length": 5.0
+    "supervisor_queue_length": 5.0,
+    "capi_datab_latency_ms": 1227.0,
+    "planner_confidence": 0.8,
+    "capi_datab_rows": 1.0,
+    "el_cajas_latency_ms": 25.0,
+    "el_cajas_alerts": 1.0
   },
+  "shared_artifacts": {
+    "capi_datab": {
+      "mode": "db_operation",
+      "operation": {
+        "operation": "select",
+        "table": "public.saldos_sucursal",
+        "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+        "parameters": [
+          "%central%"
+        ],
+        "output_format": "json",
+        "requires_approval": false,
+        "metadata": {
+          "branch": {
+            "raw_text": "sucursal central",
+            "branch_number": null,
+            "branch_name": "central",
+            "branch_id": null
+          },
+          "filters": [
+            {
+              "column": "sucursal_nombre",
+              "operator": "ILIKE",
+              "value": "%central%"
+            }
+          ],
+          "planner_source": "llm_branch_identifier",
+          "planner_confidence": 0.8,
+          "planner_reason": "La instrucción menciona la sucursal central y hace referencia a su saldo en comparación con su caja teórica.",
+          "planner_model": "gpt-3.5-turbo",
+          "suggested_table": "public.saldos_sucursal"
+        }
+      },
+      "export_file": "/app/ia_workspace/data/sessions/session_global/capi_DataB/DataB_2025_10_03_933018.json",
+      "rows": [
+        {
+          "sucursal_id": "S001",
+          "sucursal_numero": 1,
+          "sucursal_nombre": "Sucursal Central",
+          "saldo_total_sucursal": "100000.00",
+          "caja_teorica_sucursal": "2485000.00",
+          "total_atm": "1200000.00",
+          "total_ats": "300000.00",
+          "total_tesoro": "600000.00",
+          "total_cajas_ventanilla": "200000.00",
+          "total_buzon_depositos": "90000.00",
+          "total_recaudacion": "180000.00",
+          "total_caja_chica": "15000.00",
+          "total_otros": "20000.00",
+          "medido_en": "2025-10-03 16:55:33.199922+00:00"
+        }
+      ],
+      "rowcount": 1,
+      "success": true,
+      "planner_metadata": {
+        "branch": {
+          "raw_text": "sucursal central",
+          "branch_number": null,
+          "branch_name": "central",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%central%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "La instrucción menciona la sucursal central y hace referencia a su saldo en comparación con su caja teórica.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      },
+      "summary_message": "Resultados para la sucursal 'Central': sucursal id=S001, sucursal numero=1, sucursal nombre=Sucursal Central, saldo total sucursal=$100.000,00, caja teorica sucursal=2485000.00, total atm=$1.200.000,00, total ats=$300.000,00, total tesoro=$600.000,00, total cajas ventanilla=$200.000,00, total buzon depositos=$90.000,00, total recaudacion=$180.000,00, total caja chica=$15.000,00, total otros=$20.000,00, medido en=2025-10-03 16:55:33.199922+00:00. Resultado exportado a DataB_2025_10_03_933018.json.\n\nEl Cajas: Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+      "policies": [
+        {
+          "channel": "ATM",
+          "max_surplus_pct": "0.120",
+          "max_deficit_pct": "0.060",
+          "min_buffer_amount": "500000.00",
+          "daily_withdrawal_limit": "1500000.00",
+          "daily_deposit_limit": "1200000.00",
+          "reload_lead_hours": 6,
+          "sla_hours": 12,
+          "truck_fixed_cost": "120000.00",
+          "truck_variable_cost_per_kg": "3500.00",
+          "notes": "Prioridad alta: buffer robusto para ATM",
+          "updated_at": "2025-10-03 16:47:12.542541+00:00"
+        },
+        {
+          "channel": "ATS",
+          "max_surplus_pct": "0.100",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "300000.00",
+          "daily_withdrawal_limit": "900000.00",
+          "daily_deposit_limit": "600000.00",
+          "reload_lead_hours": 8,
+          "sla_hours": 16,
+          "truck_fixed_cost": "110000.00",
+          "truck_variable_cost_per_kg": "3200.00",
+          "notes": "ATS balance moderado",
+          "updated_at": "2025-10-03 16:47:12.542541+00:00"
+        },
+        {
+          "channel": "Buzón",
+          "max_surplus_pct": "0.050",
+          "max_deficit_pct": "0.030",
+          "min_buffer_amount": "50000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": "250000.00",
+          "reload_lead_hours": 12,
+          "sla_hours": 24,
+          "truck_fixed_cost": "95000.00",
+          "truck_variable_cost_per_kg": "3000.00",
+          "notes": "Depósitos no inmediatos",
+          "updated_at": "2025-10-03 16:47:12.542541+00:00"
+        },
+        {
+          "channel": "Caja Chica",
+          "max_surplus_pct": "0.040",
+          "max_deficit_pct": "0.030",
+          "min_buffer_amount": "30000.00",
+          "daily_withdrawal_limit": "100000.00",
+          "daily_deposit_limit": "80000.00",
+          "reload_lead_hours": 24,
+          "sla_hours": 48,
+          "truck_fixed_cost": "70000.00",
+          "truck_variable_cost_per_kg": "2200.00",
+          "notes": "Gastos operativos menores",
+          "updated_at": "2025-10-03 16:47:12.542541+00:00"
+        },
+        {
+          "channel": "Otros",
+          "max_surplus_pct": "0.070",
+          "max_deficit_pct": "0.040",
+          "min_buffer_amount": "50000.00",
+          "daily_withdrawal_limit": "200000.00",
+          "daily_deposit_limit": "180000.00",
+          "reload_lead_hours": 12,
+          "sla_hours": 36,
+          "truck_fixed_cost": "100000.00",
+          "truck_variable_cost_per_kg": "3100.00",
+          "notes": "Reservas varias",
+          "updated_at": "2025-10-03 16:47:12.542541+00:00"
+        },
+        {
+          "channel": "Recaudación",
+          "max_surplus_pct": "0.090",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "200000.00",
+          "daily_withdrawal_limit": "600000.00",
+          "daily_deposit_limit": "650000.00",
+          "reload_lead_hours": 10,
+          "sla_hours": 20,
+          "truck_fixed_cost": "130000.00",
+          "truck_variable_cost_per_kg": "3600.00",
+          "notes": "Grandes volúmenes corporativos",
+          "updated_at": "2025-10-03 16:47:12.542541+00:00"
+        },
+        {
+          "channel": "Saldo Total",
+          "max_surplus_pct": "0.080",
+          "max_deficit_pct": "0.050",
+          "min_buffer_amount": "600000.00",
+          "daily_withdrawal_limit": "2500000.00",
+          "daily_deposit_limit": "2500000.00",
+          "reload_lead_hours": 6,
+          "sla_hours": 12,
+          "truck_fixed_cost": "150000.00",
+          "truck_variable_cost_per_kg": "3800.00",
+          "notes": "Tolerancia global de sucursal",
+          "updated_at": "2025-10-03 16:47:12.542541+00:00"
+        },
+        {
+          "channel": "Tesoro",
+          "max_surplus_pct": "0.150",
+          "max_deficit_pct": "0.080",
+          "min_buffer_amount": "750000.00",
+          "daily_withdrawal_limit": null,
+          "daily_deposit_limit": null,
+          "reload_lead_hours": 12,
+          "sla_hours": 24,
+          "truck_fixed_cost": "90000.00",
+          "truck_variable_cost_per_kg": "2800.00",
+          "notes": "Tesoro actúa como pulmón de la sucursal",
+          "updated_at": "2025-10-03 16:47:12.542541+00:00"
+        },
+        {
+          "channel": "Ventanilla",
+          "max_surplus_pct": "0.080",
+          "max_deficit_pct": "0.040",
+          "min_buffer_amount": "150000.00",
+          "daily_withdrawal_limit": "400000.00",
+          "daily_deposit_limit": "350000.00",
+          "reload_lead_hours": 4,
+          "sla_hours": 8,
+          "truck_fixed_cost": "85000.00",
+          "truck_variable_cost_per_kg": "2600.00",
+          "notes": "Caja operativa al cliente",
+          "updated_at": "2025-10-03 16:47:12.542541+00:00"
+        }
+      ]
+    },
+    "capi_elcajas": {
+      "analysis": [
+        {
+          "branch_id": "S001",
+          "branch_name": "Sucursal Central",
+          "status": "alert",
+          "headline": "Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+          "measured_total": 100000.0,
+          "theoretical_total": 2485000.0,
+          "difference": -2385000.0,
+          "deviation_pct": -0.959758551307847,
+          "recommendations": [
+            {
+              "channel": "Saldo Total",
+              "action": "deposit",
+              "amount": 2260750.0,
+              "reason": "Deficit vs caja teorica",
+              "urgency": "proximo turno",
+              "estimated_cost": 158590.85,
+              "weight_kg": 2.261
+            },
+            {
+              "channel": "ATM",
+              "action": "deposit",
+              "amount": 26830800.0,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "inmediato",
+              "estimated_cost": 213907.8,
+              "weight_kg": 26.831
+            },
+            {
+              "channel": "ATS",
+              "action": "deposit",
+              "amount": 6782250.0,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 131703.2,
+              "weight_kg": 6.782
+            },
+            {
+              "channel": "Tesoro",
+              "action": "deposit",
+              "amount": 13117200.0,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 126728.16,
+              "weight_kg": 13.117
+            },
+            {
+              "channel": "Tesoro",
+              "action": "deposit",
+              "amount": 150000.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "proximo turno",
+              "estimated_cost": 90420.0,
+              "weight_kg": 0.15
+            },
+            {
+              "channel": "Ventanilla",
+              "action": "deposit",
+              "amount": 4571200.0,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 96885.12,
+              "weight_kg": 4.571
+            },
+            {
+              "channel": "Caja Chica",
+              "action": "deposit",
+              "amount": 346567.5,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 70762.45,
+              "weight_kg": 0.347
+            },
+            {
+              "channel": "Caja Chica",
+              "action": "deposit",
+              "amount": 15000.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "proximo turno",
+              "estimated_cost": 70033.0,
+              "weight_kg": 0.015
+            },
+            {
+              "channel": "Otros",
+              "action": "deposit",
+              "amount": 457120.0,
+              "reason": "Deficit canal vs distribucion esperada",
+              "urgency": "proximo turno",
+              "estimated_cost": 101417.07,
+              "weight_kg": 0.457
+            },
+            {
+              "channel": "Otros",
+              "action": "deposit",
+              "amount": 30000.0,
+              "reason": "Monto por debajo del colchon minimo",
+              "urgency": "proximo turno",
+              "estimated_cost": 100093.0,
+              "weight_kg": 0.03
+            }
+          ],
+          "channels": [
+            {
+              "channel": "ATM",
+              "amount": 1200000.0,
+              "estimated_teorica": 29820000.0,
+              "share": 12.0,
+              "deviation_pct": -0.959758551307847
+            },
+            {
+              "channel": "ATS",
+              "amount": 300000.0,
+              "estimated_teorica": 7455000.0,
+              "share": 3.0,
+              "deviation_pct": -0.959758551307847
+            },
+            {
+              "channel": "Tesoro",
+              "amount": 600000.0,
+              "estimated_teorica": 14910000.0,
+              "share": 6.0,
+              "deviation_pct": -0.959758551307847
+            },
+            {
+              "channel": "Ventanilla",
+              "amount": 200000.0,
+              "estimated_teorica": 4970000.0,
+              "share": 2.0,
+              "deviation_pct": -0.959758551307847
+            },
+            {
+              "channel": "Buzon",
+              "amount": 90000.0,
+              "estimated_teorica": 2236500.0,
+              "share": 0.9
+            },
+            {
+              "channel": "Recaudacion",
+              "amount": 180000.0,
+              "estimated_teorica": 4473000.0,
+              "share": 1.8
+            },
+            {
+              "channel": "Caja Chica",
+              "amount": 15000.0,
+              "estimated_teorica": 372750.0,
+              "share": 0.15,
+              "deviation_pct": -0.959758551307847
+            },
+            {
+              "channel": "Otros",
+              "amount": 20000.0,
+              "estimated_teorica": 497000.0,
+              "share": 0.2,
+              "deviation_pct": -0.959758551307847
+            }
+          ],
+          "alerts_created": 1,
+          "alerts_to_persist": [
+            {
+              "priority": "critical",
+              "prioridad": "critica",
+              "status": "active",
+              "estado": "abierta",
+              "problema": "Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+              "hipotesis": "Desvio detectado en Sucursal Central",
+              "impacto": "Diferencia de 2,385,000 ARS (-96.0%)",
+              "datos_clave": [
+                "Diferencia total: -2,385,000 ARS",
+                "Desvio porcentual: -96.0%",
+                "Sucursal: Sucursal Central (S001)",
+                "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-10-03T18:10:44.039436+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada [inmediato]; ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "S001",
+              "branch_name": "Sucursal Central",
+              "summary": "Sucursal Central: déficit de 2,385,000 ARS (96.0%). Severidad: alert",
+              "dedupe_clave": "ec57980f789d4c90b13b687dd4af71cd47611325579b9c9de8fd47cba73d1705",
+              "creada_en": "2025-10-03T18:10:44.039436+00:00",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "agent_source": "capi_elcajas"
+            }
+          ],
+          "alert_priority": "critical",
+          "alert_escalated": true,
+          "alert_operation": {
+            "table": "public.alertas",
+            "values": {
+              "prioridad": "critica",
+              "estado": "abierta",
+              "problema": "Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+              "hipotesis": "Desvio detectado en Sucursal Central",
+              "impacto": "Diferencia de 2,385,000 ARS (-96.0%)",
+              "datos_clave": [
+                "Diferencia total: -2,385,000 ARS",
+                "Desvio porcentual: -96.0%",
+                "Sucursal: Sucursal Central (S001)",
+                "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-10-03T18:10:44.039436+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada [inmediato]; ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "S001",
+              "dedupe_clave": "ec57980f789d4c90b13b687dd4af71cd47611325579b9c9de8fd47cba73d1705",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "creada_en": "2025-10-03 18:10:44.039436+00:00"
+            },
+            "description": "Insert alerta El Cajas - Sucursal Central",
+            "branch_id": "S001",
+            "branch_name": "Sucursal Central",
+            "source": "capi_elcajas",
+            "payload": {
+              "priority": "critical",
+              "prioridad": "critica",
+              "status": "active",
+              "estado": "abierta",
+              "problema": "Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+              "hipotesis": "Desvio detectado en Sucursal Central",
+              "impacto": "Diferencia de 2,385,000 ARS (-96.0%)",
+              "datos_clave": [
+                "Diferencia total: -2,385,000 ARS",
+                "Desvio porcentual: -96.0%",
+                "Sucursal: Sucursal Central (S001)",
+                "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]",
+                "Medicion: 2025-10-03T18:10:44.039436+00:00"
+              ],
+              "acciones": "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada [inmediato]; ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo [proximo turno]",
+              "sucursal_id": "S001",
+              "branch_name": "Sucursal Central",
+              "summary": "Sucursal Central: déficit de 2,385,000 ARS (96.0%). Severidad: alert",
+              "dedupe_clave": "ec57980f789d4c90b13b687dd4af71cd47611325579b9c9de8fd47cba73d1705",
+              "creada_en": "2025-10-03T18:10:44.039436+00:00",
+              "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+              "agent_source": "capi_elcajas"
+            }
+          },
+          "recommendation_artifact": {
+            "path": "/app/ia_workspace/data/sessions/session_global/capi_elcajas/recommendation_S001_20251003_181044.json",
+            "filename": "recommendation_S001_20251003_181044.json",
+            "relative_path": "capi_elcajas/recommendation_S001_20251003_181044.json",
+            "created_at": "2025-10-03T18:10:44.039436+00:00",
+            "summary": "Sucursal Central: déficit de 2,385,000 ARS (96.0%). Severidad: alert",
+            "hypothesis": "Desvio detectado en Sucursal Central",
+            "impact": "Diferencia de 2,385,000 ARS (-96.0%)",
+            "suggested_actions": [
+              "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica",
+              "ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada",
+              "ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada",
+              "Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada",
+              "Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo",
+              "Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada",
+              "Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada",
+              "Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo",
+              "Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada",
+              "Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo"
+            ]
+          }
+        }
+      ],
+      "calendar": {
+        "status": "operativo",
+        "business_day": "si",
+        "holiday": "no"
+      },
+      "policies_loaded": 9,
+      "alerts_created": 1,
+      "alert_operations": [
+        {
+          "table": "public.alertas",
+          "values": {
+            "prioridad": "critica",
+            "estado": "abierta",
+            "problema": "Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+            "hipotesis": "Desvio detectado en Sucursal Central",
+            "impacto": "Diferencia de 2,385,000 ARS (-96.0%)",
+            "datos_clave": [
+              "Diferencia total: -2,385,000 ARS",
+              "Desvio porcentual: -96.0%",
+              "Sucursal: Sucursal Central (S001)",
+              "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]",
+              "Medicion: 2025-10-03T18:10:44.039436+00:00"
+            ],
+            "acciones": "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada [inmediato]; ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo [proximo turno]",
+            "sucursal_id": "S001",
+            "dedupe_clave": "ec57980f789d4c90b13b687dd4af71cd47611325579b9c9de8fd47cba73d1705",
+            "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+            "creada_en": "2025-10-03 18:10:44.039436+00:00"
+          },
+          "description": "Insert alerta El Cajas - Sucursal Central",
+          "branch_id": "S001",
+          "branch_name": "Sucursal Central",
+          "source": "capi_elcajas",
+          "payload": {
+            "priority": "critical",
+            "prioridad": "critica",
+            "status": "active",
+            "estado": "abierta",
+            "problema": "Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+            "hipotesis": "Desvio detectado en Sucursal Central",
+            "impacto": "Diferencia de 2,385,000 ARS (-96.0%)",
+            "datos_clave": [
+              "Diferencia total: -2,385,000 ARS",
+              "Desvio porcentual: -96.0%",
+              "Sucursal: Sucursal Central (S001)",
+              "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]",
+              "Medicion: 2025-10-03T18:10:44.039436+00:00"
+            ],
+            "acciones": "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica [proximo turno]; ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada [inmediato]; ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada [proximo turno]; Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo [proximo turno]; Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada [proximo turno]; Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo [proximo turno]",
+            "sucursal_id": "S001",
+            "branch_name": "Sucursal Central",
+            "summary": "Sucursal Central: déficit de 2,385,000 ARS (96.0%). Severidad: alert",
+            "dedupe_clave": "ec57980f789d4c90b13b687dd4af71cd47611325579b9c9de8fd47cba73d1705",
+            "creada_en": "2025-10-03T18:10:44.039436+00:00",
+            "agente_id": "b37d1f90-6b35-4fb3-866e-2f88c9b29850",
+            "agent_source": "capi_elcajas",
+            "persisted": false,
+            "error": "Error al ejecutar la operación de base de datos: insert or update on table \"alertas\" violates foreign key constraint \"alertas_agente_id_fkey\"\nDETAIL:  Key (agente_id)=(b37d1f90-6b35-4fb3-866e-2f88c9b29850) is not present in table \"agentes\"."
+          },
+          "persisted": false,
+          "error": "Error al ejecutar la operación de base de datos: insert or update on table \"alertas\" violates foreign key constraint \"alertas_agente_id_fkey\"\nDETAIL:  Key (agente_id)=(b37d1f90-6b35-4fb3-866e-2f88c9b29850) is not present in table \"agentes\"."
+        }
+      ],
+      "recommendation_files": [
+        {
+          "path": "/app/ia_workspace/data/sessions/session_global/capi_elcajas/recommendation_S001_20251003_181044.json",
+          "filename": "recommendation_S001_20251003_181044.json",
+          "relative_path": "capi_elcajas/recommendation_S001_20251003_181044.json",
+          "created_at": "2025-10-03T18:10:44.039436+00:00",
+          "summary": "Sucursal Central: déficit de 2,385,000 ARS (96.0%). Severidad: alert",
+          "hypothesis": "Desvio detectado en Sucursal Central",
+          "impact": "Diferencia de 2,385,000 ARS (-96.0%)",
+          "suggested_actions": [
+            "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica",
+            "ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada",
+            "ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada",
+            "Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada",
+            "Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo",
+            "Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada",
+            "Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada",
+            "Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo",
+            "Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada",
+            "Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo"
+          ]
+        }
+      ]
+    }
+  },
+<<<<<<< HEAD
+  "errors": [],
+  "trace_id": "trace-1759515031.80244",
+  "user_id": "global",
+=======
   "shared_artifacts": {
     "capi_gus": {
       "type": "conversation_summary",
@@ -4144,10 +5251,13 @@
   "errors": [],
   "trace_id": "trace-1760399395.29737",
   "user_id": "voice-client",
+>>>>>>> origin/develop
   "workflow_mode": "chat",
   "response_metadata": {
-    "intent_reasoning": "No legacy patterns matched",
-    "intent_matched_patterns": [],
+    "intent_reasoning": "Semantic pattern match: La consulta involucra operaciones financieras en una sucursal, por lo que se selecciona el intent 'db_operation' y el agente 'capi_datab'. Se identifica la sucursal 'central' como entidad relevante. (confidence=0.900, entities=1)",
+    "intent_matched_patterns": [
+      "semantic_pattern:db_operation"
+    ],
     "react_trace": [
       {
         "thought": "Reviso el contexto reciente para entender la conversacion.",
@@ -4191,6 +5301,38 @@
         "thought": "Finalizo el ciclo ReAct con una recomendacion.",
         "action": "finish",
         "observation": {
+<<<<<<< HEAD
+          "message": "Derivare la consulta 'el saldo de la sucursal central esta por debajo de su caja teorica ?' al agente 'summary' con la evidencia recopilada.",
+          "recommended_agent": "summary"
+        }
+      }
+    ],
+    "react_recommended_agent": "summary",
+    "react_finished_at": "2025-10-03T18:10:40.204406",
+    "active_agent": "summary",
+    "loop_fallback": "capi_datab",
+    "react_follow_up": false,
+    "needs_retry": null,
+    "reasoning_plan": {
+      "plan_id": "bbb79963-b930-4deb-b5bf-2c382406471f",
+      "version": 1,
+      "intent": "db_operation",
+      "goal": "Clarificar y asistir consulta ambigua: el saldo de la sucursal central esta por debajo de su caja t",
+      "confidence": 0.95,
+      "recommended_agent": "capi_datab",
+      "fallback_agent": "capi_datab",
+      "rationale": "La consulta requiere operaciones sobre bases de datos; se utiliza el agente especialista con controles de validación y exportes auditables.",
+      "steps": [
+        {
+          "id": "D1",
+          "title": "Analizar requerimiento y sanitizar sentencia",
+          "description": "Interpretar la instrucción (JSON, SQL o lenguaje natural), validar tablas y evitar comandos restringidos (DROP/TRUNCATE).",
+          "agent": "capi_datab",
+          "inputs": [
+            "instruccion_usuario"
+          ],
+          "expected_output": "Sentencia SQL validada con parámetros normalizados",
+=======
           "message": "Derivare la consulta 'A quién debería votar en la final de BDG o viernes de garaje?' al agente 'capi_gus' con la evidencia recopilada.",
           "recommended_agent": "capi_gus"
         }
@@ -4219,41 +5361,48 @@
           "agent": "capi_gus",
           "inputs": [],
           "expected_output": "Detalle adicional de la consulta",
+>>>>>>> origin/develop
           "depends_on": []
         },
         {
-          "id": "E2",
-          "title": "Identificar señales financieras",
-          "description": "Buscar palabras clave que alineen la consulta con agentes especializados.",
-          "agent": "intent",
+          "id": "D2",
+          "title": "Ejecutar operación transaccional en PostgreSQL",
+          "description": "Abrir conexión controlada, ejecutar la sentencia y capturar filas afectadas o resultados.",
+          "agent": "capi_datab",
           "inputs": [],
-          "expected_output": "Intentos candidatos",
+          "expected_output": "Resultado de la operación (filas, datos o confirmación)",
           "depends_on": [
-            "E1"
+            "D1"
           ]
         },
         {
+<<<<<<< HEAD
+          "id": "D3",
+          "title": "Exportar evidencia al workspace",
+          "description": "Serializar los resultados en el formato solicitado y guardar el archivo en ia_workspace/data/capi_DataB/.",
+          "agent": "capi_datab",
+=======
           "id": "E3",
           "title": "Preparar respuesta inicial",
           "description": "Ofrecer orientación y sugerir capacidades relevantes mientras se espera aclaración.",
           "agent": "capi_gus",
+>>>>>>> origin/develop
           "inputs": [],
-          "expected_output": "Guía introductoria",
+          "expected_output": "Archivo DataB_YYYY_MM_DD_*.ext disponible para el usuario",
           "depends_on": [
-            "E1",
-            "E2"
+            "D2"
           ]
         }
       ],
-      "cooperative_agents": [
-        "intent"
-      ],
+      "cooperative_agents": [],
       "supporting_evidence": {
-        "progress_percent": 97.5,
+        "progress_percent": 98.0,
         "remaining_steps": 3,
-        "estimated_effort_seconds": 50,
-        "complexity": "medium",
-        "entities": {},
+        "estimated_effort_seconds": 45,
+        "complexity": "low",
+        "entities": {
+          "sucursal": "central"
+        },
         "context_used": false,
         "semantic_confidence": 1.0,
         "available_agents": [
@@ -4264,32 +5413,203 @@
           "capi_desktop",
           "capi_gus"
         ],
-        "user_id": "voice-client",
+        "user_id": "global",
         "session_id": "global"
       },
+<<<<<<< HEAD
+      "generated_at": "2025-10-03T18:10:41.448722",
+      "intent_alignment": true,
+=======
       "generated_at": "2025-10-13T23:50:02.219975",
       "intent_alignment": false,
+>>>>>>> origin/develop
       "requires_replan": false,
       "history": [],
-      "progress_percent": 97.5,
+      "progress_percent": 98.0,
       "remaining_steps": 3,
-      "complexity": "medium",
-      "estimated_effort_seconds": 50
+      "complexity": "low",
+      "estimated_effort_seconds": 45
     },
     "reasoning_confidence": 0.95,
+<<<<<<< HEAD
+    "recommended_agent": "capi_datab",
+    "reasoning_progress_percent": 98.0,
+    "reasoning_eta_seconds": 45,
+=======
     "recommended_agent": "capi_gus",
     "reasoning_progress_percent": 97.5,
     "reasoning_eta_seconds": 50,
+>>>>>>> origin/develop
     "reasoning_remaining_steps": 3,
-    "reasoning_complexity": "medium",
+    "reasoning_complexity": "low",
     "reasoning_needs_react": true,
     "supervisor_queue": [
+<<<<<<< HEAD
+      "summary",
+      "capi_datab",
+=======
       "capi_gus",
       "intent",
       "summary",
+>>>>>>> origin/develop
       "anomaly",
       "capi_desktop"
     ],
+<<<<<<< HEAD
+    "supervisor_selected": "summary",
+    "supervisor_ran_at": "2025-10-03T18:10:41.455578",
+    "semantic_result": {
+      "intent": "db_operation",
+      "confidence": 0.9,
+      "target_agent": "capi_datab",
+      "routing_agent": "capi_datab",
+      "entities": {
+        "sucursal": "central"
+      },
+      "reasoning": "La consulta involucra operaciones financieras en una sucursal, por lo que se utiliza el intent 'db_operation' y se enruta al agente 'capi_datab'. Se incluye la entidad 'sucursal' para identificar la sucursal mencionada.",
+      "requires_clarification": false,
+      "provider": "openai",
+      "model": "gpt-3.5-turbo"
+    },
+    "agent": "capi_datab",
+    "db_operation": {
+      "operation": "select",
+      "table": "public.saldos_sucursal",
+      "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+      "parameters": [
+        "%central%"
+      ],
+      "output_format": "json",
+      "requires_approval": false,
+      "metadata": {
+        "branch": {
+          "raw_text": "sucursal central",
+          "branch_number": null,
+          "branch_name": "central",
+          "branch_id": null
+        },
+        "filters": [
+          {
+            "column": "sucursal_nombre",
+            "operator": "ILIKE",
+            "value": "%central%"
+          }
+        ],
+        "planner_source": "llm_branch_identifier",
+        "planner_confidence": 0.8,
+        "planner_reason": "La instrucción menciona la sucursal central y hace referencia a su saldo en comparación con su caja teórica.",
+        "planner_model": "gpt-3.5-turbo",
+        "suggested_table": "public.saldos_sucursal"
+      }
+    },
+    "db_operation_status": "completed",
+    "planner_metadata": {
+      "branch": {
+        "raw_text": "sucursal central",
+        "branch_number": null,
+        "branch_name": "central",
+        "branch_id": null
+      },
+      "filters": [
+        {
+          "column": "sucursal_nombre",
+          "operator": "ILIKE",
+          "value": "%central%"
+        }
+      ],
+      "planner_source": "llm_branch_identifier",
+      "planner_confidence": 0.8,
+      "planner_reason": "La instrucción menciona la sucursal central y hace referencia a su saldo en comparación con su caja teórica.",
+      "planner_model": "gpt-3.5-turbo",
+      "suggested_table": "public.saldos_sucursal"
+    },
+    "agent_raw_message": "Resultados para la sucursal 'Central': sucursal id=S001, sucursal numero=1, sucursal nombre=Sucursal Central, saldo total sucursal=$100.000,00, caja teorica sucursal=2485000.00, total atm=$1.200.000,00, total ats=$300.000,00, total tesoro=$600.000,00, total cajas ventanilla=$200.000,00, total buzon depositos=$90.000,00, total recaudacion=$180.000,00, total caja chica=$15.000,00, total otros=$20.000,00, medido en=2025-10-03 16:55:33.199922+00:00. Resultado exportado a DataB_2025_10_03_933018.json.",
+    "result_summary": "Resultados para la sucursal 'Central': sucursal id=S001, sucursal numero=1, sucursal nombre=Sucursal Central, saldo total sucursal=$100.000,00, caja teorica sucursal=2485000.00, total atm=$1.200.000,00, total ats=$300.000,00, total tesoro=$600.000,00, total cajas ventanilla=$200.000,00, total buzon depositos=$90.000,00, total recaudacion=$180.000,00, total caja chica=$15.000,00, total otros=$20.000,00, medido en=2025-10-03 16:55:33.199922+00:00. Resultado exportado a DataB_2025_10_03_933018.json.\n\nEl Cajas: Sucursal Central: deficit de 2,385,000 ARS (-96.0%)",
+    "desktop_instruction": {
+      "intent": "escribir_archivo_txt",
+      "parameters": {
+        "filename": "DataB_2025_10_03_933018_desktop.txt",
+        "content": "{\n  \"operation\": \"select\",\n  \"table\": \"public.saldos_sucursal\",\n  \"rowcount\": 1,\n  \"generated_at\": \"2025-10-03T18:10:43.933080\",\n  \"session_id\": \"global\",\n  \"sql\": \"SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1\",\n  \"parameters\": [\n    \"%central%\"\n  ],\n  \"result\": [\n    {\n      \"sucursal_id\": \"S001\",\n      \"sucursal_numero\": 1,\n      \"sucursal_nombre\": \"Sucursal Central\",\n      \"saldo_total_sucursal\": \"100000.00\",\n      \"caja_teorica_sucursal\": \"2485000.00\",\n      \"total_atm\": \"1200000.00\",\n      \"total_ats\": \"300000.00\",\n      \"total_tesoro\": \"600000.00\",\n      \"total_cajas_ventanilla\": \"200000.00\",\n      \"total_buzon_depositos\": \"90000.00\",\n      \"total_recaudacion\": \"180000.00\",\n      \"total_caja_chica\": \"15000.00\",\n      \"total_otros\": \"20000.00\",\n      \"medido_en\": \"2025-10-03 16:55:33.199922+00:00\"\n    }\n  ]\n}"
+      },
+      "action": "write_file"
+    },
+    "semantic_action": "EXPORT_FILE",
+    "requires_human_approval": false,
+    "datab_desktop_ready": true,
+    "el_cajas_status": "alert",
+    "el_cajas_alerts": 1,
+    "el_cajas_pending": false,
+    "actions": [],
+    "desktop_recommendation": {
+      "path": "/app/ia_workspace/data/sessions/session_global/capi_elcajas/recommendation_S001_20251003_181044.json",
+      "filename": "recommendation_S001_20251003_181044.json",
+      "relative_path": "capi_elcajas/recommendation_S001_20251003_181044.json",
+      "created_at": "2025-10-03T18:10:44.039436+00:00",
+      "summary": "Sucursal Central: déficit de 2,385,000 ARS (96.0%). Severidad: alert",
+      "hypothesis": "Desvio detectado en Sucursal Central",
+      "impact": "Diferencia de 2,385,000 ARS (-96.0%)",
+      "suggested_actions": [
+        "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica",
+        "ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada",
+        "ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada",
+        "Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada",
+        "Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo",
+        "Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada",
+        "Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada",
+        "Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo",
+        "Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada",
+        "Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo"
+      ]
+    },
+    "pending_desktop_instruction": {
+      "intent": "escribir_archivo_excel",
+      "action": "write_file",
+      "parameters": {
+        "filename": "recommendation_S001_20251003_181044_20251003_181044.xlsx",
+        "sheet_name": "Recomendacion",
+        "data": [
+          {
+            "Detalle": "Saldo Total: deposit 2,260,750 ARS - Deficit vs caja teorica"
+          },
+          {
+            "Detalle": "ATM: deposit 26,830,800 ARS - Deficit canal vs distribucion esperada"
+          },
+          {
+            "Detalle": "ATS: deposit 6,782,250 ARS - Deficit canal vs distribucion esperada"
+          },
+          {
+            "Detalle": "Tesoro: deposit 13,117,200 ARS - Deficit canal vs distribucion esperada"
+          },
+          {
+            "Detalle": "Tesoro: deposit 150,000 ARS - Monto por debajo del colchon minimo"
+          },
+          {
+            "Detalle": "Ventanilla: deposit 4,571,200 ARS - Deficit canal vs distribucion esperada"
+          },
+          {
+            "Detalle": "Caja Chica: deposit 346,568 ARS - Deficit canal vs distribucion esperada"
+          },
+          {
+            "Detalle": "Caja Chica: deposit 15,000 ARS - Monto por debajo del colchon minimo"
+          },
+          {
+            "Detalle": "Otros: deposit 457,120 ARS - Deficit canal vs distribucion esperada"
+          },
+          {
+            "Detalle": "Otros: deposit 30,000 ARS - Monto por debajo del colchon minimo"
+          },
+          {
+            "Resumen": "Sucursal Central: déficit de 2,385,000 ARS (96.0%). Severidad: alert",
+            "Hipotesis": "Desvio detectado en Sucursal Central",
+            "Impacto": "Diferencia de 2,385,000 ARS (-96.0%)"
+          }
+        ]
+      }
+    },
+    "approval_reason": "Deseas que guardemos la recomendacion en el escritorio?",
+    "el_cajas_alert_persisted": false,
+    "el_cajas_alert_error": "Error al ejecutar la operación de base de datos: insert or update on table \"alertas\" violates foreign key constraint \"alertas_agente_id_fkey\" DETAIL:  Key (agente_id)=(b37d1f90-6b35-4fb3-866e-2f88c9b2",
+=======
     "supervisor_selected": "capi_gus",
     "supervisor_ran_at": "2025-10-13T23:50:02.227932",
     "semantic_result": {
@@ -4318,9 +5638,14 @@
       "processing_time": 0.9785,
       "finish_reason": "stop"
     },
+>>>>>>> origin/develop
     "assembled_at": "assemble",
     "workflow_completed": true,
-    "total_nodes": 9
+    "total_nodes": 10
   },
+<<<<<<< HEAD
+  "routing_decision": "assemble"
+=======
   "routing_decision": "human_gate"
+>>>>>>> origin/develop
 }

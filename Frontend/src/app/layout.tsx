@@ -21,6 +21,7 @@ import { HistoricalAlertsProvider } from "./contexts/HistoricalAlertsContext";
 import GlobalChatOverlay from "./components/chat/GlobalChatOverlay";
 import ChatToggleButton from "./components/chat/ChatToggleButton";
 import HistoricalAlertsSystem from "./components/alerts/HistoricalAlertsSystem";
+import { NavigationModeProvider } from "./contexts/NavigationModeContext";
 import { usePathname } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700'], display: 'swap', variable: '--font-inter' });
@@ -47,24 +48,26 @@ export default function RootLayout({
         {/* Tipografías Google: Orbitron (headings HUD) + Inter (UI) */}
       </head>
       <body className={`Content hud-root ${isAgentsPage ? 'immersive-hud' : ''}`}>
-        <GlobalChatProvider>
-          <GlobalAlertProvider>
-            <HistoricalAlertsProvider>
-              <HUDNavigator />
+        <NavigationModeProvider>
+          <GlobalChatProvider>
+            <GlobalAlertProvider>
+              <HistoricalAlertsProvider>
+                <HUDNavigator />
 
-              {children}
+                {children}
 
-              {!isAgentsPage && !isMapPage && <Footer />}
+                {!isAgentsPage && !isMapPage && <Footer />}
 
-              {/* Global Chat System - Available on ALL pages */}
-              <GlobalChatOverlay />
-              <ChatToggleButton />
+                {/* Global Chat System - Available on ALL pages */}
+                <GlobalChatOverlay />
+                <ChatToggleButton />
 
-              {/* Historical Alerts System - Sourced from database */}
-              <HistoricalAlertsSystem />
-            </HistoricalAlertsProvider>
-          </GlobalAlertProvider>
-        </GlobalChatProvider>
+                {/* Historical Alerts System - Sourced from database */}
+                <HistoricalAlertsSystem />
+              </HistoricalAlertsProvider>
+            </GlobalAlertProvider>
+          </GlobalChatProvider>
+        </NavigationModeProvider>
       </body>
     </html>
   );

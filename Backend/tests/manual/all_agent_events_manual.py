@@ -56,7 +56,11 @@ async def test_all_queries():
         ("Analiza los datos financieros", "test_summary"),
         ("Detectar anomalias en las transacciones", "test_anomaly"),
         ("Rendimiento de la sucursal SUC-404", "test_branch"),
+<<<<<<< HEAD
+        ("Hola, buenos dias!", "test_smalltalk"),
+=======
         ("Hola, buenos dias!", "test_capi_gus"),
+>>>>>>> origin/develop
         ("Genera un archivo con el resumen en mi escritorio", "test_desktop"),
     ]
 

@@ -1,24 +1,47 @@
 const MAIN_ROUTE = '/pages/';
 
-export const ROUTES = [
+export type NavigationRoute = {
+  name: string;
+  to: string;
+  icon: string;
+  clientVisible?: boolean;
+};
+
+export const ROUTES: NavigationRoute[] = [
+  {
+    name: 'Home2',
+    to: `${MAIN_ROUTE}home`,
+    icon: '/home.png',
+    clientVisible: false,
+  },
   {
     name: 'Home',
-    to: `${MAIN_ROUTE}home`,
-    icon: '/home.png'
+    to: `${MAIN_ROUTE}home2`,
+    icon: '/home.png',
+    clientVisible: true,
   },
   {
     name: 'Map',
     to: `${MAIN_ROUTE}map`,
-    icon: '/map.png'
+    icon: '/map.png',
+    clientVisible: true,
+  },
+  {
+    name: 'Dashboard2',
+    to: '/dashboard',
+    icon: '/chat.png',
+    clientVisible: false,
   },
   {
     name: 'Dashboard',
-    to: '/dashboard',
-    icon: '/chat.png'
+    to: '/dashboard2',
+    icon: '/chat.png',
+    clientVisible: true,
   },
   {
     name: 'Agentes',
     to: `${MAIN_ROUTE}agentes`,
-    icon: '/cocoCapi.png'
+    icon: '/cocoCapi.png',
+    clientVisible: false,
   },
 ];

@@ -15,6 +15,8 @@
   gap: 4px;  /* Reducido de 8px a 4px */
 }
 
+<<<<<<< HEAD
+=======
 .turnBlock {
   display: flex;
   flex-direction: column;
@@ -132,6 +134,7 @@
   color: rgba(150, 178, 206, 0.75);
 }
 
+>>>>>>> origin/develop
 .feed::-webkit-scrollbar {
   width: 6px;
 }
@@ -442,9 +445,15 @@
 }
 
 .voiceStatus {
+<<<<<<< HEAD
+  padding: 8px 16px; /* Unificado a 16px horizontal */
+  background: rgba(255, 107, 107, 0.1);
+  border-top: 1px solid rgba(255, 107, 107, 0.2);
+=======
   padding: 8px 16px;
   background: rgba(8, 18, 32, 0.7);
   border-top: 1px solid rgba(0, 229, 255, 0.08);
+>>>>>>> origin/develop
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -453,6 +462,13 @@
 .voiceNotice {
   text-transform: uppercase;
   letter-spacing: 0.08em;
+<<<<<<< HEAD
+  color: rgba(159, 190, 222, 0.75);
+}
+
+.voicePartial {
+  color: rgba(214, 239, 255, 0.9);
+=======
   color: rgba(135, 188, 255, 0.8);
 }
 
@@ -460,12 +476,16 @@
   color: rgba(214, 239, 255, 0.85);
   font-size: 11px;
   letter-spacing: 0.03em;
+>>>>>>> origin/develop
 }
 
 .voiceError {
   font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
   font-size: 11px;
   letter-spacing: 0.04em;
+<<<<<<< HEAD
+  color: #ff6b6b;
+=======
   color: #ff9c6b;
 }
 
@@ -540,6 +560,7 @@
   font-size: 10px;
   letter-spacing: 0.06em;
   color: rgba(214, 239, 255, 0.8);
+>>>>>>> origin/develop
 }
 
 .inputRow {
@@ -583,6 +604,35 @@
   text-transform: uppercase;
 }
 
+<<<<<<< HEAD
+/* Bot\u00f3n de micr\u00f3fono para grabaci\u00f3n de voz */
+.micButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  background-color: var(--chat-primary);
+}
+
+.micButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.micButton.pressed {
+  background-color: var(--hud-error);
+  transform: scale(1.1);
+}
+
+.micButton.recording {
+  background-color: var(--hud-warning);
+  animation: recordPulse 1.5s ease-in-out infinite; /* Unificado a 1.5s */
+=======
 /* Botón de micrófono inspirado en HUDNavigator (solo icono) */
 .micButton {
   width: 42px;
@@ -644,14 +694,22 @@
   box-shadow:
     0 0 20px rgba(251, 191, 36, 0.4),
     inset 0 0 14px rgba(120, 53, 15, 0.28);
+>>>>>>> origin/develop
 }
 
 @keyframes recordPulse {
   0%, 100% {
+<<<<<<< HEAD
+    box-shadow: 0 0 20px rgba(255, 153, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 153, 0, 0.8);
+=======
     box-shadow: 0 0 20px rgba(251, 191, 36, 0.55);
   }
   50% {
     box-shadow: 0 0 32px rgba(251, 191, 36, 0.85);
+>>>>>>> origin/develop
   }
 }
 

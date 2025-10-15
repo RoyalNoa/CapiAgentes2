@@ -51,7 +51,11 @@ describe('morphingConfig', () => {
     it('should have phrases for all agent types', () => {
       const expectedAgents = [
         'capidatab', 'capielcajas', 'capidesktop', 'capinoticias',
+<<<<<<< HEAD
+        'summary', 'branch', 'anomaly', 'smalltalk'
+=======
         'summary', 'branch', 'anomaly', 'capi_gus'
+>>>>>>> origin/develop
       ];
 
       expectedAgents.forEach(agent => {

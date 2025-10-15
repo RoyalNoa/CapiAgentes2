@@ -1,0 +1,29 @@
+{
+  "operation": "select",
+  "table": "public.saldos_sucursal",
+  "rowcount": 1,
+  "generated_at": "2025-10-03T18:10:43.933080",
+  "session_id": "global",
+  "sql": "SELECT sucursal_id, sucursal_numero, sucursal_nombre, saldo_total_sucursal, caja_teorica_sucursal, total_atm, total_ats, total_tesoro, total_cajas_ventanilla, total_buzon_depositos, total_recaudacion, total_caja_chica, total_otros, medido_en FROM public.saldos_sucursal WHERE sucursal_nombre ILIKE $1 ORDER BY medido_en DESC LIMIT 1",
+  "parameters": [
+    "%central%"
+  ],
+  "result": [
+    {
+      "sucursal_id": "S001",
+      "sucursal_numero": 1,
+      "sucursal_nombre": "Sucursal Central",
+      "saldo_total_sucursal": "100000.00",
+      "caja_teorica_sucursal": "2485000.00",
+      "total_atm": "1200000.00",
+      "total_ats": "300000.00",
+      "total_tesoro": "600000.00",
+      "total_cajas_ventanilla": "200000.00",
+      "total_buzon_depositos": "90000.00",
+      "total_recaudacion": "180000.00",
+      "total_caja_chica": "15000.00",
+      "total_otros": "20000.00",
+      "medido_en": "2025-10-03 16:55:33.199922+00:00"
+    }
+  ]
+}

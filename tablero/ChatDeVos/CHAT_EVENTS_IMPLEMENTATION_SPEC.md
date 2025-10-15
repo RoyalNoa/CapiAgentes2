@@ -401,10 +401,17 @@ def _get_action_type(self) -> str:
         'capinoticiasnode': 'news_analysis',
         'noticias': 'news_analysis',
 
+<<<<<<< HEAD
+        # Agent nodes - Smalltalk
+        'smalltalk': 'conversation',
+        'smalltalknode': 'conversation',
+        'smalltalkagent': 'conversation',
+=======
         # Agent nodes - Capi Gus
         'capi_gus': 'conversation',
         'capi_gusnode': 'conversation',
         'capi_gusagent': 'conversation',
+>>>>>>> origin/develop
     }
 
     return action_map.get(node_name, 'agent_start')
@@ -516,7 +523,11 @@ def _map_node_to_action(self, node_name: str) -> str:
         'capielcajas': 'branch_operations',
         'capidesktop': 'desktop_operation',
         'capinoticias': 'news_analysis',
+<<<<<<< HEAD
+        'smalltalk': 'conversation',
+=======
         'capi_gus': 'conversation',
+>>>>>>> origin/develop
     }
 
     return action_map.get(node_lower, node_name.lower())
@@ -626,7 +637,11 @@ const ACTION_MESSAGES: Record<string, (meta?: any) => {
   'capinoticias': () => ({ summary: 'Analizando noticias...', tone: 'progress' as AgentEventTone }),
   'news_analysis': () => ({ summary: 'Analizando noticias...', tone: 'progress' as AgentEventTone }),
 
+<<<<<<< HEAD
+  'smalltalk': () => ({ summary: 'Conversando...', tone: 'progress' as AgentEventTone }),
+=======
   'capi_gus': () => ({ summary: 'Conversando...', tone: 'progress' as AgentEventTone }),
+>>>>>>> origin/develop
   'conversation': () => ({ summary: 'Conversando...', tone: 'progress' as AgentEventTone }),
 };
 ```

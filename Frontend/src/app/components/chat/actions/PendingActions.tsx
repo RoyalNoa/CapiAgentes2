@@ -65,8 +65,23 @@ export default function PendingActions({
 
   return (
     <div className={styles.container}>
+<<<<<<< HEAD
+      <div className={styles.header}>
+        <div className={styles.indicator} />
+        <span className={styles.label}>
+          Acción requerida
+        </span>
+        <span className={styles.actionType}>
+          {currentPendingAction.label}
+        </span>
+      </div>
+
+      <div className={styles.description}>
+        {approvalReason || '¿Deseas ejecutar la acción sugerida?'}
+=======
       <div className={styles.description}>
         {approvalReason || 'Deseas ejecutar la accion sugerida?'}
+>>>>>>> origin/develop
       </div>
 
       {pendingActionDetails?.fileName && (
@@ -87,6 +102,15 @@ export default function PendingActions({
         </div>
       )}
 
+<<<<<<< HEAD
+      {pendingActionDetails?.summary && (
+        <div className={styles.summary}>
+          {pendingActionDetails.summary}
+        </div>
+      )}
+
+=======
+>>>>>>> origin/develop
       <div className={styles.buttons}>
         <button
           onClick={() => handleActionDecision(true)}
@@ -106,7 +130,11 @@ export default function PendingActions({
 
       {(actionSubmitting || loading) && (
         <div className={styles.loading}>
+<<<<<<< HEAD
+          Registrando decisión...
+=======
           Registrando decision...
+>>>>>>> origin/develop
         </div>
       )}
     </div>

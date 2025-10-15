@@ -526,7 +526,7 @@ class LangGraphRuntime:
         Map node name to semantic action type for frontend display.
 
         Args:
-            node_name: Name of the node (e.g., "intent", "router", "capi_gus")
+            node_name: Name of the node (e.g., "intent", "router", "summary", "capi_gus")
 
         Returns:
             Semantic action string (e.g., "intent", "router", "summary_generation")
@@ -552,8 +552,9 @@ class LangGraphRuntime:
             'capidatab': 'database_query',
             'capielcajas': 'branch_operations',
             'capidesktop': 'desktop_operation',
-            'capi_gus': 'conversation',
             'capinoticias': 'news_analysis',
+            'smalltalk': 'conversation',
+            'capi_gus': 'conversation',
         }
 
         return action_map.get(node_lower, node_name.lower())

@@ -16,7 +16,7 @@ export default function ChatToggleButton() {
     <button
       onClick={() => setIsOpen(true)}
       style={{
-        position: 'absolute',
+        position: 'fixed',
         zIndex: 1055,
         width: '48px',
         height: '48px',
