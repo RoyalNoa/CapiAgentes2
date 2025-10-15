@@ -152,11 +152,7 @@
 .inputWrapper {
   display: flex;
   gap: 12px;
-<<<<<<< HEAD
-  align-items: flex-end;
-=======
   align-items: center;
->>>>>>> origin/develop
 }
 
 /* Campo de texto */
@@ -187,50 +183,6 @@
   color: rgba(159, 190, 222, 0.5);
 }
 
-<<<<<<< HEAD
-/* Botón de enviar */
-.sendButton {
-  padding: 10px 20px;
-  background: linear-gradient(
-    135deg,
-    var(--chat-primary, #00e5ff) 0%,
-    rgba(0, 200, 255, 0.9) 100%
-  );
-  border: none;
-  border-radius: 6px;
-  color: rgba(0, 15, 30, 0.95);
-  font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 229, 255, 0.3);
-  min-width: 80px;
-}
-
-.sendButton:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.5);
-}
-
-.sendButton:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.sendButton:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  background: linear-gradient(
-    135deg,
-    rgba(159, 190, 222, 0.3) 0%,
-    rgba(159, 190, 222, 0.2) 100%
-  );
-}
-
-=======
->>>>>>> origin/develop
 /* Slot derecho para botones adicionales */
 .rightSlot {
   display: flex;
@@ -244,22 +196,6 @@
   pointer-events: none;
 }
 
-<<<<<<< HEAD
-.loading .sendButton {
-  animation: loadingPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes loadingPulse {
-  0%, 100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
-=======
->>>>>>> origin/develop
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
@@ -286,20 +222,8 @@
     font-size: 12px;
   }
 
-<<<<<<< HEAD
-  .sendButton {
-    padding: 10px 16px;
-    font-size: 11px;
-  }
-
-=======
->>>>>>> origin/develop
   .alertButton {
     padding: 5px 10px;
     font-size: 9px;
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/develop

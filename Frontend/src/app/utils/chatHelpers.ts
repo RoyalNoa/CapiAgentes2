@@ -1,9 +1,6 @@
 import { Message } from '@/app/types/chat';
 import type { AgentEvent } from '@/app/hooks/useAgentWebSocket';
-<<<<<<< HEAD
-=======
 import { buildNarrativeAgentSteps, type NarrativePlanStep } from './agentNarrativeCatalog';
->>>>>>> origin/develop
 
 // Tipo comn para payloads de eventos de agente
 export type AgentEventPayload = {
@@ -155,19 +152,12 @@ export function getActionType(msg: Message): string {
     'capielcajas': 'branch_operations',
     'capidesktop': 'desktop_operation',
     'capinoticias': 'news_analysis',
-<<<<<<< HEAD
-    'summary': 'summary_generation',
-    'branch': 'branch_analysis',
-    'anomaly': 'anomaly_detection',
-    'smalltalk': 'conversation'
-=======
     'capigus': 'conversation_summary',
     'capigusagent': 'conversation_summary',
     'summary': 'conversation_summary',
     'branch': 'branch_analysis',
     'anomaly': 'anomaly_detection',
     'capi_gus': 'conversation'
->>>>>>> origin/develop
   };
 
   return actionMap[normalizedAgent] || 'agent_processing';
@@ -186,19 +176,12 @@ const ACTION_TYPE_MAP: Record<string, string> = {
   'capielcajas': 'branch_operations',
   'capidesktop': 'desktop_operation',
   'capinoticias': 'news_analysis',
-<<<<<<< HEAD
-  'summary': 'summary_generation',
-  'branch': 'branch_analysis',
-  'anomaly': 'anomaly_detection',
-  'smalltalk': 'conversation'
-=======
   'capigus': 'conversation_summary',
   'capigusagent': 'conversation_summary',
   'summary': 'conversation_summary',
   'branch': 'branch_analysis',
   'anomaly': 'anomaly_detection',
   'capi_gus': 'conversation'
->>>>>>> origin/develop
 };
 
 /**
@@ -290,11 +273,6 @@ export const AGENT_FRIENDLY_NAMES: Record<string, string> = {
   'capinoticias': 'Capi Noticias',
   'capi_noticias': 'Capi Noticias',
   'noticias': 'Capi Noticias',
-<<<<<<< HEAD
-  'summary': 'Capi Summary',
-  'summaryagent': 'Capi Summary',
-  'summarynode': 'Capi Summary',
-=======
   'capigus': 'Capi Gus',
   'capi_gus': 'Capi Gus',
   'capigusagent': 'Capi Gus',
@@ -302,24 +280,16 @@ export const AGENT_FRIENDLY_NAMES: Record<string, string> = {
   'summary': 'Capi Gus',
   'summaryagent': 'Capi Gus',
   'summarynode': 'Capi Gus',
->>>>>>> origin/develop
   'branch': 'Capi Branch',
   'branchagent': 'Capi Branch',
   'branchnode': 'Capi Branch',
   'anomaly': 'Capi Anomaly',
   'anomalyagent': 'Capi Anomaly',
   'anomalynode': 'Capi Anomaly',
-<<<<<<< HEAD
-  'smalltalk': 'Capi Smalltalk',
-  'smalltalk_fallback': 'Capi Smalltalk',
-  'smalltalkfallback': 'Capi Smalltalk',
-  'smalltalknode': 'Capi Smalltalk',
-=======
   'capi_gus': 'Capi Capi Gus',
   'capi_gus_fallback': 'Capi Capi Gus',
   'capi_gusfallback': 'Capi Capi Gus',
   'capi_gusnode': 'Capi Capi Gus',
->>>>>>> origin/develop
   'capi': 'Sistema' // Fallback for generic 'capi'
 };
 
@@ -399,11 +369,8 @@ export interface SimulatedEvent {
   primaryText: string;
   detail?: string;
   status: SimulatedEventStatus;
-<<<<<<< HEAD
-=======
   timestamp?: number;
   source?: 'event' | 'artifact' | 'synthetic' | 'fallback';
->>>>>>> origin/develop
 }
 
 export interface ReasoningPlanStep {
@@ -574,8 +541,6 @@ const extractAlertSummary = (alert: any): string | undefined => {
   return undefined;
 };
 
-<<<<<<< HEAD
-=======
 const parseEventTimestamp = (event: AgentEvent): number | undefined => {
   if (typeof event.timestamp === 'string') {
     const parsed = Date.parse(event.timestamp);
@@ -872,7 +837,6 @@ const buildEventsFromAgentStream = ({
   return streamEvents.map(({ orderKey, ...rest }) => rest);
 };
 
->>>>>>> origin/develop
 const buildEventsFromAgentMessages = (messages: Message[]): SimulatedEvent[] => {
   const events: SimulatedEvent[] = [];
   const seen = new Set<string>();
@@ -926,12 +890,8 @@ const buildEventsFromAgentMessages = (messages: Message[]): SimulatedEvent[] => 
       friendlyName,
       primaryText: shortenText(primaryText),
       detail: detailText ? shortenText(detailText) : undefined,
-<<<<<<< HEAD
-      status: 'pending'
-=======
       status: 'pending',
       source: 'fallback'
->>>>>>> origin/develop
     });
   });
 
@@ -948,129 +908,6 @@ const buildEventsFromArtifacts = (payload: any, planSteps?: ReasoningPlanStep[])
     return [];
   }
 
-<<<<<<< HEAD
-  const events: SimulatedEvent[] = [];
-  const seen = new Set<string>();
-  const agentCounts = new Map<string, number>();
-  const timestamp = Date.now();
-
-  const pushEvent = (agent: string, text: string, detail?: string) => {
-    const normalizedAgent = agent.trim() || 'agente';
-    const cleanText = shortenText(text);
-    if (!cleanText) {
-      return;
-    }
-    const dedupeKey = `${normalizeAgentName(normalizedAgent)}-${cleanText}`;
-    if (seen.has(dedupeKey)) {
-      return;
-    }
-    const currentCount = agentCounts.get(normalizedAgent) ?? 0;
-    if (currentCount >= 6) {
-      return;
-    }
-    seen.add(dedupeKey);
-    agentCounts.set(normalizedAgent, currentCount + 1);
-    events.push({
-      id: `artifact-${normalizeAgentName(normalizedAgent)}-${events.length}-${timestamp}`,
-      agent: normalizedAgent,
-      friendlyName: getFriendlyAgentName(normalizedAgent),
-      primaryText: cleanText,
-      detail: detail ? shortenText(detail) : undefined,
-      status: 'pending'
-    });
-  };
-
-  const addArtifactExtras = (agent: string, artifact: any) => {
-    if (!artifact || typeof artifact !== 'object') {
-      return;
-    }
-
-    if (typeof artifact.rowcount === 'number') {
-      pushEvent(agent, formatRowCountText(artifact.rowcount));
-    } else if (Array.isArray(artifact.rows)) {
-      pushEvent(agent, formatRowCountText(artifact.rows.length));
-    }
-
-    if (typeof artifact.export_file === 'string' && artifact.export_file.trim().length > 0) {
-      const parts = artifact.export_file.trim().split(/[\/]/);
-      const fileName = parts.length > 0 ? parts[parts.length - 1] : artifact.export_file.trim();
-      pushEvent(agent, `Exportando resultados a ${fileName}`);
-    }
-
-    if (Array.isArray(artifact.analysis) && artifact.analysis.length > 0) {
-      const headline = extractAlertSummary(artifact.analysis[0]);
-      if (headline) {
-        pushEvent(agent, `Analizando ${headline}`);
-      }
-    }
-
-    if (Array.isArray(artifact.alerts)) {
-      artifact.alerts.slice(0, 2).forEach(alert => {
-        const summary = extractAlertSummary(alert);
-        if (summary) {
-          pushEvent(agent, `Generando alerta: ${summary}`);
-        }
-      });
-    }
-
-    if (Array.isArray(artifact.recommendation_files) && artifact.recommendation_files.length > 0) {
-      const recommendation = artifact.recommendation_files[0];
-      const label = typeof recommendation?.summary === 'string' && recommendation.summary.trim().length > 0
-        ? recommendation.summary.trim()
-        : recommendation?.filename;
-      if (label) {
-        pushEvent(agent, `Registrando recomendacion ${label}`);
-      }
-    }
-
-    if (typeof artifact.summary_message === 'string' && artifact.summary_message.trim().length > 0) {
-      pushEvent(agent, artifact.summary_message);
-    }
-  };
-
-  const processedAgents = new Set<string>();
-  const planList = Array.isArray(planSteps) ? planSteps : [];
-
-  if (planList.length > 0) {
-    planList.forEach(step => {
-      if (!step) {
-        return;
-      }
-      const agent = step.agent && step.agent.trim().length > 0 ? step.agent : 'planificador';
-      const artifact = pickArtifactForAgent(artifacts, agent);
-      const branchName = artifact ? extractBranchName(artifact) : undefined;
-      let addedFromArtifact = false;
-      if (artifact) {
-        const operationText = formatDbOperation(artifact.operation, branchName);
-        if (operationText) {
-          pushEvent(agent, operationText);
-          addedFromArtifact = true;
-        }
-      }
-      if (!addedFromArtifact) {
-        const fallback = pickFirstString([step.title, step.description, step.expected_output]);
-        if (fallback) {
-          pushEvent(agent, fallback);
-        }
-      }
-      if (artifact) {
-        addArtifactExtras(agent, artifact);
-        processedAgents.add(agent);
-      }
-    });
-  }
-
-  Object.entries(artifacts).forEach(([agent, artifact]) => {
-    if (processedAgents.has(agent)) {
-      return;
-    }
-    const branchName = extractBranchName(artifact);
-    const operationText = formatDbOperation(artifact?.operation, branchName);
-    if (operationText) {
-      pushEvent(agent, operationText);
-    }
-    addArtifactExtras(agent, artifact);
-=======
   const narrativeAgents = buildNarrativeAgentSteps(artifacts, planSteps as NarrativePlanStep[]);
   if (narrativeAgents.length === 0) {
     return [];
@@ -1113,7 +950,6 @@ const buildEventsFromArtifacts = (payload: any, planSteps?: ReasoningPlanStep[])
         source: 'artifact'
       });
     });
->>>>>>> origin/develop
   });
 
   return events;
@@ -1126,15 +962,6 @@ interface BuildAgentTaskEventsParams {
 }
 
 export function buildAgentTaskEvents({ agentEvents, planSteps, finalMessage }: BuildAgentTaskEventsParams): SimulatedEvent[] {
-<<<<<<< HEAD
-  const primary = buildEventsFromAgentMessages(agentEvents);
-  if (primary.length > 0) {
-    return primary;
-  }
-
-  const payload = finalMessage && typeof finalMessage === 'object' ? (finalMessage.payload ?? finalMessage) : undefined;
-  return buildEventsFromArtifacts(payload, planSteps);
-=======
   const payload = finalMessage && typeof finalMessage === 'object' ? (finalMessage.payload ?? finalMessage) : undefined;
 
   const artifacts = getSharedArtifacts(payload);
@@ -1159,7 +986,6 @@ export function buildAgentTaskEvents({ agentEvents, planSteps, finalMessage }: B
   }
 
   return [];
->>>>>>> origin/develop
 }
 
 
@@ -1214,8 +1040,6 @@ export function simulationReducer(
           : state.morphingKey
       };
 
-<<<<<<< HEAD
-=======
     case 'SUSPEND_MORPHING':
       return {
         ...state,
@@ -1224,7 +1048,6 @@ export function simulationReducer(
         morphingKey: state.morphingKey + 1
       };
 
->>>>>>> origin/develop
     case 'SET_EVENTS':
       return {
         ...state,
@@ -1284,9 +1107,3 @@ export function simulationReducer(
       return state;
   }
 }
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> origin/develop

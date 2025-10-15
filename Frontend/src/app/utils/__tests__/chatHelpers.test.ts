@@ -339,12 +339,6 @@ describe('chatHelpers', () => {
       const events = buildAgentTaskEvents({ agentEvents: [], finalMessage });
       const primaryTexts = events.map(event => event.primaryText);
 
-<<<<<<< HEAD
-      expect(primaryTexts.some(text => text.includes('Consultando'))).toBe(true);
-      expect(primaryTexts.some(text => text.includes('Procesando 1 resultado'))).toBe(true);
-      expect(primaryTexts.some(text => text.includes('Exportando resultados'))).toBe(true);
-      expect(primaryTexts.some(text => text.includes('Generando alerta'))).toBe(true);
-=======
       expect(primaryTexts).toEqual([
         'Disenando script SQL a medida',
         'Ejecutando consulta transaccional sobre public.test_table',
@@ -427,7 +421,6 @@ describe('chatHelpers', () => {
       ]);
 
       expect(events.every(event => event.source === 'event')).toBe(true);
->>>>>>> origin/develop
     });
 
     it('should return empty array when no data is available', () => {

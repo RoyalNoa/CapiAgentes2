@@ -59,10 +59,7 @@ export function useEventSimulation() {
     }
 
     dispatch({ type: 'SET_EVENTS', payload: simEvents });
-<<<<<<< HEAD
-=======
     dispatch({ type: 'SUSPEND_MORPHING' });
->>>>>>> origin/develop
 
     const eventActiveDuration = ANIMATION_CONFIG.timings.shimmerDuration * 2;
     const betweenEvents = ANIMATION_CONFIG.timings.betweenEvents;
@@ -242,11 +239,7 @@ export function useEventSimulation() {
   }, []);
 
   const handleBatchComplete = useCallback(
-<<<<<<< HEAD
-    (appendMessage?: (msg: any) => void, currentMorphingText?: string) => {
-=======
     (currentMorphingText?: string) => {
->>>>>>> origin/develop
       chatLogger.debug('Batch completo, finalizando morphing');
 
       // Use a ref to get the latest morphing text
@@ -262,31 +255,6 @@ export function useEventSimulation() {
         }
       });
 
-<<<<<<< HEAD
-      if (appendMessage && textToPersist) {
-        timerManager.current.set(
-          'persistOrchestrator',
-          () => {
-            appendMessage({
-              id: `orchestrator-${Date.now()}`,
-              role: 'agent',
-              content: textToPersist,
-              agent: 'orchestrator'
-            });
-            dispatch({ type: 'CLEAR_MORPHING' });
-          },
-          ANIMATION_CONFIG.timings.finalDisplay
-        );
-      } else {
-        timerManager.current.set(
-          'clearMorphing',
-          () => {
-            dispatch({ type: 'CLEAR_MORPHING' });
-          },
-          ANIMATION_CONFIG.timings.finalDisplay
-        );
-      }
-=======
       timerManager.current.set(
         'clearMorphing',
         () => {
@@ -294,7 +262,6 @@ export function useEventSimulation() {
         },
         ANIMATION_CONFIG.timings.finalDisplay
       );
->>>>>>> origin/develop
     },
     [] // No dependencies needed since we use stateRef
   );
@@ -330,7 +297,3 @@ export function useEventSimulation() {
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/develop

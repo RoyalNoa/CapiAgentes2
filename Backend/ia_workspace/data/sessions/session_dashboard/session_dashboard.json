@@ -2,11 +2,7 @@
   "created_at": "2025-09-24T19:41:51.508102",
   "session_id": "dashboard",
   "sanitized_session_id": "dashboard",
-<<<<<<< HEAD
-  "updated_at": "2025-10-10T13:54:22.219792",
-=======
   "updated_at": "2025-10-08T18:44:51.674605",
->>>>>>> origin/develop
   "datab_exports": [],
   "status": "completed",
   "active_agent": "capi_gus",
@@ -17,28 +13,16 @@
     "reasoning",
     "supervisor",
     "router",
-<<<<<<< HEAD
-    "anomaly",
-=======
     "capi_gus",
->>>>>>> origin/develop
     "human_gate",
     "assemble",
     "finalize"
   ],
-<<<<<<< HEAD
-  "intent": "anomaly_query",
-  "intent_confidence": 1.0,
-  "last_query": "¿Hay anomalías detectadas?",
-  "last_response": {
-    "message": "🔍 *Detección de Anomalías*:\n\n• **Total de anomalías detectadas**: 3\n• **Severidad alta**: 1 🚨\n• **Severidad media**: 1 ⚠️\n• **Severidad baja**: 1 ℹ️\n• **Sucursales afectadas**: 3\n• **Nivel de riesgo**: 🚨 HIGH\n\n📋 **Evaluación**: Se detectaron anomalías de alta severidad que requieren atención inmediata\n\n🏢 **Sucursales con anomalías**: Sucursal Central, Sucursal Sur, Sucursal Norte\n\n📌 **Recomendaciones**:\n1. Revisar y validar transacciones con montos inusuales\n2. Implementar controles adicionales para transacciones de alto valor\n3. Investigar actividad inusual en horarios no habituales\n\n🔍 **Tipos detectados**:\n• Montos inusuales: 1\n• Picos de frecuencia: 1\n• Desviaciones de patrón: 1",
-=======
   "intent": "unknown",
   "intent_confidence": 0.2,
   "last_query": "Muestra las mejores sucursales por ingresos",
   "last_response": {
     "message": "Lamentablemente, no dispongo de un saldo actualizado para la sucursal en este momento. Sin embargo, el insight más relevante es la falta de información financiera disponible. ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
->>>>>>> origin/develop
     "data": {
       "react_observations": [
         {
@@ -59,57 +43,6 @@
         }
       ],
       "reasoning_plan": {
-<<<<<<< HEAD
-        "plan_id": "6a33f630-929f-40bd-b4fc-63b37cf44f1e",
-        "version": 1,
-        "intent": "anomaly_query",
-        "goal": "Detectar y explicar anomalías financieras",
-        "confidence": 0.95,
-        "recommended_agent": "anomaly",
-        "fallback_agent": "assemble",
-        "rationale": "Se requieren detecciones de anomalías con priorización por severidad y contraste con métricas globales.",
-        "steps": [
-          {
-            "id": "A1",
-            "title": "Configurar umbrales de riesgo",
-            "description": "Adaptar sensibilidad del detector según contexto reciente y tolerancia.",
-            "agent": "anomaly",
-            "inputs": [],
-            "expected_output": "Parámetros calibrados",
-            "depends_on": []
-          },
-          {
-            "id": "A2",
-            "title": "Ejecutar detección de anomalías",
-            "description": "Identificar transacciones o ramas con comportamientos atípicos.",
-            "agent": "anomaly",
-            "inputs": [],
-            "expected_output": "Listado de anomalías con severidad",
-            "depends_on": [
-              "A1"
-            ]
-          },
-          {
-            "id": "A3",
-            "title": "Evaluar impacto financiero",
-            "description": "Cuantificar impacto y priorizar acciones correctivas.",
-            "agent": "summary",
-            "inputs": [],
-            "expected_output": "Resumen del impacto",
-            "depends_on": [
-              "A2"
-            ]
-          },
-          {
-            "id": "A4",
-            "title": "Proponer mitigaciones",
-            "description": "Generar recomendaciones basadas en políticas internas y comportamiento histórico.",
-            "agent": "summary",
-            "inputs": [],
-            "expected_output": "Plan de acción recomendado",
-            "depends_on": [
-              "A3"
-=======
         "plan_id": "02fa0149-07a5-49fb-a73f-fa3517492cc5",
         "version": 1,
         "intent": "query",
@@ -149,26 +82,16 @@
             "depends_on": [
               "E1",
               "E2"
->>>>>>> origin/develop
             ]
           }
         ],
         "cooperative_agents": [
-<<<<<<< HEAD
-          "summary"
-        ],
-        "supporting_evidence": {
-          "progress_percent": 98.0,
-          "remaining_steps": 4,
-          "estimated_effort_seconds": 59,
-=======
           "intent"
         ],
         "supporting_evidence": {
           "progress_percent": 97.5,
           "remaining_steps": 3,
           "estimated_effort_seconds": 50,
->>>>>>> origin/develop
           "complexity": "medium",
           "entities": {},
           "context_used": false,
@@ -183,84 +106,13 @@
           "user_id": "dashboard",
           "session_id": "dashboard"
         },
-<<<<<<< HEAD
-        "generated_at": "2025-10-10T13:54:21.069230",
-        "intent_alignment": true,
-=======
         "generated_at": "2025-10-08T18:44:50.612347",
         "intent_alignment": false,
->>>>>>> origin/develop
         "requires_replan": false,
         "history": [],
         "progress_percent": 97.5,
         "remaining_steps": 3,
         "complexity": "medium",
-<<<<<<< HEAD
-        "estimated_effort_seconds": 59
-      },
-      "total_anomalies": 3,
-      "high_severity_count": 1,
-      "medium_severity_count": 1,
-      "low_severity_count": 1,
-      "average_confidence": 0.78,
-      "affected_branches": [
-        "Sucursal Central",
-        "Sucursal Sur",
-        "Sucursal Norte"
-      ],
-      "risk_level": "HIGH",
-      "risk_message": "Se detectaron anomalías de alta severidad que requieren atención inmediata",
-      "anomaly_details": [
-        {
-          "anomaly_id": "ANOM_001",
-          "type": "unusual_amount",
-          "severity": "HIGH",
-          "description": "Transacción con monto inusualmente alto",
-          "amount": 150000.0,
-          "expected_range": "10000-50000",
-          "transaction_id": "TXN_12345",
-          "branch": "Sucursal Central",
-          "confidence": 0.95,
-          "detected_at": "2025-01-14T10:30:00Z"
-        },
-        {
-          "anomaly_id": "ANOM_002",
-          "type": "frequency_spike",
-          "severity": "MEDIUM",
-          "description": "Frecuencia de transacciones inusual en horario nocturno",
-          "transaction_count": 25,
-          "expected_count": "5-10",
-          "time_period": "22:00-06:00",
-          "branch": "Sucursal Norte",
-          "confidence": 0.78,
-          "detected_at": "2025-01-14T02:15:00Z"
-        },
-        {
-          "anomaly_id": "ANOM_003",
-          "type": "pattern_deviation",
-          "severity": "LOW",
-          "description": "Patrón de gastos diferente al histórico",
-          "category": "Gastos Operacionales",
-          "deviation_percentage": 15.5,
-          "branch": "Sucursal Sur",
-          "confidence": 0.62,
-          "detected_at": "2025-01-14T14:45:00Z"
-        }
-      ],
-      "detection_summary": {
-        "unusual_amounts": 1,
-        "frequency_spikes": 1,
-        "pattern_deviations": 1
-      },
-      "recommendations": [
-        "Revisar y validar transacciones con montos inusuales",
-        "Implementar controles adicionales para transacciones de alto valor",
-        "Investigar actividad inusual en horarios no habituales",
-        "Verificar protocolos de seguridad nocturna",
-        "Analizar cambios en patrones de gastos operacionales",
-        "Actualizar modelos de comportamiento esperado"
-      ]
-=======
         "estimated_effort_seconds": 50
       },
       "response": "Lamentablemente, no dispongo de un saldo actualizado para la sucursal en este momento. Sin embargo, el insight más relevante es la falta de información financiera disponible. ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
@@ -320,72 +172,36 @@
           "finish_reason": "stop"
         }
       }
->>>>>>> origin/develop
     }
   },
   "conversation_history": [],
   "memory_window": [],
   "reasoning_summary": {
-<<<<<<< HEAD
-    "goal": "Detectar y explicar anomalías financieras",
-    "recommended_agent": "anomaly",
-    "confidence": 0.95,
-    "version": 1,
-    "cooperative_agents": [
-      "summary"
-=======
     "goal": "Clarificar y asistir consulta ambigua: Muestra las mejores sucursales por ingresos",
     "recommended_agent": "capi_desktop",
     "confidence": 0.95,
     "version": 1,
     "cooperative_agents": [
       "intent"
->>>>>>> origin/develop
     ],
     "progress_percent": 97.5,
     "remaining_steps": 3,
     "complexity": "medium",
-<<<<<<< HEAD
-    "estimated_effort_seconds": 59,
-    "remaining_percent": 2.0
-=======
     "estimated_effort_seconds": 50,
     "remaining_percent": 2.5
->>>>>>> origin/develop
   },
   "processing_metrics": {
     "react_steps": 5.0,
     "react_latency_ms": 0.0,
-<<<<<<< HEAD
-    "reasoning_time_ms": 1310.0,
-    "reasoning_steps": 4.0,
-    "reasoning_version": 1.0,
-    "reasoning_progress_percent": 98.0,
-    "reasoning_eta_seconds": 59.0,
-    "reasoning_remaining_steps": 4.0,
-=======
     "reasoning_time_ms": 1719.0,
     "reasoning_steps": 3.0,
     "reasoning_version": 1.0,
     "reasoning_progress_percent": 97.5,
     "reasoning_eta_seconds": 50.0,
     "reasoning_remaining_steps": 3.0,
->>>>>>> origin/develop
     "supervisor_latency_ms": 0.0,
     "supervisor_queue_length": 6.0
   },
-<<<<<<< HEAD
-  "shared_artifacts": {},
-  "errors": [],
-  "trace_id": "trace-1760104452.46089",
-  "user_id": "dashboard",
-  "workflow_mode": "chat",
-  "response_metadata": {
-    "intent_reasoning": "Semantic pattern match: La consulta parece estar relacionada con la detección de anomalías. (confidence=1.000, entities=0) | legacy patterns matched: \\b(anomali[ao]s?|anomaly|anomalies)\\b",
-    "intent_matched_patterns": [
-      "semantic_pattern:anomaly_query",
-      "\\b(anomali[ao]s?|anomaly|anomalies)\\b"
-=======
   "shared_artifacts": {
     "capi_gus": {
       "type": "conversation_summary",
@@ -452,7 +268,6 @@
     "intent_reasoning": "Semantic pattern match: La consulta solicita información sobre sucursales por ingresos, por lo que el intent 'query' y el agente 'capi_datab' son los más adecuados. (confidence=0.900, entities=0)",
     "intent_matched_patterns": [
       "semantic_pattern:query"
->>>>>>> origin/develop
     ],
     "react_trace": [
       {
@@ -497,69 +312,6 @@
         "thought": "Finalizo el ciclo ReAct con una recomendacion.",
         "action": "finish",
         "observation": {
-<<<<<<< HEAD
-          "message": "Derivare la consulta '¿Hay anomalías detectadas?' al agente 'summary' con la evidencia recopilada.",
-          "recommended_agent": "summary"
-        }
-      }
-    ],
-    "react_recommended_agent": "summary",
-    "react_finished_at": "2025-10-10T13:54:19.762859",
-    "active_agent": "summary",
-    "loop_fallback": "anomaly",
-    "react_follow_up": false,
-    "needs_retry": null,
-    "reasoning_plan": {
-      "plan_id": "6a33f630-929f-40bd-b4fc-63b37cf44f1e",
-      "version": 1,
-      "intent": "anomaly_query",
-      "goal": "Detectar y explicar anomalías financieras",
-      "confidence": 0.95,
-      "recommended_agent": "anomaly",
-      "fallback_agent": "assemble",
-      "rationale": "Se requieren detecciones de anomalías con priorización por severidad y contraste con métricas globales.",
-      "steps": [
-        {
-          "id": "A1",
-          "title": "Configurar umbrales de riesgo",
-          "description": "Adaptar sensibilidad del detector según contexto reciente y tolerancia.",
-          "agent": "anomaly",
-          "inputs": [],
-          "expected_output": "Parámetros calibrados",
-          "depends_on": []
-        },
-        {
-          "id": "A2",
-          "title": "Ejecutar detección de anomalías",
-          "description": "Identificar transacciones o ramas con comportamientos atípicos.",
-          "agent": "anomaly",
-          "inputs": [],
-          "expected_output": "Listado de anomalías con severidad",
-          "depends_on": [
-            "A1"
-          ]
-        },
-        {
-          "id": "A3",
-          "title": "Evaluar impacto financiero",
-          "description": "Cuantificar impacto y priorizar acciones correctivas.",
-          "agent": "summary",
-          "inputs": [],
-          "expected_output": "Resumen del impacto",
-          "depends_on": [
-            "A2"
-          ]
-        },
-        {
-          "id": "A4",
-          "title": "Proponer mitigaciones",
-          "description": "Generar recomendaciones basadas en políticas internas y comportamiento histórico.",
-          "agent": "summary",
-          "inputs": [],
-          "expected_output": "Plan de acción recomendado",
-          "depends_on": [
-            "A3"
-=======
           "message": "Derivare la consulta 'Muestra las mejores sucursales por ingresos' al agente 'capi_gus' con la evidencia recopilada.",
           "recommended_agent": "capi_gus"
         }
@@ -611,26 +363,16 @@
           "depends_on": [
             "E1",
             "E2"
->>>>>>> origin/develop
           ]
         }
       ],
       "cooperative_agents": [
-<<<<<<< HEAD
-        "summary"
-      ],
-      "supporting_evidence": {
-        "progress_percent": 98.0,
-        "remaining_steps": 4,
-        "estimated_effort_seconds": 59,
-=======
         "intent"
       ],
       "supporting_evidence": {
         "progress_percent": 97.5,
         "remaining_steps": 3,
         "estimated_effort_seconds": 50,
->>>>>>> origin/develop
         "complexity": "medium",
         "entities": {},
         "context_used": false,
@@ -640,56 +382,11 @@
           "branch",
           "capi_datab",
           "capi_desktop",
-<<<<<<< HEAD
-          "summary"
-=======
           "capi_gus"
->>>>>>> origin/develop
         ],
         "user_id": "dashboard",
         "session_id": "dashboard"
       },
-<<<<<<< HEAD
-      "generated_at": "2025-10-10T13:54:21.069230",
-      "intent_alignment": true,
-      "requires_replan": false,
-      "history": [],
-      "progress_percent": 98.0,
-      "remaining_steps": 4,
-      "complexity": "medium",
-      "estimated_effort_seconds": 59
-    },
-    "reasoning_confidence": 0.95,
-    "recommended_agent": "anomaly",
-    "reasoning_progress_percent": 98.0,
-    "reasoning_eta_seconds": 59,
-    "reasoning_remaining_steps": 4,
-    "reasoning_complexity": "medium",
-    "reasoning_needs_react": true,
-    "supervisor_queue": [
-      "summary",
-      "anomaly",
-      "capi_desktop",
-      "smalltalk"
-    ],
-    "supervisor_selected": "summary",
-    "supervisor_ran_at": "2025-10-10T13:54:21.094306",
-    "semantic_result": {
-      "intent": "anomaly_query",
-      "confidence": 1.0,
-      "target_agent": "anomaly",
-      "routing_agent": "anomaly",
-      "entities": {},
-      "reasoning": "La consulta hace referencia a la detección de anomalías.",
-      "requires_clarification": false,
-      "provider": "openai",
-      "model": "gpt-3.5-turbo"
-    },
-    "agent_type": "anomaly",
-    "anomaly_hash": "c553754fb08a7247",
-    "is_repeated": false,
-    "deduplication_applied": true,
-=======
       "generated_at": "2025-10-08T18:44:50.612347",
       "intent_alignment": false,
       "requires_replan": false,
@@ -742,14 +439,9 @@
       "processing_time": 0.9918,
       "finish_reason": "stop"
     },
->>>>>>> origin/develop
     "assembled_at": "assemble",
     "workflow_completed": true,
     "total_nodes": 9
   },
-<<<<<<< HEAD
-  "routing_decision": "anomaly"
-=======
   "routing_decision": "human_gate"
->>>>>>> origin/develop
 }
