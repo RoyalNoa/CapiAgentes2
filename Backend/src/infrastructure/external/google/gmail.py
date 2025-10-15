@@ -28,7 +28,7 @@ class GmailClient:
         max_results: int = 10,
         page_token: str | None = None,
     ) -> dict:
-        service = self._service_factory.get_service("gmail", "v1", scopes=[GMAIL_READ_SCOPE])
+        service = self._service_factory.get_service("gmail", "v1")
         kwargs = {
             "userId": self._user_id,
             "maxResults": max(1, min(max_results, 100)),
@@ -42,7 +42,7 @@ class GmailClient:
         return service.users().messages().list(**kwargs).execute()
 
     def get_message(self, message_id: str, *, format: str = "metadata") -> dict:
-        service = self._service_factory.get_service("gmail", "v1", scopes=[GMAIL_READ_SCOPE])
+        service = self._service_factory.get_service("gmail", "v1")
         return service.users().messages().get(userId=self._user_id, id=message_id, format=format).execute()
 
     def send_plain_text(
@@ -88,12 +88,12 @@ class GmailClient:
         if label_filter_action in {"include", "exclude"}:
             body["labelFilterAction"] = label_filter_action
 
-        service = self._service_factory.get_service("gmail", "v1", scopes=[GMAIL_READ_SCOPE])
+        service = self._service_factory.get_service("gmail", "v1")
         return service.users().watch(userId=self._user_id, body=body).execute()
 
     def stop_watch(self) -> Dict[str, Any]:
         """Stops any active Gmail watch for the configured user."""
-        service = self._service_factory.get_service("gmail", "v1", scopes=[GMAIL_READ_SCOPE])
+        service = self._service_factory.get_service("gmail", "v1")
         return service.users().stop(userId=self._user_id, body={}).execute()
 
     def list_history(
@@ -109,7 +109,7 @@ class GmailClient:
         if not start_history_id:
             raise ValueError("start_history_id is required to list Gmail history")
 
-        service = self._service_factory.get_service("gmail", "v1", scopes=[GMAIL_READ_SCOPE])
+        service = self._service_factory.get_service("gmail", "v1")
         kwargs: Dict[str, Any] = {
             "userId": self._user_id,
             "startHistoryId": start_history_id,

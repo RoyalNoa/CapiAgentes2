@@ -11,6 +11,7 @@ from abc import abstractmethod
 
 from src.infrastructure.langgraph.nodes.base import GraphNode
 from src.infrastructure.langgraph.state import GraphState
+from src.infrastructure.langgraph.utils.timing import workflow_sleep
 from src.infrastructure.streaming.token_streamer import get_token_streamer
 from src.core.logging import get_logger
 
@@ -139,7 +140,7 @@ class StreamingCapiGusNode(StreamingNode):
 
         for step in steps:
             # Simular procesamiento
-            await asyncio.sleep(0.2)  # En producción, aquí iría el procesamiento real
+            await workflow_sleep(0.2)  # En producción, aquí iría el procesamiento real
 
             # Emitir token de progreso
             yield step
@@ -195,13 +196,13 @@ class StreamingBranchNode(StreamingNode):
 
         for branch in branches:
             yield f"Analizando sucursal {branch}..."
-            await asyncio.sleep(0.3)
+            await workflow_sleep(0.3)
 
             yield f"Calculando métricas para {branch}..."
-            await asyncio.sleep(0.2)
+            await workflow_sleep(0.2)
 
             yield f"Evaluando rendimiento de {branch}..."
-            await asyncio.sleep(0.2)
+            await workflow_sleep(0.2)
 
     def finalize_state(self, state: GraphState) -> GraphState:
         """
@@ -239,10 +240,10 @@ def convert_to_streaming(node_class):
         async def process_incrementally(self, state: GraphState) -> AsyncGenerator[str, None]:
             # Simular streaming del nodo original
             yield f"Iniciando {self.original_node.name}..."
-            await asyncio.sleep(0.1)
+            await workflow_sleep(0.1)
 
             yield f"Procesando con {self.original_node.name}..."
-            await asyncio.sleep(0.5)
+            await workflow_sleep(0.5)
 
             yield f"Finalizando {self.original_node.name}..."
 

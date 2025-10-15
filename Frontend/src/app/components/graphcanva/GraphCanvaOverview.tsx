@@ -42,6 +42,8 @@ import { GraphCanvaNodeDetail } from "./GraphCanvaNodeDetail";
 
 import { GraphCanvaToolbar } from "./GraphCanvaToolbar";
 
+import { getFallbackWorkflow } from "./mockWorkflow";
+
 import { mapWorkflowToElements, toViewport } from "./mapper";
 
 import { useGraphCanvaPush } from "./useGraphCanvaPush";
@@ -184,34 +186,6 @@ function GraphCanvaOverviewInner({ workflowId }: GraphCanvaOverviewInnerProps) {
 
 
 
-  const loadWorkflow = useCallback(async () => {
-
-    setLoading(true);
-
-    setError(null);
-
-    try {
-
-      const data = await fetchWorkflow(workflowId);
-
-      hydrateWorkflow(data);
-
-    } catch (err) {
-
-      const message = err instanceof Error ? err.message : String(err);
-
-      setError(message);
-
-    } finally {
-
-      setLoading(false);
-
-    }
-
-  }, [setLoading, workflowId]);
-
-
-
   const hydrateWorkflow = useCallback(
 
     (data: GraphCanvaWorkflow) => {
@@ -235,6 +209,48 @@ function GraphCanvaOverviewInner({ workflowId }: GraphCanvaOverviewInnerProps) {
     [instance, setViewport, setWorkflow],
 
   );
+
+
+
+  const loadWorkflow = useCallback(async () => {
+
+    setLoading(true);
+
+    setError(null);
+
+    try {
+
+      const data = await fetchWorkflow(workflowId);
+
+      hydrateWorkflow(data);
+
+    } catch (err) {
+
+      const message = err instanceof Error ? err.message : String(err);
+
+      const fallback = getFallbackWorkflow(workflowId);
+
+      if (fallback) {
+
+        console.warn("[GraphCanvaOverview] Using fallback workflow", message);
+
+        hydrateWorkflow(fallback);
+
+        setError(null);
+
+      } else {
+
+        setError(message);
+
+      }
+
+    } finally {
+
+      setLoading(false);
+
+    }
+
+  }, [hydrateWorkflow, setLoading, workflowId]);
 
 
 

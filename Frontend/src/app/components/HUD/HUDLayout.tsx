@@ -26,10 +26,10 @@ interface HUDLayoutProps {
 }
 
 export const HUDLayout: React.FC<HUDLayoutProps> = ({
-  title,
-  isConnected,
-  onConnect,
-  onDisconnect,
+  title: _title,
+  isConnected: _isConnected,
+  onConnect: _onConnect,
+  onDisconnect: _onDisconnect,
   leftPanel,
   centerPanel,
   rightPanel,
@@ -57,25 +57,6 @@ export const HUDLayout: React.FC<HUDLayoutProps> = ({
 
       {/* Main Layout */}
       <div className={styles.mainLayout}>
-        {/* Header */}
-        <header className={styles.header}>
-          <div className={styles.headerLeft}>
-            <h1 className={styles.title}>{title}</h1>
-            <div className={`${styles.statusBadge} ${isConnected ? styles.connected : styles.disconnected}`}>
-              <span className={styles.statusDot} />
-              {isConnected ? 'CONNECTED' : 'DISCONNECTED'}
-            </div>
-          </div>
-          <div className={styles.headerRight}>
-            <button
-              className={`${styles.controlButton} ${isConnected ? styles.danger : styles.primary}`}
-              onClick={isConnected ? onDisconnect : onConnect}
-            >
-              {isConnected ? 'DISCONNECT' : 'CONNECT'}
-            </button>
-          </div>
-        </header>
-
         {/* Content Grid */}
         <main className={styles.contentGrid}>
           {/* Left Panel */}

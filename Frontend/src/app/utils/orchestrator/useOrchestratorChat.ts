@@ -120,15 +120,37 @@ function normalizeWSPayload(raw: any): OrchestratorMessage | null {
   if (raw.agent && raw.response) {
     let printable: string;
     if (typeof raw.response === 'object' && raw.response) {
-      // Preferir campos semánticos comunes
-      const prefer = (raw.response.respuesta || raw.response.message || raw.response.mensaje);
-      if (typeof prefer === 'string') {
-        printable = prefer;
+      const responseObj = raw.response;
+      const hasTextField = (value: any): value is string => typeof value === 'string' && value.trim().length > 0;
+      const preferCandidates = [
+        responseObj.respuesta,
+        responseObj.message,
+        responseObj.mensaje,
+        responseObj.response,
+        responseObj.data?.respuesta,
+        responseObj.data?.message,
+        responseObj.data?.mensaje,
+        responseObj.data?.response,
+      ];
+      const preferred = preferCandidates.find(hasTextField);
+
+      const isPlanOnly =
+        !preferred &&
+        responseObj &&
+        typeof responseObj === 'object' &&
+        responseObj.reasoning_plan &&
+        !responseObj.errors;
+
+      if (preferred) {
+        printable = preferred.trim();
+      } else if (isPlanOnly) {
+        printable =
+          'No pude completar la acción solicitada porque el agente quedó en planificación. Revisá la configuración de Agente G y reintentá.';
       } else {
-        printable = JSON.stringify(raw.response).slice(0, 800);
+        printable = JSON.stringify(responseObj).slice(0, 800);
       }
     } else {
-      printable = String(raw.response);
+      printable = String(raw.response ?? '');
     }
     return {
       id: genId(),

@@ -82,3 +82,14 @@ One command, one action. Keep generated files out of `CAPI/`.
 - Todas las llamadas a `print` se redirigen automáticamente al logger backend, por lo que no es necesario mantener múltiples archivos de log.
 
 - Backend y agentes escriben exclusivamente en `logs/backend.log` mediante el formateador `[YYYY-MM-DD HH:MM:SS] [Backend] [LEVEL] [logger] mensaje contexto`.
+
+## Google OAuth bootstrap
+1. Configura tu .env con 
+   `
+   GOOGLE_CLIENT_ID=...
+   GOOGLE_CLIENT_SECRET=...
+   GOOGLE_OAUTH_SCOPES=https://www.googleapis.com/auth/gmail.modify,https://www.googleapis.com/auth/gmail.readonly,https://www.googleapis.com/auth/drive.file,https://www.googleapis.com/auth/calendar.events
+   GOOGLE_TOKEN_STORE=secrets/google-agente-g.json
+   `
+2. Ejecuta powershell -ExecutionPolicy Bypass -File scripts/bootstrap_google.ps1 (usa -NoBrowser si preferís obtener el código desde la consola).
+3. Completa la autorización y reinicia el backend con docker compose up -d backend.

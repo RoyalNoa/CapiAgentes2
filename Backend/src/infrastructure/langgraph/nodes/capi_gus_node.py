@@ -328,9 +328,11 @@ class CapiGusNode(GraphNode):
                 message_parts.append(f"El saldo total disponible es {balance_text}.")
         else:
             if original_query:
-                message_parts.append(f"No pude encontrar un saldo actualizado para responder \"{original_query}\".")
+                message_parts.append(
+                    f"No pude generar un resumen actualizado de los datos para responder \"{original_query}\"."
+                )
             else:
-                message_parts.append("No pude encontrar un saldo actualizado en la consulta.")
+                message_parts.append("No pude generar un resumen actualizado de los datos solicitados.")
             fallback_question = "\u00bfPod\u00e9s darme un poco m\u00e1s de contexto o la sucursal que quer\u00e9s revisar?"
             readable_message = " ".join(part.strip() for part in message_parts if part).strip()
             readable_message = f"{readable_message} {fallback_question}".strip()
@@ -500,7 +502,7 @@ class CapiGusNode(GraphNode):
             return None
 
         self._reasoner = LLMReasoner(
-            model=getattr(settings, "DEFAULT_MODEL", None) or None,
+            model=getattr(settings, "DEFAULT_MODEL", None) or "gpt-5-mini",
             temperature=0.35,
             max_tokens=320,
         )

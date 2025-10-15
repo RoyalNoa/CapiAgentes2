@@ -28,12 +28,23 @@ class VoiceStorage:
         bucket_name = (settings.voice_stream_bucket or "").strip()
         if bucket_name:
             if not gcs:
-                raise RuntimeError("google-cloud-storage package is required for bucket persistence")
-            if bucket_name.startswith("gs://"):
-                bucket_name = bucket_name.replace("gs://", "", 1)
-            self._client = gcs.Client(project=settings.gcp_project_id or None)
-            self._bucket = self._client.bucket(bucket_name)
-        else:
+                logger.warning(
+                    {
+                        "event": "voice_storage_bucket_disabled",
+                        "reason": "missing_google_cloud_storage",
+                        "bucket": bucket_name,
+                    }
+                )
+                # Fallback to filesystem storage when dependency is unavailable.
+                settings.voice_stream_bucket = None  # type: ignore[attr-defined]
+                bucket_name = ""
+            else:
+                if bucket_name.startswith("gs://"):
+                    bucket_name = bucket_name.replace("gs://", "", 1)
+                self._client = gcs.Client(project=settings.gcp_project_id or None)
+                self._bucket = self._client.bucket(bucket_name)
+
+        if not bucket_name:
             settings.ensure_storage_dir()
 
     async def persist(self, audio_bytes: bytes, *, prefix: str = "voice") -> Optional[str]:

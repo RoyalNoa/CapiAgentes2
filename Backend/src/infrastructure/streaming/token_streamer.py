@@ -11,6 +11,7 @@ import asyncio
 import time
 from typing import AsyncGenerator, Dict, Any, Optional
 from dataclasses import dataclass
+from src.infrastructure.langgraph.utils.timing import workflow_sleep
 from src.infrastructure.websocket.event_broadcaster import get_event_broadcaster
 from src.core.logging import get_logger
 
@@ -219,7 +220,7 @@ async def example_streaming_agent():
 
         for msg in messages:
             # Simular trabajo
-            await asyncio.sleep(0.5)
+            await workflow_sleep(0.5)
             # Yield resultado parcial
             yield msg
 

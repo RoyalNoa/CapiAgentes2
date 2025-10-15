@@ -52,8 +52,8 @@ _COMMON_EMAIL_DOMAINS = (
 _DEFAULT_AGENT_BY_INTENT = {
     Intent.DB_OPERATION: "capi_datab",
     Intent.FILE_OPERATION: "capi_desktop",
-    Intent.SUMMARY: "summary",
-    Intent.SUMMARY_REQUEST: "summary",
+    Intent.SUMMARY: "capi_gus",
+    Intent.SUMMARY_REQUEST: "capi_gus",
     Intent.BRANCH: "branch",
     Intent.BRANCH_QUERY: "branch",
     Intent.ANOMALY: "anomaly",
@@ -134,7 +134,7 @@ class SemanticIntentService:
         reasoner: Optional[LLMReasoner] = None,
         fallback_enabled: bool = True,
     ) -> None:
-        self.reasoner = reasoner or LLMReasoner(temperature=0.2, max_tokens=400)
+        self.reasoner = reasoner or LLMReasoner(model="gpt-5", temperature=0.2, max_tokens=400)
         self.fallback_enabled = fallback_enabled
         self.context_manager = get_global_context_manager()
         logger.info({"event": "semantic_intent_service_initialized", "fallback_enabled": fallback_enabled})

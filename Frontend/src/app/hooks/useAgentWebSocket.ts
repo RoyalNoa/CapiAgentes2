@@ -93,8 +93,10 @@ export function useAgentWebSocket(rawUrl?: string): UseAgentWebSocketReturn {
 
   const addEvent = useCallback((event: AgentEvent) => {
     setEvents(prev => {
-      const newEvents = [event, ...prev].slice(0, MAX_EVENTS);
-      return newEvents;
+      const next = [...prev, event];
+      const trimmed =
+        next.length > MAX_EVENTS ? next.slice(next.length - MAX_EVENTS) : next;
+      return trimmed;
     });
     setLastEvent(event);
   }, []);

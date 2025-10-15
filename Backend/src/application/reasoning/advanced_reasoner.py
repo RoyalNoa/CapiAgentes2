@@ -330,6 +330,8 @@ class AdvancedReasoner:
             base_confidence = max(base_confidence, 0.73)
         elif primary_intent == Intent.SUMMARY_REQUEST:
             recommended_agent = self._select_enabled_agent(["summary"], enabled_set)
+            if recommended_agent is None:
+                recommended_agent = self._select_enabled_agent(["capi_gus"], enabled_set)
             steps = self._summary_steps(recommended_agent, enabled_set)
             rationale = (
                 "La intención es generar un resumen financiero. Se planifica cargar datos, "

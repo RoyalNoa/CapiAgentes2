@@ -122,67 +122,6 @@
   overflow: hidden;
 }
 
-.summaryBoard {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(12px, 1.6vw, 20px);
-  padding: clamp(12px, 1.6vw, 18px);
-  background: linear-gradient(135deg, rgba(0, 24, 48, 0.85), rgba(0, 12, 30, 0.88));
-  border: 1px solid var(--chat-border);
-  clip-path: polygon(18px 0, calc(100% - 18px) 0, 100% 24px, 100% calc(100% - 18px), calc(100% - 18px) 100%, 18px 100%, 0 calc(100% - 24px), 0 18px);
-  box-shadow:
-    0 18px 48px rgba(0, 0, 0, 0.45),
-    inset 0 0 18px rgba(0, 255, 255, 0.08);
-  flex: 0 0 auto;
-  min-height: 0;
-}
-
-.summaryTile {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 14px 16px;
-  background: rgba(0, 18, 36, 0.78);
-  border: 1px solid rgba(0, 255, 255, 0.16);
-  border-radius: 14px;
-  box-shadow: inset 0 0 18px rgba(0, 255, 255, 0.08);
-}
-
-.summaryTile:nth-child(odd) {
-  background: rgba(0, 24, 48, 0.8);
-}
-
-.tileLabel {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(214, 236, 255, 0.72);
-}
-
-.tileValue {
-  font-family: var(--chat-heading-font);
-  font-size: clamp(18px, 2vw, 22px);
-  letter-spacing: 0.14em;
-  color: var(--chat-text);
-}
-
-.tileHint {
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  color: rgba(214, 236, 255, 0.55);
-}
-
-@media (max-width: 1280px) {
-  .summaryBoard {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 720px) {
-  .summaryBoard {
-    grid-template-columns: 1fr;
-  }
-}
 .graphSection::before {
   content: '';
   position: absolute;
