@@ -231,6 +231,8 @@ export const SucursalCashComparison: React.FC<SucursalCashComparisonProps> = ({
                     <BarChart
                       data={deepestDeficitRows.map((row) => ({
                         name: row.name,
+                        saldo: row.saldoTotal,
+                        caja: row.cajaTeorica,
                         deficit: Math.abs(row.difference),
                       }))}
                       margin={{ top: 12, right: 16, left: 0, bottom: 32 }}
@@ -254,7 +256,28 @@ export const SucursalCashComparison: React.FC<SucursalCashComparisonProps> = ({
                           color: '#ffe4e6',
                         }}
                       />
-                      <Bar dataKey="deficit" name="Déficit" fill="#fb7185" radius={[8, 8, 0, 0]} />
+                      <Legend
+                        iconType="circle"
+                        wrapperStyle={{ fontSize: 11, color: 'rgba(255,228,230,0.75)' }}
+                      />
+                      <Bar
+                        dataKey="caja"
+                        name="Caja teórica"
+                        fill="rgba(248, 113, 113, 0.35)"
+                        stroke="rgba(248, 113, 113, 0.6)"
+                        strokeWidth={1.2}
+                        radius={[6, 6, 0, 0]}
+                        maxBarSize={42}
+                      />
+                      <Bar
+                        dataKey="saldo"
+                        name="Saldo actual"
+                        fill="#fda4af"
+                        stroke="#fb7185"
+                        strokeWidth={1.2}
+                        radius={[6, 6, 0, 0]}
+                        maxBarSize={36}
+                      />
                     </BarChart>
                   </ResponsiveContainer>
                   <ul className="space-y-3">
@@ -272,6 +295,12 @@ export const SucursalCashComparison: React.FC<SucursalCashComparisonProps> = ({
                           <p className="text-sm font-semibold text-rose-100">
                             {numberFormatter.format(Math.abs(row.difference))}
                           </p>
+                          <span className="text-[11px] uppercase tracking-[0.12em] text-rose-200/60">
+                            Caja teórica: {numberFormatter.format(row.cajaTeorica)}
+                          </span>
+                          <span className="text-[11px] uppercase tracking-[0.12em] text-rose-200/60">
+                            Saldo actual: {numberFormatter.format(row.saldoTotal)}
+                          </span>
                         </div>
                       </li>
                     ))}
@@ -284,11 +313,11 @@ export const SucursalCashComparison: React.FC<SucursalCashComparisonProps> = ({
               )}
             </div>
 
-            <div className="rounded-2xl border border-emerald-400/30 bg-emerald-950/20 p-4 shadow-[0_18px_42px_rgba(10,54,43,0.45)]">
-              <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-200/80">
+            <div className="rounded-2xl border border-amber-400/30 bg-amber-950/20 p-4 shadow-[0_18px_42px_rgba(120,53,15,0.38)]">
+              <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-amber-200/80">
                 Con mayor saldo disponible
               </h3>
-              <p className="mt-1 text-xs text-emerald-100/70">Top de sucursales por saldo total acumulado.</p>
+              <p className="mt-1 text-xs text-amber-100/70">Top de sucursales por saldo total acumulado.</p>
               {highestSaldoRows.length ? (
                 <div className="mt-4 space-y-4">
                   <ResponsiveContainer width="100%" height={220}>
@@ -296,53 +325,78 @@ export const SucursalCashComparison: React.FC<SucursalCashComparisonProps> = ({
                       data={highestSaldoRows.map((row) => ({
                         name: row.name,
                         saldo: row.saldoTotal,
+                        caja: row.cajaTeorica,
                       }))}
                       margin={{ top: 12, right: 16, left: 0, bottom: 32 }}
                     >
-                      <CartesianGrid strokeDasharray="3 3" stroke="#123226" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#3b2415" />
                       <XAxis
                         dataKey="name"
                         angle={-25}
                         textAnchor="end"
                         height={70}
-                        tick={{ fill: 'rgba(209,250,229,0.75)', fontSize: 11 }}
+                        tick={{ fill: 'rgba(254,243,199,0.75)', fontSize: 11 }}
                       />
-                      <YAxis tick={{ fill: 'rgba(167,243,208,0.85)', fontSize: 11 }} />
+                      <YAxis tick={{ fill: 'rgba(253,230,138,0.85)', fontSize: 11 }} />
                       <Tooltip
                         formatter={tooltipFormatter}
-                        cursor={{ fill: 'rgba(16,185,129,0.12)' }}
+                        cursor={{ fill: 'rgba(251,146,60,0.12)' }}
                         contentStyle={{
-                          background: '#05201b',
+                          background: '#2b1407',
                           borderRadius: 16,
-                          border: '1px solid rgba(16,185,129,0.4)',
-                          color: '#d1fae5',
+                          border: '1px solid rgba(251,146,60,0.4)',
+                          color: '#ffedd5',
                         }}
                       />
-                      <Bar dataKey="saldo" name="Saldo total" fill="#34d399" radius={[8, 8, 0, 0]} />
+                      <Legend
+                        iconType="circle"
+                        wrapperStyle={{ fontSize: 11, color: 'rgba(254,243,199,0.75)' }}
+                      />
+                      <Bar
+                        dataKey="caja"
+                        name="Caja teórica"
+                        fill="rgba(253, 186, 116, 0.35)"
+                        stroke="rgba(251, 191, 36, 0.6)"
+                        strokeWidth={1.2}
+                        radius={[6, 6, 0, 0]}
+                        maxBarSize={42}
+                      />
+                      <Bar
+                        dataKey="saldo"
+                        name="Saldo actual"
+                        fill="#fb923c"
+                        stroke="#f97316"
+                        strokeWidth={1.2}
+                        radius={[6, 6, 0, 0]}
+                        maxBarSize={36}
+                      />
                     </BarChart>
                   </ResponsiveContainer>
                   <ul className="space-y-3">
                     {highestSaldoRows.map((row, index) => (
                       <li
                         key={row.id}
-                        className="flex items-center justify-between gap-3 rounded-xl border border-emerald-400/25 bg-emerald-900/20 px-4 py-3 text-sm text-emerald-100"
+                        className="flex items-center justify-between gap-3 rounded-xl border border-amber-400/25 bg-amber-900/20 px-4 py-3 text-sm text-amber-100"
                       >
                         <div className="flex flex-col">
-                          <span className="text-xs uppercase tracking-[0.16em] text-emerald-200/70">#{index + 1}</span>
-                          <span className="font-semibold text-emerald-50">{row.name}</span>
+                          <span className="text-xs uppercase tracking-[0.16em] text-amber-200/70">#{index + 1}</span>
+                          <span className="font-semibold text-amber-50">{row.name}</span>
                         </div>
                         <div className="text-right">
-                          <span className="text-xs uppercase tracking-[0.14em] text-emerald-200/70">Saldo total</span>
-                          <p className="text-sm font-semibold text-emerald-100">
+                          <span className="text-xs uppercase tracking-[0.14em] text-amber-200/70">Saldo total</span>
+                          <p className="text-sm font-semibold text-amber-100">
                             {numberFormatter.format(row.saldoTotal)}
                           </p>
+                          <span className="text-[11px] uppercase tracking-[0.12em] text-amber-200/60">
+                            Caja teórica: {numberFormatter.format(row.cajaTeorica)}
+                          </span>
                         </div>
                       </li>
                     ))}
                   </ul>
                 </div>
               ) : (
-                <p className="mt-4 rounded-xl border border-dashed border-emerald-400/30 bg-emerald-900/10 px-4 py-6 text-center text-sm text-emerald-100/70">
+                <p className="mt-4 rounded-xl border border-dashed border-amber-400/30 bg-amber-900/10 px-4 py-6 text-center text-sm text-amber-100/70">
                   No hay sucursales con saldo suficiente para mostrar.
                 </p>
               )}

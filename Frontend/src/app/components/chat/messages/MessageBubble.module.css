@@ -24,26 +24,48 @@
 
 /* Avatar */
 .avatar {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
+  width: 25px;
+  height: 25px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 8px;
   font-family: var(--chat-heading-font, 'Share Tech Mono'), 'Courier New', monospace;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .avatarBot {
-  background: linear-gradient(135deg, var(--chat-primary, #00e5ff), var(--chat-primary-alt, #7df9ff));
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(0, 229, 255, 0.08));
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.25);
   color: #0a0f1c;
-  box-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
 }
 
 .avatarUser {
-  background: linear-gradient(135deg, rgba(214, 239, 255, 0.6), rgba(214, 239, 255, 0.4));
-  color: #0a0f1c;
+  background: linear-gradient(135deg, rgba(214, 239, 255, 0.7), rgba(214, 239, 255, 0.45));
+  border: 1px solid rgba(214, 239, 255, 0.4);
+  box-shadow: 0 0 8px rgba(214, 239, 255, 0.25);
+  color: #04121f;
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatarIcon {
+  width: 18px;
+  height: 18px;
+  color: #04121f;
+  stroke-width: 1.6;
+}
+
+.avatarFallback {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 /* Nombre del sender */
@@ -99,15 +121,15 @@
 }
 
 .bubbleUser {
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.07), rgba(0, 229, 255, 0.04));
-  border: 1px solid rgba(0, 229, 255, 0.15);
-  box-shadow: 0 2px 12px rgba(0, 229, 255, 0.09);
+  background: linear-gradient(135deg, rgba(94, 234, 255, 0.2), rgba(0, 229, 255, 0.12));
+  border: 1px solid rgba(94, 234, 255, 0.32);
+  box-shadow: 0 3px 16px rgba(94, 234, 255, 0.18);
 }
 
 .bubbleBot {
-  background: rgba(14, 22, 38, 0.85);
-  border: 1px solid rgba(29, 43, 74, 0.6);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, rgba(4, 12, 22, 0.92), rgba(3, 8, 15, 0.88));
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  box-shadow: 0 4px 16px rgba(0, 229, 255, 0.12);
 }
 
 /* Accent corner decorativo */
@@ -121,14 +143,14 @@
 
 .cornerAccentUser {
   right: 6px;
-  border-top: 1px solid rgba(0, 229, 255, 0.25);
-  border-right: 1px solid rgba(0, 229, 255, 0.25);
+  border-top: 1px solid rgba(94, 234, 255, 0.35);
+  border-right: 1px solid rgba(94, 234, 255, 0.35);
 }
 
 .cornerAccentBot {
   left: 6px;
-  border-top: 1px solid rgba(29, 43, 74, 0.6);
-  border-left: 1px solid rgba(29, 43, 74, 0.6);
+  border-top: 1px solid rgba(0, 229, 255, 0.18);
+  border-left: 1px solid rgba(0, 229, 255, 0.18);
 }
 
 /* Estado de animación de entrada */

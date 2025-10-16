@@ -1,6 +1,8 @@
 import React from 'react';
+import Image from 'next/image';
+import { UserIcon } from '@heroicons/react/24/outline';
 import styles from './MessageBubble.module.css';
-import { getFriendlyAgentName } from '@/app/utils/chatHelpers';
+import { getFriendlyAgentName, isOrchestrationAgent } from '@/app/utils/chatHelpers';
 
 interface MessageBubbleProps {
   message: {
@@ -24,7 +26,13 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
 
   // Obtener nombre descriptivo del agente
   const agentName = message.agent ? getFriendlyAgentName(message.agent) : 'Sistema';
-  // Primera letra para el avatar
+  const normalizedAgent = (message.agent ?? '').toLowerCase();
+  const isOrchestrator = Boolean(
+    (message.agent && isOrchestrationAgent(message.agent)) ||
+      normalizedAgent.includes('orquest') ||
+      agentName.toLowerCase().includes('orquest')
+  );
+  // Primera letra para fallback avatars
   const avatarLetter = agentName.charAt(0).toUpperCase();
 
   return (
@@ -34,7 +42,17 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
         {!isUser && (
           <>
             <div className={`${styles.avatar} ${styles.avatarBot}`}>
-              {avatarLetter}
+              {isOrchestrator ? (
+                <Image
+                  src="/capi-comilon.png"
+                  alt="Orquestador"
+                  width={25}
+                  height={25}
+                  className={styles.avatarImage}
+                />
+              ) : (
+                <span className={styles.avatarFallback}>{avatarLetter}</span>
+              )}
             </div>
             <span className={styles.senderName}>
               {agentName}
@@ -52,7 +70,7 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
               You
             </span>
             <div className={`${styles.avatar} ${styles.avatarUser}`}>
-              U
+              <UserIcon className={styles.avatarIcon} aria-hidden="true" />
             </div>
           </>
         )}

@@ -47,11 +47,19 @@ type GoogleMapViewProps = {
   simulationTrigger?: number;
   onSimulationStateChange?: (isRunning: boolean) => void;
   onReadyStateChange?: (isReady: boolean) => void;
+  onSelectionPositionChange?: (position: PixelPosition | null) => void;
 };
 
 type LatLngLiteral = {
   lat: number;
   lng: number;
+};
+
+type PixelPosition = {
+  viewportX: number;
+  viewportY: number;
+  mapX: number;
+  mapY: number;
 };
 
 type SimulationRoute = {
@@ -295,19 +303,6 @@ function shuffleSelection<T>(items: T[]): T[] {
   return copy;
 }
 
-function buildInfoWindowContent(record: SucursalRecord): string {
-  const direccion = record.direccion_sucursal ?? `${record.calle ?? ''} ${record.altura ?? ''}`.trim();
-  return `
-    <div style="min-width:240px;padding:16px;border-radius:12px;background:linear-gradient(135deg, rgba(0,17,34,0.92) 0%, rgba(0,34,68,0.92) 50%, rgba(0,51,102,0.92) 100%);color:#e6f1ff;font-family:'Orbitron','Courier New',monospace;border:1px solid rgba(0,255,255,0.35);box-shadow:0 18px 40px rgba(0,0,0,0.45);">
-      <div style="font-size:16px;margin-bottom:8px;color:#00ff88;letter-spacing:0.05em;">${record.sucursal_nombre}</div>
-      <div style="font-size:13px;color:#5eead4;margin-bottom:4px;">Sucursal Nro ${record.sucursal_numero}</div>
-      <div style="font-size:12px;margin-bottom:6px;color:#94a3b8;">${direccion || 'Direccion no disponible'}</div>
-      <div style="font-size:12px;margin-bottom:6px;color:#94a3b8;">Barrio: ${record.barrio ?? 'N/D'} | Comuna: ${record.comuna ?? 'N/D'}</div>
-      <div style="font-size:12px;color:#38bdf8;">Telefonos: ${record.telefonos ?? 'N/D'}</div>
-    </div>
-  `;
-}
-
 async function loadGoogleMaps(): Promise<void> {
   if (typeof window !== 'undefined' && window.google && window.google.maps) {
     return;
@@ -443,11 +438,18 @@ export default function GoogleMapView({
   simulationTrigger = 0,
   onSimulationStateChange,
   onReadyStateChange,
+  onSelectionPositionChange,
 }: GoogleMapViewProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<any>(null);
   const markersRef = useRef<any[]>([]);
-  const infoWindowRef = useRef<any | null>(null);
+  const overlayHelperRef = useRef<any | null>(null);
+  const mapListenersRef = useRef<any[]>([]);
+  const selectionPositionCallbackRef = useRef<((position: PixelPosition | null) => void) | null>(
+    onSelectionPositionChange ?? null,
+  );
+  const selectedSucursalRef = useRef<SucursalRecord | null>(selectedSucursal ?? null);
+  const resizeListenerRef = useRef<(() => void) | null>(null);
   const branchDataRef = useRef<SucursalRecord[]>([]);
   const alertsIndexRef = useRef<Map<string, AlertSummary[]>>(new Map<string, AlertSummary[]>());
   const simulationRoutesRef = useRef<SimulationRoute[]>([]);
@@ -475,6 +477,54 @@ export default function GoogleMapView({
   useEffect(() => {
     onReadyStateChangeRef.current = onReadyStateChange;
   }, [onReadyStateChange]);
+
+  useEffect(() => {
+    selectionPositionCallbackRef.current = onSelectionPositionChange ?? null;
+  }, [onSelectionPositionChange]);
+
+  const updateOverlayPosition = useCallback(() => {
+    const overlay = overlayHelperRef.current;
+    const selection = selectedSucursalRef.current;
+    if (!overlay || !selection || !window.google?.maps) {
+      if (!selection) {
+        selectionPositionCallbackRef.current?.(null);
+      }
+      return;
+    }
+
+    const projection = overlay.getProjection?.();
+    if (!projection) {
+      return;
+    }
+
+    const latLng = new window.google.maps.LatLng(selection.latitud, selection.longitud);
+    const point = projection.fromLatLngToDivPixel(latLng);
+    if (!point) {
+      return;
+    }
+
+    const mapDiv: HTMLDivElement | undefined = mapRef.current?.getDiv?.() ?? containerRef.current ?? undefined;
+    const mapRect = mapDiv?.getBoundingClientRect?.();
+    if (!mapRect) {
+      return;
+    }
+
+    selectionPositionCallbackRef.current?.({
+      viewportX: mapRect.left + point.x,
+      viewportY: mapRect.top + point.y,
+      mapX: point.x,
+      mapY: point.y,
+    });
+  }, []);
+
+  useEffect(() => {
+    selectedSucursalRef.current = selectedSucursal ?? null;
+    if (!selectedSucursal) {
+      selectionPositionCallbackRef.current?.(null);
+      return;
+    }
+    updateOverlayPosition();
+  }, [selectedSucursal, updateOverlayPosition]);
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -694,7 +744,29 @@ export default function GoogleMapView({
         });
 
         mapRef.current = map;
-        infoWindowRef.current = new window.google.maps.InfoWindow({ maxWidth: 320 });
+
+        const overlayHelper = new window.google.maps.OverlayView();
+        overlayHelper.onAdd = () => {};
+        overlayHelper.draw = () => {
+          updateOverlayPosition();
+        };
+        overlayHelper.onRemove = () => {
+          selectionPositionCallbackRef.current?.(null);
+        };
+        overlayHelper.setMap(map);
+        overlayHelperRef.current = overlayHelper;
+
+        mapListenersRef.current.push(map.addListener('idle', () => updateOverlayPosition()));
+        mapListenersRef.current.push(map.addListener('zoom_changed', () => updateOverlayPosition()));
+        mapListenersRef.current.push(map.addListener('dragend', () => updateOverlayPosition()));
+
+        if (typeof window !== 'undefined') {
+          const handleResize = () => updateOverlayPosition();
+          resizeListenerRef.current = handleResize;
+          window.addEventListener('resize', handleResize);
+        }
+
+        updateOverlayPosition();
 
         markersRef.current = sanitizedRecords.map((record) => {
           const appearance = resolveMarkerAppearance(record, alertsIndexRef.current) ?? FALLBACK_MARKER_APPEARANCE;
@@ -707,9 +779,9 @@ export default function GoogleMapView({
           });
 
           marker.addListener('click', () => {
-            infoWindowRef.current?.setContent(buildInfoWindowContent(record));
-            infoWindowRef.current?.open({ anchor: marker, map });
+            selectedSucursalRef.current = record;
             onSucursalSelectRef.current?.(record);
+            updateOverlayPosition();
           });
 
           return marker;
@@ -751,10 +823,26 @@ export default function GoogleMapView({
       pendingSimulationRef.current = false;
       markersRef.current.forEach((marker) => detachMarker(marker));
       markersRef.current = [];
-      infoWindowRef.current?.close();
+      mapListenersRef.current.forEach((listener) => {
+        if (listener?.remove) {
+          listener.remove();
+          return;
+        }
+        if (window.google?.maps?.event?.removeListener) {
+          window.google.maps.event.removeListener(listener);
+        }
+      });
+      mapListenersRef.current = [];
+      if (resizeListenerRef.current && typeof window !== 'undefined') {
+        window.removeEventListener('resize', resizeListenerRef.current);
+        resizeListenerRef.current = null;
+      }
+      overlayHelperRef.current?.setMap(null);
+      overlayHelperRef.current = null;
+      selectionPositionCallbackRef.current?.(null);
       onReadyStateChangeRef.current?.(false);
     };
-  }, [cleanupSimulationElements, startSimulation]);
+  }, [cleanupSimulationElements, startSimulation, updateOverlayPosition]);
 
   useEffect(() => {
     if (!selectedSucursal || !mapRef.current) {
@@ -762,7 +850,8 @@ export default function GoogleMapView({
     }
     mapRef.current.panTo({ lat: selectedSucursal.latitud, lng: selectedSucursal.longitud });
     mapRef.current.setZoom(14);
-  }, [selectedSucursal]);
+    updateOverlayPosition();
+  }, [selectedSucursal, updateOverlayPosition]);
 
   useEffect(() => {
     if (simulationTrigger === undefined) {

@@ -3,8 +3,10 @@
   top: clamp(9px, 1.8vh, 16px);
   left: 50%;
   transform: translateX(-50%);
+  transform-origin: top center;
   z-index: 1200;
   pointer-events: none;
+  --nav-scale: 1;
 }
 
 .navigatorList {
@@ -26,6 +28,8 @@
   font-family: 'Orbitron', 'Courier New', monospace;
   position: relative; /* para pseudo-elemento animado */
   overflow: hidden;   /* recorta el brillo dentro del borde */
+  transform: scale(var(--nav-scale));
+  transform-origin: top center;
 }
 
 .navigatorItem {
@@ -117,6 +121,7 @@
 @media (max-width: 720px) {
   .navigatorShell {
     top: 12px;
+    --nav-scale: 1.1;
   }
 
   .navigatorList {

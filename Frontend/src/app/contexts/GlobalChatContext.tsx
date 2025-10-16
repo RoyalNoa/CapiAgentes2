@@ -67,7 +67,7 @@ export function GlobalChatProvider({ children }: GlobalChatProviderProps) {
   const [sessionIds, setSessionIds] = useState<string[]>(['global']);
 
   // HUD terminal state
-  const [chatWidth, setChatWidth] = useState(320); // Terminal width
+  const [chatWidth, setChatWidth] = useState(400); // Terminal width
   const [chatPosition, setChatPosition] = useState<'left' | 'right'>('right');
   const [showSidebar, setShowSidebar] = useState(false); // No sidebar
 

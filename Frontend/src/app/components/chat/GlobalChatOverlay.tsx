@@ -7,18 +7,25 @@ import { SimpleChatBox } from '.';
 import styles from './GlobalChatOverlay.module.css';
 import SessionFilesViewer from './SessionFilesViewer';
 
+const HEADER_SCALE = 1.5;
+const BASE_ICON_SIZE = 24;
+const HUD_ICON_SIZE = BASE_ICON_SIZE * HEADER_SCALE;
+const HUD_ICON_BORDER_RADIUS = 6 * HEADER_SCALE;
+
 const HUD_ICON_BUTTON_STYLE: React.CSSProperties = {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  width: '24px',
-  height: '24px',
-  borderRadius: '6px',
-  border: '1px solid rgba(0, 255, 255, 0.35)',
-  background: 'rgba(0, 255, 255, 0.08)',
+  width: `${HUD_ICON_SIZE}px`,
+  height: `${HUD_ICON_SIZE}px`,
+  borderRadius: `${HUD_ICON_BORDER_RADIUS}px`,
+  border: '1px solid rgba(0, 255, 255, 0.4)',
+  background: 'rgba(0, 255, 255, 0.1)',
   cursor: 'pointer',
-  color: 'rgba(0, 255, 255, 0.75)'
+  color: 'rgba(0, 255, 255, 0.8)'
 };
+
+const DEFAULT_DOCK_WIDTH = 400;
 
 export default function GlobalChatOverlay() {
   const {
@@ -42,13 +49,14 @@ export default function GlobalChatOverlay() {
   // HUD movement state
   const [isResizing, setIsResizing] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [position, setPosition] = useState({ x: 100, y: 100 });
-  const [isDocked, setIsDocked] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDocked, setIsDocked] = useState(true);
   const [showSessionViewer, setShowSessionViewer] = useState(false);
   const [showHistoryMenu, setShowHistoryMenu] = useState(false);
   const dragStartRef = useRef<{ x: number; y: number; startX: number; startY: number } | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const historyMenuRef = useRef<HTMLDivElement>(null);
+  const hasForcedDockRef = useRef(false);
 
   // Handle resize functionality
   const handleResizeStart = useCallback((e: React.MouseEvent) => {
@@ -69,7 +77,7 @@ export default function GlobalChatOverlay() {
         return; // No resize when floating
       }
 
-      newWidth = Math.max(280, Math.min(newWidth, viewportWidth * 0.4));
+      newWidth = Math.max(DEFAULT_DOCK_WIDTH, Math.min(newWidth, viewportWidth * 0.4));
       setChatWidth(newWidth);
     }
 
@@ -84,21 +92,22 @@ export default function GlobalChatOverlay() {
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
       const dockThreshold = 50;
+      const currentWidth = Math.max(chatWidth, DEFAULT_DOCK_WIDTH);
 
       if (newX < dockThreshold) {
         // Dock to left
         setIsDocked(true);
         setChatPosition('left');
         setPosition({ x: 0, y: 0 });
-      } else if (newX + chatWidth > viewportWidth - dockThreshold) {
+      } else if (newX + currentWidth > viewportWidth - dockThreshold) {
         // Dock to right
         setIsDocked(true);
         setChatPosition('right');
-        setPosition({ x: viewportWidth - chatWidth, y: 0 });
+        setPosition({ x: viewportWidth - currentWidth, y: 0 });
       } else {
         // Free floating
         setIsDocked(false);
-        const constrainedX = Math.max(0, Math.min(newX, viewportWidth - chatWidth));
+        const constrainedX = Math.max(0, Math.min(newX, viewportWidth - currentWidth));
         const constrainedY = Math.max(0, Math.min(newY, viewportHeight - 400));
         setPosition({ x: constrainedX, y: constrainedY });
       }
@@ -146,7 +155,37 @@ export default function GlobalChatOverlay() {
     return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, [showHistoryMenu]);
 
+  React.useEffect(() => {
+    if (!isOpen) {
+      hasForcedDockRef.current = false;
+      return;
+    }
+
+    if (hasForcedDockRef.current) {
+      return;
+    }
+
+    hasForcedDockRef.current = true;
+
+    const targetWidth = Math.max(DEFAULT_DOCK_WIDTH, chatWidth);
+    if (chatWidth < targetWidth) {
+      setChatWidth(targetWidth);
+    }
+
+    setIsDocked(true);
+    setChatPosition('right');
+
+    if (typeof window !== 'undefined') {
+      const viewportWidth = window.innerWidth;
+      setPosition({ x: Math.max(0, viewportWidth - targetWidth), y: 0 });
+    } else {
+      setPosition({ x: 0, y: 0 });
+    }
+  }, [isOpen, chatWidth, setChatWidth, setChatPosition]);
+
   if (!isOpen) return null;
+
+  const effectiveDockedWidth = Math.max(DEFAULT_DOCK_WIDTH, chatWidth);
 
   return (
     <>
@@ -158,7 +197,7 @@ export default function GlobalChatOverlay() {
           left: isDocked ? (chatPosition === 'left' ? 0 : 'auto') : `${position.x}px`,
           right: isDocked && chatPosition === 'right' ? 0 : 'auto',
           top: isDocked ? 0 : `${position.y}px`,
-          width: isDocked ? `${chatWidth}px` : '320px',
+          width: isDocked ? `${effectiveDockedWidth}px` : '320px',
           height: isDocked ? '100vh' : '400px',
           zIndex: 1055,
           pointerEvents: 'auto',
@@ -195,18 +234,20 @@ export default function GlobalChatOverlay() {
             ? 'linear-gradient(135deg, rgba(0, 8, 17, 0.95), rgba(0, 17, 34, 0.95))'
             : 'linear-gradient(135deg, rgba(0, 8, 17, 0.98), rgba(0, 17, 34, 0.98))',
           border: `1px solid rgba(0, 255, 255, ${isDocked ? '0.3' : '0.5'})`,
-          borderRadius: isDocked ? '0' : '8px',
+          borderRadius: '16px',
+          overflow: 'hidden',
           boxShadow: isDocked
-            ? 'none'
-            : '0 0 30px rgba(0, 255, 255, 0.2), inset 0 1px 0 rgba(0, 255, 255, 0.3)'
+            ? '0 0 30px rgba(0, 255, 255, 0.12)'
+            : '0 0 34px rgba(0, 255, 255, 0.25), inset 0 1px 0 rgba(0, 255, 255, 0.3)'
         }}>
           {/* HUD Header with drag handle */}
           <div
             onMouseDown={handleDragStart}
             style={{
-              padding: '8px 12px',
+              paddingInline: '15px',
+              height: '55px',
               background: 'linear-gradient(135deg, rgba(0, 17, 34, 0.9), rgba(0, 34, 51, 0.9))',
-              borderBottom: '1px solid rgba(0, 255, 255, 0.3)',
+              borderBottom: '1px solid rgba(0, 255, 255, 0.38)',
               cursor: isDragging ? 'grabbing' : 'grab',
               display: 'flex',
               alignItems: 'center',
@@ -217,18 +258,18 @@ export default function GlobalChatOverlay() {
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '6px'
+              gap: `${6 * HEADER_SCALE}px`
             }}>
               <div style={{
-                width: '4px',
-                height: '4px',
+                width: `${4 * HEADER_SCALE}px`,
+                height: `${4 * HEADER_SCALE}px`,
                 backgroundColor: '#00ffff',
                 borderRadius: '50%',
-                boxShadow: '0 0 4px #00ffff'
+                boxShadow: '0 0 6px #00ffff'
               }} />
               <span style={{
                 color: '#00ffff',
-                fontSize: '10px',
+                fontSize: `${10 * HEADER_SCALE}px`,
                 fontWeight: 600,
                 letterSpacing: '0.1em',
                 fontFamily: "'Courier New', monospace"
@@ -236,7 +277,7 @@ export default function GlobalChatOverlay() {
                 CAPI
               </span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: `${6 * HEADER_SCALE}px` }}>
               <button
                 onMouseDown={(event) => event.stopPropagation()}
                 onClick={() => {
@@ -246,7 +287,7 @@ export default function GlobalChatOverlay() {
                 aria-label="Crear nueva sesión"
                 style={HUD_ICON_BUTTON_STYLE}
               >
-                <SparklesIcon width={14} height={14} aria-hidden />
+                <SparklesIcon width={21} height={21} aria-hidden />
               </button>
               <div ref={historyMenuRef} style={{ position: 'relative' }}>
                 <button
@@ -263,29 +304,29 @@ export default function GlobalChatOverlay() {
                     background: showHistoryMenu ? 'rgba(0, 255, 255, 0.15)' : HUD_ICON_BUTTON_STYLE.background,
                   }}
                 >
-                  <ClockIcon width={14} height={14} aria-hidden />
+                  <ClockIcon width={21} height={21} aria-hidden />
                 </button>
                 {showHistoryMenu && (
                   <div
                     style={{
                       position: 'absolute',
-                      top: 'calc(100% + 8px)',
+                      top: `calc(100% + ${8 * HEADER_SCALE}px)`,
                       right: 0,
-                      width: '220px',
+                      width: `${220 * HEADER_SCALE}px`,
                       background: 'rgba(0, 17, 34, 0.95)',
                       border: '1px solid rgba(0, 255, 255, 0.25)',
                       borderRadius: '8px',
                       boxShadow: '0 12px 30px rgba(0, 0, 0, 0.45)',
-                      padding: '10px',
+                      padding: `${10 * HEADER_SCALE}px`,
                       display: 'flex',
                       flexDirection: 'column',
-                      gap: '6px',
+                      gap: `${6 * HEADER_SCALE}px`,
                       zIndex: 10,
                     }}
                   >
                     <div
                       style={{
-                        fontSize: '11px',
+                        fontSize: `${11 * HEADER_SCALE}px`,
                         letterSpacing: '0.08em',
                         color: 'rgba(0, 255, 255, 0.75)',
                         fontFamily: "'Courier New', monospace",
@@ -294,7 +335,7 @@ export default function GlobalChatOverlay() {
                     >
                       Sesiones disponibles
                     </div>
-                    <div style={{ maxHeight: '200px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <div style={{ maxHeight: `${200 * HEADER_SCALE}px`, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: `${4 * HEADER_SCALE}px` }}>
                       {sessionIds.map((sessionId) => {
                         const isActive = sessionId === activeSessionId;
                         return (
@@ -309,21 +350,21 @@ export default function GlobalChatOverlay() {
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'space-between',
-                              gap: '8px',
-                              padding: '6px 8px',
+                              gap: `${8 * HEADER_SCALE}px`,
+                              padding: `${6 * HEADER_SCALE}px ${8 * HEADER_SCALE}px`,
                               background: isActive ? 'rgba(0, 255, 255, 0.12)' : 'rgba(3, 20, 38, 0.9)',
                               border: isActive ? '1px solid rgba(0, 255, 255, 0.45)' : '1px solid rgba(0, 255, 255, 0.18)',
                               borderRadius: '6px',
                               color: 'rgba(214, 239, 255, 0.86)',
                               cursor: 'pointer',
-                              fontSize: '12px',
+                              fontSize: `${12 * HEADER_SCALE}px`,
                               fontFamily: "'Inter', sans-serif",
                               transition: 'all 0.2s ease',
                             }}
                           >
                             <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{sessionId}</span>
                             {isActive && (
-                              <span style={{ fontSize: '10px', color: 'rgba(0, 255, 255, 0.8)', letterSpacing: '0.08em' }}>
+                              <span style={{ fontSize: `${10 * HEADER_SCALE}px`, color: 'rgba(0, 255, 255, 0.8)', letterSpacing: '0.08em' }}>
                                 activo
                               </span>
                             )}
@@ -340,7 +381,7 @@ export default function GlobalChatOverlay() {
                 aria-label="Abrir archivos de la IA"
                 style={HUD_ICON_BUTTON_STYLE}
               >
-                <FolderIcon width={14} height={14} aria-hidden />
+                <FolderIcon width={21} height={21} aria-hidden />
               </button>
               <button
                 onMouseDown={(event) => event.stopPropagation()}
@@ -348,10 +389,9 @@ export default function GlobalChatOverlay() {
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: 'rgba(0, 255, 255, 0.6)',
-                  fontSize: '12px',
+                  color: 'rgba(0, 255, 255, 0.7)',
+                  fontSize: '45px',
                   cursor: 'pointer',
-                  padding: '2px 4px',
                   fontFamily: "'Courier New', monospace"
                 }}
               >
