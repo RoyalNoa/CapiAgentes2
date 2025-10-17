@@ -63,8 +63,8 @@ export default function Home2Page() {
               return acc;
             }
 
-            const upperThreshold = caja * 1.15;
-            const lowerThreshold = caja * 0.85;
+            const upperThreshold = caja * 1.40;
+            const lowerThreshold = caja * 0.60;
 
             if (record.saldo_total_sucursal >= upperThreshold) {
               acc.above += 1;

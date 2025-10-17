@@ -38,7 +38,7 @@ interface ModernBranch {
 }
 
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max)
-const BALANCE_TOLERANCE = 0.15
+const BALANCE_TOLERANCE = 0.4
 
 export default function Mapa() {
   const [loader, setLoader] = useState(true)

@@ -138,7 +138,7 @@ const NEUTRAL_MARKER_APPEARANCE: MarkerAppearance = {
   size: 32,
 };
 
-const BALANCE_TOLERANCE = 0.15;
+const BALANCE_TOLERANCE = 0.4;
 
 
 type AdvancedMarkerOptions = {
