@@ -181,6 +181,101 @@
   margin-bottom: 0.4rem;
 }
 
+.mapRegionLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.mapSummaryCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.75rem clamp(1.25rem, 2.5vw, 2.5rem);
+  border-radius: 28px;
+  border: 1px solid rgba(59, 130, 246, 0.32);
+  background: linear-gradient(140deg, rgba(30, 64, 175, 0.22), rgba(14, 165, 233, 0.18));
+  box-shadow: 0 26px 60px rgba(8, 24, 68, 0.4);
+}
+
+.mapSummaryHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  color: rgba(210, 236, 255, 0.88);
+}
+
+.mapSummaryEyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(153, 246, 228, 0.65);
+}
+
+.mapSummaryHeader strong {
+  font-size: clamp(1.1rem, 2.1vw, 1.35rem);
+  font-weight: 700;
+  color: #f8fbff;
+}
+
+.mapSummaryHeader p {
+  font-size: 0.9rem;
+  color: rgba(214, 241, 255, 0.72);
+  margin: 0;
+}
+
+.mapSummaryValue {
+  font-weight: 700;
+  color: #facc15;
+}
+
+.mapRankingList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.9rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mapRankingItem {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem;
+  border-radius: 18px;
+  background: rgba(9, 19, 46, 0.75);
+  border: 1px solid rgba(59, 130, 246, 0.26);
+  color: rgba(226, 247, 255, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.mapRankingIndex {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(56, 189, 248, 0.25);
+  color: rgba(224, 242, 255, 0.95);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.mapRankingName {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.mapRankingValue {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: rgba(129, 230, 217, 0.98);
+}
+
 @media (max-width: 960px) {
   .overlay {
     padding-top: 4rem;

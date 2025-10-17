@@ -9,14 +9,20 @@ export default function Home2Page() {
     caja_teorica_sucursal?: number | null;
   };
 
-  const WEATHER_INFO = useMemo(
-    () => ({
-      location: 'CABA · Microcentro',
-      temperature: '18°C',
-      condition: 'Cielo parcialmente nublado',
-    }),
-    []
-  );
+  type WeatherInfo = {
+    location: string;
+    temperatureFormatted: string;
+    condition: string;
+    observedAt?: string | null;
+  };
+
+  const [weatherInfo, setWeatherInfo] = useState<WeatherInfo>({
+    location: 'CABA · Microcentro',
+    temperatureFormatted: '---',
+    condition: 'Actualizando...',
+    observedAt: null,
+  });
+  const [weatherLoading, setWeatherLoading] = useState(true);
 
   const NEWS_ITEMS = useMemo(
     () => [
@@ -90,6 +96,50 @@ export default function Home2Page() {
   }, []);
 
   useEffect(() => {
+    let cancelled = false;
+
+    async function fetchWeather() {
+      try {
+        const response = await fetch('/api/weather', { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const payload = await response.json();
+        if (cancelled) {
+          return;
+        }
+
+        setWeatherInfo({
+          location: payload?.location ?? 'CABA · Microcentro',
+          temperatureFormatted: payload?.temperatureFormatted ?? '---',
+          condition: payload?.condition ?? 'Condiciones no disponibles',
+          observedAt: payload?.observedAt ?? null,
+        });
+      } catch (error) {
+        if (!cancelled) {
+          setWeatherInfo((previous) => ({
+            ...previous,
+            temperatureFormatted: '---',
+            condition: 'Sin datos recientes',
+            observedAt: null,
+          }));
+        }
+      } finally {
+        if (!cancelled) {
+          setWeatherLoading(false);
+        }
+      }
+    }
+
+    fetchWeather();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
     setTickerItems((current) => {
       if (current.length) {
         return current;
@@ -101,6 +151,14 @@ export default function Home2Page() {
 
   const formattedAbove = branchStats.loading ? '---' : branchStats.above.toString();
   const formattedBelow = branchStats.loading ? '---' : branchStats.below.toString();
+  const temperatureDisplay = weatherLoading ? '---' : weatherInfo.temperatureFormatted;
+  const conditionDisplay = weatherLoading ? 'Actualizando...' : weatherInfo.condition;
+  const observedTooltip = weatherInfo.observedAt
+    ? new Date(weatherInfo.observedAt).toLocaleString('es-AR', {
+        hour: '2-digit',
+        minute: '2-digit',
+      })
+    : undefined;
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
@@ -145,11 +203,14 @@ export default function Home2Page() {
                 </svg>
               </span>
               <div>
-                <p className={styles.weatherLocation}>{WEATHER_INFO.location}</p>
-                <p className={styles.weatherDetails}>
-                  {WEATHER_INFO.temperature}
+                <p className={styles.weatherLocation}>{weatherInfo.location}</p>
+                <p
+                  className={styles.weatherDetails}
+                  title={observedTooltip ? `Actualizado ${observedTooltip}` : undefined}
+                >
+                  {temperatureDisplay}
                   <span className={styles.weatherDivider}>·</span>
-                  {WEATHER_INFO.condition}
+                  {conditionDisplay}
                 </p>
               </div>
             </div>

@@ -680,27 +680,38 @@ class AgenteGAgent(BaseAgent):
         subject = subject or "(sin asunto)"
         body = body or (compose_context or "")
         cc = params.get("cc")
+
         bcc = params.get("bcc")
 
         sent = self.gmail.send_plain_text(
             to=list(normalized_to),
             subject=str(subject),
+
             body=str(body),
+
             cc=[c.strip() for c in cc] if isinstance(cc, list) else None,
+
             bcc=[b.strip() for b in bcc] if isinstance(bcc, list) else None,
+
             sender=self.agent_email,
+
         )
 
         artifact = {
+
             "type": "email_sent",
+
             "message_id": sent.get("id"),
+
             "thread_id": sent.get("threadId"),
             "recipients": list(normalized_to),
             "subject": subject,
+
         }
 
         message = f"Correo enviado a {', '.join(normalized_to)}."
         metrics = {
+
             "google_api_calls": 1,
             "recipients": len(normalized_to),
         }

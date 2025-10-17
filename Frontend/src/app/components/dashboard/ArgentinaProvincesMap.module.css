@@ -1,0 +1,218 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #e7f8ff;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.titleBlock {
+  max-width: 420px;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(124, 226, 255, 0.68);
+}
+
+.title {
+  margin-top: 0.35rem;
+  font-size: clamp(1.6rem, 3vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin-top: 0.45rem;
+  color: rgba(198, 235, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.resetButton {
+  align-self: center;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.18), rgba(168, 85, 247, 0.16));
+  color: #e0f2ff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.6rem;
+  box-shadow: 0 14px 34px rgba(13, 148, 136, 0.28);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.resetButton:hover,
+.resetButton:focus-visible {
+  border-color: rgba(250, 204, 21, 0.65);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 45px rgba(6, 182, 212, 0.34);
+}
+
+.chartSurface {
+  position: relative;
+  background: linear-gradient(160deg, rgba(15, 23, 42, 0.92), rgba(24, 24, 68, 0.85));
+  border-radius: 36px;
+  border: 1px solid rgba(125, 249, 255, 0.18);
+  padding: clamp(1rem, 2.6vw, 2rem);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 32px 80px rgba(6, 15, 45, 0.6);
+  overflow: hidden;
+}
+
+.mapCanvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.province {
+  stroke: rgba(148, 220, 255, 0.32);
+  stroke-width: 0.7;
+  transition: fill 0.25s ease, stroke 0.25s ease, filter 0.25s ease;
+  cursor: pointer;
+  outline: none;
+}
+
+.provinceWithData:hover,
+.provinceWithData:focus-visible {
+  stroke: rgba(234, 245, 255, 0.85);
+  filter: brightness(1.12);
+}
+
+.provinceHovered {
+  stroke: rgba(250, 204, 21, 0.9);
+  filter: drop-shadow(0 10px 28px rgba(59, 130, 246, 0.4));
+}
+
+.provinceSelected {
+  stroke: rgba(250, 204, 21, 0.95);
+  stroke-width: 2;
+  filter: drop-shadow(0 16px 32px rgba(250, 204, 21, 0.45));
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: rgba(6, 11, 31, 0.92);
+  border: 1px solid rgba(125, 249, 255, 0.28);
+  border-radius: 16px;
+  padding: 0.75rem 1rem;
+  min-width: 160px;
+  max-width: 220px;
+  color: #f0f9ff;
+  box-shadow: 0 22px 48px rgba(4, 15, 40, 0.65);
+  transform: translate(-50%, -110%);
+  transition: opacity 0.18s ease;
+}
+
+.tooltip strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.tooltip span {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(224, 242, 255, 0.82);
+}
+
+.tooltipSelected {
+  margin-top: 0.45rem;
+  font-size: 0.78rem;
+  color: rgba(250, 204, 21, 0.92);
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.legendTitle {
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(148, 226, 255, 0.62);
+}
+
+.legendItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.35rem;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: rgba(214, 234, 255, 0.75);
+}
+
+.legendSwatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  border: 1px solid rgba(125, 249, 255, 0.35);
+}
+
+.legendItemMuted {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: rgba(148, 163, 184, 0.75);
+}
+
+.legendSwatchMuted {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.selectionBanner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: rgba(190, 230, 255, 0.85);
+}
+
+.selectionValue {
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .resetButton {
+    align-self: flex-start;
+  }
+
+  .tooltip {
+    min-width: 130px;
+    padding: 0.6rem 0.75rem;
+  }
+}
