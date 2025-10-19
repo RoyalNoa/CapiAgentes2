@@ -2,13 +2,17 @@
 -- Professional seed data for Historical Alerts System
 -- Author: Claude Code Expert
 
--- Seed Users
 INSERT INTO alerts.users (id, username, email, full_name, team, role) VALUES
 ('550e8400-e29b-41d4-a716-446655440000', 'admin', 'admin@capi.com', 'System Administrator', 'IT', 'admin'),
 ('550e8400-e29b-41d4-a716-446655440001', 'security_lead', 'security@capi.com', 'Maria Rodriguez', 'Security', 'lead'),
 ('550e8400-e29b-41d4-a716-446655440002', 'analyst_1', 'analyst1@capi.com', 'Carlos Mendoza', 'Analysis', 'analyst'),
 ('550e8400-e29b-41d4-a716-446655440003', 'ops_manager', 'ops@capi.com', 'Ana Silva', 'Operations', 'manager'),
 ('550e8400-e29b-41d4-a716-446655440004', 'cs_lead', 'cs@capi.com', 'Pedro Gomez', 'Customer Service', 'lead');
+
+-- Seed Agents used by LangGraph nodes (idempotent)
+INSERT INTO public.agentes (id, nombre, rol, descripcion, herramientas, nivel_privilegio) VALUES
+('b37d1f90-6b35-4fb3-866e-2f88c9b29850', 'capi_elcajas', 'cash_diagnostics', 'Agente especializado en diagnostico de caja y generacion de alertas.', ARRAY['diagnostico', 'alertas', 'recomendaciones'], 'elevated')
+ON CONFLICT (id) DO NOTHING;
 
 -- Seed Teams
 INSERT INTO alerts.teams (id, team_name, department, manager_id) VALUES

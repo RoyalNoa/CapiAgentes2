@@ -22,11 +22,21 @@ from src.infrastructure.langgraph.utils.capi_datab_formatter import compose_succ
 from src.infrastructure.workspace.session_storage import resolve_workspace_root
 from src.application.reasoning.llm_reasoner import LLMReasoner
 from src.infrastructure.agents.progress_emitter import agent_progress
+from src.core.semantics import EntityExtractor
 
 logger = get_logger(__name__)
 
 
 ALLOWED_IDENTIFIER = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+BRANCH_NUMBER_REGEX = re.compile(
+    r"\bsucur(?:sal|al)?\s*(?:n(?:[úu]m(?:ero)?)?\.?\s*)?(\d{1,6})",
+    re.IGNORECASE,
+)
+BRANCH_ID_REGEX = re.compile(r"\bSUC[-_\s]?(\d{1,6})\b", re.IGNORECASE)
+BRANCH_TYPO_FIXES = [
+    (re.compile(r"\bsucural(es)?\b", re.IGNORECASE), r"sucursal\1"),
+    (re.compile(r"\bsucurales\b", re.IGNORECASE), "sucursales"),
+]
 
 
 _BRANCH_ANALYST_PROMPT = """
@@ -112,6 +122,11 @@ class CapiDataBAgent(BaseAgent):
             except Exception as exc:  # pragma: no cover - defensive
                 self._logger.warning({"event": "capi_datab_reasoner_fallback", "error": str(exc)})
                 self._reasoner = LLMReasoner(model="gpt-4.1", temperature=0.1, max_tokens=350)
+        try:
+            self._entity_extractor = EntityExtractor()
+        except Exception as exc:  # pragma: no cover - defensive
+            self._logger.warning({"event": "capi_datab_entity_extractor_init_failed", "error": str(exc)})
+            self._entity_extractor = None
 
     # ------------------------------------------------------------------
     # Public API
@@ -347,95 +362,105 @@ class CapiDataBAgent(BaseAgent):
         )
 
     def _parse_natural_language(self, instruction: str) -> DbOperation:
-        lowered = instruction.lower()
-        format_hint = self._detect_format_hint(lowered)
+        format_hint = self._detect_format_hint(instruction.lower())
 
         branch_operation = self._branch_balance_from_llm(instruction, format_hint)
         if branch_operation:
             return branch_operation
 
-        insert_match = re.match(r"(?:insertar|inserta|agregar|añadir)\s+en\s+([a-zA-Z0-9_]+)\s+(.+)", lowered)
+        normalized_instruction = self._normalize_branch_terms(instruction)
+        heuristic_operation = self._branch_balance_from_heuristics(
+            normalized_instruction,
+            format_hint,
+            original_instruction=instruction,
+        )
+        if heuristic_operation:
+            return heuristic_operation
+
+        working_instruction = normalized_instruction
+        lowered = working_instruction.lower()
+
+        insert_match = re.match(r'(?:insertar|inserta|agregar|a�adir)\s+en\s+([a-zA-Z0-9_]+)\s+(.+)', lowered)
         if insert_match:
             table = self._sanitize_identifier(insert_match.group(1))
-            values_text = instruction[insert_match.start(2):]
+            values_text = working_instruction[insert_match.start(2):]
             values = self._parse_key_value_pairs(values_text)
-            builder = SqlBuilder("insert")
+            builder = SqlBuilder('insert')
             builder.set_values(values)
             sql, params = builder.build(table)
             return DbOperation(
-                operation="insert",
+                operation='insert',
                 sql=sql,
                 parameters=params,
                 output_format=format_hint,
                 table=table,
                 requires_approval=False,
-                description="Inserción interpretada desde lenguaje natural",
+                description='Inserci�n interpretada desde lenguaje natural',
                 raw_request=instruction,
             )
 
-        update_match = re.match(r"(?:actualiza|actualizar|update)\s+([a-zA-Z0-9_]+)\s+set\s+(.+?)\s+(?:donde|where)\s+(.+)", lowered)
+        update_match = re.match(r'(?:actualiza|actualizar|update)\s+([a-zA-Z0-9_]+)\s+set\s+(.+?)\s+(?:donde|where)\s+(.+)', lowered)
         if update_match:
             table = self._sanitize_identifier(update_match.group(1))
-            set_text = instruction[update_match.start(2):update_match.end(2)]
-            where_text = instruction[update_match.start(3):]
+            set_text = working_instruction[update_match.start(2):update_match.end(2)]
+            where_text = working_instruction[update_match.start(3):]
             values = self._parse_key_value_pairs(set_text)
             conditions = self._parse_key_value_pairs(where_text)
-            builder = SqlBuilder("update")
+            builder = SqlBuilder('update')
             builder.set_values(values)
             builder.set_conditions(conditions, require=True)
             sql, params = builder.build(table)
             return DbOperation(
-                operation="update",
+                operation='update',
                 sql=sql,
                 parameters=params,
                 output_format=format_hint,
                 table=table,
                 requires_approval=True,
-                description="Actualización interpretada desde lenguaje natural",
+                description='Actualizaci�n interpretada desde lenguaje natural',
                 raw_request=instruction,
             )
 
-        delete_match = re.match(r"(?:elimina|eliminar|borra|delete)\s+de\s+([a-zA-Z0-9_]+)\s+(?:donde|where)\s+(.+)", lowered)
+        delete_match = re.match(r'(?:elimina|eliminar|borra|delete)\s+de\s+([a-zA-Z0-9_]+)\s+(?:donde|where)\s+(.+)', lowered)
         if delete_match:
             table = self._sanitize_identifier(delete_match.group(1))
-            where_text = instruction[delete_match.start(2):]
+            where_text = working_instruction[delete_match.start(2):]
             conditions = self._parse_key_value_pairs(where_text)
-            builder = SqlBuilder("delete")
+            builder = SqlBuilder('delete')
             builder.set_conditions(conditions, require=True)
             sql, params = builder.build(table)
             return DbOperation(
-                operation="delete",
+                operation='delete',
                 sql=sql,
                 parameters=params,
                 output_format=format_hint,
                 table=table,
                 requires_approval=True,
-                description="Eliminación interpretada desde lenguaje natural",
+                description='Eliminaci�n interpretada desde lenguaje natural',
                 raw_request=instruction,
             )
 
-        select_match = re.match(r"(?:consulta|consultar|listar|muestra|selecciona)\s+(?:la\s+tabla\s+)?([a-zA-Z0-9_]+)(?:\s+(?:donde|where)\s+(.+))?", lowered)
+        select_match = re.match(r'(?:consulta|consultar|listar|muestra|selecciona)\s+(?:la\s+tabla\s+)?([a-zA-Z0-9_]+)(?:\s+(?:donde|where)\s+(.+))?', lowered)
         if select_match:
             table = self._sanitize_identifier(select_match.group(1))
             conditions_text = select_match.group(2)
             conditions = self._parse_key_value_pairs(conditions_text) if conditions_text else None
-            builder = SqlBuilder("select")
-            builder.set_columns(["*"])
+            builder = SqlBuilder('select')
+            builder.set_columns(['*'])
             builder.set_conditions(conditions)
             sql, params = builder.build(table)
             return DbOperation(
-                operation="select",
+                operation='select',
                 sql=sql,
                 parameters=params,
                 output_format=format_hint,
                 table=table,
                 requires_approval=False,
-                description="Consulta SELECT interpretada desde lenguaje natural",
+                description='Consulta SELECT interpretada desde lenguaje natural',
                 raw_request=instruction,
             )
 
-        raise ValueError("No se pudo interpretar la consulta de base de datos. Provide SQL o JSON estructurado.")
-
+        raise ValueError('No se pudo interpretar la consulta de base de datos. Provide SQL o JSON estructurado.')
     def _branch_balance_from_llm(self, instruction: str, format_hint: str) -> Optional[DbOperation]:
         result = self._llm_branch_identifier(instruction)
         if result is None:
@@ -445,7 +470,88 @@ class CapiDataBAgent(BaseAgent):
         if identifier is None:
             return None
 
-        table_name = validate_table(result.get("table") or "public.saldos_sucursal")
+        planner_metadata = result.get("metadata") if isinstance(result.get("metadata"), dict) else {}
+        operation = self._build_branch_balance_operation(
+            identifier=identifier,
+            format_hint=format_hint,
+            original_instruction=instruction,
+            table_hint=result.get("table"),
+            planner_reason=result.get("reasoning"),
+            planner_source="llm_branch_identifier",
+            planner_confidence=result.get("confidence"),
+            planner_metadata=planner_metadata,
+        )
+        if operation:
+            self._logger.info(
+                {
+                    "event": "capi_datab_llm_branch",
+                    "branch": identifier.to_metadata(),
+                    "table": operation.table,
+                    "model": result.get("model"),
+                    "confidence": result.get("confidence"),
+                }
+            )
+        return operation
+    def _branch_balance_from_heuristics(
+        self,
+        normalized_instruction: str,
+        format_hint: str,
+        *,
+        original_instruction: Optional[str] = None,
+    ) -> Optional[DbOperation]:
+        instruction = original_instruction or normalized_instruction
+        payload: Dict[str, Any] = {}
+
+        if self._entity_extractor is not None:
+            try:
+                branches = self._entity_extractor.extract_branches(normalized_instruction)
+            except Exception as exc:  # pragma: no cover - defensive logging
+                branches = []
+                self._logger.warning({"event": "capi_datab_heuristic_branch_extractor_failed", "error": str(exc)})
+            if branches:
+                top_entity = max(branches, key=lambda ent: ent.confidence)
+                payload["name"] = top_entity.value.strip(" ?!.")
+
+        number = self._extract_branch_number(normalized_instruction)
+        if number is not None:
+            payload["number"] = number
+
+        branch_id = self._extract_branch_identifier(normalized_instruction)
+        if branch_id:
+            payload["id"] = branch_id
+
+        if not payload:
+            return None
+
+        identifier = BranchIdentifier.from_payload(payload, fallback_text=instruction)
+        if identifier is None:
+            return None
+
+        planner_reason = "Consulta interpretada mediante heuristicas locales (sin LLM)."
+        return self._build_branch_balance_operation(
+            identifier=identifier,
+            format_hint=format_hint,
+            original_instruction=instruction,
+            table_hint="public.saldos_sucursal",
+            planner_reason=planner_reason,
+            planner_source="heuristic_branch_extractor",
+            planner_confidence=0.75 if payload.get("name") else 0.6,
+            planner_metadata={"planner_source": "heuristic_branch_extractor"},
+        )
+
+    def _build_branch_balance_operation(
+        self,
+        *,
+        identifier: BranchIdentifier,
+        format_hint: str,
+        original_instruction: str,
+        table_hint: Optional[str] = None,
+        planner_reason: Optional[str] = None,
+        planner_source: str,
+        planner_confidence: Optional[float] = None,
+        planner_metadata: Optional[Dict[str, Any]] = None,
+    ) -> Optional[DbOperation]:
+        table_name = validate_table(table_hint or "public.saldos_sucursal")
         columns = [
             "sucursal_id",
             "sucursal_numero",
@@ -462,7 +568,11 @@ class CapiDataBAgent(BaseAgent):
             "total_otros",
             "medido_en",
         ]
-        condition, params = identifier.build_condition()
+        try:
+            condition, params = identifier.build_condition()
+        except ValueError:
+            return None
+
         sql = (
             "SELECT "
             + ", ".join(columns)
@@ -470,32 +580,35 @@ class CapiDataBAgent(BaseAgent):
             + f"WHERE {condition} "
             + "ORDER BY medido_en DESC LIMIT 1"
         )
-        description = result.get("reasoning") or f"Consulta de saldo por sucursal interpretada para {identifier.display_value}"
-        filters = []
+        description = planner_reason or f"Consulta de saldo por sucursal interpretada para {identifier.display_value}"
+
+        filters: List[Dict[str, Any]] = []
         if identifier.identifier:
             filters.append({"column": "sucursal_id", "operator": "=", "value": identifier.identifier})
         elif identifier.number is not None:
             filters.append({"column": "sucursal_numero", "operator": "=", "value": identifier.number})
         elif identifier.name:
             filters.append({"column": "sucursal_nombre", "operator": "ILIKE", "value": f"%{identifier.name}%"})
-        metadata = {
-            "branch": identifier.to_metadata(),
-            "filters": filters,
-            "planner_source": "llm_branch_identifier",
-            "planner_confidence": result.get("confidence"),
-            "planner_reason": result.get("reasoning"),
-            "planner_model": result.get("model"),
-            "suggested_table": table_name,
-        }
-        self._logger.info(
-            {
-                "event": "capi_datab_llm_branch",
-                "branch": identifier.to_metadata(),
-                "table": table_name,
-                "model": result.get("model"),
-                "confidence": result.get("confidence"),
-            }
-        )
+
+        metadata = dict(planner_metadata or {})
+        branch_meta = identifier.to_metadata()
+        if not metadata.get("branch"):
+            metadata["branch"] = branch_meta
+
+        existing_filters = metadata.get("filters") if isinstance(metadata.get("filters"), list) else []
+        combined_filters = list(existing_filters)
+        for item in filters:
+            if item not in combined_filters:
+                combined_filters.append(item)
+        metadata["filters"] = combined_filters
+
+        metadata.setdefault("planner_source", planner_source)
+        if planner_confidence is not None and metadata.get("planner_confidence") is None:
+            metadata["planner_confidence"] = planner_confidence
+        if planner_reason and metadata.get("planner_reason") is None:
+            metadata["planner_reason"] = planner_reason
+        metadata.setdefault("suggested_table", table_name)
+
         return DbOperation(
             operation="select",
             sql=sql,
@@ -504,9 +617,36 @@ class CapiDataBAgent(BaseAgent):
             table=table_name,
             requires_approval=False,
             description=description,
-            raw_request=instruction,
+            raw_request=original_instruction,
             metadata={k: v for k, v in metadata.items() if v not in (None, [], {}, "")},
         )
+
+    def _normalize_branch_terms(self, instruction: str) -> str:
+        if not instruction:
+            return instruction
+
+        normalized = instruction
+        for pattern, replacement in BRANCH_TYPO_FIXES:
+            normalized = pattern.sub(replacement, normalized)
+        return normalized
+
+    def _extract_branch_number(self, instruction: str) -> Optional[int]:
+        match = BRANCH_NUMBER_REGEX.search(instruction)
+        if not match:
+            return None
+        try:
+            return int(match.group(1))
+        except (ValueError, TypeError):
+            return None
+
+    def _extract_branch_identifier(self, instruction: str) -> Optional[str]:
+        match = BRANCH_ID_REGEX.search(instruction)
+        if not match:
+            return None
+        digits = match.group(1)
+        if not digits:
+            return None
+        return f"SUC-{digits}"
 
     def _llm_branch_identifier(self, instruction: str) -> Optional[Dict[str, Any]]:
         payload = {"instruction": instruction}
@@ -1023,4 +1163,3 @@ class SqlBuilder:
         if not ALLOWED_IDENTIFIER.match(cleaned) and cleaned != '*':
             raise ValueError(f"Identificador SQL no válido: {identifier}")
         return cleaned
-
