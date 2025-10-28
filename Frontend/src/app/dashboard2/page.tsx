@@ -133,12 +133,40 @@ export default function Dashboard2Page() {
   }, [activeAction]);
 
   const comparisonRows = useMemo<CashComparisonRow[]>(() => {
-    return sucursales.map((item) => ({
-      id: item.sucursal_id,
-      name: item.sucursal_nombre || `Sucursal ${item.sucursal_numero}`,
-      saldoTotal: item.saldo_total_sucursal ?? 0,
-      cajaTeorica: item.caja_teorica_sucursal ?? 0,
-    }));
+    const toTitleCase = (value: string): string =>
+      value
+        .toLowerCase()
+        .split(/\s+/)
+        .filter(Boolean)
+        .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
+        .join(' ');
+
+    const buildAddress = (item: SucursalSaldo): string | null => {
+      const hasStreetNumber = typeof item.altura === 'number' && !Number.isNaN(item.altura);
+      if (item.calle && hasStreetNumber) {
+        return `${toTitleCase(item.calle)} ${item.altura}`;
+      }
+      if (item.direccion_sucursal) {
+        return toTitleCase(item.direccion_sucursal);
+      }
+      if (item.calle) {
+        return toTitleCase(item.calle);
+      }
+      return null;
+    };
+
+    return sucursales.map((item) => {
+      const baseName = item.sucursal_nombre || `Sucursal ${item.sucursal_numero}`;
+      const address = buildAddress(item);
+      const displayName = address ? `${baseName} - ${address}` : baseName;
+
+      return {
+        id: item.sucursal_id,
+        name: displayName,
+        saldoTotal: item.saldo_total_sucursal ?? 0,
+        cajaTeorica: item.caja_teorica_sucursal ?? 0,
+      };
+    });
   }, [sucursales]);
 
   const regionalData = useMemo(() => {

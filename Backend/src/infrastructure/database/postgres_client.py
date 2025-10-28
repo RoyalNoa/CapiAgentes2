@@ -108,6 +108,7 @@ class PostgreSQLClient:
         "sucursal_id",
         "sucursal_numero",
         "sucursal_nombre",
+        "tipo_sucursal",
         "telefonos",
         "calle",
         "altura",
@@ -136,6 +137,7 @@ class PostgreSQLClient:
         "sucursal_id",
         "sucursal_numero",
         "sucursal_nombre",
+        "tipo_sucursal",
         "telefonos",
         "calle",
         "altura",
@@ -701,6 +703,7 @@ class PostgreSQLClient:
             sucursal_id,
             sucursal_numero,
             sucursal_nombre,
+            tipo_sucursal,
             telefonos,
             calle,
             altura,
@@ -724,6 +727,7 @@ class PostgreSQLClient:
             observacion,
             medido_en
         FROM public.saldos_sucursal
+        WHERE tipo_sucursal = 'sucursal'
         ORDER BY sucursal_numero;
         """
 

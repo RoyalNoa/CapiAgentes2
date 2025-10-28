@@ -57,6 +57,21 @@ const tooltipFormatter: TooltipProps<number, string>['formatter'] = (value) => {
   return numberFormatter.format(safeValue);
 };
 
+const parseDisplayName = (
+  displayName: string,
+): {
+  primary: string;
+  secondary: string | null;
+} => {
+  const [primary, ...rest] = displayName.split(' - ');
+  return {
+    primary,
+    secondary: rest.length ? rest.join(' - ') : null,
+  };
+};
+
+const formatChartLabel = (displayName: string): string => displayName.split(' - ')[0];
+
 export const SucursalCashComparison: React.FC<SucursalCashComparisonProps> = ({
   data,
   isLoading = false,
@@ -228,13 +243,13 @@ export const SucursalCashComparison: React.FC<SucursalCashComparisonProps> = ({
               {deepestDeficitRows.length ? (
                 <div className="mt-4 space-y-4">
                   <ResponsiveContainer width="100%" height={220}>
-                    <BarChart
-                      data={deepestDeficitRows.map((row) => ({
-                        name: row.name,
-                        saldo: row.saldoTotal,
-                        caja: row.cajaTeorica,
-                        deficit: Math.abs(row.difference),
-                      }))}
+                      <BarChart
+                        data={deepestDeficitRows.map((row) => ({
+                          name: formatChartLabel(row.name),
+                          saldo: row.saldoTotal,
+                          caja: row.cajaTeorica,
+                          deficit: Math.abs(row.difference),
+                        }))}
                       margin={{ top: 12, right: 16, left: 0, bottom: 32 }}
                     >
                       <CartesianGrid strokeDasharray="3 3" stroke="#3f1f2b" />
@@ -281,29 +296,34 @@ export const SucursalCashComparison: React.FC<SucursalCashComparisonProps> = ({
                     </BarChart>
                   </ResponsiveContainer>
                   <ul className="space-y-3">
-                    {deepestDeficitRows.map((row, index) => (
-                      <li
-                        key={row.id}
-                        className="flex items-center justify-between gap-3 rounded-xl border border-rose-400/25 bg-rose-900/20 px-4 py-3 text-sm text-rose-100"
-                      >
-                        <div className="flex flex-col">
-                          <span className="text-xs uppercase tracking-[0.16em] text-rose-200/70">#{index + 1}</span>
-                          <span className="font-semibold text-rose-50">{row.name}</span>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-xs uppercase tracking-[0.14em] text-rose-200/70">Diferencia</span>
-                          <p className="text-sm font-semibold text-rose-100">
-                            {numberFormatter.format(Math.abs(row.difference))}
-                          </p>
-                          <span className="text-[11px] uppercase tracking-[0.12em] text-rose-200/60">
-                            Caja teórica: {numberFormatter.format(row.cajaTeorica)}
-                          </span>
-                          <span className="text-[11px] uppercase tracking-[0.12em] text-rose-200/60">
-                            Saldo actual: {numberFormatter.format(row.saldoTotal)}
-                          </span>
-                        </div>
-                      </li>
-                    ))}
+                    {deepestDeficitRows.map((row, index) => {
+                      const { primary, secondary } = parseDisplayName(row.name);
+                      return (
+                        <li
+                          key={row.id}
+                          className="flex items-center justify-between gap-3 rounded-xl border border-rose-400/25 bg-rose-900/20 px-4 py-3 text-sm text-rose-100"
+                        >
+                          <div className="flex flex-col">
+                            <span className="text-xs uppercase tracking-[0.16em] text-rose-200/70">#{index + 1}</span>
+                            <div className="flex flex-col">
+                              <span className="font-semibold text-rose-50">{primary}</span>
+                              {secondary ? (
+                                <span className="text-xs font-medium text-rose-200/70">{secondary}</span>
+                              ) : null}
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <span className="text-xs uppercase tracking-[0.14em] text-rose-200/70">Saldo total</span>
+                            <p className="text-sm font-semibold text-rose-100">
+                              {numberFormatter.format(row.saldoTotal)}
+                            </p>
+                            <span className="text-[11px] uppercase tracking-[0.12em] text-rose-200/60">
+                              Caja teórica: {numberFormatter.format(row.cajaTeorica)}
+                            </span>
+                          </div>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ) : (
@@ -321,12 +341,12 @@ export const SucursalCashComparison: React.FC<SucursalCashComparisonProps> = ({
               {highestSaldoRows.length ? (
                 <div className="mt-4 space-y-4">
                   <ResponsiveContainer width="100%" height={220}>
-                    <BarChart
-                      data={highestSaldoRows.map((row) => ({
-                        name: row.name,
-                        saldo: row.saldoTotal,
-                        caja: row.cajaTeorica,
-                      }))}
+                      <BarChart
+                        data={highestSaldoRows.map((row) => ({
+                          name: formatChartLabel(row.name),
+                          saldo: row.saldoTotal,
+                          caja: row.cajaTeorica,
+                        }))}
                       margin={{ top: 12, right: 16, left: 0, bottom: 32 }}
                     >
                       <CartesianGrid strokeDasharray="3 3" stroke="#123d2c" />
@@ -373,26 +393,34 @@ export const SucursalCashComparison: React.FC<SucursalCashComparisonProps> = ({
                     </BarChart>
                   </ResponsiveContainer>
                   <ul className="space-y-3">
-                    {highestSaldoRows.map((row, index) => (
-                      <li
-                        key={row.id}
-                        className="flex items-center justify-between gap-3 rounded-xl border border-emerald-400/25 bg-emerald-900/20 px-4 py-3 text-sm text-emerald-100"
-                      >
-                        <div className="flex flex-col">
-                          <span className="text-xs uppercase tracking-[0.16em] text-emerald-200/70">#{index + 1}</span>
-                          <span className="font-semibold text-emerald-50">{row.name}</span>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-xs uppercase tracking-[0.14em] text-emerald-200/70">Saldo total</span>
-                          <p className="text-sm font-semibold text-emerald-100">
-                            {numberFormatter.format(row.saldoTotal)}
-                          </p>
-                          <span className="text-[11px] uppercase tracking-[0.12em] text-emerald-200/60">
-                            Caja teórica: {numberFormatter.format(row.cajaTeorica)}
-                          </span>
-                        </div>
-                      </li>
-                    ))}
+                    {highestSaldoRows.map((row, index) => {
+                      const { primary, secondary } = parseDisplayName(row.name);
+                      return (
+                        <li
+                          key={row.id}
+                          className="flex items-center justify-between gap-3 rounded-xl border border-emerald-400/25 bg-emerald-900/20 px-4 py-3 text-sm text-emerald-100"
+                        >
+                          <div className="flex flex-col">
+                            <span className="text-xs uppercase tracking-[0.16em] text-emerald-200/70">#{index + 1}</span>
+                            <div className="flex flex-col">
+                              <span className="font-semibold text-emerald-50">{primary}</span>
+                              {secondary ? (
+                                <span className="text-xs font-medium text-emerald-200/70">{secondary}</span>
+                              ) : null}
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <span className="text-xs uppercase tracking-[0.14em] text-emerald-200/70">Saldo total</span>
+                            <p className="text-sm font-semibold text-emerald-100">
+                              {numberFormatter.format(row.saldoTotal)}
+                            </p>
+                            <span className="text-[11px] uppercase tracking-[0.12em] text-emerald-200/60">
+                              Caja teórica: {numberFormatter.format(row.cajaTeorica)}
+                            </span>
+                          </div>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ) : (
