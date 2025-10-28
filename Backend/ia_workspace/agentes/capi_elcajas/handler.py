@@ -9,7 +9,7 @@ import time
 import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 from src.core.logging import get_logger
 from src.domain.agents.agent_protocol import BaseAgent
@@ -328,6 +328,7 @@ class ElCajasAgent(BaseAgent):
                 severity=severity,
                 headline=headline,
                 now=now,
+                measurement_timestamp=row.get('medido_en'),
             )
             if alert_payload is not None:
                 alert_priority = str(alert_payload.get('priority') or '') or None
@@ -450,6 +451,7 @@ class ElCajasAgent(BaseAgent):
         severity: str,
         headline: str,
         now: datetime,
+        measurement_timestamp: Optional[Union[str, datetime]] = None,
     ) -> Optional[Dict[str, Any]]:
         try:
             priority_code = self._priority_from_deviation(deviation_pct, recommendations)
@@ -489,7 +491,25 @@ class ElCajasAgent(BaseAgent):
             if action_lines:
                 datos_clave.append(action_lines[0])
             datos_clave.append(f"Medicion: {timestamp_iso}")
-            dedupe_seed = f"{branch_id or branch_name}|{priority_label}|{round(diff_total)}|{round(deviation_pct, 4)}|{timestamp_iso}"
+
+            measurement_token: Optional[str] = None
+            if isinstance(measurement_timestamp, datetime):
+                measurement_dt = measurement_timestamp.astimezone(timezone.utc) if measurement_timestamp.tzinfo else measurement_timestamp.replace(tzinfo=timezone.utc)
+                measurement_token = measurement_dt.replace(minute=0, second=0, microsecond=0).isoformat()
+            elif isinstance(measurement_timestamp, str) and measurement_timestamp.strip():
+                try:
+                    parsed_dt = datetime.fromisoformat(measurement_timestamp.replace('Z', '+00:00'))
+                except ValueError:
+                    measurement_token = measurement_timestamp.strip()
+                else:
+                    parsed_dt = parsed_dt.astimezone(timezone.utc) if parsed_dt.tzinfo else parsed_dt.replace(tzinfo=timezone.utc)
+                    measurement_token = parsed_dt.replace(minute=0, second=0, microsecond=0).isoformat()
+
+            if not measurement_token:
+                anchor_dt = now.astimezone(timezone.utc) if now.tzinfo else now.replace(tzinfo=timezone.utc)
+                measurement_token = anchor_dt.replace(minute=0, second=0, microsecond=0).isoformat()
+
+            dedupe_seed = f"{branch_id or branch_name}|{priority_label}|{round(diff_total)}|{round(deviation_pct, 4)}|{measurement_token}"
             dedupe_clave = hashlib.sha256(dedupe_seed.encode('utf-8')).hexdigest()
             return {
                 "priority": priority_code,
