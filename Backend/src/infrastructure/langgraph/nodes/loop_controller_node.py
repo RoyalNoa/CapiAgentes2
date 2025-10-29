@@ -112,7 +112,10 @@ class LoopControllerNode(GraphNode):
         retry_target = meta.get("needs_retry")
         if isinstance(retry_target, str) and retry_target:
             return retry_target
-        return meta.get("active_agent") or "assemble"
+        fallback = meta.get("active_agent")
+        if isinstance(fallback, str) and fallback.strip():
+            return fallback
+        return "capi_gus"
 
 __all__ = ["LoopControllerNode"]
 

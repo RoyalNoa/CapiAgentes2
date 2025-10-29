@@ -170,10 +170,10 @@ class CapiElCajasNode(GraphNode):
             metadata_updates["requires_human_approval"] = False
             metadata_updates["el_cajas_pending"] = False
             metadata_updates["analysis_scope"] = "all_branches"
-            routing_target = "human_gate"
             data["response"] = combined_message
 
         metadata_updates["result_summary"] = combined_message
+        metadata_updates["active_agent"] = "capi_gus"
 
         data["summary_message"] = combined_message
         shared_updates: Dict[str, Any] = {self.name: data}
@@ -188,6 +188,7 @@ class CapiElCajasNode(GraphNode):
         updated = StateMutator.merge_dict(updated, "processing_metrics", metrics)
         updated = StateMutator.update_field(updated, "routing_decision", routing_target)
         updated = StateMutator.update_field(updated, "response_message", combined_message)
+        updated = StateMutator.update_field(updated, "active_agent", metadata_updates["active_agent"])
         updated = self._prepare_desktop_action(updated, data)
         updated = StateMutator.append_to_list(updated, "completed_nodes", self.name)
 
@@ -224,9 +225,9 @@ class CapiElCajasNode(GraphNode):
             'actions': actions,
             'desktop_recommendation': artifact,
             'pending_desktop_instruction': instruction,
-            'requires_human_approval': True,
+            'requires_human_approval': False,
             'approval_reason': 'Deseas que guardemos la recomendacion en el escritorio?',
-            'el_cajas_pending': True,
+            'el_cajas_pending': False,
         }
         updated = StateMutator.merge_dict(state, 'response_metadata', metadata_updates)
         updated = StateMutator.update_field(updated, 'routing_decision', 'human_gate')
@@ -402,11 +403,12 @@ class CapiElCajasNode(GraphNode):
 
     def _compose_message(self, state: GraphState, agent_message: str) -> str:
         base = (getattr(state, "response_message", None) or "").strip()
-        addition = agent_message.strip()
+        addition = (agent_message or "").strip()
         if not addition:
             return base
-        if not addition.lower().startswith("el cajas"):
-            addition = f"El Cajas: {addition}"
+        normalized = addition.lower()
+        if normalized.startswith("el cajas:"):
+            addition = addition.split(":", 1)[1].strip()
         if not base:
             return addition
         if addition in base:

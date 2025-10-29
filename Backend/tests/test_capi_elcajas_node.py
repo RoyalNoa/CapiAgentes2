@@ -83,12 +83,13 @@ def test_el_cajas_enriches_state(monkeypatch, el_cajas_node):
     initial_state = _state_with_rows()
     updated = el_cajas_node.run(initial_state)
 
-    assert "El Cajas: Desvio detectado en sucursal" in (updated.response_message or "")
+    assert "Desvio detectado en sucursal" in (updated.response_message or "")
+    assert "El Cajas:" not in (updated.response_message or "")
     assert updated.response_metadata.get("el_cajas_status") == "warning"
     assert updated.response_metadata.get("el_cajas_alerts") == 2
     meta = updated.response_metadata or {}
-    assert meta.get('el_cajas_pending') is True
-    assert meta.get('requires_human_approval') is True
+    assert meta.get('el_cajas_pending') is False
+    assert meta.get('requires_human_approval') is False
     actions = meta.get('actions') or []
     assert any(action.get('id') == 'save_recommendation' for action in actions)
     assert meta.get('pending_desktop_instruction')
@@ -126,5 +127,5 @@ def test_el_cajas_no_rows_skips_agent(monkeypatch, el_cajas_node):
 
     assert called is False
     assert updated.response_metadata.get("el_cajas_status") == "no_data"
-    assert "El Cajas" in (updated.response_message or "")
+    assert "Sin resultados de caja" in (updated.response_message or "")
     assert "capi_elcajas" in updated.completed_nodes

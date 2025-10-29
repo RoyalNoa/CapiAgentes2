@@ -842,6 +842,25 @@ async def api_command(request: Request):
                     response_metadata = meta_payload.get('response_metadata')
                     if isinstance(response_metadata, dict):
                         response_data['response']['response_metadata'] = response_metadata
+                    agent_override = meta_payload.get('agent')
+                    if not agent_override and isinstance(response_metadata, dict):
+                        agent_override = response_metadata.get('active_agent')
+                    if agent_override:
+                        response_data['agent'] = agent_override
+                        response_data['response']['agent_name'] = agent_override
+
+                summary_message = None
+                if isinstance(safe_data, dict):
+                    summary_candidate = safe_data.get("summary_message")
+                    if isinstance(summary_candidate, str) and summary_candidate.strip():
+                        summary_message = summary_candidate.strip()
+                if summary_message:
+                    response_data['agent'] = response_data.get('agent', agent_name)
+                    response_data['response']['agent_name'] = response_data['agent']
+                    response_data['response']['respuesta'] = summary_message
+                    response_data['response']['message'] = summary_message
+                    if isinstance(response_data['response'].get('response_metadata'), dict):
+                        response_data['response']['response_metadata'].setdefault('result_summary', summary_message)
 
                 return JSONResponse(
                     status_code=200,

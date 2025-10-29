@@ -227,8 +227,8 @@ class GraphBuilder:
                 if metadata.get("datab_desktop_ready"):
                     return "capi_desktop"
                 if metadata.get("datab_skip_human"):
-                    return "assemble"
-                return "human_gate"
+                    return "capi_gus"
+                return "capi_gus"
 
             path_map = {
                 "capi_alertas": "capi_alertas",
@@ -248,7 +248,10 @@ class GraphBuilder:
             if agent_name == "capi_datab":
                 continue
             if agent_name in self._nodes:
-                self.add_edge(agent_name, "human_gate")
+                if "capi_gus" in self._nodes:
+                    self.add_edge(agent_name, "capi_gus")
+                else:
+                    self.add_edge(agent_name, "human_gate")
         if "capi_elcajas" in self._nodes and "capi_gus" in self._nodes:
             self.add_edge("capi_elcajas", "capi_gus")
         if "capi_gus" in self._nodes:

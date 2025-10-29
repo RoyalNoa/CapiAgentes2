@@ -397,11 +397,6 @@ def _compose_branch_narrative(
         if distribution_parts:
             sentences.append("Distribución actual: " + ", ".join(distribution_parts) + ".")
 
-    measured_at = row.get("medido_en") or row.get("fecha")
-    timestamp_text = _format_timestamp(measured_at)
-    if timestamp_text:
-        sentences.append(f"Última medición: {timestamp_text}.")
-
     return " ".join(_strip_sentence(sentence) for sentence in sentences if sentence)
 
 

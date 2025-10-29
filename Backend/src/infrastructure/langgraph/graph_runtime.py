@@ -661,10 +661,15 @@ class LangGraphRuntime:
             "intent": getattr(final_state.detected_intent, "value", None),
             "intent_confidence": final_state.intent_confidence,
         }
+        if final_state.active_agent:
+            meta["agent"] = final_state.active_agent
         if final_state.reasoning_summary:
             meta["reasoning_summary"] = final_state.reasoning_summary
         if final_state.response_metadata:
             meta.setdefault("response_metadata", final_state.response_metadata)
+            active_agent_meta = final_state.response_metadata.get("active_agent")
+            if active_agent_meta:
+                meta["agent"] = active_agent_meta
             plan_meta = final_state.response_metadata.get("reasoning_plan")
             if plan_meta:
                 meta.setdefault("reasoning_plan", plan_meta)

@@ -208,9 +208,18 @@ class CapiDataBNode(GraphNode):
             if policies:
                 shared_bucket["policies"] = policies
             if shared_bucket.get("rows"):
+                metadata_update["active_agent"] = "capi_elcajas"
                 updated = StateMutator.update_field(updated, "routing_decision", "capi_elcajas")
+            else:
+                metadata_update["active_agent"] = "capi_gus"
+                updated = StateMutator.update_field(updated, "routing_decision", "capi_gus")
+            updated = StateMutator.update_field(updated, "active_agent", metadata_update["active_agent"])
+            response_payload = dict(data_payload) if isinstance(data_payload, dict) else {}
+            if success_message:
+                response_payload.setdefault("summary_message", success_message)
+                response_payload.setdefault("response", success_message)
+            updated = StateMutator.merge_dict(updated, "response_data", response_payload)
             updated = StateMutator.update_field(updated, "response_message", success_message)
-            updated = StateMutator.merge_dict(updated, "response_data", data_payload)
         else:
             updated = StateMutator.add_error(
                 updated,
@@ -221,7 +230,9 @@ class CapiDataBNode(GraphNode):
                     "operation": operation.preview(),
                 },
             )
+            metadata_update["active_agent"] = "capi_gus"
             updated = StateMutator.update_field(updated, "response_message", raw_agent_message)
+            updated = StateMutator.update_field(updated, "active_agent", metadata_update["active_agent"])
 
         desktop_instruction = None
         if success:
@@ -728,12 +739,12 @@ class CapiDataBNode(GraphNode):
                 'actions': actions,
                 'desktop_recommendation': artifact,
                 'pending_desktop_instruction': self._build_recommendation_instruction(artifact),
-                'requires_human_approval': True,
+                'requires_human_approval': False,
                 'approval_reason': 'Deseas que guardemos la recomendacion en el escritorio?',
-                'el_cajas_pending': True,
+                'el_cajas_pending': False,
             })
             state = StateMutator.merge_dict(state, 'response_metadata', metadata_updates)
-            state = StateMutator.update_field(state, 'routing_decision', 'human_gate')
+            state = StateMutator.update_field(state, 'routing_decision', 'assemble')
             return state
 
         return StateMutator.merge_dict(state, 'response_metadata', metadata_updates)

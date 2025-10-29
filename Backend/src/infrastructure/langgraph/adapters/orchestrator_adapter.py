@@ -480,17 +480,22 @@ class LangGraphOrchestratorAdapter:
         )
 
     def _resolve_active_agent(self, envelope: ResponseEnvelope, response_text: str) -> str:
-        meta = envelope.meta if isinstance(getattr(envelope, "meta", None), dict) else {}
-        completed_nodes = meta.get("completed_nodes")
-        if isinstance(completed_nodes, (list, tuple)):
-            for agent_node in ("capi_gus", "branch", "anomaly"):
-                if agent_node in completed_nodes:
-                    return agent_node
-        if hasattr(envelope, "data") and isinstance(envelope.data, dict):
-            if envelope.data.get("agent"):
-                return str(envelope.data["agent"])
-            stage = envelope.data.get("workflow_stage")
-            if isinstance(stage, str):
+        meta = envelope.meta if isinstance(getattr(envelope, "meta", None), dict) else {}
+        completed_nodes = meta.get("completed_nodes")
+        if isinstance(completed_nodes, (list, tuple)):
+            for agent_node in ("capi_gus", "branch", "anomaly"):
+                if agent_node in completed_nodes:
+                    return agent_node
+        response_meta = meta.get("response_metadata")
+        if isinstance(response_meta, dict):
+            active_agent = response_meta.get("active_agent")
+            if isinstance(active_agent, str) and active_agent.strip():
+                return active_agent.strip()
+        if hasattr(envelope, "data") and isinstance(envelope.data, dict):
+            if envelope.data.get("agent"):
+                return str(envelope.data["agent"])
+            stage = envelope.data.get("workflow_stage")
+            if isinstance(stage, str):
                 lowered = stage.lower()
                 if "capi_gus" in lowered or "gus" in lowered or "summary" in lowered:
                     return "capi_gus"
@@ -669,7 +674,9 @@ class LangGraphOrchestratorAdapter:
                 setattr(envelope, "message", response_text)
                 if isinstance(envelope.data, dict):
                     envelope.data.setdefault("response", response_text)
-        active_agent = self._resolve_active_agent(envelope, response_text)
+        active_agent = self._resolve_active_agent(envelope, response_text)
+        if isinstance(getattr(envelope, "meta", None), dict) and active_agent:
+            envelope.meta["agent"] = active_agent
 
         effective_trace_id = getattr(envelope, "trace_id", None) or trace_id
         usage_details = self._extract_usage_details(envelope, query, response_text)
