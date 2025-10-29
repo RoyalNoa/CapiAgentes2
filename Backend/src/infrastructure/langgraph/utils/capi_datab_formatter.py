@@ -127,7 +127,14 @@ def compose_success_message(
     if rows:
         first_row = rows[0]
         if isinstance(first_row, dict) and first_row:
-            narrative = _compose_branch_narrative(first_row, branch)
+            raw_request = getattr(operation, "raw_request", "") or ""
+            include_theoretical, include_distribution = _evaluate_detail_preferences(raw_request)
+            narrative = _compose_branch_narrative(
+                first_row,
+                branch,
+                include_theoretical=include_theoretical,
+                include_distribution=include_distribution,
+            )
             if narrative:
                 return narrative + suffix
             if len(first_row) == 1:
@@ -268,7 +275,54 @@ def _compose_export_suffix(export_file: Optional[str]) -> str:
     return f" Si precisas revisar el detalle puedo compartirte el archivo {filename}."
 
 
-def _compose_branch_narrative(row: Dict[str, Any], branch: Optional[str]) -> Optional[str]:
+def _evaluate_detail_preferences(raw_request: Optional[str]) -> Tuple[Optional[bool], Optional[bool]]:
+    if not raw_request:
+        return None, None
+    normalized = raw_request.lower()
+    if not normalized.strip():
+        return None, None
+
+    theoretical_keywords = (
+        "teorica",
+        "teórica",
+        "teorico",
+        "teórico",
+        "brecha",
+        "diferencia",
+        "gap",
+    )
+    distribution_keywords = (
+        "detalle",
+        "detall",
+        "desglose",
+        "composicion",
+        "composición",
+        "component",
+        "distribucion",
+        "distribución",
+        "breakdown",
+    )
+
+    wants_theoretical = any(keyword in normalized for keyword in theoretical_keywords)
+    wants_distribution = any(keyword in normalized for keyword in distribution_keywords)
+    wants_extra_detail = wants_theoretical or wants_distribution
+    requests_only_balance = ("saldo" in normalized) and not wants_extra_detail
+
+    if requests_only_balance:
+        return False, False
+
+    include_theoretical = True if wants_theoretical else None
+    include_distribution = True if wants_distribution else None
+    return include_theoretical, include_distribution
+
+
+def _compose_branch_narrative(
+    row: Dict[str, Any],
+    branch: Optional[str],
+    *,
+    include_theoretical: Optional[bool] = None,
+    include_distribution: Optional[bool] = None,
+) -> Optional[str]:
     branch_name = branch or row.get("sucursal_nombre") or row.get("branch_name")
     branch_name = str(branch_name).strip() if branch_name else None
 
@@ -300,46 +354,48 @@ def _compose_branch_narrative(row: Dict[str, Any], branch: Optional[str]) -> Opt
     else:
         sentences.append(f"El {primary_label} es {primary_value_text}.")
 
-    theoretical_fields: Tuple[str, ...] = (
-        "caja_teorica_sucursal",
-        "saldo_teorico",
-        "teorico_total",
-    )
-    theoretic_raw_value: Any = None
-    theoretic_field = None
-    for candidate in theoretical_fields:
-        if candidate in row and row.get(candidate) is not None:
-            theoretic_raw_value = row.get(candidate)
-            theoretic_field = candidate
-            formatted = _format_value(theoretic_raw_value, candidate)
-            theoretical_sentence = f"La caja teórica registrada asciende a {formatted}."
-            delta = _delta_values(theoretic_raw_value, primary_raw_value)
-            if delta is not None and delta != 0:
-                diff_text = _format_value(abs(delta), "delta_saldo")
-                if delta > 0:
-                    theoretical_sentence += f" Existe una brecha de {diff_text} respecto del saldo operativo."
-                else:
-                    theoretical_sentence += f" El saldo operativo supera a la caja teórica por {diff_text}."
-            sentences.append(theoretical_sentence)
-            break
+    theoretical_allowed = True if include_theoretical is None else include_theoretical
+    if theoretical_allowed:
+        theoretical_fields: Tuple[str, ...] = (
+            "caja_teorica_sucursal",
+            "saldo_teorico",
+            "teorico_total",
+        )
+        theoretic_raw_value: Any = None
+        for candidate in theoretical_fields:
+            if candidate in row and row.get(candidate) is not None:
+                theoretic_raw_value = row.get(candidate)
+                formatted = _format_value(theoretic_raw_value, candidate)
+                theoretical_sentence = f"La caja teórica registrada asciende a {formatted}."
+                delta = _delta_values(theoretic_raw_value, primary_raw_value)
+                if delta is not None and delta != 0:
+                    diff_text = _format_value(abs(delta), "delta_saldo")
+                    if delta > 0:
+                        theoretical_sentence += f" Existe una brecha de {diff_text} respecto del saldo operativo."
+                    else:
+                        theoretical_sentence += f" El saldo operativo supera a la caja teórica por {diff_text}."
+                sentences.append(theoretical_sentence)
+                break
 
-    distribution_map = [
-        ("total_atm", "ATM"),
-        ("total_ats", "ATS"),
-        ("total_tesoro", "Tesoro"),
-        ("total_cajas_ventanilla", "cajas ventanilla"),
-        ("total_buzon_depositos", "buzón de depósitos"),
-        ("total_recaudacion", "recaudación"),
-        ("total_caja_chica", "caja chica"),
-        ("total_otros", "otros"),
-    ]
-    distribution_parts = []
-    for field, label in distribution_map:
-        if field in row and row.get(field) is not None:
-            distribution_parts.append(f"{label} { _format_value(row[field], field) }")
+    distribution_allowed = True if include_distribution is None else include_distribution
+    if distribution_allowed:
+        distribution_map = [
+            ("total_atm", "ATM"),
+            ("total_ats", "ATS"),
+            ("total_tesoro", "Tesoro"),
+            ("total_cajas_ventanilla", "cajas ventanilla"),
+            ("total_buzon_depositos", "buzón de depósitos"),
+            ("total_recaudacion", "recaudación"),
+            ("total_caja_chica", "caja chica"),
+            ("total_otros", "otros"),
+        ]
+        distribution_parts = []
+        for field, label in distribution_map:
+            if field in row and row.get(field) is not None:
+                distribution_parts.append(f"{label} { _format_value(row[field], field) }")
 
-    if distribution_parts:
-        sentences.append("Distribución actual: " + ", ".join(distribution_parts) + ".")
+        if distribution_parts:
+            sentences.append("Distribución actual: " + ", ".join(distribution_parts) + ".")
 
     measured_at = row.get("medido_en") or row.get("fecha")
     timestamp_text = _format_timestamp(measured_at)

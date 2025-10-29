@@ -2,10 +2,10 @@
   "created_at": "2025-10-02T12:52:36.722705",
   "session_id": "test_session_2",
   "sanitized_session_id": "test_session_2",
-  "updated_at": "2025-10-14T16:37:09.689025",
+  "updated_at": "2025-10-22T18:20:48.771980",
   "datab_exports": [],
   "status": "completed",
-  "trace_id": "trace-1760470598.938618",
+  "trace_id": "trace-1761168035.699352",
   "user_id": "test_user",
   "workflow_mode": "chat",
   "active_agent": "capi_gus",
@@ -22,10 +22,10 @@
     "finalize"
   ],
   "intent": "summary_request",
-  "intent_confidence": 0.4,
+  "intent_confidence": 0.8,
   "last_query": "Dame un resumen de los datos financieros",
   "last_response": {
-    "message": "Lamentablemente, no tengo información actualizada para brindarte un resumen financiero en este momento. ¿Podrías proporcionarme más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "message": "Lamentablemente, no cuento con la información actualizada para brindarte un resumen financiero. ¿Podrías proporcionarme más detalles o indicar la sucursal que te interesa revisar? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
     "data": {
       "react_observations": [
         {
@@ -52,7 +52,7 @@
         }
       ],
       "reasoning_plan": {
-        "plan_id": "41f59073-737f-4d7e-bfa7-6ecfa86c359a",
+        "plan_id": "c5e43bb7-03f3-4c02-a08f-f828e5f67c80",
         "version": 1,
         "intent": "summary_request",
         "goal": "Entregar resumen financiero estratégico",
@@ -116,7 +116,7 @@
           "complexity": "medium",
           "entities": {},
           "context_used": false,
-          "semantic_confidence": 0.4,
+          "semantic_confidence": 0.8,
           "available_agents": [
             "agente_g",
             "anomaly",
@@ -126,9 +126,34 @@
             "capi_gus"
           ],
           "user_id": "test_user",
-          "session_id": "test_session_2"
+          "session_id": "test_session_2",
+          "semantic_cached": true,
+          "intent_classification": {
+            "intent": "summary_request",
+            "confidence": 0.8,
+            "matched_patterns": [
+              "semantic_pattern:summary_request",
+              "\\b(resumen|summary|sumario|sintesis)\\b",
+              "\\b(mostrar|show|dame|give me).*\\b(resumen|summary)\\b"
+            ],
+            "reasoning": "Semantic pattern match: La consulta solicita un resumen de datos financieros, lo que se alinea con el intent de solicitud de resumen y el agente adecuado para proporcionar esa información. (confidence=0.800, entities=0) | legacy patterns matched: \\b(resumen|summary|sumario|sintesis)\\b, \\b(mostrar|show|dame|give me).*\\b(resumen|summary)\\b",
+            "semantic_enabled": true,
+            "source": "semantic",
+            "semantic_result": {
+              "intent": "summary_request",
+              "confidence": 0.8,
+              "target_agent": "summary",
+              "entities": {},
+              "context_resolved": false,
+              "reasoning": "La consulta solicita un resumen de datos financieros, lo que se alinea con el intent de solicitud de resumen y el agente adecuado para proporcionar esa información.",
+              "requires_clarification": false,
+              "provider": "openai",
+              "model": "gpt-4o-mini"
+            }
+          },
+          "intent_source": "semantic"
         },
-        "generated_at": "2025-10-14T19:37:07.393880",
+        "generated_at": "2025-10-22T21:20:45.460831",
         "intent_alignment": true,
         "requires_replan": false,
         "history": [],
@@ -137,13 +162,13 @@
         "complexity": "medium",
         "estimated_effort_seconds": 64
       },
-      "response": "Lamentablemente, no tengo información actualizada para brindarte un resumen financiero en este momento. ¿Podrías proporcionarme más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "response": "Lamentablemente, no cuento con la información actualizada para brindarte un resumen financiero. ¿Podrías proporcionarme más detalles o indicar la sucursal que te interesa revisar? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
       "capi_gus": {
         "type": "conversation_summary",
         "agent": "capi_gus",
-        "created_at": "2025-10-14T19:37:09.683561+00:00",
+        "created_at": "2025-10-22T21:20:48.766241+00:00",
         "query": "Dame un resumen de los datos financieros",
-        "message": "Lamentablemente, no tengo información actualizada para brindarte un resumen financiero en este momento. ¿Podrías proporcionarme más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+        "message": "Lamentablemente, no cuento con la información actualizada para brindarte un resumen financiero. ¿Podrías proporcionarme más detalles o indicar la sucursal que te interesa revisar? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
         "base_message": "No pude generar un resumen actualizado de los datos para responder \"Dame un resumen de los datos financieros\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
         "branch": null,
         "balance": null,
@@ -187,21 +212,47 @@
         "llm_usage": {
           "model": "gpt-3.5-turbo",
           "prompt_tokens": 448,
-          "completion_tokens": 51,
-          "total_tokens": 499,
-          "cost_usd": 0.000774,
-          "processing_time": 2.2772,
+          "completion_tokens": 44,
+          "total_tokens": 492,
+          "cost_usd": 0.00076,
+          "processing_time": 1.1492,
           "finish_reason": "stop"
         }
       }
     }
   },
   "response_metadata": {
-    "intent_reasoning": "Legacy pattern match preferred: Legacy: Matched 2 pattern(s) with score 0.43 | semantic suggested summary_request (0.400)",
+    "intent_reasoning": "Semantic pattern match: La consulta solicita un resumen de datos financieros, lo que se alinea con el intent de solicitud de resumen y el agente adecuado para proporcionar esa información. (confidence=0.800, entities=0) | legacy patterns matched: \\b(resumen|summary|sumario|sintesis)\\b, \\b(mostrar|show|dame|give me).*\\b(resumen|summary)\\b",
     "intent_matched_patterns": [
+      "semantic_pattern:summary_request",
       "\\b(resumen|summary|sumario|sintesis)\\b",
       "\\b(mostrar|show|dame|give me).*\\b(resumen|summary)\\b"
     ],
+    "intent_semantic_enabled": true,
+    "interaction_channel": "chat",
+    "intent_classification": {
+      "intent": "summary_request",
+      "confidence": 0.8,
+      "matched_patterns": [
+        "semantic_pattern:summary_request",
+        "\\b(resumen|summary|sumario|sintesis)\\b",
+        "\\b(mostrar|show|dame|give me).*\\b(resumen|summary)\\b"
+      ],
+      "reasoning": "Semantic pattern match: La consulta solicita un resumen de datos financieros, lo que se alinea con el intent de solicitud de resumen y el agente adecuado para proporcionar esa información. (confidence=0.800, entities=0) | legacy patterns matched: \\b(resumen|summary|sumario|sintesis)\\b, \\b(mostrar|show|dame|give me).*\\b(resumen|summary)\\b",
+      "semantic_enabled": true,
+      "source": "semantic",
+      "semantic_result": {
+        "intent": "summary_request",
+        "confidence": 0.8,
+        "target_agent": "summary",
+        "entities": {},
+        "context_resolved": false,
+        "reasoning": "La consulta solicita un resumen de datos financieros, lo que se alinea con el intent de solicitud de resumen y el agente adecuado para proporcionar esa información.",
+        "requires_clarification": false,
+        "provider": "openai",
+        "model": "gpt-4o-mini"
+      }
+    },
     "react_trace": [
       {
         "thought": "Reviso el contexto reciente para entender la conversacion.",
@@ -257,13 +308,13 @@
       }
     ],
     "react_recommended_agent": "capi_gus",
-    "react_finished_at": "2025-10-14T16:37:01.044002",
+    "react_finished_at": "2025-10-22T18:20:45.460831",
     "active_agent": "capi_gus",
     "loop_fallback": "capi_gus",
     "react_follow_up": false,
     "needs_retry": null,
     "reasoning_plan": {
-      "plan_id": "41f59073-737f-4d7e-bfa7-6ecfa86c359a",
+      "plan_id": "c5e43bb7-03f3-4c02-a08f-f828e5f67c80",
       "version": 1,
       "intent": "summary_request",
       "goal": "Entregar resumen financiero estratégico",
@@ -327,7 +378,7 @@
         "complexity": "medium",
         "entities": {},
         "context_used": false,
-        "semantic_confidence": 0.4,
+        "semantic_confidence": 0.8,
         "available_agents": [
           "agente_g",
           "anomaly",
@@ -337,9 +388,34 @@
           "capi_gus"
         ],
         "user_id": "test_user",
-        "session_id": "test_session_2"
+        "session_id": "test_session_2",
+        "semantic_cached": true,
+        "intent_classification": {
+          "intent": "summary_request",
+          "confidence": 0.8,
+          "matched_patterns": [
+            "semantic_pattern:summary_request",
+            "\\b(resumen|summary|sumario|sintesis)\\b",
+            "\\b(mostrar|show|dame|give me).*\\b(resumen|summary)\\b"
+          ],
+          "reasoning": "Semantic pattern match: La consulta solicita un resumen de datos financieros, lo que se alinea con el intent de solicitud de resumen y el agente adecuado para proporcionar esa información. (confidence=0.800, entities=0) | legacy patterns matched: \\b(resumen|summary|sumario|sintesis)\\b, \\b(mostrar|show|dame|give me).*\\b(resumen|summary)\\b",
+          "semantic_enabled": true,
+          "source": "semantic",
+          "semantic_result": {
+            "intent": "summary_request",
+            "confidence": 0.8,
+            "target_agent": "summary",
+            "entities": {},
+            "context_resolved": false,
+            "reasoning": "La consulta solicita un resumen de datos financieros, lo que se alinea con el intent de solicitud de resumen y el agente adecuado para proporcionar esa información.",
+            "requires_clarification": false,
+            "provider": "openai",
+            "model": "gpt-4o-mini"
+          }
+        },
+        "intent_source": "semantic"
       },
-      "generated_at": "2025-10-14T19:37:07.393880",
+      "generated_at": "2025-10-22T21:20:45.460831",
       "intent_alignment": true,
       "requires_replan": false,
       "history": [],
@@ -362,31 +438,31 @@
       "summary"
     ],
     "supervisor_selected": "capi_gus",
-    "supervisor_ran_at": "2025-10-14T16:37:07.394914",
+    "supervisor_ran_at": "2025-10-22T18:20:45.463814",
     "semantic_result": {
       "intent": "summary_request",
-      "confidence": 0.4,
+      "confidence": 0.8,
       "target_agent": "summary",
       "routing_agent": "capi_gus",
       "entities": {},
-      "reasoning": "Fallback classification executed (feature_flag_disabled)",
+      "reasoning": "La consulta solicita un resumen de datos financieros, lo que se alinea con el intent de solicitud de resumen y el agente adecuado para proporcionar esta información.",
       "requires_clarification": false,
-      "provider": "fallback",
-      "model": ""
+      "provider": "openai",
+      "model": "gpt-4o-mini"
     },
     "agent_type": "capi_gus",
     "speaker": "capi_gus",
     "friendly_summary": true,
-    "agent_raw_message": "Lamentablemente, no tengo información actualizada para brindarte un resumen financiero en este momento. ¿Podrías proporcionarme más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
-    "result_summary": "Lamentablemente, no tengo información actualizada para brindarte un resumen financiero en este momento. ¿Podrías proporcionarme más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "agent_raw_message": "Lamentablemente, no cuento con la información actualizada para brindarte un resumen financiero. ¿Podrías proporcionarme más detalles o indicar la sucursal que te interesa revisar? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+    "result_summary": "Lamentablemente, no cuento con la información actualizada para brindarte un resumen financiero. ¿Podrías proporcionarme más detalles o indicar la sucursal que te interesa revisar? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
     "capi_gus_base_message": "No pude generar un resumen actualizado de los datos para responder \"Dame un resumen de los datos financieros\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
     "capi_gus_llm_usage": {
       "model": "gpt-3.5-turbo",
       "prompt_tokens": 448,
-      "completion_tokens": 51,
-      "total_tokens": 499,
-      "cost_usd": 0.000774,
-      "processing_time": 2.2772,
+      "completion_tokens": 44,
+      "total_tokens": 492,
+      "cost_usd": 0.00076,
+      "processing_time": 1.1492,
       "finish_reason": "stop"
     },
     "assembled_at": "assemble",
@@ -413,8 +489,8 @@
   },
   "processing_metrics": {
     "react_steps": 5.0,
-    "react_latency_ms": 1.0,
-    "reasoning_time_ms": 6348.0,
+    "react_latency_ms": 0.0,
+    "reasoning_time_ms": 1.0,
     "reasoning_steps": 4.0,
     "reasoning_version": 1.0,
     "reasoning_progress_percent": 98.0,
@@ -427,9 +503,9 @@
     "capi_gus": {
       "type": "conversation_summary",
       "agent": "capi_gus",
-      "created_at": "2025-10-14T19:37:09.683561+00:00",
+      "created_at": "2025-10-22T21:20:48.766241+00:00",
       "query": "Dame un resumen de los datos financieros",
-      "message": "Lamentablemente, no tengo información actualizada para brindarte un resumen financiero en este momento. ¿Podrías proporcionarme más detalles o la sucursal específica que te interesa revisar? ¿En qué puedo ayudarte? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
+      "message": "Lamentablemente, no cuento con la información actualizada para brindarte un resumen financiero. ¿Podrías proporcionarme más detalles o indicar la sucursal que te interesa revisar? ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
       "base_message": "No pude generar un resumen actualizado de los datos para responder \"Dame un resumen de los datos financieros\". ¿Podés darme un poco más de contexto o la sucursal que querés revisar?",
       "branch": null,
       "balance": null,
@@ -473,10 +549,10 @@
       "llm_usage": {
         "model": "gpt-3.5-turbo",
         "prompt_tokens": 448,
-        "completion_tokens": 51,
-        "total_tokens": 499,
-        "cost_usd": 0.000774,
-        "processing_time": 2.2772,
+        "completion_tokens": 44,
+        "total_tokens": 492,
+        "cost_usd": 0.00076,
+        "processing_time": 1.1492,
         "finish_reason": "stop"
       }
     }

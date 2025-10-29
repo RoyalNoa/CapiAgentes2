@@ -1,30 +1,5 @@
 [
-  {
-    "type": "search",
-    "id": "agent-response-errors",
-    "attributes": {
-      "title": "Agent Response Errors",
-      "description": "Errores devueltos por agentes",
-      "columns": [
-        "@timestamp",
-        "agent_name",
-        "error_code",
-        "error_message",
-        "channel"
-      ],
-      "sort": [
-        "@timestamp",
-        "desc"
-      ],
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"query\":{\"query\":\"event_type: agent_error AND error_code: \\\"agent_response_error\\\"\",\"language\":\"kuery\"},\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\",\"highlightAll\":true,\"version\":true}"
-      }
-    },
-    "references": [
-      {
-        "id": "d0b327ec-371b-4c2c-a6ec-9067d7b65598",
-        "type": "index-pattern",
-        "name": "kibanaSavedObjectMeta.searchSourceJSON.index"
+-
       }
     ]
   },

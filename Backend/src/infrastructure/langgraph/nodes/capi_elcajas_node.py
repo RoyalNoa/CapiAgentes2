@@ -9,6 +9,7 @@ import time
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
+from decimal import Decimal, InvalidOperation
 
 from src.core.logging import get_logger
 from src.infrastructure.langgraph.nodes.base import GraphNode
@@ -150,14 +151,31 @@ class CapiElCajasNode(GraphNode):
             "el_cajas_alerts": data.get("alerts_created", 0),
             "el_cajas_pending": False,
         }
+        scope = data.get("analysis_scope")
+        scope_normalized = scope.strip().lower() if isinstance(scope, str) else None
+        if isinstance(scope, str) and scope:
+            metadata_updates["analysis_scope"] = scope
+        global_summary = data.get("global_summary")
+        if isinstance(global_summary, dict):
+            metadata_updates["global_summary"] = global_summary
         metrics = {
             "el_cajas_latency_ms": duration_ms,
             "el_cajas_alerts": data.get("alerts_created", 0),
         }
 
+        routing_target = "capi_gus"
         combined_message = self._compose_message(updated, message)
+        if scope_normalized == "all_branches" and isinstance(global_summary, dict):
+            combined_message = self._compose_global_summary_message(global_summary)
+            metadata_updates["requires_human_approval"] = False
+            metadata_updates["el_cajas_pending"] = False
+            metadata_updates["analysis_scope"] = "all_branches"
+            routing_target = "human_gate"
+            data["response"] = combined_message
+
         metadata_updates["result_summary"] = combined_message
 
+        data["summary_message"] = combined_message
         shared_updates: Dict[str, Any] = {self.name: data}
         if shared_bucket:
             merged_datab = dict(shared_bucket)
@@ -165,10 +183,10 @@ class CapiElCajasNode(GraphNode):
             shared_updates["capi_datab"] = merged_datab
 
         updated = StateMutator.merge_dict(updated, "response_metadata", metadata_updates)
-        updated = StateMutator.merge_dict(updated, "response_data", {"el_cajas": data})
+        updated = StateMutator.merge_dict(updated, "response_data", {"el_cajas": data, "response": combined_message})
         updated = StateMutator.merge_dict(updated, "shared_artifacts", shared_updates)
         updated = StateMutator.merge_dict(updated, "processing_metrics", metrics)
-        updated = StateMutator.update_field(updated, "routing_decision", "capi_gus")
+        updated = StateMutator.update_field(updated, "routing_decision", routing_target)
         updated = StateMutator.update_field(updated, "response_message", combined_message)
         updated = self._prepare_desktop_action(updated, data)
         updated = StateMutator.append_to_list(updated, "completed_nodes", self.name)
@@ -177,6 +195,9 @@ class CapiElCajasNode(GraphNode):
         return updated
 
     def _prepare_desktop_action(self, state: GraphState, data: Dict[str, Any]) -> GraphState:
+        if data.get("analysis_scope") == "all_branches":
+            return state
+
         artifacts: List[Dict[str, Any]] = []
         files = data.get('recommendation_files')
         if isinstance(files, list) and files:
@@ -210,6 +231,50 @@ class CapiElCajasNode(GraphNode):
         updated = StateMutator.merge_dict(state, 'response_metadata', metadata_updates)
         updated = StateMutator.update_field(updated, 'routing_decision', 'human_gate')
         return updated
+
+    def _compose_global_summary_message(self, summary: Dict[str, Any]) -> str:
+        total_branches = int(summary.get("total_branches") or 0)
+        surplus = summary.get("surplus") or {}
+        deficit = summary.get("deficit") or {}
+        policy = summary.get("policy") or {}
+        surplus_branches = int(surplus.get("branches") or 0)
+        deficit_branches = int(deficit.get("branches") or 0)
+        surplus_amount = self._format_ars(surplus.get("amount") or 0)
+        deficit_amount = self._format_ars(deficit.get("amount") or 0)
+
+        threshold = policy.get("max_surplus_pct") or policy.get("max_deficit_pct")
+        if threshold:
+            try:
+                pct = float(threshold) * 100
+                tolerance_text = f"±{pct:.0f}%"
+            except (TypeError, ValueError):
+                tolerance_text = "la franja tolerable"
+        else:
+            tolerance_text = "la franja tolerable"
+
+        message_parts = [
+            f"Analicé {total_branches} sucursales contra la franja tolerable del canal Saldo Total ({tolerance_text}).",
+            f"{surplus_branches} muestran excedentes fuera de tolerancia por {surplus_amount}",
+            f"y {deficit_branches} registran faltantes por {deficit_amount}.",
+            "¿Querés la información más detallada en un Excel?",
+        ]
+        return " ".join(part.strip() for part in message_parts if part)
+
+    def _format_ars(self, value: Any) -> str:
+        try:
+            amount = Decimal(str(value))
+        except (InvalidOperation, ValueError, TypeError):
+            try:
+                amount = Decimal(float(value))
+            except Exception:
+                return str(value)
+
+        quantized = amount.quantize(Decimal("0.01"))
+        sign = "-" if quantized < 0 else ""
+        abs_value = abs(quantized)
+        integer_part, decimal_part = f"{abs_value:,.2f}".split(".")
+        integer_part = integer_part.replace(",", ".")
+        return f"{sign}${integer_part},{decimal_part}"
 
     def _build_save_recommendation_action(self, state: GraphState, artifact: Dict[str, Any]) -> Dict[str, Any]:
         payload = {

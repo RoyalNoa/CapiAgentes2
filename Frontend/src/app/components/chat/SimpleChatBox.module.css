@@ -56,6 +56,15 @@
   box-shadow: 0 0 14px rgba(0, 229, 255, 0.18);
 }
 
+.simulationBanner[data-running="true"] {
+  border-color: rgba(0, 229, 255, 0.45);
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.18);
+}
+
+.simulationBanner[data-running="true"] .simulationGlow {
+  opacity: 0.75;
+}
+
 .simulationLabel {
   font-size: 11px;
 }

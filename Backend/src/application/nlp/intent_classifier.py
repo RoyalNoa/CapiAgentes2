@@ -23,6 +23,7 @@ class IntentClassificationResult:
     confidence: float
     matched_patterns: list[str]
     reasoning: str
+    semantic_result: IntentResult | None = None
 
 
 class IntentClassifier:
@@ -104,7 +105,8 @@ class IntentClassifier:
                 intent=normalized_intent,
                 confidence=semantic_result.confidence,
                 matched_patterns=semantic_patterns,
-                reasoning=semantic_reasoning
+                reasoning=semantic_reasoning,
+                semantic_result=semantic_result,
             )
 
             legacy_candidate = self._legacy_classify(query)
@@ -121,7 +123,8 @@ class IntentClassifier:
                         intent=legacy_candidate.intent,
                         confidence=max(legacy_candidate.confidence, semantic_result.confidence),
                         matched_patterns=legacy_candidate.matched_patterns,
-                        reasoning=combined_reasoning
+                        reasoning=combined_reasoning,
+                        semantic_result=semantic_result,
                     )
 
                 if legacy_candidate.intent == normalized_intent:
@@ -134,7 +137,8 @@ class IntentClassifier:
                         intent=normalized_intent,
                         confidence=max(semantic_result.confidence, legacy_candidate.confidence),
                         matched_patterns=combined_patterns,
-                        reasoning=combined_reasoning
+                        reasoning=combined_reasoning,
+                        semantic_result=semantic_result,
                     )
 
             if normalized_intent is None or normalized_intent == Intent.UNKNOWN:

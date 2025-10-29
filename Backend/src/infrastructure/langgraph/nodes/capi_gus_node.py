@@ -211,6 +211,29 @@ class CapiGusNode(GraphNode):
         datab_bucket = shared.get("capi_datab") if isinstance(shared, dict) else {}
         elcajas_bucket = shared.get("capi_elcajas") if isinstance(shared, dict) else {}
 
+        analysis_scope = None
+        if isinstance(datab_bucket, dict):
+            analysis_scope = datab_bucket.get("analysis_scope")
+            if not analysis_scope:
+                planner_meta = datab_bucket.get("planner_metadata")
+                if isinstance(planner_meta, dict):
+                    analysis_scope = planner_meta.get("analysis_scope")
+        if not analysis_scope:
+            analysis_scope = metadata.get("analysis_scope")
+        normalized_scope = (analysis_scope or "").lower()
+        if normalized_scope == "all_branches":
+            summary = None
+            if isinstance(elcajas_bucket, dict):
+                candidate = elcajas_bucket.get("global_summary")
+                if isinstance(candidate, dict):
+                    summary = candidate
+            if summary is None and isinstance(metadata, dict):
+                candidate = metadata.get("global_summary")
+                if isinstance(candidate, dict):
+                    summary = candidate
+            if summary is not None:
+                return self._compose_global_response(state, datab_bucket, elcajas_bucket, summary)
+
         primary_row = self._select_primary_row(datab_bucket)
         branch_name = self._resolve_branch_name(primary_row, datab_bucket, metadata, state)
         balance_value, balance_text = self._extract_value(
@@ -303,6 +326,82 @@ class CapiGusNode(GraphNode):
             artifact["llm_usage"] = usage
 
         return final_message, artifact, usage
+
+    def _compose_global_response(
+        self,
+        state: GraphState,
+        datab_bucket: Dict[str, Any],
+        elcajas_bucket: Dict[str, Any],
+        summary: Dict[str, Any],
+    ) -> Tuple[str, Dict[str, Any], Optional[Dict[str, Any]]]:
+        total_branches = int(summary.get("total_branches") or 0)
+        policy = summary.get("policy") or {}
+        surplus_pct = self._to_decimal(policy.get("max_surplus_pct"))
+        deficit_pct = self._to_decimal(policy.get("max_deficit_pct"))
+        if total_branches > 0:
+            prefix = f"Revis\u00e9 {total_branches} sucursales"
+        else:
+            prefix = "Revis\u00e9 las sucursales disponibles"
+        if surplus_pct is not None:
+            pct_value = (surplus_pct * Decimal("100")).quantize(Decimal("1"))
+            prefix += f" con la franja \u00b1{pct_value}% del canal Saldo Total"
+        elif deficit_pct is not None:
+            pct_value = (deficit_pct * Decimal("100")).quantize(Decimal("1"))
+            prefix += f" con tolerancia de {pct_value}% del canal Saldo Total"
+
+        surplus_info = summary.get("surplus") or {}
+        deficit_info = summary.get("deficit") or {}
+        surplus_count = int(surplus_info.get("branches") or 0)
+        deficit_count = int(deficit_info.get("branches") or 0)
+        surplus_amount = self._to_decimal(surplus_info.get("amount")) or Decimal("0")
+        deficit_amount = self._to_decimal(deficit_info.get("amount")) or Decimal("0")
+
+        if surplus_count == 0 and deficit_count == 0:
+            message_body = f"{prefix}: todas las sucursales quedaron dentro de la franja tolerable"
+        else:
+            if surplus_count > 0:
+                surplus_text = f"{surplus_count} con excedentes fuera de tolerancia por {self._format_currency(surplus_amount)}"
+            else:
+                surplus_text = "ninguna con excedentes fuera de tolerancia"
+            if deficit_count > 0:
+                deficit_text = f"{deficit_count} con faltantes por {self._format_currency(deficit_amount)}"
+            else:
+                deficit_text = "ninguna con faltantes fuera de tolerancia"
+            message_body = f"{prefix}: {surplus_text} y {deficit_text}"
+
+        message_body = message_body.strip()
+        if not message_body.endswith((".", "!", "?")):
+            message_body += "."
+        closing_question = "\u00bfQuer\u00e9s la informaci\u00f3n m\u00e1s detallada en un Excel?"
+        final_message = f"{message_body} {closing_question}"
+
+        artifact: Dict[str, Any] = {
+            "type": "global_branch_summary",
+            "agent": "capi_gus",
+            "created_at": datetime.now(timezone.utc).isoformat(),
+            "query": getattr(state, "original_query", ""),
+            "analysis_scope": "all_branches",
+            "summary": summary,
+            "message": final_message,
+            "base_message": message_body.rstrip("."),
+            "closing_prompt": closing_question,
+            "llm_generated": False,
+        }
+        if isinstance(elcajas_bucket, dict):
+            global_branches = elcajas_bucket.get("global_branches")
+            if isinstance(global_branches, list):
+                artifact["global_branches"] = global_branches
+        if isinstance(datab_bucket, dict):
+            rows = datab_bucket.get("rows")
+            if isinstance(rows, list):
+                artifact["rows"] = rows
+            rowcount = datab_bucket.get("rowcount")
+            if rowcount is not None:
+                artifact["rowcount"] = rowcount
+            export_file = datab_bucket.get("export_file")
+            if export_file:
+                artifact["export_file"] = export_file
+        return final_message, artifact, None
 
     def _build_base_message(
         self,

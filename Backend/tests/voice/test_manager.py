@@ -86,6 +86,7 @@ if 'google' not in sys.modules:
     tts_mod.types = types_mod
     sys.modules['google.cloud.texttospeech_v1.types'] = types_mod
 import base64
+import json
 from typing import Any
 
 import pytest
@@ -189,6 +190,10 @@ async def test_voice_orchestrator_records_turn(monkeypatch):
     assert result.audio_url == '/tmp/sess-1.mp3'
     assert len(orchestrator.calls) == 1
     assert orchestrator.calls[0]['channel'] == 'voice'
+    payload = json.loads(orchestrator.calls[0]['query'])
+    assert payload['query'] == 'hola agente'
+    assert payload['interaction_channel'] == 'voice'
+    assert payload['workflow_mode'] == 'voice'
     assert tts.calls[0]['text'] == 'hola voz'
     assert storage.persist_calls[0] == b'voice-bytes'
     assert metrics.started == 1

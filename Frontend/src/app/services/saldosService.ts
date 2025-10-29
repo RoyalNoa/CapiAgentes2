@@ -2,6 +2,7 @@ export interface SucursalSaldo {
   sucursal_id: string;
   sucursal_numero: number;
   sucursal_nombre: string;
+  tipo_sucursal?: string | null;
   telefonos?: string | null;
   calle?: string | null;
   altura?: number | null;

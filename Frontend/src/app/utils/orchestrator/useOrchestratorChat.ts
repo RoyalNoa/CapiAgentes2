@@ -203,6 +203,91 @@ function normalizeActions(value: any): PendingAction[] {
   return normalized;
 }
 
+const sanitizeActionId = (raw: unknown): string | null => {
+  if (typeof raw === 'string' && raw.trim()) {
+    return raw.trim();
+  }
+  if (typeof raw === 'number' && Number.isFinite(raw)) {
+    return String(raw);
+  }
+  return null;
+};
+
+const buildPendingActionFromInstruction = (instruction: any): PendingAction | null => {
+  if (!instruction || typeof instruction !== 'object') {
+    return null;
+  }
+
+  const parameters = instruction.parameters && typeof instruction.parameters === 'object'
+    ? instruction.parameters
+    : {};
+
+  const fileCandidate =
+    parameters?.artifact_filename ??
+    parameters?.filename ??
+    parameters?.file_path ??
+    parameters?.path ??
+    null;
+
+  const baseId =
+    sanitizeActionId(instruction.id) ??
+    sanitizeActionId(instruction.action_id) ??
+    sanitizeActionId(instruction.action) ??
+    sanitizeActionId(instruction.intent);
+
+  const fallbackIdParts: string[] = ['desktop'];
+  if (typeof instruction.intent === 'string' && instruction.intent.trim()) {
+    fallbackIdParts.push(instruction.intent.trim().toLowerCase());
+  }
+  if (typeof instruction.action === 'string' && instruction.action.trim()) {
+    fallbackIdParts.push(instruction.action.trim().toLowerCase());
+  }
+  if (typeof fileCandidate === 'string' && fileCandidate.trim()) {
+    fallbackIdParts.push(fileCandidate.trim().toLowerCase());
+  }
+
+  const actionId = baseId ?? fallbackIdParts.join('|');
+
+  const labelCandidate =
+    (typeof instruction.label === 'string' && instruction.label.trim() && instruction.label.trim()) ||
+    (typeof instruction.title === 'string' && instruction.title.trim() && instruction.title.trim()) ||
+    (typeof instruction.description === 'string' && instruction.description.trim() && instruction.description.trim());
+
+  const excelIntent =
+    typeof instruction.intent === 'string' && instruction.intent.toLowerCase().includes('excel');
+  const writeAction =
+    typeof instruction.action === 'string' && instruction.action.toLowerCase().includes('write');
+
+  const label = labelCandidate
+    ? labelCandidate
+    : excelIntent
+      ? 'Descargar Excel en escritorio'
+      : writeAction
+        ? 'Guardar archivo en escritorio'
+        : 'Ejecutar acción en escritorio';
+
+  const payload: Record<string, any> = {
+    intent: instruction.intent,
+    action: instruction.action,
+    parameters,
+    ...(fileCandidate ? { filename: fileCandidate, artifact_filename: fileCandidate } : {}),
+  };
+
+  if (typeof instruction.branch === 'string' && instruction.branch.trim()) {
+    payload.branch_name = instruction.branch.trim();
+  } else if (typeof parameters?.branch === 'string' && parameters.branch.trim()) {
+    payload.branch_name = parameters.branch.trim();
+  }
+
+  return {
+    id: actionId,
+    label,
+    payload,
+    interrupt_id: instruction.interrupt_id ?? instruction.interruptId ?? null,
+    raw: instruction,
+  };
+};
+
 export function useOrchestratorChat(clientId: string = 'default'): HookReturn {
   const [messages, setMessages] = useState<OrchestratorMessage[]>([]);
   const [loading, setLoading] = useState(false);
@@ -276,12 +361,47 @@ export function useOrchestratorChat(clientId: string = 'default'): HookReturn {
       if (!result?.dashboard && metadata.dashboard) setDashboard(metadata.dashboard);
     }
 
-    const normalizedActions = normalizeActions(
+    const normalizedActionsInput =
       rawPayload?.actions ??
       metadata?.actions ??
       (result as any)?.actions ??
-      [],
-    );
+      [];
+
+    let normalizedActions = normalizeActions(normalizedActionsInput);
+
+    const instructionCandidates: any[] = [];
+    const collectInstruction = (value: any) => {
+      if (!value) return;
+      if (Array.isArray(value)) {
+        value.forEach(candidate => collectInstruction(candidate));
+        return;
+      }
+      if (typeof value === 'object') {
+        instructionCandidates.push(value);
+      }
+    };
+
+    collectInstruction(metadata?.pending_desktop_instruction);
+    collectInstruction(rawPayload?.pending_desktop_instruction);
+    collectInstruction((metadata as any)?.pending_desktop_instructions);
+    collectInstruction((rawPayload as any)?.pending_desktop_instructions);
+    collectInstruction(metadata?.desktop_instruction);
+    collectInstruction(rawPayload?.desktop_instruction);
+
+    const derivedInstructionActions = instructionCandidates
+      .map(buildPendingActionFromInstruction)
+      .filter((action): action is PendingAction => Boolean(action));
+
+    if (derivedInstructionActions.length > 0) {
+      const existingIds = new Set(normalizedActions.map(action => action.id));
+      const dedupedInstructions = derivedInstructionActions.filter(action => {
+        if (!action.id) return true;
+        return !existingIds.has(action.id);
+      });
+      if (dedupedInstructions.length > 0) {
+        normalizedActions = [...normalizedActions, ...dedupedInstructions];
+      }
+    }
 
     const pendingFlag = Boolean(
       metadata?.el_cajas_pending ??

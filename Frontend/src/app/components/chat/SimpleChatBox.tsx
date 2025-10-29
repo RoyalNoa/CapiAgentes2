@@ -751,31 +751,21 @@ useEffect(() => {
     }
   }, [turns, simState.simulatedEvents, simState.morphingText, simState.morphingPhase]);
 
-  const handleToggleSimulation = useCallback(
-    (turnId: string) => {
-      setTurns(prev =>
-        prev.map(turn => {
-          if (turn.id !== turnId) {
-            return turn;
-          }
-
-          const isActive = turn.id === activeTurnId;
-          if (isActive && turn.simulation.status === 'running') {
-            return turn;
-          }
-
-          return {
-            ...turn,
-            simulation: {
-              ...turn.simulation,
-              collapsed: !turn.simulation.collapsed,
-            },
-          };
-        }),
-      );
-    },
-    [activeTurnId],
-  );
+  const handleToggleSimulation = useCallback((turnId: string) => {
+    setTurns(prev =>
+      prev.map(turn =>
+        turn.id === turnId
+          ? {
+              ...turn,
+              simulation: {
+                ...turn.simulation,
+                collapsed: !turn.simulation.collapsed,
+              },
+            }
+          : turn,
+      ),
+    );
+  }, []);
 
   const handleSendMessage = useCallback(
     async (text: string) => {
@@ -995,13 +985,11 @@ const TurnBlock = memo(
     const decisionBubbles = turn.decisions
       .map(message => toBubbleMessage(message, 'bot'))
       .filter(Boolean);
+    const isRunning = isActive && turn.simulation.status === 'running';
     const events =
       isActive && turn.simulation.status !== 'complete' ? liveEvents : turn.simulation.events;
-    const collapsed =
-      isActive && turn.simulation.status === 'running'
-        ? false
-        : Boolean(turn.simulation.collapsed);
-    const showMorphing = isActive && turn.simulation.status === 'running' && morphingText && morphingPhase;
+    const collapsed = Boolean(turn.simulation.collapsed);
+    const showMorphing = isRunning && morphingText && morphingPhase;
     const showTimeline = events.length > 0;
 
     const contentId = `${turn.id}-workflow`;
@@ -1027,7 +1015,7 @@ const TurnBlock = memo(
             onClick={() => onToggle(turn.id)}
             aria-expanded={!collapsed}
             aria-controls={contentId}
-            disabled={isActive && turn.simulation.status === 'running'}
+            data-running={isRunning || undefined}
           >
             <span id={`${contentId}-label`} className={styles.simulationLabel}>
               Workflow

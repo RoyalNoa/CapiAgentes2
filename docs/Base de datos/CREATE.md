@@ -161,6 +161,9 @@ Objetivo: conocer el 100% del efectivo por sucursal (oficial) y, en paralelo, el
 CREATE TABLE IF NOT EXISTS saldos_sucursal (
   id                      BIGSERIAL PRIMARY KEY,
   sucursal_id             TEXT NOT NULL UNIQUE,                                  -- S001
+  sucursal_numero         INTEGER NOT NULL,
+  sucursal_nombre         TEXT NOT NULL,
+  tipo_sucursal           TEXT NOT NULL DEFAULT 'sucursal',
 
   -- Importes principales (primero)
   saldo_total_sucursal    NUMERIC(20,2) NOT NULL,                         -- 100% del efectivo de la sucursal
@@ -188,6 +191,16 @@ CREATE TABLE IF NOT EXISTS saldos_sucursal (
 -- Índices: ordenar por última medición
 CREATE INDEX IF NOT EXISTS ix_saldo_sucursal_medido_en
   ON saldos_sucursal (medido_en DESC);
+
+Campos clave
+- `saldo_total_sucursal`: efectivo real relevado (confiable).
+- `caja_teorica_sucursal`: referencia del core bancario; permite medir desvíos (positivo = excedente, negativo = faltante).
+- `tipo_sucursal`: clasifica instalaciones especiales (por ejemplo `boveda`) para excluirlas de controles operativos.
+- `total_tesoro`: caja fuerte interna (bóveda local).
+- `total_cajas_ventanilla`: cash disponible en cajeros humanos.
+- `total_buzon_depositos`: depósito nocturno / buzón.
+- `total_recaudacion`: efectivo en recuento (backoffice, camiones).
+- `total_caja_chica`: gastos operativos menores.
 
 -- Vista: último snapshot oficial por sucursal
 CREATE OR REPLACE VIEW saldos_actuales_sucursal_oficial AS
@@ -304,6 +317,5 @@ SELECT sucursal_id, saldo_total_sucursal, saldo_total_dispositivos, desfase_ofic
 FROM saldos_conciliacion_sucursal
 ORDER BY sucursal_id;
 ```
-
 
 

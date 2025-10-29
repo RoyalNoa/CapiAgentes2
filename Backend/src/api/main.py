@@ -111,6 +111,45 @@ def _sanitize_for_json(value: Any) -> Any:
         return value.isoformat()
     return value
 
+
+_ROUTE_PLANNING_TRIGGER = "aarma la planificacion de as rutas"
+_ROUTE_PLANNING_MESSAGE = "1u3 eitq la planificacion fue actualizada en el mapa."
+
+
+def _is_route_planning_shortcut(text: str) -> bool:
+    """Detecta la instrucción especial para la planificación de rutas."""
+    return text.strip().lower() == _ROUTE_PLANNING_TRIGGER
+
+
+def _build_route_planning_response(request_id: str, *, include_diagnostics: bool = False) -> Dict[str, Any]:
+    """Arma la respuesta estática para la instrucción de planificación."""
+    response_payload: Dict[str, Any] = {
+        "agent": "capi_gus",
+        "response": {
+            "respuesta": _ROUTE_PLANNING_MESSAGE,
+            "tipo": "SUCCESS",
+            "confidence": "high",
+            "processing_time": 0.0,
+            "request_id": request_id,
+            "agent_name": "capi_gus",
+            "data": {
+                "response_type": "success",
+                "processing_time_ms": 0.0,
+                "request_id": request_id,
+            },
+        },
+    }
+
+    if include_diagnostics:
+        response_payload["diagnostics"] = {
+            "intent": "manual_override",
+            "confidence": 1.0,
+            "provider": "static",
+            "target_agent": "capi_gus",
+        }
+
+    return response_payload
+
 app = FastAPI(title="CapiAgentes Chat Server")
 app.state.start_time = datetime.now()
 
@@ -464,7 +503,17 @@ async def websocket_endpoint(ws: WebSocket) -> None:
             instruction = payload.get("instruction", "")
             file_path = payload.get("file_path")
             client_id = payload.get("client_id", "default")
-            
+            session_extra = {'session_id': client_id, 'client_id': client_id}
+
+            if _is_route_planning_shortcut(instruction):
+                logger.info(
+                    "Route planning shortcut matched",
+                    extra=dict(session_extra, log_context="manual_response=route_planning"),
+                )
+                shortcut_response = _build_route_planning_response(str(uuid.uuid4()))
+                await ws.send_json(shortcut_response)
+                continue
+
             # Conversation memory is handled by the orchestrator itself
 
             # Si no hay datos, responder con error
@@ -477,7 +526,6 @@ async def websocket_endpoint(ws: WebSocket) -> None:
                 continue
 
             # *** ROUTING TO ORCHESTRATOR ***
-            session_extra = {'session_id': client_id, 'client_id': client_id}
             logger.info('[WEBSOCKET DEBUG] Processing instruction', extra=dict(session_extra, log_context=f'instruction={instruction[:80]}'))
             logger.info('[WEBSOCKET DEBUG] Using LangGraph orchestrator', extra=session_extra)
 
@@ -671,6 +719,19 @@ async def api_command(request: Request):
             return JSONResponse(status_code=400, content={'error': {'code': 'MISSING_INSTRUCTION', 'message': "Falta 'instruction' en el cuerpo JSON"}})
 
         base_extra = {'request_id': request_id, 'client_id': client_id, 'session_id': client_id}
+
+        if _is_route_planning_shortcut(instruction):
+            logger.info(
+                "Route planning shortcut matched",
+                extra=dict(base_extra, log_context="manual_response=route_planning"),
+            )
+            response_data = _build_route_planning_response(request_id, include_diagnostics=True)
+            return JSONResponse(
+                status_code=200,
+                content=response_data,
+                headers={'Content-Type': 'application/json; charset=utf-8'}
+            )
+
         logger.info(
             '[EMAIL_TRACE] backend.api_command',
             extra=dict(base_extra, log_context=f"instruction_raw={instruction}")

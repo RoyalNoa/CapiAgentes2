@@ -2,12 +2,13 @@
 from __future__ import annotations
 
 import uuid
+from copy import deepcopy
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Set, TYPE_CHECKING
 
 from src.core.logging import get_logger
-from src.core.semantics import SemanticIntentService, get_global_context_manager
+from src.core.semantics import IntentResult, SemanticIntentService, get_global_context_manager
 from src.domain.contracts.intent import Intent
 from src.application.services.agent_config_service import AgentConfigService
 from src.shared.agent_config_repository import FileAgentConfigRepository
@@ -187,9 +188,16 @@ class AdvancedReasoner:
         session_id: str,
         user_id: str,
         intent_hint: Optional[Intent] = None,
+        state: "GraphState" | None = None,
     ) -> ReasoningPlan:
         context = self.context_manager.get_context_summary(session_id)
-        semantic_result = self.semantic_service.classify_intent(query, context)
+        cached_result, classification_meta = self._extract_cached_intent(state)
+        semantic_cached = cached_result is not None
+        if semantic_cached:
+            semantic_result = cached_result
+        else:
+            semantic_result = self.semantic_service.classify_intent(query, context)
+
         primary_intent = intent_hint or semantic_result.intent or Intent.UNKNOWN
         enabled_agents = self._enabled_agents()
 
@@ -201,16 +209,20 @@ class AdvancedReasoner:
         )
         self._augment_with_cooperation(plan, enabled_agents)
         self._finalize_plan(plan)
-        plan.supporting_evidence.update(
-            {
-                "entities": semantic_result.entities,
-                "context_used": bool(context),
-                "semantic_confidence": round(semantic_result.confidence, 3),
-                "available_agents": sorted(a for a, enabled in enabled_agents.items() if enabled),
-                "user_id": user_id,
-                "session_id": session_id,
-            }
-        )
+
+        evidence_update: Dict[str, Any] = {
+            "entities": semantic_result.entities,
+            "context_used": bool(context),
+            "semantic_confidence": round(semantic_result.confidence, 3),
+            "available_agents": sorted(a for a, enabled in enabled_agents.items() if enabled),
+            "user_id": user_id,
+            "session_id": session_id,
+            "semantic_cached": semantic_cached,
+        }
+        if classification_meta:
+            evidence_update["intent_classification"] = classification_meta
+            evidence_update["intent_source"] = classification_meta.get("source")
+        plan.supporting_evidence.update(evidence_update)
 
         logger.info(
             {
@@ -220,6 +232,7 @@ class AdvancedReasoner:
                 "recommended_agent": plan.recommended_agent,
                 "confidence": round(plan.confidence, 3),
                 "steps": len(plan.steps),
+                "semantic_cached": semantic_cached,
             }
         )
         return plan
@@ -255,7 +268,12 @@ class AdvancedReasoner:
         state: "GraphState" | None = None,
     ) -> ReasoningPlan:
         context = self.context_manager.get_context_summary(session_id)
-        semantic_result = self.semantic_service.classify_intent(query, context)
+        cached_result, classification_meta = self._extract_cached_intent(state)
+        semantic_cached = cached_result is not None
+        if semantic_cached:
+            semantic_result = cached_result
+        else:
+            semantic_result = self.semantic_service.classify_intent(query, context)
         hint_intent = getattr(state, "detected_intent", None)
         primary_intent = hint_intent or semantic_result.intent or Intent.UNKNOWN
         enabled_agents = self._enabled_agents()
@@ -272,6 +290,16 @@ class AdvancedReasoner:
         new_plan.supporting_evidence.update(previous_plan.supporting_evidence)
         self._augment_with_cooperation(new_plan, enabled_agents)
         self._finalize_plan(new_plan)
+        evidence_update = {
+            "entities": semantic_result.entities,
+            "context_used": bool(context),
+            "semantic_confidence": round(semantic_result.confidence, 3),
+            "semantic_cached": semantic_cached,
+        }
+        if classification_meta:
+            evidence_update["intent_classification"] = classification_meta
+            evidence_update["intent_source"] = classification_meta.get("source")
+        new_plan.supporting_evidence.update(evidence_update)
 
         logger.info(
             {
@@ -280,6 +308,7 @@ class AdvancedReasoner:
                 "previous_version": previous_plan.version,
                 "new_version": new_plan.version,
                 "recommended_agent": new_plan.recommended_agent,
+                "semantic_cached": semantic_cached,
             }
         )
         return new_plan
@@ -287,6 +316,108 @@ class AdvancedReasoner:
     # ------------------------------------------------------------------
     # Internal helpers
     # ------------------------------------------------------------------
+
+    def _extract_cached_intent(
+        self,
+        state: "GraphState" | None,
+    ) -> tuple[Optional[IntentResult], Optional[Dict[str, Any]]]:
+        if state is None:
+            return None, None
+        metadata = getattr(state, "response_metadata", {}) or {}
+        classification = metadata.get("intent_classification")
+        if not isinstance(classification, dict):
+            return None, None
+
+        classification_copy: Dict[str, Any] = deepcopy(classification)
+        semantic_payload = classification_copy.get("semantic_result")
+        if isinstance(semantic_payload, dict):
+            try:
+                result = self._intent_result_from_dict(semantic_payload)
+                return result, classification_copy
+            except Exception as exc:  # pragma: no cover - defensive logging
+                logger.debug(
+                    {
+                        "event": "advanced_reasoning_semantic_cache_invalid",
+                        "error": str(exc),
+                    }
+                )
+                classification_copy.pop("semantic_result", None)
+
+        if classification_copy.get("semantic_enabled") is False:
+            try:
+                result = self._intent_result_from_classification(classification_copy)
+                return result, classification_copy
+            except Exception as exc:  # pragma: no cover - defensive logging
+                logger.debug(
+                    {
+                        "event": "advanced_reasoning_classification_cache_invalid",
+                        "error": str(exc),
+                    }
+                )
+                return None, classification_copy
+
+        return None, classification_copy
+
+    def _intent_result_from_dict(self, payload: Dict[str, Any]) -> IntentResult:
+        intent = self._intent_from_value(payload.get("intent"))
+        confidence = self._safe_float(payload.get("confidence"), 0.0)
+        target_agent = str(payload.get("target_agent") or "assemble")
+        entities = payload.get("entities") if isinstance(payload.get("entities"), dict) else {}
+        context_resolved = bool(payload.get("context_resolved", False))
+        reasoning = str(payload.get("reasoning") or "")
+        requires_clarification = bool(payload.get("requires_clarification", False))
+        provider = str(payload.get("provider") or "semantic_cache")
+        model = str(payload.get("model") or "")
+
+        return IntentResult(
+            intent=intent,
+            confidence=confidence,
+            target_agent=target_agent,
+            entities=entities,
+            context_resolved=context_resolved,
+            reasoning=reasoning,
+            requires_clarification=requires_clarification,
+            provider=provider,
+            model=model,
+        )
+
+    def _intent_result_from_classification(self, classification: Dict[str, Any]) -> IntentResult:
+        intent = self._intent_from_value(classification.get("intent"))
+        confidence = self._safe_float(classification.get("confidence"), 0.0)
+        target_agent = str(classification.get("target_agent") or "assemble")
+        entities = classification.get("entities") if isinstance(classification.get("entities"), dict) else {}
+        reasoning = str(classification.get("reasoning") or "")
+        provider = str(classification.get("source") or "intent_cache")
+
+        return IntentResult(
+            intent=intent,
+            confidence=confidence,
+            target_agent=target_agent,
+            entities=entities,
+            context_resolved=False,
+            reasoning=reasoning,
+            requires_clarification=bool(classification.get("requires_clarification", False)),
+            provider="legacy_classifier" if classification.get("source") == "legacy" else provider,
+            model="legacy_patterns" if classification.get("source") == "legacy" else str(classification.get("source") or ""),
+        )
+
+    @staticmethod
+    def _intent_from_value(value: Any) -> Intent:
+        if isinstance(value, Intent):
+            return value
+        if isinstance(value, str):
+            try:
+                return Intent(value)
+            except ValueError:
+                return Intent.UNKNOWN
+        return Intent.UNKNOWN
+
+    @staticmethod
+    def _safe_float(value: Any, default: float = 0.0) -> float:
+        try:
+            return float(value)
+        except (TypeError, ValueError):
+            return default
 
     def _enabled_agents(self) -> Dict[str, bool]:
         statuses = self.config_service.list_status()

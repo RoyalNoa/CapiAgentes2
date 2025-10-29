@@ -21,6 +21,7 @@ class SucursalResponse(BaseModel):
     sucursal_id: str
     sucursal_numero: int
     sucursal_nombre: str
+    tipo_sucursal: Optional[str] = None
     telefonos: Optional[str] = None
     calle: Optional[str] = None
     altura: Optional[int] = None

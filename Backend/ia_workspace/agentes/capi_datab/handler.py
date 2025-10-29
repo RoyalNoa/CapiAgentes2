@@ -224,6 +224,14 @@ class CapiDataBAgent(BaseAgent):
             if planner_meta:
                 data_payload["planner_metadata"] = planner_meta
             metadata_bucket: Dict[str, Any] = dict(getattr(operation, "metadata", {}) or {})
+            analysis_scope = None
+            if planner_meta:
+                analysis_scope = planner_meta.get("analysis_scope")
+            if analysis_scope is None:
+                analysis_scope = metadata_bucket.get("analysis_scope")
+            if analysis_scope:
+                data_payload["analysis_scope"] = analysis_scope
+                metadata_bucket.setdefault("analysis_scope", analysis_scope)
             if branch_hint:
                 metadata_bucket["branch_descriptor"] = branch_hint
             if metadata_bucket:
@@ -363,6 +371,10 @@ class CapiDataBAgent(BaseAgent):
 
     def _parse_natural_language(self, instruction: str) -> DbOperation:
         format_hint = self._detect_format_hint(instruction.lower())
+
+        global_operation = self._global_balance_from_instruction(instruction, format_hint)
+        if global_operation:
+            return global_operation
 
         branch_operation = self._branch_balance_from_llm(instruction, format_hint)
         if branch_operation:
@@ -539,6 +551,90 @@ class CapiDataBAgent(BaseAgent):
             planner_metadata={"planner_source": "heuristic_branch_extractor"},
         )
 
+    def _global_balance_from_instruction(self, instruction: str, format_hint: str) -> Optional[DbOperation]:
+        if not instruction:
+            return None
+        sanitized = re.sub(r"[()\[\]]", " ", instruction)
+        lowered = sanitized.lower()
+        if "sucurs" not in lowered and "sucursal" not in lowered:
+            return None
+
+        triggers = [
+            "todas las sucurs",
+            "todas las sucursal",
+            "estado actual de las sucurs",
+            "estado actual de las sucursal",
+            "situacion actual de las sucurs",
+            "situación actual de las sucurs",
+            "analiza todas las sucurs",
+            "analisis global de sucurs",
+            "análisis global de sucurs",
+        ]
+        match_found = any(trigger in lowered for trigger in triggers)
+        if not match_found:
+            if not (("todas" in lowered or "todo" in lowered) and "sucurs" in lowered):
+                return None
+
+        return self._build_global_balance_operation(
+            format_hint=format_hint,
+            original_instruction=instruction,
+            planner_source="heuristic_global_summary",
+        )
+
+    def _build_global_balance_operation(
+        self,
+        *,
+        format_hint: str,
+        original_instruction: str,
+        planner_source: str,
+        table_hint: Optional[str] = None,
+    ) -> DbOperation:
+        table_name = validate_table(table_hint or "public.saldos_sucursal")
+        columns = [
+            "sucursal_id",
+            "sucursal_numero",
+            "sucursal_nombre",
+            "tipo_sucursal",
+            "saldo_total_sucursal",
+            "caja_teorica_sucursal",
+            "total_atm",
+            "total_ats",
+            "total_tesoro",
+            "total_cajas_ventanilla",
+            "total_buzon_depositos",
+            "total_recaudacion",
+            "total_caja_chica",
+            "total_otros",
+            "medido_en",
+        ]
+        sql = (
+            "SELECT DISTINCT ON (sucursal_id) "
+            + ", ".join(columns)
+            + f" FROM {table_name} "
+            + "WHERE COALESCE(tipo_sucursal, 'sucursal') <> 'boveda' "
+            + "ORDER BY sucursal_id, medido_en DESC"
+        )
+        metadata: Dict[str, Any] = {
+            "analysis_scope": "all_branches",
+            "planner_source": planner_source,
+            "planner_reason": "Consulta agregada solicitada para todas las sucursales.",
+            "suggested_table": table_name,
+            "filters": [
+                {"column": "tipo_sucursal", "operator": "<>", "value": "boveda"},
+            ],
+        }
+        return DbOperation(
+            operation="select",
+            sql=sql,
+            parameters=[],
+            output_format=format_hint,
+            table=table_name,
+            requires_approval=False,
+            description="Consulta de saldos para todas las sucursales.",
+            raw_request=original_instruction,
+            metadata=metadata,
+        )
+
     def _build_branch_balance_operation(
         self,
         *,
@@ -556,6 +652,7 @@ class CapiDataBAgent(BaseAgent):
             "sucursal_id",
             "sucursal_numero",
             "sucursal_nombre",
+            "tipo_sucursal",
             "saldo_total_sucursal",
             "caja_teorica_sucursal",
             "total_atm",

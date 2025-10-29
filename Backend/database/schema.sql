@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS public.saldos_sucursal (
   sucursal_id               TEXT NOT NULL UNIQUE,
   sucursal_numero           INTEGER NOT NULL,
   sucursal_nombre           TEXT NOT NULL,
+  tipo_sucursal             TEXT NOT NULL DEFAULT 'sucursal',
   telefonos                 TEXT,
   calle                     TEXT,
   altura                    INTEGER,

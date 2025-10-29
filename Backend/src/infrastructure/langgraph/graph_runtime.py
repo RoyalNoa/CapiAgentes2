@@ -166,6 +166,7 @@ class LangGraphRuntime:
         payload: Dict[str, Any] = {}
         query_text = text or ""
         workflow_mode = "chat"
+        interaction_channel: str | None = None
 
         if text:
             try:
@@ -176,21 +177,32 @@ class LangGraphRuntime:
                 payload = parsed
                 query_text = str(parsed.get("query") or parsed.get("text") or "")
                 workflow_mode = str(parsed.get("workflow_mode") or parsed.get("mode") or workflow_mode)
+                channel_candidate = parsed.get("interaction_channel") or parsed.get("channel")
+                if isinstance(channel_candidate, str) and channel_candidate.strip():
+                    interaction_channel = channel_candidate.strip()
 
         config = dict(self.config or {})
         config.setdefault("workflow_mode", workflow_mode)
         if payload:
             config["external_payload"] = payload
+        if interaction_channel:
+            config.setdefault("interaction_channel", interaction_channel)
+        else:
+            interaction_channel = str(config.get("interaction_channel") or "").strip() or None
 
-        return GraphState(
-            session_id=session_id,
-            trace_id=f"trace-{datetime.now().timestamp()}",
-            user_id=user_id,
-            original_query=query_text,
-            workflow_mode=workflow_mode,
-            external_payload=payload,
-            config=config,
-        )
+        state_kwargs: Dict[str, Any] = {
+            "session_id": session_id,
+            "trace_id": f"trace-{datetime.now().timestamp()}",
+            "user_id": user_id,
+            "original_query": query_text,
+            "workflow_mode": workflow_mode,
+            "external_payload": payload,
+            "config": config,
+        }
+        if interaction_channel:
+            state_kwargs["interaction_channel"] = interaction_channel
+
+        return GraphState(**state_kwargs)
 
     def _execution_config(self, session_id: str) -> Dict[str, Any]:
         configurable = {

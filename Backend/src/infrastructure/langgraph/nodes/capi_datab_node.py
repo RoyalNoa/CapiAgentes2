@@ -168,6 +168,15 @@ class CapiDataBNode(GraphNode):
         }
         if planner_meta:
             shared_bucket["planner_metadata"] = planner_meta
+        analysis_scope = data_payload.get("analysis_scope")
+        if analysis_scope is None and planner_meta:
+            analysis_scope = planner_meta.get("analysis_scope")
+        if analysis_scope is None:
+            operation_meta = getattr(operation, "metadata", {}) or {}
+            if isinstance(operation_meta, dict):
+                analysis_scope = operation_meta.get("analysis_scope")
+        if analysis_scope:
+            shared_bucket["analysis_scope"] = analysis_scope
 
         metadata_update: Dict[str, Any] = {
             "agent": self.name,
@@ -178,6 +187,8 @@ class CapiDataBNode(GraphNode):
             metadata_update["human_decision"] = decision
         if planner_meta:
             metadata_update["planner_metadata"] = planner_meta
+        if analysis_scope:
+            metadata_update["analysis_scope"] = analysis_scope
 
         raw_agent_message = agent_result.message
         metadata_update["agent_raw_message"] = raw_agent_message
@@ -680,10 +691,32 @@ class CapiDataBNode(GraphNode):
         if addition and addition not in message:
             metadata_updates['alert_notification'] = addition
 
+        analysis_scope: Optional[str] = None
+        shared = getattr(state, 'shared_artifacts', {}) or {}
+        elcajas_shared = shared.get('capi_elcajas') if isinstance(shared, dict) else None
+        if isinstance(elcajas_shared, dict):
+            scoped = elcajas_shared.get('analysis_scope')
+            if isinstance(scoped, str) and scoped.strip():
+                analysis_scope = scoped.strip().lower()
+        if not analysis_scope:
+            data_bucket = getattr(state, 'response_data', {}) or {}
+            elcajas_data = data_bucket.get('el_cajas') if isinstance(data_bucket, dict) else None
+            if isinstance(elcajas_data, dict):
+                scoped = elcajas_data.get('analysis_scope')
+                if isinstance(scoped, str) and scoped.strip():
+                    analysis_scope = scoped.strip().lower()
+        if not analysis_scope and isinstance(metadata.get("analysis_scope"), str):
+            analysis_scope = metadata.get("analysis_scope").strip().lower()
+
         artifact = self._extract_latest_recommendation(state)
         if duplicate_claves:
             metadata_updates['el_cajas_alert_duplicate'] = True
             metadata_updates['el_cajas_alert_duplicates'] = duplicate_claves
+
+        if analysis_scope == "all_branches":
+            metadata_updates.setdefault('requires_human_approval', False)
+            metadata_updates['el_cajas_pending'] = False
+            return StateMutator.merge_dict(state, 'response_metadata', metadata_updates)
 
         if artifact:
             action = self._build_save_recommendation_action(state, artifact)

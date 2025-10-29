@@ -3,6 +3,7 @@
 // Independent Google Maps rendering module; avoids reusing the Leaflet stack so both maps can coexist.
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './GoogleMapView.module.css';
+import predefinedExtractionRoutes from './predefinedExtractionRoutes.json';
 
 type SucursalRecord = {
   sucursal_id: string;
@@ -41,10 +42,17 @@ type AlertSummary = {
   } | null;
 };
 
+type SimulationMode = 'deposit' | 'extraction';
+
+type SimulationRequest = {
+  id: number;
+  mode: SimulationMode;
+};
+
 type GoogleMapViewProps = {
   onSucursalSelect: (sucursal: SucursalRecord | null) => void;
   selectedSucursal?: SucursalRecord | null;
-  simulationTrigger?: number;
+  simulationRequest?: SimulationRequest | null;
   onSimulationStateChange?: (isRunning: boolean) => void;
   onReadyStateChange?: (isReady: boolean) => void;
   onSelectionPositionChange?: (position: PixelPosition | null) => void;
@@ -62,14 +70,36 @@ type PixelPosition = {
   mapY: number;
 };
 
+type SimulationStop = {
+  position: LatLngLiteral;
+  branchId?: string | null;
+  type: 'branch' | 'vault';
+};
+
 type SimulationRoute = {
   id: string;
+  color: string;
+  stops: SimulationStop[];
   origin: LatLngLiteral;
   destination: LatLngLiteral;
-  color: string;
+  participantBranchIds: string[];
+  startBranchId?: string | null;
+  endBranchId?: string | null;
   marker?: any;
   polyline?: any;
   path?: LatLngLiteral[];
+};
+
+type DepositSummary = {
+  endpointsByRoute: Map<string, string | null>;
+};
+
+type PreparedSimulation = {
+  routes: SimulationRoute[];
+  participantIds: Set<string>;
+  nonParticipantIds: Set<string>;
+  startBranchIds: Set<string>;
+  depositSummary?: DepositSummary | null;
 };
 
 declare global {
@@ -79,8 +109,8 @@ declare global {
 }
 
 const GOOGLE_SCRIPT_ID = 'capi-google-maps-sdk';
-const MAX_SIMULATION_TRUCKS = 9;
-const SIMULATION_DURATION_MS = 20000;
+const SIMULATION_TRUCK_COUNT = 5;
+const SIMULATION_DURATION_MS = 10000;
 const ROUTE_COLORS = [
   '#38bdf8',
   '#f97316',
@@ -92,8 +122,10 @@ const ROUTE_COLORS = [
   '#0ea5e9',
   '#94a3b8'
 ];
+const TRUCK_ICON_URL = '/Caudal.png';
+const TRUCK_ICON_SIZE = 34;
+const VAULT_COORDS: LatLngLiteral = { lat: -34.6073508, lng: -58.3722956 };
 const EARTH_RADIUS_METERS = 6371000;
-const MIN_ROUTE_DISTANCE_METERS = 250;
 const MAP_STYLES = [
   { elementType: 'geometry', stylers: [{ color: '#081624' }] },
   { elementType: 'labels.text.stroke', stylers: [{ color: '#081624' }] },
@@ -118,12 +150,18 @@ type MarkerAppearance = {
   size: number;
 };
 
-const DEFAULT_MARKER_APPEARANCE: MarkerAppearance = {
-  imageUrl: '/point-violeta.png',
-  size: 32,
+type MarkerRegistryEntry = {
+  marker: any;
+  defaultAppearance: MarkerAppearance;
+  currentAppearance: MarkerAppearance;
 };
 
-const ALERT_MARKER_APPEARANCE: MarkerAppearance = {
+const DEFICIT_MARKER_APPEARANCE: MarkerAppearance = {
+  imageUrl: '/point-violeta.png',
+  size: 36,
+};
+
+const SURPLUS_MARKER_APPEARANCE: MarkerAppearance = {
   imageUrl: '/point-rojo.png',
   size: 36,
 };
@@ -138,8 +176,21 @@ const NEUTRAL_MARKER_APPEARANCE: MarkerAppearance = {
   size: 32,
 };
 
-const BALANCE_TOLERANCE = 0.4;
+const DEFAULT_MARKER_APPEARANCE = NEUTRAL_MARKER_APPEARANCE;
 
+const DEFICIT_COVERAGE_THRESHOLD = -0.4;
+const EXCESS_TOLERANCE = 0.4;
+const SURPLUS_EXTRACTION_THRESHOLD = 0.4;
+
+const PREDEFINED_DEPOSIT_ROUTES: string[][] = [
+  ['SUC-395', 'SUC-423', 'SUC-408', 'SUC-417'],
+  ['SUC-406', 'SUC-405', 'SUC-407', 'SUC-402'],
+  ['SUC-420', 'SUC-437', 'SUC-435', 'SUC-430'],
+  ['SUC-398', 'SUC-377', 'SUC-432', 'SUC-382'],
+  ['SUC-413', 'SUC-363', 'SUC-410', 'SUC-433'],
+];
+
+const PREDEFINED_EXTRACTION_ROUTES: string[][] = predefinedExtractionRoutes;
 
 type AdvancedMarkerOptions = {
   map: any;
@@ -151,17 +202,43 @@ type AdvancedMarkerOptions = {
 };
 
 function createAdvancedMarker(options: AdvancedMarkerOptions): any {
-  const icon = {
-    url: options.imageUrl,
-    scaledSize: new window.google.maps.Size(options.size, options.size),
-  };
-
+  const position = ensureValidLatLng(options.position);
   return new window.google.maps.Marker({
     map: options.map,
-    position: options.position,
+    position,
     title: options.title,
     zIndex: options.zIndex,
-    icon,
+    icon: {
+      url: options.imageUrl,
+      scaledSize: new window.google.maps.Size(options.size, options.size),
+    },
+  });
+}
+
+async function createMirroredIconUrl(imageUrl: string): Promise<string | null> {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return null;
+  }
+
+  return new Promise((resolve) => {
+    const image = new Image();
+    image.crossOrigin = 'anonymous';
+    image.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = image.naturalWidth || image.width;
+      canvas.height = image.naturalHeight || image.height;
+      const context = canvas.getContext('2d');
+      if (!context) {
+        resolve(null);
+        return;
+      }
+      context.translate(canvas.width, 0);
+      context.scale(-1, 1);
+      context.drawImage(image, 0, 0);
+      resolve(canvas.toDataURL('image/png'));
+    };
+    image.onerror = () => resolve(null);
+    image.src = imageUrl;
   });
 }
 
@@ -205,49 +282,58 @@ function getCoverageRatio(record: SucursalRecord): number | null {
   if (!Number.isFinite(record.caja_teorica_sucursal) || !record.caja_teorica_sucursal) {
     return null;
   }
-  return record.saldo_total_sucursal / record.caja_teorica_sucursal;
+  return (record.saldo_total_sucursal - record.caja_teorica_sucursal) / record.caja_teorica_sucursal;
 }
 
-function resolveMarkerAppearance(
-  record: SucursalRecord,
-  alertsIndex: Map<string, AlertSummary[]>
-): MarkerAppearance {
-  const alerts = alertsIndex.get(record.sucursal_id) ?? [];
-  const activeAlert = hasActiveAlerts(alerts);
+function resolveMarkerAppearance(record: SucursalRecord): MarkerAppearance {
   const ratio = getCoverageRatio(record);
-
-  if (activeAlert) {
-    return ALERT_MARKER_APPEARANCE;
-  }
 
   if (ratio === null) {
     return DEFAULT_MARKER_APPEARANCE;
   }
 
-  if (ratio < 1 - BALANCE_TOLERANCE) {
-    return ALERT_MARKER_APPEARANCE;
+  if (ratio <= DEFICIT_COVERAGE_THRESHOLD) {
+    return DEFICIT_MARKER_APPEARANCE;
   }
 
-  if (ratio <= 1 + BALANCE_TOLERANCE) {
-    return NEUTRAL_MARKER_APPEARANCE;
+  if (ratio >= EXCESS_TOLERANCE) {
+    return SURPLUS_MARKER_APPEARANCE;
   }
 
-  return DEFAULT_MARKER_APPEARANCE;
+  return NEUTRAL_MARKER_APPEARANCE;
 }
 
 function updateMarkerPosition(marker: any, position: LatLngLiteral): void {
   if (!marker) {
     return;
   }
+  const nextPosition = ensureValidLatLng(position);
   if (typeof marker.setPosition === 'function') {
-    marker.setPosition(position);
+    marker.setPosition(nextPosition);
     return;
   }
   if ('position' in marker) {
-    marker.position = position;
+    marker.position = nextPosition;
   }
 }
 
+function applyMarkerAppearance(marker: any, appearance: MarkerAppearance): void {
+  if (!marker || !window.google?.maps?.Size) {
+    return;
+  }
+  const icon = {
+    url: appearance.imageUrl,
+    scaledSize: new window.google.maps.Size(appearance.size, appearance.size),
+  };
+
+  if (typeof marker.setIcon === 'function') {
+    marker.setIcon(icon);
+    return;
+  }
+  if ('icon' in marker) {
+    marker.icon = icon;
+  }
+}
 
 function detachMarker(marker: any): void {
   if (!marker) {
@@ -261,8 +347,30 @@ function detachMarker(marker: any): void {
     marker.map = null;
   }
 }
+
+function ensureValidLatLng(point: LatLngLiteral, fallback: LatLngLiteral = VAULT_COORDS): LatLngLiteral {
+  const latValue = Number(point.lat);
+  const lngValue = Number(point.lng);
+  const lat = Number.isFinite(latValue) ? Math.min(Math.max(latValue, -85), 85) : fallback.lat;
+  const lng = Number.isFinite(lngValue) ? Math.min(Math.max(lngValue, -180), 180) : fallback.lng;
+  return { lat, lng };
+}
+
+function getLatLngFromRecord(record: SucursalRecord): LatLngLiteral {
+  return ensureValidLatLng({
+    lat: Number(record.latitud),
+    lng: Number(record.longitud),
+  });
+}
+
+function getDistanceToVault(record: SucursalRecord): number {
+  return getDistanceMeters(VAULT_COORDS, getLatLngFromRecord(record));
+}
+
 function hasValidCoordinates(record: SucursalRecord): boolean {
-  return Number.isFinite(record.latitud) && Number.isFinite(record.longitud);
+  const lat = Number(record.latitud);
+  const lng = Number(record.longitud);
+  return Number.isFinite(lat) && Number.isFinite(lng);
 }
 
 function toRadians(value: number): number {
@@ -292,17 +400,6 @@ function dedupeByCoordinates(records: SucursalRecord[]): SucursalRecord[] {
   return Array.from(seen.values());
 }
 
-function shuffleSelection<T>(items: T[]): T[] {
-  const copy = [...items];
-  for (let index = copy.length - 1; index > 0; index -= 1) {
-    const randomIndex = Math.floor(Math.random() * (index + 1));
-    const temp = copy[index];
-    copy[index] = copy[randomIndex];
-    copy[randomIndex] = temp;
-  }
-  return copy;
-}
-
 async function loadGoogleMaps(): Promise<void> {
   if (typeof window !== 'undefined' && window.google && window.google.maps) {
     return;
@@ -329,12 +426,12 @@ async function loadGoogleMaps(): Promise<void> {
     const script = document.createElement('script');
     script.id = GOOGLE_SCRIPT_ID;
     const libraries = 'marker,geometry';
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}&loading=async`;
     script.async = true;
     script.defer = true;
+    script.setAttribute('loading', 'async');
     script.onload = () => resolve();
     script.onerror = () => reject(new Error('Failed to load Google Maps script.'));
-    script.setAttribute('loading', 'async');
     document.head.appendChild(script);
   });
 }
@@ -374,75 +471,269 @@ function getRoutePosition(route: SimulationRoute, progress: number): LatLngLiter
   return interpolatePosition(start, end, segmentProgress);
 }
 
-function buildSimulationRoutes(data: SucursalRecord[]): SimulationRoute[] {
-  const validRecords = data.filter(hasValidCoordinates);
+function buildDepositSimulation(records: SucursalRecord[]): PreparedSimulation {
+  const validRecords = records.filter(hasValidCoordinates);
   if (validRecords.length < 2) {
-    return [];
+    return {
+      routes: [],
+      participantIds: new Set(),
+      nonParticipantIds: new Set(),
+      startBranchIds: new Set(),
+      depositSummary: { endpointsByRoute: new Map() },
+    };
   }
 
   const uniqueRecords = dedupeByCoordinates(validRecords);
   if (uniqueRecords.length < 2) {
-    return [];
+    return {
+      routes: [],
+      participantIds: new Set(),
+      nonParticipantIds: new Set(),
+      startBranchIds: new Set(),
+      depositSummary: { endpointsByRoute: new Map() },
+    };
   }
 
-  type CandidateRoute = {
-    origin: SucursalRecord;
-    destination: SucursalRecord;
-    distance: number;
-  };
+  const deficitRecords = uniqueRecords.filter((record) => {
+    const ratio = getCoverageRatio(record);
+    return ratio !== null && ratio <= DEFICIT_COVERAGE_THRESHOLD;
+  });
 
-  const candidates: CandidateRoute[] = [];
+  if (!deficitRecords.length) {
+    return {
+      routes: [],
+      participantIds: new Set(),
+      nonParticipantIds: new Set(uniqueRecords.map((record) => record.sucursal_id)),
+      startBranchIds: new Set(),
+      depositSummary: { endpointsByRoute: new Map() },
+    };
+  }
 
-  for (let originIndex = 0; originIndex < uniqueRecords.length; originIndex += 1) {
-    for (let destinationIndex = originIndex + 1; destinationIndex < uniqueRecords.length; destinationIndex += 1) {
-      const origin = uniqueRecords[originIndex];
-      const destination = uniqueRecords[destinationIndex];
-      const originPoint: LatLngLiteral = { lat: origin.latitud, lng: origin.longitud };
-      const destinationPoint: LatLngLiteral = { lat: destination.latitud, lng: destination.longitud };
-      const distance = getDistanceMeters(originPoint, destinationPoint);
+  const branchById = new Map(uniqueRecords.map((record) => [record.sucursal_id, record]));
+  const deficitMap = new Map(deficitRecords.map((record) => [record.sucursal_id, record]));
 
-      candidates.push({ origin, destination, distance });
-      candidates.push({ origin: destination, destination: origin, distance });
+  const truckPlans = PREDEFINED_DEPOSIT_ROUTES.map((routeIds, index) => {
+    const branches: SucursalRecord[] = [];
+    routeIds.forEach((id) => {
+      const branch = deficitMap.get(id) ?? branchById.get(id);
+      if (branch && deficitMap.has(branch.sucursal_id)) {
+        branches.push(branch);
+        deficitMap.delete(id);
+      }
+    });
+    const currentPosition = branches.length
+      ? getLatLngFromRecord(branches[branches.length - 1])
+      : ensureValidLatLng(VAULT_COORDS);
+    return {
+      id: `truck-${index + 1}`,
+      color: ROUTE_COLORS[index % ROUTE_COLORS.length],
+      branches,
+      currentPosition,
+    };
+  });
+
+  const remainingDeficit = Array.from(deficitMap.values());
+
+  remainingDeficit.forEach((branch) => {
+    const branchPosition = getLatLngFromRecord(branch);
+    let bestPlan = truckPlans[0];
+    let bestDistance = getDistanceMeters(bestPlan.currentPosition, branchPosition);
+
+    for (let index = 1; index < truckPlans.length; index += 1) {
+      const candidate = truckPlans[index];
+      if (!candidate.branches.length) {
+        bestPlan = candidate;
+        bestDistance = getDistanceMeters(ensureValidLatLng(VAULT_COORDS), branchPosition);
+        continue;
+      }
+      const candidateDistance = getDistanceMeters(candidate.currentPosition, branchPosition);
+      if (candidateDistance < bestDistance) {
+        bestPlan = candidate;
+        bestDistance = candidateDistance;
+      }
     }
-  }
 
-  if (!candidates.length) {
-    return [];
-  }
-
-  const prioritized = candidates.filter((candidate) => candidate.distance >= MIN_ROUTE_DISTANCE_METERS);
-  const selectionPool = prioritized.length >= MAX_SIMULATION_TRUCKS ? prioritized : candidates;
-  const shuffled = shuffleSelection(selectionPool);
-  if (!shuffled.length) {
-    return [];
-  }
+    bestPlan.branches.push(branch);
+    bestPlan.currentPosition = branchPosition;
+  });
 
   const routes: SimulationRoute[] = [];
+  const participantIds = new Set<string>();
+  const nonParticipantIds = new Set<string>(uniqueRecords.map((record) => record.sucursal_id));
+  const endpointsByRoute = new Map<string, string | null>();
 
-  for (let index = 0; index < MAX_SIMULATION_TRUCKS; index += 1) {
-    const candidate = shuffled[index % shuffled.length];
-    routes.push({
-      id: `truck-${index + 1}`,
-      origin: { lat: candidate.origin.latitud, lng: candidate.origin.longitud },
-      destination: { lat: candidate.destination.latitud, lng: candidate.destination.longitud },
-      color: ROUTE_COLORS[index % ROUTE_COLORS.length],
+  truckPlans.forEach((plan) => {
+    if (!plan.branches.length) {
+      endpointsByRoute.set(plan.id, null);
+      return;
+    }
+
+    const stops: SimulationStop[] = [
+      { position: ensureValidLatLng(VAULT_COORDS), type: 'vault' },
+      ...plan.branches.map((branch) => ({
+        position: getLatLngFromRecord(branch),
+        branchId: branch.sucursal_id,
+        type: 'branch' as const,
+      })),
+    ];
+
+    const participantList = plan.branches.map((branch) => branch.sucursal_id);
+    participantList.forEach((id) => {
+      participantIds.add(id);
+      nonParticipantIds.delete(id);
     });
+
+    const finalBranchId = participantList[participantList.length - 1] ?? null;
+
+    routes.push({
+      id: plan.id,
+      color: plan.color,
+      stops,
+      origin: stops[0].position,
+      destination: stops[stops.length - 1].position,
+      participantBranchIds: participantList,
+      startBranchId: null,
+      endBranchId: finalBranchId,
+    });
+
+    endpointsByRoute.set(plan.id, finalBranchId);
+  });
+
+  const depositSummary: DepositSummary = { endpointsByRoute };
+
+  return {
+    routes,
+    participantIds,
+    nonParticipantIds,
+    startBranchIds: new Set(),
+    depositSummary,
+  };
+}
+
+function buildExtractionSimulation(
+  records: SucursalRecord[],
+  depositSummary: DepositSummary | null
+): PreparedSimulation {
+  const validRecords = records.filter(hasValidCoordinates);
+  if (validRecords.length < 2) {
+    return {
+      routes: [],
+      participantIds: new Set(),
+      nonParticipantIds: new Set(),
+      startBranchIds: new Set(),
+    };
   }
 
-  return routes;
+  const uniqueRecords = dedupeByCoordinates(validRecords);
+  if (uniqueRecords.length < 2) {
+    return {
+      routes: [],
+      participantIds: new Set(),
+      nonParticipantIds: new Set(),
+      startBranchIds: new Set(),
+    };
+  }
+
+  const branchById = new Map(uniqueRecords.map((record) => [record.sucursal_id, record]));
+  const targetRecords = uniqueRecords.filter((record) => {
+    const coverage = getCoverageRatio(record);
+    return coverage !== null && coverage > SURPLUS_EXTRACTION_THRESHOLD;
+  });
+
+  const targetIds = new Set(targetRecords.map((record) => record.sucursal_id));
+  const participantIds = new Set<string>();
+  const nonParticipantIds = new Set<string>(targetIds);
+  const startBranchIds = new Set<string>();
+  const routes: SimulationRoute[] = [];
+  const vaultPosition = ensureValidLatLng(VAULT_COORDS);
+
+  if (!targetRecords.length) {
+    return {
+      routes,
+      participantIds,
+      nonParticipantIds,
+      startBranchIds,
+    };
+  }
+
+  PREDEFINED_EXTRACTION_ROUTES.forEach((routeIds, index) => {
+    const routeId = `truck-${index + 1}`;
+    const branches: SucursalRecord[] = routeIds
+      .map((id) => branchById.get(id))
+      .filter((record): record is SucursalRecord => Boolean(record));
+
+    if (!branches.length) {
+      return;
+    }
+
+    const startBranch = branches[0] ?? null;
+    if (startBranch) {
+      startBranchIds.add(startBranch.sucursal_id);
+    }
+
+    const stops: SimulationStop[] = branches.map((branch) => ({
+      position: getLatLngFromRecord(branch),
+      branchId: branch.sucursal_id,
+      type: 'branch' as const,
+    }));
+    stops.push({ position: vaultPosition, type: 'vault' });
+
+    const participantBranchIds: string[] = [];
+    branches.forEach((branch, branchIndex) => {
+      const branchId = branch.sucursal_id;
+      if (targetIds.has(branchId)) {
+        participantIds.add(branchId);
+        nonParticipantIds.delete(branchId);
+        participantBranchIds.push(branchId);
+      } else if (branchIndex === 0 && startBranch?.sucursal_id === branchId) {
+        participantBranchIds.push(branchId);
+      }
+    });
+
+    routes.push({
+      id: routeId,
+      color: ROUTE_COLORS[index % ROUTE_COLORS.length],
+      stops,
+      origin: stops[0].position,
+      destination: stops[stops.length - 1].position,
+      participantBranchIds,
+      startBranchId: startBranch?.sucursal_id ?? null,
+      endBranchId: null,
+    });
+  });
+
+  return {
+    routes,
+    participantIds,
+    nonParticipantIds,
+    startBranchIds,
+  };
+}
+
+function prepareSimulationForMode(
+  records: SucursalRecord[],
+  mode: SimulationMode,
+  depositSummary: DepositSummary | null
+): PreparedSimulation {
+  if (mode === 'deposit') {
+    return buildDepositSimulation(records);
+  }
+  return buildExtractionSimulation(records, depositSummary);
 }
 
 export default function GoogleMapView({
   onSucursalSelect,
   selectedSucursal,
-  simulationTrigger = 0,
+  simulationRequest = null,
   onSimulationStateChange,
   onReadyStateChange,
   onSelectionPositionChange,
 }: GoogleMapViewProps) {
+  const simulationTrigger = simulationRequest?.id;
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<any>(null);
   const markersRef = useRef<any[]>([]);
+  const vaultMarkerRef = useRef<any | null>(null);
   const overlayHelperRef = useRef<any | null>(null);
   const mapListenersRef = useRef<any[]>([]);
   const selectionPositionCallbackRef = useRef<((position: PixelPosition | null) => void) | null>(
@@ -461,6 +752,21 @@ export default function GoogleMapView({
     active: false,
     startTime: 0,
   });
+  const truckIconAssetsRef = useRef<{ forward: string; return: string | null }>({
+    forward: TRUCK_ICON_URL,
+    return: null,
+  });
+  const markersByIdRef = useRef<Map<string, MarkerRegistryEntry>>(new Map());
+  const persistentHighlightIdsRef = useRef<Set<string>>(new Set());
+  const simulationContextRef = useRef<{
+    mode: SimulationMode;
+    participantIds: Set<string>;
+    nonParticipantIds: Set<string>;
+    startBranchIds: Set<string>;
+  } | null>(null);
+  const pendingDepositSummaryRef = useRef<DepositSummary | null>(null);
+  const lastDepositSummaryRef = useRef<DepositSummary | null>(null);
+  const simulationRequestRef = useRef<SimulationRequest | null>(simulationRequest);
   const lastTriggerRef = useRef<number>(simulationTrigger);
   const onSucursalSelectRef = useRef(onSucursalSelect);
   const onSimulationStateChangeRef = useRef(onSimulationStateChange);
@@ -477,6 +783,10 @@ export default function GoogleMapView({
   useEffect(() => {
     onReadyStateChangeRef.current = onReadyStateChange;
   }, [onReadyStateChange]);
+
+  useEffect(() => {
+    simulationRequestRef.current = simulationRequest ?? null;
+  }, [simulationRequest]);
 
   useEffect(() => {
     selectionPositionCallbackRef.current = onSelectionPositionChange ?? null;
@@ -529,12 +839,73 @@ export default function GoogleMapView({
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const setMarkersToAppearance = useCallback(
+    (ids: Iterable<string>, appearance: MarkerAppearance) => {
+      if (!window.google?.maps) {
+        return;
+      }
+      for (const id of ids) {
+        const entry = markersByIdRef.current.get(id);
+        if (!entry) {
+          continue;
+        }
+        applyMarkerAppearance(entry.marker, appearance);
+        entry.currentAppearance = appearance;
+      }
+    },
+    []
+  );
+
+  const restoreMarkerSet = useCallback(
+    (ids: Iterable<string>) => {
+      if (!window.google?.maps) {
+        return;
+      }
+      for (const id of ids) {
+        const entry = markersByIdRef.current.get(id);
+        if (!entry) {
+          continue;
+        }
+        applyMarkerAppearance(entry.marker, entry.defaultAppearance);
+        entry.currentAppearance = entry.defaultAppearance;
+      }
+    },
+    []
+  );
+
+  const restoreAllMarkers = useCallback(() => {
+    if (!window.google?.maps) {
+      return;
+    }
+    markersByIdRef.current.forEach((entry) => {
+      applyMarkerAppearance(entry.marker, entry.defaultAppearance);
+      entry.currentAppearance = entry.defaultAppearance;
+    });
+    persistentHighlightIdsRef.current.clear();
+    if (vaultMarkerRef.current) {
+      applyMarkerAppearance(vaultMarkerRef.current, {
+        imageUrl: '/boveda.png',
+        size: 42,
+      });
+    }
+  }, []);
+
+  const ensureReturnIcon = useCallback(async (): Promise<string> => {
+    if (truckIconAssetsRef.current.return) {
+      return truckIconAssetsRef.current.return;
+    }
+    const mirrored = await createMirroredIconUrl(TRUCK_ICON_URL);
+    truckIconAssetsRef.current.return = mirrored ?? truckIconAssetsRef.current.forward;
+    return truckIconAssetsRef.current.return;
+  }, []);
+
   const cleanupSimulationElements = useCallback(() => {
     if (animationStateRef.current.frameId) {
       cancelAnimationFrame(animationStateRef.current.frameId);
       animationStateRef.current.frameId = 0;
     }
     animationStateRef.current.active = false;
+    simulationContextRef.current = null;
 
     simulationActiveRoutesRef.current.forEach((route) => {
       detachMarker(route.marker);
@@ -545,15 +916,23 @@ export default function GoogleMapView({
   }, []);
 
   const getDirectionsPath = useCallback(
-    (origin: LatLngLiteral, destination: LatLngLiteral): Promise<LatLngLiteral[]> =>
+    (origin: LatLngLiteral, destination: LatLngLiteral, waypoints: LatLngLiteral[] = []): Promise<LatLngLiteral[]> =>
       new Promise((resolve, reject) => {
         const service = directionsServiceRef.current ?? new window.google.maps.DirectionsService();
         directionsServiceRef.current = service;
+        const sanitizedOrigin = ensureValidLatLng(origin);
+        const sanitizedDestination = ensureValidLatLng(destination);
+        const sanitizedWaypoints = waypoints.map((point) => ensureValidLatLng(point));
+
         service.route(
           {
-            origin,
-            destination,
+            origin: sanitizedOrigin,
+            destination: sanitizedDestination,
             travelMode: window.google.maps.TravelMode.DRIVING,
+            waypoints: sanitizedWaypoints.length
+              ? sanitizedWaypoints.map((point) => ({ location: point }))
+              : undefined,
+            optimizeWaypoints: false,
           },
           (result: any, status: any) => {
             if (status === 'OK' && result?.routes?.length) {
@@ -567,7 +946,7 @@ export default function GoogleMapView({
               if (pathPoints.length >= 2) {
                 resolve(pathPoints);
               } else {
-                reject(new Error('Directions returned an empty path.'));
+                resolve([sanitizedOrigin, ...sanitizedWaypoints, sanitizedDestination]);
               }
             } else {
               reject(new Error(`Directions request failed: ${status}`));
@@ -577,6 +956,31 @@ export default function GoogleMapView({
       }),
     []
   );
+
+  const handleSimulationCompleted = useCallback(() => {
+    const context = simulationContextRef.current;
+    if (!context) {
+      return;
+    }
+
+    if (context.mode === 'extraction' && context.nonParticipantIds.size) {
+      restoreMarkerSet(context.nonParticipantIds);
+    }
+
+    if (context.participantIds.size) {
+      setMarkersToAppearance(context.participantIds, NEUTRAL_MARKER_APPEARANCE);
+      persistentHighlightIdsRef.current = new Set(context.participantIds);
+    } else {
+      persistentHighlightIdsRef.current.clear();
+    }
+
+    if (context.mode === 'deposit') {
+      lastDepositSummaryRef.current = pendingDepositSummaryRef.current ?? null;
+    }
+
+    pendingDepositSummaryRef.current = null;
+    simulationContextRef.current = null;
+  }, [restoreMarkerSet, setMarkersToAppearance]);
 
   const startSimulation = useCallback(async () => {
     if (!pendingSimulationRef.current) {
@@ -591,36 +995,106 @@ export default function GoogleMapView({
       return;
     }
 
-    if (!branchDataRef.current.length) {
+    const request = simulationRequestRef.current;
+    if (!request) {
+      pendingSimulationRef.current = false;
       return;
     }
 
-    const preparedRoutes = buildSimulationRoutes(branchDataRef.current);
-    if (!preparedRoutes.length) {
+    if (!branchDataRef.current.length) {
       pendingSimulationRef.current = false;
-      onSimulationStateChangeRef.current?.(false);
       return;
     }
 
     pendingSimulationRef.current = false;
-
-    simulationRoutesRef.current = preparedRoutes;
+    restoreAllMarkers();
     cleanupSimulationElements();
 
+    const mode = request.mode;
+
+    const prepared = prepareSimulationForMode(
+      branchDataRef.current,
+      mode,
+      lastDepositSummaryRef.current
+    );
+
+    if (!prepared.routes.length) {
+      simulationContextRef.current = null;
+      pendingDepositSummaryRef.current = null;
+      onSimulationStateChangeRef.current?.(false);
+      return;
+    }
+
+    simulationRoutesRef.current = prepared.routes;
+    simulationContextRef.current = {
+      mode,
+      participantIds: prepared.participantIds,
+      nonParticipantIds: prepared.nonParticipantIds,
+      startBranchIds: prepared.startBranchIds,
+    };
+    pendingDepositSummaryRef.current = mode === 'deposit' ? prepared.depositSummary ?? null : null;
+
+    if (mode === 'extraction') {
+      const deficitIds = branchDataRef.current
+        .filter((record) => {
+          const ratio = getCoverageRatio(record);
+          return ratio !== null && ratio <= DEFICIT_COVERAGE_THRESHOLD;
+        })
+        .map((record) => record.sucursal_id);
+
+      if (deficitIds.length) {
+        setMarkersToAppearance(deficitIds, DEFAULT_MARKER_APPEARANCE);
+      }
+
+      if (prepared.startBranchIds.size) {
+        const neutralStartIds = Array.from(prepared.startBranchIds).filter((id) => {
+          const entry = markersByIdRef.current.get(id);
+          return entry?.defaultAppearance === NEUTRAL_MARKER_APPEARANCE;
+        });
+      if (neutralStartIds.length) {
+        setMarkersToAppearance(neutralStartIds, DEFAULT_MARKER_APPEARANCE);
+      }
+    }
+      if (prepared.nonParticipantIds.size) {
+        setMarkersToAppearance(prepared.nonParticipantIds, NEUTRAL_MARKER_APPEARANCE);
+      }
+    }
+
     try {
+      const requestedIconUrl =
+        mode === 'deposit'
+          ? truckIconAssetsRef.current.forward
+          : await ensureReturnIcon();
+      const resolvedTruckIconUrl = requestedIconUrl ?? truckIconAssetsRef.current.forward;
       const routesToAnimate = simulationRoutesRef.current;
       const enrichedRoutes = await Promise.all(
         routesToAnimate.map(async (route, index) => {
+          const intermediate = route.stops.slice(1, -1).map((stop) => stop.position);
           let pathPoints: LatLngLiteral[] = [];
 
           try {
-            pathPoints = await getDirectionsPath(route.origin, route.destination);
+            pathPoints = await getDirectionsPath(route.origin, route.destination, intermediate);
           } catch (directionsError) {
             console.warn(`Directions request failed for ${route.id}:`, directionsError);
+            pathPoints = [route.origin, ...intermediate, route.destination];
           }
 
           if (pathPoints.length < 2) {
             pathPoints = [route.origin, route.destination];
+          }
+
+          pathPoints = pathPoints
+            .map((point) => ensureValidLatLng(point))
+            .filter((point, pointIndex, array) => {
+              if (!Number.isFinite(point.lat) || !Number.isFinite(point.lng)) {
+                return false;
+              }
+              const previous = array[pointIndex - 1];
+              return !previous || previous.lat !== point.lat || previous.lng !== point.lng;
+            });
+
+          if (pathPoints.length < 2) {
+            pathPoints = [ensureValidLatLng(route.origin), ensureValidLatLng(route.destination)];
           }
 
           const polyline = new window.google.maps.Polyline({
@@ -635,8 +1109,8 @@ export default function GoogleMapView({
             map,
             position: pathPoints[0],
             title: `Camion ${index + 1}`,
-            imageUrl: '/Caudal.png',
-            size: 34,
+            imageUrl: resolvedTruckIconUrl,
+            size: TRUCK_ICON_SIZE,
             zIndex: 2000 + index,
           });
 
@@ -671,6 +1145,7 @@ export default function GoogleMapView({
           animationStateRef.current.active = false;
           animationStateRef.current.frameId = 0;
           onSimulationStateChangeRef.current?.(false);
+          handleSimulationCompleted();
         }
       };
 
@@ -679,8 +1154,17 @@ export default function GoogleMapView({
       console.error('Simulation error:', error);
       cleanupSimulationElements();
       onSimulationStateChangeRef.current?.(false);
+      pendingDepositSummaryRef.current = null;
+      simulationContextRef.current = null;
     }
-  }, [cleanupSimulationElements, getDirectionsPath]);
+  }, [
+    cleanupSimulationElements,
+    getDirectionsPath,
+    handleSimulationCompleted,
+    ensureReturnIcon,
+    restoreAllMarkers,
+    setMarkersToAppearance,
+  ]);
 
   useEffect(() => {
     let isMounted = true;
@@ -733,7 +1217,7 @@ export default function GoogleMapView({
 
         const mapCenter = { lat: sanitizedRecords[0].latitud, lng: sanitizedRecords[0].longitud };
 
-        const map = new window.google.maps.Map(containerRef.current, {
+        const mapOptions: google.maps.MapOptions = {
           center: mapCenter,
           zoom: 12,
           disableDefaultUI: true,
@@ -741,7 +1225,9 @@ export default function GoogleMapView({
           styles: MAP_STYLES,
           gestureHandling: 'greedy',
           scrollwheel: true,
-        });
+        };
+
+        const map = new window.google.maps.Map(containerRef.current, mapOptions);
 
         mapRef.current = map;
 
@@ -768,14 +1254,34 @@ export default function GoogleMapView({
 
         updateOverlayPosition();
 
+        const vaultMarker = createAdvancedMarker({
+          map,
+          position: ensureValidLatLng(VAULT_COORDS),
+          title: 'Bóveda Central',
+          imageUrl: '/boveda.png',
+          size: 42,
+          zIndex: 2500,
+        });
+        vaultMarkerRef.current = vaultMarker;
+
+        markersByIdRef.current.clear();
+        persistentHighlightIdsRef.current.clear();
+        lastDepositSummaryRef.current = null;
+
         markersRef.current = sanitizedRecords.map((record) => {
-          const appearance = resolveMarkerAppearance(record, alertsIndexRef.current) ?? FALLBACK_MARKER_APPEARANCE;
-          const marker = createAdvancedMarker({
-            map,
-            position: { lat: record.latitud, lng: record.longitud },
-            title: record.sucursal_nombre,
-            imageUrl: appearance.imageUrl || FALLBACK_MARKER_APPEARANCE.imageUrl,
-            size: appearance.size || FALLBACK_MARKER_APPEARANCE.size,
+        const appearance = resolveMarkerAppearance(record);
+        const marker = createAdvancedMarker({
+          map,
+          position: getLatLngFromRecord(record),
+          title: record.sucursal_nombre,
+          imageUrl: appearance.imageUrl || FALLBACK_MARKER_APPEARANCE.imageUrl,
+          size: appearance.size || FALLBACK_MARKER_APPEARANCE.size,
+        });
+
+          markersByIdRef.current.set(record.sucursal_id, {
+            marker,
+            defaultAppearance: appearance,
+            currentAppearance: appearance,
           });
 
           marker.addListener('click', () => {
@@ -799,10 +1305,11 @@ export default function GoogleMapView({
         }
 
         branchDataRef.current = sanitizedRecords;
-        simulationRoutesRef.current = buildSimulationRoutes(sanitizedRecords);
+        const depositPreview = buildDepositSimulation(sanitizedRecords);
+        simulationRoutesRef.current = depositPreview.routes;
         setIsLoading(false);
         setError(null);
-        onReadyStateChangeRef.current?.(simulationRoutesRef.current.length > 0);
+        onReadyStateChangeRef.current?.(depositPreview.routes.length > 0);
 
         if (pendingSimulationRef.current) {
           void startSimulation();
@@ -821,8 +1328,17 @@ export default function GoogleMapView({
       isMounted = false;
       cleanupSimulationElements();
       pendingSimulationRef.current = false;
+      if (vaultMarkerRef.current) {
+        detachMarker(vaultMarkerRef.current);
+        vaultMarkerRef.current = null;
+      }
       markersRef.current.forEach((marker) => detachMarker(marker));
       markersRef.current = [];
+      markersByIdRef.current.clear();
+      persistentHighlightIdsRef.current.clear();
+      simulationContextRef.current = null;
+      pendingDepositSummaryRef.current = null;
+      lastDepositSummaryRef.current = null;
       mapListenersRef.current.forEach((listener) => {
         if (listener?.remove) {
           listener.remove();
@@ -873,4 +1389,6 @@ export default function GoogleMapView({
     </div>
   );
 }
+
+
 

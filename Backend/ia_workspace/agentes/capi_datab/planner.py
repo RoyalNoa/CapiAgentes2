@@ -58,6 +58,7 @@ class SchemaCatalog:
                         "sucursal_id",
                         "sucursal_numero",
                         "sucursal_nombre",
+                        "tipo_sucursal",
                         "saldo_total_sucursal",
                         "caja_teorica_sucursal",
                         "total_atm",

@@ -68,6 +68,7 @@ class ReasoningNode(GraphNode):
                 session_id=state.session_id,
                 user_id=state.user_id,
                 intent_hint=state.detected_intent,
+                state=state,
             )
             plan_changed = True
 

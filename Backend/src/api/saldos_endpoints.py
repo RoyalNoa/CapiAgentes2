@@ -22,6 +22,7 @@ def get_db_client() -> PostgreSQLClient:
 class SucursalBase(BaseModel):
     sucursal_numero: Optional[int] = None
     sucursal_nombre: Optional[str] = None
+    tipo_sucursal: Optional[str] = None
     telefonos: Optional[str] = None
     calle: Optional[str] = None
     altura: Optional[int] = None

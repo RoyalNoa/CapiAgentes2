@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import os
 import re
 import unicodedata
 from concurrent.futures import ThreadPoolExecutor
@@ -133,11 +134,22 @@ class SemanticIntentService:
         *,
         reasoner: Optional[LLMReasoner] = None,
         fallback_enabled: bool = True,
+        model: Optional[str] = None,
+        timeout_seconds: Optional[float] = None,
     ) -> None:
-        self.reasoner = reasoner or LLMReasoner(model="gpt-5", temperature=0.2, max_tokens=400)
+        model_name = model or os.getenv("SEMANTIC_INTENT_MODEL") or "gpt-4o-mini"
+        timeout_value = timeout_seconds if timeout_seconds is not None else float(os.getenv("SEMANTIC_INTENT_TIMEOUT", "8.0"))
+        self.reasoner = reasoner or LLMReasoner(model=model_name, temperature=0.2, max_tokens=400, timeout=timeout_value)
         self.fallback_enabled = fallback_enabled
         self.context_manager = get_global_context_manager()
-        logger.info({"event": "semantic_intent_service_initialized", "fallback_enabled": fallback_enabled})
+        logger.info(
+            {
+                "event": "semantic_intent_service_initialized",
+                "fallback_enabled": fallback_enabled,
+                "model": model_name,
+                "timeout_seconds": timeout_value,
+            }
+        )
 
     def classify_intent(self, query: str, context: Optional[Dict[str, Any]] = None) -> IntentResult:
         if not query or not query.strip():

@@ -55,6 +55,48 @@ class RouterNode(GraphNode):
         if not query.strip():
             return self._finalize_route(state, target_agent="assemble", intent=Intent.UNKNOWN, confidence=0.0)
 
+        lowered_query = query.lower()
+        global_triggers = (
+            "todas las sucurs",
+            "todas las sucursal",
+            "estado actual de las sucurs",
+            "estado actual de las sucursal",
+            "situacion actual de las sucurs",
+            "situación actual de las sucurs",
+            "analiza todas las sucurs",
+            "analiza el estado actual de las sucurs",
+            "analiza el estado actual de las sucursal",
+            "analiza el estado actual de la sucursal",
+            "analiza las sucursales",
+            "analizar las sucursales",
+        )
+        if any(trigger in lowered_query for trigger in global_triggers) or (
+            "todas" in lowered_query and "sucurs" in lowered_query
+        ):
+            logger.info(
+                {
+                    "event": "router_manual_route_global_branches",
+                    "node": self.name,
+                    "reason": "global_branch_query_detected",
+                }
+            )
+            metadata = dict(state.response_metadata or {})
+            metadata.setdefault("semantic_result", {})
+            metadata["semantic_result"].update(
+                {
+                    "intent": Intent.DB_OPERATION.value,
+                    "target_agent": "capi_datab",
+                    "routing_agent": "capi_datab",
+                    "reason": "global_branch_query_detected",
+                }
+            )
+            updated_state = StateMutator.merge_dict(state, "response_metadata", metadata)
+            updated_state = StateMutator.update_field(updated_state, "detected_intent", Intent.DB_OPERATION)
+            updated_state = StateMutator.update_field(updated_state, "intent_confidence", 0.9)
+            updated_state = StateMutator.update_field(updated_state, "routing_decision", "capi_datab")
+            updated_state = StateMutator.append_to_list(updated_state, "completed_nodes", self.name)
+            return updated_state
+
         start_time = time.time()
         use_semantic = is_semantic_nlp_enabled(state.session_id)
 

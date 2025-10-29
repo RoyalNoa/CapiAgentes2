@@ -84,6 +84,7 @@ FROM alertas a;
 CREATE TABLE IF NOT EXISTS saldos_sucursal (
   id                      BIGSERIAL PRIMARY KEY,
   sucursal_id             TEXT NOT NULL UNIQUE,                                  -- S001
+  tipo_sucursal           TEXT NOT NULL DEFAULT 'sucursal',
 
   -- Importes principales (primero)
   saldo_total_sucursal    NUMERIC(20,2) NOT NULL,                         -- 100% del efectivo de la sucursal

@@ -450,7 +450,7 @@ SELECT
 FROM agent_ref;
 -- Seed cash policies for cash management
 INSERT INTO alerts.cash_policies (channel, max_surplus_pct, max_deficit_pct, min_buffer_amount, daily_withdrawal_limit, daily_deposit_limit, reload_lead_hours, sla_hours, truck_fixed_cost, truck_variable_cost_per_kg, notes) VALUES
-    ('Saldo Total', 0.080, 0.050, 600000.00, 2500000.00, 2500000.00, 6, 12, 150000.00, 3800.00, 'Tolerancia global de sucursal'),
+('Saldo Total', 0.400, 0.400, 600000.00, 2500000.00, 2500000.00, 6, 12, 150000.00, 3800.00, 'Tolerancia global de sucursal'),
     ('ATM', 0.120, 0.060, 500000.00, 1500000.00, 1200000.00, 6, 12, 120000.00, 3500.00, 'Prioridad alta: buffer robusto para ATM'),
     ('ATS', 0.100, 0.050, 300000.00, 900000.00, 600000.00, 8, 16, 110000.00, 3200.00, 'ATS balance moderado'),
     ('Tesoro', 0.150, 0.080, 750000.00, NULL, NULL, 12, 24, 90000.00, 2800.00, 'Tesoro actúa como pulmón de la sucursal'),

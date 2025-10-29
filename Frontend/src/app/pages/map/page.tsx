@@ -14,6 +14,7 @@ interface ModernBranch {
   sucursal_id: string
   sucursal_numero: number
   sucursal_nombre: string
+  tipo_sucursal?: string | null
   telefonos?: string | null
   calle?: string | null
   altura?: number | null
@@ -40,17 +41,21 @@ interface ModernBranch {
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max)
 const BALANCE_TOLERANCE = 0.4
 
+type SimulationMode = "deposit" | "extraction"
+
 export default function Mapa() {
   const [loader, setLoader] = useState(true)
   const [googleSelection, setGoogleSelection] = useState<ModernBranch | null>(null)
-  const [simulationTrigger, setSimulationTrigger] = useState(0)
+  const [simulationRequest, setSimulationRequest] = useState<{ id: number; mode: SimulationMode } | null>(null)
   const [isSimulationRunning, setIsSimulationRunning] = useState(false)
+  const [activeSimulationMode, setActiveSimulationMode] = useState<SimulationMode | null>(null)
   const [isGoogleMapReady, setIsGoogleMapReady] = useState(false)
   const [overlayPosition, setOverlayPosition] = useState<{ left: number; top: number } | null>(null)
   const [isDraggingOverlay, setIsDraggingOverlay] = useState(false)
   const googleShellRef = useRef<HTMLDivElement | null>(null)
   const overlayRef = useRef<HTMLDivElement | null>(null)
   const dragOffsetRef = useRef<{ x: number; y: number } | null>(null)
+  const pendingSimulationModeRef = useRef<SimulationMode | null>(null)
 
   const {
     selectedSucursal,
@@ -77,6 +82,7 @@ export default function Mapa() {
 
   const balanceInfo = useMemo(() => {
     const rawCaja = selectedSucursal?.caja_teorica_sucursal
+    const isVault = selectedSucursal?.tipo_sucursal?.toLowerCase() === 'boveda'
     const rawSaldo = selectedSucursal?.saldo_total_sucursal
     const caja = rawCaja !== null && rawCaja !== undefined ? Number(rawCaja) : null
     const saldo = rawSaldo !== null && rawSaldo !== undefined ? Number(rawSaldo) : null
@@ -86,7 +92,7 @@ export default function Mapa() {
 
     let trend: "above" | "below" | "neutral" = "neutral"
 
-    if (cajaValid && saldoValid && Math.abs(caja as number) > 0) {
+    if (!isVault && cajaValid && saldoValid && Math.abs(caja as number) > 0) {
       const ratio = ((saldo as number) - (caja as number)) / Math.abs(caja as number)
       if (ratio > BALANCE_TOLERANCE) {
         trend = "above"
@@ -239,11 +245,39 @@ export default function Mapa() {
   }, [isDraggingOverlay])
 
   const handleSimulationClick = useCallback(() => {
-    if (isSimulationRunning || !isGoogleMapReady) {
+    if (isSimulationRunning || !isGoogleMapReady || pendingSimulationModeRef.current) {
       return
     }
-    setSimulationTrigger((prev) => prev + 1)
+    pendingSimulationModeRef.current = "deposit"
+    setSimulationRequest((prev) => {
+      const nextId = (prev?.id ?? 0) + 1
+      return { id: nextId, mode: "deposit" }
+    })
   }, [isGoogleMapReady, isSimulationRunning])
+
+  const handleExtractionClick = useCallback(() => {
+    if (isSimulationRunning || !isGoogleMapReady || pendingSimulationModeRef.current) {
+      return
+    }
+    pendingSimulationModeRef.current = "extraction"
+    setSimulationRequest((prev) => {
+      const nextId = (prev?.id ?? 0) + 1
+      return { id: nextId, mode: "extraction" }
+    })
+  }, [isGoogleMapReady, isSimulationRunning])
+
+  const handleSimulationStateChange = useCallback((isRunning: boolean) => {
+    setIsSimulationRunning(isRunning)
+    if (isRunning) {
+      if (pendingSimulationModeRef.current) {
+        setActiveSimulationMode(pendingSimulationModeRef.current)
+        pendingSimulationModeRef.current = null
+      }
+    } else {
+      setActiveSimulationMode(null)
+      pendingSimulationModeRef.current = null
+    }
+  }, [])
 
   useEffect(() => {
     if (selectedSucursal && !overlayPosition) {
@@ -271,11 +305,27 @@ export default function Mapa() {
               onClick={handleSimulationClick}
               disabled={isSimulationRunning || !isGoogleMapReady}
             >
-              {isSimulationRunning
-                ? "Simulando..."
-                : isGoogleMapReady
-                  ? "Iniciar simulacion"
-                  : "Preparando mapa..."}
+              {!isGoogleMapReady
+                ? "Preparando mapa..."
+                : isSimulationRunning && activeSimulationMode === "deposit"
+                  ? "Simulando deposito..."
+                  : pendingSimulationModeRef.current === "deposit"
+                    ? "Preparando deposito..."
+                    : "Deposito"}
+            </button>
+          </div>
+
+          <div className={styles.extractionControls}>
+            <button
+              className={styles.simulationButton}
+              onClick={handleExtractionClick}
+              disabled={isSimulationRunning || !isGoogleMapReady}
+            >
+              {isSimulationRunning && activeSimulationMode === "extraction"
+                ? "Simulando retiro..."
+                : pendingSimulationModeRef.current === "extraction"
+                  ? "Preparando retiro..."
+                  : "Retiro"}
             </button>
           </div>
 
@@ -283,8 +333,8 @@ export default function Mapa() {
             <GoogleMap
               onSucursalSelect={handleSucursalSelect}
               selectedSucursal={googleSelection}
-              simulationTrigger={simulationTrigger}
-              onSimulationStateChange={setIsSimulationRunning}
+              simulationRequest={simulationRequest}
+              onSimulationStateChange={handleSimulationStateChange}
               onReadyStateChange={setIsGoogleMapReady}
             />
 
@@ -301,6 +351,9 @@ export default function Mapa() {
                 <h3 className={styles.infoOverlayTitle}>
                   {selectedSucursal.sucursal_nombre ?? "Sucursal"}
                 </h3>
+                {selectedSucursal.tipo_sucursal && (
+                  <div className={styles.infoRow}>Tipo: {selectedSucursal.tipo_sucursal === 'boveda' ? 'Bóveda' : selectedSucursal.tipo_sucursal}</div>
+                )}
                 <div className={styles.infoRow}>Direccion: {selectedSucursal.calle} {selectedSucursal.altura}</div>
                 <div className={styles.infoRow}>Barrio: {selectedSucursal.barrio}</div>
                 <div className={styles.infoRow}>Telefonos: {selectedSucursal.telefonos}</div>
