@@ -82,6 +82,12 @@ class CapiElCajasNode(GraphNode):
             return updated
 
         shared_bucket = self._extract_datab_bucket(state)
+
+        # Detect if this is a global analysis query that should NOT generate alerts
+        metadata = dict(state.response_metadata or {})
+        analysis_scope = metadata.get("analysis_scope")
+        summary_only = analysis_scope == "all_branches"
+
         task = AgentTask(
             task_id=f"el_cajas_{state.session_id}_{int(start_time)}",
             intent=IntentType.BRANCH,
@@ -92,8 +98,9 @@ class CapiElCajasNode(GraphNode):
                 "branch_rows": branch_rows,
                 "shared": shared_bucket,
                 "policies": shared_bucket.get("policies"),
+                "summary_only": summary_only,  # Flag to prevent alert persistence
             },
-            metadata={"workflow_mode": state.workflow_mode},
+            metadata={"workflow_mode": state.workflow_mode, "summary_only": summary_only},
         )
 
         try:

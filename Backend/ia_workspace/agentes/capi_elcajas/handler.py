@@ -113,6 +113,11 @@ class ElCajasAgent(BaseAgent):
                 processing_time=time.time() - start_time,
             )
 
+        # Extract summary_only flag to prevent alert persistence for global queries
+        summary_only = False
+        if isinstance(task.context, dict):
+            summary_only = task.context.get('summary_only', False)
+
         policies = None
         if isinstance(task.context, dict):
             candidate = task.context.get('policies')
@@ -152,8 +157,9 @@ class ElCajasAgent(BaseAgent):
                     global_messages.append(headline)
             alerts_created += int(branch_result.get('alerts_created', 0) or 0)
 
+            # Only collect alert operations if NOT in summary_only mode
             operation_payload = branch_result.get('alert_operation')
-            if isinstance(operation_payload, dict):
+            if isinstance(operation_payload, dict) and not summary_only:
                 alert_operations.append(operation_payload)
 
             artifact_payload = branch_result.get('recommendation_artifact')
@@ -165,6 +171,11 @@ class ElCajasAgent(BaseAgent):
         else:
             message = 'Sucursales OK: caja real dentro de tolerancias'
 
+        # Generate global_summary for multi-branch analysis
+        global_summary = None
+        if branch_count > 1:
+            global_summary = self._generate_global_summary(analysis, policy_map)
+
         data_payload = {
             'analysis': analysis,
             'calendar': calendar_descriptor,
@@ -172,7 +183,11 @@ class ElCajasAgent(BaseAgent):
             'alerts_created': alerts_created,
             'alert_operations': alert_operations,
             'recommendation_files': recommendation_files,
+            'analysis_scope': 'all_branches' if branch_count > 1 else 'single_branch',
         }
+
+        if global_summary:
+            data_payload['global_summary'] = global_summary
 
         agent_progress.success(
             self.AGENT_NAME,
@@ -190,6 +205,74 @@ class ElCajasAgent(BaseAgent):
             message=message,
             processing_time=time.time() - start_time,
         )
+
+    def _generate_global_summary(
+        self,
+        analysis: List[Dict[str, Any]],
+        policy_map: Dict[str, Dict[str, Any]]
+    ) -> Dict[str, Any]:
+        """Generate aggregated summary for multi-branch analysis."""
+        total_branches = len(analysis)
+
+        # Get the Saldo Total policy for tolerance thresholds
+        saldo_policy = policy_map.get('saldo total', {})
+        max_surplus_pct = abs(self._to_float(saldo_policy.get('max_surplus_pct', 0.1)))
+        max_deficit_pct = abs(self._to_float(saldo_policy.get('max_deficit_pct', 0.1)))
+
+        surplus_branches = []
+        deficit_branches = []
+        surplus_total = 0.0
+        deficit_total = 0.0
+
+        for branch_analysis in analysis:
+            branch_name = branch_analysis.get('branch_name', 'Unknown')
+            difference = float(branch_analysis.get('difference', 0) or 0)
+            deviation_pct = float(branch_analysis.get('deviation_pct', 0) or 0)
+            theoretical_total = float(branch_analysis.get('theoretical_total', 0) or 0)
+
+            if theoretical_total <= 0:
+                continue
+
+            allowed_surplus = theoretical_total * max_surplus_pct
+            allowed_deficit = theoretical_total * max_deficit_pct
+
+            if difference > allowed_surplus:
+                excess_amount = difference - allowed_surplus
+                if excess_amount > 0:
+                    surplus_branches.append({
+                        'branch': branch_name,
+                        'amount': excess_amount,
+                        'deviation_pct': deviation_pct,
+                    })
+                    surplus_total += excess_amount
+            elif difference < -allowed_deficit:
+                shortage_amount = abs(difference) - allowed_deficit
+                if shortage_amount > 0:
+                    deficit_branches.append({
+                        'branch': branch_name,
+                        'amount': shortage_amount,
+                        'deviation_pct': abs(deviation_pct),
+                    })
+                    deficit_total += shortage_amount
+
+        return {
+            'total_branches': total_branches,
+            'surplus': {
+                'branches': len(surplus_branches),
+                'amount': surplus_total,
+                'details': surplus_branches
+            },
+            'deficit': {
+                'branches': len(deficit_branches),
+                'amount': deficit_total,
+                'details': deficit_branches
+            },
+            'policy': {
+                'max_surplus_pct': max_surplus_pct,
+                'max_deficit_pct': max_deficit_pct
+            }
+        }
+
 
     def _extract_branch_rows(self, task: AgentTask) -> List[Dict[str, Any]]:
         context = task.context or {}

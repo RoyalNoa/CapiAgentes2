@@ -41,6 +41,7 @@ export default function RootLayout({
   // Check if we're on the agents page (immersive HUD mode)
   const isAgentsPage = pathname === '/pages/agentes';
   const isMapPage = pathname?.startsWith('/pages/map');
+  const isHomePage = pathname === '/' || pathname?.startsWith('/pages/home');
 
   return (
     <html lang="en" className={`${inter.variable} ${orbitron.variable}`}> 
@@ -56,7 +57,7 @@ export default function RootLayout({
 
                 {children}
 
-                {!isAgentsPage && !isMapPage && <Footer />}
+                {!isAgentsPage && !isMapPage && !isHomePage && <Footer />}
 
                 {/* Global Chat System - Available on ALL pages */}
                 <GlobalChatOverlay />

@@ -245,6 +245,10 @@ export default function Mapa() {
   }, [isDraggingOverlay])
 
   const handleSimulationClick = useCallback(() => {
+    if (!isSimulationRunning && pendingSimulationModeRef.current) {
+      console.warn("Reiniciando estado pendiente de simulación de depósito");
+      pendingSimulationModeRef.current = null;
+    }
     if (isSimulationRunning || !isGoogleMapReady || pendingSimulationModeRef.current) {
       return
     }
@@ -256,6 +260,10 @@ export default function Mapa() {
   }, [isGoogleMapReady, isSimulationRunning])
 
   const handleExtractionClick = useCallback(() => {
+    if (!isSimulationRunning && pendingSimulationModeRef.current) {
+      console.warn("Reiniciando estado pendiente de simulación de retiro")
+      pendingSimulationModeRef.current = null
+    }
     if (isSimulationRunning || !isGoogleMapReady || pendingSimulationModeRef.current) {
       return
     }

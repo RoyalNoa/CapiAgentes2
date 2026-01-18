@@ -102,6 +102,10 @@ type PreparedSimulation = {
   depositSummary?: DepositSummary | null;
 };
 
+type MapSucursalRecord = SucursalRecord & {
+  position: LatLngLiteral;
+};
+
 declare global {
   interface Window {
     google?: any;
@@ -349,17 +353,30 @@ function detachMarker(marker: any): void {
 }
 
 function ensureValidLatLng(point: LatLngLiteral, fallback: LatLngLiteral = VAULT_COORDS): LatLngLiteral {
-  const latValue = Number(point.lat);
-  const lngValue = Number(point.lng);
+  if (!point || typeof point !== 'object') {
+    console.warn('ensureValidLatLng recibió un punto inválido, usando fallback.', point);
+    return { lat: fallback.lat, lng: fallback.lng };
+  }
+
+  const latValue = Number((point as LatLngLiteral).lat);
+  const lngValue = Number((point as LatLngLiteral).lng);
   const lat = Number.isFinite(latValue) ? Math.min(Math.max(latValue, -85), 85) : fallback.lat;
   const lng = Number.isFinite(lngValue) ? Math.min(Math.max(lngValue, -180), 180) : fallback.lng;
+  if (!Number.isFinite(latValue) || !Number.isFinite(lngValue)) {
+    console.warn('ensureValidLatLng: coordenadas no finitas, aplicando fallback', point);
+  }
   return { lat, lng };
 }
 
 function getLatLngFromRecord(record: SucursalRecord): LatLngLiteral {
+  if ((record as MapSucursalRecord).position) {
+    return ensureValidLatLng((record as MapSucursalRecord).position);
+  }
+  const latValue = typeof record.latitud === 'number' ? record.latitud : Number(record.latitud);
+  const lngValue = typeof record.longitud === 'number' ? record.longitud : Number(record.longitud);
   return ensureValidLatLng({
-    lat: Number(record.latitud),
-    lng: Number(record.longitud),
+    lat: latValue,
+    lng: lngValue,
   });
 }
 
@@ -368,9 +385,26 @@ function getDistanceToVault(record: SucursalRecord): number {
 }
 
 function hasValidCoordinates(record: SucursalRecord): boolean {
-  const lat = Number(record.latitud);
-  const lng = Number(record.longitud);
-  return Number.isFinite(lat) && Number.isFinite(lng);
+  const latRaw = record.latitud;
+  const lngRaw = record.longitud;
+  const lat =
+    typeof latRaw === 'number'
+      ? latRaw
+      : typeof latRaw === 'string' && latRaw.trim().length
+        ? Number(latRaw)
+        : NaN;
+  const lng =
+    typeof lngRaw === 'number'
+      ? lngRaw
+      : typeof lngRaw === 'string' && lngRaw.trim().length
+        ? Number(lngRaw)
+        : NaN;
+
+  if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+    return false;
+  }
+
+  return Math.abs(lat) <= 90 && Math.abs(lng) <= 180;
 }
 
 function toRadians(value: number): number {
@@ -392,12 +426,43 @@ function getDistanceMeters(origin: LatLngLiteral, destination: LatLngLiteral): n
 function dedupeByCoordinates(records: SucursalRecord[]): SucursalRecord[] {
   const seen = new Map<string, SucursalRecord>();
   records.forEach((record) => {
-    const key = `${record.latitud.toFixed(6)}:${record.longitud.toFixed(6)}`;
+    const lat = typeof record.latitud === 'number' ? record.latitud : Number(record.latitud);
+    const lng = typeof record.longitud === 'number' ? record.longitud : Number(record.longitud);
+    const key = `${lat.toFixed(6)}:${lng.toFixed(6)}`;
     if (!seen.has(key)) {
       seen.set(key, record);
     }
   });
   return Array.from(seen.values());
+}
+
+function normalizeSucursalRecord(record: SucursalRecord): MapSucursalRecord | null {
+  const latRaw = record.latitud;
+  const lngRaw = record.longitud;
+  const lat =
+    typeof latRaw === 'number'
+      ? latRaw
+      : typeof latRaw === 'string' && latRaw.trim().length
+        ? Number(latRaw)
+        : NaN;
+  const lng =
+    typeof lngRaw === 'number'
+      ? lngRaw
+      : typeof lngRaw === 'string' && lngRaw.trim().length
+        ? Number(lngRaw)
+        : NaN;
+
+  if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+    return null;
+  }
+
+  const position = ensureValidLatLng({ lat, lng });
+  return {
+    ...record,
+    latitud: position.lat,
+    longitud: position.lng,
+    position,
+  };
 }
 
 async function loadGoogleMaps(): Promise<void> {
@@ -739,9 +804,9 @@ export default function GoogleMapView({
   const selectionPositionCallbackRef = useRef<((position: PixelPosition | null) => void) | null>(
     onSelectionPositionChange ?? null,
   );
-  const selectedSucursalRef = useRef<SucursalRecord | null>(selectedSucursal ?? null);
+  const selectedSucursalRef = useRef<MapSucursalRecord | null>(selectedSucursal ? normalizeSucursalRecord(selectedSucursal) : null);
   const resizeListenerRef = useRef<(() => void) | null>(null);
-  const branchDataRef = useRef<SucursalRecord[]>([]);
+  const branchDataRef = useRef<MapSucursalRecord[]>([]);
   const alertsIndexRef = useRef<Map<string, AlertSummary[]>>(new Map<string, AlertSummary[]>());
   const simulationRoutesRef = useRef<SimulationRoute[]>([]);
   const simulationActiveRoutesRef = useRef<SimulationRoute[]>([]);
@@ -807,7 +872,8 @@ export default function GoogleMapView({
       return;
     }
 
-    const latLng = new window.google.maps.LatLng(selection.latitud, selection.longitud);
+    const selectionPosition = getLatLngFromRecord(selection);
+    const latLng = new window.google.maps.LatLng(selectionPosition.lat, selectionPosition.lng);
     const point = projection.fromLatLngToDivPixel(latLng);
     if (!point) {
       return;
@@ -828,8 +894,9 @@ export default function GoogleMapView({
   }, []);
 
   useEffect(() => {
-    selectedSucursalRef.current = selectedSucursal ?? null;
-    if (!selectedSucursal) {
+    const normalizedSelection = selectedSucursal ? normalizeSucursalRecord(selectedSucursal) : null;
+    selectedSucursalRef.current = normalizedSelection;
+    if (!normalizedSelection) {
       selectionPositionCallbackRef.current?.(null);
       return;
     }
@@ -1010,13 +1077,13 @@ export default function GoogleMapView({
     restoreAllMarkers();
     cleanupSimulationElements();
 
-    const mode = request.mode;
+      const mode = request.mode;
 
-    const prepared = prepareSimulationForMode(
-      branchDataRef.current,
-      mode,
-      lastDepositSummaryRef.current
-    );
+      const prepared = prepareSimulationForMode(
+        branchDataRef.current,
+        mode,
+        lastDepositSummaryRef.current
+      );
 
     if (!prepared.routes.length) {
       simulationContextRef.current = null;
@@ -1060,17 +1127,54 @@ export default function GoogleMapView({
       }
     }
 
-    try {
-      const requestedIconUrl =
-        mode === 'deposit'
-          ? truckIconAssetsRef.current.forward
-          : await ensureReturnIcon();
-      const resolvedTruckIconUrl = requestedIconUrl ?? truckIconAssetsRef.current.forward;
-      const routesToAnimate = simulationRoutesRef.current;
-      const enrichedRoutes = await Promise.all(
-        routesToAnimate.map(async (route, index) => {
-          const intermediate = route.stops.slice(1, -1).map((stop) => stop.position);
-          let pathPoints: LatLngLiteral[] = [];
+      try {
+        const requestedIconUrl =
+          mode === 'deposit'
+            ? truckIconAssetsRef.current.forward
+            : await ensureReturnIcon();
+        const resolvedTruckIconUrl = requestedIconUrl ?? truckIconAssetsRef.current.forward;
+        const rawRoutes = simulationRoutesRef.current;
+        const sanitizedRoutes = rawRoutes
+          .map((route) => {
+            const sanitizedOrigin = ensureValidLatLng(route.origin);
+            const sanitizedDestination = ensureValidLatLng(route.destination);
+            const sanitizedStops = route.stops
+              .map((stop) => {
+                if (!stop?.position) {
+                  console.warn(`Ruta ${route.id} contiene un stop sin posición, se omitirá.`, stop);
+                  return null;
+                }
+                const sanitizedPosition = ensureValidLatLng(stop.position);
+                return { ...stop, position: sanitizedPosition };
+              })
+              .filter((stop): stop is SimulationStop => stop !== null);
+
+            if (sanitizedStops.length < 2) {
+              console.warn(`Ruta ${route.id} no cuenta con suficientes puntos luego de sanear coordenadas.`);
+              return null;
+            }
+
+            return {
+              ...route,
+              origin: sanitizedOrigin,
+              destination: sanitizedDestination,
+              stops: sanitizedStops,
+            };
+          })
+          .filter((route): route is SimulationRoute => route !== null);
+
+        if (!sanitizedRoutes.length) {
+          console.warn('No hay rutas válidas para animar la simulación.');
+          onSimulationStateChangeRef.current?.(false);
+          return;
+        }
+
+        simulationRoutesRef.current = sanitizedRoutes;
+
+        const enrichedRoutes = await Promise.all(
+          sanitizedRoutes.map(async (route, index) => {
+            const intermediate = route.stops.slice(1, -1).map((stop) => stop.position);
+            let pathPoints: LatLngLiteral[] = [];
 
           try {
             pathPoints = await getDirectionsPath(route.origin, route.destination, intermediate);
@@ -1206,16 +1310,20 @@ export default function GoogleMapView({
           throw new Error('Container element not found.');
         }
 
-        const sanitizedRecords = payload.filter(hasValidCoordinates);
-        if (!sanitizedRecords.length) {
+        const normalizedRecords = payload
+          .map(normalizeSucursalRecord)
+          .filter((record): record is MapSucursalRecord => record !== null);
+        if (!normalizedRecords.length) {
           throw new Error('No hay sucursales con coordenadas validas para mostrar en el mapa.');
         }
 
-        if (payload.length !== sanitizedRecords.length) {
-          console.warn(`Se omitieron ${payload.length - sanitizedRecords.length} sucursales sin coordenadas validas para la simulacion.`);
+        if (payload.length !== normalizedRecords.length) {
+          console.warn(
+            `Se omitieron ${payload.length - normalizedRecords.length} sucursales sin coordenadas validas para la simulacion.`
+          );
         }
 
-        const mapCenter = { lat: sanitizedRecords[0].latitud, lng: sanitizedRecords[0].longitud };
+        const mapCenter = { ...normalizedRecords[0].position };
 
         const mapOptions: google.maps.MapOptions = {
           center: mapCenter,
@@ -1268,15 +1376,15 @@ export default function GoogleMapView({
         persistentHighlightIdsRef.current.clear();
         lastDepositSummaryRef.current = null;
 
-        markersRef.current = sanitizedRecords.map((record) => {
-        const appearance = resolveMarkerAppearance(record);
-        const marker = createAdvancedMarker({
-          map,
-          position: getLatLngFromRecord(record),
-          title: record.sucursal_nombre,
-          imageUrl: appearance.imageUrl || FALLBACK_MARKER_APPEARANCE.imageUrl,
-          size: appearance.size || FALLBACK_MARKER_APPEARANCE.size,
-        });
+        markersRef.current = normalizedRecords.map((record) => {
+          const appearance = resolveMarkerAppearance(record);
+          const marker = createAdvancedMarker({
+            map,
+            position: record.position,
+            title: record.sucursal_nombre,
+            imageUrl: appearance.imageUrl || FALLBACK_MARKER_APPEARANCE.imageUrl,
+            size: appearance.size || FALLBACK_MARKER_APPEARANCE.size,
+          });
 
           markersByIdRef.current.set(record.sucursal_id, {
             marker,
@@ -1294,8 +1402,8 @@ export default function GoogleMapView({
         });
 
         const bounds = new window.google.maps.LatLngBounds();
-        sanitizedRecords.forEach(({ latitud, longitud }) => {
-          bounds.extend({ lat: latitud, lng: longitud });
+        normalizedRecords.forEach(({ position }) => {
+          bounds.extend(position);
         });
         if (!bounds.isEmpty()) {
           map.fitBounds(bounds, 80);
@@ -1304,8 +1412,8 @@ export default function GoogleMapView({
           }
         }
 
-        branchDataRef.current = sanitizedRecords;
-        const depositPreview = buildDepositSimulation(sanitizedRecords);
+        branchDataRef.current = normalizedRecords;
+        const depositPreview = buildDepositSimulation(normalizedRecords);
         simulationRoutesRef.current = depositPreview.routes;
         setIsLoading(false);
         setError(null);
@@ -1364,7 +1472,7 @@ export default function GoogleMapView({
     if (!selectedSucursal || !mapRef.current) {
       return;
     }
-    mapRef.current.panTo({ lat: selectedSucursal.latitud, lng: selectedSucursal.longitud });
+    mapRef.current.panTo(getLatLngFromRecord(selectedSucursal));
     mapRef.current.setZoom(14);
     updateOverlayPosition();
   }, [selectedSucursal, updateOverlayPosition]);

@@ -147,17 +147,17 @@ class LangGraphOrchestratorAdapter:
             return text
 
         data_attr = getattr(envelope, "data", None)
-        if isinstance(data_attr, dict):
-            gus_payload = data_attr.get("capi_gus")
-            if isinstance(gus_payload, dict):
-                gus_message = gus_payload.get("message")
-                if gus_message:
-                    return maybe_override(str(gus_message))
-
-            reasoning_plan = data_attr.get("reasoning_plan")
-            if isinstance(reasoning_plan, dict):
-                supporting = reasoning_plan.get("supporting_evidence") or {}
-                entities = supporting.get("entities") if isinstance(supporting, dict) else {}
+        if isinstance(data_attr, dict):
+            gus_payload = data_attr.get("capi_gus")
+            if isinstance(gus_payload, dict):
+                gus_message = gus_payload.get("message")
+                if gus_message:
+                    return maybe_override(str(gus_message))
+
+            reasoning_plan = data_attr.get("reasoning_plan")
+            if isinstance(reasoning_plan, dict):
+                supporting = reasoning_plan.get("supporting_evidence") or {}
+                entities = supporting.get("entities") if isinstance(supporting, dict) else {}
                 if isinstance(entities, dict):
                     operation_hint = entities.get("gmail_operation")
                     if isinstance(operation_hint, str) and operation_hint.startswith("send"):
@@ -197,19 +197,25 @@ class LangGraphOrchestratorAdapter:
                         recipients = [str(item) for item in maybe_recipients if item]
                     if artifact_payload.get("subject"):
                         subject = str(artifact_payload["subject"])
-                joined_recipients = ", ".join(recipients) if recipients else "el destinatario indicado"
-                confirmation_message = (
-                    f'Te confirmo que envié el correo a {joined_recipients} con asunto "{subject}". ¿Necesitás algo más?'
-                )
-                if session_id:
-                    self._gmail_confirmations[session_id] = confirmation_message
-                return confirmation_message
-
-            friendly_fallback = self._compose_friendly_fallback(data_attr, envelope)
-            if friendly_fallback:
-                confirmation = self._gmail_confirmations.pop(session_id, None) if session_id else None
-                if confirmation:
-                    return confirmation
+                    joined_recipients = ", ".join(recipients) if recipients else "el destinatario indicado"
+                    confirmation_message = (
+                        f'Te confirmo que envié el correo a {joined_recipients} con asunto "{subject}". ¿Necesitás algo más?'
+                    )
+                    if session_id:
+                        self._gmail_confirmations[session_id] = confirmation_message
+                    return confirmation_message
+
+            summary_message = data_attr.get("summary_message")
+            if summary_message:
+                summary_text = str(summary_message).strip()
+                if summary_text:
+                    return maybe_override(summary_text)
+
+            friendly_fallback = self._compose_friendly_fallback(data_attr, envelope)
+            if friendly_fallback:
+                confirmation = self._gmail_confirmations.pop(session_id, None) if session_id else None
+                if confirmation:
+                    return confirmation
                 return maybe_override(friendly_fallback)
             response_field = data_attr.get("response")
             if response_field:
@@ -251,17 +257,24 @@ class LangGraphOrchestratorAdapter:
 
     def _compose_friendly_fallback(self, data: Dict[str, Any], envelope: ResponseEnvelope) -> Optional[str]:
         response_field = data.get("response")
-        summary_message = data.get("summary_message")
-        if response_field and response_field != summary_message:
-            return None
-
-        rows = data.get("rows")
-        if not isinstance(rows, list) or not rows:
-            return None
-        first_row = rows[0]
-        if not isinstance(first_row, dict):
-            return None
-
+        summary_message = data.get("summary_message")
+        if summary_message and str(summary_message).strip():
+            return None
+
+        analysis_scope = data.get("analysis_scope") or data.get("scope")
+        if isinstance(analysis_scope, str) and analysis_scope.lower() in {"all_branches", "global"}:
+            return None
+
+        if response_field and response_field != summary_message:
+            return None
+
+        rows = data.get("rows")
+        if not isinstance(rows, list) or len(rows) != 1:
+            return None
+        first_row = rows[0]
+        if not isinstance(first_row, dict):
+            return None
+
         branch = first_row.get("sucursal_nombre") or first_row.get("branch_name") or "la sucursal consultada"
         balance = first_row.get("saldo_total_sucursal")
         theoretical = first_row.get("caja_teorica_sucursal")

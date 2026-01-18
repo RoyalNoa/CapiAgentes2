@@ -47,7 +47,6 @@ if sys.platform.startswith('win'):
         sys.stderr.reconfigure(encoding='utf-8')
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Request, HTTPException
-from ia_workspace.agentes.capi_datab.handler import CapiDataBAgent
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
@@ -69,6 +68,9 @@ except UnicodeDecodeError:
 # Agregar el directorio backend al path para imports
 backend_dir = Path(__file__).parent.parent.parent  # Ir a la raÃ­z del backend
 sys.path.insert(0, str(backend_dir))
+
+# Import ia_workspace agent (must be after sys.path configuration)
+from ia_workspace.agentes.capi_datab.handler import CapiDataBAgent
 
 # Import orchestrator through factory to maintain unidirectional dependency
 from src.presentation.orchestrator_factory import OrchestratorFactory
@@ -112,13 +114,14 @@ def _sanitize_for_json(value: Any) -> Any:
     return value
 
 
-_ROUTE_PLANNING_TRIGGER = "aarma la planificacion de as rutas"
-_ROUTE_PLANNING_MESSAGE = "1u3 eitq la planificacion fue actualizada en el mapa."
+_ROUTE_PLANNING_TRIGGER = "arma las rutas para equilibrar los saldos de las sucursales"
+_ROUTE_PLANNING_MESSAGE = "Gener las rutas ya estan disponibles para la distribucion."
 
 
 def _is_route_planning_shortcut(text: str) -> bool:
     """Detecta la instrucción especial para la planificación de rutas."""
-    return text.strip().lower() == _ROUTE_PLANNING_TRIGGER
+    normalized = (text or "").strip().lower().rstrip("?.!")
+    return normalized == _ROUTE_PLANNING_TRIGGER
 
 
 def _build_route_planning_response(request_id: str, *, include_diagnostics: bool = False) -> Dict[str, Any]:

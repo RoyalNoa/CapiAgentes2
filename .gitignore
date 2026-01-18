@@ -105,3 +105,10 @@ executable_output/
 ############################################################
 # Ignore local session snapshots
 **/ia_workspace/data/sessions/*
+
+# Logs locales
+*_tail.log
+*.log
+
+# Zero Studio config local
+zero-studio.config.json
