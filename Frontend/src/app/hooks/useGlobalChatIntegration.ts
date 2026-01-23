@@ -1,12 +1,25 @@
+/**
+ * @file useGlobalChatIntegration.ts
+ * @module hooks
+ * @description Hook para integrar funcionalidad de páginas con el chat global.
+ * Permite que páginas como mapas interactúen con el estado del chat
+ * sin duplicar instancias ni perder estado.
+ */
+
 'use client';
 
 import { useCallback } from 'react';
 import { useGlobalChat } from '@/app/contexts/GlobalChatContext';
 
 /**
- * Hook for integrating existing page functionality with global chat
- * This allows pages like maps to interact with the global chat state
- * without duplicating chat instances or losing state.
+ * @function useGlobalChatIntegration
+ * @description Hook que provee métodos de integración con el chat global CAPI.
+ * Extiende useGlobalChat con funciones utilitarias para abrir/cerrar chat
+ * y enviar mensajes con contexto de sucursal.
+ * @returns {Object} Estado del chat y métodos de integración
+ * @example
+ * const { openChatWith, sendMessageAndOpen, isConnected } = useGlobalChatIntegration();
+ * openChatWith({ sucursal: selectedBranch });
  */
 export function useGlobalChatIntegration() {
   const {
@@ -29,6 +42,9 @@ export function useGlobalChatIntegration() {
     setShowSidebar,
   } = useGlobalChat();
 
+  /**
+   * Abre el chat con datos de contexto opcionales (ej. sucursal).
+   */
   const openChatWith = useCallback((data: any) => {
     if (data?.sucursal) {
       setSelectedSucursal(data.sucursal);
@@ -36,11 +52,17 @@ export function useGlobalChatIntegration() {
     setIsOpen(true);
   }, [setIsOpen, setSelectedSucursal]);
 
+  /**
+   * Cierra el chat y limpia la selección de sucursal.
+   */
   const closeChatAndClear = useCallback(() => {
     setIsOpen(false);
     setSelectedSucursal(null);
   }, [setIsOpen, setSelectedSucursal]);
 
+  /**
+   * Envía un mensaje al chat y lo abre si está cerrado.
+   */
   const sendMessageAndOpen = useCallback(async (message: string, contextData?: any) => {
     if (contextData?.sucursal) {
       setSelectedSucursal(contextData.sucursal);

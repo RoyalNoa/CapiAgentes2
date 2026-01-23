@@ -1,21 +1,27 @@
-/*
-CAPI - Agent WebSocket Custom Hook
-=================================
-Ruta: /Frontend/src/app/hooks/useAgentWebSocket.ts
-Descripción: Hook React personalizado para gestión de conexiones WebSocket con
-agentes. Incluye reconexión automática, gestión de eventos y estado de conexión.
-Estado: ✅ EN USO ACTIVO - PantallaAgentes core hook
-Dependencias: React hooks, WebSocket API
-Características: Reconexión automática, gestión eventos, estado conexión
-Eventos: node_transition, agent_start, agent_end, ping/pong
-Propósito: Comunicación en tiempo real con sistema de agentes
-*/
+/**
+ * @file useAgentWebSocket.ts
+ * @module hooks
+ * @description Hook React personalizado para gestión de conexiones WebSocket con
+ * el sistema de agentes CAPI. Incluye reconexión automática, gestión de eventos
+ * y estado de conexión en tiempo real.
+ * @state EN USO ACTIVO - PantallaAgentes core hook
+ *
+ * Características principales:
+ * - Reconexión automática con intentos configurables
+ * - Gestión de eventos: node_transition, agent_start, agent_end, ping/pong
+ * - Estado de conexión observable
+ * - Snapshots de sesión con LRU cache
+ */
 
 'use client';
 
 import { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { getApiBase } from '@/app/utils/orchestrator/client';
 
+/**
+ * Interfaz para eventos de agentes recibidos via WebSocket.
+ * @description Representa los distintos tipos de eventos emitidos por el orquestador.
+ */
 export interface AgentEvent {
   type: 'node_transition' | 'agent_start' | 'agent_end' | 'agent_progress' | 'connection' | 'history' | 'state' | 'pong' | 'error';
   id?: string;
@@ -30,12 +36,20 @@ export interface AgentEvent {
   meta?: Record<string, any>;
 }
 
+/**
+ * Interfaz para snapshot de estado de sesión.
+ * @description Almacena el estado capturado de una sesión en un momento dado.
+ */
 interface SessionStateSnapshot {
   sessionId: string;
   snapshot: any;
   updatedAt: string;
 }
 
+/**
+ * Interfaz de retorno del hook useAgentWebSocket.
+ * @description Define el estado y métodos expuestos por el hook.
+ */
 interface UseAgentWebSocketReturn {
   isConnected: boolean;
   connectionState: 'connecting' | 'connected' | 'disconnected' | 'error';
@@ -50,6 +64,12 @@ interface UseAgentWebSocketReturn {
   sendPing: () => void;
 }
 
+/**
+ * @function buildAgentWebSocketUrl
+ * @description Construye la URL del WebSocket de agentes adaptándose al entorno.
+ * @param {string} [explicitUrl] - URL explícita opcional
+ * @returns {string} URL del WebSocket de agentes
+ */
 function buildAgentWebSocketUrl(explicitUrl?: string): string {
   const trimmed = explicitUrl?.trim();
   if (trimmed) {
@@ -74,6 +94,15 @@ const MAX_EVENTS = 100;
 const RECONNECT_ATTEMPTS = 3;
 const RECONNECT_DELAY = 2000;
 
+/**
+ * @function useAgentWebSocket
+ * @description Hook para gestión de conexiones WebSocket con el sistema de agentes.
+ * Provee estado de conexión, eventos recibidos y métodos de control.
+ * @param {string} [rawUrl] - URL opcional del WebSocket (usa default si no se provee)
+ * @returns {UseAgentWebSocketReturn} Estado y métodos del hook
+ * @example
+ * const { isConnected, events, connect, disconnect } = useAgentWebSocket();
+ */
 export function useAgentWebSocket(rawUrl?: string): UseAgentWebSocketReturn {
   const wsUrl = useMemo(() => buildAgentWebSocketUrl(rawUrl), [rawUrl]);
   const [isConnected, setIsConnected] = useState(false);

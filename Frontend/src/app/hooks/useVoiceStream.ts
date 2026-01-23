@@ -1,16 +1,37 @@
+/**
+ * @file useVoiceStream.ts
+ * @module hooks
+ * @description Hook React para captura de voz y streaming al backend.
+ * Implementa grabación de audio, resampling a 16kHz, conversión a PCM
+ * y comunicación WebSocket para transcripción y síntesis de voz.
+ *
+ * Pipeline: Micrófono → AudioContext → Resample 16kHz → PCM 16-bit → WebSocket
+ */
+
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
+/** Sample rate objetivo para streaming de audio (16kHz). */
 const TARGET_SAMPLE_RATE = 16000;
+/** Duración de chunks de audio en milisegundos. */
 const CHUNK_MS = 250;
 
+/** Etapas del pipeline de voz. */
 type VoiceStage = 'transcription' | 'orchestration' | 'synthesis';
+/** Estados posibles de cada etapa. */
 type VoiceStageStatus = 'pending' | 'running' | 'complete' | 'error';
 
+/**
+ * Interfaz para actualizaciones de estado de etapas de voz.
+ */
 interface VoiceStageUpdate {
   stage: VoiceStage;
   status: VoiceStageStatus;
 }
 
+/**
+ * Resumen de un turno de voz completado.
+ * @description Contiene transcripción, respuesta y audio generado.
+ */
 interface VoiceTurnSummary {
   transcript: string;
   responseText: string;
@@ -19,6 +40,9 @@ interface VoiceTurnSummary {
   mimeType: string | null;
 }
 
+/**
+ * Opciones de configuración para useVoiceStream.
+ */
 interface VoiceStreamOptions {
   sessionId: string;
   userId?: string;
@@ -42,6 +66,13 @@ interface VoiceMessageRoutingContext {
   onStage?: (update: VoiceStageUpdate) => void;
 }
 
+/**
+ * @function processVoiceStreamMessage
+ * @description Procesa mensajes recibidos del WebSocket de voz y rutea a callbacks.
+ * @param {any} payload - Mensaje JSON recibido
+ * @param {VoiceMessageRoutingContext} ctx - Contexto con callbacks de manejo
+ * @returns {Promise<void>}
+ */
 export async function processVoiceStreamMessage(payload: any, ctx: VoiceMessageRoutingContext): Promise<void> {
   if (!payload || typeof payload !== 'object') {
     return;
@@ -88,6 +119,10 @@ export async function processVoiceStreamMessage(payload: any, ctx: VoiceMessageR
   }
 }
 
+/**
+ * Estado retornado por useVoiceStream.
+ * @description Incluye flags de estado, transcripciones y métodos de control.
+ */
 interface VoiceStreamState {
   isRecording: boolean;
   isProcessing: boolean;
@@ -101,6 +136,11 @@ interface VoiceStreamState {
   reset: () => void;
 }
 
+/**
+ * @function resolveApiBase
+ * @description Resuelve la URL base de la API para el entorno actual.
+ * @returns {string} URL base resuelta
+ */
 function resolveApiBase(): string {
   const fallback = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:8000';
   if (typeof window === 'undefined') {
@@ -125,6 +165,11 @@ function resolveApiBase(): string {
   }
 }
 
+/**
+ * @function resolveWsUrl
+ * @description Construye la URL del WebSocket de voz a partir de la base API.
+ * @returns {string} URL del WebSocket (ws:// o wss://)
+ */
 function resolveWsUrl(): string {
   const base = resolveApiBase();
   const normalized = base.endsWith('/') ? base.slice(0, -1) : base;
@@ -134,6 +179,12 @@ function resolveWsUrl(): string {
   return `${wsBase}/api/voice/stream`;
 }
 
+/**
+ * @function describeMediaError
+ * @description Traduce errores de MediaDevices a mensajes amigables en español.
+ * @param {any} error - Error capturado
+ * @returns {string} Mensaje descriptivo del error
+ */
 const describeMediaError = (error: any): string => {
   const name = typeof error?.name === 'string' ? error.name : '';
   const message = typeof error?.message === 'string' ? error.message : '';
@@ -160,6 +211,12 @@ const describeMediaError = (error: any): string => {
   return message || 'No pudimos iniciar la captura de audio';
 };
 
+/**
+ * @function mergeChannels
+ * @description Combina múltiples canales de audio en uno solo (mono).
+ * @param {AudioBuffer} buffer - Buffer de audio a procesar
+ * @returns {Float32Array} Audio mono combinado
+ */
 function mergeChannels(buffer: AudioBuffer): Float32Array {
   if (buffer.numberOfChannels === 1) {
     return new Float32Array(buffer.getChannelData(0));
@@ -178,6 +235,14 @@ function mergeChannels(buffer: AudioBuffer): Float32Array {
   return result;
 }
 
+/**
+ * @function resampleTo
+ * @description Resamplea audio a una frecuencia objetivo usando interpolación lineal.
+ * @param {number} targetRate - Frecuencia objetivo en Hz
+ * @param {Float32Array} source - Datos de audio fuente
+ * @param {number} sourceRate - Frecuencia original en Hz
+ * @returns {Float32Array} Audio resampleado
+ */
 function resampleTo(targetRate: number, source: Float32Array, sourceRate: number): Float32Array {
   if (sourceRate === targetRate) {
     return source;
@@ -196,6 +261,12 @@ function resampleTo(targetRate: number, source: Float32Array, sourceRate: number
   return resampled;
 }
 
+/**
+ * @function floatTo16BitPCM
+ * @description Convierte audio Float32 a PCM de 16 bits (little-endian).
+ * @param {Float32Array} floatBuffer - Buffer de audio en formato float
+ * @returns {ArrayBuffer} Buffer PCM de 16 bits
+ */
 function floatTo16BitPCM(floatBuffer: Float32Array): ArrayBuffer {
   const buffer = new ArrayBuffer(floatBuffer.length * 2);
   const view = new DataView(buffer);
@@ -207,6 +278,18 @@ function floatTo16BitPCM(floatBuffer: Float32Array): ArrayBuffer {
   return buffer;
 }
 
+/**
+ * @function useVoiceStream
+ * @description Hook principal para captura y streaming de voz.
+ * Gestiona grabación, procesamiento de audio y comunicación WebSocket.
+ * @param {VoiceStreamOptions} options - Configuración del hook
+ * @returns {VoiceStreamState} Estado y métodos de control
+ * @example
+ * const { isRecording, startRecording, stopRecording, finalTranscript } = useVoiceStream({
+ *   sessionId: 'my-session',
+ *   language: 'es-ES'
+ * });
+ */
 export default function useVoiceStream(options: VoiceStreamOptions): VoiceStreamState {
   const { sessionId, userId = 'voice-client', language = 'es-ES', onTurnCompleted, onStageUpdate } = options;
   const [isRecording, setIsRecording] = useState(false);

@@ -1,6 +1,9 @@
 /**
- * Dashboard Service - Manejo de datos para el dashboard ejecutivo
- * Proporciona datos procesados y KPIs para la gestión de distribución de efectivo
+ * @file dashboardService.ts
+ * @module services
+ * @description Dashboard Service - Manejo de datos para el dashboard ejecutivo.
+ * Proporciona datos procesados y KPIs para la gestión de distribución de efectivo.
+ * Se comunica con el backend via API REST para obtener métricas estructuradas.
  */
 
 export interface DashboardData {
@@ -50,9 +53,20 @@ export interface AnomalyData {
   timestamp: string;
 }
 
+/**
+ * Servicio para datos del dashboard ejecutivo.
+ * @description Obtiene métricas financieras del backend y las procesa para visualización.
+ * Usa ResponseEnvelope estructurado para evitar parsing de texto frágil.
+ */
 class DashboardService {
   private readonly configuredApiBase = (process.env.NEXT_PUBLIC_API_BASE ?? 'http://backend:8000').replace(/\/$/, '');
 
+  /**
+   * @method resolveApiBase
+   * @description Resuelve la URL base de la API adaptándose al entorno (SSR vs cliente).
+   * @returns {string} URL base resuelta
+   * @private
+   */
   private resolveApiBase(): string {
     if (typeof window === 'undefined') {
       return this.configuredApiBase;
@@ -76,6 +90,13 @@ class DashboardService {
     return this.configuredApiBase;
   }
 
+  /**
+   * @method buildUrl
+   * @description Construye URL completa a partir de path relativo.
+   * @param {string} path - Path relativo o absoluto
+   * @returns {string} URL completa
+   * @private
+   */
   private buildUrl(path: string): string {
     if (/^https?:\/\//i.test(path)) {
       return path;
@@ -85,9 +106,11 @@ class DashboardService {
     return base ? `${base}${normalized}` : normalized;
   }
 
-
   /**
-   * Obtener todos los datos del dashboard
+   * @method getDashboardData
+   * @description Obtiene todos los datos del dashboard desde el backend.
+   * @returns {Promise<DashboardData>} Datos procesados del dashboard
+   * @throws {Error} Si falla la comunicación con el backend
    */
   async getDashboardData(): Promise<DashboardData> {
     try {
@@ -108,7 +131,12 @@ class DashboardService {
   }
 
   /**
-   * Hacer solicitud al orquestador
+   * @method makeRequest
+   * @description Envía instrucción al orquestador de agentes.
+   * @param {string} instruction - Instrucción en lenguaje natural
+   * @returns {Promise<any>} Respuesta del orquestador
+   * @throws {Error} Si la petición HTTP falla
+   * @private
    */
   private async makeRequest(instruction: string): Promise<any> {
     const response = await fetch(this.buildUrl('/api/command'), {
@@ -130,7 +158,14 @@ class DashboardService {
   }
 
   /**
-   * Procesar datos raw del backend (usando métricas estructuradas)
+   * @method processRawData
+   * @description Procesa datos raw del backend usando métricas estructuradas.
+   * Extrae métricas del ResponseEnvelope evitando parsing de texto.
+   * @param {any} summaryData - Respuesta de resumen general
+   * @param {any} branchData - Datos de sucursales
+   * @param {any} anomalyData - Datos de anomalías
+   * @returns {DashboardData} Datos procesados para el dashboard
+   * @private
    */
   private processRawData(summaryData: any, branchData: any, anomalyData: any): DashboardData {
     // Acceder a métricas estructuradas del ResponseEnvelope
@@ -164,7 +199,11 @@ class DashboardService {
 
 
   /**
-   * Process anomalies from REAL data only
+   * @method processAnomalies
+   * @description Procesa anomalías desde datos reales del backend.
+   * @param {any} anomalyData - Datos crudos de anomalías
+   * @returns {AnomalyData[]} Lista de anomalías procesadas
+   * @private
    */
   private processAnomalies(anomalyData: any): AnomalyData[] {
     if (!anomalyData) return [];
@@ -175,7 +214,10 @@ class DashboardService {
   // MOCK DATA METHOD ELIMINATED per ARCHITECTURE.md
 
   /**
-   * Formatear números como moneda
+   * @method formatCurrency
+   * @description Formatea número como moneda colombiana (COP).
+   * @param {number} amount - Monto a formatear
+   * @returns {string} Monto formateado con símbolo de moneda
    */
   formatCurrency(amount: number): string {
     return new Intl.NumberFormat('es-CO', {
@@ -186,7 +228,10 @@ class DashboardService {
   }
 
   /**
-   * Formatear números con separadores
+   * @method formatNumber
+   * @description Formatea número con separadores de miles.
+   * @param {number} num - Número a formatear
+   * @returns {string} Número formateado con separadores
    */
   formatNumber(num: number): string {
     return new Intl.NumberFormat('es-CO').format(num);

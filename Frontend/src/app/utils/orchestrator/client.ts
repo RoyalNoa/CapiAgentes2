@@ -1,11 +1,38 @@
+/**
+ * @file client.ts
+ * @module utils/orchestrator
+ * @description Cliente HTTP/REST para comunicación con el orquestador de agentes CAPI.
+ * Provee funciones para comandos, health checks, gestión de agentes, alertas,
+ * token tracking y registro dinámico de agentes.
+ *
+ * Características:
+ * - Timeout configurable con abort controller
+ * - Logging estructurado con OrchestratorLogger
+ * - Fallback automático a localhost:8000
+ * - Manejo de errores tipado
+ */
+
+/** URL base por defecto del backend. */
 const DEFAULT_API_BASE = 'http://localhost:8000';
 
+/**
+ * @function normalizeBase
+ * @description Normaliza URL base removiendo trailing slash.
+ * @param {string} base - URL a normalizar
+ * @returns {string} URL normalizada
+ */
 function normalizeBase(base: string): string {
   return base.replace(/\/$/, '');
 }
 
 let cachedBrowserBase: string | null = null;
 
+/**
+ * @function getApiBase
+ * @description Obtiene la URL base de la API adaptándose al entorno.
+ * En el browser, resuelve hostnames de servicios Docker a la IP actual.
+ * @returns {string} URL base de la API
+ */
 export function getApiBase(): string {
   const envBase = process.env.NEXT_PUBLIC_API_BASE;
 
@@ -41,8 +68,14 @@ export function getApiBase(): string {
   }
 }
 
+/** URL base de la API exportada (cacheada). */
 export const API_BASE = getApiBase();
-// Enhanced logging system
+
+/**
+ * @class OrchestratorLogger
+ * @description Sistema de logging mejorado con historial y niveles.
+ * Mantiene últimos 100 logs en memoria para debugging.
+ */
 class OrchestratorLogger {
   private static instance: OrchestratorLogger;
   private logs: Array<{timestamp: string, level: string, message: string, data?: any}> = [];
@@ -111,6 +144,10 @@ if (typeof window !== 'undefined') {
   }
 }
 
+/**
+ * Interfaz de resultado del orquestador.
+ * @description Estructura común de respuestas de la API.
+ */
 interface OrchestratorResult {
   json?: any;
   summary?: any;
@@ -127,9 +164,18 @@ interface ErrorShape { code: string; message: string }
 
 function buildError(code: string, message: string): never { throw { code, message } as ErrorShape }
 
-const TIMEOUT_MS = 15000; // 15s timeout
+/** Timeout por defecto para peticiones (15s). */
+const TIMEOUT_MS = 15000;
 
-// Enhanced fetch wrapper with comprehensive logging
+/**
+ * @function fetchWithTimeout
+ * @description Wrapper de fetch con timeout y logging comprehensivo.
+ * @param {string} url - URL a consultar
+ * @param {RequestInit} [options] - Opciones de fetch
+ * @param {number} [timeout] - Timeout en ms (default 15000)
+ * @returns {Promise<Response>} Respuesta HTTP
+ * @throws {ErrorShape} Si ocurre timeout o error de red
+ */
 async function fetchWithTimeout(url: string, options: RequestInit = {}, timeout = TIMEOUT_MS): Promise<Response> {
   const startTime = Date.now();
   const requestId = Math.random().toString(36).slice(2, 8);
@@ -184,6 +230,14 @@ async function fetchWithTimeout(url: string, options: RequestInit = {}, timeout 
   }
 }
 
+/**
+ * @function request
+ * @description Ejecuta petición POST al orquestador con manejo de errores.
+ * @param {string} path - Path relativo de la API
+ * @param {any} body - Cuerpo de la petición
+ * @returns {Promise<OrchestratorResult>} Resultado de la operación
+ * @throws {ErrorShape} Si la petición falla
+ */
 async function request(path: string, body: any): Promise<OrchestratorResult> {
   const requestId = Math.random().toString(36).slice(2, 8);
   const primaryUrl = `${API_BASE}${path}`;
@@ -275,6 +329,14 @@ async function request(path: string, body: any): Promise<OrchestratorResult> {
 
 // Función ingest removida - los datos se cargan automáticamente en el backend
 
+/**
+ * @function command
+ * @description Envía un comando/instrucción al orquestador de agentes.
+ * @param {string} text - Instrucción en lenguaje natural
+ * @param {string} [clientId] - ID opcional del cliente
+ * @returns {Promise<OrchestratorResult>} Respuesta del orquestador
+ * @throws {ErrorShape} Si la petición falla
+ */
 export async function command(text: string, clientId?: string): Promise<OrchestratorResult> {
   logger.info('Command Function Called', {
     textLength: text?.length || 0,
@@ -300,6 +362,12 @@ export async function command(text: string, clientId?: string): Promise<Orchestr
   }
 }
 
+/**
+ * @function health
+ * @description Verifica el estado de salud del backend.
+ * @returns {Promise<OrchestratorResult>} Estado de salud del servicio
+ * @throws {ErrorShape} Si el servicio no responde
+ */
 export async function health(): Promise<OrchestratorResult> {
   logger.info('Health Check Started', { endpoint: `${API_BASE}/api/health` });
   
