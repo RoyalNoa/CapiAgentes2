@@ -4154,10 +4154,10 @@
       "completion_tokens_total": 0
     },
     "capi_gus": {
-      "total_tokens": 13074,
-      "prompt_tokens_total": 2088,
-      "completion_tokens_total": 10986,
-      "cost_usd": 0.7218,
+      "total_tokens": 13083,
+      "prompt_tokens_total": 2089,
+      "completion_tokens_total": 10994,
+      "cost_usd": 0.72231,
       "history": [
         {
           "timestamp": "2025-10-08T14:35:17.786504",
@@ -5400,10 +5400,19 @@
           "cost_usd": 0.0048,
           "model": null,
           "provider": "heuristic"
+        },
+        {
+          "timestamp": "2026-02-03T16:15:32.545613",
+          "tokens": 9,
+          "prompt_tokens": 1,
+          "completion_tokens": 8,
+          "cost_usd": 0.00051,
+          "model": null,
+          "provider": "heuristic"
         }
       ],
       "provider": "heuristic",
-      "last_seen": "2025-10-29T23:08:26.287151"
+      "last_seen": "2026-02-03T16:15:32.545613"
     },
     "agente_g": {
       "total_tokens": 0,
@@ -5414,7 +5423,7 @@
       "provider": "openai"
     }
   },
-  "last_updated": "2025-10-29T23:09:35.338233",
+  "last_updated": "2026-02-03T16:15:32.545613",
   "capi_datab": {
     "total_tokens": 0,
     "total_cost": 0.0
